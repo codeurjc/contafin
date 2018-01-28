@@ -37,7 +37,7 @@ In this repository we will place our web application, which helps students to le
 	- Progress Statistics.
 	- Basic User Information.
 ### Graphic information
-	We are going to use **line graphics** showing students information (days/hours).
+	We are going to use **line** **graphics** showing students information (days/hours).
 ### Other functionality
 	- Logging alternatives.
 	- Export to excel.
