@@ -44,7 +44,7 @@ In this repository we will place our web application, which helps students to le
 	- Unit.
 	- Lesson.
 	- Exercise.
-	- Forum ¿?.
+	- Forum.
 	
 ### Advanced functionality
 
@@ -52,7 +52,7 @@ In this repository we will place our web application, which helps students to le
 	- Basic User Information.
 	
 ### Graphic information
-	We are going to use **line graphics** showing students information (days/hours).	
+	We are going to use line graphics showing students information (days/hours).	
 ### Other functionality
 
 	- Logging alternatives.
