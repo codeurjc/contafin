@@ -12,7 +12,7 @@ In this repository we will place our web application, which helps students to le
 - Lizeth Marcela de la Torre:
 
 	- E-mail: lm.delatorre@alumnos.urjc.es.
-	- Github: [marcela795](https://github.com/marcela795).
+	- Github: [marceladb](https://github.com/marceladb).
 	
 - Raul Velasco Rubio:
 
