@@ -27,7 +27,7 @@ In this repository we will place our web application, which helps students to le
 - Alejendro Pinto Fernandez
 
 	- E-mail: a.pinto@alumnos.urjc.es.
-	- Github: [AMBushido](https://github.com/AMBushido).
+	- Github: [AlejandroPinto](https://github.com/AMBushido).
 	
 ## Tools :
 
