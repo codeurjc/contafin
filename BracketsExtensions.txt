@@ -1,7 +1,0 @@
-https://github.com/mikaeljorhult/brackets-autoprefixer
-https://github.com/brackets-beautify/brackets-beautify
-https://github.com/JTruax/bootstrap-starter-template
-https://github.com/brackets-userland/brackets-git
-https://bitbucket.org/begue/brackets-markdown-preview
-https://github.com/DH3ALEJANDRO/custom-work-for-brackets
-https://github.com/ovk/brackets-simple-todo
