@@ -49,7 +49,7 @@ In this repository we will place our web application, which helps students to le
 	- Unit.
 	- Lesson.
 	- Exercise.
-	- Forum.
+	- Answer.
 	
 ### Advanced functionality
 
