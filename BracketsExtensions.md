@@ -8,3 +8,4 @@
 6. https://github.com/DH3ALEJANDRO/custom-work-for-brackets
 7. https://github.com/ovk/brackets-simple-todo
 8. https://github.com/Hirse/brackets-outline-list
+9. Brackets Trello
