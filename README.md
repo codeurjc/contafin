@@ -23,7 +23,12 @@ In this repository we will place our web application, which helps students to le
 
 	- E-mail: j.morillol@alumnos.urjc.es.
 	- Github: [Jaimemorillo](https://github.com/Jaimemorillo).
+	
+- Alejendro Pinto Fernandez
 
+	- E-mail: a.pinto@alumnos.urjc.es.
+	- Github: [AMBushido](https://github.com/AMBushido).
+	
 ## Tools :
 
 - [Trello](https://trello.com/b/4dZpQcvA/desarrollo-de-aplicaciones-web).
