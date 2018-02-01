@@ -95,8 +95,7 @@ img::-moz-selection {
 
 #mainNav .navbar-brand {
     font-weight: 700;
-    /*text-transform: uppercase;*/
-    color: #f05f40;
+    color: #fff;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif
 }
 
@@ -132,10 +131,9 @@ img::-moz-selection {
 @media (min-width:992px) {
     #mainNav {
         border-color: transparent;
-        background-color: transparent
     }
     #mainNav .navbar-brand {
-        color: rgba(255, 255, 255, .7)
+        color: #fff;
     }
     #mainNav .navbar-brand:focus,
     #mainNav .navbar-brand:hover {
