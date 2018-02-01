@@ -152,10 +152,9 @@ img::-moz-selection {
     }
     #mainNav.navbar-shrink {
         border-bottom: 1px solid rgba(33, 37, 41, .1);
-        background-color: #fff
     }
     #mainNav.navbar-shrink .navbar-brand {
-        color: #f05f40
+        color: #fff
     }
     #mainNav.navbar-shrink .navbar-brand:focus,
     #mainNav.navbar-shrink .navbar-brand:hover {
@@ -163,7 +162,7 @@ img::-moz-selection {
     }
     #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link,
     #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus {
-        color: #212529
+        color: rgba(255, 255, 255, .7)
     }
     #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus:hover,
     #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:hover {
