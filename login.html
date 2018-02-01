@@ -27,64 +27,92 @@
     <!-- Scrip PopUp -->
     <script>
         function abrir(url) {
-            open(url,'','top=300,left=300,width=300,height=300') ;
+            open(url, '', 'top=300,left=300,width=300,height=300');
         }
     </script>
 
 </head>
 
-<body class="bgexercises" id="page-top">
+<body class="bghome" id="page-top">
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTaFIN</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTaFIN</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="javascript:abrir('popup.html')">Ingresar</a>
-
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<section class="text-center text-dark d-flex">
-    <div class="container my-auto">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <h1 class="text-uppercase">
-                    <strong>¡Vamos a marcarnos un objetivo!</strong>
-                </h1>
-                <hr>
-            </div>
-            <div class="col-lg-8 mx-auto">
-                <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="relajado"/> Relajado - 5 minutos al día</p>
-                <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="normal" checked="checked"/> Normal - 10 minutos al día</p>
-                <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="serio"/> Serio - 15 minutos al día</p>
-                <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="intenso"/> Intenso - 20 minutos al día</p>
-
-                <a class="btn btn-primary btn-xl js-scroll-trigger" id="button-style" href="#about">Fijar objetivo</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalLong">
+                            Crear perfil
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <!--popup sign up-->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Regístrate</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-8 mx-auto">
+                        <p class="text-faded mb-5 text-dark"><input type="text" name="name" placeholder=" Nombre" /></p>
+                        <p class="text-faded mb-5 text-dark"><input type="text" name="mail" placeholder=" Correo" /></p>
+                        <p class="text-faded mb-5 text-dark"><input type="password" name="pass" placeholder="Contraseña" /></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary btn-block btn-social btn-google text-white">
+                        <span class="fa fa-google"></span> Regístrate con Google
+                    </a>
+                    <button type="button" class="btn btn-primary" id="button-style">Crear cuenta</button>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <section class="text-center text-dark d-flex">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase">
+                        <strong>¡Vamos a marcarnos un objetivo!</strong>
+                    </h1>
+                    <hr>
+                </div>
+                <div class="col-lg-8 mx-auto">
+                    <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="relajado" /> Relajado - 5 minutos al día</p>
+                    <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="normal" checked="checked" /> Normal - 10 minutos al día</p>
+                    <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="serio" /> Serio - 15 minutos al día</p>
+                    <p class="text-faded mb-5 text-dark"><input type="radio" name="objetivo" value="intenso" /> Intenso - 20 minutos al día</p>
 
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" id="button-style" href="#about">Fijar objetivo</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Custom scripts for this template -->
-<script src="js/creative.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
 
 </body>
 
