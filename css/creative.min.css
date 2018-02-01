@@ -354,3 +354,9 @@ header.masthead p {
 #button-style {
     background-color: #FF9F40;
 }
+
+#completedLessonimgStyle {
+    max-height: 22em;
+    max-width: 22em;
+}
+3030222
