@@ -328,3 +328,20 @@ header.masthead p {
 .btn-primary:focus {
     box-shadow: 0 0 0 .2rem rgba(240, 95, 64, .5)!important
 }
+
+.bghome {
+    padding-top: 1rem;
+    padding-bottom: calc(10rem - 56px);
+    background-image: url(../img/header.jpg);
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+
+#medal {
+    max-width: 20em;
+    max-height: 20em;
+
+}
