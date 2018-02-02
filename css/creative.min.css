@@ -381,3 +381,24 @@ header.masthead p {
 #bg-progressBar {
     background-color: #FFAF6D;
 }
+
+#selectAnswer {
+    color: black;
+    background-color: white;
+    text-transform: none;
+    border-radius: 17px;
+}
+
+#selectAnswer:not(:disabled):not(.disabled):active,
+#selectAnswer:not(:disabled):not(.disabled).active,
+.show > #selectAnswer.dropdown-toggle {
+    color: #fff;
+    background-color: #ff8000;
+    border-color: #ff8000;
+}
+
+#selectAnswer:hover {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+}
