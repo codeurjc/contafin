@@ -32,13 +32,35 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-1">
-                <button type="button" class="close sticky-top" aria-label="Close">
+                <button type="button" class="close sticky-top" data-toggle="modal" data-target="#exampleModalLong" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="col-sm-10">
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:10%" id="bg-progressBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--pop up close-->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">¿Estás seguro de que quieres salir?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Perderás el progreso en esta lección.</h6>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Cancelar</a>
+
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="home.html" id="button-style">Salir</a>
                 </div>
             </div>
         </div>
