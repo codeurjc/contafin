@@ -364,3 +364,13 @@ header.masthead p {
 .bg-green {
     background-color: rgb(26, 191, 58);
 }
+#UnitComplete {
+    background-color: #FF9F40;
+    border-radius: 17px;
+
+}
+
+#Unit {
+    background-color: #D4D1D1;
+    border-radius: 17px;
+}
