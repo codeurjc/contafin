@@ -21,7 +21,6 @@ hr.light {
 a {
     color: #f05f40;
     -webkit-transition: all .2s;
-    -moz-transition: all .2s;
     transition: all .2s
 }
 
@@ -70,6 +69,11 @@ section {
     text-shadow: none
 }
 
+img::-moz-selection {
+    color: #fff;
+    background: 0 0
+}
+
 img::selection {
     color: #fff;
     background: 0 0
@@ -89,7 +93,6 @@ img::-moz-selection {
     background-color: #FF9F40;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     -webkit-transition: all .2s;
-    -moz-transition: all .2s;
     transition: all .2s
 }
 
@@ -175,9 +178,6 @@ header.masthead {
     padding-bottom: calc(10rem - 56px);
     background-image: url(../img/header.jpg);
     background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover
 }
 
@@ -186,9 +186,6 @@ header.masthead {
     padding-bottom: calc(10rem - 56px);
     background-image: url(../img/background.png);
     background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover
 }
 
@@ -252,7 +249,6 @@ header.masthead p {
     color: #fff;
     background: rgba(240, 95, 64, .9);
     -webkit-transition: all .2s;
-    -moz-transition: all .2s;
     transition: all .2s
 }
 
@@ -260,6 +256,7 @@ header.masthead p {
     position: absolute;
     top: 50%;
     width: 100%;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     text-align: center
 }
@@ -327,6 +324,7 @@ header.masthead p {
 
 .btn-primary:active,
 .btn-primary:focus {
+    -webkit-box-shadow: 0 0 0 .2rem rgba(240, 95, 64, .5)!important;
     box-shadow: 0 0 0 .2rem rgba(240, 95, 64, .5)!important
 }
 
@@ -335,9 +333,6 @@ header.masthead p {
     padding-bottom: calc(10rem - 56px);
     background-image: url(../img/header.jpg);
     background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover
 }
 
@@ -359,7 +354,6 @@ header.masthead p {
     max-height: 22em;
     max-width: 22em;
 }
-3030222
 
 .bg-green {
     background-color: rgb(26, 191, 58);
@@ -377,4 +371,7 @@ header.masthead p {
 
 #modal-extralg {
     max-width: 1280px;
+}
+.bg-foot {
+    background-color: #bea2a8;
 }
