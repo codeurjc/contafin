@@ -358,6 +358,7 @@ header.masthead p {
 .bg-green {
     background-color: rgb(26, 191, 58);
 }
+
 #UnitComplete {
     background-color: #FF9F40;
     border-radius: 17px;
@@ -372,6 +373,11 @@ header.masthead p {
 #modal-extralg {
     max-width: 1280px;
 }
-.bg-foot {
-    background-color: #bea2a8;
+
+#bg-foot {
+    background-color: #FFAF6D;
+}
+
+#bg-progressBar {
+    background-color: #FFAF6D;
 }
