@@ -364,15 +364,18 @@ header.masthead p {
     border-radius: 17px;
 
 }
-#UnitComplete:hover{
+
+#UnitComplete:hover {
     background-color: #f05f40;
     border-radius: 17px;
 }
+
 #Unit {
     background-color: #D4D1D1;
     border-radius: 17px;
 }
-#Unit:hover{
+
+#Unit:hover {
     background-color: #8F8F8F;
     border-radius: 17px;
 }
@@ -417,4 +420,8 @@ header.masthead p {
 #selectLesson:hover,
 #selectLesson:link {
     color: rgba(255, 255, 255, 0);
+}
+
+#navbarDropdownMenuLink:not(:disabled):not(.disabled) {
+    cursor: pointer;
 }
