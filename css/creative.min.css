@@ -406,3 +406,8 @@ header.masthead p {
 #Margin {
     margin-bottom: 50px;
 }
+
+#selectLesson:hover,
+#selectLesson:link {
+    color: rgba(255, 255, 255, 0);
+}
