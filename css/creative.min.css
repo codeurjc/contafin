@@ -364,9 +364,16 @@ header.masthead p {
     border-radius: 17px;
 
 }
-
+#UnitComplete:hover{
+    background-color: #f05f40;
+    border-radius: 17px;
+}
 #Unit {
     background-color: #D4D1D1;
+    border-radius: 17px;
+}
+#Unit:hover{
+    background-color: #8F8F8F;
     border-radius: 17px;
 }
 
