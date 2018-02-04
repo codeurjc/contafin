@@ -425,3 +425,8 @@ header.masthead p {
 #navbarDropdownMenuLink:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
+
+#roundregister {
+    border-radius: 9px;
+
+}
