@@ -28,134 +28,219 @@
 
 <body class="bgexercises" id="page-top">
 
-    <!--Progress bar-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-1">
-                <button type="button" class="close sticky-top" data-toggle="modal" data-target="#exampleModalLong" aria-label="Close">
+<!--Progress bar-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1">
+            <button type="button" class="close sticky-top" data-toggle="modal" data-target="#exampleModalLong" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="col-sm-10">
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%" id="bg-progressBar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--pop up close-->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">¿Estás seguro de que quieres salir?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="col-sm-10">
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:50%" id="bg-progressBar"></div>
+            <div class="modal-body">
+                <h6>Perderás el progreso en esta lección</h6>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Cancelar</a>
+
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="home.html" id="button-style">Salir</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Question and answers-->
+<section class="p-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Realiza el asiento</h2>
+                <hr class="my-4">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-2">
+                <h6>-----------------------</h6>
+            </div>
+            <div class="col-sm-1">
+                <h6>X</h6>
+            </div>
+            <div class="col-sm-2">
+                <h6>-----------------------</h6>
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div id="asDiv1" class="col-sm-1">
+                <h6> </h6>
+            </div>
+            <div id="asDiv2" class="col-sm-3">
+                <h6> </h6>
+            </div>
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+            </div>
+            <div id="asDiv3" class="col-sm-1">
+                <h6> </h6>
+            </div>
+            <div id="asDiv4" class="col-sm-3">
+                <h6> </h6>
+            </div>
+            <div id="asDiv5" class="col-sm-1">
+                <h6> </h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+            </div>
+            <div id="asDiv6" class="col-sm-1">
+                <h6> </h6>
+            </div>
+            <div id="asDiv7" class="col-sm-3">
+                <h6> </h6>
+            </div>
+            <div id="asDiv8"class="col-sm-1">
+                <h6> </h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-3 text-center"></div>
+    </div>
+    <hr class="invisible p-1">
+    <div class="container mx-auto mb-5">
+        <div class="row">
+
+            <!--SECTION OF ANSWERS-->
+            <div class="col-lg-8  mx-auto text-center">
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer">
+                        1
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn " id="selectAnswer" onClick="funAsiento()">
+                        5
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn " id="selectAnswer" onClick="funAsiento()">
+                        226. Mobiliario
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        a
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        223. Maquinaria
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        4
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        572. Bancos c/c
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        3
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        523. Proveedores de inmovilizado a c/p
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        400. Proveedores
+                    </label>
+                </div>
+                <div class="btn my-auto text-center" data-toggle="buttons">
+                    <label class="btn" id="selectAnswer" onClick="funAsiento()">
+                        173. Proveedores de inmovilizado a l/p
+                    </label>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <!--pop up close-->
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">¿Estás seguro de que quieres salir?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h6>Perderás el progreso en esta lección</h6>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Cancelar</a>
-
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="home.html" id="button-style">Salir</a>
-                </div>
-            </div>
+<!--Evaluation section-->
+<footer class="mt-3 fixed-bottom" id="bg-foot">
+    <div class="container-fluid py-3">
+        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType5.html">SALTAR</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType5.html">CALIFICAR</a>
         </div>
     </div>
+</footer>
 
-    <!--Question and answers-->
-    <section class="p-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Toca los pares</h2>
-                    <hr class="my-4">
-                </div>
-            </div>
-        </div>
-        <div class="container mx-auto mb-5">
-            <div class="row">
-                <!--SECTION OF ANSWERS-->
-                <div class="col-lg-8  mx-auto text-center">
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        400. Provedores
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn " id="selectAnswer">
-                        206. Aplicaciones informáticas
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn " id="selectAnswer">
-                        213. Maquinaria
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        100. Capital social
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        Pasivo exigible
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        300. Mercaderías A
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        Patrimonio neto
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        Inmovilizado material
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        Existencias
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        Inmovilidazo intangible
-                    </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!--Evaluation section-->
-    <footer class="mt-3 fixed-bottom" id="bg-foot">
-        <div class="container-fluid py-3">
-            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType5.html">SALTAR</a>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType5.html">CALIFICAR</a>
-            </div>
-        </div>
-    </footer>
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Custom scripts for this template -->
+<script src="js/creative.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!-- Script asientos -->
+<script>
+    function funAsiento() {
+        var arr = ["asDiv1", "asDiv2", "asDiv3", "asDiv4", "asDiv5", "asDiv6", "asDiv7", "asDiv8"];
+        x = 0;
 
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[x] !== " ") {
+                x++;
+            } else {
+                x.innerHTML = this.innerHTML;
+                this.disabled = true;
+            }
+        }
+
+    }
+</script>
 
 </body>
 
