@@ -413,6 +413,27 @@ header.masthead p {
     border-color: orange;
 }
 
+#selectAnswer4 {
+    color: #fff;
+    background-color: #ff8000;
+    text-transform: none;
+    border-radius: 17px;
+}
+
+#selectAnswer4:not(:disabled):not(.disabled):active,
+#selectAnswer4:not(:disabled):not(.disabled).active,
+.show > #selectAnswer4.dropdown-toggle {
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+#selectAnswer4:hover {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+}
+
 #Margin {
     margin-bottom: 50px;
 }
