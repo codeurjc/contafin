@@ -64,7 +64,9 @@ In this repository we will place our web application, which helps students to le
 	- Export to excel.
 	- Send e-mails.
 
- 
+## Navigation Diagram: 
+
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram.png) 
 
 
 
