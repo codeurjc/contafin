@@ -69,9 +69,6 @@ In this repository we will place our web application, which helps students to le
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram.png) 
 
 ## Screenshots
-
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram.png) 
-
 ### index.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/img/Navigation%20diagram/index.PNG) 
 ### login.html
