@@ -19,6 +19,7 @@ public class Student {
 	private int level;
 	private int points;
 	private int streak;
+	private int fluency;
 	
 	public Student(String name, String email, String password) {
 		this.name=name;
@@ -27,6 +28,7 @@ public class Student {
 		this.level=1;
 		this.points=0;
 		this.streak=0;
+		this.fluency=0;
 	}
 
 	public long getId() {
@@ -83,6 +85,14 @@ public class Student {
 
 	public void setStreak(int streak) {
 		this.streak = streak;
+	}
+
+	public int getFluency() {
+		return fluency;
+	}
+
+	public void setFluency(int fluency) {
+		this.fluency = fluency;
 	}
 
 	
