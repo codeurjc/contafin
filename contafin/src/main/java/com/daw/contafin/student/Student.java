@@ -1,4 +1,4 @@
-package com.daw.contafin.domain;
+package com.daw.contafin.student;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

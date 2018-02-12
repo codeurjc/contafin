@@ -1,11 +1,8 @@
-package com.daw.contafin.controllers;
+package com.daw.contafin.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
-
-import com.daw.contafin.domain.Student;
-import com.daw.contafin.repositories.StudentRepository;
 
 @Controller
 public class StudentController implements CommandLineRunner{

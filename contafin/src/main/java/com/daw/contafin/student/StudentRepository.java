@@ -1,10 +1,8 @@
-package com.daw.contafin.repositories;
+package com.daw.contafin.student;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.daw.contafin.domain.Student;
 
 
 public interface StudentRepository extends JpaRepository <Student, Long>{
