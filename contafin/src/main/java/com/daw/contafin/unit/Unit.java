@@ -12,7 +12,10 @@ public class Unit {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	
 	private long id;
-	String name;
+	private String name;
+	
+	//@OneToMany(mappedBy = "unit")
+	//private List<Lesson> lessons;
 	
 	public Unit(String name) {
 		this.name=name;
@@ -33,7 +36,5 @@ public class Unit {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 	
 }

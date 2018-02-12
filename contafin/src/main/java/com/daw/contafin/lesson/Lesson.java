@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.daw.contafin.unit.*;
 
 @Entity
 public class Lesson {
@@ -13,13 +16,13 @@ public class Lesson {
 	
 	private long id;
 	private String name;
-	private int num;
-	private int experience;
 	
-	public Lesson(String name, int num, int experience) {
+	@ManyToOne
+	private Unit unit;
+	
+	public Lesson(String name, Unit unit) {
 		this.name=name;
-		this.num=num;
-		this.experience=experience;
+		this.setUnit(unit);
 	}
 
 	public long getId() {
@@ -38,22 +41,14 @@ public class Lesson {
 		this.name = name;
 	}
 
-	public int getNum() {
-		return num;
+
+	public Unit getUnit() {
+		return unit;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setUnit(Unit unit) {
+		this.unit = unit;
 	}
-
-	public int getExperience() {
-		return experience;
-	}
-
-	public void setExperience(int experience) {
-		this.experience = experience;
-	}
-	
 	
 	
 }
