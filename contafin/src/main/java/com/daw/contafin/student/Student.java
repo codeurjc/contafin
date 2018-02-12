@@ -21,6 +21,10 @@ public class Student {
 	private int streak;
 	private int fluency;
 	
+	public Student() {
+		
+	}
+	
 	public Student(String name, String email, String password) {
 		this.name=name;
 		this.email=email;
