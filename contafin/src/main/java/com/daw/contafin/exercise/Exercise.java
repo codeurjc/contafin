@@ -35,6 +35,16 @@ public class Exercise {
 	@OneToOne (cascade=CascadeType.ALL)
 	private Answer answer;
 
+	public Exercise() {
+		
+	}
+	
+	public List<CompletedExercise> getCompletedExercises() {
+		return completedExercises;
+	}
+	public void setCompletedExercises(List<CompletedExercise> completedExercises) {
+		this.completedExercises = completedExercises;
+	}
 	public long getId() {
 		return id;
 	}
