@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.student.Student;
 
 @Entity
@@ -19,23 +20,24 @@ public class CompletedExercise {
 	private String name;
 	
 	@ManyToOne
-	private long exerciseId;
+	private Exercise exercise;
 	
-	private ArrayList<Error> errores;
+	private long errores;
 	
-	public long getExerciseId() {
-		return exerciseId;
+
+	public Exercise getExercise() {
+		return exercise;
 	}
 
-	public void setExerciseId(long exerciseId) {
-		this.exerciseId = exerciseId;
+	public void setExercise(Exercise exercise) {
+		this.exercise = exercise;
 	}
 
-	public ArrayList<Error> getErrores() {
+	public long getErrores() {
 		return errores;
 	}
 
-	public void setErrores(ArrayList<Error> errores) {
+	public void setErrores( errores) {
 		this.errores = errores;
 	}
 
