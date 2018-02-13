@@ -22,19 +22,17 @@ public class CompletedExerciseController {
 		
 	}
 	
-	@RequestMapping("profile")
-    public String profile( Model model) {
+    public void profile( Model model) {
 		
 		/*model.addAttribute("name", repository.findByName("Julián").getName());
 		model.addAttribute("level", repository.findByName("Julián").getLevel());
 		model.addAttribute("points", repository.findByName("Julián").getPoints());
 		model.addAttribute("streak", repository.findByName("Julián").getStreak());
 		model.addAttribute("goals", false);*/
-		
-    	return "profile";
+	
     }
 	
-	@RequestMapping("home")
+	/*@RequestMapping("home")
     public String home() {
 		
     	return "home";
@@ -44,5 +42,5 @@ public class CompletedExerciseController {
     public String index() {
 		
     	return "index";
-    }
+    }*/
 }

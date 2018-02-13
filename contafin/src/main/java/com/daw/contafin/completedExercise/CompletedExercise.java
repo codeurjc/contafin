@@ -1,7 +1,5 @@
 package com.daw.contafin.completedExercise;
 
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,13 +15,30 @@ public class CompletedExercise {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
-	private String name;
+	
+	@ManyToOne
+	private Student student;
 	
 	@ManyToOne
 	private Exercise exercise;
 	
 	private long errores;
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 
 	public Exercise getExercise() {
 		return exercise;
@@ -41,37 +56,4 @@ public class CompletedExercise {
 		this.errores = errores;
 	}
 
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	@ManyToOne
-	private Student student;
-	
-	public CompletedExercise(String name) {
-		this.name=name;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	
 }
