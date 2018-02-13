@@ -16,10 +16,10 @@ public class CompletedExercise {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne
+	@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
 	private Student student;
 	
-	@ManyToOne
+	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Exercise exercise;
 	
 	private long errores;

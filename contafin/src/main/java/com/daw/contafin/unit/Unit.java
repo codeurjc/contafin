@@ -1,9 +1,14 @@
 package com.daw.contafin.unit;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.daw.contafin.lesson.Lesson;
 
 @Entity
 public class Unit {
@@ -14,8 +19,8 @@ public class Unit {
 	private long id;
 	private String name;
 	
-	//@OneToMany(mappedBy = "unit")
-	//private List<Lesson> lessons;
+	@OneToMany (mappedBy = "unit")
+	private List<Lesson> lessons;
 	
 	public Unit(String name) {
 		this.name=name;
