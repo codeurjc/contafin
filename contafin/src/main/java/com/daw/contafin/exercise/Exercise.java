@@ -39,6 +39,11 @@ public class Exercise {
 		
 	}
 	
+	public Exercise(int kind,ClassExercise ejercicio, Answer answer) {
+		this.kind=kind;
+		this.exercise = ejercicio;
+	}
+	
 	public List<CompletedExercise> getCompletedExercises() {
 		return completedExercises;
 	}

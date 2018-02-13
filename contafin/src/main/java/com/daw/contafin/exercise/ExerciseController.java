@@ -1,5 +1,8 @@
 package com.daw.contafin.exercise;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +19,19 @@ public class ExerciseController {
 	@PostConstruct
 	public void init () {
 		
-		/*repository.save(new Student("Ramón", "ramon@hotmail.es", "lalala"));
-		repository.save(new Student("Julián", "juli@hotmail.es", "lelele"));
-		repository.save(new Student("Luna", "luna@hotmail.es", "lilili"));*/
+		List<String> imagenes =  Arrays.asList("../static/img/machine.jpg","../static/img/land.jpg","../static/img/truck.jpg");
+		List<String> textos = Arrays.asList("machine","land","truck");
+		ClassExercise exercise = new ClassExercise(1,"Seleccione el asiento",imagenes,textos);
+		repository.save(new Exercise(exercise.getKind(),exercise,null));
 		
 	}
 	
-	@RequestMapping("profile")
-    public String profile( Model model) {
+	@RequestMapping("/Unit1/Lesson1/Exercise1.1.1")
+    public String exercise1(Model model) {
 		
-		/*model.addAttribute("name", repository.findByName("Julián").getName());
-		model.addAttribute("level", repository.findByName("Julián").getLevel());
-		model.addAttribute("points", repository.findByName("Julián").getPoints());
-		model.addAttribute("streak", repository.findByName("Julián").getStreak());
-		model.addAttribute("goals", false);*/
+		model.addAttribute("Imagen1", repository.findById(1).getExercise().getRutaImagenes().get(1));
 		
-    	return "profile";
+    	return "exerciseType1";
     }
 	
 	@RequestMapping("home")
