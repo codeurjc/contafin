@@ -23,7 +23,7 @@ public class LessonController {
 		model.addAttribute("lesson", lesson);
 		model.addAttribute("title", "Introducción");
 		
-    	return "lessons";
+    	return "lessons" ;
     }
 
 	@RequestMapping("lessons/{{-index}}")
