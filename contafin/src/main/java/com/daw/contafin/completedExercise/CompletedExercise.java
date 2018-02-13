@@ -23,6 +23,10 @@ public class CompletedExercise {
 	private Exercise exercise;
 	
 	private long errores;
+	
+	public CompletedExercise() {
+		
+	}
 
 	public long getId() {
 		return id;
