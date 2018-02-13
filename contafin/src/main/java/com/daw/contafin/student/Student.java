@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.daw.contafin.exercise.Exercise;
+import com.daw.contafin.completedExercise.CompletedExercise;
 
 @Entity
 public class Student {
@@ -27,7 +27,7 @@ public class Student {
 	private int fluency;
 	
 	@OneToMany (mappedBy="student")
-	private List<Exercise> exercises;
+	private List<CompletedExercise> exercises;
 	
 	
 	public Student() {
