@@ -37,7 +37,7 @@ public class CompletedExercise {
 		return errores;
 	}
 
-	public void setErrores( errores) {
+	public void setErrores(long errores) {
 		this.errores = errores;
 	}
 
