@@ -3,6 +3,7 @@ package com.daw.contafin.exercise;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,10 +48,10 @@ public class Exercise {
 		
 	}
 	
-	public Exercise(int kind,String statement , /*List<String> ruteImages,  List<String> texts,*/ Answer answer) {
+	public Exercise(int kind,String statement , List<String> ruteImages,  List<String> texts, Answer answer) {
 		this.kind=kind;
 		this.statement = statement;
-		/*this.texts = texts;
+		this.texts = texts;
 
 		if(kind == 1 || kind == 2) {
 			this.ruteImages = ruteImages;
@@ -60,7 +61,7 @@ public class Exercise {
 		}
 		else {
 			System.out.println("Este tipo de ejercicio no existe");
-		}*/
+		}
 		this.answer=answer;
 	}
 
@@ -96,7 +97,7 @@ public class Exercise {
 		this.statement = statement;
 	}
 
-	/*public List<String> getRuteImages() {
+	public List<String> getRuteImages() {
 		return ruteImages;
 	}
 
@@ -110,7 +111,7 @@ public class Exercise {
 
 	public void setTexts(List<String> texts) {
 		this.texts = texts;
-	}*/
+	}
 
 	public List<CompletedExercise> getCompletedExercises() {
 		return completedExercises;
