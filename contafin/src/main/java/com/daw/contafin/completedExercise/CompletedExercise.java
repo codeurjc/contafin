@@ -16,8 +16,8 @@ public class CompletedExercise {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
-	private Student student;
+	/*@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
+	private Student student;*/
 	
 	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Exercise exercise;
@@ -36,13 +36,13 @@ public class CompletedExercise {
 		this.id = id;
 	}
 
-	public Student getStudent() {
+	/*public Student getStudent() {
 		return student;
 	}
 
 	public void setStudent(Student student) {
 		this.student = student;
-	}
+	}*/
 
 	public Exercise getExercise() {
 		return exercise;

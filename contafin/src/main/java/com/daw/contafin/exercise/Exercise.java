@@ -3,6 +3,7 @@ package com.daw.contafin.exercise;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,8 +30,12 @@ public class Exercise {
 	private int kind;
 	
 	private String statement;
-	/*private List<String> ruteImages;
-	private List<String> texts;*/
+	
+	@ElementCollection
+	private List<String> ruteImages;
+	
+	@ElementCollection
+	private List<String> texts;
 	
 	@OneToMany (mappedBy = "exercise")
 	private List<CompletedExercise> completedExercises;
