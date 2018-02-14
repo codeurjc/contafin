@@ -1,4 +1,4 @@
-package com.daw.contafin.student;
+package com.daw.contafin.user;
 
 
 import javax.annotation.PostConstruct;
@@ -9,17 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class StudentController{
+public class UserController{
 	
 	@Autowired
-	private StudentRepository repository;
+	private UserRepository repository;
 	
 	@PostConstruct
 	public void init () {
 		
-		repository.save(new Student("Ramón", "ramon@hotmail.es", "lalala"));
-		repository.save(new Student("Julián", "juli@hotmail.es", "lelele"));
-		repository.save(new Student("Luna", "luna@hotmail.es", "lilili"));
+		repository.save(new User("Ramón", "ramon@hotmail.es", "lalala"));
+		repository.save(new User("Julián", "juli@hotmail.es", "lelele"));
+		repository.save(new User("Luna", "luna@hotmail.es", "lilili"));
 		
 	}
 	

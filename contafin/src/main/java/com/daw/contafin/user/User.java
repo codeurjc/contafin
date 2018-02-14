@@ -1,17 +1,23 @@
-package com.daw.contafin.student;
+package com.daw.contafin.user;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
-import com.daw.contafin.completedExercise.CompletedExercise;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+//import com.daw.contafin.completedExercise.CompletedExercise;
 
 @Entity
-public class Student {
+public class User {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
@@ -20,24 +26,28 @@ public class Student {
 	
 	private String name;
 	private String email;
-	private String password;
+	private String passwordHash;
 	private int level;
 	private int points;
 	private int streak;
 	private int fluency;
 	
-	@OneToMany (mappedBy="student")
-	private List<CompletedExercise> exercises;
+	@ElementCollection(fetch = FetchType.EAGER) 
+	private List<String> roles;
+	
+	//@OneToMany (mappedBy="student")
+	//private List<CompletedExercise> exercises;
 	
 	
-	public Student() {
+	public User() {
 		
 	}
 	
-	public Student(String name, String email, String password) {
+	public User(String name, String email, String password, String... roles) {
 		this.name=name;
 		this.email=email;
-		this.password= password;
+		this.passwordHash= new BCryptPasswordEncoder().encode(password);
+		this.roles = new ArrayList<>(Arrays.asList(roles));
 		this.level=1;
 		this.points=0;
 		this.streak=0;
@@ -68,12 +78,12 @@ public class Student {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswordHash() {
+		return passwordHash;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
 	}
 
 	public int getLevel() {
@@ -108,7 +118,14 @@ public class Student {
 		this.fluency = fluency;
 	}
 
-	
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
 	
 
 }

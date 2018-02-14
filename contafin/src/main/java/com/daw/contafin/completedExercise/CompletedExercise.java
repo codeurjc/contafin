@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.student.Student;
+//import com.daw.contafin.student.Student;
 
 @Entity
 public class CompletedExercise {
