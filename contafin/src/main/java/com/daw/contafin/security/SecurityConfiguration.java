@@ -19,29 +19,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
-    			// Public pages
-    			http.authorizeRequests().antMatchers("/login").permitAll();
-    			http.authorizeRequests().antMatchers("/").permitAll();
-    			// Private pages
+    			//At the moment all the URLs are public
+    			http.authorizeRequests().anyRequest().permitAll();
     			
-    			http.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
-
-    			// Acces Denied redirect
-    			http.exceptionHandling().accessDeniedPage("/decideDenied");
-
-    			// Login form
-    			http.formLogin().loginPage("/login");
-    			http.formLogin().usernameParameter("username");
-    			http.formLogin().passwordParameter("password");
-    			http.formLogin().defaultSuccessUrl("/decideLogin");
-    			http.formLogin().failureUrl("/loginError");
-
-    			// Logout
-    			http.logout().logoutUrl("/logOut").deleteCookies("JSESSIONID", "remember-me");
-    			//http.logout().logoutUrl("/logOut");
-    			http.logout().logoutSuccessUrl("/login");
-
-    			// http.csrf().disable();
 
     			
     }
