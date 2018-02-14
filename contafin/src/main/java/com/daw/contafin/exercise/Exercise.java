@@ -27,7 +27,10 @@ public class Exercise {
 	private Lesson lesson;
 	
 	private int kind;
-	private ClassExercise exercise;
+	
+	private String statement;
+	private List<String> ruteImages;
+	private List<String> texts;
 	
 	@OneToMany (mappedBy = "exercise")
 	private List<CompletedExercise> completedExercises;
@@ -39,17 +42,22 @@ public class Exercise {
 		
 	}
 	
-	public Exercise(int kind,ClassExercise ejercicio, Answer answer) {
+	public Exercise(int kind,String statement , List<String> ruteImages,  List<String> texts, Answer answer) {
 		this.kind=kind;
-		this.exercise = ejercicio;
+		this.statement = statement;
+		this.texts = texts;
+
+		if(kind == 1 || kind == 2) {
+			this.ruteImages = ruteImages;
+		}
+		else if(kind == 3 || kind == 4 || kind == 5 || kind == 6 || kind == 7) {
+			this.ruteImages = null;
+		}
+		else {
+			System.out.println("Este tipo de ejercicio no existe");
+		}
 	}
-	
-	public List<CompletedExercise> getCompletedExercises() {
-		return completedExercises;
-	}
-	public void setCompletedExercises(List<CompletedExercise> completedExercises) {
-		this.completedExercises = completedExercises;
-	}
+
 	public long getId() {
 		return id;
 	}
@@ -74,12 +82,36 @@ public class Exercise {
 		this.kind = kind;
 	}
 
-	public ClassExercise getExercise() {
-		return exercise;
+	public String getStatement() {
+		return statement;
 	}
 
-	public void setExercise(ClassExercise exercise) {
-		this.exercise = exercise;
+	public void setStatement(String statement) {
+		this.statement = statement;
+	}
+
+	public List<String> getRuteImages() {
+		return ruteImages;
+	}
+
+	public void setRuteImages(List<String> ruteImages) {
+		this.ruteImages = ruteImages;
+	}
+
+	public List<String> getTexts() {
+		return texts;
+	}
+
+	public void setTexts(List<String> texts) {
+		this.texts = texts;
+	}
+
+	public List<CompletedExercise> getCompletedExercises() {
+		return completedExercises;
+	}
+
+	public void setCompletedExercises(List<CompletedExercise> completedExercises) {
+		this.completedExercises = completedExercises;
 	}
 
 	public Answer getAnswer() {
@@ -89,9 +121,6 @@ public class Exercise {
 	public void setAnswer(Answer answer) {
 		this.answer = answer;
 	}
-
-	public Exercise(String heading, boolean skiped) {
-		
-	}
+	
 	
 }
