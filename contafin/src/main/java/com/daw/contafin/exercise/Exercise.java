@@ -48,10 +48,11 @@ public class Exercise {
 		
 	}
 	
-	public Exercise(int kind,String statement , List<String> ruteImages,  List<String> texts, Answer answer) {
+	public Exercise(int kind,String statement , List<String> ruteImages,  List<String> texts, Answer answer,Lesson lesson) {
 		this.kind=kind;
 		this.statement = statement;
 		this.texts = texts;
+		this.setLesson(lesson);
 
 		if(kind == 1 || kind == 2) {
 			this.ruteImages = ruteImages;
@@ -60,7 +61,7 @@ public class Exercise {
 			this.ruteImages = null;
 		}
 		else {
-			System.out.println("Este tipo de ejercicio no existe");
+			System.out.println("This kind of exercise dont exist");
 		}
 		this.answer=answer;
 	}
