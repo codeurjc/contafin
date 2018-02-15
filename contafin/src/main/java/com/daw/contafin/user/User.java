@@ -31,6 +31,7 @@ public class User {
 	private int points;
 	private int streak;
 	private int fluency;
+	private int dailyGoal;
 	
 	@ElementCollection(fetch = FetchType.EAGER) 
 	private List<String> roles;
@@ -52,6 +53,17 @@ public class User {
 		this.points=0;
 		this.streak=0;
 		this.fluency=0;
+	}
+	
+	public User(String name, String email, String password,int level, int points, int streak, int dailyGoal, String... roles) {
+		this.name=name;
+		this.email=email;
+		this.passwordHash= new BCryptPasswordEncoder().encode(password);
+		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.level=level;
+		this.points=points;
+		this.streak=streak;
+		this.dailyGoal= dailyGoal;
 	}
 
 	public long getId() {
@@ -124,6 +136,14 @@ public class User {
 
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+
+	public int getDailyGoal() {
+		return dailyGoal;
+	}
+
+	public void setDailyGoal(int dailyGoal) {
+		this.dailyGoal = dailyGoal;
 	}
 
 	

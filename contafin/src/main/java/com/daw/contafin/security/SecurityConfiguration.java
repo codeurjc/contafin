@@ -22,6 +22,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     			//At the moment all the URLs are public
     			http.authorizeRequests().anyRequest().permitAll();
     			
+    			// Login form
+    	        http.formLogin().loginPage("/");
+    	        http.formLogin().usernameParameter("email");
+    	        http.formLogin().passwordParameter("pass");
+    	        http.formLogin().defaultSuccessUrl("/home");
+    	        http.formLogin().failureUrl("/loginerror");
+    	        
+    	        http.csrf().disable();
+    	        
+    	     // Use Http Basic Authentication
+    	        http.httpBasic();
+    			
 
     			
     }

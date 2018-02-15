@@ -35,15 +35,5 @@ public class UserController{
     	return "profile";
     }
 	
-	@RequestMapping("home")
-    public String home() {
-		
-    	return "home";
-    }
-
-	@RequestMapping("/")
-    public String index() {
-		
-    	return "index";
-    }
+	
 }
