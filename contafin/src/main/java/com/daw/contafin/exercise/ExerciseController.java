@@ -24,6 +24,8 @@ public class ExerciseController {
 	@Autowired
 	private LessonRepository lessonRepository; 
 	
+	List<String> texts;
+	
 	@PostConstruct
 	public void init () {
 		
@@ -32,8 +34,13 @@ public class ExerciseController {
 		List<String> texts = Arrays.asList("213.Maquinaria","210.Terrenos y bienes naturales","218. Elementos de transporte");
 		exerciseRepository.save(new Exercise(1,"Seleccione el asiento",images,texts,null,lesson));
 		
-		texts = Arrays.asList("213.Maquinaria","210.Terrenos y bienes naturales","218. Elementos de transporte");
 		exerciseRepository.save(new Exercise(2,"Escribe la denominación de la cuenta que recoge: " + "maquinarias para el proceso productivo de la empresa",null,null,null,lesson));
+		
+		texts = Arrays.asList("213.Pepe","210.Terrenos y bienes naturales","218. Elementos de transporte","206. Aplicaciones informáticas","213. Maquinaria","100. Capital social","Pasivo exigible","300. Mercaderías A","Patrimonio neto","Inmovilizado material","Existencias","Inmovilizado intangible");
+		exerciseRepository.save(new Exercise(3,"Toca los pares",null,texts,null,lesson));
+		
+		texts = Arrays.asList("213.Hola","210.Terrenos y bienes naturales","218. Elementos de transporte","206. Aplicaciones informáticas","213. Maquinaria","100. Capital social","Pasivo exigible","300. Mercaderías A","Patrimonio neto","Inmovilizado material","Existencias","Inmovilizado intangible");
+		exerciseRepository.save(new Exercise(4,"Realiza el asiento",null,texts,null,lesson));
 		
 	}
 	
@@ -46,14 +53,14 @@ public class ExerciseController {
 		model.addAttribute("Text1", exerciseRepository.findById(1).getTexts().get(0));
 		model.addAttribute("Text2", exerciseRepository.findById(1).getTexts().get(1));
 		model.addAttribute("Text3", exerciseRepository.findById(1).getTexts().get(2));
-		model.addAttribute("Enunciado", exerciseRepository.findById(1).getStatement());
+		model.addAttribute("Statement", exerciseRepository.findById(1).getStatement());
 		
     	return "exerciseType1";
     }
 	@RequestMapping("/Unit1/Lesson1/Exercise1.1.2")
     public String exercise2(Model model) {
 		
-		model.addAttribute("Enunciado", exerciseRepository.findById(2).getStatement());
+		model.addAttribute("Statement", exerciseRepository.findById(2).getStatement());
 		
     	return "exerciseType2";
     }
@@ -61,13 +68,22 @@ public class ExerciseController {
 	@RequestMapping("/Unit1/Lesson1/Exercise1.1.3")
     public String exercise3(Model model) {
 		
-		List<String> texts = exerciseRepository.findById(1).getTexts();
+		texts = exerciseRepository.findById(3).getTexts();
 		
-		model.addAttribute("Enunciado", exerciseRepository.findById(3).getStatement());
-		model.addAttribute("Text", exerciseRepository.findById(3).getTexts().get(0));
-		model.addAttribute("Texts", texts);
+		model.addAttribute("Statement", exerciseRepository.findById(3).getStatement());
+		model.addAttribute("texts", texts);
 		
-    	return "exerciseType1";
+    	return "exerciseType3";
+    }
+	@RequestMapping("/Unit1/Lesson1/Exercise1.1.4")
+    public String exercise4(Model model) {
+		
+		texts = exerciseRepository.findById(4).getTexts();
+		
+		model.addAttribute("Statement", exerciseRepository.findById(4).getStatement());
+		model.addAttribute("texts", texts);
+		
+    	return "exerciseType4";
     }
 	
 	/*@RequestMapping("home")

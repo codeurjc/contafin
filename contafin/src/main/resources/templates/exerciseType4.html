@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="utf-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,18 +12,18 @@
     <title>CONTaFIN</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/creative.min.css" rel="stylesheet">
+    <link href="css/creative.min.css" rel="stylesheet">
 
 </head>
 
@@ -71,7 +72,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Realiza el asiento</h2>
+                    <h2 class="section-heading">{{Statement}}</h2>
                     <hr class="my-4">
                 </div>
             </div>
@@ -142,61 +143,13 @@
 
                 <!--SECTION OF ANSWERS-->
                 <div class="col-lg-8  mx-auto text-center">
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer">
-                        1
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn " id="selectAnswer" onClick="funAsiento()">
-                        a
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn " id="selectAnswer" onClick="funAsiento()">
-                        226. Mobiliario
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer4" onClick="funAsiento()">
-                        a
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer4" onClick="funAsiento()">
-                        223. Maquinaria
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer4" onClick="funAsiento()">
-                        4
-                    </label>
-                    </div>
+                {{#texts}}
                     <div class="btn my-auto text-center" data-toggle="buttons">
                         <label class="btn" id="selectAnswer" onClick="funAsiento()">
-                        572. Bancos c/c
+                        {{.}}
                     </label>
                     </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer4" onClick="funAsiento()">
-                        3
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer" onClick="funAsiento()">
-                        523. Proveedores de inmovilizado a c/p
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer" onClick="funAsiento()">
-                        400. Proveedores
-                    </label>
-                    </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
-                        <label class="btn" id="selectAnswer4" onClick="funAsiento()">
-                        173. Proveedores de inmovilizado a l/p
-                    </label>
-                    </div>
+                {{/texts}}
                 </div>
             </div>
         </div>
@@ -206,24 +159,24 @@
     <footer class="mt-3 fixed-bottom" id="bg-foot">
         <div class="container-fluid py-3">
             <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType5.html">SALTAR</a>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType5.html">CALIFICAR</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="/Unit1/Lesson1/Exercise1.1.5">SALTAR</a>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="/Unit1/Lesson1/Exercise1.1.5">CALIFICAR</a>
             </div>
         </div>
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
-    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../static/vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="../static/js/creative.min.js"></script>
-    <script src="../static/js/changeFixed.js"></script>
+    <script src="js/creative.min.js"></script>
+    <script src="js/changeFixed.js"></script>
 
     <!-- Script asientos -->
     <script>
