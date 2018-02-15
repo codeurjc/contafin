@@ -16,6 +16,7 @@ public class Admin {
 	private String email;
 	private String password;
 	
+	public Admin() {}
 	public Admin(String name, String email, String password) {
 		this.name=name;
 		this.email=email;

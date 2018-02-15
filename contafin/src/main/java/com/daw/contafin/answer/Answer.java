@@ -18,5 +18,5 @@ public class Answer {
 	@OneToOne(mappedBy="answer")
 	private Exercise exercise;
 	
-	
+	public Answer() {}
 }
