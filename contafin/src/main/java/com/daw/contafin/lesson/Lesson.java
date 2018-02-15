@@ -28,7 +28,7 @@ public class Lesson {
 	@ManyToOne
 	private Unit unit;
 	
-	
+	public Lesson() {}
 	public Lesson(String name, Unit unit) {
 		this.name=name;
 		this.setUnit(unit);

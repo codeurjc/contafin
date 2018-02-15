@@ -22,6 +22,7 @@ public class Unit {
 	@OneToMany (mappedBy = "unit")
 	private List<Lesson> lessons;
 	
+	public Unit() {}
 	public Unit(String name) {
 		this.name=name;
 	}
