@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="utf-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,18 +12,18 @@
     <title>CONTaFIN</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/creative.min.css" rel="stylesheet">
+    <link href="css/creative.min.css" rel="stylesheet">
 
 </head>
 
@@ -80,12 +81,14 @@
             <div class="row">
                 <!--SECTION OF ANSWERS-->
                 <div class="col-lg-8  mx-auto text-center">
+                {{#Texts]}}
                     <div class="btn my-auto text-center" data-toggle="buttons">
                         <label class="btn" id="selectAnswer">
-                        400. Provedores
+                        {{Text}}
                     </label>
                     </div>
-                    <div class="btn my-auto text-center" data-toggle="buttons">
+                {{/Texts}}
+                   <!-- <div class="btn my-auto text-center" data-toggle="buttons">
                         <label class="btn " id="selectAnswer">
                         206. Aplicaciones informáticas
                     </label>
@@ -129,7 +132,7 @@
                         <label class="btn" id="selectAnswer">
                         Inmovilizado intangible
                     </label>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
