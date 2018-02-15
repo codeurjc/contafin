@@ -1,8 +1,5 @@
 package com.daw.contafin.user;
 
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,24 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController{
 	
 	@Autowired
-	private UserRepository repository;
+	private UserRepository userRepository;
 	
-	@PostConstruct
-	public void init () {
-		
-		repository.save(new User("Ramón", "ramon@hotmail.es", "lalala"));
-		repository.save(new User("Julián", "juli@hotmail.es", "lelele"));
-		repository.save(new User("Luna", "luna@hotmail.es", "lilili"));
-		
-	}
+	@Autowired
+	UserComponent userComponent;
+	
 	
 	@RequestMapping("profile")
     public String profile( Model model) {
-		
-		model.addAttribute("name", repository.findByName("Julián").getName());
-		model.addAttribute("level", repository.findByName("Julián").getLevel());
-		model.addAttribute("points", repository.findByName("Julián").getPoints());
-		model.addAttribute("streak", repository.findByName("Julián").getStreak());
+		 
+		model.addAttribute("name", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
+		model.addAttribute("level", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getLevel());
+		model.addAttribute("points", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
+		model.addAttribute("streak", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
 		model.addAttribute("goals", false);
 		
     	return "profile";
