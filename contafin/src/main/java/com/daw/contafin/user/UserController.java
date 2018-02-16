@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController{
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 	
 	@Autowired
 	UserComponent userComponent;
@@ -18,10 +18,10 @@ public class UserController{
 	@RequestMapping("profile")
     public String profile( Model model) {
 		 
-		model.addAttribute("name", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-		model.addAttribute("level", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getLevel());
-		model.addAttribute("points", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
-		model.addAttribute("streak", userRepository.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
+		model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
+		model.addAttribute("level", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getLevel());
+		model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
+		model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
 		model.addAttribute("goals", false);
 		
     	return "profile";
