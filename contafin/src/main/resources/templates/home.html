@@ -67,6 +67,7 @@
                         <a class="nav-link " href="home">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
+                {{#loggedUser}}
                 <ul class="navbar-nav ml-auto">
                     <li>
                         <img src="img/profile.png" width="40" height="35" class="img-thumbnail">
@@ -82,12 +83,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact"><img src="img/fire.png" width="25" height="23" class="d-inline-block align-top" > <span class="badge badge-light">{{points}}</span></a>
+                        <a class="nav-link js-scroll-trigger" ><img src="img/fire.png" width="25" height="23" class="d-inline-block align-top" > <span class="badge badge-light">{{points}}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact"><img src="img/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top"> <span class="badge badge-light">{{streak}}</span></a>
+                        <a class="nav-link js-scroll-trigger" ><img src="img/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top"> <span class="badge badge-light">{{streak}}</span></a>
                     </li>
                 </ul>
+            	   {{/loggedUser}}
             </div>
         </div>
     </nav>
@@ -96,77 +98,31 @@
     <div class="bghome">
         <div class="container my-auto">
             <div class="row">
-                <div class="col-sm-8 ">.
+                <div class="col-sm-8">.
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="mt-5 mx-auto text-center card-body bg-white" id="round">
                                 <h2 class="text-black text-left " id="Margin">Unidades de Contabilidad</h2>
-                                <h5 class="text-black text-center ">Sección 1</h5>
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                    </div>
-                                    <a class="col-lg-5" href="lessons.html" id="selectLesson">
-                                        <div class="service-box mt-5 mx-auto text-center card-body " id="UnitComplete">
-                                            <h2 class="text-white ">INICIACIÓN</h2>
-                                            <h2 class="text-muted mt-4">3/3</h2>
-                                        </div>
-                                    </a>
-                                    <a class="col-lg-5" href="lessons.html" id="selectLesson">
-                                        <div class="service-box mt-5 mx-auto text-center card-body " id="Unit">
-                                            <h2 class="text-white ">PATRIMONIO</h2>
-                                            <h2 class="text-muted mt-4">0/3</h2>
-                                        </div>
-                                    </a>
-                                    <div class="col-sm-1">
-                                    </div>
-                                </div>
-                                <div class="row " id="Margin">
-                                    <div class="col-sm-3">
-                                    </div>
-                                    <a class="col-lg-6" href="lessons.html" id="selectLesson">
-                                        <div class="service-box mt-5 mx-auto text-center card-body" id="Unit">
-                                            <h2 class="text-white">INMOVILIZADO</h2>
-                                            <h2 class="text-muted mt-4">0/3</h2>
-                                        </div>
-                                    </a>
-                                    <div class="col-sm-3">
-                                    </div>
-                                </div>
-                                <h5 class="text-black text-center ">Sección 2</h5>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                    </div>
-                                    <a class="col-lg-6" href="lessonsComplete.html" id="selectLesson">
-                                        <div class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
-                                            <h2 class="text-white">TEXTO</h2>
-                                            <h2 class="text-muted mt-4">3/3</h2>
-                                        </div>
-                                    </a>
-                                    <div class="col-sm-3">
-                                    </div>
-                                </div>
-                                <div class="row" id="Margin">
-                                    <div class="col-sm-1">
-                                    </div>
-                                    <a class="col-lg-5" id="selectLesson">
-                                        <div class="service-box mt-5 mx-auto text-center card-body " id="Unit">
-                                            <h2 class="text-white ">TEXTO</h2>
-                                            <h2 class="text-muted mt-4">0/3</h2>
-                                        </div>
-                                    </a>
-                                    <a class="col-lg-5" id="selectLesson">
-                                        <div class="service-box mt-5 mx-auto text-center card-body " id="Unit">
-                                            <h2 class="text-white ">TEXTO</h2>
-                                            <h2 class="text-muted mt-4">0/3</h2>
-                                        </div>
-                                    </a>
-                                    <div class="col-sm-1">
-                                    </div>
-                                </div>
+                                {{#level}}
+                                <h5 class="text-black text-center mt-5">Nivel {{-index}}</h5>
+                                <div class="row justify-content-around">
+                                	    {{#units}}
+									<div class="col-lg-6 col-md-6 ">
+										<div class="service-box mt-5 mx-auto text-center card-body"  id="Unit">
+											<a class="col-lg-5" href="lessons" id="selectLesson">
+												<h2 class="text-white ">{{.}}</h2>
+												<h2 class="text-muted mt-4">{{-index}}/{{total}}</h2>
+											</a>
+										</div>
+									</div>
+									{{/units}}
+								</div>
+                                {{/level}}
                             </div>
                         </div>
                     </div>
                 </div>
+                {{#loggedUser}}
                 <div class="col-sm-4">.
                     <div class="row">
                         <div class="col-lg-12">
@@ -222,6 +178,24 @@
                             </div>
                         </div>
                     </div>
+				{{/loggedUser}}
+				{{^loggedUser}}
+				<div class="col-sm-4">.
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+                                <h5 class="text-black text-left">¡Crea un perfil para guardar tu progreso!</h5>
+                                <div class="row">
+                                    <div class="col-lg-12 ">
+                                       <a class="btn btn-primary btn-xl js-scroll-trigger mt-3" href="#">Crear perfil</a>
+                                       <a class="btn btn-primary btn-xl js-scroll-trigger mt-3" id="button-style" href="#">Ingresar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div> 
+				{{/loggedUser}}
                 </div>
             </div>
         </div>
