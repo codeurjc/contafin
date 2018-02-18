@@ -33,6 +33,12 @@ public class User {
 	private int fluency;
 	private int dailyGoal;
 	
+	//Atributo experiencia para aumentarsela cuando acabe una lección y exp necesaria para subir de nivel.
+	private int exp;
+	private int needexp;
+	//También he incluido el método upLevel para aumentar el nivel cuando se alcance la exp necesaria.
+	//Creo que deberiamos pasar el id del usuario en las url para poder aumentarle level, racha...
+	
 	@ElementCollection(fetch = FetchType.EAGER) 
 	private List<String> roles;
 	
@@ -66,6 +72,12 @@ public class User {
 		this.dailyGoal= dailyGoal;
 	}
 
+	public void upLevel() {
+		if(exp >= needexp) {
+			level = level +1;
+			this.exp = exp - needexp;
+		}
+	}
 	public long getId() {
 		return id;
 	}
@@ -144,6 +156,22 @@ public class User {
 
 	public void setDailyGoal(int dailyGoal) {
 		this.dailyGoal = dailyGoal;
+	}
+
+	public int getNeedexp() {
+		return needexp;
+	}
+
+	public void setNeedexp(int needexp) {
+		this.needexp = needexp;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
 	

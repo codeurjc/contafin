@@ -7,8 +7,6 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
@@ -188,20 +186,5 @@ public class UnitController {
 		texts = Arrays.asList(" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.","La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años."," La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseRepository.save(new Exercise(7,"2.3.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"" ,null,texts,null,lesson));
 		
-	}
-	
-	
-	@RequestMapping("units")
-    public String units(Model model) {
-		
-		
-    	return "units";
-    }
-
-	@RequestMapping("units/{{-index}}")
-    public String lessonPage() {
-		
-    	return "lessonTemplate";
-    }
-		
+	}	
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitRepository;
+import com.daw.contafin.user.User;
+import com.daw.contafin.user.UserRepository;
 
 @Controller
 public class LessonController {
@@ -22,6 +24,8 @@ public class LessonController {
 	private UnitRepository unitRepository;
 	@Autowired
 	private LessonRepository lessonRepository; 
+	@Autowired
+	//private UserRepository userRepository; 
 	
 	@PostConstruct
 	public void init() {
@@ -51,21 +55,18 @@ public class LessonController {
     	return "lessons" ;
     }
 
-	@RequestMapping("lessons/{{-index}}")
-    public String exercisePage() {
-		
-    	return "exerciseTemplate";
-    }
-	
 	@RequestMapping("/lessonCompleted")
     public String completedLesson() {
-		
+		/*User user = userRepository.findById(id);
+		user.setLevel(user.getLevel()+10);
+		user.upLevel(); */
     	return "completedlesson";
     }
 	
 	@RequestMapping("/continueLesson")
-    public String continueLesson() {
-		
+    public String continueLesson(Model model) {
+		//obtener el numero de ejercicios completados y saber su porcentaje del total y pasarselo.
+		model.addAttribute("percentage", "31");
     	return "continueLesson";
     }
 	
