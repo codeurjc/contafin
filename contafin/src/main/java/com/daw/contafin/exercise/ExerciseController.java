@@ -8,12 +8,12 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
-import com.daw.contafin.unit.Unit;
 
 @Controller
 public class ExerciseController {
@@ -29,72 +29,122 @@ public class ExerciseController {
 	@PostConstruct
 	public void init () {
 		
-		Lesson lesson = lessonRepository.findById(1);
-		List<String> images =  Arrays.asList("../img/machine.jpg","../img/land.jpg","../img/truck.jpg");
-		List<String> texts = Arrays.asList("213.Maquinaria","210.Terrenos y bienes naturales","218. Elementos de transporte");
-		exerciseRepository.save(new Exercise(1,"Seleccione el asiento",images,texts,null,lesson));
-		
-		exerciseRepository.save(new Exercise(2,"Escribe la denominación de la cuenta que recoge: " + "maquinarias para el proceso productivo de la empresa",null,null,null,lesson));
-		
-		texts = Arrays.asList("213.Pepe","210.Terrenos y bienes naturales","218. Elementos de transporte","206. Aplicaciones informáticas","213. Maquinaria","100. Capital social","Pasivo exigible","300. Mercaderías A","Patrimonio neto","Inmovilizado material","Existencias","Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(3,"Toca los pares",null,texts,null,lesson));
-		
-		texts = Arrays.asList("213.Hola","210.Terrenos y bienes naturales","218. Elementos de transporte","206. Aplicaciones informáticas","213. Maquinaria","100. Capital social","Pasivo exigible","300. Mercaderías A","Patrimonio neto","Inmovilizado material","Existencias","Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4,"Realiza el asiento",null,texts,null,lesson));
-		
 	}
 	
-	@RequestMapping("/Unit1/Lesson1/Exercise1.1.1")
-    public String exercise1(Model model) {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1")
+    public String exercise1(Model model,@PathVariable int id, @PathVariable int numLesson) {
 		
-		model.addAttribute("Image1", exerciseRepository.findById(1).getRuteImages().get(0));
-		model.addAttribute("Image2", exerciseRepository.findById(1).getRuteImages().get(1));
-		model.addAttribute("Image3", exerciseRepository.findById(1).getRuteImages().get(2));
-		model.addAttribute("Text1", exerciseRepository.findById(1).getTexts().get(0));
-		model.addAttribute("Text2", exerciseRepository.findById(1).getTexts().get(1));
-		model.addAttribute("Text3", exerciseRepository.findById(1).getTexts().get(2));
-		model.addAttribute("Statement", exerciseRepository.findById(1).getStatement());
+		
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,1);
+		
+		model.addAttribute("Image1", exercise.getRuteImages().get(0));
+		model.addAttribute("Image2", exercise.getRuteImages().get(1));
+		model.addAttribute("Image3", exercise.getRuteImages().get(2));
+		model.addAttribute("Text1", exercise.getTexts().get(0));
+		model.addAttribute("Text2", exercise.getTexts().get(1));
+		model.addAttribute("Text3", exercise.getTexts().get(2));
+		model.addAttribute("Statement", exercise.getStatement());
+		
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+
 		
     	return "exerciseType1";
     }
-	@RequestMapping("/Unit1/Lesson1/Exercise1.1.2")
-    public String exercise2(Model model) {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/2")
+    public String exercise2(Model model,@PathVariable int id, @PathVariable int numLesson) {
 		
-		model.addAttribute("Statement", exerciseRepository.findById(2).getStatement());
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,2);
+		
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("Statement", exercise.getStatement());
 		
     	return "exerciseType2";
     }
 	
-	@RequestMapping("/Unit1/Lesson1/Exercise1.1.3")
-    public String exercise3(Model model) {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/3")
+    public String exercise3(Model model,@PathVariable int id, @PathVariable int numLesson) {
 		
-		texts = exerciseRepository.findById(3).getTexts();
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,3);
 		
-		model.addAttribute("Statement", exerciseRepository.findById(3).getStatement());
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
     	return "exerciseType3";
     }
-	@RequestMapping("/Unit1/Lesson1/Exercise1.1.4")
-    public String exercise4(Model model) {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/4")
+    public String exercise4(Model model,@PathVariable int id, @PathVariable int numLesson) {
 		
-		texts = exerciseRepository.findById(4).getTexts();
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,3);
 		
-		model.addAttribute("Statement", exerciseRepository.findById(4).getStatement());
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
     	return "exerciseType4";
     }
 	
-	/*@RequestMapping("home")
-    public String home1() {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/5")
+    public String exercise5(Model model,@PathVariable int id, @PathVariable int numLesson) {
 		
-    	return "home";
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,5);
+		
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("Statement", exercise.getStatement());
+		model.addAttribute("texts", texts);
+		
+    	return "exerciseType5";
     }
-
-	@RequestMapping("index")
-    public String index() {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/6")
+    public String exercise6(Model model,@PathVariable int id, @PathVariable int numLesson) {
 		
-    	return "index";
-    }*/
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,6);
+		
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		String texts1 = exercise.getTexts().get(0);
+		String texts2 = exercise.getTexts().get(1);
+		String texts3 = exercise.getTexts().get(2);
+		String texts4 = exercise.getTexts().get(3);
+		
+		model.addAttribute("Statement", exercise.getStatement());
+		model.addAttribute("texts1", texts1);
+		model.addAttribute("texts2", texts2);
+		model.addAttribute("texts3", texts3);
+		model.addAttribute("texts4", texts4);
+		
+    	return "exerciseType6";
+    }
+	
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/7")
+    public String exercise7(Model model,@PathVariable int id, @PathVariable int numLesson) {
+		
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,7);
+		
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("Statement", exercise.getStatement());
+		model.addAttribute("texts", texts);
+		
+    	return "exerciseType7";
+	}
+	
 }

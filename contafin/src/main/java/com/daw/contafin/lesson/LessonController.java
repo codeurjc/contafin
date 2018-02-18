@@ -1,6 +1,7 @@
 package com.daw.contafin.lesson;
 
-import java.util.Arrays;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daw.contafin.unit.Unit;
@@ -23,26 +25,27 @@ public class LessonController {
 	
 	@PostConstruct
 	public void init() {
-		Unit unit = unitRepository.findById(1);
-		Lesson lesson1 = new Lesson("Lección 1", unit);
-		lessonRepository.save(lesson1);
-		Lesson lesson2 = new Lesson("Lección 2", unit);
-		lessonRepository.save(lesson2);
-		Lesson lesson3 = new Lesson("Lección 3", unit);
-		lessonRepository.save(lesson3);
+
 	}
 	
-	@RequestMapping("lessons")
-    public String lessons(Model model) {
+	@RequestMapping("/Unit/{id}/lessons")
+    public String lessons(Model model, @PathVariable long id) {
 		
-		List<String> lesson = Arrays.asList("Iniciación","Patrimonio","Inmovilizado");
+		Unit unit = unitRepository.findById(id);
+		List<Lesson> lesson = lessonRepository.findByUnit(unit);
+		List<String> lessonsString = new ArrayList<>();
+		
+		for(int i=0; i<lesson.size();i++) {
+			lessonsString.add(lesson.get(i).getName());
+		}
 		
 		model.addAttribute("name", "");
 		model.addAttribute("points", "");
 		model.addAttribute("streak", "");
 		model.addAttribute("done", "0");
 		model.addAttribute("total", "3");
-		model.addAttribute("lesson", lesson);
+		model.addAttribute("unit",id);
+		model.addAttribute("lesson", lessonsString);
 		model.addAttribute("title", "Introducción");
 		
     	return "lessons" ;
@@ -53,6 +56,20 @@ public class LessonController {
 		
     	return "exerciseTemplate";
     }
+	
+	@RequestMapping("/lessonCompleted")
+    public String completedLesson() {
+		
+    	return "completedlesson";
+    }
+	
+	@RequestMapping("/continueLesson")
+    public String continueLesson() {
+		
+    	return "continueLesson";
+    }
+	
+	
 	
 
 }

@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="utf-8">
+            <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,18 +12,18 @@
     <title>CONTaFIN</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../static/css/creative.min.css" rel="stylesheet">
+    <link href="css/creative.min.css" rel="stylesheet">
 
 </head>
 
@@ -60,7 +61,7 @@
                 <div class="modal-footer">
                     <a class="btn btn-primary btn-xl js-scroll-trigger" href="">Cancelar</a>
 
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="home.html" id="button-style">Salir</a>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="home" id="button-style">Salir</a>
                 </div>
             </div>
         </div>
@@ -72,8 +73,7 @@
             <div class="row">
                 <div class="col-sm-3 text-center"></div>
                 <div class="col-sm-6 text-center">
-                    <h2 class="section-heading mt-5">Escoge la cuenta que falta:</h2>
-                    <h6 class=""> La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja</h6>
+                    <h2 class="section-heading mt-5">{{Statement}}</h2>
                     <hr class="my-4">
                     <div class="container-fluid">
                         <div class="row">
@@ -148,26 +148,26 @@
                         <div class="row">
                             <div class="col-sm-5">
                                 <label class="bg-white " id="round">
-                                <p  class="m-2"><input type="radio" name="answer" value="active" /> 574. Bancos cuenta de ahorro</p>
+                                <p  class="m-2"><input type="radio" name="answer" value="active" /> {{texts1}}</p>
                                 </label>
                             </div>
                             <div class="col-sm-2"></div>
                             <div class="col-sm-5">
                                 <label class="bg-white " id="round">
-                                <p  class="m-2"><input type="radio" name="answer" value="passive" /> 574. Bancos cuenta corriente</p>
+                                <p  class="m-2"><input type="radio" name="answer" value="passive" /> {{texts2}}</p>
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-5">
                                 <label class="bg-white " id="round">
-                                <p  class="m-2"><input type="radio" name="answer" value="active" /> 430. Clientes</p>
+                                <p  class="m-2"><input type="radio" name="answer" value="active" /> {{texts3}}</p>
                                 </label>
                             </div>
                             <div class="col-sm-2"></div>
                             <div class="col-sm-5">
                                 <label class="bg-white " id="round">
-                                <p  class="m-2"><input type="radio" name="answer" value="passive" /> 140. Deudores</p>
+                                <p  class="m-2"><input type="radio" name="answer" value="passive" /> {{texts4}}</p>
                                 </label>
                             </div>
                         </div>
@@ -183,25 +183,25 @@
                 <div class="container-fluid py-3">
                     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType7.html">SALTAR</a>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/7">SALTAR</a>
 
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="exerciseType7.html">CALIFICAR</a>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/7">CALIFICAR</a>
                     </div>
                 </div>
             </footer>
 
             <!-- Bootstrap core JavaScript -->
-    <script src="../static/vendor/jquery/jquery.min.js"></script>
-    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../static/vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="../static/js/creative.min.js"></script>
-    <script src="../static/js/changeFixed.js"></script>
+    <script src="js/creative.min.js"></script>
+    <script src="js/changeFixed.js"></script>
 
 </body>
 

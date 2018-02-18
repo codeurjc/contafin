@@ -1,5 +1,8 @@
 package com.daw.contafin.security;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.daw.contafin.unit.Unit;
+import com.daw.contafin.unit.UnitRepository;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
@@ -20,6 +25,9 @@ public class WebController {
 
 	@Autowired
 	UserComponent userComponent;
+	
+	@Autowired
+	private UnitRepository unitRepository;
 	
 	//Login Controller
 
@@ -43,6 +51,15 @@ public class WebController {
 			model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
 			
 		}
+		
+		List<Unit> unit = unitRepository.findAll();
+		List<String> units = new ArrayList<>();
+		
+		for(int i=0; i<unit.size();i++) {
+			units.add(unit.get(i).getName());
+		}
+		
+		model.addAttribute("units",units);
 		
 		return "home";
 	}
