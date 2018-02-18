@@ -29,9 +29,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	        http.formLogin().defaultSuccessUrl("/home");
     	        http.formLogin().failureUrl("/loginerror");
     	        
+    	        // Logout
+    	        http.logout().logoutUrl("/logout");
+    			http.logout().logoutSuccessUrl("/");
+    	        
     	        http.csrf().disable();
     	        
-    	     // Use Http Basic Authentication
+    	        //Use Http Basic Authentication
     	        http.httpBasic();
     			
 
