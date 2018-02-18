@@ -1,8 +1,10 @@
 package com.daw.contafin.security;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.daw.contafin.EmailService;
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitRepository;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
+
+import freemarker.template.TemplateException;
 
 @Controller
 public class WebController {
@@ -28,6 +33,9 @@ public class WebController {
 	
 	@Autowired
 	private UnitRepository unitRepository;
+	
+	@Autowired
+	EmailService emailService;
 	
 	//Login Controller
 
@@ -72,16 +80,27 @@ public class WebController {
 	}
 	
 	@RequestMapping("welcome")
-	public String register(Model model, @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("pass") String pass) {
-	
+	public String register(Model model, @RequestParam("name") String name, @RequestParam("email") String email,
+			@RequestParam("pass") String pass) {
+
 		if (userService.findByEmail(email) == null) {
 			userService.save(new User(name, email, pass, "ROLE_USER"));
+			try {
+				emailService.sendSimpleMessage(userService.findByEmail(email));
+			} catch (MessagingException messaginException) {
+				System.out.println(messaginException);	
+			} catch (IOException IOexception) {
+				System.out.println(IOexception);	
+			} catch (TemplateException templateException) {
+				System.out.println(templateException);	
+			}
+			;
 			return "/";
-		}
-		else  {
+		} else {
 			model.addAttribute("loggedUser", true);
 			return "signup";
 		}
+		
 	}
 
 }
