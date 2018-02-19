@@ -35,12 +35,21 @@ public class ExerciseController {
 		
 	}
 	
-	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1")
-    public String exercise1(Model model,@PathVariable int id, @PathVariable int numLesson) {
+	//Cambiar html lección 
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}")
+    public String exercise1(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
 		
-		
+		//Si no funciona copiar el codigo del ejercicio 2
 		Lesson lesson = lessonRepository.findById(numLesson);
-		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,1);
+		
+		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
+		
+		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
+		
+		int typeNext = nextExercise.getKind();
+		long nextNumExercise = nextExercise.getId();
+		
+
 		
 		model.addAttribute("Image1", exercise.getRuteImages().get(0));
 		model.addAttribute("Image2", exercise.getRuteImages().get(1));
@@ -52,6 +61,11 @@ public class ExerciseController {
 		
 		model.addAttribute("idunit",id);
 		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("nextExercise",nextNumExercise);
+		model.addAttribute("nextType",typeNext);
+
+		//Hacer que cambie el html en función si es el último ejercicio o no
 
 		
     	return "exerciseType1";
