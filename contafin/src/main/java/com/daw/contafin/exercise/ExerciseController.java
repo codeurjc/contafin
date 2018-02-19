@@ -46,10 +46,6 @@ public class ExerciseController {
 		
 		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
 		
-		int typeNext = nextExercise.getKind();
-		long nextNumExercise = nextExercise.getId();
-		
-
 		
 		model.addAttribute("Image1", exercise.getRuteImages().get(0));
 		model.addAttribute("Image2", exercise.getRuteImages().get(1));
@@ -59,13 +55,22 @@ public class ExerciseController {
 		model.addAttribute("Text3", exercise.getTexts().get(2));
 		model.addAttribute("Statement", exercise.getStatement());
 		
-		model.addAttribute("idunit",id);
-		model.addAttribute("idlesson",numLesson);
-		
-		model.addAttribute("nextNumExercise",nextNumExercise);
-		model.addAttribute("nextType",typeNext);
 
-		//Hacer que cambie el html en función si es el último ejercicio o no
+		if (nextExercise==null) {
+			model.addAttribute("next",false);
+			model.addAttribute("end",true);
+		}
+		else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+			
+			model.addAttribute("next",true);
+			model.addAttribute("end",false);
+			model.addAttribute("idunit",id);
+			model.addAttribute("nextNumExercise",nextNumExercise);
+			model.addAttribute("nextType",typeNext);
+		}
+		model.addAttribute("idlesson",numLesson);
 
 		
     	return "exerciseType1";
@@ -79,18 +84,24 @@ public class ExerciseController {
 		
 		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
 		
-		int typeNext = nextExercise.getKind();
-		long nextNumExercise = nextExercise.getId();
-		
-		
-		
-		model.addAttribute("idunit",id);
-		model.addAttribute("idlesson",numLesson);
 		
 		model.addAttribute("Statement", exercise.getStatement());
 		
-		model.addAttribute("nextNumExercise",nextNumExercise);
-		model.addAttribute("nextType",typeNext);
+		if (nextExercise==null) {
+			model.addAttribute("next",false);
+			model.addAttribute("end",true);
+		}
+		else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+			
+			model.addAttribute("next",true);
+			model.addAttribute("end",false);
+			model.addAttribute("idunit",id);
+			model.addAttribute("nextNumExercise",nextNumExercise);
+			model.addAttribute("nextType",typeNext);
+		}
+		model.addAttribute("idlesson",numLesson);
 		
     	return "exerciseType2";
     }
@@ -104,17 +115,25 @@ public class ExerciseController {
 		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
 		texts = exerciseRepository.findById(numExercise).getTexts();
 		
-		int typeNext = nextExercise.getKind();
-		long nextNumExercise = nextExercise.getId();
-		
-		model.addAttribute("idunit",id);
-		model.addAttribute("idlesson",numLesson);
 		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
-		model.addAttribute("nextNumExercise",nextNumExercise);
-		model.addAttribute("nextType",typeNext);
+		if (nextExercise==null) {
+			model.addAttribute("next",false);
+			model.addAttribute("end",true);
+		}
+		else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+			
+			model.addAttribute("next",true);
+			model.addAttribute("end",false);
+			model.addAttribute("idunit",id);
+			model.addAttribute("nextNumExercise",nextNumExercise);
+			model.addAttribute("nextType",typeNext);
+		}
+		model.addAttribute("idlesson",numLesson);
 		
     	return "exerciseType3";
     }
@@ -127,17 +146,24 @@ public class ExerciseController {
 		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
 		texts = exerciseRepository.findById(numExercise).getTexts();
 		
-		int typeNext = nextExercise.getKind();
-		long nextNumExercise = nextExercise.getId();
-		
-		model.addAttribute("idunit",id);
-		model.addAttribute("idlesson",numLesson);
-		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
-		model.addAttribute("nextNumExercise",nextNumExercise);
-		model.addAttribute("nextType",typeNext);
+		if (nextExercise==null) {
+			model.addAttribute("next",false);
+			model.addAttribute("end",true);
+		}
+		else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+			
+			model.addAttribute("next",true);
+			model.addAttribute("end",false);
+			model.addAttribute("idunit",id);
+			model.addAttribute("nextNumExercise",nextNumExercise);
+			model.addAttribute("nextType",typeNext);
+		}
+		model.addAttribute("idlesson",numLesson);
 		
     	return "exerciseType4";
     }
@@ -151,17 +177,25 @@ public class ExerciseController {
 		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
 		texts = exerciseRepository.findById(numExercise).getTexts();
 		
-		int typeNext = nextExercise.getKind();
-		long nextNumExercise = nextExercise.getId();
-		
-		model.addAttribute("idunit",id);
-		model.addAttribute("idlesson",numLesson);
-		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
-		model.addAttribute("nextNumExercise",nextNumExercise);
-		model.addAttribute("nextType",typeNext);
+		if (nextExercise==null) {
+			model.addAttribute("next",false);
+			model.addAttribute("end",true);
+		}
+		else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+			
+			model.addAttribute("next",true);
+			model.addAttribute("end",false);
+			model.addAttribute("idunit",id);
+			model.addAttribute("nextNumExercise",nextNumExercise);
+			model.addAttribute("nextType",typeNext);
+		}
+		model.addAttribute("idlesson",numLesson);
+		
 		
     	return "exerciseType5";
     }
@@ -171,12 +205,6 @@ public class ExerciseController {
 		Lesson lesson = lessonRepository.findById(numLesson);
 		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
 		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
-		
-		int typeNext = nextExercise.getKind();
-		long nextNumExercise = nextExercise.getId();
-		
-		model.addAttribute("idunit",id);
-		model.addAttribute("idlesson",numLesson);
 		
 		String texts1 = exercise.getTexts().get(0);
 		String texts2 = exercise.getTexts().get(1);
@@ -189,8 +217,21 @@ public class ExerciseController {
 		model.addAttribute("texts3", texts3);
 		model.addAttribute("texts4", texts4);
 		
-		model.addAttribute("nextNumExercise",nextNumExercise);
-		model.addAttribute("nextType",typeNext);
+		if (nextExercise==null) {
+			model.addAttribute("next",false);
+			model.addAttribute("end",true);
+		}
+		else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+			
+			model.addAttribute("next",true);
+			model.addAttribute("end",false);
+			model.addAttribute("idunit",id);
+			model.addAttribute("nextNumExercise",nextNumExercise);
+			model.addAttribute("nextType",typeNext);
+		}
+		model.addAttribute("idlesson",numLesson);
 		
     	return "exerciseType6";
     }
