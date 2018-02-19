@@ -227,7 +227,7 @@ public class ExerciseController {
     	return "exerciseType7";
 	}
 	
-	@RequestMapping("/lesson/{idLesson}/lessonCompleted/")
+	@RequestMapping("/lesson/{idLesson}/lessonCompleted/") 
      public String completedLesson(Model model,@PathVariable int idLesson) {
 		
 		
