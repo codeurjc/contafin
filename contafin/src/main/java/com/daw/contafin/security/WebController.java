@@ -75,11 +75,6 @@ public class WebController {
 	//Sign Up Controller
 	
 	@RequestMapping("signup")
-	public String signUp(Model model, HttpServletRequest request) {
-		return "signup";
-	}
-	
-	@RequestMapping("welcome")
 	public String register(Model model, @RequestParam("name") String name, @RequestParam("email") String email,
 			@RequestParam("pass") String pass) {
 

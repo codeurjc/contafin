@@ -88,6 +88,48 @@
             </div>
         </div>
     </nav>
+    
+    	<!--pop up sign in-->
+	<div class="modal fade" id="exampleModalLong" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLongTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<form action="signup" method="post">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col-3">
+							<img src="img/Logo.png" class="img-fluid " alt="Responsive image">
+						</div>
+						<div class="col-6">
+							<h1 class="modal-title" id="exampleModalLongTitle"><strong>REGÍSTRATE</strong></h1>
+						</div>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="col-lg-8 mx-auto">
+							<input type="text" class="form-control mt-3" id="roundregister"
+								name="name" placeholder=" Nombre" /> <input type="email"
+								class="form-control mt-3" id="roundregister"
+								aria-describedby="emailHelp" name="email"
+								placeholder="Correro electrónico"> <input
+								type="password" class="form-control mt-3" id="roundregister"
+								name="pass" placeholder="Contraseña">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a
+							class="btn btn-primary btn-block btn-social btn-google text-white">
+							<span class="fa fa-google"></span> Regístrate con Google
+						</a> <input type="submit" value="Crear cuenta" class="btn btn-primary"
+							id="button-style" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 
     <!-- For changing background modify img header.jpg -->
 
@@ -102,7 +144,8 @@
                         <h2>Diviértete aprendiendo contabilidad</h2>
                     </h1>
                     <hr>
-                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="signup">COMENZAR</a>
+                    <a id="button-style" class="btn btn-primary btn-xl js-scroll-trigger" href="home">COMENZAR</a>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#exampleModalLong">REGÍSTRATE</a>
                 </div>
             </div>
         </div>

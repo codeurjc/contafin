@@ -8,10 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.daw.contafin.ContentController;
 
 @Controller
-public class UserController {
+public class UserController extends ContentController{
 
 	@Autowired
 	private UserService userService;
@@ -20,12 +21,9 @@ public class UserController {
 	UserComponent userComponent;
 
 	@RequestMapping("profile")
-	public String profile(Model model) {
-
-		model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-		model.addAttribute("level", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getLevel());
-		model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
-		model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
+	public String profile(Model model){
+		
+		loadNavbar(model);
 		model.addAttribute("goals", false);
 
 		return "profile";
@@ -36,10 +34,7 @@ public class UserController {
 	@RequestMapping("configuration")
 	public String configuration(Model model, HttpServletRequest request) {
 
-		model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-		model.addAttribute("level", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getLevel());
-		model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
-		model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
+		loadNavbar(model);
 		return "userConfiguration";
 	}
 	
@@ -68,6 +63,31 @@ public class UserController {
 		return "configuration";
 	}
 	
+	//Set Goal Controller
+	
+	@RequestMapping("goal")
+	public String setGoal(Model model, HttpServletRequest request) {
 
+		loadNavbar(model);
+		return "setGoal";
+	}
+	
+	@RequestMapping("newGoal")
+	public String newGoal(Model model, @RequestParam (value="goal", required=false) String goal) {
+		
+		loadNavbar(model);
+		User user = userService.findById(userComponent.getLoggedUser().getId());
+		if (goal == null) {
+			model.addAttribute("noGoal", true);
+		}
+		else {
+			user.setDailyGoal(Integer.parseInt(goal));
+			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
+		}
+		return "setGoal";
+	}
+
+	
 	
 }
