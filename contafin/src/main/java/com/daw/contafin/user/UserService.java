@@ -20,5 +20,15 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-
+	public User findById(long id) {
+		return userRepository.findById(id);
+	}
+	
+	public void updateUserData(User user) {
+		userRepository.save(user);
+	}
+	
+	
+	
+	
 }
