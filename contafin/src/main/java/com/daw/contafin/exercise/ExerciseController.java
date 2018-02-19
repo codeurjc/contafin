@@ -147,4 +147,27 @@ public class ExerciseController {
     	return "exerciseType7";
 	}
 	
+	/*@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
+    public String exerciseaqui(Model model,@PathVariable int idlesson) {
+		
+		
+		Lesson lesson = lessonRepository.findById(idLesson);
+		List<Exercise> = exercise.findByLesson(lesson);
+		
+		
+		
+		
+		
+		
+		Lesson lesson = lessonRepository.findById(numLesson);
+		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,7);
+		
+		model.addAttribute("idunit",id);
+		model.addAttribute("idlesson",numLesson);
+		
+		model.addAttribute("Statement", exercise.getStatement());
+		model.addAttribute("texts", texts);
+		
+    	return "exerciseType7";
+	}*/
 }
