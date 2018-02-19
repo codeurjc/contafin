@@ -34,8 +34,8 @@ public class User {
 	private int dailyGoal;
 	
 	//Atributo experiencia para aumentarsela cuando acabe una lección y exp necesaria para subir de nivel.
-	private int exp;
-	private int needexp;
+	private int exp = 0;
+	private int needexp = 10;
 	//También he incluido el método upLevel para aumentar el nivel cuando se alcance la exp necesaria.
 	//Creo que deberiamos pasar el id del usuario en las url para poder aumentarle level, racha...
 	
@@ -76,6 +76,7 @@ public class User {
 		if(exp >= needexp) {
 			level = level +1;
 			this.exp = exp - needexp;
+			this.needexp = needexp +20;
 		}
 	}
 	public long getId() {

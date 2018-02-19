@@ -1,6 +1,5 @@
 package com.daw.contafin.exercise;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +13,8 @@ import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
+import com.daw.contafin.user.User;
+import com.daw.contafin.user.UserComponent;
 
 @Controller
 public class ExerciseController {
@@ -23,6 +24,9 @@ public class ExerciseController {
 	
 	@Autowired
 	private LessonRepository lessonRepository; 
+	
+	@Autowired
+	UserComponent userComponent;
 	
 	List<String> texts;
 	
@@ -147,19 +151,20 @@ public class ExerciseController {
     	return "exerciseType7";
 	}
 	
-	/*@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
-    public String exerciseaqui(Model model,@PathVariable int idlesson) {
+	@RequestMapping("/lesson/{idLesson}/lessonCompleted/")
+     public String completedLesson(Model model,@PathVariable int idLesson) {
 		
 		
 		Lesson lesson = lessonRepository.findById(idLesson);
-		List<Exercise> = exercise.findByLesson(lesson);
+		List <Exercise> listExercises = exerciseRepository.findByLesson(lesson);
 		
+		//Te devuelve el usuario loggeado
+		User user = userComponent.getLoggedUser();
+		user.setLevel(user.getExp()+10);
+		user.upLevel(); 
+    	return "completedlesson";
 		
-		
-		
-		
-		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		/*Lesson lesson = lessonRepository.findById(numLesson);
 		Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,7);
 		
 		model.addAttribute("idunit",id);
@@ -168,6 +173,13 @@ public class ExerciseController {
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
-    	return "exerciseType7";
-	}*/
+    	return "exerciseType7";*/
+	}
+	
+	@RequestMapping("/continueLesson")
+    public String continueLesson(Model model) {
+		//obtener el numero de ejercicios completados y saber su porcentaje del total y pasarselo.
+		model.addAttribute("percentage", "31");
+    	return "continueLesson";
+    }
 }

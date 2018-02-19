@@ -12,4 +12,5 @@ import com.daw.contafin.lesson.Lesson;
 public interface ExerciseRepository extends JpaRepository <Exercise, Long>{
 	Exercise findById(long id);
 	Exercise findByLessonAndKind(Lesson lesson, int kind);
+	List <Exercise> findByLesson(Lesson lesson);
 }
