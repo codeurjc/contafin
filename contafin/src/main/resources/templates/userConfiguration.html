@@ -80,14 +80,6 @@
 			</div>
 		</div>
 	</nav>
-	{{#newData}}
-	<div class="container">
-		<div class="alert alert-danger mt-5" role="alert">
-			<strong>¡Error al registrarse!</strong> El correo introducido ya está
-			vinculado a otra cuenta.
-		</div>
-	</div>
-	{{/newData}}
 	<!-- User information -->
 	<div class="container my-auto">
 		<div class="row">
@@ -96,6 +88,13 @@
 					<div class="col-sm-8 ">
 						<div class="mt-5 mx-auto text-center card-body bg-white card"
 							id="round">
+							{{#noData}}
+							<div class="container">
+								<div class="alert alert-danger mt-2" role="alert">
+									<strong>¡Error al guardar los cambios!</strong> No has introducido ningún cambio.
+								</div>
+							</div>
+							{{/noData}}
 							<form action="changesSaved" method="post">
 								<div class="row">
 									<div class=" col-sm-8 mt-5">

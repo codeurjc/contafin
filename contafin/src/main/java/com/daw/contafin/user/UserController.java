@@ -41,6 +41,8 @@ public class UserController extends ContentController{
 	@RequestMapping("changesSaved")
 	public String changes(Model model, @RequestParam("new_name") String name, @RequestParam("new_email") String email,
 			@RequestParam("new_pass") String pass) {
+		
+		loadNavbar(model);
 		boolean newData =false; 
 		User user = userService.findById(userComponent.getLoggedUser().getId());
 		if (!name.isEmpty()) {
@@ -55,12 +57,12 @@ public class UserController extends ContentController{
 			user.setPasswordHash(new BCryptPasswordEncoder().encode(pass));
 			newData =true;
 		}
-		if(newData == false) {
-			model.addAttribute("newData", true);
+		if(!newData) {
+			model.addAttribute("noData", true);
 		}
 		userService.updateUserData(user);
 		userComponent.setLoggedUser(user);
-		return "configuration";
+		return "userConfiguration";
 	}
 	
 	//Set Goal Controller
