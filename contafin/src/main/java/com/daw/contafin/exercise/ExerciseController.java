@@ -244,8 +244,6 @@ public class ExerciseController {
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		texts = exerciseService.findById(numExercise).getTexts();
 		
-		
-		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
 		
