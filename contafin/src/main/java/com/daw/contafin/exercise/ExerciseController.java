@@ -20,7 +20,7 @@ import com.daw.contafin.user.UserComponent;
 public class ExerciseController {
 	
 	@Autowired
-	private ExerciseRepository exerciseRepository;
+	private ExerciseService exerciseService;
 	
 	@Autowired
 	private LessonRepository lessonRepository; 
@@ -42,9 +42,9 @@ public class ExerciseController {
 		//Si no funciona copiar el codigo del ejercicio 2
 		Lesson lesson = lessonRepository.findById(numLesson);
 		
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		
 		
 		model.addAttribute("Image1", exercise.getRuteImages().get(0));
@@ -80,9 +80,9 @@ public class ExerciseController {
 		
 		Lesson lesson = lessonRepository.findById(numLesson);
 		
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		
 		
 		model.addAttribute("Statement", exercise.getStatement());
@@ -110,10 +110,10 @@ public class ExerciseController {
     public String exercise3(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
 		
 		Lesson lesson = lessonRepository.findById(numLesson);
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
-		texts = exerciseRepository.findById(numExercise).getTexts();
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
+		texts = exerciseService.findById(numExercise).getTexts();
 		
 		
 		model.addAttribute("Statement", exercise.getStatement());
@@ -141,10 +141,10 @@ public class ExerciseController {
     public String exercise4(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
 		
 		Lesson lesson = lessonRepository.findById(numLesson);
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
-		texts = exerciseRepository.findById(numExercise).getTexts();
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
+		texts = exerciseService.findById(numExercise).getTexts();
 		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
@@ -172,10 +172,10 @@ public class ExerciseController {
     public String exercise5(Model model,@PathVariable int id, @PathVariable int numLesson, @PathVariable int numExercise) {
 		
 		Lesson lesson = lessonRepository.findById(numLesson);
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
-		texts = exerciseRepository.findById(numExercise).getTexts();
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
+		texts = exerciseService.findById(numExercise).getTexts();
 		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
@@ -203,8 +203,8 @@ public class ExerciseController {
     public String exercise6(Model model,@PathVariable int id, @PathVariable int numLesson, @PathVariable int numExercise) {
 		
 		Lesson lesson = lessonRepository.findById(numLesson);
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		
 		String texts1 = exercise.getTexts().get(0);
 		String texts2 = exercise.getTexts().get(1);
@@ -240,11 +240,9 @@ public class ExerciseController {
     public String exercise7(Model model,@PathVariable int id, @PathVariable int numLesson, @PathVariable int numExercise) {
 		
 		Lesson lesson = lessonRepository.findById(numLesson);
-		Exercise exercise = exerciseRepository.findByLessonAndId(lesson, numExercise);
-		Exercise nextExercise = exerciseRepository.findByLessonAndId(lesson, numExercise+1);
-		texts = exerciseRepository.findById(numExercise).getTexts();
-		
-		
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
+		texts = exerciseService.findById(numExercise).getTexts();
 		
 		model.addAttribute("Statement", exercise.getStatement());
 		model.addAttribute("texts", texts);
@@ -273,7 +271,7 @@ public class ExerciseController {
 		
 		
 		Lesson lesson = lessonRepository.findById(idLesson);
-		List <Exercise> listExercises = exerciseRepository.findByLesson(lesson);
+		List <Exercise> listExercises = exerciseService.findByLesson(lesson);
 		
 		//Te devuelve el usuario loggeado
 		User user = userComponent.getLoggedUser();
