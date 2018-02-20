@@ -380,6 +380,25 @@ header.masthead p {
     border-radius: 17px;
 }
 
+#exercise1 {
+    background-color: #ffb367;
+    border-radius: 17px;
+}
+
+#exercise1:hover {
+    background-color: #ff7f00;
+    border-radius: 17px;
+}
+#exercise1Bad {
+    background-color: #ff0000;
+    border-radius: 17px;
+}
+
+#exercise1Good {
+    background-color: #00FF40;
+    border-radius: 17px;
+}
+
 #modal-extralg {
     max-width: 1280px;
 }
