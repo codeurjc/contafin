@@ -43,26 +43,29 @@ public class UserController extends ContentController{
 			@RequestParam("new_pass") String pass) {
 		
 		loadNavbar(model);
-		boolean newData =false; 
+		boolean noData =false; 
 		User user = userService.findById(userComponent.getLoggedUser().getId());
 		if (!name.isEmpty()) {
 			user.setName(name);
-			newData =true;
+			noData =true;
 		}
 		if (!email.isEmpty()) {
 			user.setEmail(email);
-			newData =true;
+			noData =true;
 		}
 		if (!pass.isEmpty()) {
 			user.setPasswordHash(new BCryptPasswordEncoder().encode(pass));
-			newData =true;
+			noData =true;
 		}
-		if(!newData) {
+		if(!noData) {
 			model.addAttribute("noData", true);
+			return "userConfiguration";
 		}
-		userService.updateUserData(user);
-		userComponent.setLoggedUser(user);
-		return "userConfiguration";
+		else {
+			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
+			return "configuration";
+		}
 	}
 	
 	//Set Goal Controller
