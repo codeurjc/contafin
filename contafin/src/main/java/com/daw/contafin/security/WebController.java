@@ -30,14 +30,14 @@ public class WebController {
 
 	@Autowired
 	UserComponent userComponent;
-	
+
 	@Autowired
 	private UnitRepository unitRepository;
-	
+
 	@Autowired
 	EmailService emailService;
-	
-	//Login Controller
+
+	// Login Controller
 
 	@RequestMapping("/")
 	public String index() {
@@ -45,35 +45,75 @@ public class WebController {
 		return "index";
 	}
 
-	//Home page Controller
-	
+	// Home page Controller
+
 	@RequestMapping("home")
 	public String home(Model model) {
-		
+
 		model.addAttribute("loggedUser", userComponent.isLoggedUser());
-		
+
 		if (userComponent.isLoggedUser()) {
 			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
 			model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
 			model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
-			model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
-			
+			model.addAttribute("dailyGoal",
+					userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+
 		}
+
+		List<Unit> unit = unitRepository.findAll();
+		List<String> units = new ArrayList<>();
+
+		for (int i = 0; i < unit.size(); i++) {
+			units.add(unit.get(i).getName());
+		}
+
+		model.addAttribute("units", units);
+
+		return "home";
+	}
+
+	// adminHome page Controller
+	/*@RequestMapping("admin")
+	public String adminHome(Model model) {
+
+		model.addAttribute("loggedUser", userComponent.isLoggedUser());
+
+		if (userComponent.isLoggedUser()) {
+			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
+		}
+
+		List<User> users = userService.findAll();
+		List<String> names = new ArrayList<>();
+
+		for (int i = 0; i < users.size(); i++) {
+			names.add(users.get(i).getName());
+		}
+
+		model.addAttribute("names", names);
+
+		List<int> level = new ArrayList<>();
+
+		for (int i = 0; i < users.size(); i++) {
+			level.add(users.get(i).getLevel());
+		}
+
+		model.addAttribute("level", level);
 		
 		List<Unit> unit = unitRepository.findAll();
 		List<String> units = new ArrayList<>();
-		
-		for(int i=0; i<unit.size();i++) {
+
+		for (int i = 0; i < unit.size(); i++) {
 			units.add(unit.get(i).getName());
 		}
-		
-		model.addAttribute("units",units);
-		
-		return "home";
-	}
-	
-	//Sign Up Controller
-	
+
+		model.addAttribute("units", units);
+
+		return "adminHome";
+	}*/
+
+	// Sign Up Controller
+
 	@RequestMapping("signup")
 	public String register(Model model, @RequestParam("name") String name, @RequestParam("email") String email,
 			@RequestParam("pass") String pass) {
@@ -83,11 +123,11 @@ public class WebController {
 			try {
 				emailService.sendSimpleMessage(userService.findByEmail(email));
 			} catch (MessagingException messaginException) {
-				System.out.println(messaginException);	
+				System.out.println(messaginException);
 			} catch (IOException IOexception) {
-				System.out.println(IOexception);	
+				System.out.println(IOexception);
 			} catch (TemplateException templateException) {
-				System.out.println(templateException);	
+				System.out.println(templateException);
 			}
 			;
 			return "/";
@@ -95,7 +135,7 @@ public class WebController {
 			model.addAttribute("loggedUser", true);
 			return "signup";
 		}
-		
+
 	}
 
 }
