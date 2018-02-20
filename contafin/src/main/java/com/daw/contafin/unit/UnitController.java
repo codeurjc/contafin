@@ -29,7 +29,7 @@ public class UnitController {
 	@Autowired
 	private ExerciseRepository exerciseRepository;
 
-	@RequestMapping("/UnitCreation")
+	/*@RequestMapping("/UnitCreation")
 	public String unit(Model model, @RequestParam String unitName, @RequestParam String[] lessonName, @RequestParam String[] images, @RequestParam String[] texts, @RequestParam String[] statements, @RequestParam String[] answers) {
 
 		Unit unit;
@@ -108,7 +108,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(7, statements[20], null, myTexts, answer, lesson));
 
 		return "unitCreation";
-	}
+	}*/
 
 	@PostConstruct
 	public void init() {
@@ -151,7 +151,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(2, "1.1.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
 
-		answer = new Answer("3");
+		/*answer = new Answer("3");
 		texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
@@ -163,7 +163,7 @@ public class UnitController {
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4, "1.1.4 Realiza el asiento", null, texts, answer, lesson));
+		exerciseRepository.save(new Exercise(4, "1.1.4 Realiza el asiento", null, texts, answer, lesson));*/
 
 		answer = new Answer("5");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
@@ -171,12 +171,12 @@ public class UnitController {
 				new Exercise(5, "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
 						null, texts, answer, lesson));
 		
-		answer = new Answer("6");
+		/*answer = new Answer("6");
 		texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
 				"140. Deudores");
 		exerciseRepository.save(new Exercise(6,
 				"1.1.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
-				null, texts, answer, lesson));
+				null, texts, answer, lesson));*/
 
 		answer = new Answer("7");
 		texts = Arrays.asList(
@@ -198,7 +198,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(2, "1.2.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
 
-		answer = new Answer("10");
+		/*answer = new Answer("10");
 		texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
@@ -210,7 +210,7 @@ public class UnitController {
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4, "1.2.4 Realiza el asiento", null, texts, answer, lesson));
+		exerciseRepository.save(new Exercise(4, "1.2.4 Realiza el asiento", null, texts, answer, lesson));*/
 
 		answer = new Answer("12");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
@@ -218,12 +218,12 @@ public class UnitController {
 				new Exercise(5, "1.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
 						null, texts, answer, lesson));
 
-		answer = new Answer("13");
+		/*answer = new Answer("13");
 		texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
 				"140. Deudores");
 		exerciseRepository.save(new Exercise(6,
 				"1.2.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
-				null, texts, answer, lesson));
+				null, texts, answer, lesson));*/
 
 		answer = new Answer("14");
 		texts = Arrays.asList(
@@ -244,7 +244,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(2, "1.3.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
 
-		answer = new Answer("17");
+		/*answer = new Answer("17");
 		texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
@@ -256,7 +256,7 @@ public class UnitController {
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4, "1.3.4 Realiza el asiento", null, texts, answer, lesson));
+		exerciseRepository.save(new Exercise(4, "1.3.4 Realiza el asiento", null, texts, answer, lesson));*/
 
 		answer = new Answer("19");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
@@ -264,12 +264,12 @@ public class UnitController {
 				new Exercise(5, "1.3.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
 						null, texts, answer, lesson));
 
-		answer = new Answer("20");
+		/*answer = new Answer("20");
 		texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
 				"140. Deudores");
 		exerciseRepository.save(new Exercise(6,
 				"1.3.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
-				null, texts, answer, lesson));
+				null, texts, answer, lesson));*/
 
 		answer = new Answer("21");
 		texts = Arrays.asList(
@@ -288,7 +288,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(2, "2.1.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, null, lesson));
 
-		texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
+		/*texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
@@ -298,18 +298,18 @@ public class UnitController {
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4, "2.1.4 Realiza el asiento", null, texts, null, lesson));
+		exerciseRepository.save(new Exercise(4, "2.1.4 Realiza el asiento", null, texts, null, lesson));*/
 
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseRepository.save(
 				new Exercise(5, "2.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
 						null, texts, null, lesson));
 
-		texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
+		/*texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
 				"140. Deudores");
 		exerciseRepository.save(new Exercise(6,
 				"2.1.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
-				null, texts, null, lesson));
+				null, texts, null, lesson));*/
 
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -327,7 +327,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(2, "2.2.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, null, lesson));
 
-		texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
+		/*texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
@@ -337,18 +337,18 @@ public class UnitController {
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4, "2.2.4 Realiza el asiento", null, texts, null, lesson));
+		exerciseRepository.save(new Exercise(4, "2.2.4 Realiza el asiento", null, texts, null, lesson));*/
 
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseRepository.save(
 				new Exercise(5, "2.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
 						null, texts, null, lesson));
 
-		texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
+		/*texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
 				"140. Deudores");
 		exerciseRepository.save(new Exercise(6,
 				"2.2.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
-				null, texts, null, lesson));
+				null, texts, null, lesson));*/
 
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -366,7 +366,7 @@ public class UnitController {
 		exerciseRepository.save(new Exercise(2, "2.3.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, null, lesson));
 
-		texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
+		/*texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales", "218. Elementos de transporte",
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
@@ -376,18 +376,18 @@ public class UnitController {
 				"206. Aplicaciones informáticas", "213. Maquinaria", "100. Capital social", "Pasivo exigible",
 				"300. Mercaderías A", "Patrimonio neto", "Inmovilizado material", "Existencias",
 				"Inmovilizado intangible");
-		exerciseRepository.save(new Exercise(4, "2.3.4 Realiza el asiento", null, texts, null, lesson));
+		exerciseRepository.save(new Exercise(4, "2.3.4 Realiza el asiento", null, texts, null, lesson));*/
 
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseRepository.save(
 				new Exercise(5, "2.3.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
 						null, texts, null, lesson));
 
-		texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
+		/*texts = Arrays.asList("574. Bancos cuenta de ahorro", "574. Bancos cuenta corriente", "430. Clientes",
 				"140. Deudores");
 		exerciseRepository.save(new Exercise(6,
 				"2.3.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
-				null, texts, null, lesson));
+				null, texts, null, lesson));*/
 
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",

@@ -43,7 +43,7 @@ public class ExerciseController {
 	
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}")
     public String exercise1(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
@@ -108,7 +108,7 @@ public class ExerciseController {
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/2/{numExercise}")
     public String exercise2(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
 		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
@@ -136,10 +136,10 @@ public class ExerciseController {
     	return "exerciseType2";
     }
 	
-	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/3/{numExercise}")
+	/*@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/3/{numExercise}")
     public String exercise3(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
 		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
@@ -170,7 +170,7 @@ public class ExerciseController {
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/4/{numExercise}")
     public String exercise4(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
 		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
@@ -196,12 +196,12 @@ public class ExerciseController {
 		model.addAttribute("idlesson",numLesson);
 		
     	return "exerciseType4";
-    }
+    }*/
 	
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/5/{numExercise}")
     public String exercise5(Model model,@PathVariable int id, @PathVariable int numLesson, @PathVariable int numExercise) {
 		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
@@ -229,10 +229,10 @@ public class ExerciseController {
 		
     	return "exerciseType5";
     }
-	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/6/{numExercise}")
+	/*@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/6/{numExercise}")
     public String exercise6(Model model,@PathVariable int id, @PathVariable int numLesson, @PathVariable int numExercise) {
 		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		
@@ -264,12 +264,12 @@ public class ExerciseController {
 		model.addAttribute("idlesson",numLesson);
 		
     	return "exerciseType6";
-    }
+    }*/
 	
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/7/{numExercise}")
     public String exercise7(Model model,@PathVariable int id, @PathVariable int numLesson, @PathVariable int numExercise) {
 		
-		Lesson lesson = lessonRepository.findById(numLesson);
+		Lesson lesson = lessonRepository.findById(numLesson+(3*(id-1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		texts = exerciseService.findById(numExercise).getTexts();
