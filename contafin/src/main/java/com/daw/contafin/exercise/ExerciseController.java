@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.daw.contafin.answer.Answer;
+import com.daw.contafin.answer.AnswerService;
 import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
 import com.daw.contafin.user.User;
@@ -23,29 +25,31 @@ public class ExerciseController {
 	private ExerciseService exerciseService;
 	
 	@Autowired
+	private AnswerService answerService;
+	
+	@Autowired
 	private LessonRepository lessonRepository; 
 	
 	@Autowired
 	UserComponent userComponent;
 	
 	List<String> texts;
+	int kindAnswer = 1;
 	
 	@PostConstruct
 	public void init () {
 		
 	}
 	
-	//Cambiar html lección 
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}")
     public String exercise1(Model model,@PathVariable int id, @PathVariable int numLesson,@PathVariable int numExercise) {
-		
-		//Si no funciona copiar el codigo del ejercicio 2
 		Lesson lesson = lessonRepository.findById(numLesson);
 		
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 		
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise+1);
 		
+		//Answer answer = answerService.findByExercise(exercise);
 		
 		model.addAttribute("Image1", exercise.getRuteImages().get(0));
 		model.addAttribute("Image2", exercise.getRuteImages().get(1));
@@ -71,7 +75,33 @@ public class ExerciseController {
 			model.addAttribute("nextType",typeNext);
 		}
 		model.addAttribute("idlesson",numLesson);
+		
+		/*if(kindAnswer==1) {
+			model.addAttribute("color1","exercise1");
+			model.addAttribute("color2","exercise1");
+			model.addAttribute("color3","exercise1");
+		}
+		else if (answeruser.equals(answer.getResult())) {
+			if(answeruser=="1") {
+				model.addAttribute("color1","exercise1Good");
+			}
+			else if(answeruser=="2") {
+				model.addAttribute("color2","exercise1Good");
+			}
+			else {
+				model.addAttribute("color3","exercise1Good");
+			}
+		}
+		else {
+			model.addAttribute("color1","exercise1Bad");
+			model.addAttribute("color2","exercise1Bad");
+			model.addAttribute("color3","exercise1Bad");
 
+		}
+		String texto = "exercise1";
+		model.addAttribute("color1",texto);
+		model.addAttribute("color2",texto);
+		model.addAttribute("color3",texto);*/
 		
     	return "exerciseType1";
     }
