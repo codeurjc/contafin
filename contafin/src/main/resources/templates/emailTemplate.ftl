@@ -156,7 +156,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="img-flex">
-                                                        <img src="cid: identifier1" style="display:block;margin:0 auto 0 auto;" width="200" height="206"/>
+                                                        <img src="${logoAsBase64}" style="display:block;margin:0 auto 0 auto;" width="200" height="206"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
