@@ -74,43 +74,40 @@ public class WebController {
 	}
 
 	// adminHome page Controller
-	/*@RequestMapping("admin")
+	@RequestMapping("admin")
 	public String adminHome(Model model) {
-
-		model.addAttribute("loggedUser", userComponent.isLoggedUser());
-
-		if (userComponent.isLoggedUser()) {
 			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-		}
+			model.addAttribute("users", userService.findAll());
+				
+			List<User> user = userService.findAll();
+			List<String> users = new ArrayList<>();
+			List<String> emails = new ArrayList<>();
+			List<Integer> levels = new ArrayList<>();
 
-		List<User> users = userService.findAll();
-		List<String> names = new ArrayList<>();
+			for (int i = 0; i < user.size(); i++) {
 
-		for (int i = 0; i < users.size(); i++) {
-			names.add(users.get(i).getName());
-		}
+				users.add(user.get(i).getName());
+				levels.add(user.get(i).getLevel());
+				emails.add(user.get(i).getEmail());
+				
+			}
 
-		model.addAttribute("names", names);
+			model.addAttribute("username", users);
+			model.addAttribute("levels", levels);
+			model.addAttribute("email", emails);
+			
+			List<Unit> unit = unitRepository.findAll();
+			List<String> units = new ArrayList<>();
 
-		List<int> level = new ArrayList<>();
+			for (int i = 0; i < unit.size(); i++) {
+				units.add(unit.get(i).getName());
+			}
 
-		for (int i = 0; i < users.size(); i++) {
-			level.add(users.get(i).getLevel());
-		}
+			model.addAttribute("units", units);
 
-		model.addAttribute("level", level);
-		
-		List<Unit> unit = unitRepository.findAll();
-		List<String> units = new ArrayList<>();
-
-		for (int i = 0; i < unit.size(); i++) {
-			units.add(unit.get(i).getName());
-		}
-
-		model.addAttribute("units", units);
 
 		return "adminHome";
-	}*/
+	}
 
 	// Sign Up Controller
 
