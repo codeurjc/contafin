@@ -77,7 +77,7 @@ public class WebController {
 	@RequestMapping("admin")
 	public String adminHome(Model model) {
 			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-			model.addAttribute("users", userService.findAll());
+			model.addAttribute("users", userService.getUsers());
 				
 			List<User> user = userService.getUsers();
 			List<String> users = new ArrayList<>();
