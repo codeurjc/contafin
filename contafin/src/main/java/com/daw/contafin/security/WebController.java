@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.daw.contafin.ContentController;
 import com.daw.contafin.EmailService;
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitRepository;
@@ -23,7 +24,7 @@ import com.daw.contafin.user.UserService;
 import freemarker.template.TemplateException;
 
 @Controller
-public class WebController {
+public class WebController extends ContentController {
 
 	@Autowired
 	UserService userService;
@@ -50,32 +51,29 @@ public class WebController {
 	@RequestMapping("home")
 	public String home(Model model) {
 
-		model.addAttribute("loggedUser", userComponent.isLoggedUser());
+		if (userComponent.getLoggedUser().getRoles().get(0).equals("ROLE_USER")) {
+			//Users home page
+			
+			model.addAttribute("loggedUser", userComponent.isLoggedUser());
+			if (userComponent.isLoggedUser()) {
+				loadNavbar(model);
+				model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+			}
 
-		if (userComponent.isLoggedUser()) {
-			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-			model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
-			model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
-			model.addAttribute("dailyGoal",
-					userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+			List<Unit> unit = unitRepository.findAll();
+			List<String> units = new ArrayList<>();
 
-		}
+			for (int i = 0; i < unit.size(); i++) {
+				units.add(unit.get(i).getName());
+			}
 
-		List<Unit> unit = unitRepository.findAll();
-		List<String> units = new ArrayList<>();
+			model.addAttribute("units", units);
 
-		for (int i = 0; i < unit.size(); i++) {
-			units.add(unit.get(i).getName());
-		}
-
-		model.addAttribute("units", units);
-
-		return "home";
-	}
-
-	// adminHome page Controller
-	@RequestMapping("admin")
-	public String adminHome(Model model) {
+			return "home";
+		} 
+		else {
+			// Admin home page
+			
 			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
 			model.addAttribute("users", userService.getUsers());
 				
@@ -107,8 +105,10 @@ public class WebController {
 
 
 		return "adminHome";
+			
+		}
 	}
-
+	
 	// Sign Up Controller
 
 	@RequestMapping("signup")
