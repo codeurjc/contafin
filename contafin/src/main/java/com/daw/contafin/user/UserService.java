@@ -1,5 +1,7 @@
 package com.daw.contafin.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class UserService {
 	
 	public User findByEmail (String email) {
 		return userRepository.findByEmail(email);
+	}
+	
+	public List<User> findAll () {
+		return userRepository.findAll();
 	}
 	
 	public void save(User user) {
