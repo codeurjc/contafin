@@ -79,7 +79,7 @@ public class WebController {
 			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
 			model.addAttribute("users", userService.findAll());
 				
-			List<User> user = userService.findAll();
+			List<User> user = userService.getUsers();
 			List<String> users = new ArrayList<>();
 			List<String> emails = new ArrayList<>();
 			List<Integer> levels = new ArrayList<>();
