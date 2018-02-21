@@ -50,65 +50,53 @@ public class WebController extends ContentController {
 
 	@RequestMapping("home")
 	public String home(Model model) {
+		
+		model.addAttribute("loggedUser", userComponent.isLoggedUser());
+		if (userComponent.isLoggedUser()) {
+			if (userComponent.getLoggedUser().getRoles().get(0).equals("ROLE_USER")) {
+				// Users home page
 
-		if (userComponent.getLoggedUser().getRoles().get(0).equals("ROLE_USER")) {
-			//Users home page
-			
-			model.addAttribute("loggedUser", userComponent.isLoggedUser());
-			if (userComponent.isLoggedUser()) {
 				loadNavbar(model);
-				model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+				model.addAttribute("dailyGoal",userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+				loadUnits(model);
+
+				return "home";
+			} else {
+				// Admin home page
+
+				model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
+				model.addAttribute("users", userService.getUsers());
+
+				List<User> user = userService.getUsers();
+				List<String> users = new ArrayList<>();
+				List<String> emails = new ArrayList<>();
+				List<Integer> levels = new ArrayList<>();
+
+				for (int i = 0; i < user.size(); i++) {
+
+					users.add(user.get(i).getName());
+					levels.add(user.get(i).getLevel());
+					emails.add(user.get(i).getEmail());
+
+				}
+
+				model.addAttribute("username", users);
+				model.addAttribute("levels", levels);
+				model.addAttribute("email", emails);
+
+				loadUnits(model);
+
+				return "adminHome";
+
 			}
+		} else {
+			// Anonymous user home page
 
-			List<Unit> unit = unitRepository.findAll();
-			List<String> units = new ArrayList<>();
-
-			for (int i = 0; i < unit.size(); i++) {
-				units.add(unit.get(i).getName());
-			}
-
-			model.addAttribute("units", units);
-
+			loadUnits(model);
 			return "home";
-		} 
-		else {
-			// Admin home page
-			
-			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-			model.addAttribute("users", userService.getUsers());
-				
-			List<User> user = userService.getUsers();
-			List<String> users = new ArrayList<>();
-			List<String> emails = new ArrayList<>();
-			List<Integer> levels = new ArrayList<>();
-
-			for (int i = 0; i < user.size(); i++) {
-
-				users.add(user.get(i).getName());
-				levels.add(user.get(i).getLevel());
-				emails.add(user.get(i).getEmail());
-				
-			}
-
-			model.addAttribute("username", users);
-			model.addAttribute("levels", levels);
-			model.addAttribute("email", emails);
-			
-			List<Unit> unit = unitRepository.findAll();
-			List<String> units = new ArrayList<>();
-
-			for (int i = 0; i < unit.size(); i++) {
-				units.add(unit.get(i).getName());
-			}
-
-			model.addAttribute("units", units);
-
-
-		return "adminHome";
-			
 		}
 	}
-	
+
 	// Sign Up Controller
 
 	@RequestMapping("signup")
