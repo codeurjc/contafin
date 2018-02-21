@@ -90,13 +90,15 @@
 											<tr>
 												<th scope="col">Nombre</th>
 												<th scope="col">Nivel</th>
+												<th scope="col">Email</th>
 											</tr>
 										</thead>
 										<tbody>
 											{{#users}}
 											<tr>
-												<td>{{names}}</td>
-												<td>{{level}}</td>
+												<td>{{username}}</td>
+												<td>{{levels}}</td>
+												<td>{{email}}</td>
 											</tr>
 											{{/users}}
 										</tbody>
@@ -115,22 +117,25 @@
 							<div id="collapseTwo" class="collapse"
 								aria-labelledby="headingTwo" data-parent="#accordion">
 								<div class="card-body">
-									<div class="mt-5 mx-auto text-center card-body bg-white"
-										id="round">
-										<div class="row justify-content-around">
-											{{#units}}
-											<div class="col-lg-6 col-md-6 ">
-												<div class="service-box mt-5 mx-auto text-center card-body"
-													id="Unit">
-													<a class="col-lg-5" href="/Unit/{{-index}}/lessons"
-														id="selectLesson">
-														<h2 class="text-white ">{{.}}</h2>
-													</a>
-												</div>
+
+									<div class="row justify-content-around">
+										{{#units}}
+										<div class="col-lg-6 col-md-6 ">
+											<div class="service-box mt-5 mx-auto text-center card-body"
+												id="Unit">
+												<a class="col-lg-5" href="/Unit/{{-index}}/lessons"
+													id="selectLesson">
+													<h2 class="text-white ">{{.}}</h2>
+												</a>
 											</div>
-											{{/units}}
 										</div>
+										{{/units}}
 									</div>
+
+								</div>
+								<div class="card-body">
+									<button type="button" class="btn btn-outline-secondary">Añadir
+										Unidad</button>
 								</div>
 							</div>
 						</div>
