@@ -1,6 +1,15 @@
 package com.daw.contafin.user;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,8 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import com.daw.contafin.ContentController;
+import com.daw.contafin.ImageService;
 
 @Controller
 public class UserController extends ContentController{
@@ -19,6 +31,9 @@ public class UserController extends ContentController{
 
 	@Autowired
 	UserComponent userComponent;
+	
+	@Autowired
+	ImageService imageService;
 
 	@RequestMapping("profile")
 	public String profile(Model model){
@@ -35,6 +50,7 @@ public class UserController extends ContentController{
 	public String configuration(Model model, HttpServletRequest request) {
 
 		loadNavbar(model);
+		model.addAttribute("addImage", false);
 		return "userConfiguration";
 	}
 	
@@ -92,7 +108,42 @@ public class UserController extends ContentController{
 		}
 		return "setGoal";
 	}
+	
+	//Save the image in the database
+	
+	@RequestMapping ("newImage")
+	public String updateImage( Model model, @RequestParam("file") MultipartFile file) throws IOException {
 
+	    if (!file.isEmpty()) {
+	    		User user = userComponent.getLoggedUser();
+	    		//Upload image
+			byte[] bytes = imageService.uploadImage(file);
+			//Update the user's data
+			user.setImage(bytes);
+			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
+	    }
+	    
+	    return "configuration";   
+
+	}
+
+	// Show the image
+	@RequestMapping("profilePicture")
+	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		byte [] image;
+		if (userComponent.getLoggedUser().getImage() != null) {
+			image = userComponent.getLoggedUser().getImage();
+		} else {
+			Path path = Paths.get(".//src//main//resources//static/img/profile.png");
+			image = Files.readAllBytes(path);
+
+		}
+		response.setContentType("image/jpeg");
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(image);
+		outputStream.close();
+	}
 	
-	
+
 }

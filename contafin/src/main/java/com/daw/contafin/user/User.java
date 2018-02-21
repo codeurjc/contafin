@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.OneToMany;
+import javax.persistence.Lob;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -38,6 +39,9 @@ public class User {
 	private int needexp = 10;
 	//También he incluido el método upLevel para aumentar el nivel cuando se alcance la exp necesaria.
 	//Creo que deberiamos pasar el id del usuario en las url para poder aumentarle level, racha...
+	
+	@Lob
+	private byte[] image;
 	
 	@ElementCollection(fetch = FetchType.EAGER) 
 	private List<String> roles;
@@ -173,6 +177,14 @@ public class User {
 
 	public void setExp(int exp) {
 		this.exp = exp;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	
