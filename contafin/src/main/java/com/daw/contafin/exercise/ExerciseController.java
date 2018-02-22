@@ -42,15 +42,28 @@ public class ExerciseController {
 
 	}
 
-	@RequestMapping("/ExerciseCompleted/{kind}")
-	public String exerciseGood(Model model, @PathVariable int kind) {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}/Completed")
+	public String exerciseGood(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise, @RequestParam String solution) {
+		
+		if(solution.equals("uno")) {
+			model.addAttribute("exercise1","exercise1Good");
+			model.addAttribute("exercise2","exercise1Bad");
+			model.addAttribute("exercise3","exercise1Bad");
 
-		return "exerciseType1";
-	}
+		}
+		else if (solution.equals("dos")) {
+			model.addAttribute("exercise1","exercise1Bad");
+			model.addAttribute("exercise2","exercise1Good");
+			model.addAttribute("exercise3","exercise1Bad");
 
-	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}")
-	public String exercise1(Model model, @PathVariable int id, @PathVariable int numLesson,
-			@PathVariable int numExercise) {
+		}
+		else {
+			model.addAttribute("exercise1","exercise1Bad");
+			model.addAttribute("exercise2","exercise1Bad");
+			model.addAttribute("exercise3","exercise1Good");
+		}
+				
 		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
 
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
@@ -64,6 +77,52 @@ public class ExerciseController {
 		model.addAttribute("Text2", exercise.getTexts().get(1));
 		model.addAttribute("Text3", exercise.getTexts().get(2));
 		model.addAttribute("Statement", exercise.getStatement());
+
+		if (nextExercise == null) {
+			model.addAttribute("next", false);
+			model.addAttribute("end", true);  
+		} else {
+			int typeNext = nextExercise.getKind();
+			long nextNumExercise = nextExercise.getId();
+
+			model.addAttribute("next", true);    
+			model.addAttribute("end", false);
+			model.addAttribute("idunit", id);
+			model.addAttribute("nextNumExercise", nextNumExercise);
+			model.addAttribute("nextType", typeNext);
+		}
+		model.addAttribute("idlesson", numLesson);
+
+		model.addAttribute("thisExercise", numExercise);
+
+		
+		
+		return "exerciseType1";
+	}
+
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}")
+	public String exercise1(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise) {
+		
+		
+		model.addAttribute("exercise1","exercise1");
+		model.addAttribute("exercise2","exercise1");
+		model.addAttribute("exercise3","exercise1");
+		
+		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
+
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+
+		model.addAttribute("Image1", exercise.getRuteImages().get(0));
+		model.addAttribute("Image2", exercise.getRuteImages().get(1));
+		model.addAttribute("Image3", exercise.getRuteImages().get(2));
+		model.addAttribute("Text1", exercise.getTexts().get(0));
+		model.addAttribute("Text2", exercise.getTexts().get(1));
+		model.addAttribute("Text3", exercise.getTexts().get(2));
+		model.addAttribute("Statement", exercise.getStatement());
+		
 
 		if (nextExercise == null) {
 			model.addAttribute("next", false);
