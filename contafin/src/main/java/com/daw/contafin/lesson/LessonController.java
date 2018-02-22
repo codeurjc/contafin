@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daw.contafin.ContentController;
+import com.daw.contafin.completedExercise.CompletedExercise;
+import com.daw.contafin.completedExercise.CompletedExerciseRepository;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitRepository;
+import com.daw.contafin.user.User;
+import com.daw.contafin.user.UserComponent;
 
 @Controller
 public class LessonController extends ContentController {
@@ -27,6 +31,11 @@ public class LessonController extends ContentController {
 	private LessonRepository lessonRepository; 
 	@Autowired
 	private ExerciseRepository exerciseRepository; 
+	@Autowired
+	private CompletedExerciseRepository completedExerciseRepository;
+	
+	@Autowired
+	UserComponent userComponent;
 	
 	@PostConstruct
 	public void init() {
@@ -70,6 +79,52 @@ public class LessonController extends ContentController {
 			lessonsString.add(lesson.get(i).getName());
 		}
 		
+		//Get lessons done (Posible forma de obtener las lecciones completadas)
+		/*
+		int done = 0;
+		User user = userComponent.getLoggedUser();
+		
+		boolean lesson1Done = false;
+		boolean lesson2Done = false;
+		boolean lesson3Done = false;
+		
+		int exercisesDone = 0;
+		for (int i=0; i<exercises1.size();i++) {
+			CompletedExercise completedExercise = completedExerciseRepository.findByUserAndExercise(user, exercises1.get(i));
+			if(completedExercise != null) {
+				exercisesDone ++;
+			}
+		}
+		if (exercisesDone == 4) {
+			lesson1Done = true;
+			done++;
+		}
+		
+		exercisesDone = 0;
+		for (int i=0; i<exercises2.size();i++) {
+			CompletedExercise completedExercise = completedExerciseRepository.findByUserAndExercise(user, exercises2.get(i));
+			if(completedExercise != null) {
+				exercisesDone ++;
+			}
+		}
+		if (exercisesDone == 4) {
+			lesson2Done = true;
+			done++;
+		}
+		
+		exercisesDone = 0;
+		for (int i=0; i<exercises3.size();i++) {
+			CompletedExercise completedExercise = completedExerciseRepository.findByUserAndExercise(user, exercises3.get(i));
+			if(completedExercise != null) {
+				exercisesDone ++;
+			}
+		}
+		if (exercisesDone == 4) {
+			lesson3Done = true;
+			done++;
+		}
+		*/
+		  
 		model.addAttribute("done", "0");
 		model.addAttribute("total", "3");
 		model.addAttribute("unit",id);

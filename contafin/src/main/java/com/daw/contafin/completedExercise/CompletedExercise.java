@@ -17,7 +17,7 @@ public class CompletedExercise {
 	private long id;
 	
 	/*@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
-	private Student student;*/
+	private User user;*/
 	
 	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Exercise exercise;
