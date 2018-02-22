@@ -12,13 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.daw.contafin.ContentController;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitRepository;
 
 @Controller
-public class LessonController {
+public class LessonController extends ContentController {
 	
 	@Autowired
 	private UnitRepository unitRepository;
@@ -69,9 +70,6 @@ public class LessonController {
 			lessonsString.add(lesson.get(i).getName());
 		}
 		
-		model.addAttribute("name", "");
-		model.addAttribute("points", "");
-		model.addAttribute("streak", "");
 		model.addAttribute("done", "0");
 		model.addAttribute("total", "3");
 		model.addAttribute("unit",id);
@@ -80,6 +78,8 @@ public class LessonController {
 		model.addAttribute("lessonstring3", lessonsString.get(2));
 
 		model.addAttribute("title", "Introducción");
+		
+		loadNavbar(model);
 		
     	return "lessons" ;
     }	
