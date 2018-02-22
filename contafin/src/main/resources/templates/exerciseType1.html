@@ -94,33 +94,87 @@
 		<div class="container ">
 			<div class="row">
 				<div class="container">
-					<div class="row justify-content-around">
-
-						<div class="col-lg-4 col-md-6">
-							<label class="service-box mt-5 mx-auto text-center card-body"
-								id="exercise1"> <img class="img-fluid " src="{{Image1}}"
-								alt="" id="selectLesson"> <input type="radio"
-								class="mt-3 mb-5" name="solution" value="1">{{Text1}}</input>
-							</label>
+					<form action="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/1/1">
+						<div class="row justify-content-around">
+							<div class="col-lg-4 col-md-6">
+								<label class="service-box mt-5 mx-auto text-center card-body"
+									id="exercise1"> <img class="img-fluid "
+									src="{{Image1}}" alt="" id="selectLesson"> <input
+									type="radio" name="solution" value="uno">{{Text1}}</input>
+								</label>
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label class="service-box mt-5 mx-auto text-center card-body"
+									id="exercise1"> <img class="img-fluid "
+									src="{{Image2}}" alt="" id="selectLesson"> <input
+									type="radio" name="solution" value="dos" checked="checked"> {{Text2}}</input>
+								</label>
+							</div>
+							<div class="col-lg-4 col-md-6">
+								<label class="service-box mt-5 mx-auto text-center card-body"
+									id="exercise1"> <img class="img-fluid "
+									src="{{Image3}}" alt="" id="selectLesson"> <input
+									type="radio" name="solution" value="tres"> {{Text3}}</input>
+								</label>
+							</div>
+							<!-- <button type="submit" name="/home">Send message</button>-->
+							<hr class="my-4">
+							<hr class="my-4">
+							<div class="row justify-content-around">
+								<div class="col-lg-12 col-md-6">
+									<button class="btn btn-primary btn-xl js-scroll-trigger"
+										type="submit">CALIFICAR</button>
+								</div>
+							</div>
+							</div>
+					</form>
+					{{#ver1}}
+					<h1>AHORA ME VES Y HAS TENIDO LA SOLUCION 1 BIEN</h1>
+					{{/ver1}} {{#ver2}}
+					<h1>AHORA ME VES Y HAS TENIDO LA SOLUCION 1 BIEN</h1>
+					{{/ver2}} {{#ver3}}
+					<h1>AHORA ME VES Y HAS TENIDO LA SOLUCION 1 BIEN</h1>
+					{{/ver3}}
+					<!-- <form action="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/1/{{thisExercise}}">
+						<div class="row justify-content-around">
+							<div class="col-lg-4 col-md-6">
+								<input name="solution" value="uno" class="service-box mt-5 mx-auto text-center card-body"
+									id="exercise1"> <img class="img-fluid "
+									src="{{Image1}}" alt="" id="selectLesson"><a>{{Text1}}</a></input>
+							</div>
+							{{#ver1}}
+							<h1>AHORA ME VES Y HAS TENIDO LA SOLUCION 1 BIEN</h1>
+							{{/ver1}}
+							<div class="col-lg-4 col-md-6">
+								<label class="service-box mt-5 mx-auto text-center card-body"
+									id="exercise1"> <img class="img-fluid "
+									src="{{Image2}}" alt="" id="selectLesson"> <input
+									type="radio" class="mt-3 mb-5" name="solution" value="dos">{{Text2}}</input>
+								</label>
+							</div>
+							{{#ver2}}
+							<h1>AHORA ME VES Y HAS TENIDO LA SOLUCION 2 BIEN</h1>
+							{{/ver2}}
+							<div class="col-lg-4 col-md-6">
+								<label class="service-box mt-5 mx-auto text-center card-body"
+									id="exercise1"> <img class="img-fluid "
+									src="{{Image3}}" alt="" id="selectLesson"> <input
+									type="radio" class="mt-3 mb-5" name="solution" value="tres">{{Text3}}</input>
+								</label>
+							</div>
+							{{#ver3}}
+							<h1>AHORA ME VES Y HAS TENIDO LA SOLUCION 3 BIEN</h1>
+							{{/ver3}}
 						</div>
-
-						<div class="col-lg-4 col-md-6">
-							<label class="service-box mt-5 mx-auto text-center card-body"
-								id="exercise1"> <img class="img-fluid " src="{{Image2}}"
-								alt="" id="selectLesson"> <input type="radio"
-								class="mt-3 mb-5" name="solution" value="2">{{Text2}}</input>
-							</label>
+						<div class="row justify-content-around">
+							<div class="col-lg-5 col-md-6"></div>
+							<div class="col-lg-2 col-md-6">
+								<input class="btn btn-primary btn-xl js-scroll-trigger"
+									type="submit" value="CALIFICAR" />
+							</div>
+							<div class="col-lg-5 col-md-6"></div>
 						</div>
-
-						<div class="col-lg-4 col-md-6">
-							<label class="service-box mt-5 mx-auto text-center card-body"
-								id="exercise1"> <img class="img-fluid " src="{{Image3}}"
-								alt="" id="selectLesson"> <input type="radio"
-								class="mt-3 mb-5" name="solution" value="3">{{Text3}}</input>
-							</label>
-						</div>
-
-					</div>
+					</form>-->
 				</div>
 			</div>
 		</div>
