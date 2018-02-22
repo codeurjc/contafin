@@ -42,6 +42,11 @@
                 </ul>
                 {{#loggedUser}}
                 <ul class="navbar-nav ml-auto">
+                		{{#isAdmin}}
+                		<li class="nav-item mr-4">
+                			<a class="btn btn-primary js-scroll-trigger BG-" href="adminHomePage">ADMINISTRACIÓN</a>
+                		</li>
+                		{{/isAdmin}}
                     <li>
                         <img src="profilePicture" width="40" height="35" class="img-thumbnail">
                     </li>

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daw.contafin.ContentController;
 import com.daw.contafin.EmailService;
-import com.daw.contafin.unit.Unit;
-import com.daw.contafin.unit.UnitRepository;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
@@ -31,10 +28,7 @@ public class WebController extends ContentController {
 
 	@Autowired
 	UserComponent userComponent;
-
-	@Autowired
-	private UnitRepository unitRepository;
-
+	
 	@Autowired
 	EmailService emailService;
 
@@ -50,51 +44,47 @@ public class WebController extends ContentController {
 
 	@RequestMapping("home")
 	public String home(Model model) {
-		
+
 		model.addAttribute("loggedUser", userComponent.isLoggedUser());
+
 		if (userComponent.isLoggedUser()) {
-			if (userComponent.getLoggedUser().getRoles().get(0).equals("ROLE_USER")) {
-				// Users home page
+			if (userComponent.getLoggedUser().getRoles().contains("ROLE_ADMIN")) {
+				model.addAttribute("isAdmin", true);
+			}
+			loadNavbar(model);
+			model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+		}
+		loadUnits(model);
+		return "home";
+	}
+	
+	@RequestMapping ("adminHomePage")
+	public String adminHomePage(Model model) {
 
-				loadNavbar(model);
-				model.addAttribute("dailyGoal",userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
-				loadUnits(model);
+			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
+			model.addAttribute("users", userService.getUsers());
 
-				return "home";
-			} else {
-				// Admin home page
+			List<User> user = userService.getUsers();
+			List<String> users = new ArrayList<>();
+			List<String> emails = new ArrayList<>();
+			List<Integer> levels = new ArrayList<>();
 
-				model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-				model.addAttribute("users", userService.getUsers());
+			for (int i = 0; i < user.size(); i++) {
 
-				List<User> user = userService.getUsers();
-				List<String> users = new ArrayList<>();
-				List<String> emails = new ArrayList<>();
-				List<Integer> levels = new ArrayList<>();
-
-				for (int i = 0; i < user.size(); i++) {
-
-					users.add(user.get(i).getName());
-					levels.add(user.get(i).getLevel());
-					emails.add(user.get(i).getEmail());
-
-				}
-
-				model.addAttribute("username", users);
-				model.addAttribute("levels", levels);
-				model.addAttribute("email", emails);
-
-				loadUnits(model);
-
-				return "adminHome";
+				users.add(user.get(i).getName());
+				levels.add(user.get(i).getLevel());
+				emails.add(user.get(i).getEmail());
 
 			}
-		} else {
-			// Anonymous user home page
+
+			model.addAttribute("username", users);
+			model.addAttribute("levels", levels);
+			model.addAttribute("email", emails);
 
 			loadUnits(model);
-			return "home";
-		}
+
+			return "adminHome";
+		
 	}
 
 	// Sign Up Controller
