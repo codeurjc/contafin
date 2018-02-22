@@ -1,8 +1,6 @@
 package com.daw.contafin.user;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,6 +38,10 @@ public class UserController extends ContentController{
 		
 		loadNavbar(model);
 		model.addAttribute("goals", false);
+		
+		//This is an example. "progresss" is an array of lessons completed in one week
+		int [] progress = {3,2,0,4,6,0,0};
+		model.addAttribute("progress", progress);
 
 		return "profile";
 	}
@@ -144,6 +146,7 @@ public class UserController extends ContentController{
 		outputStream.write(image);
 		outputStream.close();
 	}
+	
 	
 
 }

@@ -24,6 +24,9 @@
 
     <!-- Custom styles for this template -->
     <link href="css/creative.min.css" rel="stylesheet">
+    
+    <!-- Line chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
 </head>
 
@@ -81,7 +84,65 @@
                             <h1 class="card-header"><img src="profilePicture" width="90" height="35" class="img-thumbnail" id="round"> {{name}}</h1>
 
                             <div class="card-block mt-5">
-                                <h3 class="card-title">Logros</h3>
+								<h3 class="card-title">
+									<strong>Progreso semanal</strong>
+								</h3>
+								<div>
+									<canvas id="myProgress"></canvas>
+								</div>
+								<script>
+	                                let myChart = document.getElementById('myProgress').getContext('2d');
+	                                let massPopChart = new Chart(myChart, {
+	                                    type: 'line',
+	                                    data: {
+	                                        labels: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
+	                                        datasets: [{
+	                                            label: 'Lecciones',
+	                                            data: [{{#progress}}{{.}},{{/progress}}],
+	                                            lineTension: 0,
+	                                            backgroundColor: [
+	                                                'rgba(255, 159, 64, 0.6)',
+	                                            ],
+	                                            borderWidth: 2,
+	                                            borderColor: '#777',
+	                                            hoverBorderWidth: 3,
+	                                            hoverBorderColor: '#000'
+	                                        }]
+	                                    },
+	                                    options: {
+	                                        legend: {
+	                                            display: true,
+	                                            position: 'right',
+	                                            labels: {
+	                                                fontColor: '#000'
+	                                            }
+	                                        },
+	                                        layout: {
+	                                            padding: {
+	                                                left: 50,
+	                                                right: 0,
+	                                                bottom: 0,
+	                                                top: 0
+	                                            }
+	                                        },
+	                                        tooltips: {
+	                                            enabled: true
+	                                        },
+	                                        scales: {
+	                                            yAxes: [{
+	                                                ticks: {
+	                                                    max: 7,
+	                                                    min: 0,
+	                                                    stepSize: 1,
+	                                                }
+	                                            }]
+	                                        }
+	                                        
+	                                    }
+	                                });
+
+                           		</script>
+								<h3 class="card-title mt-5"><strong>Logros</strong></h3>
                                 {{#goals}}
                                 	<h5><img src="" class="img-thumbnail" id="round"> {{.}}</h5>
                                 {{/goals}}
