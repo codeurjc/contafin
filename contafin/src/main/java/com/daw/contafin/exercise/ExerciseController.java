@@ -360,7 +360,9 @@ public class ExerciseController {
 		user.upLevel();
 		
 		//Añadir la lección al respositorio de lecciones completadas.
-		/*CompletedLesson completedLesson = new Lesson(user, lesson, date);
+		
+		/* Date date = new Date(0);
+		CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
 		CompletedLessonRepository.save(completedLesson);*/
 		
 		return "completedlesson";

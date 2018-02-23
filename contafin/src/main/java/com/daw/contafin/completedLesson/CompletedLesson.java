@@ -1,5 +1,7 @@
 package com.daw.contafin.completedLesson;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,14 +26,16 @@ public class CompletedLesson {
 	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Lesson lesson;
 	
-	//private Date date;
+	private Date date;
 	
 	public CompletedLesson() {
 		
 	}
-	//public CompletedLesson(User user, Lesson lesson, Date date) {
-		
-
+	public CompletedLesson(User user, Lesson lesson, Date date) {
+		this.user = user;
+		this.lesson = lesson;
+		this.date = date;
+	}
 	public long getId() {
 		return id;
 	}
@@ -54,6 +58,16 @@ public class CompletedLesson {
 
 	public void setLesson(Lesson lesson) {
 		this.lesson = lesson;
+	}
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }

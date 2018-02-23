@@ -1,12 +1,15 @@
 package com.daw.contafin.completedLesson;
 
 
+import java.sql.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
+import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.user.User;
 
 
 public interface CompletedLessonRepository extends JpaRepository <CompletedLesson, Long>{
-	//<List> CompletedLesson findByUserAndExercise(User user, Date date);
+	<List> CompletedLesson findByUserAndDate(User user, Date date);
+	CompletedLesson findByUserAndLesson(User user, Lesson lesson);
 }

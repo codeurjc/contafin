@@ -88,41 +88,23 @@ public class LessonController extends ContentController {
 		boolean lesson2Done = false;
 		boolean lesson3Done = false;
 		
-		int exercisesDone = 0;
-		for (int i=0; i<exercises1.size();i++) {
-			CompletedExercise completedExercise = completedExerciseRepository.findByUserAndExercise(user, exercises1.get(i));
-			if(completedExercise != null) {
-				exercisesDone ++;
-			}
-		}
-		if (exercisesDone == 4) {
+		
+		CompletedLesson completedLesson1 = completedLessonRepository.findByUserAndLesson(user, lesson.get(0));
+		if(completedLesson1 != null) {
 			lesson1Done = true;
 			done++;
-		}
-		
-		exercisesDone = 0;
-		for (int i=0; i<exercises2.size();i++) {
-			CompletedExercise completedExercise = completedExerciseRepository.findByUserAndExercise(user, exercises2.get(i));
-			if(completedExercise != null) {
-				exercisesDone ++;
 			}
-		}
-		if (exercisesDone == 4) {
+		CompletedLesson completedLesson2 = completedLessonRepository.findByUserAndLesson(user, lesson.get(1));
+		if(completedLesson2 != null) {
 			lesson2Done = true;
 			done++;
-		}
-		
-		exercisesDone = 0;
-		for (int i=0; i<exercises3.size();i++) {
-			CompletedExercise completedExercise = completedExerciseRepository.findByUserAndExercise(user, exercises3.get(i));
-			if(completedExercise != null) {
-				exercisesDone ++;
 			}
-		}
-		if (exercisesDone == 4) {
+		CompletedLesson completedLesson3 = completedLessonRepository.findByUserAndLesson(user, lesson.get(2));
+		if(completedLesson3 != null) {
 			lesson3Done = true;
 			done++;
-		}
+			}
+		
 		*/
 		  
 		model.addAttribute("done", "0");
