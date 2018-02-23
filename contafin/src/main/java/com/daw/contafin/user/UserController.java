@@ -52,7 +52,6 @@ public class UserController extends ContentController{
 	public String configuration(Model model, HttpServletRequest request) {
 
 		loadNavbar(model);
-		model.addAttribute("addImage", false);
 		return "userConfiguration";
 	}
 	
@@ -116,7 +115,8 @@ public class UserController extends ContentController{
 	@RequestMapping ("newImage")
 	public String updateImage( Model model, @RequestParam("file") MultipartFile file) throws IOException {
 
-	    if (!file.isEmpty()) {
+		loadNavbar(model);
+		if (!file.isEmpty()) {
 	    		User user = userComponent.getLoggedUser();
 	    		//Upload image
 			byte[] bytes = imageService.uploadImage(file);
@@ -124,10 +124,12 @@ public class UserController extends ContentController{
 			user.setImage(bytes);
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
+			 return "configuration";   
 	    }
-	    
-	    return "configuration";   
-
+	    else {
+	    		model.addAttribute("noImage", true);
+			return "userConfiguration";
+	    }
 	}
 
 	// Show the image
