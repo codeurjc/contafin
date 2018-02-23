@@ -22,10 +22,14 @@ public class CompletedExercise {
 	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Exercise exercise;
 	
-	
+	private long error;
 	
 	public CompletedExercise() {
 		
+	}
+	public CompletedExercise(Exercise exercise, long error) {
+		this.error=error;
+		this.exercise=exercise;
 	}
 
 	public long getId() {
@@ -50,6 +54,13 @@ public class CompletedExercise {
 
 	public void setExercise(Exercise exercise) {
 		this.exercise = exercise;
+	}
+	public long getError() {
+		return error;
+	}
+
+	public void setErrores(long error) {
+		this.error = error;
 	}
 
 }

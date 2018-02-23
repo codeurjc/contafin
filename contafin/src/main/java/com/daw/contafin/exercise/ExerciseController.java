@@ -11,31 +11,31 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.daw.contafin.answer.Answer;
-import com.daw.contafin.answer.AnswerService;
+import com.daw.contafin.completedExercise.CompletedExercise;
+import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.lesson.Lesson;
-import com.daw.contafin.lesson.LessonRepository;
+import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
+
 
 @Controller
 public class ExerciseController {
 
 	@Autowired
 	private ExerciseService exerciseService;
-
+	
 	@Autowired
-	private AnswerService answerService;
-
+	private LessonService lessonService;
+	
 	@Autowired
-	private LessonRepository lessonRepository;
+	private CompletedExerciseService completedExerciseService;
 
 	@Autowired
 	UserComponent userComponent;
 
 	List<String> texts;
-	// int kindAnswer = 1;
 
 	@PostConstruct
 	public void init() {
@@ -43,49 +43,62 @@ public class ExerciseController {
 	}
 
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}/Completed")
-	public String exerciseGood(Model model, @PathVariable int id, @PathVariable int numLesson,
+	public String exerciseCompleted1(Model model, @PathVariable int id, @PathVariable int numLesson,
 			@PathVariable int numExercise, @RequestParam String solution) {
 		
-		if(solution.equals("uno")) {
-			model.addAttribute("exercise1","exercise1Good");
-			model.addAttribute("exercise2","exercise1Bad");
-			model.addAttribute("exercise3","exercise1Bad");
-
-		}
-		else if (solution.equals("dos")) {
-			model.addAttribute("exercise1","exercise1Bad");
-			model.addAttribute("exercise2","exercise1Good");
-			model.addAttribute("exercise3","exercise1Bad");
-
-		}
-		else {
-			model.addAttribute("exercise1","exercise1Bad");
-			model.addAttribute("exercise2","exercise1Bad");
-			model.addAttribute("exercise3","exercise1Good");
-		}
-				
-		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+		
+		String answer = exercise.getAnswer().getResult();
+				
+		if(solution.equals(answer)) {
+			if(solution.equals("uno")) { 
+				model.addAttribute("exercise1","exercise1Good");
+				model.addAttribute("exercise2","exercise1Bad");
+				model.addAttribute("exercise3","exercise1Bad");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+			else if (solution.equals("dos")) {
+				model.addAttribute("exercise1","exercise1Bad");
+				model.addAttribute("exercise2","exercise1Good");
+				model.addAttribute("exercise3","exercise1Bad");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+			else {
+				model.addAttribute("exercise1","exercise1Bad");
+				model.addAttribute("exercise2","exercise1Bad");
+				model.addAttribute("exercise3","exercise1Good");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+		}else {
+			model.addAttribute("exercise1","exercise1Bad");
+			model.addAttribute("exercise2","exercise1Bad");
+			model.addAttribute("exercise3","exercise1Bad");
+		}
 
-		model.addAttribute("Image1", exercise.getRuteImages().get(0));
-		model.addAttribute("Image2", exercise.getRuteImages().get(1));
-		model.addAttribute("Image3", exercise.getRuteImages().get(2));
-		model.addAttribute("Text1", exercise.getTexts().get(0));
-		model.addAttribute("Text2", exercise.getTexts().get(1));
-		model.addAttribute("Text3", exercise.getTexts().get(2));
-		model.addAttribute("Statement", exercise.getStatement());
+
+		model.addAttribute("image1", exercise.getRuteImages().get(0));
+		model.addAttribute("image2", exercise.getRuteImages().get(1));
+		model.addAttribute("image3", exercise.getRuteImages().get(2));
+		model.addAttribute("text1", exercise.getTexts().get(0));
+		model.addAttribute("text2", exercise.getTexts().get(1));
+		model.addAttribute("text3", exercise.getTexts().get(2));
+		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
 			model.addAttribute("next", false);
-			model.addAttribute("end", true);  
+			model.addAttribute("end", true); 
+			model.addAttribute("correct",false);
+
 		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
-			model.addAttribute("next", true);    
+			model.addAttribute("next", false);
+			model.addAttribute("correct",true);
 			model.addAttribute("end", false);
 			model.addAttribute("idunit", id);
 			model.addAttribute("nextNumExercise", nextNumExercise);
@@ -109,29 +122,80 @@ public class ExerciseController {
 		model.addAttribute("exercise2","exercise1");
 		model.addAttribute("exercise3","exercise1");
 		
-		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
 
-		model.addAttribute("Image1", exercise.getRuteImages().get(0));
-		model.addAttribute("Image2", exercise.getRuteImages().get(1));
-		model.addAttribute("Image3", exercise.getRuteImages().get(2));
-		model.addAttribute("Text1", exercise.getTexts().get(0));
-		model.addAttribute("Text2", exercise.getTexts().get(1));
-		model.addAttribute("Text3", exercise.getTexts().get(2));
-		model.addAttribute("Statement", exercise.getStatement());
+		model.addAttribute("image1", exercise.getRuteImages().get(0));
+		model.addAttribute("image2", exercise.getRuteImages().get(1));
+		model.addAttribute("image3", exercise.getRuteImages().get(2));
+		model.addAttribute("text1", exercise.getTexts().get(0));
+		model.addAttribute("text2", exercise.getTexts().get(1));
+		model.addAttribute("text3", exercise.getTexts().get(2));
+		model.addAttribute("statement", exercise.getStatement());
 		
+
+		int typeNext = nextExercise.getKind();
+		long nextNumExercise = nextExercise.getId();
+
+		model.addAttribute("next", true);
+		model.addAttribute("correct",false);
+		model.addAttribute("end", false);
+		model.addAttribute("idunit", id);
+		model.addAttribute("nextNumExercise", nextNumExercise);
+		model.addAttribute("nextType", typeNext);
+		model.addAttribute("idlesson", numLesson);
+
+		model.addAttribute("thisExercise", numExercise);
+
+		return "exerciseType1"; 
+	}
+
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/2/{numExercise}/Completed")
+	public String exerciseCompleted2(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise, @RequestParam String solution) {
+		
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
+
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+		
+		String answerCorrect = exercise.getAnswer().getResult();
+		
+		String[] answer = answerCorrect.split(" ");
+		String[] solutionparts = solution.split(" ");
+		int counter=0;
+		
+		for(int i=0;i<solutionparts.length;i++) {
+			for(int j=0;j<answer.length;j++) {
+				if(solutionparts[i].equals(answer[j])) {
+					counter++;
+				}
+			}
+		}
+		if(counter>=3) {
+			model.addAttribute("color","exercise1Good");
+		}
+		else {
+			model.addAttribute("color","exercise1Bad");
+		}
+		
+		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
 			model.addAttribute("next", false);
-			model.addAttribute("end", true);  
+			model.addAttribute("end", true); 
+			model.addAttribute("correct",false);
+
 		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
-			model.addAttribute("next", true);    
+			model.addAttribute("next", false);
+			model.addAttribute("correct",true);
 			model.addAttribute("end", false);
 			model.addAttribute("idunit", id);
 			model.addAttribute("nextNumExercise", nextNumExercise);
@@ -141,66 +205,38 @@ public class ExerciseController {
 
 		model.addAttribute("thisExercise", numExercise);
 
-		/*boolean bool = true;  
-		while (bool == true) {
-			Answer answer = answerService.findByExercise(exercise);
-			if (solution.equals("uno")) {  
-				model.addAttribute("ver1", true); 
-				model.addAttribute("ver2", false);
-				model.addAttribute("ver3", false);
-			} else if (solution.equals("dos")) {
-				model.addAttribute("ver1", false);
-				model.addAttribute("ver2", true);
-				model.addAttribute("ver3", false);
-			} else {
-				model.addAttribute("ver1", false);
-				model.addAttribute("ver2", false);
-				model.addAttribute("ver3", true);
-			}
-		}*/
-		/*
-		 * if (kindAnswer == 1) { model.addAttribute("color1", "exercise1");
-		 * model.addAttribute("color2", "exercise1"); model.addAttribute("color3",
-		 * "exercise1"); } else if (answeruser.equals(answer.getResult())) { if
-		 * (answeruser == "1") { model.addAttribute("color1", "exercise1Good"); } else
-		 * if (answeruser == "2") { model.addAttribute("color2", "exercise1Good"); }
-		 * else { model.addAttribute("color3", "exercise1Good"); } } else {
-		 * model.addAttribute("color1", "exercise1Bad"); model.addAttribute("color2",
-		 * "exercise1Bad"); model.addAttribute("color3", "exercise1Bad");
-		 * 
-		 * } String texto = "exercise1"; model.addAttribute("color1", texto);
-		 * model.addAttribute("color2", texto); model.addAttribute("color3", texto);
-		 */
-
-		return "exerciseType1"; 
+		
+		
+		return "exerciseType2";
 	}
-
+	
+	
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/2/{numExercise}")
 	public String exercise2(Model model, @PathVariable int id, @PathVariable int numLesson,
 			@PathVariable int numExercise) {
+		
+		model.addAttribute("color","exercise2");
 
-		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
 
-		model.addAttribute("Statement", exercise.getStatement());
+		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
-			model.addAttribute("next", false);
-			model.addAttribute("end", true);
-		} else {
-			int typeNext = nextExercise.getKind();
-			long nextNumExercise = nextExercise.getId();
+		int typeNext = nextExercise.getKind();
+		long nextNumExercise = nextExercise.getId();
 
-			model.addAttribute("next", true);
-			model.addAttribute("end", false);
-			model.addAttribute("idunit", id);
-			model.addAttribute("nextNumExercise", nextNumExercise);
-			model.addAttribute("nextType", typeNext);
-		}
+		model.addAttribute("next", true);
+		model.addAttribute("correct",false);
+		model.addAttribute("end", false);
+		model.addAttribute("idunit", id);
+		model.addAttribute("nextNumExercise", nextNumExercise);
+		model.addAttribute("nextType", typeNext);
 		model.addAttribute("idlesson", numLesson);
+
+		model.addAttribute("thisExercise", numExercise);
 
 		return "exerciseType2";
 	}
@@ -258,33 +294,106 @@ public class ExerciseController {
 	 * return "exerciseType4"; }
 	 */
 
-	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/5/{numExercise}")
-	public String exercise5(Model model, @PathVariable int id, @PathVariable int numLesson,
-			@PathVariable int numExercise) {
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/5/{numExercise}/Completed")
+	public String exerciseCompleted5(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise, @RequestParam String solution) {
+		
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
-		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
 
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+		
+		String answer = exercise.getAnswer().getResult();
+				
+		if(solution.equals(answer)) {
+			if(solution.equals("uno")) { 
+				model.addAttribute("exercise1","exercise1Good");
+				model.addAttribute("exercise2","exercise1Bad");
+				model.addAttribute("exercise3","exercise1Bad");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+			else if (solution.equals("dos")) {
+				model.addAttribute("exercise1","exercise1Bad");
+				model.addAttribute("exercise2","exercise1Good");
+				model.addAttribute("exercise3","exercise1Bad");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+			else {
+				model.addAttribute("exercise1","exercise1Bad");
+				model.addAttribute("exercise2","exercise1Bad");
+				model.addAttribute("exercise3","exercise1Good");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+		}else {
+			model.addAttribute("exercise1","exercise1Bad");
+			model.addAttribute("exercise2","exercise1Bad");
+			model.addAttribute("exercise3","exercise1Bad");
+		}
+
 		texts = exerciseService.findById(numExercise).getTexts();
 
-		model.addAttribute("Statement", exercise.getStatement());
-		model.addAttribute("texts", texts);
-
+		model.addAttribute("text1", texts.get(0));
+		model.addAttribute("text2",  texts.get(1));
+		model.addAttribute("text3",  texts.get(2));
+		model.addAttribute("statement", exercise.getStatement());
+		
 		if (nextExercise == null) {
 			model.addAttribute("next", false);
-			model.addAttribute("end", true);
+			model.addAttribute("end", true); 
+			model.addAttribute("correct",false);
+
 		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
-			model.addAttribute("next", true);
+			model.addAttribute("next", false);
+			model.addAttribute("correct",true);
 			model.addAttribute("end", false);
 			model.addAttribute("idunit", id);
 			model.addAttribute("nextNumExercise", nextNumExercise);
 			model.addAttribute("nextType", typeNext);
 		}
 		model.addAttribute("idlesson", numLesson);
+
+		model.addAttribute("thisExercise", numExercise);
+
+		
+		
+		return "exerciseType5";
+	}
+	
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/5/{numExercise}")
+	public String exercise5(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise) {
+		
+		model.addAttribute("exercise1","exercise1");
+		model.addAttribute("exercise2","exercise1");
+		model.addAttribute("exercise3","exercise1");
+
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+		texts = exerciseService.findById(numExercise).getTexts();
+
+		model.addAttribute("text1", texts.get(0));
+		model.addAttribute("text2",  texts.get(1));
+		model.addAttribute("text3",  texts.get(2));
+		model.addAttribute("statement", exercise.getStatement());
+
+		int typeNext = nextExercise.getKind();
+		long nextNumExercise = nextExercise.getId();
+
+		model.addAttribute("next", true);
+		model.addAttribute("correct",false);
+		model.addAttribute("end", false);
+		model.addAttribute("idunit", id);
+		model.addAttribute("nextNumExercise", nextNumExercise);
+		model.addAttribute("nextType", typeNext);
+		model.addAttribute("idlesson", numLesson);
+
+		model.addAttribute("thisExercise", numExercise);
 
 		return "exerciseType5";
 	}
@@ -318,26 +427,62 @@ public class ExerciseController {
 	 * return "exerciseType6"; }
 	 */
 
-	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/7/{numExercise}")
-	public String exercise7(Model model, @PathVariable int id, @PathVariable int numLesson,
-			@PathVariable int numExercise) {
+	
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/7/{numExercise}/Completed")
+	public String exerciseCompleted7(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise, @RequestParam String solution) {
+		
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
-		Lesson lesson = lessonRepository.findById(numLesson + (3 * (id - 1)));
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+		
+		String answer = exercise.getAnswer().getResult();
+				
+		if(solution.equals(answer)) {
+			if(solution.equals("uno")) { 
+				model.addAttribute("exercise1","exercise1Good");
+				model.addAttribute("exercise2","exercise1Bad");
+				model.addAttribute("exercise3","exercise1Bad");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+			else if (solution.equals("dos")) {
+				model.addAttribute("exercise1","exercise1Bad");
+				model.addAttribute("exercise2","exercise1Good");
+				model.addAttribute("exercise3","exercise1Bad");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+			else {
+				model.addAttribute("exercise1","exercise1Bad");
+				model.addAttribute("exercise2","exercise1Bad");
+				model.addAttribute("exercise3","exercise1Good");
+				completedExerciseService.save(new CompletedExercise(exercise,0));
+			}
+		}else {
+			model.addAttribute("exercise1","exercise1Bad");
+			model.addAttribute("exercise2","exercise1Bad");
+			model.addAttribute("exercise3","exercise1Bad");
+		}
+
 		texts = exerciseService.findById(numExercise).getTexts();
 
-		model.addAttribute("Statement", exercise.getStatement());
-		model.addAttribute("texts", texts);
-
+		model.addAttribute("text1", texts.get(0));
+		model.addAttribute("text2",  texts.get(1));
+		model.addAttribute("text3",  texts.get(2));
+		model.addAttribute("statement", exercise.getStatement());
+		
 		if (nextExercise == null) {
 			model.addAttribute("next", false);
-			model.addAttribute("end", true);
+			model.addAttribute("end", true); 
+			model.addAttribute("correct",false);
+
 		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
-			model.addAttribute("next", true);
+			model.addAttribute("next", false);
+			model.addAttribute("correct",true);
 			model.addAttribute("end", false);
 			model.addAttribute("idunit", id);
 			model.addAttribute("nextNumExercise", nextNumExercise);
@@ -345,13 +490,53 @@ public class ExerciseController {
 		}
 		model.addAttribute("idlesson", numLesson);
 
+		model.addAttribute("thisExercise", numExercise);
+
+		
+		
+		return "exerciseType7";
+	}
+	
+	
+	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/7/{numExercise}")
+	public String exercise7(Model model, @PathVariable int id, @PathVariable int numLesson,
+			@PathVariable int numExercise) {
+
+		model.addAttribute("exercise1","exercise1");
+		model.addAttribute("exercise2","exercise1");
+		model.addAttribute("exercise3","exercise1");
+
+		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
+		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
+
+		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
+		texts = exerciseService.findById(numExercise).getTexts();
+
+		model.addAttribute("text1", texts.get(0));
+		model.addAttribute("text2",  texts.get(1));
+		model.addAttribute("text3",  texts.get(2));
+		model.addAttribute("statement", exercise.getStatement());
+
+		int typeNext = nextExercise.getKind();
+		long nextNumExercise = nextExercise.getId();
+
+		model.addAttribute("next", true);
+		model.addAttribute("correct",false);
+		model.addAttribute("end", false);
+		model.addAttribute("idunit", id);
+		model.addAttribute("nextNumExercise", nextNumExercise);
+		model.addAttribute("nextType", typeNext);
+		model.addAttribute("idlesson", numLesson);
+
+		model.addAttribute("thisExercise", numExercise);
+
 		return "exerciseType7";
 	}
 
 	@RequestMapping("/lesson/{idLesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idLesson) {
 
-		Lesson lesson = lessonRepository.findById(idLesson);
+		Lesson lesson = lessonService.findById(idLesson);
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 
 		// Te devuelve el usuario loggeado

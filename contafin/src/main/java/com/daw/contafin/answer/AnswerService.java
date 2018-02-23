@@ -14,4 +14,7 @@ public class AnswerService {
 	public Answer findByExercise (Exercise exercise) {
 		return answerRepository.findByExercise(exercise);
 	}
+	public void save(Answer answer) {
+		answerRepository.save(answer);
+	}
 }

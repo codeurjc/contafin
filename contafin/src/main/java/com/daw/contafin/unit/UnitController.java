@@ -141,13 +141,13 @@ public class UnitController {
 		// (Haciendo una consulta para calcular la ultima id de lecciones o algo asi
 
 		Lesson lesson = lessonRepository.findById(1);
-		Answer answer = new Answer("1");
+		Answer answer = new Answer("uno");
 		List<String> images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
 		List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales",
 				"218. Elementos de transporte");
 		exerciseRepository.save(new Exercise(1, "1.1.1 Seleccione el asiento", images, texts, answer, lesson));
 
-		answer = new Answer("2");
+		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseRepository.save(new Exercise(2, "1.1.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
 
@@ -165,7 +165,7 @@ public class UnitController {
 				"Inmovilizado intangible");
 		exerciseRepository.save(new Exercise(4, "1.1.4 Realiza el asiento", null, texts, answer, lesson));*/
 
-		answer = new Answer("5");
+		answer = new Answer("tres");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseRepository.save(
 				new Exercise(5, "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
@@ -178,7 +178,7 @@ public class UnitController {
 				"1.1.6 Escoge la cuenta que falta: La empresa saca 5 de la cuenta corriente bancaria y lo ingresa en caja",
 				null, texts, answer, lesson));*/
 
-		answer = new Answer("7");
+		answer = new Answer("dos");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
 				"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",

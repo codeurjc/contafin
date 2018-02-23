@@ -81,13 +81,14 @@
 		</div>
 	</div>
 
-	<form action="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/1/{{thisExercise}}/Completed">
+	<form
+		action="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/1/{{thisExercise}}/Completed" method='post'>
 		<!--Question and answers-->
 		<section class="p-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h2 class="section-heading">{{Statement}}</h2>
+						<h2 class="section-heading">{{statement}}</h2>
 						<hr class="my-4">
 					</div>
 				</div>
@@ -95,42 +96,29 @@
 			<div class="container ">
 				<div class="row">
 					<div class="container">
-
-
-
 						<div class="row justify-content-around">
 							<div class="col-lg-4 col-md-6">
 								<label class="service-box mt-5 mx-auto text-center card-body"
 									id="{{exercise1}}"> <img class="img-fluid "
-									src="{{Image1}}" alt="" id="selectLesson"> <input
-									type="radio" name="solution" value="uno">{{Text1}}</input>
+									src="{{image1}}" alt="" id="selectLesson"> <input
+									type="radio" name="solution" value="uno">{{text1}}</input>
 								</label>
 							</div>
 							<div class="col-lg-4 col-md-6">
 								<label class="service-box mt-5 mx-auto text-center card-body"
 									id="{{exercise2}}"> <img class="img-fluid "
-									src="{{Image2}}" alt="" id="selectLesson"> <input
-									type="radio" name="solution" value="dos">
-									{{Text2}}</input>
+									src="{{image2}}" alt="" id="selectLesson"> <input
+									type="radio" name="solution" value="dos"> {{text2}}</input>
 								</label>
 							</div>
 							<div class="col-lg-4 col-md-6">
 								<label class="service-box mt-5 mx-auto text-center card-body"
 									id="{{exercise3}}"> <img class="img-fluid "
-									src="{{Image3}}" alt="" id="selectLesson"> <input
-									type="radio" name="solution" value="tres"> {{Text3}}</input>
+									src="{{image3}}" alt="" id="selectLesson"> <input
+									type="radio" name="solution" value="tres"> {{text3}}</input>
 								</label>
 							</div>
-							<!-- <button type="submit" name="/home">Send message</button>-->
-							<hr class="my-4">
-							<hr class="my-4">
-							<div class="row justify-content-around">
-								<div class="col-lg-12 col-md-6"></div>
-							</div>
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
@@ -141,15 +129,17 @@
 			<div class="container-fluid py-3">
 				<div class="btn-toolbar justify-content-between" role="toolbar"
 					aria-label="Toolbar with button groups">
-					{{#end}}<a class="btn btn-primary btn-xl js-scroll-trigger"
-						href="/lesson/{{idlesson}}/lessonCompleted/">CALIFICAR</a>
-					{{/end}} {{#next}} <a
+					{{#end}} <a class="js-scroll-trigger" href=""></a> <a
+						class="btn btn-primary btn-xl js-scroll-trigger"
+						href="/lesson/{{idlesson}}/lessonCompleted/">SIGUIENTE</a>
+					{{/end}} {{#correct}} <a class="js-scroll-trigger"></a> <a
+						class="btn btn-primary btn-xl js-scroll-trigger"
+						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SIGUIENTE</a>
+					{{/correct}} {{#next}} <a
 						class="btn btn-primary btn-xl js-scroll-trigger"
 						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SALTAR</a>
 					<button class="btn btn-primary btn-xl js-scroll-trigger"
-						type="submit" >CALIFICAR</button>
-					<!-- <a class="btn btn-primary btn-xl js-scroll-trigger"
-					href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">CALIFICAR</a>-->
+						type="submit">CALIFICAR</button>
 					{{/next}}
 				</div>
 			</div>

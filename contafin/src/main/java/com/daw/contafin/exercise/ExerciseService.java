@@ -30,6 +30,10 @@ public class ExerciseService {
 		public List <Exercise> findByLesson(Lesson lesson) {
 			 return exerciseRepository.findByLesson(lesson);
 		}
+		public void save(Exercise exercise) {
+			exerciseRepository.save(exercise);
+		}
+		
 		
 		
 		
