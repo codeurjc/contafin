@@ -22,7 +22,7 @@ public class CompletedExercise {
 	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Exercise exercise;
 	
-	private long errores;
+	
 	
 	public CompletedExercise() {
 		
@@ -50,14 +50,6 @@ public class CompletedExercise {
 
 	public void setExercise(Exercise exercise) {
 		this.exercise = exercise;
-	}
-
-	public long getErrores() {
-		return errores;
-	}
-
-	public void setErrores(long errores) {
-		this.errores = errores;
 	}
 
 }
