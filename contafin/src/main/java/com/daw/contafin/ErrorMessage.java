@@ -10,7 +10,7 @@ import org.springframework.web.context.WebApplicationContext;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ErrorMessage {
 	
-	private String message = "The webpage doesn't exist or you don't have permission.";
+	private String message = "The web page doesn't exist or you don't have permission.";
 
 	public ErrorMessage(){
 

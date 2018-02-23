@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
     String error(Model model) {
     
     model.addAttribute("errorMessage",errorMessage.getMessage());
+    errorMessage.setMessage("The web page doesn't exist or you don't have permission.");
     
         return "error2";
     }
