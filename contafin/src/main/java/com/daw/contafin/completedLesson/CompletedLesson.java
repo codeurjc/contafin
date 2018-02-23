@@ -29,6 +29,8 @@ public class CompletedLesson {
 	public CompletedLesson() {
 		
 	}
+	//public CompletedLesson(User user, Lesson lesson, Date date) {
+		
 
 	public long getId() {
 		return id;

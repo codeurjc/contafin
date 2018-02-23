@@ -358,6 +358,11 @@ public class ExerciseController {
 		User user = userComponent.getLoggedUser();
 		user.setLevel(user.getExp() + 10);
 		user.upLevel();
+		
+		//Añadir la lección al respositorio de lecciones completadas.
+		/*CompletedLesson completedLesson = new Lesson(user, lesson, date);
+		CompletedLessonRepository.save(completedLesson);*/
+		
 		return "completedlesson";
 
 		/*
@@ -375,7 +380,7 @@ public class ExerciseController {
 
 	@RequestMapping("/continueLesson")
 	public String continueLesson(Model model) {
-		// obtener el numero de ejercicios completados y saber su porcentaje del total y
+		// obtener el numero de lecciones completadas y saber su porcentaje del total y
 		// pasarselo.
 		model.addAttribute("percentage", "31");
 		return "continueLesson";
