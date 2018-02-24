@@ -107,9 +107,10 @@ public class ExerciseController {
 		model.addAttribute("text3", exercise.getTexts().get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		//Con este codigo se consigue que el ejercicio no correcto se vaya al final
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
-			//Con este codigo se consigue que el ejercicio no correcto se vaya al final
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
 				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
@@ -177,7 +178,8 @@ public class ExerciseController {
 		model.addAttribute("text3", exercise.getTexts().get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
@@ -256,7 +258,8 @@ public class ExerciseController {
 
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
@@ -316,7 +319,8 @@ public class ExerciseController {
 
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
@@ -468,7 +472,8 @@ public class ExerciseController {
 		model.addAttribute("text3", texts.get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
@@ -532,7 +537,9 @@ public class ExerciseController {
 		model.addAttribute("text3", texts.get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
+			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
 				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
@@ -659,7 +666,8 @@ public class ExerciseController {
 		model.addAttribute("text3", texts.get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
@@ -723,7 +731,8 @@ public class ExerciseController {
 		model.addAttribute("text3", exercise.getTexts().get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		if (nextExercise == null) {
+		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
+		if (nextExercise == null || nextCompletedExercise!=null) {
 			
 			List<Exercise> exercises= exerciseService.findByLesson(lesson);
 			for(int i=0; i<exercises.size();i++) {
