@@ -609,10 +609,12 @@ public class ExerciseController {
 		if(completedLessonS == null) {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
 			completedLessonRepository.save(completedLesson);
-			//user.setExp(user.getExp() + 10);
-			//user.upLevel();
-			//userService.updateUserData(user);
-			//userComponent.setLoggedUser(user);
+			if(userComponent.getLoggedUser().getRoles().contains("ROLE_USER")) {
+				user.setExp(user.getExp() + 10);
+				user.upLevel();
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
+			}
 		}
 		
 		return "completedLesson";	
