@@ -130,13 +130,19 @@
 					{{/end}} {{#correct}} <a class="js-scroll-trigger"></a> <a
 						class="btn btn-primary btn-xl js-scroll-trigger"
 						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SIGUIENTE</a>
-					{{/correct}} {{#next}} {{#final}}<a
+					{{/correct}} {{#next}}<a
 						class="btn btn-primary btn-xl js-scroll-trigger"
 						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SALTAR</a>
-					{{/final}}
 					<button class="btn btn-primary btn-xl js-scroll-trigger"
 						type="submit">CALIFICAR</button>
 					{{/next}}
+					
+					{{#tocorrectend}} <a class="js-scroll-trigger"></a>
+					<button class="btn btn-primary btn-xl js-scroll-trigger"
+						type="submit">CALIFICAR</button>
+					{{/tocorrectend}}
+					
+					
 				</div>
 			</div>
 		</footer>
