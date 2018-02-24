@@ -2,6 +2,7 @@ package com.daw.contafin.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -53,6 +54,12 @@ public class WebController extends ContentController {
 			}
 			loadNavbar(model);
 			model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
+			
+			//Update the user's last connection
+			User user = userComponent.getLoggedUser();
+			user.setLastConnection(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
 		}
 		loadUnits(model);
 		return "home";
@@ -112,5 +119,15 @@ public class WebController extends ContentController {
 		}
 
 	}
+	
+	@RequestMapping("/logout")
+	public void  logout() {
+		
+		//Update the user's last connection
+		User user = userComponent.getLoggedUser();
+		user.setLastConnection(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+		userService.updateUserData(user);
+	}
+	
 
 }
