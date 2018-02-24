@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.daw.contafin.exercise.Exercise;
+import com.daw.contafin.user.User;
 //import com.daw.contafin.student.Student;
 
 @Entity
@@ -16,8 +17,8 @@ public class CompletedExercise {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 	
-	/*@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
-	private User user;*/
+	@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
+	private User user;
 	
 	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
 	private Exercise exercise;
@@ -27,7 +28,8 @@ public class CompletedExercise {
 	public CompletedExercise() {
 		
 	}
-	public CompletedExercise(Exercise exercise, long error) {
+	public CompletedExercise(User user,Exercise exercise, long error) {
+		this.user=user;
 		this.error=error;
 		this.exercise=exercise;
 	}

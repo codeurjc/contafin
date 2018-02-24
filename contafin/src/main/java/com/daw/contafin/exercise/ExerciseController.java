@@ -41,6 +41,7 @@ public class ExerciseController {
 	private CompletedLessonRepository completedLessonRepository;
 
 	List<String> texts;
+	User user;
 
 	@PostConstruct
 	public void init() {
@@ -50,6 +51,8 @@ public class ExerciseController {
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}/Completed")
 	public String exerciseCompleted1(Model model, @PathVariable int id, @PathVariable int numLesson,
 			@PathVariable int numExercise, @RequestParam String solution) {
+		
+		user = userComponent.getLoggedUser();
 
 		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
@@ -64,17 +67,17 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			}
 		} else {
 			if (solution.equals("uno")) {
@@ -196,6 +199,7 @@ public class ExerciseController {
 		}
 		if (counter >= 3) {
 			model.addAttribute("color", "exercise1Good");
+			completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 		} else {
 			model.addAttribute("color", "exercise1Bad");
 		}
@@ -335,17 +339,17 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			}
 		} else {
 			if (solution.equals("uno")) {
@@ -483,17 +487,17 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(exercise, 0));
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			}
 		} else {
 			if (solution.equals("uno")) {
@@ -592,7 +596,7 @@ public class ExerciseController {
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 
 		// Te devuelve el usuario loggeado
-		User user = userComponent.getLoggedUser();
+		user = userComponent.getLoggedUser();
 		//user.setExp(user.getExp() + 10);
 		//user.upLevel();
 

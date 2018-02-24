@@ -13,8 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.OneToMany;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.daw.contafin.completedExercise.CompletedExercise;
 
 //import com.daw.contafin.completedExercise.CompletedExercise;
 
@@ -48,8 +51,8 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER) 
 	private List<String> roles;
 	
-	//@OneToMany (mappedBy="student")
-	//private List<CompletedExercise> exercises;
+	@OneToMany (mappedBy="user")
+	private List<CompletedExercise> exercises;
 	
 	
 	public User() {
