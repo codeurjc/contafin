@@ -1,7 +1,6 @@
 package com.daw.contafin.exercise;
 
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -109,6 +108,30 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			//Con este codigo se consigue que el ejercicio no correcto se vaya al final
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType1";
+				}
+			}
+			//Hasta aquí
+			
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -155,6 +178,28 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType1";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
@@ -212,6 +257,28 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType2";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -250,6 +317,28 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType2";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
@@ -380,6 +469,28 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType5";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -422,6 +533,27 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType5";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
@@ -528,6 +660,28 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType7";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -570,6 +724,28 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		if (nextExercise == null) {
+			
+			List<Exercise> exercises= exerciseService.findByLesson(lesson);
+			for(int i=0; i<exercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+				if (completedExerciseS == null) {
+					nextExercise = exercises.get(i);
+					int typeNext = nextExercise.getKind();
+					long nextNumExercise = nextExercise.getId();
+					model.addAttribute("next", false);
+					model.addAttribute("correct", true);
+					model.addAttribute("end", false);
+					model.addAttribute("tocorrectend", false);
+					model.addAttribute("idunit", id);
+					model.addAttribute("nextNumExercise", nextNumExercise);
+					model.addAttribute("nextType", typeNext);
+					model.addAttribute("idunit", id);
+					model.addAttribute("idlesson", numLesson);
+					model.addAttribute("thisExercise", numExercise);
+					return "exerciseType7";
+				}
+			}
+			
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
