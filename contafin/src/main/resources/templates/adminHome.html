@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -31,6 +30,9 @@
 <!-- Custom styles for this template -->
 <link href="css/creative.min.css" rel="stylesheet">
 
+<!--  Pagination -->
+<script type="js/pagination.js"></script>
+
 </head>
 
 <body class="bghome" id="page-top">
@@ -50,21 +52,6 @@
 							<span class="sr-only">(current)</span>
 					</a></li>
 				</ul>
-				<ul class="navbar-nav ml-auto">
-					<li><img src="img/profile.png" width="40" height="35"
-						class="img-thumbnail"></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle " id="navbarDropdownMenuLink"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="profile">Tu perfil</a> <a
-								class="dropdown-item" href="configuration">Configuracion</a> <a
-								class="dropdown-item" href="goal">Fijar meta</a> <a
-								class="dropdown-item" href="#">Atajos de teclado</a> <a
-								class="dropdown-item" href="/logout">Cerrar Sesion</a>
-						</div></li>
-				</ul>
 			</div>
 		</div>
 	</nav>
@@ -75,83 +62,17 @@
 					<div id="accordion">
 						<div class="card">
 							<div class="card-header" id="headingOne">
-								<h5 class="mb-0">
-									<button class="btn btn-link" data-toggle="collapse"
-										data-target="#collapseOne" aria-expanded="true"
-										aria-controls="collapseOne">Alumnos</button>
-								</h5>
+								<h3 class="card-title mt-2"><strong>ADMINISTRACIÓN</strong></h3>
 							</div>
-
-							<div id="collapseOne" class="collapse show"
-								aria-labelledby="headingOne" data-parent="#accordion">
-								<div class="card-body">
-									<table class="table table-hover">
-										<thead>
-											<tr>
-												<th scope="col">Nombre</th>
-												<th scope="col">Nivel</th>
-												<th scope="col">Email</th>
-											</tr>
-										</thead>
-										<tbody>
-											{{#users}}
-											<tr>
-												<td>{{username}}</td>
-												<td>{{levels}}</td>
-												<td>{{email}}</td>
-											</tr>
-											{{/users}}
-										</tbody>
-									</table>
-								</div>
-							</div>
+                    </div>
+                    <div class="row">
+						<div class=" col-sm-6 card-block mb-2">
+						<a id="add-users" class="btn btn-primary js-scroll-trigger mt-5" href="Admin/UsersData">Ver datos de los usuarios</a>
 						</div>
-						<div class="card">
-							<div class="card-header" id="headingTwo">
-								<h5 class="mb-0">
-									<button class="btn btn-link collapsed" data-toggle="collapse"
-										data-target="#collapseTwo" aria-expanded="false"
-										aria-controls="collapseTwo">Lecciones</button>
-								</h5>
-							</div>
-							<div id="collapseTwo" class="collapse"
-								aria-labelledby="headingTwo" data-parent="#accordion">
-								<div class="card-body">
-
-									<div class="row justify-content-around">
-										{{#units}}
-										<div class="col-lg-6 col-md-6 ">
-											<div class="service-box mt-5 mx-auto text-center card-body"
-												id="Unit">
-												<a class="col-lg-5" href="/Unit/{{-index}}/lessons"
-													id="selectLesson">
-													<h2 class="text-white ">{{.}}</h2>
-												</a>
-											</div>
-										</div>
-										{{/units}}
-									</div>
-
-								</div>
-								<div class="card-body">
-									<button type="button" class="btn btn-outline-secondary">Añadir
-										Unidad</button>
-								</div>
-							</div>
+						<div class="col-sm-6 card-block  mb-2">
+						<a id="add-users" class="btn btn-primary js-scroll-trigger mt-5" href="Admin/UnitCreation">Subir contenido</a>
 						</div>
-						<div class="card">
-							<div class="card-header" id="headingThree">
-								<h5 class="mb-0">
-									<button class="btn btn-link collapsed" data-toggle="collapse"
-										data-target="#collapseThree" aria-expanded="false"
-										aria-controls="collapseThree">Estadísticas</button>
-								</h5>
-							</div>
-							<div id="collapseThree" class="collapse"
-								aria-labelledby="headingThree" data-parent="#accordion">
-								<div class="card-body"></div>
-							</div>
-						</div>
+					</div>
 					</div>
 
 
@@ -160,8 +81,7 @@
 
 		</div>
 	</div>
-
-
+	
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -176,5 +96,4 @@
 	<script src="js/changeFixed.js"></script>
 
 </body>
-
 </html>

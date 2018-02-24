@@ -1,9 +1,7 @@
 package com.daw.contafin.security;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import javax.mail.MessagingException;
 
@@ -65,33 +63,9 @@ public class WebController extends ContentController {
 		return "home";
 	}
 	
-	@RequestMapping ("adminHomePage")
+	@RequestMapping ("Admin/Home")
 	public String adminHomePage(Model model) {
-
-			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
-			model.addAttribute("users", userService.getUsers());
-
-			List<User> user = userService.getUsers();
-			List<String> users = new ArrayList<>();
-			List<String> emails = new ArrayList<>();
-			List<Integer> levels = new ArrayList<>();
-
-			for (int i = 0; i < user.size(); i++) {
-
-				users.add(user.get(i).getName());
-				levels.add(user.get(i).getLevel());
-				emails.add(user.get(i).getEmail());
-
-			}
-
-			model.addAttribute("username", users);
-			model.addAttribute("levels", levels);
-			model.addAttribute("email", emails);
-
-			loadUnits(model);
-
-			return "adminHome";
-		
+		return "adminHome";
 	}
 
 	// Sign Up Controller
