@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>NAME</td>
+				<td>EMAIL</td>
+				<td>LEVEL</td>
+				<td>POINTS</td>
+				<td>DAILY GOAL</td>
+				<td>STREAK</td>
+				<td>FLUENCY</td>
+				<td>EXPERIENCE</td>
+				<td>LAST CONNECTION</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tbody>
+			{{#userList}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{email}}</td>
+				<td>{{level}}</td>
+				<td>{{points}}</td>
+				<td>{{dailyGoal}}</td>
+				<td>{{Streak}}</td>
+				<td>{{fluency}}</td>
+				<td>{{exp}}</td>
+			</tr>
+			{{/userList}}
+		</tbody>
+		</tbody>
+	</table>
+
+	<form action="Export">
+		<input name="xls" type="submit" value="Exportar">
+	</form>
+</body>
+</html>
