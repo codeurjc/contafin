@@ -587,14 +587,14 @@ public class ExerciseController {
 
 	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson) {
-/*
+
 		Lesson lesson = lessonService.findById(idlesson);
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 
 		// Te devuelve el usuario loggeado
 		User user = userComponent.getLoggedUser();
-		user.setLevel(user.getExp() + 10);
-		user.upLevel();
+		//user.setExp(user.getExp() + 10);
+		//user.upLevel();
 
 		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
 
@@ -604,7 +604,7 @@ public class ExerciseController {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
 			completedLessonRepository.save(completedLesson);
 		}
-		*/
+		
 		return "completedLesson";	
 	}
 
