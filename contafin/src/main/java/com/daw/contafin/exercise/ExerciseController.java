@@ -56,24 +56,34 @@ public class ExerciseController {
 		if (solution.equals(answer)) {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Good");
-				model.addAttribute("exercise2", "exercise1Bad");
-				model.addAttribute("exercise3", "exercise1Bad");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			} else if (solution.equals("dos")) {
-				model.addAttribute("exercise1", "exercise1Bad");
+				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
-				model.addAttribute("exercise3", "exercise1Bad");
+				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			} else {
-				model.addAttribute("exercise1", "exercise1Bad");
-				model.addAttribute("exercise2", "exercise1Bad");
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			}
 		} else {
-			model.addAttribute("exercise1", "exercise1Bad");
-			model.addAttribute("exercise2", "exercise1Bad");
-			model.addAttribute("exercise3", "exercise1Bad");
+			if (solution.equals("uno")) {
+				model.addAttribute("exercise1", "exercise1Bad");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1");
+			} else if (solution.equals("dos")) {
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1Bad");
+				model.addAttribute("exercise3", "exercise1");
+			} else {
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1Bad");
+			}
 		}
 
 		model.addAttribute("image1", exercise.getRuteImages().get(0));
@@ -317,24 +327,34 @@ public class ExerciseController {
 		if (solution.equals(answer)) {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Good");
-				model.addAttribute("exercise2", "exercise1Bad");
-				model.addAttribute("exercise3", "exercise1Bad");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			} else if (solution.equals("dos")) {
-				model.addAttribute("exercise1", "exercise1Bad");
+				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
-				model.addAttribute("exercise3", "exercise1Bad");
+				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			} else {
-				model.addAttribute("exercise1", "exercise1Bad");
-				model.addAttribute("exercise2", "exercise1Bad");
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			}
 		} else {
-			model.addAttribute("exercise1", "exercise1Bad");
-			model.addAttribute("exercise2", "exercise1Bad");
-			model.addAttribute("exercise3", "exercise1Bad");
+			if (solution.equals("uno")) {
+				model.addAttribute("exercise1", "exercise1Bad");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1");
+			} else if (solution.equals("dos")) {
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1Bad");
+				model.addAttribute("exercise3", "exercise1");
+			} else {
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1Bad");
+			}
 		}
 
 		texts = exerciseService.findById(numExercise).getTexts();
@@ -455,24 +475,34 @@ public class ExerciseController {
 		if (solution.equals(answer)) {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Good");
-				model.addAttribute("exercise2", "exercise1Bad");
-				model.addAttribute("exercise3", "exercise1Bad");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			} else if (solution.equals("dos")) {
-				model.addAttribute("exercise1", "exercise1Bad");
+				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
-				model.addAttribute("exercise3", "exercise1Bad");
+				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			} else {
-				model.addAttribute("exercise1", "exercise1Bad");
-				model.addAttribute("exercise2", "exercise1Bad");
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
 				completedExerciseService.save(new CompletedExercise(exercise, 0));
 			}
 		} else {
-			model.addAttribute("exercise1", "exercise1Bad");
-			model.addAttribute("exercise2", "exercise1Bad");
-			model.addAttribute("exercise3", "exercise1Bad");
+			if (solution.equals("uno")) {
+				model.addAttribute("exercise1", "exercise1Bad");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1");
+			} else if (solution.equals("dos")) {
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1Bad");
+				model.addAttribute("exercise3", "exercise1");
+			} else {
+				model.addAttribute("exercise1", "exercise1");
+				model.addAttribute("exercise2", "exercise1");
+				model.addAttribute("exercise3", "exercise1Bad");
+			}
 		}
 
 		texts = exerciseService.findById(numExercise).getTexts();
