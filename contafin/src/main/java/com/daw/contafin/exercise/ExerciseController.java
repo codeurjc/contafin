@@ -609,7 +609,7 @@ public class ExerciseController {
 		if(completedLessonS == null) {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
 			completedLessonRepository.save(completedLesson);
-			if(userComponent.getLoggedUser().getRoles().contains("ROLE_USER")) {
+			if(userComponent.isLoggedUser()) {
 				user.setExp(user.getExp() + 10);
 				user.upLevel();
 				userService.updateUserData(user);
