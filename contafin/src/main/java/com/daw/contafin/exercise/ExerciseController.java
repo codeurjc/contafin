@@ -1,6 +1,7 @@
 package com.daw.contafin.exercise;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +22,7 @@ import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
+import com.daw.contafin.user.UserService;
 
 @Controller
 public class ExerciseController {
@@ -36,6 +38,9 @@ public class ExerciseController {
 
 	@Autowired
 	UserComponent userComponent;
+	
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	private CompletedLessonRepository completedLessonRepository;
@@ -595,11 +600,8 @@ public class ExerciseController {
 		Lesson lesson = lessonService.findById(idlesson);
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 
-		// Te devuelve el usuario loggeado
 		user = userComponent.getLoggedUser();
-		//user.setExp(user.getExp() + 10);
-		//user.upLevel();
-
+		
 		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
 
 		Date date = new Date(0); 
@@ -607,6 +609,10 @@ public class ExerciseController {
 		if(completedLessonS == null) {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
 			completedLessonRepository.save(completedLesson);
+			//user.setExp(user.getExp() + 10);
+			//user.upLevel();
+			//userService.updateUserData(user);
+			//userComponent.setLoggedUser(user);
 		}
 		
 		return "completedLesson";	
