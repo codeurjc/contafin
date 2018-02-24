@@ -614,9 +614,16 @@ public class ExerciseController {
 
 	@RequestMapping("/continueLesson")
 	public String continueLesson(Model model) {
-		// obtener el numero de lecciones completadas y saber su porcentaje del total y
-		// pasarselo.
-		model.addAttribute("percentage", "31");
+		User user = userComponent.getLoggedUser();
+		
+		List<Lesson> lessons = lessonService.getAll();
+		List<CompletedLesson> lessonsCompleted = completedLessonRepository.findByUser(user);
+		
+		int numLessons = lessons.size();
+		int numLessonsCompleted = lessonsCompleted.size();
+		double percentageD = (double)numLessonsCompleted / numLessons * 100;
+		int percentage = (int)percentageD;
+		model.addAttribute("percentage", percentage);
 		return "continueLesson";
 	}
 }
