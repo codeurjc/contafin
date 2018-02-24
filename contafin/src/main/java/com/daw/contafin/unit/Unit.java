@@ -43,4 +43,12 @@ public class Unit {
 		this.name = name;
 	}
 	
+	public List<Lesson>getLessons() {
+		return this.lessons;
+	}
+
+	public void setLesson(List<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+	
 }
