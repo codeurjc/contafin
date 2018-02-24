@@ -1,5 +1,6 @@
 package com.daw.contafin.exercise;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
+import com.daw.contafin.completedLesson.CompletedLesson;
+import com.daw.contafin.completedLesson.CompletedLessonRepository;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
@@ -33,6 +36,9 @@ public class ExerciseController {
 
 	@Autowired
 	UserComponent userComponent;
+	
+	@Autowired
+	private CompletedLessonRepository completedLessonRepository;
 
 	List<String> texts;
 
@@ -579,10 +585,10 @@ public class ExerciseController {
 		return "exerciseType7";
 	}
 
-	@RequestMapping("/lesson/{idLesson}/lessonCompleted/")
-	public String completedLesson(Model model, @PathVariable int idLesson) {
-
-		Lesson lesson = lessonService.findById(idLesson);
+	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
+	public String completedLesson(Model model, @PathVariable int idlesson) {
+/*
+		Lesson lesson = lessonService.findById(idlesson);
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 
 		// Te devuelve el usuario loggeado
@@ -590,27 +596,16 @@ public class ExerciseController {
 		user.setLevel(user.getExp() + 10);
 		user.upLevel();
 
-		// Añadir la lección al respositorio de lecciones completadas.
+		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
 
-		/*
-		 * Date date = new Date(0); CompletedLesson completedLesson = new
-		 * CompletedLesson(user, lesson, date);
-		 * CompletedLessonRepository.save(completedLesson);
-		 */
-
-		return "completedlesson";
-
-		/*
-		 * Lesson lesson = lessonRepository.findById(numLesson); Exercise exercise =
-		 * exerciseRepository.findByLessonAndKind(lesson,7);
-		 * 
-		 * model.addAttribute("idunit",id); model.addAttribute("idlesson",numLesson);
-		 * 
-		 * model.addAttribute("Statement", exercise.getStatement());
-		 * model.addAttribute("texts", texts);
-		 * 
-		 * return "exerciseType7";
-		 */
+		Date date = new Date(0); 
+		CompletedLesson completedLessonS = completedLessonRepository.findByUserAndLesson(user,lesson);
+		if(completedLessonS == null) {
+			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
+			completedLessonRepository.save(completedLesson);
+		}
+		*/
+		return "completedLesson";	
 	}
 
 	@RequestMapping("/continueLesson")
