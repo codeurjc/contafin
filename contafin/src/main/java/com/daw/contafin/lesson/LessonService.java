@@ -5,9 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.daw.contafin.answer.Answer;
-import com.daw.contafin.answer.AnswerRepository;
-import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.unit.Unit;
 
 @Service
@@ -26,5 +23,8 @@ public class LessonService {
 		lessonRepository.save(lesson);
 	}
 	
+	public List<Lesson> getAll(){
+		return lessonRepository.findAll();
+	}
 }
 
