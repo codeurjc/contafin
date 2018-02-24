@@ -1,6 +1,6 @@
 package com.daw.contafin.user;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +34,7 @@ public class User {
 	private int streak;
 	private int fluency;
 	private int dailyGoal;
-	private Timestamp lastConnection;
+	private Date lastConnection;
 	
 	//Atributo experiencia para aumentarsela cuando acabe una lección y exp necesaria para subir de nivel.
 	private int exp = 0;
@@ -189,11 +189,11 @@ public class User {
 		this.image = image;
 	}
 
-	public Timestamp getLastConnection() {
+	public Date getLastConnection() {
 		return lastConnection;
 	}
 
-	public void setLastConnection(Timestamp lastConnection) {
+	public void setLastConnection(Date lastConnection) {
 		this.lastConnection = lastConnection;
 	}
 

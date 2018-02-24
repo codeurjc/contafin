@@ -57,7 +57,7 @@ public class WebController extends ContentController {
 			
 			//Update the user's last connection
 			User user = userComponent.getLoggedUser();
-			user.setLastConnection(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
+			user.setLastConnection(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
 		}
@@ -120,14 +120,7 @@ public class WebController extends ContentController {
 
 	}
 	
-	@RequestMapping("/logout")
-	public void  logout() {
-		
-		//Update the user's last connection
-		User user = userComponent.getLoggedUser();
-		user.setLastConnection(new java.sql.Timestamp(Calendar.getInstance().getTime().getTime()));
-		userService.updateUserData(user);
-	}
+	
 	
 
 }
