@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daw.contafin.ContentController;
-import com.daw.contafin.completedExercise.CompletedExercise;
-import com.daw.contafin.completedExercise.CompletedExerciseRepository;
+import com.daw.contafin.completedLesson.CompletedLesson;
+import com.daw.contafin.completedLesson.CompletedLessonRepository;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.unit.Unit;
@@ -32,7 +32,7 @@ public class LessonController extends ContentController {
 	@Autowired
 	private ExerciseRepository exerciseRepository; 
 	@Autowired
-	private CompletedExerciseRepository completedExerciseRepository;
+	private CompletedLessonRepository completedLessonRepository;
 	
 	@Autowired
 	UserComponent userComponent;
@@ -80,9 +80,10 @@ public class LessonController extends ContentController {
 		}
 		
 		//Get lessons done (Posible forma de obtener las lecciones completadas)
-		/*
+		
 		int done = 0;
 		User user = userComponent.getLoggedUser();
+		
 		
 		boolean lesson1Done = false;
 		boolean lesson2Done = false;
@@ -105,16 +106,19 @@ public class LessonController extends ContentController {
 			done++;
 			}
 		
-		*/
+		String title = unit.getName();
 		  
-		model.addAttribute("done", "0");
+		model.addAttribute("done", done);
 		model.addAttribute("total", "3");
+		model.addAttribute("lesson1done",lesson1Done);
+		model.addAttribute("lesson2done",lesson2Done);
+		model.addAttribute("lesson3done",lesson3Done);
 		model.addAttribute("unit",id);
 		model.addAttribute("lessonstring1", lessonsString.get(0));
 		model.addAttribute("lessonstring2", lessonsString.get(1));
 		model.addAttribute("lessonstring3", lessonsString.get(2));
 
-		model.addAttribute("title", "Introducción");
+		model.addAttribute("title", title);
 		
 		loadNavbar(model);
 		

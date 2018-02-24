@@ -93,25 +93,52 @@
                             <div class="container">
                                 <div class="row justify-content-around">
                                  <div class="col-lg-4 col-md-6 ">
+                    			{{#lesson1Done}}
+                                        <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="UnitComplete">
+                                            <h4 class="mb-3">Lección 1 de {{total}}</h4>
+                                            <h2 class="text-white ">{{lessonstring1}}</h2>
+                                            <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/1/Exercise/{{kindexercise1}}/{{idexercise1}}">COMENZAR</a>
+                                        </div>
+                                {{/lesson1Done}}
+                                {{^lesson1Done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="Unit">
                                             <h4 class="mb-3">Lección 1 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring1}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/1/Exercise/{{kindexercise1}}/{{idexercise1}}">COMENZAR</a>
                                         </div>
+                                {{/lesson1Done}}
                                     </div>
-                                                                <div class="col-lg-4 col-md-6 ">
+                                    <div class="col-lg-4 col-md-6 ">
+                                    {{#lesson2Done}} 
+                                        <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="UnitComplete">
+                                            <h4 class="mb-3">Lección 2 de {{total}}</h4>
+                                            <h2 class="text-white ">{{lessonstring2}}</h2>
+                                            <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/2/Exercise/{{kindexercise2}}/{{idexercise2}}">COMENZAR</a>
+                                        </div>
+                                    {{/lesson2Done}}
+                                    {{^lesson2Done}} 
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="Unit">
                                             <h4 class="mb-3">Lección 2 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring2}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/2/Exercise/{{kindexercise2}}/{{idexercise2}}">COMENZAR</a>
                                         </div>
+                                    {{/lesson2Done}}
                                     </div>
-                                                                <div class="col-lg-4 col-md-6 ">
+                                    <div class="col-lg-4 col-md-6 ">
+                                    {{#lesson3Done}} 
+                                        <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="UnitComplete">
+                                            <h4 class="mb-3">Lección 3 de {{total}}</h4>
+                                            <h2 class="text-white ">{{lessonstring3}}</h2>
+                                            <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/3/Exercise/{{kindexercise3}}/{{idexercise3}}">COMENZAR</a>
+                                        </div>
+                                    {{/lesson3Done}}
+                                    {{^lesson3Done}} 
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="Unit">
                                             <h4 class="mb-3">Lección 3 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring3}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/3/Exercise/{{kindexercise3}}/{{idexercise3}}">COMENZAR</a>
                                         </div>
+                                    {{/lesson3Done}}     
                                     </div>
                                 </div>
                             </div>
