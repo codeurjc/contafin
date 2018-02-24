@@ -476,11 +476,9 @@ public class ExerciseController {
 			model.addAttribute("next", false);
 			model.addAttribute("end", true); 
 			model.addAttribute("correct",false);
-
 		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
-
 			model.addAttribute("next", false);
 			model.addAttribute("correct",true);
 			model.addAttribute("end", false);
@@ -505,21 +503,21 @@ public class ExerciseController {
 		model.addAttribute("exercise1","exercise1");
 		model.addAttribute("exercise2","exercise1");
 		model.addAttribute("exercise3","exercise1");
-
+		
 		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
+
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
-
+ 
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
-		texts = exerciseService.findById(numExercise).getTexts();
 
-		model.addAttribute("text1", texts.get(0));
-		model.addAttribute("text2",  texts.get(1));
-		model.addAttribute("text3",  texts.get(2));
+		model.addAttribute("text1", exercise.getTexts().get(0));
+		model.addAttribute("text2", exercise.getTexts().get(1));
+		model.addAttribute("text3", exercise.getTexts().get(2));
 		model.addAttribute("statement", exercise.getStatement());
-
+				
 		int typeNext = nextExercise.getKind();
 		long nextNumExercise = nextExercise.getId();
-
+		
 		model.addAttribute("next", true);
 		model.addAttribute("correct",false);
 		model.addAttribute("end", false);
@@ -530,7 +528,7 @@ public class ExerciseController {
 
 		model.addAttribute("thisExercise", numExercise);
 
-		return "exerciseType7";
+		return "exerciseType7"; 
 	}
 
 	@RequestMapping("/lesson/{idLesson}/lessonCompleted/")

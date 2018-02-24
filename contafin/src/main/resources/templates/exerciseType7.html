@@ -48,7 +48,7 @@
 				<div class="progress">
 					<div
 						class="progress-bar progress-bar-striped progress-bar-animated"
-						style="width: 75%" id="bg-progressBar"></div>
+						style="width: 50%" id="bg-progressBar"></div>
 				</div>
 			</div>
 		</div>
@@ -89,54 +89,53 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h2 class="section-heading">{{Statement}}</h2>
+						<h2 class="section-heading">{{statement}}</h2>
 						<hr class="my-4">
 					</div>
 				</div>
 			</div>
 			<div class="container ">
-				<div class="row">
-					<div class="col-lg-8 mx-auto">
-						<label class="service-box mx-auto text-center card-body"
-							id="{{exercise1}}">
-							<h5 class="mt-2 mb-2 ml-2 mr-2">
-								<input type="radio" name="solution" value="uno" />{{text1}}
-							</h5>
-						</label>
-					</div>
-					<div class="col-lg-8 mx-auto">
-						<label class="service-box mx-auto text-center card-body"
-							id="{{exercise2}}">
-							<h5 class="mt-2 mb-2 ml-2 mr-2">
-								<input type="radio" name="solution" value="dos" />{{text2}}
-							</h5>
-						</label>
-					</div>
-					<div class="col-lg-8 mx-auto">
-						<label class="service-box mx-auto text-center card-body"
-							id="{{exercise3}}">
-							<h5 class="mt-2 mb-2 ml-2 mr-2">
-								<input type="radio" name="solution" value="tres" />{{text3}}
-							</h5>
-						</label>
-					</div>
+				<div class="col-lg-8 mx-auto">
+				<label class="mx-auto text-center" id="{{exercise1}}">
+						<h5 class="mt-2 mb-2 ml-2 mr-2">
+							<input type="radio" name="solution" value="uno" />{{text1}}
+						</h5>
+					</label>
+				</div>
+				<div class="col-lg-8 mx-auto">
+				<label class="mx-auto text-center" id="{{exercise2}}">
+						<h5 class="mt-2 mb-2 ml-2 mr-2">
+							<input type="radio" name="solution" value="dos" />{{text2}}
+						</h5>
+					</label>
+				</div>
+				<div class="col-lg-8 mx-auto">
+				<label class="mx-auto text-center" id="{{exercise3}}">
+						<h5 class="mt-2 mb-2 ml-2 mr-2">
+							<input type="radio" name="solution" value="tres" />{{text3}}
+						</h5>
+					</label>
 				</div>
 			</div>
 		</section>
 
 		<!--Evaluation section-->
-		<footer class="mt-3 fixed-bottom" id="bg-foot">
+		<footer class="mt-5 fixed-bottom" id="bg-foot">
 			<div class="container-fluid py-3">
 				<div class="btn-toolbar justify-content-between" role="toolbar"
 					aria-label="Toolbar with button groups">
-					{{#end}} <a class="btn btn-primary btn-xl js-scroll-trigger"
-						href="/lesson/{{idlesson}}/lessonCompleted/">CALIFICAR</a>
-					{{/end}} {{#next}} <a
+					{{#end}} <a class="js-scroll-trigger" href=""></a> <a
+						class="btn btn-primary btn-xl js-scroll-trigger"
+						href="/lesson/{{idlesson}}/lessonCompleted/">SIGUIENTE</a>
+					{{/end}} {{#correct}} <a class="js-scroll-trigger"></a> <a
+						class="btn btn-primary btn-xl js-scroll-trigger"
+						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SIGUIENTE</a>
+					{{/correct}} {{#next}} {{#final}}<a
 						class="btn btn-primary btn-xl js-scroll-trigger"
 						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SALTAR</a>
-
-					<a class="btn btn-primary btn-xl js-scroll-trigger"
-						href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">CALIFICAR</a>
+					{{/final}}
+					<button class="btn btn-primary btn-xl js-scroll-trigger"
+						type="submit">CALIFICAR</button>
 					{{/next}}
 				</div>
 			</div>
