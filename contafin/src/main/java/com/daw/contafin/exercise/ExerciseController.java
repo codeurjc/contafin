@@ -188,11 +188,11 @@ public class ExerciseController {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
 					long nextNumExercise = nextExercise.getId();
-					model.addAttribute("next", false);
-					model.addAttribute("correct", true);
+
+					model.addAttribute("next", true);
+					model.addAttribute("correct", false);
 					model.addAttribute("end", false);
 					model.addAttribute("tocorrectend", false);
-					model.addAttribute("idunit", id);
 					model.addAttribute("nextNumExercise", nextNumExercise);
 					model.addAttribute("nextType", typeNext);
 					model.addAttribute("idunit", id);
@@ -329,16 +329,17 @@ public class ExerciseController {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
 					long nextNumExercise = nextExercise.getId();
-					model.addAttribute("next", false);
-					model.addAttribute("correct", true);
+
+					model.addAttribute("next", true);
+					model.addAttribute("correct", false);
 					model.addAttribute("end", false);
 					model.addAttribute("tocorrectend", false);
-					model.addAttribute("idunit", id);
 					model.addAttribute("nextNumExercise", nextNumExercise);
 					model.addAttribute("nextType", typeNext);
 					model.addAttribute("idunit", id);
 					model.addAttribute("idlesson", numLesson);
 					model.addAttribute("thisExercise", numExercise);
+
 					return "exerciseType2";
 				}
 			}
@@ -547,11 +548,11 @@ public class ExerciseController {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
 					long nextNumExercise = nextExercise.getId();
-					model.addAttribute("next", false);
-					model.addAttribute("correct", true);
+
+					model.addAttribute("next", true);
+					model.addAttribute("correct", false);
 					model.addAttribute("end", false);
 					model.addAttribute("tocorrectend", false);
-					model.addAttribute("idunit", id);
 					model.addAttribute("nextNumExercise", nextNumExercise);
 					model.addAttribute("nextType", typeNext);
 					model.addAttribute("idunit", id);
@@ -741,16 +742,17 @@ public class ExerciseController {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
 					long nextNumExercise = nextExercise.getId();
-					model.addAttribute("next", false);
-					model.addAttribute("correct", true);
+
+					model.addAttribute("next", true);
+					model.addAttribute("correct", false);
 					model.addAttribute("end", false);
 					model.addAttribute("tocorrectend", false);
-					model.addAttribute("idunit", id);
 					model.addAttribute("nextNumExercise", nextNumExercise);
 					model.addAttribute("nextType", typeNext);
 					model.addAttribute("idunit", id);
 					model.addAttribute("idlesson", numLesson);
 					model.addAttribute("thisExercise", numExercise);
+
 					return "exerciseType7";
 				}
 			}
