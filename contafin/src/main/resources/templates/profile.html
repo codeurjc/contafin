@@ -94,19 +94,10 @@
                                     let massPopChart = new Chart(myChart, {
                                                 type: 'line',
                                                 data: {
-                                                    labels: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
+                                                    labels: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
                                                     datasets: [{
                                                         label: 'Lecciones',
-                                                        data: [{
-                                                                {#
-                                                                    progress
-                                                                }
-                                                            } {
-                                                                {.
-                                                                }
-                                                            }, {
-                                                            {
-                                                                /progress}}],
+                                                        data: [{{# progress}} {{.}}, {{/progress}}],
                                                                 lineTension: 0,
                                                                     backgroundColor: [
                                                                         'rgba(255, 159, 64, 0.6)',
