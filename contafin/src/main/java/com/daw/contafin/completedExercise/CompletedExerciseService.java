@@ -20,4 +20,8 @@ public class CompletedExerciseService {
 		return completedExerciseRepository.findByUserAndExercise(user,exercise);
 	}
 	
+	public void delete(CompletedExercise completedExercise) {
+		completedExerciseRepository.delete(completedExercise);
+	}
+	
 }

@@ -783,12 +783,18 @@ public class ExerciseController {
 
 	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson) {
-
-		Lesson lesson = lessonService.findById(idlesson);
-		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
-
+		
 		user = userComponent.getLoggedUser();
 		
+		Lesson lesson = lessonService.findById(idlesson);
+		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
+		for(int i=0; i<listExercises.size();i++) {
+			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, listExercises.get(i));
+			if (completedExerciseS != null) {
+				completedExerciseService.delete(completedExerciseS);
+			}
+		}
+
 		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
 
 		Date date = new Date(0); 
