@@ -1,7 +1,6 @@
 package com.daw.contafin.security;
 
 import java.io.IOException;
-import java.util.Calendar;
 
 import javax.mail.MessagingException;
 
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daw.contafin.ContentController;
 import com.daw.contafin.EmailService;
+import com.daw.contafin.ErrorMessage;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
@@ -30,6 +30,9 @@ public class WebController extends ContentController {
 	
 	@Autowired
 	EmailService emailService;
+	
+	@Autowired
+	ErrorMessage errorMessage;
 
 	// Login Controller
 
@@ -52,10 +55,10 @@ public class WebController extends ContentController {
 			}
 			loadNavbar(model);
 			model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
-			
+			model.addAttribute("fluency", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getFluency());
 			//Update the user's last connection
 			User user = userComponent.getLoggedUser();
-			user.setLastConnection(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+			user.setLastConnection(user.newConnection());
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
 		}
@@ -73,9 +76,16 @@ public class WebController extends ContentController {
 	@RequestMapping("signup")
 	public String register(Model model, @RequestParam("name") String name, @RequestParam("email") String email,
 			@RequestParam("pass") String pass) {
-
+		if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+			model.addAttribute("errorMessage","¡Error al crear la cuenta! Es necesario que rellenes todos los campos.");
+		    return "error2";
+		}
 		if (userService.findByEmail(email) == null) {
-			userService.save(new User(name, email, pass, "ROLE_USER"));
+			User user = new User(name, email, pass, "ROLE_USER");
+			userService.save(user);
+			user.setLastConnection(user.newConnection());
+			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
 			try {
 				emailService.sendSimpleMessage(userService.findByEmail(email));
 			} catch (MessagingException messaginException) {
@@ -88,13 +98,19 @@ public class WebController extends ContentController {
 			;
 			return "/";
 		} else {
-			model.addAttribute("loggedUser", true);
-			return "signup";
+			model.addAttribute("errorMessage","¡Error al crear la cuenta! El correo introducido ya está vinculado a otra cuenta.");
+		    return "error2";
 		}
 
 	}
 	
+	//Wrong login controller
 	
+	@RequestMapping("/loginerror")
+	public String loginerror(Model model) {
+		model.addAttribute("errorMessage","¡Error al iniciar sesión! Datos erróneos.");
+	    return "error2";
+	}
 	
 
 }

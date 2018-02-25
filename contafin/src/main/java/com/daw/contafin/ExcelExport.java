@@ -50,7 +50,7 @@ public class ExcelExport extends AbstractXlsView {
 			row.createCell(5).setCellValue(user.getStreak());
 			row.createCell(6).setCellValue(user.getFluency());
 			row.createCell(7).setCellValue(user.getExp());
-			row.createCell(8).setCellValue(user.getExp());
+			row.createCell(8).setCellValue(user.getLastConnection());
 
 		}
 	}
