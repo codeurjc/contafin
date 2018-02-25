@@ -101,7 +101,13 @@ public class WebController extends ContentController {
 
 	}
 	
+	//Wrong login controller
 	
+	@RequestMapping("/loginerror")
+	public String loginerror(Model model) {
+		model.addAttribute("errorMessage","¡Error al iniciar sesión! Datos erróneos.");
+	    return "error2";
+	}
 	
 
 }
