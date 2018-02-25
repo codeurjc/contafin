@@ -40,7 +40,7 @@ public class UnitController extends ContentController {
 	@Autowired
 	UserComponent userComponent;
 
-	@RequestMapping("/UpdateExercise")
+	@RequestMapping("/UpdateExercise") 
 	public String unitCreation(Model model) {
 		model.addAttribute("loggedUser", userComponent.isLoggedUser());
 
