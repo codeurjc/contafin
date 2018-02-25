@@ -64,7 +64,7 @@ public class WebController extends ContentController {
 			model.addAttribute("dailyGoal", userService.findByEmail(user.getEmail()).getDailyGoal());
 			model.addAttribute("fluency", userService.findByEmail(user.getEmail()).getFluency());
 			model.addAttribute("exp", userService.findByEmail(user.getEmail()).getExp());
-			model.addAttribute("fluency", userService.findByEmail(user.getEmail()).getFluency());
+			model.addAttribute("fluency", userService.findByEmail(user.getEmail()).getFluency()+" %");
 			
 			Calendar date = Calendar.getInstance();
 			Date sqlDate = new Date((date.getTime()).getTime());

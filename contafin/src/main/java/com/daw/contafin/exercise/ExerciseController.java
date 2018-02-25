@@ -827,6 +827,9 @@ public class ExerciseController {
 		int numLessonsCompleted = lessonsCompleted.size();
 		double percentageD = (double)numLessonsCompleted / numLessons * 100;
 		int percentage = (int)percentageD;
+		user.setFluency(percentage);
+		userService.updateUserData(user);
+		userComponent.setLoggedUser(user);
 		model.addAttribute("percentage", percentage);
 		return "continueLesson";
 	}

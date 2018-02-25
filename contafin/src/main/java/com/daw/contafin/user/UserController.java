@@ -44,7 +44,8 @@ public class UserController extends ContentController{
 	public String profile(Model model){
 		
 		loadNavbar(model);
-		model.addAttribute("goals", false);
+		/*At the moment there are't rewards
+		model.addAttribute("goals", false);*/
 		
 		//Updating line chart
 		
