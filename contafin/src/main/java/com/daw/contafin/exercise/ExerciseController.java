@@ -1,6 +1,7 @@
 package com.daw.contafin.exercise;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -797,10 +798,11 @@ public class ExerciseController {
 
 		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
 
-		Date date = new Date(0); 
+		Calendar date = Calendar.getInstance();
+	    Date sqlDate = new Date((date.getTime()).getTime());
 		CompletedLesson completedLessonS = completedLessonRepository.findByUserAndLesson(user,lesson);
 		if(completedLessonS == null) {
-			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
+			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
 			completedLessonRepository.save(completedLesson);
 			if(userComponent.isLoggedUser()) {
 				user.setExp(user.getExp() + 10);
