@@ -22,6 +22,7 @@ import com.daw.contafin.ContentController;
 import com.daw.contafin.ImageService;
 
 @Controller
+@RequestMapping ("User")
 public class UserController extends ContentController{
 
 	@Autowired
@@ -33,7 +34,7 @@ public class UserController extends ContentController{
 	@Autowired
 	ImageService imageService;
 
-	@RequestMapping("profile")
+	@RequestMapping("Profile")
 	public String profile(Model model){
 		
 		loadNavbar(model);
@@ -48,16 +49,16 @@ public class UserController extends ContentController{
 
 	// Configuration Controller
 
-	@RequestMapping("configuration")
+	@RequestMapping("Configuration")
 	public String configuration(Model model, HttpServletRequest request) {
 
 		loadNavbar(model);
 		return "userConfiguration";
 	}
 	
-	@RequestMapping("changesSaved")
-	public String changes(Model model, @RequestParam("new_name") String name, @RequestParam("new_email") String email,
-			@RequestParam("new_pass") String pass) {
+	@RequestMapping("ChangesSaved")
+	public String changes(Model model, @RequestParam("newName") String name, @RequestParam("newEmail") String email,
+			@RequestParam("newPass") String pass) {
 		
 		loadNavbar(model);
 		boolean noData =false; 
@@ -81,20 +82,20 @@ public class UserController extends ContentController{
 		else {
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
-			return "configuration";
+			return "Configuration";
 		}
 	}
 	
 	//Set Goal Controller
 	
-	@RequestMapping("goal")
+	@RequestMapping("Goal")
 	public String setGoal(Model model, HttpServletRequest request) {
 
 		loadNavbar(model);
 		return "setGoal";
 	}
 	
-	@RequestMapping("newGoal")
+	@RequestMapping("NewGoal")
 	public String newGoal(Model model, @RequestParam (value="goal", required=false) String goal) {
 		
 		loadNavbar(model);
@@ -112,7 +113,7 @@ public class UserController extends ContentController{
 	
 	//Save the image in the database
 	
-	@RequestMapping ("newImage")
+	@RequestMapping ("NewImage")
 	public String updateImage( Model model, @RequestParam("file") MultipartFile file) throws IOException {
 
 		loadNavbar(model);
@@ -124,7 +125,7 @@ public class UserController extends ContentController{
 			user.setImage(bytes);
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
-			 return "configuration";   
+			 return "Configuration";   
 	    }
 	    else {
 	    		model.addAttribute("noImage", true);
@@ -133,7 +134,7 @@ public class UserController extends ContentController{
 	}
 
 	// Show the image
-	@RequestMapping("profilePicture")
+	@RequestMapping("ProfilePicture")
 	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		byte [] image;
 		if (userComponent.getLoggedUser().getImage() != null) {
@@ -150,7 +151,7 @@ public class UserController extends ContentController{
 	}
 	
 	//Delete Account
-	@RequestMapping("deleteAccount")
+	@RequestMapping("DeleteAccount")
 	public String deleteAccount() {
 		User user = userComponent.getLoggedUser();
 		userService.deleteAccount(user);

@@ -3,319 +3,255 @@
 
 <head>
 
-<meta charset="utf-8">
-<base href="/">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+    <meta charset="utf-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<title>CONTaFIN</title>
+    <title>CONTaFIN</title>
 
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom fonts for this template -->
-<link href="vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-	rel='stylesheet' type='text/css'>
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
-<!-- Plugin CSS -->
-<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="css/creative.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/creative.min.css" rel="stylesheet">
 
 </head>
 
 <body class="bghome" id="page-top">
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
-		id="mainNav">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="home">CONTaFIN</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="home">CONTaFIN</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav navbar-left">
-					<li class="nav-item active"><a class="nav-link " href="home">Inicio
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-left">
+                    <li class="nav-item active"><a class="nav-link " href="home">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
-				</ul>
-				{{#loggedUser}}
-				<ul class="navbar-nav ml-auto">
-					{{#isAdmin}}
-					<li class="nav-item mr-4"><a
-						class="btn btn-primary js-scroll-trigger BG-" href="UpdateExercise">AÑADIR EJERCICIOS</a>
-					</li>
-					<li class="nav-item mr-4"><a
-						class="btn btn-primary js-scroll-trigger BG-" href="Admin/Home">ADMINISTRACIÓN</a>
-					</li> {{/isAdmin}}
-					<li><img src="profilePicture" width="40" height="35"
-						class="img-thumbnail"></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle " id="navbarDropdownMenuLink"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="profile">Tu perfil</a> <a
-								class="dropdown-item" href="configuration">Configuracion</a> <a
-								class="dropdown-item" href="goal">Fijar meta</a> <a
-								class="dropdown-item" href="#">Atajos de teclado</a> <a
-								class="dropdown-item" href="/logout">Cerrar Sesion</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
+                </ul>
+                {{#loggedUser}}
+                <ul class="navbar-nav ml-auto">
+                    {{#isAdmin}}
+                    <li class="nav-item mr-4"><a class="btn btn-primary js-scroll-trigger BG-" href="UpdateExercise">AÑADIR EJERCICIOS</a>
+                    </li>
+                    <li class="nav-item mr-4"><a class="btn btn-primary js-scroll-trigger BG-" href="Admin/Home">ADMINISTRACIÓN</a>
+                    </li>
+                    {{/isAdmin}}
+                    <li><img src="User/ProfilePicture" width="40" height="35" class="img-thumbnail"></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="User/Profile">Tu perfil</a>
+                            <a class="dropdown-item" href="User/Configuration">Configuración</a>
+                            <a class="dropdown-item" href="User/Goal">Fijar meta</a>
+                            <a class="dropdown-item" href="/logout">Cerrar Sesion</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger"><img
 							src="img/fire.png" width="25" height="23"
 							class="d-inline-block align-top"> <span
 							class="badge badge-light">{{points}}</span></a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger"><img
 							src="img/gemstone-160838_960_720.png" width="25" height="23"
 							class="d-inline-block align-top"> <span
 							class="badge badge-light">{{streak}}</span></a></li>
-				</ul>
-				{{/loggedUser}}
-			</div>
-		</div>
-	</nav>
+                </ul>
+                {{/loggedUser}}
+            </div>
+        </div>
+    </nav>
 
 
-	<div class="bghome">
-		<div class="container my-auto">
-			<div class="row">
-				<div class="col-sm-8">
-					.
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="mt-5 mx-auto text-center card-body bg-white"
-								id="round">
-								<h2 class="text-black text-left " id="Margin">Unidades de
-									Contabilidad</h2>
-								<h5 class="text-black text-center mt-5">Nivel 1</h5>
-								<div class="row justify-content-around">
-									{{#unitsCompletes}} {{#done}}
-									<div class="col-lg-6 col-md-6 ">
-										<div class="service-box mt-5 mx-auto text-center card-body"
-											id="UnitComplete">
-											<a class="col-lg-5" href="/Unit/{{-index}}/lessons"
-												id="selectLesson">
-												<h2 class="text-white ">{{name}}</h2>
-												<h2 class="text-muted mt-4">{{lessonsDone}}/3</h2>
-											</a>
-										</div>
-									</div>
-									{{/done}} {{^done}}
-									<div class="col-lg-6 col-md-6 ">
-										<div class="service-box mt-5 mx-auto text-center card-body"
-											id="Unit">
-											<a class="col-lg-5" href="/Unit/{{-index}}/lessons"
-												id="selectLesson">
-												<h2 class="text-white ">{{name}}</h2>
-												<h2 class="text-muted mt-4">{{lessonsDone}}/3</h2>
-											</a>
-										</div>
-									</div>
-									{{/done}} {{/unitsCompletes}}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				{{#loggedUser}}
-				<div class="col-sm-4">
-					.
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="mt-5 text-center card-body bg-white margin-bootom-sm"
-								id="round">
-								<h5 class="text-black text-left">Conocimiento de
-									contabilidad</h5>
-								<div class="row">
-									<div class="col-lg-12 ">
-										<img src="img/Captura.PNG" class="rounded img-fluid"
-											alt="Responsive image">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="mt-4 text-center card-body bg-white " id="round">
-								<h5 class="text-black text-left">Meta diaria</h5>
-								<div class="row">
-									<div class="col-lg-7 ">
-										<img src="img/Circulo.PNG" class="rounded img-fluid"
-											alt="Responsive image">
-									</div>
-									<div class="col-lg-5 ">
-										<div class="row">
-											<div class="col-lg-12 ">
-												<h1 class="text-warning ">{{dailyGoal}}</h1>
-												<h5 class="text-black ">racha diaria</h5>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-12 ">
-												<h1 class="text-warning ">9</h1>
-												<h5 class="text-black ">lecciones restantes</h5>
-											</div>
-										</div>
-									</div>
-									<div>
-										<div class="row">
-											<div class="col-lg-12 ">
-												<div class="mt-4 text-center card-body">
-													<img src="img/Grafica.PNG" class="rounded img-fluid"
-														alt="Cinque Terre">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-12 ">
-										<div
-											class="service-box mt-5 mx-auto text-center card-body rounded text-white">
-											<a class="btn btn-primary btn-xl js-scroll-trigger" href="#">Reforzar
+    <div class="bghome">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mt-5 mx-auto text-center card-body bg-white" id="round">
+                                <h2 class="text-black text-left " id="Margin">Unidades de Contabilidad
+                                </h2>
+                                <h5 class="text-black text-center mt-5">Nivel 1</h5>
+                                <div class="row justify-content-around">
+                                    {{#unitsCompletes}} {{#done}}
+                                    <div class="col-lg-6 col-md-6 ">
+                                        <div class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
+                                            <a class="col-lg-5" href="/Unit/{{-index}}/lessons" id="selectLesson">
+                                                <h2 class="text-white ">{{name}}</h2>
+                                                <h2 class="text-muted mt-4">{{lessonsDone}}/3</h2>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{/done}} {{^done}}
+                                    <div class="col-lg-6 col-md-6 ">
+                                        <div class="service-box mt-5 mx-auto text-center card-body" id="Unit">
+                                            <a class="col-lg-5" href="/Unit/{{-index}}/lessons" id="selectLesson">
+                                                <h2 class="text-white ">{{name}}</h2>
+                                                <h2 class="text-muted mt-4">{{lessonsDone}}/3</h2>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{/done}} {{/unitsCompletes}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{#loggedUser}}
+                <div class="col-sm-4">
+                    .
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+                                <h5 class="text-black text-left">Conocimiento de contabilidad
+                                </h5>
+                                <div class="row">
+                                    <div class="col-lg-12 ">
+                                        <h1 class="card-title text-warning">{{fluency}}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-4 text-center card-body bg-white " id="round">
+                                <h5 class="text-black text-left">Meta diaria</h5>
+                                <div class="row">
+                                    <div class="col-lg-7 ">
+                                        <img src="img/Circulo.PNG" class="rounded img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="col-lg-5 ">
+                                        <div class="row">
+                                            <div class="col-lg-12 ">
+                                                <h1 class="text-warning ">{{dailyGoal}}</h1>
+                                                <h5 class="text-black ">racha diaria</h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 ">
+                                                <h1 class="text-warning ">9</h1>
+                                                <h5 class="text-black ">lecciones restantes</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 ">
+                                        <div class="service-box mt-5 mx-auto text-center card-body rounded text-white">
+                                            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#">Reforzar
 												unidades</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{{/loggedUser}} {{^loggedUser}}
-					<div class="col-sm-4">
-						.
-						<div class="row">
-							<div class="col-lg-12">
-								<div
-									class="mt-5 text-center card-body bg-white margin-bootom-sm"
-									id="round">
-									<h5 class="text-black text-left">¡Crea un perfil para
-										guardar tu progreso!</h5>
-									<div class="row">
-										<div class="col-lg-12 ">
-											<a
-												class="btn btn-primary btn-xl js-scroll-trigger mt-3 text-white"
-												data-toggle="modal" data-target="#signupModalLong">Crear
-												perfil</a> <a
-												class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white"
-												id="button-style" data-toggle="modal"
-												data-target="#loginModalLong">Ingresar</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					{{/loggedUser}}
-				</div>
-			</div>
-		</div>
-	</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/loggedUser}} {{^loggedUser}}
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+                                    <h5 class="text-black text-left">¡Crea un perfil para guardar tu progreso!</h5>
+                                    <div class="row">
+                                        <div class="col-lg-12 ">
+                                            <a class="btn btn-primary btn-xl js-scroll-trigger mt-3 text-white" data-toggle="modal" data-target="#signupModalLong">Crear
+												perfil</a> <a class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white" id="button-style" data-toggle="modal" data-target="#loginModalLong">Ingresar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/loggedUser}}
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<!--pop up sign in-->
-	<div class="modal fade" id="loginModalLong" tabindex="-1" role="dialog"
-		aria-labelledby="loginModalLongTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<form action="/" method="post">
-				<div class="modal-content">
-					<div class="modal-header">
-						<div class="col-3">
-							<img src="img/Logo.png" class="img-fluid " alt="Responsive image">
-						</div>
-						<div class="col-6">
-							<h1 class="modal-title mt-3" id="exampleModalLongTitle">
-								<strong>INGRESAR</strong>
-							</h1>
-						</div>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
+    <!--pop up sign in-->
+    <div class="modal fade" id="loginModalLong" tabindex="-1" role="dialog" aria-labelledby="loginModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form action="/" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-3">
+                            <img src="img/Logo.png" class="img-fluid " alt="Responsive image">
+                        </div>
+                        <div class="col-6">
+                            <h1 class="modal-title mt-3" id="exampleModalLongTitle">
+                                <strong>INGRESAR</strong>
+                            </h1>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-					</div>
-					<div class="modal-body">
-						<div class="col-lg-8 mx-auto">
-							<input type="email" class="form-control mt-3" id="roundregister"
-								aria-describedby="emailHelp" name="email"
-								placeholder="Correro electrónico"> <input
-								type="password" class="form-control mt-3" id="roundregister"
-								name="pass" placeholder="Contraseña">
-						</div>
-					</div>
-					<div class="modal-footer">
-						</a> <input type="submit" value="Iniciar sesión"
-							class="btn btn-primary" id="button-style" />
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<!--pop up login-->
-	<div class="modal fade" id="signupModalLong" tabindex="-1"
-		role="dialog" aria-labelledby="signupModalLongTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<form action="signup" method="post">
-				<div class="modal-content">
-					<div class="modal-header">
-						<div class="col-3">
-							<img src="img/Logo.png" class="img-fluid " alt="Responsive image">
-						</div>
-						<div class="col-6">
-							<h1 class="modal-title" id="exampleModalLongTitle">
-								<strong>REGÍSTRATE</strong>
-							</h1>
-						</div>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-8 mx-auto">
+                            <input type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico"> <input type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Iniciar sesión" class="btn btn-primary" id="button-style" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--pop up login-->
+    <div class="modal fade" id="signupModalLong" tabindex="-1" role="dialog" aria-labelledby="signupModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form action="signup" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-3">
+                            <img src="img/Logo.png" class="img-fluid " alt="Responsive image">
+                        </div>
+                        <div class="col-6">
+                            <h1 class="modal-title" id="exampleModalLongTitle">
+                                <strong>REGÍSTRATE</strong>
+                            </h1>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-					</div>
-					<div class="modal-body">
-						<div class="col-lg-8 mx-auto">
-							<input type="text" class="form-control mt-3" id="roundregister"
-								name="name" placeholder=" Nombre" /> <input type="email"
-								class="form-control mt-3" id="roundregister"
-								aria-describedby="emailHelp" name="email"
-								placeholder="Correro electrónico"> <input
-								type="password" class="form-control mt-3" id="roundregister"
-								name="pass" placeholder="Contraseña">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<a
-							class="btn btn-primary btn-block btn-social btn-google text-white">
-							<span class="fa fa-google"></span> Regístrate con Google
-						</a> <input type="submit" value="Crear cuenta" class="btn btn-primary"
-							id="button-style" />
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-8 mx-auto">
+                            <input type="text" class="form-control mt-3" id="roundregister" name="name" placeholder=" Nombre" /> <input type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico"> <input type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Crear cuenta" class="btn btn-primary" id="button-style" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Plugin JavaScript -->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-	<!-- Custom scripts for this template -->
-	<script src="js/creative.min.js"></script>
-	<script src="js/changeFixed.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
+    <script src="js/changeFixed.js"></script>
 
 </body>
 

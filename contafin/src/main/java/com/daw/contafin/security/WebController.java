@@ -55,7 +55,7 @@ public class WebController extends ContentController {
 			}
 			loadNavbar(model);
 			model.addAttribute("dailyGoal", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getDailyGoal());
-			
+			model.addAttribute("fluency", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getFluency());
 			//Update the user's last connection
 			User user = userComponent.getLoggedUser();
 			user.setLastConnection(user.newConnection());
