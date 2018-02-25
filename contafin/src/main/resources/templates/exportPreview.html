@@ -2,9 +2,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CONTaFIN</title>
+<style type="text/css">
+#button {
+	background-color: #FF9F40;
+	text-decoration: none;
+	padding: 10px;
+	font-weight: 600;
+	font-size: 20px;
+	color: #ffffff;
+	border: 9px solid;
+	border-radius: 20px;
+}
+</style>
 </head>
 <body>
+	<div clas="mt-5 mtb-5">
+		<form action="Export">
+			<input id="button" name="xls" type="submit" value="EXPORTAR">
+		</form>
+	</div>
 	<table border="1">
 		<thead>
 			<tr>
@@ -37,9 +54,5 @@
 		</tbody>
 		</tbody>
 	</table>
-
-	<form action="Export">
-		<input name="xls" type="submit" value="Exportar">
-	</form>
 </body>
 </html>
