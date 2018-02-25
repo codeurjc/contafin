@@ -1,7 +1,6 @@
 package com.daw.contafin.security;
 
 import java.io.IOException;
-import java.util.Calendar;
 
 import javax.mail.MessagingException;
 
@@ -59,7 +58,7 @@ public class WebController extends ContentController {
 			
 			//Update the user's last connection
 			User user = userComponent.getLoggedUser();
-			user.setLastConnection(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+			user.setLastConnection(user.newConnection());
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
 		}
@@ -82,7 +81,11 @@ public class WebController extends ContentController {
 		    return "error2";
 		}
 		if (userService.findByEmail(email) == null) {
-			userService.save(new User(name, email, pass, "ROLE_USER"));
+			User user = new User(name, email, pass, "ROLE_USER");
+			userService.save(user);
+			user.setLastConnection(user.newConnection());
+			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
 			try {
 				emailService.sendSimpleMessage(userService.findByEmail(email));
 			} catch (MessagingException messaginException) {
