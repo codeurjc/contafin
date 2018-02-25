@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daw.contafin.ContentController;
 import com.daw.contafin.EmailService;
+import com.daw.contafin.ErrorMessage;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
@@ -30,6 +31,9 @@ public class WebController extends ContentController {
 	
 	@Autowired
 	EmailService emailService;
+	
+	@Autowired
+	ErrorMessage errorMessage;
 
 	// Login Controller
 
@@ -73,7 +77,10 @@ public class WebController extends ContentController {
 	@RequestMapping("signup")
 	public String register(Model model, @RequestParam("name") String name, @RequestParam("email") String email,
 			@RequestParam("pass") String pass) {
-
+		if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+			model.addAttribute("errorMessage","¡Error al crear la cuenta! Es necesario que rellenes todos los campos.");
+		    return "error2";
+		}
 		if (userService.findByEmail(email) == null) {
 			userService.save(new User(name, email, pass, "ROLE_USER"));
 			try {
@@ -88,8 +95,8 @@ public class WebController extends ContentController {
 			;
 			return "/";
 		} else {
-			model.addAttribute("loggedUser", true);
-			return "signup";
+			model.addAttribute("errorMessage","¡Error al crear la cuenta! El correo introducido ya está vinculado a otra cuenta.");
+		    return "error2";
 		}
 
 	}
