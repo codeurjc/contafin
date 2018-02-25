@@ -807,6 +807,7 @@ public class ExerciseController {
 			if(userComponent.isLoggedUser()) {
 				user.setExp(user.getExp() + 10);
 				user.upLevel();
+				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
 				userService.updateUserData(user);
 				userComponent.setLoggedUser(user);
 			}

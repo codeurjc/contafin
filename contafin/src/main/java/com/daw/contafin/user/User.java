@@ -212,6 +212,10 @@ public class User {
 		return newConecction;
 	}
 	
-	
+	public void updateStreak(User user, int completedLessons) {
+		if(completedLessons == user.getDailyGoal()) {
+			user.setStreak(user.getStreak()+1);
+		}
+	}
 
 }
