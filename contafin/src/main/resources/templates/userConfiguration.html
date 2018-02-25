@@ -65,7 +65,7 @@
 								class="dropdown-item" href="configuration">Configuracion</a> <a
 								class="dropdown-item" href="goal">Fijar meta</a> <a
 								class="dropdown-item" href="#">Atajos de teclado</a> <a
-								class="dropdown-item" href="/">Cerrar sesión</a>
+								class="dropdown-item" href="/logout">Cerrar sesión</a>
 
 						</div></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
@@ -175,10 +175,49 @@
 							<h1 class="card-header bg-white">
 								<img src="profilePicture" width="90" height="35" class="img-thumbnail" id="round"> {{name}}
 							</h1>
+							<h1 class="card-header bg-white">
+								<button id="button-style" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                            			Eliminar cuenta
+                        			</button>
+							</h1>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<!--pop up delete account-->
+	<div class="modal fade" id="exampleModalLong" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLongTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<form action="deleteAccount" method="post">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="col-lg-8">
+							<h3 class="modal-title" id="exampleModalLongTitle">
+								<strong>¿Estás seguro?</strong>
+							</h3>
+						</div>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="col-lg-8 mx-auto">
+							<h6 class="modal-title" id="exampleModalLongTitle">Se
+								borrara tu progreso.</h6>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary text-white" class="close"
+							data-dismiss="modal" aria-label="Close">CANCELAR</a> <input
+							type="submit" value="Borrar cuenta" class="btn btn-primary"
+							id="button-style" />
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 

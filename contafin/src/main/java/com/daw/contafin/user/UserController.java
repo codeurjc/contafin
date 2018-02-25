@@ -149,6 +149,14 @@ public class UserController extends ContentController{
 		outputStream.close();
 	}
 	
+	//Delete Account
+	@RequestMapping("deleteAccount")
+	public String deleteAccount() {
+		User user = userComponent.getLoggedUser();
+		userService.deleteAccount(user);
+		return "/logout";
+	}
+	
 	
 
 }
