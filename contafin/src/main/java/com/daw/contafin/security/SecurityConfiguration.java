@@ -18,9 +18,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	
-    			//At the moment all the URLs are public
-    			http.authorizeRequests().anyRequest().permitAll();
+   
+    			//Private pages
+    			http.authorizeRequests().antMatchers("/User/*").hasAnyRole("ADMIN","USER");
+    			http.authorizeRequests().antMatchers("/Admin/*").hasAnyRole("ADMIN");
+    			http.authorizeRequests().antMatchers("/UpdateExercise").hasAnyRole("ADMIN");
+    			http.authorizeRequests().antMatchers("/UnitCreation").hasAnyRole("ADMIN");
+    			
+    			//Public pages
+    			http.authorizeRequests().antMatchers("index").permitAll();
+    			http.authorizeRequests().antMatchers("/home").permitAll();
+    			http.authorizeRequests().antMatchers("/Unit/*/lessons").permitAll();
+    			http.authorizeRequests().antMatchers("/Unit/*/lessons/*/Exercise/*/*").permitAll();
+    			http.authorizeRequests().antMatchers("/Unit/*/lessons").permitAll();
+    			http.authorizeRequests().antMatchers("/Unit/*/lessons/*/Exercise/*/*/Completed").permitAll();
+    			http.authorizeRequests().antMatchers("/lesson/*/lessonCompleted/").permitAll();
+    			http.authorizeRequests().antMatchers("/continueLesson").permitAll();
     			
     			// Login form
     	        http.formLogin().loginPage("/");
@@ -33,7 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	        http.logout().logoutUrl("/logout");
     			http.logout().logoutSuccessUrl("/");
     	        
-    	        http.csrf().disable();
+    			// Disable CSRF at the moment
+    			http.csrf().disable();
     	        
     	        //Use Http Basic Authentication
     	        http.httpBasic();
