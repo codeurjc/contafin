@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLesson;
-import com.daw.contafin.completedLesson.CompletedLessonRepository;
+import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
@@ -43,7 +43,7 @@ public class ExerciseController {
 	UserService userService;
 	
 	@Autowired
-	private CompletedLessonRepository completedLessonRepository;
+	private CompletedLessonService completedLessonService;
 
 	List<String> texts;
 	User user;
@@ -800,10 +800,10 @@ public class ExerciseController {
 
 		Calendar date = Calendar.getInstance();
 	    Date sqlDate = new Date((date.getTime()).getTime());
-		CompletedLesson completedLessonS = completedLessonRepository.findByUserAndLesson(user,lesson);
+		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user,lesson);
 		if(completedLessonS == null) {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
-			completedLessonRepository.save(completedLesson);
+			completedLessonService.save(completedLesson);
 			if(userComponent.isLoggedUser()) {
 				user.setExp(user.getExp() + 10);
 				user.upLevel();
@@ -820,7 +820,7 @@ public class ExerciseController {
 		User user = userComponent.getLoggedUser();
 		
 		List<Lesson> lessons = lessonService.getAll();
-		List<CompletedLesson> lessonsCompleted = completedLessonRepository.findByUser(user);
+		List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
 		
 		int numLessons = lessons.size();
 		int numLessonsCompleted = lessonsCompleted.size();
