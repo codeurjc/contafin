@@ -54,19 +54,19 @@ public class UnitController extends ContentController {
 	}
 
 	@RequestMapping("/UnitCreation")
-	public String unit(Model model, @RequestParam String unitName, @RequestParam String lessonName0, @RequestParam String lessonName1, @RequestParam String lessonName2,
-			@RequestParam String[] images, @RequestParam String[] texts, @RequestParam String[] statements,
-			@RequestParam String[] answers) {
+	public String unit(Model model, @RequestParam String unitName, @RequestParam(value="lessonName[]") String[] lessonName,
+			@RequestParam(value="images[]") String[] images, @RequestParam(value="texts[]") String[] texts, @RequestParam(value="statements[]") String[] statements,
+			@RequestParam(value="answers[]") String[] answers) {
 
 		Unit unit;
 		unit = new Unit(unitName);
 		unitService.save(unit);
 
-		Lesson lesson1 = new Lesson(lessonName0, unit);
+		Lesson lesson1 = new Lesson(lessonName[0], unit);
 		lessonService.save(lesson1);
-		Lesson lesson2 = new Lesson(lessonName1, unit);
+		Lesson lesson2 = new Lesson(lessonName[1], unit);
 		lessonService.save(lesson2);
-		Lesson lesson3 = new Lesson(lessonName2, unit);
+		Lesson lesson3 = new Lesson(lessonName[2], unit);
 		lessonService.save(lesson3);
 
 		Lesson lesson = lesson1;
