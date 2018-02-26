@@ -108,7 +108,7 @@
 							<div class="form-group">
 								<label for="lessonNameForm0">Nombre de la lección 1</label> <input
 									type="text" class="form-control" id="lessonNameForm0"
-									name="lessonName0">
+									name="lessonName[]">
 							</div>
 						</div>
 					</div>
@@ -145,21 +145,21 @@
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile0"
-												   accept="image/*" name="images[0]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 1</label>
 										</div>
 									</div>
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile1"
-												   accept="image/*" name="images[1]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 2</label>
 										</div>
 									</div>
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile2"
-												   accept="image/*" name="images[2]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 3</label>
 										</div>
 									</div>
@@ -170,21 +170,21 @@
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 1</label> <input
 												type="text" class="form-control" id="textForm0"
-												name="texts[0]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 2</label> <input
 												type="text" class="form-control" id="textForm1"
-												name="texts[1]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 3</label> <input
 												type="text" class="form-control" id="textForm2"
-												name="texts[2]">
+												name="texts[]">
 										</div>
 									</div>
 								</div>
@@ -193,7 +193,7 @@
 									<div class="col">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm0" name="answer[0]">
+												class="form-control" id="answerForm0" name="answer[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -213,7 +213,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm1" rows="3" name="statements[1]"></textarea>
+													  id="statementForm1" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -223,7 +223,7 @@
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label>
 											<textarea class="form-control form-control-sm"
-													  id="answerForm1" rows="3" name="answer[1]"></textarea>
+													  id="answerForm1" rows="3" name="answer[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -238,7 +238,7 @@
 										<div class="form-group">
 											<label for="answerForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm4" rows="3" name="statements[4]"></textarea>
+													  id="statementForm4" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -248,14 +248,14 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 1</label> <input
 												type="text" class="form-control" id="textForm19"
-												name="texts[19]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Respuesta 2</label> <input
 												type="text" class="form-control" id="textForm20"
-												name="texts[20]">
+												name="texts[]">
 										</div>
 									</div>
 								</div>
@@ -264,13 +264,13 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 3</label> <input
 												type="text" class="form-control" id="textForm21"
-												name="texts[21]">
+												name="texts[">
 										</div>
 									</div>
 									<div class="col-3">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm2" name="answers[2]">
+												class="form-control" id="answerForm2" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -289,7 +289,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm6" rows="3" name="statements[6]"></textarea>
+													  id="statementForm6" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -299,7 +299,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 1</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm26" rows="2" name="texts[26]"></textarea>
+													  id="textForm26" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -308,7 +308,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 2</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm27" rows="2" name="texts[27]"></textarea>
+													  id="textForm27" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -317,7 +317,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 3</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm28" rows="2" name="texts[28]"></textarea>
+													  id="textForm28" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -326,7 +326,7 @@
 									<div class="col">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm4" name="answers[4]">
+												class="form-control" id="answerForm4" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -350,7 +350,7 @@
 							<div class="form-group">
 								<label for="lessonNameForm0">Nombre de la lección 2</label> <input
 									type="text" class="form-control" id="lessonNameForm1"
-									name="lessonName1">
+									name="lessonName[]">
 							</div>
 						</div>
 					</div>
@@ -378,7 +378,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm7" rows="3" name="statements[7]"></textarea>
+													  id="statementForm7" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -387,21 +387,21 @@
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile3"
-												   accept="image/*" name="images[3]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 1</label>
 										</div>
 									</div>
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile4"
-												   accept="image/*" name="images[4]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 2</label>
 										</div>
 									</div>
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile5"
-												   accept="image/*" name="images[5]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 3</label>
 										</div>
 									</div>
@@ -412,21 +412,21 @@
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 1</label> <input
 												type="text" class="form-control" id="textForm29"
-												name="texts[29]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 2</label> <input
 												type="text" class="form-control" id="textForm30"
-												name="texts[30]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 3</label> <input
 												type="text" class="form-control" id="textForm31"
-												name="texts[31]">
+												name="texts[]">
 										</div>
 									</div>
 								</div>
@@ -435,7 +435,7 @@
 									<div class="col">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm5" name="answers[5]">
+												class="form-control" id="answerForm5" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -455,7 +455,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm8" rows="3" name="statements[8]"></textarea>
+													  id="statementForm8" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -465,7 +465,7 @@
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label>
 											<textarea class="form-control form-control-sm"
-													  id="answerForm6" rows="3" name="answers[6]"></textarea>
+													  id="answerForm6" rows="3" name="answers[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -480,7 +480,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm11" rows="3" name="statements[11]"></textarea>
+													  id="statementForm11" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -490,14 +490,14 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 1</label> <input
 												type="text" class="form-control" id="textForm48"
-												name="texts[48]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Respuesta 2</label> <input
 												type="text" class="form-control" id="textForm49"
-												name="texts[49]">
+												name="texts[]">
 										</div>
 									</div>
 								</div>
@@ -506,13 +506,13 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 3</label> <input
 												type="text" class="form-control" id="textForm50"
-												name="texts[50]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col-3">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm7" name="answers[7]">
+												class="form-control" id="answerForm7" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -531,7 +531,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm13" rows="3" name="statements[13]"></textarea>
+													  id="statementForm13" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -541,7 +541,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 1</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm55" rows="2" name="texts[55]"></textarea>
+													  id="textForm55" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -550,7 +550,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 2</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm56" rows="2" name="texts[56]"></textarea>
+													  id="textForm56" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -559,7 +559,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 3</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm57" rows="2" name="texts[57]"></textarea>
+													  id="textForm57" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -568,7 +568,7 @@
 									<div class="col">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm9" name="answers[9]">
+												class="form-control" id="answerForm9" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -592,7 +592,7 @@
 							<div class="form-group">
 								<label for="lessonNameForm0">Nombre de la lección 3</label> <input
 									type="text" class="form-control" id="lessonNameForm2"
-									name="lessonName2">
+									name="lessonName[]">
 							</div>
 						</div>
 					</div>
@@ -620,7 +620,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm14" rows="3" name="statements[14]"></textarea>
+													  id="statementForm14" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -629,21 +629,21 @@
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile6"
-												   accept="image/*" name="images[6]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 1</label>
 										</div>
 									</div>
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile7"
-												   accept="image/*" name="images[7]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 2</label>
 										</div>
 									</div>
 									<div class="col">
 										<div class="custom-file">
 											<input type="file" class="custom-file-input" id="imageFile8"
-												   accept="image/*" name="images[8]"> <label
+												   accept="image/*" name="images[]"> <label
 												class="custom-file-label" for="imageFile0">Imagen 3</label>
 										</div>
 									</div>
@@ -654,21 +654,21 @@
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 1</label> <input
 												type="text" class="form-control" id="textForm58"
-												name="texts[58]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 2</label> <input
 												type="text" class="form-control" id="textForm59"
-												name="texts[59]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Texto imagen 3</label> <input
 												type="text" class="form-control" id="textForm60"
-												name="texts[60]">
+												name="texts[]">
 										</div>
 									</div>
 								</div>
@@ -677,7 +677,7 @@
 									<div class="col">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm10" name="answers[10]">
+												class="form-control" id="answerForm10" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -697,7 +697,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm15" rows="3" name="statements[15]"></textarea>
+													  id="statementForm15" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -707,7 +707,7 @@
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label>
 											<textarea class="form-control form-control-sm"
-													  id="answerForm11" rows="3" name="answers[11]"></textarea>
+													  id="answerForm11" rows="3" name="answers[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -722,7 +722,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm18" rows="3" name="statements[18]"></textarea>
+													  id="statementForm18" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -732,14 +732,14 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 1</label> <input
 												type="text" class="form-control" id="textForm77"
-												name="texts[77]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col">
 										<div class="form-group">
 											<label for="textForm0">Respuesta 2</label> <input
 												type="text" class="form-control" id="textForm78"
-												name="texts[78]">
+												name="texts[]">
 										</div>
 									</div>
 								</div>
@@ -748,13 +748,13 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 3</label> <input
 												type="text" class="form-control" id="textForm79"
-												name="texts[79]">
+												name="texts[]">
 										</div>
 									</div>
 									<div class="col-3">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm12" name="answers[12]">
+												class="form-control" id="answerForm12" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
@@ -773,7 +773,7 @@
 										<div class="form-group">
 											<label for="statementForm0">Enunciado</label>
 											<textarea class="form-control form-control-sm"
-													  id="statementForm20" rows="3" name="statements[20]"></textarea>
+													  id="statementForm20" rows="3" name="statements[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -783,7 +783,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 1</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm84" rows="2" name="texts[84]"></textarea>
+													  id="textForm84" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -792,7 +792,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 2</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm85" rows="2" name="texts[85]"></textarea>
+													  id="textForm85" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -801,7 +801,7 @@
 										<div class="form-group">
 											<label for="textForm0">Respuesta 3</label>
 											<textarea class="form-control form-control-sm"
-													  id="textForm86" rows="2" name="texts[86]"></textarea>
+													  id="textForm86" rows="2" name="texts[]"></textarea>
 										</div>
 									</div>
 								</div>
@@ -810,7 +810,7 @@
 									<div class="col">
 										<div class="form-group">
 											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm14" name="answers[14]">
+												class="form-control" id="answerForm14" name="answers[]">
 											<option>1</option>
 											<option>2</option>
 											<option>3</option>
