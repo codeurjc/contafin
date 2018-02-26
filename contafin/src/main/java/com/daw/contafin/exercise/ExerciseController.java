@@ -38,16 +38,16 @@ public class ExerciseController {
 
 	@Autowired
 	UserComponent userComponent;
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	private CompletedLessonService completedLessonService;
 
 	List<String> texts;
 	User user;
-	
+
 	int points = 0;
 
 	@PostConstruct
@@ -58,7 +58,7 @@ public class ExerciseController {
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/1/{numExercise}/Completed")
 	public String exerciseCompleted1(Model model, @PathVariable int id, @PathVariable int numLesson,
 			@PathVariable int numExercise, @RequestParam String solution) {
-		
+
 		user = userComponent.getLoggedUser();
 
 		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
@@ -74,38 +74,38 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points=points +3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points=points +3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points=points +3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				points=points -3;
+				points = points - 3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
-				points=points -3;
+				points = points - 3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
-				points=points -3;
+				points = points - 3;
 			}
 		}
 
@@ -117,13 +117,14 @@ public class ExerciseController {
 		model.addAttribute("text3", exercise.getTexts().get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		//With this code you get the wrong exercise to go to the end
+		// With this code you get the wrong exercise to go to the end
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -142,7 +143,7 @@ public class ExerciseController {
 				}
 			}
 			//
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -158,7 +159,7 @@ public class ExerciseController {
 			model.addAttribute("nextNumExercise", nextNumExercise);
 			model.addAttribute("nextType", typeNext);
 		}
-		
+
 		model.addAttribute("idunit", id);
 		model.addAttribute("idlesson", numLesson);
 		model.addAttribute("thisExercise", numExercise);
@@ -189,11 +190,12 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -211,13 +213,12 @@ public class ExerciseController {
 					return "exerciseType1";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
 			model.addAttribute("tocorrectend", true);
-		} 
-		else {
+		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
@@ -261,21 +262,22 @@ public class ExerciseController {
 		}
 		if (counter >= 3) {
 			model.addAttribute("color", "exercise1Good");
-			points= points +3;
-			completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+			points = points + 3;
+			completedExerciseService.save(new CompletedExercise(user, exercise, 0));
 		} else {
 			model.addAttribute("color", "exercise1Bad");
-			points= points -3;
+			points = points - 3;
 		}
 
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -293,7 +295,7 @@ public class ExerciseController {
 					return "exerciseType2";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -309,7 +311,7 @@ public class ExerciseController {
 			model.addAttribute("nextNumExercise", nextNumExercise);
 			model.addAttribute("nextType", typeNext);
 		}
-		
+
 		model.addAttribute("idunit", id);
 		model.addAttribute("idlesson", numLesson);
 		model.addAttribute("thisExercise", numExercise);
@@ -332,11 +334,12 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -355,13 +358,12 @@ public class ExerciseController {
 					return "exerciseType2";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
 			model.addAttribute("tocorrectend", true);
-		} 
-		else {
+		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
@@ -450,37 +452,37 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points= points +3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points= points +3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points= points +3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				points= points -3;
+				points = points - 3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
-				points= points -3;
+				points = points - 3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
-				points= points -3;
+				points = points - 3;
 			}
 		}
 
@@ -492,11 +494,12 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -514,7 +517,7 @@ public class ExerciseController {
 					return "exerciseType5";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -557,11 +560,12 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -579,13 +583,12 @@ public class ExerciseController {
 					return "exerciseType5";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
 			model.addAttribute("tocorrectend", true);
-		} 
-		else {
+		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
@@ -650,37 +653,37 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points= points+3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points= points+3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
-				points= points+3;
+				completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+				points = points + 3;
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				points=points -3;
+				points = points - 3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
-				points=points -3;
+				points = points - 3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
-				points=points -3;
+				points = points - 3;
 			}
 		}
 
@@ -692,11 +695,12 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -714,7 +718,7 @@ public class ExerciseController {
 					return "exerciseType7";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
 			model.addAttribute("correct", false);
@@ -757,11 +761,12 @@ public class ExerciseController {
 		model.addAttribute("statement", exercise.getStatement());
 
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
-		if (nextExercise == null || nextCompletedExercise!=null) {
-			
-			List<Exercise> exercises= exerciseService.findByLesson(lesson);
-			for(int i=0; i<exercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, exercises.get(i));
+		if (nextExercise == null || nextCompletedExercise != null) {
+
+			List<Exercise> exercises = exerciseService.findByLesson(lesson);
+			for (int i = 0; i < exercises.size(); i++) {
+				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+						exercises.get(i));
 				if (completedExerciseS == null) {
 					nextExercise = exercises.get(i);
 					int typeNext = nextExercise.getKind();
@@ -780,13 +785,12 @@ public class ExerciseController {
 					return "exerciseType7";
 				}
 			}
-			
+
 			model.addAttribute("next", false);
 			model.addAttribute("correct", false);
 			model.addAttribute("end", false);
 			model.addAttribute("tocorrectend", true);
-		} 
-		else {
+		} else {
 			int typeNext = nextExercise.getKind();
 			long nextNumExercise = nextExercise.getId();
 
@@ -807,66 +811,64 @@ public class ExerciseController {
 
 	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson) {
-		
-		if (userComponent.isLoggedUser()) {
-			user = userComponent.getLoggedUser();
-			
-			Lesson lesson = lessonService.findById(idlesson);
-			List<Exercise> listExercises = exerciseService.findByLesson(lesson);
-			for(int i=0; i<listExercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, listExercises.get(i));
-				if (completedExerciseS != null) {
-					completedExerciseService.delete(completedExerciseS);
-				}
-			}
 
-			Calendar date = Calendar.getInstance();
-		    Date sqlDate = new Date((date.getTime()).getTime());
-			CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user,lesson);
-			if(completedLessonS == null) {
-				CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
-				completedLessonService.save(completedLesson);
-				if(userComponent.isLoggedUser()) {
-					user.setExp(user.getExp() + 10);
-					user.upLevel();
-					user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
-					userService.updateUserData(user);
-					userComponent.setLoggedUser(user);
-				}
+		// if (userComponent.isLoggedUser()) {
+		user = userComponent.getLoggedUser();
+
+		Lesson lesson = lessonService.findById(idlesson);
+		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
+		for (int i = 0; i < listExercises.size(); i++) {
+			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
+					listExercises.get(i));
+			if (completedExerciseS != null) {
+				completedExerciseService.delete(completedExerciseS);
 			}
 		}
-		
-		return "completedLesson";	
+
+		Calendar date = Calendar.getInstance();
+		Date sqlDate = new Date((date.getTime()).getTime());
+		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user, lesson);
+		if (completedLessonS == null) {
+			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
+			completedLessonService.save(completedLesson);
+			if (userComponent.isLoggedUser()) {
+				user.setExp(user.getExp() + 10);
+				user.upLevel();
+				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
+			}
+		}
+		// }
+
+		return "completedLesson";
 	}
 
 	@RequestMapping("/continueLesson")
 	public String continueLesson(Model model) {
-		if (userComponent.isLoggedUser()) {
 			User user = userComponent.getLoggedUser();
-			
+
 			List<Lesson> lessons = lessonService.getAll();
 			List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
-			
+
 			int numLessons = lessons.size();
 			int numLessonsCompleted = lessonsCompleted.size();
-			double percentageD = (double)numLessonsCompleted / numLessons * 100;
-			int percentage = (int)percentageD;
-			user.setFluency(percentage);
-			if(user.getPoints()+points >= 0) {
-				user.setPoints(user.getPoints()+points);
+			double percentageD = (double) numLessonsCompleted / numLessons * 100;
+			int percentage = (int) percentageD;
+			if (userComponent.isLoggedUser()) {
+
+				user.setFluency(percentage);
+				if (user.getPoints() + points >= 0) {
+					user.setPoints(user.getPoints() + points);
+				}
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
 			}
-			else {
-				user.setPoints(0);
-			}
-			userService.updateUserData(user);
-			userComponent.setLoggedUser(user);
 			model.addAttribute("percentage", percentage);
-		}else {
-			model.addAttribute("percentage", 12);
-		}
+
+
 		return "continueLesson";
+
 	}
-
-
 
 }

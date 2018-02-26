@@ -141,6 +141,13 @@ Select a MySQL connection user curro be "root" and the password "pass"
 Once inside we will click on Create a new Schema in the connected server whose name will be "test"
 Start our application
 Once we have the connection of MySQL connected and the loaded project we will press in the Aplication.java of our application loaded in STS and we will Run as: Spring Boot App.
+#### Configure IDE
+- Download STS (http://spring.io/tools/sts/all).
+- Import as a Maven project.
+- Update Maven project.
+- Run as a Spring Boot application.
+- Go to https://localhost:8080
+- Enjoy our application.
 ### Anonymous users
 As an anonymous user we can enter the application and perform the available lessons in addition to creating or entering our profile.
 ### Registered users
