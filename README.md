@@ -149,3 +149,11 @@ As registered users we can make the different lessons and progress in them, we c
 As administrators of our application you will get the same options with the application as other registered users but you can also view and export the users´ data and create new lessons.
 
 The application does not need more explanations since it is very intuitive because it is intended for teaching
+
+## Configure IDE
+- Download STS (http://spring.io/tools/sts/all).
+- Import as a Maven project.
+- Update Maven project.
+- Run as a Spring Boot application.
+- Go to https://localhost:8080
+- Enjoy our application.
