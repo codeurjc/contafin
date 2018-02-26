@@ -47,7 +47,6 @@ public class ExerciseController {
 
 	List<String> texts;
 	User user;
-	int[] point = {0,0,0,0};
 
 	@PostConstruct
 	public void init() {
@@ -73,40 +72,31 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[0]));
-				user.setPoints(user.getPoints()+3);
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[0]));
-				user.setPoints(user.getPoints()+3);
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[0]));
-				user.setPoints(user.getPoints()+3);
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				point[0]=point[0]+1;
-				user.setPoints(user.getPoints()-1);
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
-				point[0]=point[0]+1;
-				user.setPoints(user.getPoints()-1);
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
-				point[0]=point[0]+1;
-				user.setPoints(user.getPoints()-1);
 			}
 		}
 
@@ -163,7 +153,6 @@ public class ExerciseController {
 		model.addAttribute("idunit", id);
 		model.addAttribute("idlesson", numLesson);
 		model.addAttribute("thisExercise", numExercise);
-		userService.updateUserData(user);
 
 		return "exerciseType1";
 	}
@@ -263,12 +252,9 @@ public class ExerciseController {
 		}
 		if (counter >= 3) {
 			model.addAttribute("color", "exercise1Good");
-			completedExerciseService.save(new CompletedExercise(user,exercise, point[1]));
-			user.setPoints(user.getPoints()+3);
+			completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 		} else {
 			model.addAttribute("color", "exercise1Bad");
-			point[1]=point[1]+1;
-			user.setPoints(user.getPoints()-1);
 		}
 
 		model.addAttribute("statement", exercise.getStatement());
@@ -316,7 +302,6 @@ public class ExerciseController {
 		model.addAttribute("idunit", id);
 		model.addAttribute("idlesson", numLesson);
 		model.addAttribute("thisExercise", numExercise);
-		userService.updateUserData(user);
 
 		return "exerciseType2";
 	}
@@ -454,46 +439,31 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[2]));
-				user.setPoints(user.getPoints()+3);
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[2]));
-				user.setPoints(user.getPoints()+3);
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(user,exercise,point[2]));
-				user.setPoints(user.getPoints()+3);
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				point[2]=point[2]+1;
-				user.setPoints(user.getPoints()-1);
-
-
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
-				point[2]=point[2]+1;
-				user.setPoints(user.getPoints()-1);
-
-
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
-				point[2]=point[2]+1;
-				user.setPoints(user.getPoints()-1);
-
- 
 			}
 		}
 
@@ -546,7 +516,6 @@ public class ExerciseController {
 		model.addAttribute("idunit", id);
 		model.addAttribute("idlesson", numLesson);
 		model.addAttribute("thisExercise", numExercise);
-		userService.updateUserData(user);
 
 		return "exerciseType5";
 	}
@@ -664,50 +633,31 @@ public class ExerciseController {
 				model.addAttribute("exercise1", "exercise1Good");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[3]));
-				user.setPoints(user.getPoints()+3);
-
-				
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
-				completedExerciseService.save(new CompletedExercise(user,exercise, point[3]));
-				user.setPoints(user.getPoints()+3);
-
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
-				completedExerciseService.save(new CompletedExercise(user,exercise,point[3]));
-				user.setPoints(user.getPoints()+3);
-
+				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
-				point[3]=point[3]+1;
-				user.setPoints(user.getPoints()-1);
-
-
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
-				point[3]=point[3]+1;
-				user.setPoints(user.getPoints()-1);
-
-
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
-				point[3]=point[3]+1;
-				user.setPoints(user.getPoints()-1);
-
- 
 			}
 		}
 
@@ -760,7 +710,6 @@ public class ExerciseController {
 		model.addAttribute("idunit", id);
 		model.addAttribute("idlesson", numLesson);
 		model.addAttribute("thisExercise", numExercise);
-		userService.updateUserData(user);
 
 		return "exerciseType7";
 	}
@@ -888,4 +837,7 @@ public class ExerciseController {
 		}
 		return "continueLesson";
 	}
+
+
+
 }
