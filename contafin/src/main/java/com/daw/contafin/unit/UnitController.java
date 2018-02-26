@@ -40,7 +40,7 @@ public class UnitController extends ContentController {
 	@Autowired
 	UserComponent userComponent;
 
-	@RequestMapping("/UpdateExercise") 
+	@RequestMapping("/UpdateExercise")  
 	public String unitCreation(Model model) {
 		model.addAttribute("loggedUser", userComponent.isLoggedUser());
 
@@ -116,7 +116,7 @@ public class UnitController extends ContentController {
 		 * texts[36], texts[37], texts[38], texts[39]); exerciseRepository.save(new
 		 * Exercise(3, statements[9], null, myTexts, null, lesson));
 		 * 
-		 * myTexts = Arrays.asList(texts[40], texts[41], texts[42], texts[43],
+		 * myTexts = Arrays.asList(texts[40], texts[41], texts[42], texts[43], 
 		 * texts[44], texts[45], texts[46], texts[47]); exerciseRepository.save(new
 		 * Exercise(4, statements[10], null, myTexts, null, lesson));
 		 */
@@ -168,7 +168,7 @@ public class UnitController extends ContentController {
 		answer = new Answer(answers[10]);
 		exerciseService.save(new Exercise(7, statements[11], null, myTexts, answer, lesson));
 
-		return "unitCreation";
+		return "emptyTemplate";
 	}
 
 	@PostConstruct

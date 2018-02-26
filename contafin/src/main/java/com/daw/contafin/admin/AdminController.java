@@ -26,13 +26,6 @@ public class AdminController  {
 	@Autowired
 	UserComponent userComponent;
 	
-
-	
-	
-	@RequestMapping("UnitCreation")
-	public String unitCreation() {
-		return "unitCreation";
-	}
 	
 	@RequestMapping("UsersData")
 	public String usersData(Model model) {
