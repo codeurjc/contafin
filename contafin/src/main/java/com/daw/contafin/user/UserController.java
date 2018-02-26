@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +22,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ContentController;
 import com.daw.contafin.ImageService;
+import com.daw.contafin.completedLesson.CompletedLessonService;
 
 @Controller
+@RequestMapping ("User")
 public class UserController extends ContentController{
 
 	@Autowired
@@ -32,15 +36,39 @@ public class UserController extends ContentController{
 	
 	@Autowired
 	ImageService imageService;
+	
+	@Autowired
+	CompletedLessonService completedLessonService;
 
-	@RequestMapping("profile")
+	@RequestMapping("Profile")
 	public String profile(Model model){
 		
 		loadNavbar(model);
-		model.addAttribute("goals", false);
+		/*At the moment there are't rewards
+		model.addAttribute("goals", false);*/
 		
-		//This is an example. "progresss" is an array of lessons completed in one week
-		int [] progress = {3,2,0,4,6,0,0};
+		//Updating line chart
+		
+		//Create an array for weekly progress
+		int [] progress = new int[7];
+		User user = userComponent.getLoggedUser();
+		//Get the current date and set first day of week Monday
+		Calendar calendar = Calendar.getInstance();
+		calendar.setFirstDayOfWeek(Calendar.MONDAY);
+		//Convert java.util.Date to java.sql.Date
+		Date date= calendar.getTime();
+		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+		//Get the current day
+		int day =calendar.get(Calendar.DAY_OF_WEEK);
+		//Store weekly progress
+		progress[day-1]=completedLessonService.getCompletedLessons(user, sqlDate);
+		for (int i= day-1; i< 0; i-- ) { 
+			calendar.add(Calendar.DATE, -1);
+			date= calendar.getTime();
+			sqlDate= new java.sql.Date(date.getTime());
+			progress[i-1]=completedLessonService.getCompletedLessons(user, sqlDate);
+		}
+		
 		model.addAttribute("progress", progress);
 
 		return "profile";
@@ -48,16 +76,16 @@ public class UserController extends ContentController{
 
 	// Configuration Controller
 
-	@RequestMapping("configuration")
+	@RequestMapping("Configuration")
 	public String configuration(Model model, HttpServletRequest request) {
 
 		loadNavbar(model);
 		return "userConfiguration";
 	}
 	
-	@RequestMapping("changesSaved")
-	public String changes(Model model, @RequestParam("new_name") String name, @RequestParam("new_email") String email,
-			@RequestParam("new_pass") String pass) {
+	@RequestMapping("ChangesSaved")
+	public String changes(Model model, @RequestParam("newName") String name, @RequestParam("newEmail") String email,
+			@RequestParam("newPass") String pass) {
 		
 		loadNavbar(model);
 		boolean noData =false; 
@@ -81,20 +109,20 @@ public class UserController extends ContentController{
 		else {
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
-			return "configuration";
+			return "Configuration";
 		}
 	}
 	
 	//Set Goal Controller
 	
-	@RequestMapping("goal")
+	@RequestMapping("Goal")
 	public String setGoal(Model model, HttpServletRequest request) {
 
 		loadNavbar(model);
 		return "setGoal";
 	}
 	
-	@RequestMapping("newGoal")
+	@RequestMapping("NewGoal")
 	public String newGoal(Model model, @RequestParam (value="goal", required=false) String goal) {
 		
 		loadNavbar(model);
@@ -112,7 +140,7 @@ public class UserController extends ContentController{
 	
 	//Save the image in the database
 	
-	@RequestMapping ("newImage")
+	@RequestMapping ("NewImage")
 	public String updateImage( Model model, @RequestParam("file") MultipartFile file) throws IOException {
 
 		loadNavbar(model);
@@ -124,7 +152,7 @@ public class UserController extends ContentController{
 			user.setImage(bytes);
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
-			 return "configuration";   
+			 return "Configuration";   
 	    }
 	    else {
 	    		model.addAttribute("noImage", true);
@@ -133,7 +161,7 @@ public class UserController extends ContentController{
 	}
 
 	// Show the image
-	@RequestMapping("profilePicture")
+	@RequestMapping("ProfilePicture")
 	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		byte [] image;
 		if (userComponent.getLoggedUser().getImage() != null) {
@@ -150,7 +178,7 @@ public class UserController extends ContentController{
 	}
 	
 	//Delete Account
-	@RequestMapping("deleteAccount")
+	@RequestMapping("DeleteAccount")
 	public String deleteAccount() {
 		User user = userComponent.getLoggedUser();
 		userService.deleteAccount(user);

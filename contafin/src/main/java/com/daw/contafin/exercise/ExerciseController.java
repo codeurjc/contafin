@@ -1,6 +1,7 @@
 package com.daw.contafin.exercise;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLesson;
-import com.daw.contafin.completedLesson.CompletedLessonRepository;
+import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
@@ -42,7 +43,7 @@ public class ExerciseController {
 	UserService userService;
 	
 	@Autowired
-	private CompletedLessonRepository completedLessonRepository;
+	private CompletedLessonService completedLessonService;
 
 	List<String> texts;
 	User user;
@@ -783,22 +784,30 @@ public class ExerciseController {
 
 	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson) {
-
-		Lesson lesson = lessonService.findById(idlesson);
-		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
-
+		
 		user = userComponent.getLoggedUser();
 		
+		Lesson lesson = lessonService.findById(idlesson);
+		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
+		for(int i=0; i<listExercises.size();i++) {
+			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, listExercises.get(i));
+			if (completedExerciseS != null) {
+				completedExerciseService.delete(completedExerciseS);
+			}
+		}
+
 		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
 
-		Date date = new Date(0); 
-		CompletedLesson completedLessonS = completedLessonRepository.findByUserAndLesson(user,lesson);
+		Calendar date = Calendar.getInstance();
+	    Date sqlDate = new Date((date.getTime()).getTime());
+		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user,lesson);
 		if(completedLessonS == null) {
-			CompletedLesson completedLesson = new CompletedLesson(user, lesson, date);
-			completedLessonRepository.save(completedLesson);
+			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
+			completedLessonService.save(completedLesson);
 			if(userComponent.isLoggedUser()) {
 				user.setExp(user.getExp() + 10);
 				user.upLevel();
+				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
 				userService.updateUserData(user);
 				userComponent.setLoggedUser(user);
 			}
@@ -812,12 +821,15 @@ public class ExerciseController {
 		User user = userComponent.getLoggedUser();
 		
 		List<Lesson> lessons = lessonService.getAll();
-		List<CompletedLesson> lessonsCompleted = completedLessonRepository.findByUser(user);
+		List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
 		
 		int numLessons = lessons.size();
 		int numLessonsCompleted = lessonsCompleted.size();
 		double percentageD = (double)numLessonsCompleted / numLessons * 100;
 		int percentage = (int)percentageD;
+		user.setFluency(percentage);
+		userService.updateUserData(user);
+		userComponent.setLoggedUser(user);
 		model.addAttribute("percentage", percentage);
 		return "continueLesson";
 	}

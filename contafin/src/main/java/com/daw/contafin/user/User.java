@@ -1,8 +1,11 @@
 package com.daw.contafin.user;
 
-import java.sql.Date;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -37,7 +40,7 @@ public class User {
 	private int streak;
 	private int fluency;
 	private int dailyGoal;
-	private Date lastConnection;
+	private String lastConnection;
 	
 	//Atributo experiencia para aumentarsela cuando acabe una lección y exp necesaria para subir de nivel.
 	private int exp = 0;
@@ -68,6 +71,7 @@ public class User {
 		this.points=0;
 		this.streak=0;
 		this.fluency=0;
+		this.lastConnection= "-";
 	}
 	
 	public User(String name, String email, String password,int level, int points, int streak, int dailyGoal, String... roles) {
@@ -79,6 +83,7 @@ public class User {
 		this.points=points;
 		this.streak=streak;
 		this.dailyGoal= dailyGoal;
+		this.lastConnection= "-";
 	}
 
 	public void upLevel() {
@@ -192,16 +197,25 @@ public class User {
 		this.image = image;
 	}
 
-	public Date getLastConnection() {
+	public String getLastConnection() {
 		return lastConnection;
 	}
 
-	public void setLastConnection(Date lastConnection) {
+	public void setLastConnection(String lastConnection) {
 		this.lastConnection = lastConnection;
 	}
-
 	
-
+	public String newConnection() {
+		Date today = Calendar.getInstance().getTime();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss");
+		String newConecction = formatter.format(today);
+		return newConecction;
+	}
 	
+	public void updateStreak(User user, int completedLessons) {
+		if(completedLessons == user.getDailyGoal()) {
+			user.setStreak(user.getStreak()+1);
+		}
+	}
 
 }
