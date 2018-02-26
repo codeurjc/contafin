@@ -64,11 +64,11 @@ In this repository we will place our web application, which helps students to le
 	- Export to excel.
 	- Send e-mails.
 
-## Navigation Diagram: 
-
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram/Navigation%20diagram.png) 
-
 ## Screenshots
+
+## Fase 2
+### Navigation Diagram: 
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram/Navigation%20diagram.png) 
 ### index.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram/index.PNG) 
 ### login.html
@@ -98,5 +98,33 @@ In this repository we will place our web application, which helps students to le
 ### continueLesson.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram/continueLessons.PNG) 
 
-
+## Fase 3
+### Navigation Diagram: 
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/NavigationDiagram.png)
+### index.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/index.png)
+### index.html(2)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/index2.png)
+### home.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/home.png)
+### profile.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/profile.png)
+### configuration.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Configuration.png)
+### addGoal.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/addGoal.png)
+### lessons.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/lessons.png)
+### exercise.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Exercise.png)
+### lessonCompleted.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/lessonCompleted.png)
+### continueLesson.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/continueLesson.png)
+### adminHome.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminHome.png)
+### usersData.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Admin:usersData.png)
+### unitCreation.html
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/unitCreation.png)
 
