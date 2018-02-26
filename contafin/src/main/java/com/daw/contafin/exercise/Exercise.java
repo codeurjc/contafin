@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -30,6 +31,15 @@ public class Exercise {
 	private int kind;
 	
 	private String statement;
+	
+	@Lob
+	private byte[] image1;
+	
+	@Lob
+	private byte[] image2;
+	
+	@Lob
+	private byte[] image3;
 	
 	@ElementCollection
 	private List<String> ruteImages;
@@ -62,6 +72,14 @@ public class Exercise {
 		else {
 			System.out.println("This kind of exercise dont exist");
 		}
+		this.answer=answer;
+	}
+	
+	public Exercise(int kind,String statement , List<String> texts, Answer answer,Lesson lesson) {
+		this.kind=kind;
+		this.statement = statement;
+		this.texts = texts;
+		this.setLesson(lesson);
 		this.answer=answer;
 	}
 
@@ -128,6 +146,31 @@ public class Exercise {
 	public void setAnswer(Answer answer) {
 		this.answer = answer;
 	}
+
+	public byte[] getImage1() {
+		return image1;
+	}
+
+	public void setImage1(byte[] image1) {
+		this.image1 = image1;
+	}
+
+	public byte[] getImage2() {
+		return image2;
+	}
+
+	public void setImage2(byte[] image2) {
+		this.image2 = image2;
+	}
+
+	public byte[] getImage3() {
+		return image3;
+	}
+
+	public void setImage3(byte[] image3) {
+		this.image3 = image3;
+	}
+	
 	
 	
 }

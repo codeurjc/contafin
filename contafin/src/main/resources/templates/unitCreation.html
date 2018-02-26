@@ -50,41 +50,17 @@
 							<span class="sr-only">(current)</span>
 					</a></li>
 				</ul>
-				{{#loggedUser}}
 				<ul class="navbar-nav ml-auto">
-					{{#isAdmin}}
 					<li class="nav-item mr-4"><a
 						class="btn btn-primary js-scroll-trigger BG-" href="Admin/Home">ADMINISTRACIÓN</a>
-					</li> {{/isAdmin}}
-					<li><img src="profilePicture" width="40" height="35"
-						class="img-thumbnail"></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle " id="navbarDropdownMenuLink"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="profile">Tu perfil</a> <a
-								class="dropdown-item" href="configuration">Configuracion</a> <a
-								class="dropdown-item" href="goal">Fijar meta</a> <a
-								class="dropdown-item" href="#">Atajos de teclado</a> <a
-								class="dropdown-item" href="/logout">Cerrar Sesion</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
-							src="img/fire.png" width="25" height="23"
-							class="d-inline-block align-top"> <span
-							class="badge badge-light">{{points}}</span></a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
-							src="img/gemstone-160838_960_720.png" width="25" height="23"
-							class="d-inline-block align-top"> <span
-							class="badge badge-light">{{streak}}</span></a></li>
+					</li> 
 				</ul>
-				{{/loggedUser}}
 			</div>
 		</div>
 	</nav>
 
 
-	<form action="UnitCreation" id="Form1" method="post">
+	<form action="UnitCreation" id="Form1" method="post" enctype="multipart/form-data">
 		<section class="text-center text-dark d-flex">
 			<div class="container my-auto">
 				<div class="row">

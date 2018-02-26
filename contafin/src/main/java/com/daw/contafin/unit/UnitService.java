@@ -14,4 +14,12 @@ public class UnitService {
 	public List<Unit> findAll(){
 		return unitRepository.findAll();
 	}
+	
+	public void save(Unit unit){
+		unitRepository.save(unit);
+	}
+	
+	public Unit findById(long Id) {
+		return unitRepository.findById(Id);
+	}
 }

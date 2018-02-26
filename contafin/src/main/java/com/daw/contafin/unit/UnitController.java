@@ -1,7 +1,7 @@
 package com.daw.contafin.unit;
 
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -11,14 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ContentController;
+import com.daw.contafin.ImageService;
 import com.daw.contafin.answer.Answer;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
-import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
 
@@ -26,7 +27,7 @@ import com.daw.contafin.user.UserService;
 public class UnitController extends ContentController {
 
 	@Autowired
-	private UnitRepository unitService;
+	private UnitService unitService;
 
 	@Autowired
 	private LessonRepository lessonService;
@@ -39,6 +40,14 @@ public class UnitController extends ContentController {
 
 	@Autowired
 	UserComponent userComponent;
+	
+	@Autowired
+	ImageService imageService;
+	
+	byte[] bytes1;
+	byte[] bytes2;
+	byte[] bytes3;
+	Exercise exercise;
 
 	@RequestMapping("/UpdateExercise")  
 	public String unitCreation(Model model) {
@@ -55,8 +64,8 @@ public class UnitController extends ContentController {
 
 	@RequestMapping("/UnitCreation")
 	public String unit(Model model, @RequestParam String unitName, @RequestParam(value="lessonName[]") String[] lessonName,
-			@RequestParam(value="images[]") String[] images, @RequestParam(value="texts[]") String[] texts, @RequestParam(value="statements[]") String[] statements,
-			@RequestParam(value="answers[]") String[] answers) {
+			@RequestParam(value="images[]") MultipartFile[] images, @RequestParam(value="texts[]") String[] texts, @RequestParam(value="statements[]") String[] statements,
+			@RequestParam(value="answers[]") String[] answers) throws IOException {
 
 		Unit unit;
 		unit = new Unit(unitName);
@@ -68,12 +77,21 @@ public class UnitController extends ContentController {
 		lessonService.save(lesson2);
 		Lesson lesson3 = new Lesson(lessonName[2], unit);
 		lessonService.save(lesson3);
-
+		
+		//Lesson 1
 		Lesson lesson = lesson1;
 		List<String> myTexts = Arrays.asList(texts[0], texts[1], texts[2]);
-		List<String> myImages = Arrays.asList(images[0], images[1], images[2]);
+		//List<String> myImages = Arrays.asList(images[0], images[1], images[2]);
 		Answer answer = new Answer(answers[0]);
-		exerciseService.save(new Exercise(1, statements[0], myImages, myTexts, answer, lesson));
+		//exerciseService.save(new Exercise(1, statements[0], myImages, myTexts, answer, lesson));
+		bytes1 = imageService.uploadImage(images[0]);
+		bytes2 = imageService.uploadImage(images[1]);
+		bytes3 = imageService.uploadImage(images[2]);
+		exercise=new Exercise(1, statements[0], myTexts, answer, lesson);
+		exercise.setImage1(bytes1);
+		exercise.setImage2(bytes2);
+		exercise.setImage3(bytes3);
+		exerciseService.save(exercise);
 
 		answer = new Answer(answers[1]);
 		exerciseService.save(new Exercise(2, statements[1], null, null, answer, lesson));
@@ -102,11 +120,20 @@ public class UnitController extends ContentController {
 		answer = new Answer(answers[3]);
 		exerciseService.save(new Exercise(7, statements[3], null, myTexts, answer, lesson));
 
+		//Lesson 2
 		lesson = lesson2;
 		myTexts = Arrays.asList(texts[9], texts[10], texts[11]);
-		myImages = Arrays.asList(images[3], images[4], images[5]);
+		//myImages = Arrays.asList(images[3], images[4], images[5]);
 		answer = new Answer(answers[4]);
-		exerciseService.save(new Exercise(1, statements[4], myImages, myTexts, answer, lesson));
+		//exerciseService.save(new Exercise(1, statements[4], myImages, myTexts, answer, lesson));
+		bytes1 = imageService.uploadImage(images[3]);
+		bytes2 = imageService.uploadImage(images[4]);
+		bytes3 = imageService.uploadImage(images[5]);
+		exercise=new Exercise(1, statements[4], myTexts, answer, lesson);
+		exercise.setImage1(bytes1);
+		exercise.setImage2(bytes2);
+		exercise.setImage3(bytes3);
+		exerciseService.save(exercise);
 
 		answer = new Answer(answers[5]);
 		exerciseService.save(new Exercise(2, statements[5], null, null, answer, lesson));
@@ -137,9 +164,18 @@ public class UnitController extends ContentController {
 
 		lesson = lesson3;
 		myTexts = Arrays.asList(texts[18], texts[19], texts[20]);
-		myImages = Arrays.asList(images[6], images[7], images[8]);
+		//myImages = Arrays.asList(images[6], images[7], images[8]);
 		answer = new Answer(answers[8]);
-		exerciseService.save(new Exercise(1, statements[8], myImages, myTexts, answer, lesson));
+		//exerciseService.save(new Exercise(1, statements[8], myImages, myTexts, answer, lesson));
+		bytes1 = imageService.uploadImage(images[6]);
+		bytes2 = imageService.uploadImage(images[7]);
+		bytes3 = imageService.uploadImage(images[8]);
+		exercise=new Exercise(1, statements[8], myTexts, answer, lesson);
+		exercise.setImage1(bytes1);
+		exercise.setImage2(bytes2);
+		exercise.setImage3(bytes3);
+		exerciseService.save(exercise);
+		
 
 		answer = new Answer(answers[9]);
 		exerciseService.save(new Exercise(2, statements[9], null, null, answer, lesson));
