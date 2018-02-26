@@ -132,6 +132,13 @@ In this repository we will place our web application, which helps students to le
 ### Diagram with the entities of the database, its fields and the relationships between them.
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram.png)
 
+## Class and templates diagram
+### Classes 
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram1.png)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram2.png)
+### Templates
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram3.png)
+
 ## How to use 
 ### STS and MySL Workbench Configuration
 Open the framework STS
