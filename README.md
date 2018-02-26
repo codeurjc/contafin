@@ -128,3 +128,7 @@ In this repository we will place our web application, which helps students to le
 ### unitCreation.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/unitCreation.png)
 
+## Database diagram
+### Diagram with the entities of the database, its fields and the relationships between them.
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram.png)
+
