@@ -54,7 +54,7 @@ public class UnitController extends ContentController {
 	}
 
 	@RequestMapping("/UnitCreation")
-	public String unit(Model model, @RequestParam String unitName, @RequestParam String lessonName0, @RequestParam String lessonName1, @RequestParam String lessonName2,
+	public String unit(Model model, @RequestParam String unitName, @RequestParam String[] lessonName,
 			@RequestParam String[] images, @RequestParam String[] texts, @RequestParam String[] statements,
 			@RequestParam String[] answers) {
 
@@ -62,14 +62,15 @@ public class UnitController extends ContentController {
 		unit = new Unit(unitName);
 		unitService.save(unit);
 
-		Lesson lesson1 = new Lesson(lessonName0, unit);
+		unit = unitService.findById(1);
+		Lesson lesson1 = new Lesson(lessonName[0], unit);
 		lessonService.save(lesson1);
-		Lesson lesson2 = new Lesson(lessonName1, unit);
+		Lesson lesson2 = new Lesson(lessonName[1], unit);
 		lessonService.save(lesson2);
-		Lesson lesson3 = new Lesson(lessonName2, unit);
+		Lesson lesson3 = new Lesson(lessonName[2], unit);
 		lessonService.save(lesson3);
 
-		Lesson lesson = lesson1;
+		Lesson lesson = lessonService.findById(1);
 		List<String> myTexts = Arrays.asList(texts[0], texts[1], texts[2]);
 		List<String> myImages = Arrays.asList(images[0], images[1], images[2]);
 		Answer answer = new Answer(answers[0]);
@@ -102,7 +103,7 @@ public class UnitController extends ContentController {
 		answer = new Answer(answers[4]);
 		exerciseService.save(new Exercise(7, statements[6], null, myTexts, answer, lesson));
 
-		lesson = lesson2;
+		lesson = lessonService.findById(2);
 		myTexts = Arrays.asList(texts[29], texts[30], texts[31]);
 		myImages = Arrays.asList(images[3], images[4], images[5]);
 		answer = new Answer(answers[5]);
@@ -135,7 +136,7 @@ public class UnitController extends ContentController {
 		answer = new Answer(answers[9]);
 		exerciseService.save(new Exercise(7, statements[13], null, myTexts, answer, lesson));
 
-		lesson = lesson3;
+		lesson = lessonService.findById(3);
 		myTexts = Arrays.asList(texts[58], texts[59], texts[60]);
 		myImages = Arrays.asList(images[6], images[7], images[8]);
 		answer = new Answer(answers[10]);
