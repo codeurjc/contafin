@@ -47,6 +47,8 @@ public class ExerciseController {
 
 	List<String> texts;
 	User user;
+	
+	int points = 0;
 
 	@PostConstruct
 	public void init() {
@@ -73,30 +75,37 @@ public class ExerciseController {
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points=points +3;
+
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points=points +3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points=points +3;
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
+				points=points -3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
+				points=points -3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
+				points=points -3;
 			}
 		}
 
@@ -108,7 +117,7 @@ public class ExerciseController {
 		model.addAttribute("text3", exercise.getTexts().get(2));
 		model.addAttribute("statement", exercise.getStatement());
 
-		//Con este codigo se consigue que el ejercicio no correcto se vaya al final
+		//With this code you get the wrong exercise to go to the end
 		CompletedExercise nextCompletedExercise = completedExerciseService.findByUserAndExercise(user, nextExercise);
 		if (nextExercise == null || nextCompletedExercise!=null) {
 			
@@ -132,7 +141,7 @@ public class ExerciseController {
 					return "exerciseType1";
 				}
 			}
-			//Hasta aquí
+			//
 			
 			model.addAttribute("next", false);
 			model.addAttribute("end", true);
@@ -252,9 +261,11 @@ public class ExerciseController {
 		}
 		if (counter >= 3) {
 			model.addAttribute("color", "exercise1Good");
+			points= points +3;
 			completedExerciseService.save(new CompletedExercise(user,exercise, 0));
 		} else {
 			model.addAttribute("color", "exercise1Bad");
+			points= points -3;
 		}
 
 		model.addAttribute("statement", exercise.getStatement());
@@ -440,30 +451,36 @@ public class ExerciseController {
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points= points +3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points= points +3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points= points +3;
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
+				points= points -3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
+				points= points -3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
+				points= points -3;
 			}
 		}
 
@@ -634,30 +651,36 @@ public class ExerciseController {
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points= points+3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Good");
 				model.addAttribute("exercise3", "exercise1");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points= points+3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Good");
 				completedExerciseService.save(new CompletedExercise(user,exercise, 0));
+				points= points+3;
 			}
 		} else {
 			if (solution.equals("uno")) {
 				model.addAttribute("exercise1", "exercise1Bad");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1");
+				points=points -3;
 			} else if (solution.equals("dos")) {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1Bad");
 				model.addAttribute("exercise3", "exercise1");
+				points=points -3;
 			} else {
 				model.addAttribute("exercise1", "exercise1");
 				model.addAttribute("exercise2", "exercise1");
 				model.addAttribute("exercise3", "exercise1Bad");
+				points=points -3;
 			}
 		}
 
@@ -829,6 +852,12 @@ public class ExerciseController {
 			double percentageD = (double)numLessonsCompleted / numLessons * 100;
 			int percentage = (int)percentageD;
 			user.setFluency(percentage);
+			if(user.getPoints()+points >= 0) {
+				user.setPoints(user.getPoints()+points);
+			}
+			else {
+				user.setPoints(0);
+			}
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
 			model.addAttribute("percentage", percentage);

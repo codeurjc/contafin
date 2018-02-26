@@ -37,8 +37,8 @@ public class ContentController {
 		if (userComponent.isLoggedUser()) {
 			model.addAttribute("name", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getName());
 			model.addAttribute("level", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getLevel());
-			model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
-			model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
+			model.addAttribute("points", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getStreak());
+			model.addAttribute("streak", userService.findByEmail(userComponent.getLoggedUser().getEmail()).getPoints());
 		}
 	}
 	
