@@ -88,9 +88,9 @@ public class UnitController extends ContentController {
 		 * Exercise(4, statements[3], null, myTexts, null, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[19], texts[20], texts[21]);
+		myTexts = Arrays.asList(texts[3], texts[4], texts[5]);
 		answer = new Answer(answers[2]);
-		exerciseService.save(new Exercise(5, statements[4], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(5, statements[2], null, myTexts, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[22], texts[23], texts[24], texts[25]); answer =
@@ -98,18 +98,18 @@ public class UnitController extends ContentController {
 		 * statements[5], null, myTexts, answer, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[26], texts[27], texts[28]);
-		answer = new Answer(answers[4]);
-		exerciseService.save(new Exercise(7, statements[6], null, myTexts, answer, lesson));
+		myTexts = Arrays.asList(texts[6], texts[7], texts[8]);
+		answer = new Answer(answers[3]);
+		exerciseService.save(new Exercise(7, statements[3], null, myTexts, answer, lesson));
 
 		lesson = lesson2;
-		myTexts = Arrays.asList(texts[29], texts[30], texts[31]);
+		myTexts = Arrays.asList(texts[9], texts[10], texts[11]);
 		myImages = Arrays.asList(images[3], images[4], images[5]);
-		answer = new Answer(answers[5]);
-		exerciseService.save(new Exercise(1, statements[7], myImages, myTexts, answer, lesson));
+		answer = new Answer(answers[4]);
+		exerciseService.save(new Exercise(1, statements[4], myImages, myTexts, answer, lesson));
 
-		answer = new Answer(answers[6]);
-		exerciseService.save(new Exercise(2, statements[8], null, null, answer, lesson));
+		answer = new Answer(answers[5]);
+		exerciseService.save(new Exercise(2, statements[5], null, null, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[32], texts[33], texts[34], texts[35],
@@ -121,9 +121,9 @@ public class UnitController extends ContentController {
 		 * Exercise(4, statements[10], null, myTexts, null, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[48], texts[49], texts[50]);
-		answer = new Answer(answers[7]);
-		exerciseService.save(new Exercise(5, statements[11], null, myTexts, answer, lesson));
+		myTexts = Arrays.asList(texts[12], texts[13], texts[14]);
+		answer = new Answer(answers[6]);
+		exerciseService.save(new Exercise(5, statements[6], null, myTexts, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[51], texts[52], texts[53], texts[54]); answer =
@@ -131,18 +131,18 @@ public class UnitController extends ContentController {
 		 * statements[12], null, myTexts, answer, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[55], texts[56], texts[57]);
-		answer = new Answer(answers[9]);
-		exerciseService.save(new Exercise(7, statements[13], null, myTexts, answer, lesson));
+		myTexts = Arrays.asList(texts[15], texts[16], texts[17]);
+		answer = new Answer(answers[7]);
+		exerciseService.save(new Exercise(7, statements[7], null, myTexts, answer, lesson));
 
 		lesson = lesson3;
-		myTexts = Arrays.asList(texts[58], texts[59], texts[60]);
+		myTexts = Arrays.asList(texts[18], texts[19], texts[20]);
 		myImages = Arrays.asList(images[6], images[7], images[8]);
-		answer = new Answer(answers[10]);
-		exerciseService.save(new Exercise(1, statements[14], myImages, myTexts, answer, lesson));
+		answer = new Answer(answers[8]);
+		exerciseService.save(new Exercise(1, statements[8], myImages, myTexts, answer, lesson));
 
-		answer = new Answer(answers[11]);
-		exerciseService.save(new Exercise(2, statements[15], null, null, answer, lesson));
+		answer = new Answer(answers[8]);
+		exerciseService.save(new Exercise(2, statements[9], null, null, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[61], texts[62], texts[63], texts[64],
@@ -154,9 +154,9 @@ public class UnitController extends ContentController {
 		 * Exercise(4, statements[17], null, myTexts, null, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[77], texts[78], texts[79]);
-		answer = new Answer(answers[12]);
-		exerciseService.save(new Exercise(5, statements[18], null, myTexts, answer, lesson));
+		myTexts = Arrays.asList(texts[21], texts[22], texts[23]);
+		answer = new Answer(answers[9]);
+		exerciseService.save(new Exercise(5, statements[10], null, myTexts, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[80], texts[81], texts[82], texts[83]); answer =
@@ -164,9 +164,9 @@ public class UnitController extends ContentController {
 		 * statements[19], null, myTexts, answer, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[84], texts[85], texts[86]);
-		answer = new Answer(answers[14]);
-		exerciseService.save(new Exercise(7, statements[20], null, myTexts, answer, lesson));
+		myTexts = Arrays.asList(texts[24], texts[25], texts[26]);
+		answer = new Answer(answers[10]);
+		exerciseService.save(new Exercise(7, statements[11], null, myTexts, answer, lesson));
 
 		return "unitCreation";
 	}
