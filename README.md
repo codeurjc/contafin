@@ -132,3 +132,20 @@ In this repository we will place our web application, which helps students to le
 ### Diagram with the entities of the database, its fields and the relationships between them.
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram.png)
 
+## How to use 
+### STS and MySL Workbench Configuration
+Open the framework STS
+File -> Open Projects From Files System -> Directory... -> And we select the route where we keep the project
+Open MySQL Workbench
+Select a MySQL connection user curro be "root" and the password "pass"
+Once inside we will click on Create a new Schema in the connected server whose name will be "test"
+Start our application
+Once we have the connection of MySQL connected and the loaded project we will press in the Aplication.java of our application loaded in STS and we will Run as: Spring Boot App.
+### Anonymous users
+As an anonymous user we can enter the application and perform the available lessons in addition to creating or entering our profile.
+### Registered users
+As registered users we can make the different lessons and progress in them, we can also see data about our profile as the level and our progress, we can also configure our account and set a goal to get an objective
+### Admin
+As administrators of our application you will get the same options with the application as other registered users but you can also view and export the users´ data and create new lessons.
+
+The application does not need more explanations since it is very intuitive because it is intended for teaching
