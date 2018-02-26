@@ -79,7 +79,7 @@ public class LessonController extends ContentController {
 			lessonsString.add(lesson.get(i).getName());
 		}
 		
-		//Get lessons done (Posible forma de obtener las lecciones completadas)
+		//Get lessons done
 		
 		int done = 0;
 		User user = userComponent.getLoggedUser();
