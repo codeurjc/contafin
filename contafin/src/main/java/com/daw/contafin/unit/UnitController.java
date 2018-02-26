@@ -164,7 +164,7 @@ public class UnitController extends ContentController {
 		 * statements[19], null, myTexts, answer, lesson));
 		 */
 
-		myTexts = Arrays.asList(texts[24], texts[25], texts[26]);
+		myTexts = Arrays.asList(texts[24], texts[25], texts[26]);  
 		answer = new Answer(answers[10]);
 		exerciseService.save(new Exercise(7, statements[11], null, myTexts, answer, lesson));
 
