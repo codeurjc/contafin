@@ -141,7 +141,7 @@ public class UnitController extends ContentController {
 		answer = new Answer(answers[8]);
 		exerciseService.save(new Exercise(1, statements[8], myImages, myTexts, answer, lesson));
 
-		answer = new Answer(answers[8]);
+		answer = new Answer(answers[9]);
 		exerciseService.save(new Exercise(2, statements[9], null, null, answer, lesson));
 
 		/*
@@ -155,7 +155,7 @@ public class UnitController extends ContentController {
 		 */
 
 		myTexts = Arrays.asList(texts[21], texts[22], texts[23]);
-		answer = new Answer(answers[9]);
+		answer = new Answer(answers[10]);
 		exerciseService.save(new Exercise(5, statements[10], null, myTexts, answer, lesson));
 
 		/*
@@ -165,10 +165,10 @@ public class UnitController extends ContentController {
 		 */
 
 		myTexts = Arrays.asList(texts[24], texts[25], texts[26]);  
-		answer = new Answer(answers[10]);
+		answer = new Answer(answers[11]);
 		exerciseService.save(new Exercise(7, statements[11], null, myTexts, answer, lesson));
 
-		return "emptyTemplate";
+		return "adminHome";
 	}
 
 	@PostConstruct
