@@ -3,845 +3,1486 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<base href="/">
-	<meta name="viewport"
-		  content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+<meta charset="utf-8">
+<base href="/">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
-	<title>CONTaFIN</title>
+<title>CONTaFIN</title>
 
-	<!-- Bootstrap core CSS -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Custom fonts for this template -->
-	<link href="vendor/font-awesome/css/font-awesome.min.css"
-		  rel="stylesheet" type="text/css">
-	<link
-			href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-			rel='stylesheet' type='text/css'>
-	<link
-			href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
-			rel='stylesheet' type='text/css'>
+<!-- Custom fonts for this template -->
+<link href="vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+	rel='stylesheet' type='text/css'>
 
-	<!-- Plugin CSS -->
-	<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+<!-- Plugin CSS -->
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
-	<!-- Custom styles for this template -->
-	<link href="css/creative.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/creative.min.css" rel="stylesheet">
 
 </head>
 
 <body class="bghome" id="page-top">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top"
-	 id="mainNav">
-	<div class="container">
-		<a class="navbar-brand js-scroll-trigger" href="home">CONTaFIN</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button"
+<body class="bghome" id="page-top">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
+		id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="home">CONTaFIN</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
 				aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav navbar-left">
-				<li class="nav-item active"><a class="nav-link " href="home">Inicio
-					<span class="sr-only">(current)</span>
-				</a></li>
-			</ul>
-			{{#loggedUser}}
-			<ul class="navbar-nav ml-auto">
-				{{#isAdmin}}
-				<li class="nav-item mr-4"><a
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav navbar-left">
+					<li class="nav-item active"><a class="nav-link " href="home">Inicio
+							<span class="sr-only">(current)</span>
+					</a></li>
+				</ul>
+				{{#loggedUser}}
+				<ul class="navbar-nav ml-auto">
+					{{#isAdmin}}
+					<li class="nav-item mr-4"><a
 						class="btn btn-primary js-scroll-trigger BG-" href="Admin/Home">ADMINISTRACIÓN</a>
-				</li> {{/isAdmin}}
-				<li><img src="profilePicture" width="40" height="35"
-						 class="img-thumbnail"></li>
-				<li class="nav-item dropdown"><a
+					</li> {{/isAdmin}}
+					<li><img src="profilePicture" width="40" height="35"
+						class="img-thumbnail"></li>
+					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle " id="navbarDropdownMenuLink"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
-					<div class="dropdown-menu"
-						 aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="profile">Tu perfil</a> <a
-							class="dropdown-item" href="configuration">Configuracion</a> <a
-							class="dropdown-item" href="goal">Fijar meta</a> <a
-							class="dropdown-item" href="#">Atajos de teclado</a> <a
-							class="dropdown-item" href="/logout">Cerrar Sesion</a>
-					</div></li>
-				<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
-						src="img/fire.png" width="25" height="23"
-						class="d-inline-block align-top"> <span
-						class="badge badge-light">{{points}}</span></a></li>
-				<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
-						src="img/gemstone-160838_960_720.png" width="25" height="23"
-						class="d-inline-block align-top"> <span
-						class="badge badge-light">{{streak}}</span></a></li>
-			</ul>
-			{{/loggedUser}}
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="profile">Tu perfil</a> <a
+								class="dropdown-item" href="configuration">Configuracion</a> <a
+								class="dropdown-item" href="goal">Fijar meta</a> <a
+								class="dropdown-item" href="#">Atajos de teclado</a> <a
+								class="dropdown-item" href="/logout">Cerrar Sesion</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
+							src="img/fire.png" width="25" height="23"
+							class="d-inline-block align-top"> <span
+							class="badge badge-light">{{points}}</span></a></li>
+					<li class="nav-item"><a class="nav-link js-scroll-trigger"><img
+							src="img/gemstone-160838_960_720.png" width="25" height="23"
+							class="d-inline-block align-top"> <span
+							class="badge badge-light">{{streak}}</span></a></li>
+				</ul>
+				{{/loggedUser}}
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
 
-<section class="text-center text-dark d-flex">
-	<div class="container my-auto">
-		<div class="row">
-			<div class="col-lg-10 mx-auto">
-				<h1 class="text-uppercase">
-					<strong>Creación de unidad completa</strong>
-				</h1>
+	<section class="text-center text-dark d-flex">
+		<div class="container my-auto">
+			<div class="row">
+				<div class="col-lg-10 mx-auto">
+					<h1 class="text-uppercase">
+						<strong>Creación de unidad completa</strong>
+					</h1>
+					<hr>
+				</div>
+			</div>
+			<form action="UnitCreation" id="Form1" method="post"
+				enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-10 mx-auto">
+						<div class="form-group">
+							<label for="unitNameForm">Nombre de la unidad</label> <input
+								type="text" class="form-control form-control-lg"
+								id="unitNameForm" name="unitName">
+						</div>
+						<hr class="invisible">
+						<div class="row">
+							<div class="col-4">
+								<div class="form-group">
+									<label for="lessonNameForm0">Nombre de la lección 1</label> <input
+										type="text" class="form-control" id="lessonNameForm0"
+										name="lessonName[0]">
+								</div>
+							</div>
+						</div>
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item"><a class="nav-link active" id="ex1-tab"
+								data-toggle="tab" href="#ex1" role="tab" aria-controls="ex1"
+								aria-selected="true">Ejercicio 1</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex2-tab"
+								data-toggle="tab" href="#ex2" role="tab" aria-controls="ex2"
+								aria-selected="false">Ejercicio 2</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex3-tab"
+								data-toggle="tab" href="#ex3" role="tab" aria-controls="ex3"
+								aria-selected="false">Ejercicio 3</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex4-tab"
+								data-toggle="tab" href="#ex4" role="tab" aria-controls="ex4"
+								aria-selected="false">Ejercicio 4</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex5-tab"
+								data-toggle="tab" href="#ex5" role="tab" aria-controls="ex5"
+								aria-selected="false">Ejercicio 5</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex6-tab"
+								data-toggle="tab" href="#ex6" role="tab" aria-controls="ex6"
+								aria-selected="false">Ejercicio 6</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex7-tab"
+								data-toggle="tab" href="#ex7" role="tab" aria-controls="ex7"
+								aria-selected="false">Ejercicio 7</a></li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active" id="ex1" role="tabpanel"
+								aria-labelledby="ex1-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm0" rows="3" name="statements[0]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile0"
+													accept="image/*" name="images[0]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 1</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile1"
+													accept="image/*" name="images[1]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 2</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile2"
+													accept="image/*" name="images[2]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 3</label>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 1</label> <input
+													type="text" class="form-control" id="textForm0"
+													name="texts[0]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 2</label> <input
+													type="text" class="form-control" id="textForm1"
+													name="texts[1]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 3</label> <input
+													type="text" class="form-control" id="textForm2"
+													name="texts[2]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm0" name="answer[0]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex2" role="tabpanel"
+								aria-labelledby="ex2-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm1" rows="3" name="statements[1]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label>
+												<textarea class="form-control form-control-sm"
+													id="answerForm1" rows="3" name="answer[1]"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex3" role="tabpanel"
+								aria-labelledby="ex3-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm2" rows="3" name="statements[2]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 1</label> <input type="text"
+													class="form-control" id="textForm3" name="texts[3]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 2</label> <input type="text"
+													class="form-control" id="textForm4" name="texts[4]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 3</label> <input type="text"
+													class="form-control" id="textForm5" name="texts[5]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 4</label> <input type="text"
+													class="form-control" id="textForm6" name="texts[6]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 1</label> <input type="text"
+													class="form-control" id="textForm7" name="texts[7]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 2</label> <input type="text"
+													class="form-control" id="textForm8" name="texts[8]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 3</label> <input type="text"
+													class="form-control" id="textForm9" name="texts[9]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 4</label> <input type="text"
+													class="form-control" id="textForm10" name="texts[10]">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex4" role="tabpanel"
+								aria-labelledby="ex4-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm3" rows="3" name="statements[3]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 1</label> <input
+													type="text" class="form-control" id="textForm11"
+													name="texts[11]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 2</label> <input
+													type="text" class="form-control" id="textForm12"
+													name="texts[12]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 3</label> <input
+													type="text" class="form-control" id="textForm13"
+													name="texts[13]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 4</label> <input
+													type="text" class="form-control" id="textForm14"
+													name="texts[14]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 5</label> <input
+													type="text" class="form-control" id="textForm15"
+													name="texts[15]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 6</label> <input
+													type="text" class="form-control" id="textForm16"
+													name="texts[16]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Sobrante 1</label> <input type="text"
+													class="form-control" id="textForm17" name="texts[17]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Sobrante 2</label> <input type="text"
+													class="form-control" id="textForm18" name="texts[18]">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex5" role="tabpanel"
+								aria-labelledby="ex5-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="answerForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm4" rows="3" name="statements[4]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm19"
+													name="texts[19]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm20"
+													name="texts[20]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label> <input
+													type="text" class="form-control" id="textForm21"
+													name="texts[21]">
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm2" name="answers[2]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex6" role="tabpanel"
+								aria-labelledby="ex6-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm5" rows="3" name="statements[5]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm22"
+													name="texts[22]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm23"
+													name="texts[23]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm24"
+													name="texts[24]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm25"
+													name="texts[25]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm3" name="answers[3]">
+													<option>1</option>
+													<option>2</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex7" role="tabpanel"
+								aria-labelledby="ex7-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm6" rows="3" name="statements[6]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm26" rows="2" name="texts[26]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm27" rows="2" name="texts[27]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm28" rows="2" name="texts[28]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm4" name="answers[4]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="invisible">
 				<hr>
-			</div>
+				<div class="row">
+					<div class="col-lg-10 mx-auto">
+						<hr class="invisible">
+						<div class="row">
+							<div class="col-4">
+								<div class="form-group">
+									<label for="lessonNameForm0">Nombre de la lección 2</label> <input
+										type="text" class="form-control" id="lessonNameForm1"
+										name="lessonName[1]">
+								</div>
+							</div>
+						</div>
+						<ul class="nav nav-tabs" id="myTab2" role="tablist">
+							<li class="nav-item"><a class="nav-link active"
+								id="ex21-tab" data-toggle="tab" href="#ex21" role="tab"
+								aria-controls="ex21" aria-selected="true">Ejercicio 1</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex22-tab"
+								data-toggle="tab" href="#ex22" role="tab" aria-controls="ex22"
+								aria-selected="false">Ejercicio 2</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex23-tab"
+								data-toggle="tab" href="#ex23" role="tab" aria-controls="ex23"
+								aria-selected="false">Ejercicio 3</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex24-tab"
+								data-toggle="tab" href="#ex24" role="tab" aria-controls="ex24"
+								aria-selected="false">Ejercicio 4</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex25-tab"
+								data-toggle="tab" href="#ex25" role="tab" aria-controls="ex25"
+								aria-selected="false">Ejercicio 5</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex26-tab"
+								data-toggle="tab" href="#ex26" role="tab" aria-controls="ex26"
+								aria-selected="false">Ejercicio 6</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex27-tab"
+								data-toggle="tab" href="#ex27" role="tab" aria-controls="ex27"
+								aria-selected="false">Ejercicio 7</a></li>
+						</ul>
+						<div class="tab-content" id="myTabContent2">
+							<div class="tab-pane fade show active" id="ex21" role="tabpanel"
+								aria-labelledby="ex21-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm7" rows="3" name="statements[7]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile3"
+													accept="image/*" name="images[3]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 1</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile4"
+													accept="image/*" name="images[4]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 2</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile5"
+													accept="image/*" name="images[5]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 3</label>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 1</label> <input
+													type="text" class="form-control" id="textForm29"
+													name="texts[29]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 2</label> <input
+													type="text" class="form-control" id="textForm30"
+													name="texts[30]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 3</label> <input
+													type="text" class="form-control" id="textForm31"
+													name="texts[31]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm5" name="answers[5]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex22" role="tabpanel"
+								aria-labelledby="ex22-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm8" rows="3" name="statements[8]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label>
+												<textarea class="form-control form-control-sm"
+													id="answerForm6" rows="3" name="answers[6]"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex23" role="tabpanel"
+								aria-labelledby="ex23-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm9" rows="3" name="statements[9]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 1</label> <input type="text"
+													class="form-control" id="textForm32" name="texts[32]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 2</label> <input type="text"
+													class="form-control" id="textForm33" name="texts[33]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 3</label> <input type="text"
+													class="form-control" id="textForm34" name="texts[34]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 4</label> <input type="text"
+													class="form-control" id="textForm35" name="texts[35]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 1</label> <input type="text"
+													class="form-control" id="textForm36" name="texts[36]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 2</label> <input type="text"
+													class="form-control" id="textForm37" name="texts[37]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 3</label> <input type="text"
+													class="form-control" id="textForm38" name="texts[38]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 4</label> <input type="text"
+													class="form-control" id="textForm39" name="texts[39]">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex24" role="tabpanel"
+								aria-labelledby="ex24-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm10" rows="3" name="statements[10]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 1</label> <input
+													type="text" class="form-control" id="textForm40"
+													name="texts[40]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 2</label> <input
+													type="text" class="form-control" id="textForm41"
+													name="texts[41]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 3</label> <input
+													type="text" class="form-control" id="textForm42"
+													name="texts[42]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 4</label> <input
+													type="text" class="form-control" id="textForm43"
+													name="texts[43]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 5</label> <input
+													type="text" class="form-control" id="textForm44"
+													name="texts[44]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 6</label> <input
+													type="text" class="form-control" id="textForm45"
+													name="texts[45]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Sobrante 1</label> <input type="text"
+													class="form-control" id="textForm46" name="texts[46]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Sobrante 2</label> <input type="text"
+													class="form-control" id="textForm47" name="texts[47]">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex25" role="tabpanel"
+								aria-labelledby="ex25-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm11" rows="3" name="statements[11]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm48"
+													name="texts[48]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm49"
+													name="texts[49]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label> <input
+													type="text" class="form-control" id="textForm50"
+													name="texts[50]">
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm7" name="answers[7]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex26" role="tabpanel"
+								aria-labelledby="ex26-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm12" rows="3" name="statements[12]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm51"
+													name="texts[51]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm52"
+													name="texts[52]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label> <input
+													type="text" class="form-control" id="textForm53"
+													name="texts[53]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 4</label> <input
+													type="text" class="form-control" id="textForm54"
+													name="texts[54]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm8" name="answers[8]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex27" role="tabpanel"
+								aria-labelledby="ex27-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm13" rows="3" name="statements[13]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm55" rows="2" name="texts[55]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm56" rows="2" name="texts[56]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm57" rows="2" name="texts[57]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm9" name="answers[9]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="invisible">
+				<hr>
+				<div class="row">
+					<div class="col-lg-10 mx-auto">
+						<hr class="invisible">
+						<div class="row">
+							<div class="col-4">
+								<div class="form-group">
+									<label for="lessonNameForm0">Nombre de la lección 3</label> <input
+										type="text" class="form-control" id="lessonNameForm2"
+										name="lessonName[2]">
+								</div>
+							</div>
+						</div>
+						<ul class="nav nav-tabs" id="myTab3" role="tablist">
+							<li class="nav-item"><a class="nav-link active"
+								id="ex31-tab" data-toggle="tab" href="#ex31" role="tab"
+								aria-controls="ex31" aria-selected="true">Ejercicio 1</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex32-tab"
+								data-toggle="tab" href="#ex32" role="tab" aria-controls="ex32"
+								aria-selected="false">Ejercicio 2</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex33-tab"
+								data-toggle="tab" href="#ex33" role="tab" aria-controls="ex33"
+								aria-selected="false">Ejercicio 3</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex34-tab"
+								data-toggle="tab" href="#ex34" role="tab" aria-controls="ex34"
+								aria-selected="false">Ejercicio 4</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex35-tab"
+								data-toggle="tab" href="#ex35" role="tab" aria-controls="ex35"
+								aria-selected="false">Ejercicio 5</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex36-tab"
+								data-toggle="tab" href="#ex36" role="tab" aria-controls="ex36"
+								aria-selected="false">Ejercicio 6</a></li>
+							<li class="nav-item"><a class="nav-link" id="ex37-tab"
+								data-toggle="tab" href="#ex37" role="tab" aria-controls="ex37"
+								aria-selected="false">Ejercicio 7</a></li>
+						</ul>
+						<div class="tab-content" id="myTabContent3">
+							<div class="tab-pane fade show active" id="ex31" role="tabpanel"
+								aria-labelledby="ex31-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm14" rows="3" name="statements[14]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile6"
+													accept="image/*" name="images[6]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 1</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile7"
+													accept="image/*" name="images[7]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 2</label>
+											</div>
+										</div>
+										<div class="col">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="imageFile8"
+													accept="image/*" name="images[8]"> <label
+													class="custom-file-label" for="imageFile0">Imagen 3</label>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 1</label> <input
+													type="text" class="form-control" id="textForm58"
+													name="texts[58]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 2</label> <input
+													type="text" class="form-control" id="textForm59"
+													name="texts[59]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Texto imagen 3</label> <input
+													type="text" class="form-control" id="textForm60"
+													name="texts[60]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm10" name="answers[10]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex32" role="tabpanel"
+								aria-labelledby="ex32-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm15" rows="3" name="statements[15]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label>
+												<textarea class="form-control form-control-sm"
+													id="answerForm11" rows="3" name="answers[11]"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex33" role="tabpanel"
+								aria-labelledby="ex33-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm16" rows="3" name="statements[16]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 1</label> <input type="text"
+													class="form-control" id="textForm61" name="texts[61]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 2</label> <input type="text"
+													class="form-control" id="textForm62" name="texts[62]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 3</label> <input type="text"
+													class="form-control" id="textForm63" name="texts[63]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 4</label> <input type="text"
+													class="form-control" id="textForm64" name="texts[64]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 1</label> <input type="text"
+													class="form-control" id="textForm65" name="texts[65]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 2</label> <input type="text"
+													class="form-control" id="textForm66" name="texts[66]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 3</label> <input type="text"
+													class="form-control" id="textForm67" name="texts[67]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Pareja 4</label> <input type="text"
+													class="form-control" id="textForm68" name="texts[68]">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex34" role="tabpanel"
+								aria-labelledby="ex34-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm17" rows="3" name="statements[17]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 1</label> <input
+													type="text" class="form-control" id="textForm69"
+													name="texts[69]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 2</label> <input
+													type="text" class="form-control" id="textForm70"
+													name="texts[70]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 3</label> <input
+													type="text" class="form-control" id="textForm71"
+													name="texts[71]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 4</label> <input
+													type="text" class="form-control" id="textForm72"
+													name="texts[72]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 5</label> <input
+													type="text" class="form-control" id="textForm73"
+													name="texts[73]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Expresión 6</label> <input
+													type="text" class="form-control" id="textForm74"
+													name="texts[74]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Sobrante 1</label> <input type="text"
+													class="form-control" id="textForm75" name="texts[75]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Sobrante 2</label> <input type="text"
+													class="form-control" id="textForm76" name="texts[76]">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex35" role="tabpanel"
+								aria-labelledby="ex35-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm18" rows="3" name="statements[18]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm77"
+													name="texts[77]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm78"
+													name="texts[78]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label> <input
+													type="text" class="form-control" id="textForm79"
+													name="texts[79]">
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm12" name="answers[12]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex36" role="tabpanel"
+								aria-labelledby="ex36-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm19" rows="3" name="statements[19]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label> <input
+													type="text" class="form-control" id="textForm80"
+													name="texts[80]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label> <input
+													type="text" class="form-control" id="textForm81"
+													name="texts[81]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label> <input
+													type="text" class="form-control" id="textForm82"
+													name="texts[82]">
+											</div>
+										</div>
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 4</label> <input
+													type="text" class="form-control" id="textForm83"
+													name="texts[83]">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerFrom13" name="answers[13]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="ex37" role="tabpanel"
+								aria-labelledby="ex37-tab">
+								<div class="container">
+									<hr class="invisible">
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="statementForm0">Enunciado</label>
+												<textarea class="form-control form-control-sm"
+													id="statementForm20" rows="3" name="statements[20]"></textarea>
+											</div>
+										</div>
+									</div>
+									<hr class="invisible">
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 1</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm84" rows="2" name="texts[84]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 2</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm85" rows="2" name="texts[85]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<div class="form-group">
+												<label for="textForm0">Respuesta 3</label>
+												<textarea class="form-control form-control-sm"
+													id="textForm86" rows="2" name="texts[86]"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-5"></div>
+										<div class="col">
+											<div class="form-group">
+												<label for="answerForm0">Respuesta correcta</label> <select
+													class="form-control" id="answerForm14" name="answers[14]">
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-5"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="invisible">
+				<input type="submit" class="btn btn-primary my-1">Enviar</input>
+			</form>
 		</div>
-		<form action="UnitCreation" id="Form1" method="post"
-			  enctype="multipart/form-data">
-			<div class="row">
-				<div class="col-lg-10 mx-auto">
-					<div class="form-group">
-						<label for="unitNameForm">Nombre de la unidad</label> <input
-							type="text" class="form-control form-control-lg"
-							id="unitNameForm" name="unitName">
-					</div>
-					<hr class="invisible">
-					<div class="row">
-						<div class="col-4">
-							<div class="form-group">
-								<label for="lessonNameForm0">Nombre de la lección 1</label> <input
-									type="text" class="form-control" id="lessonNameForm0"
-									name="lessonName0">
-							</div>
-						</div>
-					</div>
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item"><a class="nav-link active" id="ex1-tab"
-												data-toggle="tab" href="#ex1" role="tab" aria-controls="ex1"
-												aria-selected="true">Ejercicio 1</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex2-tab"
-												data-toggle="tab" href="#ex2" role="tab" aria-controls="ex2"
-												aria-selected="false">Ejercicio 2</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex3-tab"
-												data-toggle="tab" href="#ex3" role="tab" aria-controls="ex3"
-												aria-selected="false">Ejercicio 3</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex4-tab"
-												data-toggle="tab" href="#ex4" role="tab" aria-controls="ex4"
-												aria-selected="false">Ejercicio 4</a></li>
-					</ul>
-					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="ex1" role="tabpanel"
-							 aria-labelledby="ex1-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm0" rows="3" name="statements[0]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile0"
-												   accept="image/*" name="images[0]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 1</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile1"
-												   accept="image/*" name="images[1]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 2</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile2"
-												   accept="image/*" name="images[2]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 3</label>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 1</label> <input
-												type="text" class="form-control" id="textForm0"
-												name="texts[0]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 2</label> <input
-												type="text" class="form-control" id="textForm1"
-												name="texts[1]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 3</label> <input
-												type="text" class="form-control" id="textForm2"
-												name="texts[2]">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5"></div>
-									<div class="col">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm0" name="answer[0]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-									<div class="col-5"></div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex2" role="tabpanel"
-							 aria-labelledby="ex2-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm1" rows="3" name="statements[1]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label>
-											<textarea class="form-control form-control-sm"
-													  id="answerForm1" rows="3" name="answer[1]"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex3" role="tabpanel"
-							 aria-labelledby="ex3-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="answerForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm4" rows="3" name="statements[4]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 1</label> <input
-												type="text" class="form-control" id="textForm19"
-												name="texts[19]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 2</label> <input
-												type="text" class="form-control" id="textForm20"
-												name="texts[20]">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-6">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 3</label> <input
-												type="text" class="form-control" id="textForm21"
-												name="texts[21]">
-										</div>
-									</div>
-									<div class="col-3">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm2" name="answers[2]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex4" role="tabpanel"
-							 aria-labelledby="ex4-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm6" rows="3" name="statements[6]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 1</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm26" rows="2" name="texts[26]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 2</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm27" rows="2" name="texts[27]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 3</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm28" rows="2" name="texts[28]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5"></div>
-									<div class="col">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm4" name="answers[4]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-									<div class="col-5"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr class="invisible">
-			<hr>
-			<div class="row">
-				<div class="col-lg-10 mx-auto">
-					<hr class="invisible">
-					<div class="row">
-						<div class="col-4">
-							<div class="form-group">
-								<label for="lessonNameForm0">Nombre de la lección 2</label> <input
-									type="text" class="form-control" id="lessonNameForm1"
-									name="lessonName1">
-							</div>
-						</div>
-					</div>
-					<ul class="nav nav-tabs" id="myTab2" role="tablist">
-						<li class="nav-item"><a class="nav-link active"
-												id="ex21-tab" data-toggle="tab" href="#ex21" role="tab"
-												aria-controls="ex21" aria-selected="true">Ejercicio 1</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex22-tab"
-												data-toggle="tab" href="#ex22" role="tab" aria-controls="ex22"
-												aria-selected="false">Ejercicio 2</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex23-tab"
-												data-toggle="tab" href="#ex23" role="tab" aria-controls="ex23"
-												aria-selected="false">Ejercicio 3</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex24-tab"
-												data-toggle="tab" href="#ex24" role="tab" aria-controls="ex24"
-												aria-selected="false">Ejercicio 4</a></li>
-					</ul>
-					<div class="tab-content" id="myTabContent2">
-						<div class="tab-pane fade show active" id="ex21" role="tabpanel"
-							 aria-labelledby="ex21-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm7" rows="3" name="statements[7]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile3"
-												   accept="image/*" name="images[3]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 1</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile4"
-												   accept="image/*" name="images[4]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 2</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile5"
-												   accept="image/*" name="images[5]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 3</label>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 1</label> <input
-												type="text" class="form-control" id="textForm29"
-												name="texts[29]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 2</label> <input
-												type="text" class="form-control" id="textForm30"
-												name="texts[30]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 3</label> <input
-												type="text" class="form-control" id="textForm31"
-												name="texts[31]">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5"></div>
-									<div class="col">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm5" name="answers[5]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-									<div class="col-5"></div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex22" role="tabpanel"
-							 aria-labelledby="ex22-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm8" rows="3" name="statements[8]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label>
-											<textarea class="form-control form-control-sm"
-													  id="answerForm6" rows="3" name="answers[6]"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex23" role="tabpanel"
-							 aria-labelledby="ex23-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm11" rows="3" name="statements[11]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 1</label> <input
-												type="text" class="form-control" id="textForm48"
-												name="texts[48]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 2</label> <input
-												type="text" class="form-control" id="textForm49"
-												name="texts[49]">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-6">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 3</label> <input
-												type="text" class="form-control" id="textForm50"
-												name="texts[50]">
-										</div>
-									</div>
-									<div class="col-3">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm7" name="answers[7]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex24" role="tabpanel"
-							 aria-labelledby="ex24-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm13" rows="3" name="statements[13]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 1</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm55" rows="2" name="texts[55]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 2</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm56" rows="2" name="texts[56]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 3</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm57" rows="2" name="texts[57]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5"></div>
-									<div class="col">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm9" name="answers[9]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-									<div class="col-5"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr class="invisible">
-			<hr>
-			<div class="row">
-				<div class="col-lg-10 mx-auto">
-					<hr class="invisible">
-					<div class="row">
-						<div class="col-4">
-							<div class="form-group">
-								<label for="lessonNameForm0">Nombre de la lección 3</label> <input
-									type="text" class="form-control" id="lessonNameForm2"
-									name="lessonName2">
-							</div>
-						</div>
-					</div>
-					<ul class="nav nav-tabs" id="myTab3" role="tablist">
-						<li class="nav-item"><a class="nav-link active"
-												id="ex31-tab" data-toggle="tab" href="#ex31" role="tab"
-												aria-controls="ex31" aria-selected="true">Ejercicio 1</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex32-tab"
-												data-toggle="tab" href="#ex32" role="tab" aria-controls="ex32"
-												aria-selected="false">Ejercicio 2</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex33-tab"
-												data-toggle="tab" href="#ex33" role="tab" aria-controls="ex33"
-												aria-selected="false">Ejercicio 3</a></li>
-						<li class="nav-item"><a class="nav-link" id="ex34-tab"
-												data-toggle="tab" href="#ex34" role="tab" aria-controls="ex34"
-												aria-selected="false">Ejercicio 4</a></li>
-					</ul>
-					<div class="tab-content" id="myTabContent3">
-						<div class="tab-pane fade show active" id="ex31" role="tabpanel"
-							 aria-labelledby="ex31-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm14" rows="3" name="statements[14]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile6"
-												   accept="image/*" name="images[6]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 1</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile7"
-												   accept="image/*" name="images[7]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 2</label>
-										</div>
-									</div>
-									<div class="col">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="imageFile8"
-												   accept="image/*" name="images[8]"> <label
-												class="custom-file-label" for="imageFile0">Imagen 3</label>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 1</label> <input
-												type="text" class="form-control" id="textForm58"
-												name="texts[58]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 2</label> <input
-												type="text" class="form-control" id="textForm59"
-												name="texts[59]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Texto imagen 3</label> <input
-												type="text" class="form-control" id="textForm60"
-												name="texts[60]">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5"></div>
-									<div class="col">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm10" name="answers[10]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-									<div class="col-5"></div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex32" role="tabpanel"
-							 aria-labelledby="ex32-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm15" rows="3" name="statements[15]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label>
-											<textarea class="form-control form-control-sm"
-													  id="answerForm11" rows="3" name="answers[11]"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex33" role="tabpanel"
-							 aria-labelledby="ex33-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm18" rows="3" name="statements[18]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 1</label> <input
-												type="text" class="form-control" id="textForm77"
-												name="texts[77]">
-										</div>
-									</div>
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 2</label> <input
-												type="text" class="form-control" id="textForm78"
-												name="texts[78]">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-6">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 3</label> <input
-												type="text" class="form-control" id="textForm79"
-												name="texts[79]">
-										</div>
-									</div>
-									<div class="col-3">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm12" name="answers[12]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="ex34" role="tabpanel"
-							 aria-labelledby="ex34-tab">
-							<div class="container">
-								<hr class="invisible">
-								<div class="row">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="statementForm0">Enunciado</label>
-											<textarea class="form-control form-control-sm"
-													  id="statementForm20" rows="3" name="statements[20]"></textarea>
-										</div>
-									</div>
-								</div>
-								<hr class="invisible">
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 1</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm84" rows="2" name="texts[84]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 2</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm85" rows="2" name="texts[85]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col">
-										<div class="form-group">
-											<label for="textForm0">Respuesta 3</label>
-											<textarea class="form-control form-control-sm"
-													  id="textForm86" rows="2" name="texts[86]"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-5"></div>
-									<div class="col">
-										<div class="form-group">
-											<label for="answerForm0">Respuesta correcta</label> <select
-												class="form-control" id="answerForm14" name="answers[14]">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-										</div>
-									</div>
-									<div class="col-5"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr class="invisible">
-			<input type="submit" class="btn btn-primary my-1"></input>
-		</form>
-	</div>
-</section>
+	</section>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-<!-- Custom scripts for this template -->
-<script src="js/creative.min.js"></script>
-<script src="js/changeFixed.js"></script>
+	<!-- Custom scripts for this template -->
+	<script src="js/creative.min.js"></script>
+	<script src="js/changeFixed.js"></script>
 
 </body>
 
