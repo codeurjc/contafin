@@ -134,10 +134,10 @@ In this repository we will place our web application, which helps students to le
 
 ## Class and templates diagram
 ### Classes 
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram1.png)
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram2.png)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram1.PNG)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram2.PNG)
 ### Templates
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram3.png)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram3.PNG)
 
 ## How to use 
 ### STS and MySL Workbench Configuration
