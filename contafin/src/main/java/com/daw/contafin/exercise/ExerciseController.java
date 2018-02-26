@@ -784,60 +784,53 @@ public class ExerciseController {
 
 	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson) {
-
-		if (userComponent.isLoggedUser()) {
-			user = userComponent.getLoggedUser();
-
-			Lesson lesson = lessonService.findById(idlesson);
-			List<Exercise> listExercises = exerciseService.findByLesson(lesson);
-			for (int i = 0; i < listExercises.size(); i++) {
-				CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
-						listExercises.get(i));
-				if (completedExerciseS != null) {
-					completedExerciseService.delete(completedExerciseS);
-				}
-			}
-
-			// Add the lesson to the repository of completed lessons if it was not already.
-			
-			Calendar date = Calendar.getInstance();
-			Date sqlDate = new Date((date.getTime()).getTime());
-			CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user, lesson);
-			if (completedLessonS == null) {
-				CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
-				completedLessonService.save(completedLesson);
-				if (userComponent.isLoggedUser()) {
-					user.setExp(user.getExp() + 10);
-					user.upLevel();
-					user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
-					userService.updateUserData(user);
-					userComponent.setLoggedUser(user);
-				}
+		
+		user = userComponent.getLoggedUser();
+		
+		Lesson lesson = lessonService.findById(idlesson);
+		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
+		for(int i=0; i<listExercises.size();i++) {
+			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user, listExercises.get(i));
+			if (completedExerciseS != null) {
+				completedExerciseService.delete(completedExerciseS);
 			}
 		}
-		return "completedLesson";
+
+		// Añadir la lección al respositorio de lecciones completadas si no estaba ya.
+
+		Calendar date = Calendar.getInstance();
+	    Date sqlDate = new Date((date.getTime()).getTime());
+		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user,lesson);
+		if(completedLessonS == null) {
+			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
+			completedLessonService.save(completedLesson);
+			if(userComponent.isLoggedUser()) {
+				user.setExp(user.getExp() + 10);
+				user.upLevel();
+				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
+			}
+		}
+		
+		return "completedLesson";	
 	}
 
 	@RequestMapping("/continueLesson")
 	public String continueLesson(Model model) {
-
-		if (userComponent.isLoggedUser()) {
-			User user = userComponent.getLoggedUser();
-
-			List<Lesson> lessons = lessonService.getAll();
-			List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
-
-			int numLessons = lessons.size();
-			int numLessonsCompleted = lessonsCompleted.size();
-			double percentageD = (double) numLessonsCompleted / numLessons * 100;
-			int percentage = (int) percentageD;
-			user.setFluency(percentage);
-			userService.updateUserData(user);
-			userComponent.setLoggedUser(user);
-			model.addAttribute("percentage", percentage);
-		} else {
-			model.addAttribute("percentage", "12");
-		}
+		User user = userComponent.getLoggedUser();
+		
+		List<Lesson> lessons = lessonService.getAll();
+		List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
+		
+		int numLessons = lessons.size();
+		int numLessonsCompleted = lessonsCompleted.size();
+		double percentageD = (double)numLessonsCompleted / numLessons * 100;
+		int percentage = (int)percentageD;
+		user.setFluency(percentage);
+		userService.updateUserData(user);
+		userComponent.setLoggedUser(user);
+		model.addAttribute("percentage", percentage);
 		return "continueLesson";
 	}
 }
