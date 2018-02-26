@@ -14,7 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
@@ -22,7 +21,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
 
-//import com.daw.contafin.completedExercise.CompletedExercise;
 
 @Entity
 public class User {
@@ -42,11 +40,9 @@ public class User {
 	private int dailyGoal;
 	private String lastConnection;
 	
-	//Atributo experiencia para aumentarsela cuando acabe una lección y exp necesaria para subir de nivel.
+
 	private int exp = 0;
 	private int needexp = 10;
-	//También he incluido el método upLevel para aumentar el nivel cuando se alcance la exp necesaria.
-	//Creo que deberiamos pasar el id del usuario en las url para poder aumentarle level, racha...
 	
 	@Lob
 	private byte[] image;

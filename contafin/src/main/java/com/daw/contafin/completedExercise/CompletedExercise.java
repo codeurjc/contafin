@@ -8,7 +8,6 @@ import javax.persistence.ManyToOne;
 
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.user.User;
-//import com.daw.contafin.student.Student;
 
 @Entity
 public class CompletedExercise {
@@ -17,10 +16,10 @@ public class CompletedExercise {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
+	@ManyToOne //Unidirectional, 1: N 1 user can be in many completed exercises
 	private User user;
 	
-	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
+	@ManyToOne //Unidirectional, 1: N 1 exercise can be in many completed exercises
 	private Exercise exercise;
 	
 	private long error;

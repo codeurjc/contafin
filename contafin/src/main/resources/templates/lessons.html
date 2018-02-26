@@ -30,7 +30,7 @@
 <body class="bghome" id="page-top">
 
     <!-- Navigation -->
-     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="home">CONTaFIN</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,32 +44,26 @@
                 </ul>
                 {{#loggedUser}}
                 <ul class="navbar-nav ml-auto">
-                		{{#isAdmin}}
-                		<li class="nav-item mr-4">
-                			<a class="btn btn-primary js-scroll-trigger BG-" href="adminHomePage">ADMINISTRACIÓN</a>
-                		</li>
-                		{{/isAdmin}}
                     <li>
-                        <img src="profilePicture" width="40" height="35" class="img-thumbnail">
+                        <img src="User/ProfilePicture" width="40" height="35" class="img-thumbnail">
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="profile">Tu perfil</a>
-                            <a class="dropdown-item" href="configuration">Configuracion</a>
-                            <a class="dropdown-item" href="goal">Fijar meta</a>
-                            <a class="dropdown-item" href="#">Atajos de teclado</a>
+                            <a class="dropdown-item" href="User/Profile">Tu perfil</a>
+                            <a class="dropdown-item" href="User/Configuration">Configuración</a>
+                            <a class="dropdown-item" href="User/Goal">Fijar meta</a>
                             <a class="dropdown-item" href="/logout">Cerrar Sesion</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" ><img src="img/fire.png" width="25" height="23" class="d-inline-block align-top" > <span class="badge badge-light">{{points}}</span></a>
+                        <a class="nav-link js-scroll-trigger"><img src="img/fire.png" width="25" height="23" class="d-inline-block align-top" > <span class="badge badge-light">{{points}}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" ><img src="img/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top"> <span class="badge badge-light">{{streak}}</span></a>
+                        <a class="nav-link js-scroll-trigger"><img src="img/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top"> <span class="badge badge-light">{{streak}}</span></a>
                     </li>
                 </ul>
-            	   {{/loggedUser}}
+                {{/loggedUser}}
             </div>
         </div>
     </nav>
@@ -92,53 +86,50 @@
                             </div>
                             <div class="container">
                                 <div class="row justify-content-around">
-                                 <div class="col-lg-4 col-md-6 ">
-                    			{{#lesson1done}}
+                                    <div class="col-lg-4 col-md-6 ">
+                                        {{#lesson1done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="UnitComplete">
                                             <h4 class="mb-3">Lección 1 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring1}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/1/Exercise/{{kindexercise1}}/{{idexercise1}}">REPASAR</a>
                                         </div>
-                                {{/lesson1done}}
-                                {{^lesson1done}}
+                                        {{/lesson1done}} {{^lesson1done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="Unit">
                                             <h4 class="mb-3">Lección 1 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring1}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/1/Exercise/{{kindexercise1}}/{{idexercise1}}">COMENZAR</a>
                                         </div>
-                                {{/lesson1done}}
+                                        {{/lesson1done}}
                                     </div>
                                     <div class="col-lg-4 col-md-6 ">
-                                    {{#lesson2done}} 
+                                        {{#lesson2done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="UnitComplete">
                                             <h4 class="mb-3">Lección 2 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring2}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/2/Exercise/{{kindexercise2}}/{{idexercise2}}">REPASAR</a>
                                         </div>
-                                    {{/lesson2done}}
-                                    {{^lesson2done}} 
+                                        {{/lesson2done}} {{^lesson2done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="Unit">
                                             <h4 class="mb-3">Lección 2 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring2}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/2/Exercise/{{kindexercise2}}/{{idexercise2}}">COMENZAR</a>
                                         </div>
-                                    {{/lesson2done}}
+                                        {{/lesson2done}}
                                     </div>
                                     <div class="col-lg-4 col-md-6 ">
-                                    {{#lesson3done}} 
+                                        {{#lesson3done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="UnitComplete">
                                             <h4 class="mb-3">Lección 3 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring3}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/3/Exercise/{{kindexercise3}}/{{idexercise3}}">REPASAR</a>
                                         </div>
-                                    {{/lesson3done}}
-                                    {{^lesson3done}} 
+                                        {{/lesson3done}} {{^lesson3done}}
                                         <div class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded" id="Unit">
                                             <h4 class="mb-3">Lección 3 de {{total}}</h4>
                                             <h2 class="text-white ">{{lessonstring3}}</h2>
                                             <a class=" btn btn-primary btn-xl js-scroll-trigger" href="/Unit/{{id}}/lessons/3/Exercise/{{kindexercise3}}/{{idexercise3}}">COMENZAR</a>
                                         </div>
-                                    {{/lesson3done}}     
+                                        {{/lesson3done}}
                                     </div>
                                 </div>
                             </div>

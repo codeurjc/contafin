@@ -20,10 +20,10 @@ public class CompletedLesson {
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne //Unidirecional, 1:N 1 usuario puede estar en muchos ejercicios completados
+	@ManyToOne //Unidirectional, 1: N 1 user can be in many completed exercises.
 	private User user;
 	
-	@ManyToOne //Unidirecional, 1:N 1 ejercicio puede estar en muchos ejercicios completados
+	@ManyToOne //Unidirectional, 1: N 1 exercise can be in many completed exercises
 	private Lesson lesson;
 	
 	private Date date;

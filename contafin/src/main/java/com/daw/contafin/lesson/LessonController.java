@@ -120,6 +120,7 @@ public class LessonController extends ContentController {
 
 		model.addAttribute("title", title);
 		
+		model.addAttribute("loggedUser", userComponent.isLoggedUser());
 		loadNavbar(model);
 		
     	return "lessons" ;
