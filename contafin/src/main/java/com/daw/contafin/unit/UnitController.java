@@ -1,6 +1,9 @@
 package com.daw.contafin.unit;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -208,8 +211,11 @@ public class UnitController extends ContentController {
 	}
 
 	@PostConstruct
-	public void init() {
+	public void init() throws IOException  {
 
+		Path path;
+		byte [] image;
+		
 		Unit unit;
 		unit = new Unit("Unidad 1");
 		unitService.save(unit);
@@ -236,14 +242,20 @@ public class UnitController extends ContentController {
 		// la id de la leccion a la que quiere introducirselo habria que guardar 1
 		// leccion y despues los 7 ejercicios para asi saber en cual lo metemos
 		// (Haciendo una consulta para calcular la ultima id de lecciones o algo asi
-
+		
+		//Unit 1 Lesson 1
 		Lesson lesson = lessonService.findById(1);
+		
+		//Exercise 1
 		Answer answer = new Answer("uno");
-		List<String> images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
-		List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales",
-				"218. Elementos de transporte");
-		exerciseService.save(new Exercise(1, "1.1.1 Seleccione el asiento", images, texts, answer, lesson));
-
+		List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
+		exercise = new Exercise(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
+		// Save the images in the database
+		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+				Paths.get(".//src//main//resources//static/img/land.jpg"),
+				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		
+		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "1.1.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
@@ -266,6 +278,7 @@ public class UnitController extends ContentController {
 		 * texts, answer, lesson));
 		 */
 
+		//Exercise 5
 		answer = new Answer("tres");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
@@ -280,6 +293,7 @@ public class UnitController extends ContentController {
 		 * , null, texts, answer, lesson));
 		 */
 
+		////Exercise 7
 		answer = new Answer("dos");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -289,12 +303,19 @@ public class UnitController extends ContentController {
 				"1.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
 				null, texts, answer, lesson));
 
+		//Unit 1 Lesson 2
 		lesson = lessonService.findById(2);
+		
+		//Exercise 1
 		answer = new Answer("uno");
-		images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-		exerciseService.save(new Exercise(1, "1.2.1 Seleccione el asiento", images, texts, answer, lesson));
-
+		exercise = new Exercise(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
+		//Save the images in the database
+		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+				Paths.get(".//src//main//resources//static/img/land.jpg"),
+				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		
+		//Exercixe 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "1.2.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
@@ -317,6 +338,7 @@ public class UnitController extends ContentController {
 		 * texts, answer, lesson));
 		 */
 
+		//Exercise 5
 		answer = new Answer("uno");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
@@ -331,6 +353,7 @@ public class UnitController extends ContentController {
 		 * , null, texts, answer, lesson));
 		 */
 
+		////Exercise 7
 		answer = new Answer("uno");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -340,12 +363,19 @@ public class UnitController extends ContentController {
 				"1.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
 				null, texts, answer, lesson));
 
+		//Unit 1 Lesson 3
 		lesson = lessonService.findById(3);
+		
+		//Exercise 1
 		answer = new Answer("uno");
-		images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-		exerciseService.save(new Exercise(1, "1.3.1 Seleccione el asiento", images, texts, answer, lesson));
-
+		exercise = new Exercise(1, "1.3.1 Seleccione el asiento",  texts, answer, lesson);
+		//Save the images in the database
+		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+				Paths.get(".//src//main//resources//static/img/land.jpg"),
+				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+				
+		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "1.3.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
@@ -368,6 +398,7 @@ public class UnitController extends ContentController {
 		 * texts, answer, lesson));
 		 */
 
+		//Exercise 5
 		answer = new Answer("uno");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
@@ -382,6 +413,7 @@ public class UnitController extends ContentController {
 		 * , null, texts, answer, lesson));
 		 */
 
+		//Exercise 7
 		answer = new Answer("uno");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -391,12 +423,19 @@ public class UnitController extends ContentController {
 				"1.3.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
 				null, texts, answer, lesson));
 
+		//Unit 2 Lesson 1
 		lesson = lessonService.findById(4);
+		
+		//Exercise 1
 		answer = new Answer("uno");
-		images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-		exerciseService.save(new Exercise(1, "2.1.1 Seleccione el asiento", images, texts, answer, lesson));
-
+		exercise =new Exercise(1, "2.1.1 Seleccione el asiento", texts, answer, lesson);
+		//Save the images in the database
+		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+				Paths.get(".//src//main//resources//static/img/land.jpg"),
+				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		
+		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "2.1.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
@@ -417,6 +456,7 @@ public class UnitController extends ContentController {
 		 * Exercise(4, "2.1.4 Realiza el asiento", null, texts, null, lesson));
 		 */
 
+		//Exercise 5
 		answer = new Answer("uno");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
@@ -431,6 +471,7 @@ public class UnitController extends ContentController {
 		 * , null, texts, null, lesson));
 		 */
 
+		//Exercise 7
 		answer = new Answer("uno");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -440,12 +481,19 @@ public class UnitController extends ContentController {
 				"2.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
 				null, texts, answer, lesson));
 
+		//Unit 2 Lesson 2
 		lesson = lessonService.findById(5);
+		
+		//Exercise 1
 		answer = new Answer("uno");
-		images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-		exerciseService.save(new Exercise(1, "2.2.1 Seleccione el asiento", images, texts, answer, lesson));
+		exercise =new Exercise(1, "2.2.1 Seleccione el asiento", texts, answer, lesson);
+		//Save the images in the database
+		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+				Paths.get(".//src//main//resources//static/img/land.jpg"),
+				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 
+		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "2.2.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
@@ -466,6 +514,7 @@ public class UnitController extends ContentController {
 		 * Exercise(4, "2.2.4 Realiza el asiento", null, texts, null, lesson));
 		 */
 
+		//Exercise 5
 		answer = new Answer("uno");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
@@ -480,6 +529,7 @@ public class UnitController extends ContentController {
 		 * , null, texts, null, lesson));
 		 */
 
+		//Exercise 7
 		answer = new Answer("uno");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
@@ -489,12 +539,19 @@ public class UnitController extends ContentController {
 				"2.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
 				null, texts, answer, lesson));
 
+		//Unit 2 Lesson 3
 		lesson = lessonService.findById(6);
+		
+		//Exercise 1
 		answer = new Answer("uno");
-		images = Arrays.asList("../img/machine.jpg", "../img/land.jpg", "../img/truck.jpg");
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-		exerciseService.save(new Exercise(1, "2.3.1 Seleccione el asiento", images, texts, answer, lesson));
-
+		exercise = new Exercise(1, "2.3.1 Seleccione el asiento", texts, answer, lesson);
+		// Save the images in the database
+		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+				Paths.get(".//src//main//resources//static/img/land.jpg"),
+				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		
+		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "2.3.2 Escribe la denominación de la cuenta que recoge: "
 				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
@@ -515,6 +572,7 @@ public class UnitController extends ContentController {
 		 * Exercise(4, "2.3.4 Realiza el asiento", null, texts, null, lesson));
 		 */
 
+		//Exercise 5
 		answer = new Answer("uno");
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
@@ -529,6 +587,7 @@ public class UnitController extends ContentController {
 		 * , null, texts, null, lesson));
 		 */
 
+		//Exercise 7
 		answer = new Answer("uno");
 		texts = Arrays.asList(
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",

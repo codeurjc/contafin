@@ -1,10 +1,14 @@
 package com.daw.contafin.exercise;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -109,9 +113,6 @@ public class ExerciseController {
 			}
 		}
 
-		model.addAttribute("image1", exercise.getRuteImages().get(0));
-		model.addAttribute("image2", exercise.getRuteImages().get(1));
-		model.addAttribute("image3", exercise.getRuteImages().get(2));
 		model.addAttribute("text1", exercise.getTexts().get(0));
 		model.addAttribute("text2", exercise.getTexts().get(1));
 		model.addAttribute("text3", exercise.getTexts().get(2));
@@ -181,9 +182,6 @@ public class ExerciseController {
 
 		Exercise nextExercise = exerciseService.findByLessonAndId(lesson, numExercise + 1);
 
-		model.addAttribute("image1", exercise.getRuteImages().get(0));
-		model.addAttribute("image2", exercise.getRuteImages().get(1));
-		model.addAttribute("image3", exercise.getRuteImages().get(2));
 		model.addAttribute("text1", exercise.getTexts().get(0));
 		model.addAttribute("text2", exercise.getTexts().get(1));
 		model.addAttribute("text3", exercise.getTexts().get(2));
@@ -869,6 +867,25 @@ public class ExerciseController {
 
 		return "continueLesson";
 
+	}
+	
+	// Show the image
+	@RequestMapping("Image/{numImage}/{numExercise}")
+	public void sowImage1(HttpServletRequest request, HttpServletResponse response, @PathVariable int numImage,
+			@PathVariable int numExercise) throws IOException {
+		byte[] image;
+		if (numImage == 1) {
+			image = exerciseService.findById(numExercise).getImage1();
+		} else if (numImage == 2) {
+			image = exerciseService.findById(numExercise).getImage2();
+		} else {
+			image = exerciseService.findById(numExercise).getImage3();
+		}
+
+		response.setContentType("image/jpeg");
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(image);
+		outputStream.close();
 	}
 
 }
