@@ -95,7 +95,7 @@ public class UnitController extends ContentController {
 		exerciseService.save(exercise);
 
 		answer = new Answer(answers[1]);
-		exerciseService.save(new Exercise(2, statements[1], null, null, answer, lesson));
+		exerciseService.save(new Exercise(2, statements[1], null, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[3], texts[4], texts[5], texts[6], texts[7],
@@ -109,7 +109,7 @@ public class UnitController extends ContentController {
 
 		myTexts = Arrays.asList(texts[3], texts[4], texts[5]);
 		answer = new Answer(answers[2]);
-		exerciseService.save(new Exercise(5, statements[2], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(5, statements[2], myTexts, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[22], texts[23], texts[24], texts[25]); answer =
@@ -119,7 +119,7 @@ public class UnitController extends ContentController {
 
 		myTexts = Arrays.asList(texts[6], texts[7], texts[8]);
 		answer = new Answer(answers[3]);
-		exerciseService.save(new Exercise(7, statements[3], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(7, statements[3], myTexts, answer, lesson));
 
 		//Lesson 2
 		lesson = lesson2;
@@ -137,7 +137,7 @@ public class UnitController extends ContentController {
 		exerciseService.save(exercise);
 
 		answer = new Answer(answers[5]);
-		exerciseService.save(new Exercise(2, statements[5], null, null, answer, lesson));
+		exerciseService.save(new Exercise(2, statements[5], null, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[32], texts[33], texts[34], texts[35],
@@ -151,7 +151,7 @@ public class UnitController extends ContentController {
 
 		myTexts = Arrays.asList(texts[12], texts[13], texts[14]);
 		answer = new Answer(answers[6]);
-		exerciseService.save(new Exercise(5, statements[6], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(5, statements[6], myTexts, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[51], texts[52], texts[53], texts[54]); answer =
@@ -161,7 +161,7 @@ public class UnitController extends ContentController {
 
 		myTexts = Arrays.asList(texts[15], texts[16], texts[17]);
 		answer = new Answer(answers[7]);
-		exerciseService.save(new Exercise(7, statements[7], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(7, statements[7], myTexts, answer, lesson));
 
 		lesson = lesson3;
 		myTexts = Arrays.asList(texts[18], texts[19], texts[20]);
@@ -179,7 +179,7 @@ public class UnitController extends ContentController {
 		
 
 		answer = new Answer(answers[9]);
-		exerciseService.save(new Exercise(2, statements[9], null, null, answer, lesson));
+		exerciseService.save(new Exercise(2, statements[9], null, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[61], texts[62], texts[63], texts[64],
@@ -193,7 +193,7 @@ public class UnitController extends ContentController {
 
 		myTexts = Arrays.asList(texts[21], texts[22], texts[23]);
 		answer = new Answer(answers[10]);
-		exerciseService.save(new Exercise(5, statements[10], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(5, statements[10], myTexts, answer, lesson));
 
 		/*
 		 * myTexts = Arrays.asList(texts[80], texts[81], texts[82], texts[83]); answer =
@@ -203,7 +203,7 @@ public class UnitController extends ContentController {
 
 		myTexts = Arrays.asList(texts[24], texts[25], texts[26]);  
 		answer = new Answer(answers[11]);
-		exerciseService.save(new Exercise(7, statements[11], null, myTexts, answer, lesson));
+		exerciseService.save(new Exercise(7, statements[11], myTexts, answer, lesson));
 
 		return "adminHome";
 	}
@@ -254,7 +254,7 @@ public class UnitController extends ContentController {
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "1.1.2 Escribe la denominación de la cuenta que recoge: "
-				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
+				+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
 
 		/*
 		 * answer = new Answer("3"); texts = Arrays.asList("213.Pepe",
@@ -279,7 +279,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
 				new Exercise(5, "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-						null, texts, answer, lesson));
+						 texts, answer, lesson));
 
 		/*
 		 * answer = new Answer("6"); texts =
@@ -297,7 +297,7 @@ public class UnitController extends ContentController {
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseService.save(new Exercise(7,
 				"1.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-				null, texts, answer, lesson));
+				 texts, answer, lesson));
 
 		//Unit 1 Lesson 2
 		lesson = lessonService.findById(2);
@@ -314,7 +314,7 @@ public class UnitController extends ContentController {
 		//Exercixe 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "1.2.2 Escribe la denominación de la cuenta que recoge: "
-				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
+				+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
 
 		/*
 		 * answer = new Answer("10"); texts = Arrays.asList("213.Pepe",
@@ -339,7 +339,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
 				new Exercise(5, "1.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-						null, texts, answer, lesson));
+						 texts, answer, lesson));
 
 		/*
 		 * answer = new Answer("13"); texts =
@@ -357,7 +357,7 @@ public class UnitController extends ContentController {
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseService.save(new Exercise(7,
 				"1.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-				null, texts, answer, lesson));
+				 texts, answer, lesson));
 
 		//Unit 1 Lesson 3
 		lesson = lessonService.findById(3);
@@ -374,7 +374,7 @@ public class UnitController extends ContentController {
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "1.3.2 Escribe la denominación de la cuenta que recoge: "
-				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
+				+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
 
 		/*
 		 * answer = new Answer("17"); texts = Arrays.asList("213.Pepe",
@@ -399,7 +399,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
 				new Exercise(5, "1.3.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-						null, texts, answer, lesson));
+						 texts, answer, lesson));
 
 		/*
 		 * answer = new Answer("20"); texts =
@@ -417,7 +417,7 @@ public class UnitController extends ContentController {
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseService.save(new Exercise(7,
 				"1.3.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-				null, texts, answer, lesson));
+				 texts, answer, lesson));
 
 		//Unit 2 Lesson 1
 		lesson = lessonService.findById(4);
@@ -434,7 +434,7 @@ public class UnitController extends ContentController {
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "2.1.2 Escribe la denominación de la cuenta que recoge: "
-				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
+				+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
 
 		/*
 		 * texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales",
@@ -457,7 +457,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
 				new Exercise(5, "2.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-						null, texts, answer, lesson));
+						 texts, answer, lesson));
 
 		/*
 		 * texts = Arrays.asList("574. Bancos cuenta de ahorro",
@@ -475,7 +475,7 @@ public class UnitController extends ContentController {
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseService.save(new Exercise(7,
 				"2.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-				null, texts, answer, lesson));
+				 texts, answer, lesson));
 
 		//Unit 2 Lesson 2
 		lesson = lessonService.findById(5);
@@ -492,7 +492,7 @@ public class UnitController extends ContentController {
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "2.2.2 Escribe la denominación de la cuenta que recoge: "
-				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
+				+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
 
 		/*
 		 * texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales",
@@ -515,7 +515,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
 				new Exercise(5, "2.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-						null, texts, answer, lesson));
+						 texts, answer, lesson));
 
 		/*
 		 * texts = Arrays.asList("574. Bancos cuenta de ahorro",
@@ -533,7 +533,7 @@ public class UnitController extends ContentController {
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseService.save(new Exercise(7,
 				"2.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-				null, texts, answer, lesson));
+				 texts, answer, lesson));
 
 		//Unit 2 Lesson 3
 		lesson = lessonService.findById(6);
@@ -550,7 +550,7 @@ public class UnitController extends ContentController {
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
 		exerciseService.save(new Exercise(2, "2.3.2 Escribe la denominación de la cuenta que recoge: "
-				+ "maquinarias para el proceso productivo de la empresa", null, null, answer, lesson));
+				+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
 
 		/*
 		 * texts = Arrays.asList("213.Pepe", "210.Terrenos y bienes naturales",
@@ -573,7 +573,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
 		exerciseService.save(
 				new Exercise(5, "2.3.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-						null, texts, answer, lesson));
+						 texts, answer, lesson));
 
 		/*
 		 * texts = Arrays.asList("574. Bancos cuenta de ahorro",
@@ -591,7 +591,7 @@ public class UnitController extends ContentController {
 				" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
 		exerciseService.save(new Exercise(7,
 				"2.3.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-				null, texts, answer, lesson));
+			  texts, answer, lesson));
 
 	}
 }

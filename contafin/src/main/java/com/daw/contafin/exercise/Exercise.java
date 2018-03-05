@@ -56,24 +56,7 @@ public class Exercise {
 	public Exercise() {
 		
 	}
-	
-	public Exercise(int kind,String statement , List<String> ruteImages,  List<String> texts, Answer answer,Lesson lesson) {
-		this.kind=kind;
-		this.statement = statement;
-		this.texts = texts;
-		this.setLesson(lesson);
 
-		if(kind == 1 || kind == 2) {
-			this.ruteImages = ruteImages;
-		}
-		else if(kind == 3 || kind == 4 || kind == 5 || kind == 6 || kind == 7) {
-			this.ruteImages = null;
-		}
-		else {
-			System.out.println("This kind of exercise dont exist");
-		}
-		this.answer=answer;
-	}
 	
 	public Exercise(int kind,String statement , List<String> texts, Answer answer,Lesson lesson) {
 		this.kind=kind;
