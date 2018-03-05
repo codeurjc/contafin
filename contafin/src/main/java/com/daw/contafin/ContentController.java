@@ -1,9 +1,5 @@
 package com.daw.contafin;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +9,6 @@ import org.springframework.ui.Model;
 
 import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonRepository;
-import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.unit.Unit;
@@ -90,13 +85,5 @@ public class ContentController {
 		model.addAttribute("unitsCompletes", unitsCompletes);
 	}
 	
-	public void saveImages(Exercise exercise, Path route1, Path route2, Path route3) throws IOException {
-		byte []image = Files.readAllBytes(route1);
-		exercise.setImage1(image);
-		image = Files.readAllBytes(route2);
-		exercise.setImage2(image);
-		image = Files.readAllBytes(route3);
-		exercise.setImage3(image);
-		exerciseService.save(exercise);	
-	}
+
 }

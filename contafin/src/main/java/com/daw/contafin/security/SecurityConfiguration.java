@@ -34,6 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     			http.authorizeRequests().antMatchers("/Unit/*/lessons/*/Exercise/*/*/Completed").permitAll();
     			http.authorizeRequests().antMatchers("/lesson/*/lessonCompleted/").permitAll();
     			http.authorizeRequests().antMatchers("/continueLesson").permitAll();
+    			http.authorizeRequests().antMatchers("/User/DeleteAcount").permitAll();
     			
     			// Login form
     	        http.formLogin().loginPage("/");

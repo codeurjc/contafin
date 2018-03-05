@@ -1,8 +1,6 @@
 package com.daw.contafin.unit;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
@@ -213,9 +211,7 @@ public class UnitController extends ContentController {
 	@PostConstruct
 	public void init() throws IOException  {
 
-		Path path;
-		byte [] image;
-		
+
 		Unit unit;
 		unit = new Unit("Unidad 1");
 		unitService.save(unit);
@@ -251,7 +247,7 @@ public class UnitController extends ContentController {
 		List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
 		// Save the images in the database
-		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
 				Paths.get(".//src//main//resources//static/img/land.jpg"),
 				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 		
@@ -311,7 +307,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
 		//Save the images in the database
-		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
 				Paths.get(".//src//main//resources//static/img/land.jpg"),
 				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 		
@@ -371,7 +367,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "1.3.1 Seleccione el asiento",  texts, answer, lesson);
 		//Save the images in the database
-		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
 				Paths.get(".//src//main//resources//static/img/land.jpg"),
 				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 				
@@ -431,7 +427,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise =new Exercise(1, "2.1.1 Seleccione el asiento", texts, answer, lesson);
 		//Save the images in the database
-		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
 				Paths.get(".//src//main//resources//static/img/land.jpg"),
 				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 		
@@ -489,7 +485,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise =new Exercise(1, "2.2.1 Seleccione el asiento", texts, answer, lesson);
 		//Save the images in the database
-		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
 				Paths.get(".//src//main//resources//static/img/land.jpg"),
 				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 
@@ -547,7 +543,7 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "2.3.1 Seleccione el asiento", texts, answer, lesson);
 		// Save the images in the database
-		saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
+		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
 				Paths.get(".//src//main//resources//static/img/land.jpg"),
 				Paths.get(".//src//main//resources//static/img/truck.jpg"));
 		
