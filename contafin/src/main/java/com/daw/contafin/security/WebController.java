@@ -3,6 +3,7 @@ package com.daw.contafin.security;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.mail.MessagingException;
 
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.daw.contafin.ContentController;
 import com.daw.contafin.EmailService;
 import com.daw.contafin.ErrorMessage;
+import com.daw.contafin.completedExercise.CompletedExercise;
+import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
@@ -39,6 +42,9 @@ public class WebController extends ContentController {
 	
 	@Autowired
 	CompletedLessonService completedLessonService;
+	
+	@Autowired
+	CompletedExerciseService completedExerciseService;
 
 	// Login Controller
 
@@ -55,8 +61,19 @@ public class WebController extends ContentController {
 
 		model.addAttribute("loggedUser", userComponent.isLoggedUser());
 
+		User user = userComponent.getLoggedUser();
+		//Delete exercises completed if you exit in the middle of a lesson.
+		List<CompletedExercise> completedExercises =  completedExerciseService.findByUser(user);
+		if (completedExercises != null) {
+			for (int i=0; i<completedExercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExercises.get(i);
+				if (completedExerciseS != null) {
+					completedExerciseService.delete(completedExerciseS);
+				}
+			}
+		}
 		if (userComponent.isLoggedUser()) {
-			User user = userComponent.getLoggedUser();
+			
 			if (user.getRoles().contains("ROLE_ADMIN")) {
 				model.addAttribute("isAdmin", true);
 			}
