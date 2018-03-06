@@ -833,6 +833,8 @@ public class ExerciseController {
 				user.setExp(user.getExp() + 10);
 				user.upLevel();
 				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
+				user.setLastLesson(userService.getLesson(user));
+				user.setLastUnit(userService.getUnit(user));
 				userService.updateUserData(user);
 				userComponent.setLoggedUser(user);
 			}
