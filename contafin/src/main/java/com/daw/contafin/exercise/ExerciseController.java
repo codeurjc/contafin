@@ -810,15 +810,17 @@ public class ExerciseController {
 	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson) {
 
-		// if (userComponent.isLoggedUser()) {
 		user = userComponent.getLoggedUser();
-
+		int numExercisesCompleted = 0;
+		
+		//Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 		Lesson lesson = lessonService.findById(idlesson);
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 		for (int i = 0; i < listExercises.size(); i++) {
 			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
 					listExercises.get(i));
 			if (completedExerciseS != null) {
+				numExercisesCompleted++;
 				completedExerciseService.delete(completedExerciseS);
 			}
 		}
@@ -826,7 +828,8 @@ public class ExerciseController {
 		Calendar date = Calendar.getInstance();
 		Date sqlDate = new Date((date.getTime()).getTime());
 		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user, lesson);
-		if (completedLessonS == null) {
+		//If lesson is not completed yet and you do all exercise set the Lesson to done
+		if ((completedLessonS == null) && (numExercisesCompleted == 4)) {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
 			completedLessonService.save(completedLesson);
 			if (userComponent.isLoggedUser()) {
@@ -839,9 +842,15 @@ public class ExerciseController {
 				userComponent.setLoggedUser(user);
 			}
 		}
-		// }
-
-		return "completedLesson";
+		if(numExercisesCompleted == 4) {
+			return "completedLesson";
+		
+		//You can go to completedLesson if lesson it is not done	
+		}else {
+			return "error2";
+		}
+		
+		
 	}
 
 	@RequestMapping("/continueLesson")

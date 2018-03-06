@@ -1,6 +1,8 @@
 package com.daw.contafin.completedExercise;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,10 @@ public class CompletedExerciseService {
 	}
 	public CompletedExercise findByUserAndExercise(User user, Exercise exercise){
 		return completedExerciseRepository.findByUserAndExercise(user,exercise);
+	}
+	
+	public List<CompletedExercise> findByUser(User user){
+		return completedExerciseRepository.findByUser(user);
 	}
 	
 	public void delete(CompletedExercise completedExercise) {
