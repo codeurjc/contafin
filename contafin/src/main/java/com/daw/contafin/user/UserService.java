@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.daw.contafin.completedLesson.CompletedLesson;
+import com.daw.contafin.completedLesson.CompletedLessonService;
+
 @Service
 public class UserService {
 	
@@ -13,6 +16,9 @@ public class UserService {
 	
 	@Autowired
 	UserComponent userComponent;
+	
+	@Autowired
+	CompletedLessonService completedLessonService;
 	
 	public User findByEmail (String email) {
 		return userRepository.findByEmail(email);
@@ -38,6 +44,17 @@ public class UserService {
 		userRepository.delete(user);
 	}
 	
+	public int  getLesson(User user) {
+		List <CompletedLesson> completedLesson = completedLessonService.findByUser(user);
+		int lesson = completedLesson.size() % 3;
+		return lesson;
+	}
+	
+	public int  getUnit(User user) {
+		List <CompletedLesson> completedLesson = completedLessonService.findByUser(user);
+		int unit = (int) (completedLesson.size()/3) + 1;
+		return unit;
+	}
 	
 	
 }

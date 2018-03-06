@@ -9,13 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
 
 import com.daw.contafin.user.User;
+import com.daw.contafin.user.UserService;
 
 
 public class ExcelExport extends AbstractXlsView {
 
+	@Autowired
+	UserService userService;
 	
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
@@ -37,6 +41,9 @@ public class ExcelExport extends AbstractXlsView {
 		header.createCell(6).setCellValue("FLUENCY");
 		header.createCell(7).setCellValue("EXPERIENCE");
 		header.createCell(8).setCellValue("LAST CONNECTION");
+		header.createCell(9).setCellValue("LAST UNIT");
+		header.createCell(10).setCellValue("LAST LESSON");
+		
 
 		int rowNum = 1;
 
@@ -51,6 +58,8 @@ public class ExcelExport extends AbstractXlsView {
 			row.createCell(6).setCellValue(user.getFluency());
 			row.createCell(7).setCellValue(user.getExp());
 			row.createCell(8).setCellValue(user.getLastConnection());
+			row.createCell(9).setCellValue(user.getLastUnit());
+			row.createCell(10).setCellValue(user.getLastLesson());
 
 		}
 	}

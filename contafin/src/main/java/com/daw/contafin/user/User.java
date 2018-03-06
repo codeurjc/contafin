@@ -39,6 +39,8 @@ public class User {
 	private int fluency;
 	private int dailyGoal;
 	private String lastConnection;
+	private int lastUnit;
+	private int lastLesson;
 	
 
 	private int exp = 0;
@@ -68,6 +70,8 @@ public class User {
 		this.streak=0;
 		this.fluency=0;
 		this.lastConnection= "-";
+		this.lastUnit=0;
+		this.lastLesson=0;
 	}
 	
 	public User(String name, String email, String password,int level, int points, int streak, int dailyGoal, String... roles) {
@@ -80,6 +84,8 @@ public class User {
 		this.streak=streak;
 		this.dailyGoal= dailyGoal;
 		this.lastConnection= "-";
+		this.lastUnit=0;
+		this.lastLesson=0;
 	}
 
 	public void upLevel() {
@@ -214,4 +220,21 @@ public class User {
 		}
 	}
 
+	public int getLastUnit() {
+		return lastUnit;
+	}
+
+	public void setLastUnit(int lastUnit) {
+		this.lastUnit = lastUnit;
+	}
+
+	public int getLastLesson() {
+		return lastLesson;
+	}
+
+	public void setLastLesson(int lastLesson) {
+		this.lastLesson = lastLesson;
+	}
+
+	
 }
