@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.unit.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Lesson {
@@ -24,7 +25,7 @@ public class Lesson {
 	@OneToMany (mappedBy = "lesson")
 	private List<Exercise> exercises;    
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	private Unit unit;
 	
@@ -57,6 +58,12 @@ public class Lesson {
 
 	public void setUnit(Unit unit) {
 		this.unit = unit;
+	}
+	public List<Exercise> getExercises() {
+		return exercises;
+	}
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
 	}
 	
 	

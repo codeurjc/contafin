@@ -20,7 +20,6 @@ public class Unit {
 	private long id;
 	private String name;
 	
-	@JsonIgnore
 	@OneToMany (mappedBy = "unit")
 	private List<Lesson> lessons;
 	

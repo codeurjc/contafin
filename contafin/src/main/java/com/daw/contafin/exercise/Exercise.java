@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import com.daw.contafin.answer.Answer;
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.lesson.Lesson;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Exercise {
@@ -25,6 +26,7 @@ public class Exercise {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@JsonIgnore
 	@ManyToOne
 	private Lesson lesson;
 
@@ -40,9 +42,6 @@ public class Exercise {
 
 	@Lob
 	private byte[] image3;
-
-	@ElementCollection
-	private List<String> ruteImages;
 
 	@ElementCollection
 	private List<String> texts;
@@ -97,14 +96,6 @@ public class Exercise {
 		this.statement = statement;
 	}
 
-	public List<String> getRuteImages() {
-		return ruteImages;
-	}
-
-	public void setRuteImages(List<String> ruteImages) {
-		this.ruteImages = ruteImages;
-	}
-
 	public List<String> getTexts() {
 		return texts;
 	}
@@ -157,7 +148,7 @@ public class Exercise {
 	public String toString() {
 		return "Exercise [id=" + id + ", lesson=" + lesson + ", kind=" + kind + ", statement=" + statement + ", image1="
 				+ Arrays.toString(image1) + ", image2=" + Arrays.toString(image2) + ", image3="
-				+ Arrays.toString(image3) + ", ruteImages=" + ruteImages + ", texts=" + texts + ", completedExercises="
+				+ Arrays.toString(image3) + ", texts=" + texts + ", completedExercises="
 				+ completedExercises + ", answer=" + answer + "]";
 	}
 
