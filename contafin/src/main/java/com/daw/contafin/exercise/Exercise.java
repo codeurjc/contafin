@@ -1,5 +1,6 @@
 package com.daw.contafin.exercise;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,53 +18,51 @@ import com.daw.contafin.answer.Answer;
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.lesson.Lesson;
 
-
 @Entity
 public class Exercise {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@ManyToOne
 	private Lesson lesson;
-	
+
 	private int kind;
-	
+
 	private String statement;
-	
+
 	@Lob
 	private byte[] image1;
-	
+
 	@Lob
 	private byte[] image2;
-	
+
 	@Lob
 	private byte[] image3;
-	
+
 	@ElementCollection
 	private List<String> ruteImages;
-	
+
 	@ElementCollection
 	private List<String> texts;
-	
-	@OneToMany (mappedBy = "exercise")
+
+	@OneToMany(mappedBy = "exercise")
 	private List<CompletedExercise> completedExercises;
-	
-	@OneToOne (cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Answer answer;
 
 	public Exercise() {
-		
+
 	}
 
-	
-	public Exercise(int kind,String statement , List<String> texts, Answer answer,Lesson lesson) {
-		this.kind=kind;
+	public Exercise(int kind, String statement, List<String> texts, Answer answer, Lesson lesson) {
+		this.kind = kind;
 		this.statement = statement;
 		this.texts = texts;
 		this.setLesson(lesson);
-		this.answer=answer;
+		this.answer = answer;
 	}
 
 	public long getId() {
@@ -153,7 +152,13 @@ public class Exercise {
 	public void setImage3(byte[] image3) {
 		this.image3 = image3;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Exercise [id=" + id + ", lesson=" + lesson + ", kind=" + kind + ", statement=" + statement + ", image1="
+				+ Arrays.toString(image1) + ", image2=" + Arrays.toString(image2) + ", image3="
+				+ Arrays.toString(image3) + ", ruteImages=" + ruteImages + ", texts=" + texts + ", completedExercises="
+				+ completedExercises + ", answer=" + answer + "]";
+	}
+
 }

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.daw.contafin.lesson.Lesson;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Unit {
@@ -19,6 +20,7 @@ public class Unit {
 	private long id;
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany (mappedBy = "unit")
 	private List<Lesson> lessons;
 	
@@ -49,6 +51,10 @@ public class Unit {
 
 	public void setLesson(List<Lesson> lessons) {
 		this.lessons = lessons;
+	}
+	@Override
+	public String toString() {
+		return "Unit [id=" + id + ", name=" + name + "]";
 	}
 	
 }
