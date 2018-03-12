@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.daw.contafin.exercise.Exercise;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Answer {
@@ -16,6 +17,7 @@ public class Answer {
     private long id;
     private String result;
     
+    @JsonIgnore
     @OneToOne(mappedBy="answer")
     private Exercise exercise;
     
