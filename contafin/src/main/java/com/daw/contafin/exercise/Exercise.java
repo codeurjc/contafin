@@ -34,12 +34,15 @@ public class Exercise {
 
 	private String statement;
 
+	@JsonIgnore
 	@Lob
 	private byte[] image1;
 
+	@JsonIgnore
 	@Lob
 	private byte[] image2;
 
+	@JsonIgnore
 	@Lob
 	private byte[] image3;
 
