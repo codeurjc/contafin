@@ -637,7 +637,7 @@ public class ExerciseController {
 	@RequestMapping("/Unit/{id}/lessons/{numLesson}/Exercise/7/{numExercise}/Completed")
 	public String exerciseCompleted7(Model model, @PathVariable int id, @PathVariable int numLesson,
 			@PathVariable int numExercise, @RequestParam String solution) {
-
+		
 		Lesson lesson = lessonService.findById(numLesson + (3 * (id - 1)));
 
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, numExercise);
@@ -807,14 +807,14 @@ public class ExerciseController {
 		return "exerciseType7";
 	}
 
-	@RequestMapping("/lesson/{idlesson}/lessonCompleted/")
-	public String completedLesson(Model model, @PathVariable int idlesson) {
+	@RequestMapping("/Unit/{id}/lesson/{idlesson}/lessonCompleted/")
+	public String completedLesson(Model model, @PathVariable int idlesson, @PathVariable int id) {
 
 		user = userComponent.getLoggedUser();
 		int numExercisesCompleted = 0;
 		
 		//Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
-		Lesson lesson = lessonService.findById(idlesson);
+		Lesson lesson = lessonService.findById(idlesson + (3 * (id - 1)));
 		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
 		for (int i = 0; i < listExercises.size(); i++) {
 			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
