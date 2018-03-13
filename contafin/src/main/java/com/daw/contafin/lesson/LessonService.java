@@ -23,7 +23,7 @@ public class LessonService {
 		lessonRepository.save(lesson);
 	}
 	
-	public List<Lesson> getAll(){
+	public List<Lesson> findAll(){
 		return lessonRepository.findAll();
 	}
 }
