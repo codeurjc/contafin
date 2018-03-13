@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.daw.contafin.ImageService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
+import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
+import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.unit.Unit.UnitBassic;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
@@ -32,10 +34,10 @@ public class UnitRestController{
 	private UnitService unitService;
 	
 	@Autowired
-	private LessonRepository lessonService;
+	private LessonService lessonService;
 
 	@Autowired
-	private ExerciseRepository exerciseService;
+	private ExerciseService exerciseService;
 	
 	@Autowired
 	UserService userService;
