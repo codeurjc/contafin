@@ -10,14 +10,20 @@ import javax.persistence.OneToMany;
 
 import com.daw.contafin.lesson.Lesson;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Unit {
+	
+	interface UnitBassic {}
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	
+	@JsonView(UnitBassic.class)
 	private long id;
+	
+	@JsonView(UnitBassic.class)
 	private String name;
 	
 	@OneToMany (mappedBy = "unit")

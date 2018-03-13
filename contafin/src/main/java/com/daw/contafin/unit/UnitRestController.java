@@ -18,9 +18,11 @@ import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
+import com.daw.contafin.unit.Unit.UnitBassic;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @RequestMapping("/api/unit")
@@ -50,6 +52,7 @@ public class UnitRestController{
 	Exercise exercise;
 
 	//See all the Unit
+	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Unit> getunit() {
 		return unitService.findAll();
@@ -118,7 +121,7 @@ public class UnitRestController{
 		return unit;
 	}
 	
-
+	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Unit> getItem(@PathVariable long id) {
 		Unit unit = unitService.findById(id);
@@ -130,6 +133,7 @@ public class UnitRestController{
 		}
 	}
 	
+	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Unit> actulizaItem(@PathVariable long id, @RequestBody Unit unitAct) {
 
@@ -139,7 +143,7 @@ public class UnitRestController{
 			unit.setName(unitAct.getName());
 			unitAct.setId(id);
 			unitService.save(unit);
-			return new ResponseEntity<>(unitAct, HttpStatus.OK);
+			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
