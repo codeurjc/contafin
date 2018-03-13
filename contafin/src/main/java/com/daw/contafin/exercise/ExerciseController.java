@@ -857,7 +857,7 @@ public class ExerciseController {
 	public String continueLesson(Model model) {
 			User user = userComponent.getLoggedUser();
 
-			List<Lesson> lessons = lessonService.getAll();
+			List<Lesson> lessons = lessonService.findAll();
 			List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
 
 			int numLessons = lessons.size();
