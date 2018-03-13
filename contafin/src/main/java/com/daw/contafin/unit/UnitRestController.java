@@ -21,6 +21,7 @@ import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.unit.Unit.UnitBassic;
+import com.daw.contafin.lesson.Lesson.UnitLesson;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
@@ -29,7 +30,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 @RequestMapping("/api/unit")
 public class UnitRestController{
-
+	
+	interface UnitLesson extends Lesson.UnitLesson {}
+	
 	@Autowired
 	private UnitService unitService;
 	
@@ -57,6 +60,11 @@ public class UnitRestController{
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Unit> getunit() {
+		return unitService.findAll();
+	}
+	
+	@RequestMapping(value = "/lesson/", method = RequestMethod.GET)
+	public List<Unit> getunitwithlesson() {
 		return unitService.findAll();
 	}
 	

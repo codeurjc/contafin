@@ -12,16 +12,23 @@ import javax.persistence.OneToMany;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.unit.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Lesson {
+	
+	public interface UnitLesson {}
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	
+	@JsonView(UnitLesson.class)
 	private long id;
+	
+	@JsonView(UnitLesson.class)
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany (mappedBy = "lesson")
 	private List<Exercise> exercises;    
 	
