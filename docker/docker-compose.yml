@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   mysql:
-    image: mysql/mysql-server:5.7
+    image: mysql
     container_name: mysql_server
     environment:
       MYSQL_DATABASE: test
@@ -11,10 +11,7 @@ services:
     ports:
       - "3307:3306"
     expose:
-      - "3306"    
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d
-
+      - "3306"
   web:
     image: jaimemorillo/contafin
     depends_on: 
