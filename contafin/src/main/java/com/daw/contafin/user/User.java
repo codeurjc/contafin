@@ -41,6 +41,7 @@ public class User {
 	private String lastConnection;
 	private int lastUnit;
 	private int lastLesson;
+	private int [] progress;
 	
 
 	private int exp = 0;
@@ -234,6 +235,14 @@ public class User {
 
 	public void setLastLesson(int lastLesson) {
 		this.lastLesson = lastLesson;
+	}
+
+	public int[] getProgress() {
+		return progress;
+	}
+
+	public void setProgress(int[] progress) {
+		this.progress = progress;
 	}
 
 	

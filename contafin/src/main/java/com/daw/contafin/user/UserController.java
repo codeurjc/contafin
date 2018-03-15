@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -44,30 +42,14 @@ public class UserController extends ContentController{
 	public String profile(Model model){
 		
 		loadNavbar(model);
-		/*At the moment there are't rewards
-		model.addAttribute("goals", false);*/
 		
 		//Updating line chart
-		
-		//Create an array for weekly progress
-		int [] progress = new int[7];
 		User user = userComponent.getLoggedUser();
-		//Get the current date and set first day of week Monday
-		Calendar calendar = Calendar.getInstance();
-		calendar.setFirstDayOfWeek(Calendar.MONDAY);
-		//Convert java.util.Date to java.sql.Date
-		Date date= calendar.getTime();
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-		//Get the current day
-		int day =calendar.get(Calendar.DAY_OF_WEEK);
-		//Store weekly progress
-		progress[day-1]=completedLessonService.getCompletedLessons(user, sqlDate);
-		for (int i= day-1; i< 0; i-- ) { 
-			calendar.add(Calendar.DATE, -1);
-			date= calendar.getTime();
-			sqlDate= new java.sql.Date(date.getTime());
-			progress[i-1]=completedLessonService.getCompletedLessons(user, sqlDate);
-		}
+		//Create an array for weekly progress
+		int [] progress = userService.progress(userComponent.getLoggedUser());
+		//Update user data
+		user.setProgress(progress);
+		userService.updateUserData(user);
 		
 		model.addAttribute("progress", progress);
 
