@@ -1,5 +1,4 @@
-FROM openjdk:8-jdk-alpine
-
+FROM openjdk:8
 COPY contafin-0.0.1-SNAPSHOT.jar /usr/src
 
 WORKDIR /usr/src

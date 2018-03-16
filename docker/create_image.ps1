@@ -11,4 +11,4 @@ mv ${pathJar}/contafin-0.0.1-SNAPSHOT.jar .
 
 Write-Output "Creating Docker image of contafin..."
 #Creating image 
-docker build -t contafin .
+docker build -t jaimemorillo/contafin .
