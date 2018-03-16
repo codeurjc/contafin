@@ -1,13 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-# Working directory for docker image
-WORKDIR /app
+COPY contafin-0.0.1-SNAPSHOT.jar /usr/src
 
-# Folder inside alpine
-COPY ./docker/contafin-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose PORT
-EXPOSE 8080
-
-# Start image
-ENTRYPOINT ["java", "-jar", "app.jar"]
+WORKDIR /usr/src
+CMD ["java", "-jar", "contafin-0.0.1-SNAPSHOT.jar"]
