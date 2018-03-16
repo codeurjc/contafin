@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -27,12 +28,14 @@ public class User {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
-	
 	private long id;
 	
 	private String name;
 	private String email;
+	
+	@JsonIgnore
 	private String passwordHash;
+	
 	private int level;
 	private int points;
 	private int streak;
@@ -45,11 +48,15 @@ public class User {
 	
 
 	private int exp = 0;
+	
+	@JsonIgnore
 	private int needexp = 10;
 	
+	@JsonIgnore
 	@Lob
 	private byte[] image;
 	
+	@JsonIgnore
 	@ElementCollection(fetch = FetchType.EAGER) 
 	private List<String> roles;
 	
