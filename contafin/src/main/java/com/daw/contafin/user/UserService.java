@@ -1,10 +1,13 @@
 package com.daw.contafin.user;
 
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.daw.contafin.completedLesson.CompletedLesson;
@@ -81,5 +84,8 @@ public class UserService {
 		return progress;
 	}
 	
+	public Page<User> getUsers(Pageable page) {
+		return userRepository.findAll(page);
+	}
 	
 }
