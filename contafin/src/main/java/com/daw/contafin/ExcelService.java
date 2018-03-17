@@ -1,34 +1,28 @@
 package com.daw.contafin;
 
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.view.document.AbstractXlsView;
+import org.springframework.stereotype.Service;
 
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserService;
 
-
-public class ExcelExport extends AbstractXlsView {
+@Service
+public class ExcelService {
 
 	@Autowired
 	UserService userService;
 	
-	@Override
-	protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	
+	public Workbook generateExcel(){
 
-		response.setHeader("Content-disposition", "attachment; filename=\"user_list.xls\"");
-
-		@SuppressWarnings("unchecked")
-		List<User> list = (List<User>) model.get("userList");	
+		Workbook workbook = new HSSFWorkbook();
+		List<User> list = userService.getUsers();
 		Sheet sheet = workbook.createSheet("User List");
 
 		Row header = sheet.createRow(0);
@@ -62,6 +56,7 @@ public class ExcelExport extends AbstractXlsView {
 			row.createCell(10).setCellValue(user.getLastLesson());
 
 		}
+		return workbook;
 	}
 
 }

@@ -1,7 +1,11 @@
 package com.daw.contafin.admin;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.daw.contafin.ExcelExport;
+import com.daw.contafin.ExcelService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
@@ -26,6 +30,9 @@ public class AdminController  {
 	@Autowired
 	UserComponent userComponent;
 	
+	@Autowired
+	ExcelService excelService;
+	
 	
 	@RequestMapping("UsersData")
 	public String usersData(Model model) {
@@ -35,17 +42,16 @@ public class AdminController  {
 	
 	@RequestMapping ("ExportPreview")
 	public ModelAndView userData (ModelAndView model) {
-		
 		 List<User> users = userService.getUsers();
 		return new ModelAndView("exportPreview", "userList", users);
 	}
 	 
 	 @RequestMapping(value="Export", method=RequestMethod.GET)
-	 public ModelAndView userListReport(){
-	  
-		 List<User> users = userService.getUsers();
-		 return new ModelAndView(new ExcelExport(), "userList", users);
-	  
+	 public void userListReport(HttpServletResponse response) throws IOException{
+		response.setContentType("application/vnd.ms-excel");
+		response.setHeader("Content-disposition", "attachment; filename=\"user_list.xls\"");
+		Workbook workbook = excelService.generateExcel();
+		workbook.write(response.getOutputStream());
 	 }
 	 
 	 //Load users using AJAX
