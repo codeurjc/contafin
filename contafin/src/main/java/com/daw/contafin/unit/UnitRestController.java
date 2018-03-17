@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.daw.contafin.ImageService;
+import com.daw.contafin.answer.AnswerService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
@@ -27,7 +28,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RequestMapping("/api/unit")
 public class UnitRestController{
 	
-	interface UnitLesson extends Lesson.UnitLesson {}
 	
 	@Autowired
 	private UnitService unitService;
@@ -37,6 +37,9 @@ public class UnitRestController{
 
 	@Autowired
 	private ExerciseService exerciseService;
+	
+	@Autowired
+	private AnswerService answerService;
 	
 	@Autowired
 	UserService userService;
@@ -71,13 +74,7 @@ public class UnitRestController{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	/*//See an unit with its lessons
-	@RequestMapping(value = "/lesson/", method = RequestMethod.GET)
-	public List<Unit> getunitwithlesson() {
-		return unitService.findAll();
-	}*/
-	
+		
 	//Post Unit
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
@@ -159,24 +156,41 @@ public class UnitRestController{
 	}
 
 	//Delete Unit
+	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Unit> deleteUnit(@PathVariable long id) {
-
 			Unit unit = unitService.findById(id);
-			
-			
-			
-
 			if (unit != null) {
-				return new ResponseEntity<>(unit, HttpStatus.OK);
+				List<Lesson> lessons = lessonService.findByUnit(unit);
+				List<Exercise> exercises1 = exerciseService.findByLesson(lessons.get(0));
+				List<Exercise> exercises2 = exerciseService.findByLesson(lessons.get(1));
+				List<Exercise> exercises3 = exerciseService.findByLesson(lessons.get(2));
+				for(int i=0;i<exercises1.size();i++) {
+					exerciseService.delete(exercises1.get(i).getId());
+					exerciseService.delete(exercises2.get(i).getId());
+					exerciseService.delete(exercises3.get(i).getId());
+				}
+				for(int i=0;i<lessons.size();i++) {
+					lessonService.delete(lessons.get(i).getId());
+				}
+				unitService.delete(unit.getId());
+				return new ResponseEntity<>(unit,HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 	}
 }
 
-
 /*
+{
+	"name": "Unidad Prueba"
+}
+
+*/
+ 
+ 
+ 
+ /*
 {
     "name": "Unidad 3",
     "lessons": [

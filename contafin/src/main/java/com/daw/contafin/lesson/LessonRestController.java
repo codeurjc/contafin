@@ -1,4 +1,4 @@
-/*package com.daw.contafin.lesson;
+package com.daw.contafin.lesson;
 
 import java.util.List;
 
@@ -20,6 +20,7 @@ import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
 import com.daw.contafin.lesson.LessonService;
+import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitService;
 import com.daw.contafin.lesson.Lesson.UnitLesson;
 import com.daw.contafin.user.User;
@@ -51,92 +52,16 @@ public class LessonRestController{
 	@Autowired
 	ImageService imageService;
 
-	byte[] bytes1;
-	byte[] bytes2;
-	byte[] bytes3;
-	Exercise exercise;
-
 	//See all the Unit
-	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<Unit> getunit() {
-		return unitService.findAll();
+	@RequestMapping(value = "/lessons/", method = RequestMethod.GET)
+	public List<Lesson> getunit() {
+		return lessonService.findAll();
 	}
 	
 	//See an unit with its lessons
-	@RequestMapping(value = "/lesson/", method = RequestMethod.GET)
-	public List<Lesson> getunitwithlesson() {
-		return unitService.findAll();
-	}
-	
-	//Create Unit
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public Unit nuevoItem(@RequestBody Unit unit) {
-		
-		Exercise exercise;
-		
-		unitService.save(unit);
-		
-		Lesson lesson = unit.getLessons().get(0);
-		lesson.setUnit(unit);
-		lessonService.save(lesson);
-		exercise = lesson.getExercises().get(0);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(1);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(2);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(3);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		
-		
-		lesson = unit.getLessons().get(1);
-		lesson.setUnit(unit);
-		lessonService.save(lesson);
-		exercise = lesson.getExercises().get(0);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(1);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(2);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(3);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		
-		
-		
-		lesson = unit.getLessons().get(2);
-		lesson.setUnit(unit);
-		lessonService.save(lesson);
-		exercise = lesson.getExercises().get(0);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(1);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(2);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(3);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		
-		return unit;
-	}
-	
-	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Unit> getItem(@PathVariable long id) {
-		Unit unit = unitService.findById(id);
-
+	@RequestMapping(value = "/{idunit}/lesson/", method = RequestMethod.GET)
+	public ResponseEntity<Unit> getunitwithlesson(@PathVariable long idunit) {
+		Unit unit = unitService.findById(idunit);
 		if (unit != null) {
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
@@ -144,20 +69,31 @@ public class LessonRestController{
 		}
 	}
 	
-	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Unit> actulizaItem(@PathVariable long id, @RequestBody Unit unitAct) {
+	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Lesson> getItem(@PathVariable long idunit,@PathVariable long id) {
+		Lesson lesson = lessonService.findById((idunit-1)*3+id);
+
+		if (lesson != null) {
+			return new ResponseEntity<>(lesson, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	
+	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Unit> actulizaItem(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 
 		Unit unit = unitService.findById(id);
 
 		if (unit != null) {
-			unit.setName(unitAct.getName());
-			unitAct.setId(id);
+			unit.setName(lessonAct.getName());
+			lessonAct.setId(id);
 			unitService.save(unit);
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-}*/
+}
 

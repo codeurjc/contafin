@@ -45,10 +45,11 @@ public class Exercise {
 	@JsonIgnore
 	@Lob
 	private byte[] image3;
-
+	
 	@ElementCollection
 	private List<String> texts;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "exercise")
 	private List<CompletedExercise> completedExercises;
 

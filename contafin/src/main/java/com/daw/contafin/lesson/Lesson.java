@@ -22,10 +22,8 @@ public class Lesson {
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	
-	@JsonView(UnitLesson.class)
 	private long id;
 	
-	@JsonView(UnitLesson.class)
 	private String name;
 	
 	@JsonIgnore

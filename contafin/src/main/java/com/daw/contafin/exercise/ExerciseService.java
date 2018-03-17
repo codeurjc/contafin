@@ -33,8 +33,8 @@ public class ExerciseService {
 		public void save(Exercise exercise) {
 			exerciseRepository.save(exercise);
 		}
-		public void delete(long Id) {
-			exerciseRepository.delete(Id);
+		public void delete(long id) {
+			exerciseRepository.delete(id);
 		}
 		
 		
