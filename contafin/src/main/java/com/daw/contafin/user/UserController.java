@@ -151,7 +151,7 @@ public class UserController extends ContentController{
 		if (userComponent.getLoggedUser().getImage() != null) {
 			image = userComponent.getLoggedUser().getImage();
 		} else {
-			Path path = Paths.get(".//src//main//resources//static/img/profile.png");
+			Path path = Paths.get("img/profile.png");
 			image = Files.readAllBytes(path);
 
 		}

@@ -190,9 +190,9 @@ public class UnitController extends ContentController {
 		List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
 		// Save the images in the database
-		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
-				Paths.get(".//src//main//resources//static/img/land.jpg"),
-				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+				Paths.get("img/land.jpg"),
+				Paths.get("img/truck.jpg"));
 		
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
@@ -225,9 +225,9 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
 		//Save the images in the database
-		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
-				Paths.get(".//src//main//resources//static/img/land.jpg"),
-				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+				Paths.get("img/land.jpg"),
+				Paths.get("img/truck.jpg"));
 		
 		//Exercixe 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
@@ -261,9 +261,9 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "1.3.1 Seleccione el asiento",  texts, answer, lesson);
 		//Save the images in the database
-		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
-				Paths.get(".//src//main//resources//static/img/land.jpg"),
-				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+				Paths.get("img/land.jpg"),
+				Paths.get("img/truck.jpg"));
 				
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
@@ -295,9 +295,9 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise =new Exercise(1, "2.1.1 Seleccione el asiento", texts, answer, lesson);
 		//Save the images in the database
-		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
-				Paths.get(".//src//main//resources//static/img/land.jpg"),
-				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+				Paths.get("img/land.jpg"),
+				Paths.get("img/truck.jpg"));
 		
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
@@ -329,9 +329,9 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise =new Exercise(1, "2.2.1 Seleccione el asiento", texts, answer, lesson);
 		//Save the images in the database
-		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
-				Paths.get(".//src//main//resources//static/img/land.jpg"),
-				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+				Paths.get("img/land.jpg"),
+				Paths.get("img/truck.jpg"));
 
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");
@@ -364,9 +364,9 @@ public class UnitController extends ContentController {
 		texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
 		exercise = new Exercise(1, "2.3.1 Seleccione el asiento", texts, answer, lesson);
 		// Save the images in the database
-		imageService.saveImages(exercise, Paths.get(".//src//main//resources//static/img/machine.jpg"),
-				Paths.get(".//src//main//resources//static/img/land.jpg"),
-				Paths.get(".//src//main//resources//static/img/truck.jpg"));
+		imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+				Paths.get("img/land.jpg"),
+				Paths.get("img/truck.jpg"));
 		
 		//Exercise 2
 		answer = new Answer("Este es un texto de prueba en el que comprobarlo");

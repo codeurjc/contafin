@@ -12,7 +12,7 @@ services:
       - 3306:3306
 
   web:
-    image: jaimemorillo/contafin:latest
+    image: contafin/contafin:latest
     container_name: web_server
     depends_on:
       - mysql
