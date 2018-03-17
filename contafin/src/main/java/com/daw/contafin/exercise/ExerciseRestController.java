@@ -1,4 +1,4 @@
-package com.daw.contafin.lesson;
+package com.daw.contafin.exercise;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import com.daw.contafin.user.UserService;
 
 @RestController
 @RequestMapping("/api/unit")
-public class LessonRestController{
+public class ExerciseRestController{
 	
 	interface UnitLesson extends Lesson.UnitLesson {}
 	
@@ -43,7 +43,7 @@ public class LessonRestController{
 
 	//See all the Unit
 	@RequestMapping(value = "/lessons/", method = RequestMethod.GET)
-	public List<Lesson> getLessons() {
+	public List<Lesson> getunit() {
 		return lessonService.findAll();
 	}
 	
@@ -59,7 +59,7 @@ public class LessonRestController{
 	}
 	
 	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Lesson> getLesson(@PathVariable long idunit,@PathVariable long id) {
+	public ResponseEntity<Lesson> getItem(@PathVariable long idunit,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
 
 		if (lesson != null) {
@@ -71,7 +71,7 @@ public class LessonRestController{
 	
 	
 	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Lesson> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
+	public ResponseEntity<Lesson> actulizaItem(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
 
@@ -85,4 +85,5 @@ public class LessonRestController{
 		}
 	}
 }
+
 

@@ -141,7 +141,7 @@ public class UnitRestController{
 	//Put unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Unit> updateItem(@PathVariable long id, @RequestBody Unit unitAct) {
+	public ResponseEntity<Unit> updateUnit(@PathVariable long id, @RequestBody Unit unitAct) {
 
 		Unit unit = unitService.findById(id);
 
