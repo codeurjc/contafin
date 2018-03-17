@@ -56,22 +56,36 @@ public class UnitRestController{
 	byte[] bytes3;
 	Exercise exercise;
 
-	//See all the Unit
+	//Get all unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<Unit> getunit() {
+	public List<Unit> getUnit() {
 		return unitService.findAll();
 	}
 	
+	//Get 1 unit
+	@JsonView(UnitBassic.class)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Unit> getOneUnit(@PathVariable long id) {
+		Unit unit = unitService.findById(id);
+
+		if (unit != null) {
+			return new ResponseEntity<>(unit, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	//See an unit with its lessons
 	@RequestMapping(value = "/lesson/", method = RequestMethod.GET)
 	public List<Unit> getunitwithlesson() {
 		return unitService.findAll();
 	}
 	
-	//Create Unit
+	//Post Unit
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Unit nuevoItem(@RequestBody Unit unit) {
+	public Unit createUnit(@RequestBody Unit unit) {
 		
 		Exercise exercise;
 		
@@ -131,21 +145,10 @@ public class UnitRestController{
 		return unit;
 	}
 	
-	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Unit> getItem(@PathVariable long id) {
-		Unit unit = unitService.findById(id);
-
-		if (unit != null) {
-			return new ResponseEntity<>(unit, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-	
+	//Put unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Unit> actulizaItem(@PathVariable long id, @RequestBody Unit unitAct) {
+	public ResponseEntity<Unit> updateItem(@PathVariable long id, @RequestBody Unit unitAct) {
 
 		Unit unit = unitService.findById(id);
 
@@ -158,6 +161,20 @@ public class UnitRestController{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
+	//Delete Unit
+	/*@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Unit> deleteUnit(@PathVariable long id) {
+
+			Unit unit = unitService.findById(id);
+
+			if (anuncio != null) {
+				return new ResponseEntity<>(anuncio, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		}
+	}*/
 }
 
 /*
