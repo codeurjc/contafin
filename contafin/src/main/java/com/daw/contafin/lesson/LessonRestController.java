@@ -82,15 +82,15 @@ public class LessonRestController{
 	
 	
 	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Unit> actulizaItem(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
+	public ResponseEntity<Lesson> actulizaItem(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 
-		Unit unit = unitService.findById(id);
+		Lesson lesson = lessonService.findById((idunit-1)*3+id);
 
-		if (unit != null) {
-			unit.setName(lessonAct.getName());
+		if (lesson != null) {
+			lesson.setName(lessonAct.getName());
 			lessonAct.setId(id);
-			unitService.save(unit);
-			return new ResponseEntity<>(unit, HttpStatus.OK);
+			lessonService.save(lesson);
+			return new ResponseEntity<>(lesson, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
