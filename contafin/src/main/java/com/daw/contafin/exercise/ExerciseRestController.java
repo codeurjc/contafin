@@ -41,7 +41,7 @@ public class ExerciseRestController{
 	@Autowired
 	ImageService imageService;
 
-	//See all the Unit
+	/*//See all the Unit
 	@RequestMapping(value = "/lessons/", method = RequestMethod.GET)
 	public List<Lesson> getunit() {
 		return lessonService.findAll();
@@ -83,7 +83,7 @@ public class ExerciseRestController{
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
+	}*/
 }
 
 
