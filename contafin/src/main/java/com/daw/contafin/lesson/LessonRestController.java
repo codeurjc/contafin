@@ -41,7 +41,7 @@ public class LessonRestController{
 	@Autowired
 	ImageService imageService;
 
-	//See all the Unit
+	//See all the lessons
 	@RequestMapping(value = "/lessons/", method = RequestMethod.GET)
 	public List<Lesson> getLessons() {
 		return lessonService.findAll();
@@ -58,6 +58,7 @@ public class LessonRestController{
 		}
 	}
 	
+	//See one lesson
 	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Lesson> getLesson(@PathVariable long idunit,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
@@ -69,7 +70,7 @@ public class LessonRestController{
 		}
 	}
 	
-	
+	//Update a lesson
 	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Lesson> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 

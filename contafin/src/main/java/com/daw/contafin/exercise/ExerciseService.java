@@ -19,6 +19,10 @@ public class ExerciseService {
 			return exerciseRepository.findById(id);
 		}
 		
+		public List<Exercise> findAll(){
+			return exerciseRepository.findAll();
+		}
+		
 		public Exercise findByLessonAndId (Lesson lesson, long id) {
 			return exerciseRepository.findByLessonAndId(lesson,id);
 		}
