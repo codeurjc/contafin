@@ -41,14 +41,14 @@ public class ExerciseRestController{
 	@Autowired
 	ImageService imageService;
 
-	/*//See all the Unit
-	@RequestMapping(value = "/lessons/", method = RequestMethod.GET)
+	//See all the Unit
+	@RequestMapping(value = "/lessaons/", method = RequestMethod.GET)
 	public List<Lesson> getunit() {
 		return lessonService.findAll();
 	}
 	
 	//See an unit with its lessons
-	@RequestMapping(value = "/{idunit}/lesson/", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/lessona/", method = RequestMethod.GET)
 	public ResponseEntity<Unit> getunitwithlesson(@PathVariable long idunit) {
 		Unit unit = unitService.findById(idunit);
 		if (unit != null) {
@@ -58,7 +58,7 @@ public class ExerciseRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/lessoan/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Lesson> getItem(@PathVariable long idunit,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
 
@@ -70,7 +70,7 @@ public class ExerciseRestController{
 	}
 	
 	
-	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{idunit}/lessona/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Lesson> actulizaItem(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
@@ -83,7 +83,7 @@ public class ExerciseRestController{
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}*/
+	}
 }
 
 
