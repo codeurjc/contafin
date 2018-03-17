@@ -7,6 +7,11 @@ Write-Output "Creating jar of contafin..."
 docker run -it --rm --name contafin -v ${pathProject}:/usr/src/mymaven -w /usr/src/mymaven maven mvn clean package -DskipTests
 
 #Move jar to actual directory
+$contafinJar = "contafin-0.0.1-SNAPSHOT.jar"
+$existeJar = Test-Path $contafinJar
+if($existeJar -eq $True){
+    Remove-Item $contafinJar
+}
 mv ${pathJar}/contafin-0.0.1-SNAPSHOT.jar .
 
 Write-Output "Creating Docker image of contafin..."
