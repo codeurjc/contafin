@@ -22,4 +22,8 @@ public class UnitService {
 	public Unit findById(long Id) {
 		return unitRepository.findById(Id);
 	}
+	
+	public void delete(long Id) {
+		unitRepository.delete(Id);
+	}
 }

@@ -17,4 +17,7 @@ public class AnswerService {
 	public void save(Answer answer) {
 		answerRepository.save(answer);
 	}
+	public void delete(long Id) {
+		answerRepository.delete(Id);
+	}
 }

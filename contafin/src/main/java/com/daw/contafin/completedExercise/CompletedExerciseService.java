@@ -29,5 +29,7 @@ public class CompletedExerciseService {
 	public void delete(CompletedExercise completedExercise) {
 		completedExerciseRepository.delete(completedExercise);
 	}
-	
+	public void delete(long Id) {
+		completedExerciseRepository.delete(Id);
+	}
 }

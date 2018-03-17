@@ -34,4 +34,7 @@ public class CompletedLessonService {
 	public void save(CompletedLesson completedLesson) {
 		completedLessonRepository.save(completedLesson);
 	}
+	public void delete(long Id) {
+		completedLessonRepository.delete(Id);
+	}
 }

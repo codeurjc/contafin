@@ -15,14 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.daw.contafin.ImageService;
 import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.exercise.ExerciseRepository;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
-import com.daw.contafin.lesson.LessonRepository;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.unit.Unit.UnitBassic;
-import com.daw.contafin.lesson.Lesson.UnitLesson;
-import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -76,11 +72,11 @@ public class UnitRestController{
 		}
 	}
 	
-	//See an unit with its lessons
+	/*//See an unit with its lessons
 	@RequestMapping(value = "/lesson/", method = RequestMethod.GET)
 	public List<Unit> getunitwithlesson() {
 		return unitService.findAll();
-	}
+	}*/
 	
 	//Post Unit
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -163,19 +159,22 @@ public class UnitRestController{
 	}
 
 	//Delete Unit
-	/*@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Unit> deleteUnit(@PathVariable long id) {
 
 			Unit unit = unitService.findById(id);
+			
+			
+			
 
-			if (anuncio != null) {
-				return new ResponseEntity<>(anuncio, HttpStatus.OK);
+			if (unit != null) {
+				return new ResponseEntity<>(unit, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
-		}
-	}*/
+	}
 }
+
 
 /*
 {

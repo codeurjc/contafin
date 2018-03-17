@@ -26,5 +26,9 @@ public class LessonService {
 	public List<Lesson> findAll(){
 		return lessonRepository.findAll();
 	}
+	
+	public void delete(long Id) {
+		lessonRepository.delete(Id);
+	}
 }
 
