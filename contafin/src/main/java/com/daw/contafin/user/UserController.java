@@ -114,6 +114,8 @@ public class UserController extends ContentController{
 		}
 		else {
 			user.setDailyGoal(Integer.parseInt(goal));
+			//Update user remaining Goals
+			user.setRemainingGoals(Integer.parseInt(goal));
 			userService.updateUserData(user);
 			userComponent.setLoggedUser(user);
 		}

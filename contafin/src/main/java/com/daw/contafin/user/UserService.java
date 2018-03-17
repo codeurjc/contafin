@@ -88,4 +88,14 @@ public class UserService {
 		return userRepository.findAll(page);
 	}
 	
+	public int getRemainingGoals(User user) {
+		Calendar date = Calendar.getInstance();
+		java.sql.Date sqlDate =  new java.sql.Date((date.getTime()).getTime());
+		if (completedLessonService.getCompletedLessons(user, sqlDate) >= user.getDailyGoal()) {
+			return 0;
+		} else {
+			return (user.getDailyGoal() - completedLessonService.getCompletedLessons(user, sqlDate));
+		}
+	}
+	
 }

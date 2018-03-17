@@ -45,6 +45,7 @@ public class User {
 	private int lastUnit;
 	private int lastLesson;
 	private int [] progress;
+	private int remainingGoals;
 	
 
 	private int exp = 0;
@@ -91,6 +92,7 @@ public class User {
 		this.points=points;
 		this.streak=streak;
 		this.dailyGoal= dailyGoal;
+		this.remainingGoals= dailyGoal;
 		this.lastConnection= "-";
 		this.lastUnit=0;
 		this.lastLesson=0;
@@ -252,5 +254,11 @@ public class User {
 		this.progress = progress;
 	}
 
-	
+	public int getRemainingGoals() {
+		return remainingGoals;
+	}
+
+	public void setRemainingGoals(int remainingGoals) {
+		this.remainingGoals = remainingGoals;
+	}
 }

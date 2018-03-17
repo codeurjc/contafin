@@ -1,8 +1,6 @@
 package com.daw.contafin.security;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -82,14 +80,9 @@ public class WebController extends ContentController {
 			model.addAttribute("fluency", userService.findByEmail(user.getEmail()).getFluency());
 			model.addAttribute("exp", userService.findByEmail(user.getEmail()).getExp());
 			model.addAttribute("fluency", userService.findByEmail(user.getEmail()).getFluency()+" %");
-			
-			Calendar date = Calendar.getInstance();
-			Date sqlDate = new Date((date.getTime()).getTime());
-			if (completedLessonService.getCompletedLessons(user, sqlDate) >= user.getDailyGoal()) {
-				model.addAttribute("lessonsToDo", "0");
-			} else {
-				model.addAttribute("lessonsToDo", user.getDailyGoal() - completedLessonService.getCompletedLessons(user, sqlDate));
-			}
+			model.addAttribute("lessonsToDo",userService.getRemainingGoals(user));
+			//Update user remaining Goals
+			user.setRemainingGoals(userService.getRemainingGoals(user));
 			//Update the user's last connection
 			user.setLastConnection(user.newConnection());
 			userService.updateUserData(user);
