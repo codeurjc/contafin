@@ -43,7 +43,7 @@ public class EmailService {
 		// Process the template
 		String html = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
 		// Added logo as attachment
-		helper.addAttachment("Logo.png", new FileDataSource(".//src//main//resources//static/img/Logo.png"));
+		helper.addAttachment("Logo.png", new FileDataSource("img/Logo.png"));
 		// Add sender, recipient, subject and body to the message
 		helper.setTo(user.getEmail());
 		helper.setText(html, true);
