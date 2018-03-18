@@ -18,20 +18,28 @@ import com.daw.contafin.answer.Answer;
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.lesson.Lesson;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Exercise {
 
+
+	interface ExerciseBassic {}
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonView(ExerciseBassic.class)
 	private long id;
 
 	@JsonIgnore
 	@ManyToOne
 	private Lesson lesson;
 
+	@JsonView(ExerciseBassic.class)
 	private int kind;
 
+	@JsonView(ExerciseBassic.class)
 	private String statement;
 
 	@JsonIgnore
@@ -46,6 +54,7 @@ public class Exercise {
 	@Lob
 	private byte[] image3;
 	
+	@JsonView(ExerciseBassic.class)
 	@ElementCollection
 	private List<String> texts;
 
