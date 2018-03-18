@@ -45,9 +45,6 @@ public class UnitController extends ContentController {
 	@Autowired
 	ImageService imageService;
 	
-	byte[] bytes1;
-	byte[] bytes2;
-	byte[] bytes3;
 	Exercise exercise;
 
 	@RequestMapping("/UpdateExercise")  
@@ -83,13 +80,8 @@ public class UnitController extends ContentController {
 		Lesson lesson = lesson1;
 		List<String> myTexts = Arrays.asList(texts[0], texts[1], texts[2]);
 		Answer answer = new Answer(answers[0]);
-		bytes1 = imageService.uploadImage(images[0]);
-		bytes2 = imageService.uploadImage(images[1]);
-		bytes3 = imageService.uploadImage(images[2]);
 		exercise=new Exercise(1, statements[0], myTexts, answer, lesson);
-		exercise.setImage1(bytes1);
-		exercise.setImage2(bytes2);
-		exercise.setImage3(bytes3);
+		exerciseService.uploadExerciseImages(exercise, images[0],images[1], images[2]);
 		exerciseService.save(exercise);
 
 		answer = new Answer(answers[1]);
@@ -109,13 +101,8 @@ public class UnitController extends ContentController {
 		lesson = lesson2;
 		myTexts = Arrays.asList(texts[9], texts[10], texts[11]);
 		answer = new Answer(answers[4]);
-		bytes1 = imageService.uploadImage(images[3]);
-		bytes2 = imageService.uploadImage(images[4]);
-		bytes3 = imageService.uploadImage(images[5]);
 		exercise=new Exercise(1, statements[4], myTexts, answer, lesson);
-		exercise.setImage1(bytes1);
-		exercise.setImage2(bytes2);
-		exercise.setImage3(bytes3);
+		exerciseService.uploadExerciseImages(exercise, images[3],images[4], images[5]);
 		exerciseService.save(exercise);
 
 		answer = new Answer(answers[5]);
@@ -129,16 +116,12 @@ public class UnitController extends ContentController {
 		answer = new Answer(answers[7]);
 		exerciseService.save(new Exercise(7, statements[7], myTexts, answer, lesson));
 
+		//Lesson 3
 		lesson = lesson3;
 		myTexts = Arrays.asList(texts[18], texts[19], texts[20]);
 		answer = new Answer(answers[8]);
-		bytes1 = imageService.uploadImage(images[6]);
-		bytes2 = imageService.uploadImage(images[7]);
-		bytes3 = imageService.uploadImage(images[8]);
 		exercise=new Exercise(1, statements[8], myTexts, answer, lesson);
-		exercise.setImage1(bytes1);
-		exercise.setImage2(bytes2);
-		exercise.setImage3(bytes3);
+		exerciseService.uploadExerciseImages(exercise, images[6],images[7], images[8]);
 		exerciseService.save(exercise);
 		
 
