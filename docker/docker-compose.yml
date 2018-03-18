@@ -19,7 +19,5 @@ services:
       - mysql
     environment:
       - DATABASE_HOST=mysql
-    links:
-      - mysql:mysql
     ports:
       - 8080:8080
