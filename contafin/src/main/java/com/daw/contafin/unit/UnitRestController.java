@@ -25,7 +25,7 @@ import com.daw.contafin.user.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
-@RequestMapping("/api/unit")
+@RequestMapping("/api/Unit")
 public class UnitRestController{
 	
 	

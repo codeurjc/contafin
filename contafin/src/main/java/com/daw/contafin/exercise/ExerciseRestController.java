@@ -25,7 +25,7 @@ import com.daw.contafin.user.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
-@RequestMapping("/api/unit")
+@RequestMapping("/api/Unit")
 public class ExerciseRestController{
 	
 	interface UnitLesson extends Lesson.UnitLesson {}
@@ -52,13 +52,13 @@ public class ExerciseRestController{
 
 	//See all the exercise
 	@JsonView(ExerciseBassic.class)
-	@RequestMapping(value = "/lesson/exercises/", method = RequestMethod.GET)
+	@RequestMapping(value = "/Lesson/Exercises/", method = RequestMethod.GET)
 	public List<Exercise> getExercises() {
 		return exerciseService.findAll();
 	}
 		
 	@JsonView(ExerciseBassic.class)
-	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/exercise/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Exercise> getOneExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
@@ -70,7 +70,7 @@ public class ExerciseRestController{
 	}
 	
 	//change exercise
-	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/exercise/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Exercise> updateExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Exercise exerciseAct) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
@@ -87,7 +87,7 @@ public class ExerciseRestController{
 	}
 	
 	//Ask for a answer
-	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/exercise/{id}/answer", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer", method = RequestMethod.GET)
 	public ResponseEntity<Answer> getOneAnswer(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
@@ -98,7 +98,7 @@ public class ExerciseRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/exercise/{id}/answer", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer", method = RequestMethod.PUT)
 	public ResponseEntity<Exercise> changeAnswer(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Answer answerAct) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
@@ -114,7 +114,7 @@ public class ExerciseRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/exercise/{id}/solution", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Solution", method = RequestMethod.PUT)
 	public ResponseEntity<Boolean> checkExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Answer answerAct) {
 		User user = userComponent.getLoggedUser();
 		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);

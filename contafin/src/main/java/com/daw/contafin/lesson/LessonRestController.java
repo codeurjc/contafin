@@ -28,7 +28,7 @@ import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
 
 @RestController
-@RequestMapping("/api/unit")
+@RequestMapping("/api/Unit")
 public class LessonRestController{
 	
 	interface UnitLesson extends Lesson.UnitLesson {}
@@ -58,13 +58,13 @@ public class LessonRestController{
 	CompletedExerciseService completedExerciseService;
 
 	//See all the lessons
-	@RequestMapping(value = "/lessons/", method = RequestMethod.GET)
+	@RequestMapping(value = "/Lessons/", method = RequestMethod.GET)
 	public List<Lesson> getLessons() {
 		return lessonService.findAll();
 	}
 	
 	//See an unit with its lessons
-	@RequestMapping(value = "/{idunit}/lesson/", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/Lesson/", method = RequestMethod.GET)
 	public ResponseEntity<Unit> getunitwithlesson(@PathVariable long idunit) {
 		Unit unit = unitService.findById(idunit);
 		if (unit != null) {
@@ -75,7 +75,7 @@ public class LessonRestController{
 	}
 	
 	//See one lesson
-	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/Lesson/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Lesson> getLesson(@PathVariable long idunit,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
 
@@ -87,7 +87,7 @@ public class LessonRestController{
 	}
 	
 	//Update a lesson
-	@RequestMapping(value = "/{idunit}/lesson/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{idunit}/Lesson/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Lesson> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
@@ -102,7 +102,7 @@ public class LessonRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/completed", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/Completed", method = RequestMethod.GET)
 	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit, @PathVariable int idlesson) {
 		User user = userComponent.getLoggedUser();
 		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
