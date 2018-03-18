@@ -165,5 +165,5 @@ As administrators of our application you will get the same options with the appl
 The application does not need more explanations since it is very intuitive because it is intended for teaching.
 ### Docker
 Docker lets you to use our app in a very easy way without having anything install, you just need Docker.
-Read the[Docker usage](DOCKER.md) to know more.
+Read the [Docker usage](DOCKER.md) to know more.
 
