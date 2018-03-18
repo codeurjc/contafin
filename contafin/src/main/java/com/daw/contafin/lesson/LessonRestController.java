@@ -2,7 +2,6 @@ package com.daw.contafin.lesson;
 
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,17 +20,17 @@ import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
-import com.daw.contafin.lesson.Lesson.LessonBasic;
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @RequestMapping("/api/Unit")
 public class LessonRestController{
+	
+	interface UnitLesson extends Lesson.UnitLesson {}
 	
 	@Autowired
 	private UnitService unitService;
@@ -55,7 +54,6 @@ public class LessonRestController{
 	CompletedExerciseService completedExerciseService;
 
 	//See all the lessons
-	@JsonView(LessonBasic.class)
 	@RequestMapping(value = "/Lessons/", method = RequestMethod.GET)
 	public ResponseEntity<Page<Lesson>> getLessons(Pageable page) {
 		return new ResponseEntity<>(lessonService.getLessons(page), HttpStatus.OK);
@@ -66,21 +64,13 @@ public class LessonRestController{
 	public ResponseEntity<Unit> getunitwithlesson(@PathVariable long idunit) {
 		Unit unit = unitService.findById(idunit);
 		if (unit != null) {
-			List<Lesson> lessons = unit.getLessons();
-			for (int i=0; i<lessons.size();i++) {
-				lessons.get(i).setExercises(null);
-			}
-			Unit unittry = new Unit(unit.getName());
-			unittry.setId(unit.getId());
-			unittry.setLesson(lessons);
-			return new ResponseEntity<>(unittry, HttpStatus.OK);
+			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	//See one lesson
-	@JsonView(LessonBasic.class)
 	@RequestMapping(value = "/{idunit}/Lesson/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Lesson> getLesson(@PathVariable long idunit,@PathVariable long id) {
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
@@ -93,7 +83,6 @@ public class LessonRestController{
 	}
 	
 	//Update a lesson
-	@JsonView(LessonBasic.class)
 	@RequestMapping(value = "/{idunit}/Lesson/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Lesson> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
 

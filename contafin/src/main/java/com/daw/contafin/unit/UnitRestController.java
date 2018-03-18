@@ -52,6 +52,7 @@ public class UnitRestController{
 	byte[] bytes1;
 	byte[] bytes2;
 	byte[] bytes3;
+	Exercise exercise;
 
 	//Get all unit
 	@JsonView(UnitBassic.class)
