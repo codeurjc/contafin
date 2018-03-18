@@ -32,6 +32,16 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/Admin/UserData").hasRole("ADMIN");	
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/Admin/UserData/Export").hasRole("USER");
 		
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/Unit/").hasRole("ADMIN");	
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/Unit/*").hasRole("ADMIN");	
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/Unit/*").hasRole("ADMIN");
+		
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/Unit/*/Lesson/*").hasRole("ADMIN");
+		
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/Unit/*/Lesson/*/Exercise/*").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/Unit/*/Lesson/*/Exercise/*/Answer").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/Unit/*/Lesson/*/Exercise/*/Answer").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/Unit/*/Lesson/*/Exercise/*/Solution").hasRole("ADMIN");
 
 		
 		// Other URLs can be accessed without authentication
