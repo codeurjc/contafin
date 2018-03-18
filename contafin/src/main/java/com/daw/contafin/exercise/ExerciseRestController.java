@@ -27,6 +27,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RequestMapping("/api/Unit")
 public class ExerciseRestController{
 	
+	interface UnitLesson extends Lesson.UnitLesson {}
+	
+	
 	@Autowired
 	private LessonService lessonService;
 	

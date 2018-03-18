@@ -66,6 +66,7 @@ public class UnitRestController{
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Unit> getOneUnit(@PathVariable long id) {
 		Unit unit = unitService.findById(id);
+
 		if (unit != null) {
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
