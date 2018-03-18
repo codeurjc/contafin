@@ -9,7 +9,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,7 +47,7 @@ public class UserRestController {
 
 	}
 	
-	@RequestMapping(value = "/Profile", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<User> profile() {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -58,32 +57,73 @@ public class UserRestController {
 			//Update user data
 			user.setProgress(progress);
 			userService.updateUserData(user);
+			userComponent.setLoggedUser(user);
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		}
 	}
 	
-	@RequestMapping(value = "/Configuration", method = RequestMethod.PUT)
-	public ResponseEntity<User> configuration(@RequestBody Map<String,String> userData) {
+	@RequestMapping(value = "/Name", method = RequestMethod.PUT)
+	public ResponseEntity<User> updateName(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
 			User user = userComponent.getLoggedUser();
 			boolean noData =false; 
 			String name = userData.get("newName");
-			String email = userData.get("newEmail");
-			String pass = userData.get("newPass");
-			
 			if (!name.isEmpty()) {
 				user.setName(name);
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
 				noData =true;
 			}
+			if(!noData) {
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			}
+			else {
+				return new ResponseEntity<>(user, HttpStatus.OK);
+			}
+		}
+	}
+	
+	@RequestMapping(value = "/Email", method = RequestMethod.PUT)
+	public ResponseEntity<User> updateEmail(@RequestBody Map<String,String> userData) {
+		if (!userComponent.isLoggedUser()) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		} else {
+			User user = userComponent.getLoggedUser();
+			boolean noData =false; 
+			String email = userData.get("newEmail");
 			if (!email.isEmpty()) {
 				user.setEmail(email);
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
 				noData =true;
 			}
-			if (!pass.isEmpty()) {
-				user.setPasswordHash(new BCryptPasswordEncoder().encode(pass));
-				noData =true;
+			if(!noData) {
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			}
+			else {
+				return new ResponseEntity<>(user, HttpStatus.OK);
+			}
+		}
+	}
+	
+	@RequestMapping(value = "/Password", method = RequestMethod.PUT)
+	public ResponseEntity<User> updatePassword(@RequestBody Map<String,String> userData) {
+		if (!userComponent.isLoggedUser()) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		} else {
+			User user = userComponent.getLoggedUser();
+			boolean noData =false;
+			String oldPass = userData.get("oldPass");
+			String newPass = userData.get("newPass");
+			if (!newPass.isEmpty()) {
+				if (new BCryptPasswordEncoder().matches(oldPass,user.getPasswordHash())) {
+					user.setPasswordHash(new BCryptPasswordEncoder().encode(newPass));
+					userService.updateUserData(user);
+					userComponent.setLoggedUser(user);
+					noData =true;
+				}
 			}
 			if(!noData) {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -119,14 +159,18 @@ public class UserRestController {
 		}
 	}
 
-	@RequestMapping(value = "/Goal/{goal}", method = RequestMethod.PUT)
-	public ResponseEntity<User> goals(@PathVariable int goal) {
+	@RequestMapping(value = "/Goal", method = RequestMethod.PUT)
+	public ResponseEntity<User> goals(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
 			User user = userComponent.getLoggedUser();
+			int goal = Integer.parseInt(userData.get("goal"));
 			if (goal == 1 || goal == 3 || goal == 5 || goal== 7 ) {
 				user.setDailyGoal(goal);
+				user.setRemainingGoals(goal);
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
 				return new ResponseEntity<>(user, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
