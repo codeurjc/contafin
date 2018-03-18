@@ -70,9 +70,9 @@ http: // localhost: 8080 followed by the containt request URL in the following t
 
 |Type|Request description|Request URL|Success response|Error response|
 |----|-------------------|-----------|----------------|--------------|
-|GETresource to show all the exercises|/api/Unit/Lesson/Exercises/| | |
-|GET|resource to show an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
-|PUT|resource to modify an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
-|GET|resource to get the answer of the exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer|HttpStatus.OK|HttpStatus.NOT_FOUND|
-|PUT|resource to modify a response for an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer|HttpStatus.OK|HttpStatus.NOT_FOUND|
-|GET|resource to modify a solution for an exercise|/api/Unit//{idunit}/Lesson/{idlesson}/Exercise/{id}/Solution|HttpStatus.OK|HttpStatus.NOT_FOUND|
+|GET|Resource to show all the exercises|/api/Unit/Lesson/Exercises/| | |
+|GET|Resource to show an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
+|PUT|Resource to modify an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
+|GET|Resource to get the answer of the exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer|HttpStatus.OK|HttpStatus.NOT_FOUND|
+|PUT|Resource to modify a response for an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer|HttpStatus.OK|HttpStatus.NOT_FOUND|
+|GET|Resource to modify a solution for an exercise|/api/Unit//{idunit}/Lesson/{idlesson}/Exercise/{id}/Solution|HttpStatus.OK|HttpStatus.NOT_FOUND|
