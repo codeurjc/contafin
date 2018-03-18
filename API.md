@@ -20,13 +20,6 @@ http: // localhost: 8080 followed by the containt request URL in the following t
 |1|Resource for logging|/api/login|HttpStatus.OK|HttpStatus.UNAUTHORIZED|
 |2|Resource for logout|/api/logout|HttpStatus.OK|HttpStatus.UNAUTHORIZED|
 
-#### LoginRestController
-
-|Type|Request description|Request URL|Success response|Error response|
-|----|-------------------|-----------|----------------|--------------|
-|1|Resource for logging|/api/login|HttpStatus.OK|HttpStatus.UNAUTHORIZED|
-|2|Resource for logout|/api/logout|HttpStatus.OK|HttpStatus.UNAUTHORIZED|
-
 #### AdminRestController
 
 |Type|Request description|Request URL|Success response|Error response|
