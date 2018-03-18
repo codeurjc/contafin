@@ -13,7 +13,7 @@ To access the app you have to open your navigator and go to https://localhost:80
 With the scripts you can build the contafin image in a easy way and publish it in the dockerhub repo.
 
 To execute the scripts you can simply use the right button and execute with powershell. You need to give docker 
-permissions to manipulate the disk C. You have to go to Docker settings -> Shared Drives -> Mark C -> Apply.
+permissions to manipulate the C disk. You have to go to Docker settings -> Shared Drives -> Mark C -> Apply.
 
 Scripts:
 
