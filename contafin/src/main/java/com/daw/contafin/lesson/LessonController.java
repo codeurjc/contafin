@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.daw.contafin.ContentController;
 import com.daw.contafin.completedLesson.CompletedLesson;
-import com.daw.contafin.completedLesson.CompletedLessonRepository;
+import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.exercise.ExerciseRepository;
+import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.unit.Unit;
-import com.daw.contafin.unit.UnitRepository;
+import com.daw.contafin.unit.UnitService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 
@@ -26,13 +26,13 @@ import com.daw.contafin.user.UserComponent;
 public class LessonController extends ContentController {
 	
 	@Autowired
-	private UnitRepository unitRepository;
+	private UnitService unitService;
 	@Autowired
-	private LessonRepository lessonRepository; 
+	private LessonService lessonService; 
 	@Autowired
-	private ExerciseRepository exerciseRepository; 
+	private ExerciseService exerciseService; 
 	@Autowired
-	private CompletedLessonRepository completedLessonRepository;
+	private CompletedLessonService completedLessonService;
 	
 	@Autowired
 	UserComponent userComponent;
@@ -45,14 +45,14 @@ public class LessonController extends ContentController {
 	@RequestMapping("/Unit/{id}/lessons")
     public String lessons(Model model, @PathVariable long id) {
 		
-		Unit unit = unitRepository.findById(id);
-		List<Lesson> lesson = lessonRepository.findByUnit(unit);
+		Unit unit = unitService.findById(id);
+		List<Lesson> lesson = lessonService.findByUnit(unit);
 		List<String> lessonsString = new ArrayList<>();
 		
 		//Find the first exercise id and kind
-		List<Exercise> exercises1 = exerciseRepository.findByLesson(lesson.get(0));
-		List<Exercise> exercises2 = exerciseRepository.findByLesson(lesson.get(1));
-		List<Exercise> exercises3 = exerciseRepository.findByLesson(lesson.get(2));
+		List<Exercise> exercises1 = exerciseService.findByLesson(lesson.get(0));
+		List<Exercise> exercises2 = exerciseService.findByLesson(lesson.get(1));
+		List<Exercise> exercises3 = exerciseService.findByLesson(lesson.get(2));
 		
 		long idexercise;
 		int kindexercise;
@@ -90,17 +90,17 @@ public class LessonController extends ContentController {
 		boolean lesson3Done = false;
 		
 		
-		CompletedLesson completedLesson1 = completedLessonRepository.findByUserAndLesson(user, lesson.get(0));
+		CompletedLesson completedLesson1 = completedLessonService.findByUserAndLesson(user, lesson.get(0));
 		if(completedLesson1 != null) {
 			lesson1Done = true;
 			done++;
 			}
-		CompletedLesson completedLesson2 = completedLessonRepository.findByUserAndLesson(user, lesson.get(1));
+		CompletedLesson completedLesson2 = completedLessonService.findByUserAndLesson(user, lesson.get(1));
 		if(completedLesson2 != null) {
 			lesson2Done = true;
 			done++;
 			}
-		CompletedLesson completedLesson3 = completedLessonRepository.findByUserAndLesson(user, lesson.get(2));
+		CompletedLesson completedLesson3 = completedLessonService.findByUserAndLesson(user, lesson.get(2));
 		if(completedLesson3 != null) {
 			lesson3Done = true;
 			done++;

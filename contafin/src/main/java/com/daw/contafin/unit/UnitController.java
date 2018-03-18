@@ -18,7 +18,7 @@ import com.daw.contafin.ContentController;
 import com.daw.contafin.ImageService;
 import com.daw.contafin.answer.Answer;
 import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.exercise.ExerciseRepository;
+import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonRepository;
 import com.daw.contafin.user.UserComponent;
@@ -34,7 +34,7 @@ public class UnitController extends ContentController {
 	private LessonRepository lessonService;
 
 	@Autowired
-	private ExerciseRepository exerciseService;
+	private ExerciseService exerciseService;
 
 	@Autowired
 	UserService userService;
