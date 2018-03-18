@@ -162,4 +162,8 @@ As registered users we can make the different lessons and progress in them, we c
 ### Admin
 As administrators of our application you will get the same options with the application as other registered users but you can also view and export the users´ data and create new lessons.
 
-The application does not need more explanations since it is very intuitive because it is intended for teaching
+The application does not need more explanations since it is very intuitive because it is intended for teaching.
+### Docker
+Docker lets you to use our app in a very easy way without having anything install, you just need Docker.
+Read the[Docker usage](DOCKER.md) to know more.
+
