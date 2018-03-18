@@ -66,7 +66,7 @@ In this repository we will place our web application, which helps students to le
 
 ## Screenshots
 
-## Fase 2
+## Phase 2
 ### Navigation Diagram: 
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram/Navigation%20diagram.png) 
 ### index.html
@@ -98,7 +98,7 @@ In this repository we will place our web application, which helps students to le
 ### continueLesson.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Navigation%20diagram/continueLessons.PNG) 
 
-## Fase 3
+## Phase 3
 ### Navigation Diagram: 
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/NavigationDiagram.png)
 ### index.html
@@ -164,7 +164,7 @@ As administrators of our application you will get the same options with the appl
 
 The application does not need more explanations since it is very intuitive because it is intended for teaching.
 
-## Fase4
+## Phase 4
 ### REST API documentation
 Document [Api.md](https://github.com/Caumel/DAW-G11-2018/blob/master/API.md) with information about the REST API
 ### Docker
