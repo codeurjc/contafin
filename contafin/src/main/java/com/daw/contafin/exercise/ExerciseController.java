@@ -809,22 +809,11 @@ public class ExerciseController {
 
 	@RequestMapping("/Unit/{id}/lesson/{idlesson}/lessonCompleted/")
 	public String completedLesson(Model model, @PathVariable int idlesson, @PathVariable int id) {
-
-		user = userComponent.getLoggedUser();
-		int numExercisesCompleted = 0;
 		
+		user = userComponent.getLoggedUser();
 		//Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
+		int numExercisesCompleted = completedExerciseService.numExercisesCompleted(idlesson, id, user);
 		Lesson lesson = lessonService.findById(idlesson + (3 * (id - 1)));
-		List<Exercise> listExercises = exerciseService.findByLesson(lesson);
-		for (int i = 0; i < listExercises.size(); i++) {
-			CompletedExercise completedExerciseS = completedExerciseService.findByUserAndExercise(user,
-					listExercises.get(i));
-			if (completedExerciseS != null) {
-				numExercisesCompleted++;
-				completedExerciseService.delete(completedExerciseS);
-			}
-		}
-
 		Calendar date = Calendar.getInstance();
 		Date sqlDate = new Date((date.getTime()).getTime());
 		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user, lesson);

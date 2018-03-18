@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.daw.contafin.ImageService;
 import com.daw.contafin.answer.Answer;
+import com.daw.contafin.completedExercise.CompletedExercise;
+import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
+import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
 
@@ -40,6 +43,10 @@ public class ExerciseRestController{
 
 	@Autowired
 	ImageService imageService;
+	
+	@Autowired
+	CompletedExerciseService completedExerciseService;
+	
 
 	//See all the exercise
 	@RequestMapping(value = "/lesson/exercises/", method = RequestMethod.GET)
@@ -105,6 +112,7 @@ public class ExerciseRestController{
 	
 	@RequestMapping(value = "/{idunit}/lesson/{idlesson}/exercise/{id}/check", method = RequestMethod.PUT)
 	public ResponseEntity<Boolean> checkExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Answer answerAct) {
+		User user = userComponent.getLoggedUser();
 		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
 		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
 		boolean goodanswer;
@@ -124,6 +132,7 @@ public class ExerciseRestController{
 				}
 				if (counter >= 3) {
 					goodanswer=true;
+					completedExerciseService.save(new CompletedExercise(user, exercise, 0));
 				} else {
 					goodanswer=false;
 				}
@@ -131,6 +140,7 @@ public class ExerciseRestController{
 			else {
 				if(answer.getResult().equals(answerAct.getResult())) {
 					goodanswer=true;
+					completedExerciseService.save(new CompletedExercise(user, exercise, 0));
 				}
 				else {
 					goodanswer=false;
