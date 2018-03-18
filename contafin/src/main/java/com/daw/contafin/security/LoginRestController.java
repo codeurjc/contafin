@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
+import com.daw.contafin.user.UserService;
 
 
 @RestController
@@ -22,6 +23,9 @@ public class LoginRestController {
 
 	@Autowired
 	private UserComponent userComponent;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("/login")
 	public ResponseEntity<User> logIn() {
@@ -32,6 +36,10 @@ public class LoginRestController {
 		} else {
 			User loggedUser = userComponent.getLoggedUser();
 			log.info("Logged as " + loggedUser.getName());
+			//Updated user last login date
+			loggedUser.setLastConnection(loggedUser.newConnection());
+			userService.updateUserData(loggedUser);
+			userComponent.setLoggedUser(loggedUser);
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
 		}
 	}
