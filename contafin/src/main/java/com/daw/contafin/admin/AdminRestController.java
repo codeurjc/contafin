@@ -42,7 +42,7 @@ public class AdminRestController {
 		}
 	}
 
-	@RequestMapping(value = "/UserData/Export", method = RequestMethod.GET)
+	@RequestMapping(value = "/UserData/Excel", method = RequestMethod.GET)
 	public ResponseEntity<ServletOutputStream> userListReport(HttpServletResponse response) {
 		response.setContentType("application/vnd.ms-excel");
 		response.setHeader("Content-disposition", "attachment; filename=\"user_list.xls\"");
