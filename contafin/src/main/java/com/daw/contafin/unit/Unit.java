@@ -9,29 +9,31 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.daw.contafin.lesson.Lesson;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Unit {
-	
-	interface UnitBassic {}
+
+	interface UnitBassic {
+	}
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.AUTO)
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	@JsonView(UnitBassic.class)
 	private long id;
-	
+
 	@JsonView(UnitBassic.class)
 	private String name;
-	
-	@OneToMany (mappedBy = "unit")
+
+	@OneToMany(mappedBy = "unit")
 	private List<Lesson> lessons;
-	
-	public Unit() {}
+
+	public Unit() {
+	}
+
 	public Unit(String name) {
-		this.name=name;
+		this.name = name;
 	}
 
 	public long getId() {
@@ -49,17 +51,18 @@ public class Unit {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public List<Lesson>getLessons() {
+
+	public List<Lesson> getLessons() {
 		return this.lessons;
 	}
 
 	public void setLesson(List<Lesson> lessons) {
 		this.lessons = lessons;
 	}
+
 	@Override
 	public String toString() {
 		return "Unit [id=" + id + ", name=" + name + "]";
 	}
-	
+
 }

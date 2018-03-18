@@ -96,9 +96,7 @@ public class LessonRestController{
 	@JsonView(LessonBasic.class)
 	@RequestMapping(value = "/{idunit}/Lesson/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Lesson> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
-
 		Lesson lesson = lessonService.findById((idunit-1)*3+id);
-
 		if (lesson != null) {
 			lesson.setName(lessonAct.getName());
 			lessonAct.setId(id);
