@@ -50,7 +50,7 @@ http: // localhost: 8080 followed by the containt request URL in the following t
 
 |Type|Request description|Request URL|Success response|Error response|
 |----|-------------------|-----------|----------------|--------------|
-|GET|Resource to show all the lessons|/api/Unit/Lessons/|HttpStatus.OK| |
+|GET|Resource to show all the lessons|/api/Unit/Lessons/| | |
 |GET|Resource to show the unit with this lesson|/api/Unit/{idunit}/Lesson/|HttpStatus.OK|HttpStatus.NOT_FOUND|
 |GET|Resource to show a lesson|/api/Unit/{idunit}/Lesson/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
 |PUT|Resource to modify a lesson|/api/Unit/{idunit}/Lesson/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
@@ -60,7 +60,7 @@ http: // localhost: 8080 followed by the containt request URL in the following t
 
 |Type|Request description|Request URL|Success response|Error response|
 |----|-------------------|-----------|----------------|--------------|
-|GET|Resource to get all the units|/api/Unit/|HttpStatus.OK| |
+|GET|Resource to get all the units|/api/Unit/| | |
 |GET|Resource to obtain a unit|/api/Unit/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
 |POST|Resource to create a unit|/api/Unit/|HttpStatus.CREATED| |
 |PUT|Resource to modify a unit|/api/Unit/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
@@ -70,7 +70,7 @@ http: // localhost: 8080 followed by the containt request URL in the following t
 
 |Type|Request description|Request URL|Success response|Error response|
 |----|-------------------|-----------|----------------|--------------|
-|GET|recurso para mostrar todos los ejercicios|/api/Unit/Lesson/Exercises/| | |
+|GETresource to show all the exercises|/api/Unit/Lesson/Exercises/| | |
 |GET|resource to show an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
 |PUT|resource to modify an exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}|HttpStatus.OK|HttpStatus.NOT_FOUND|
 |GET|resource to get the answer of the exercise|/api/Unit/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer|HttpStatus.OK|HttpStatus.NOT_FOUND|
