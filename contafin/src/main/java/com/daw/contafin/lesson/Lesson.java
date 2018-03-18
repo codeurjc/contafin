@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.unit.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Lesson {

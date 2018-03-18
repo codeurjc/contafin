@@ -2,10 +2,10 @@ package com.daw.contafin.lesson;
 
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,6 @@ import com.daw.contafin.ImageService;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonService;
-import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.unit.Unit;
@@ -49,9 +48,6 @@ public class LessonRestController{
 	ImageService imageService;
 	
 	@Autowired
-	ExerciseService exerciseService;
-	
-	@Autowired
 	CompletedLessonService completedLessonService;
 	
 	@Autowired
@@ -59,8 +55,8 @@ public class LessonRestController{
 
 	//See all the lessons
 	@RequestMapping(value = "/Lessons/", method = RequestMethod.GET)
-	public List<Lesson> getLessons() {
-		return lessonService.findAll();
+	public ResponseEntity<Page<Lesson>> getLessons(Pageable page) {
+		return new ResponseEntity<>(lessonService.getLessons(page), HttpStatus.OK);
 	}
 	
 	//See an unit with its lessons

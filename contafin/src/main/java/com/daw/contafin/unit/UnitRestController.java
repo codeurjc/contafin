@@ -4,6 +4,8 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.daw.contafin.ImageService;
-import com.daw.contafin.answer.AnswerService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
@@ -38,8 +39,6 @@ public class UnitRestController{
 	@Autowired
 	private ExerciseService exerciseService;
 	
-	@Autowired
-	private AnswerService answerService;
 	
 	@Autowired
 	UserService userService;
@@ -58,8 +57,8 @@ public class UnitRestController{
 	//Get all unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public List<Unit> getUnit() {
-		return unitService.findAll();
+	public ResponseEntity<Page<Unit>> getUnit(Pageable page) {
+		return new ResponseEntity<>(unitService.getUnits(page), HttpStatus.OK);
 	}
 	
 	//Get 1 unit

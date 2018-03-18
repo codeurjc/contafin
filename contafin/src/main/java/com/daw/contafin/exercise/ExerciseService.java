@@ -3,6 +3,8 @@ package com.daw.contafin.exercise;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.daw.contafin.lesson.Lesson;
@@ -40,7 +42,9 @@ public class ExerciseService {
 		public void delete(long id) {
 			exerciseRepository.delete(id);
 		}
-		
+		public Page<Exercise> getExercises(Pageable page) {
+			return exerciseRepository.findAll(page);
+		}
 		
 		
 		

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.lesson.Lesson;
 
 @Service
 public class AnswerService {

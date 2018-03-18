@@ -1,9 +1,8 @@
 package com.daw.contafin.exercise;
 
-import java.util.List;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,8 +52,8 @@ public class ExerciseRestController{
 	//See all the exercise
 	@JsonView(ExerciseBassic.class)
 	@RequestMapping(value = "/Lesson/Exercises/", method = RequestMethod.GET)
-	public List<Exercise> getExercises() {
-		return exerciseService.findAll();
+	public ResponseEntity<Page<Exercise>> getExercises(Pageable page) {
+		return new ResponseEntity<>(exerciseService.getExercises(page), HttpStatus.OK);
 	}
 		
 	@JsonView(ExerciseBassic.class)

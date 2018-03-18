@@ -62,6 +62,7 @@ public class Exercise {
 	@OneToMany(mappedBy = "exercise")
 	private List<CompletedExercise> completedExercises;
 
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Answer answer;
 
