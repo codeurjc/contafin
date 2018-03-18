@@ -1,10 +1,10 @@
 ### Docker usage
-Docker is required for running Contafin application. Yoy can download it [here](https://docs.docker.com/install/#supported-platforms) 
+Docker is required for running Contafin application. Yoy can download it [here](https://docs.docker.com/install/#supported-platforms). 
 
 - To run the app you simply have to open a terminal in Docker folder and execute "docker-compose up".
-To access the app you have to open your navigator and go to https://localhost:8080 
+To access the app you have to open your navigator and go to https://localhost:8080 .
 
-- To stop the app you have to execute "docker-compose down"
+- To stop the app you have to execute "docker-compose down".
 
 - The docker-compose.yml file uses a mysql image sets up in port 3306 (Don't forget to stop your local mysql), and a contafin image, sets up in port 8080.
 
