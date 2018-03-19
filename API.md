@@ -244,51 +244,24 @@ The following queries will be preceded by /Unit.
 		`/api/Unit/`
 		
 * ##### Success response:
-
 	{
-      "name": "JUAN",
-      "firstLastName": "Sanchez",
-      "secondLastName": "Sanchez",
-      "email": "c@c.com",
-      "phone": 918115789,
-      "description": "Soy una maquina",
-      "offers": [
-        {
-          "id": 1,
-          "title": "Chalé bastante moderno",
-          "price": 222,
-          "description": "Vivienda de dos dormitorios, REFORMADA TOTAL (2.013) PARA ENTRAR VIVIR, cocina amueblada ampliada, suelos de gres, carpintería blanco con doble acristalamiento persianas isotérmicas, terraza.",
-          "province": "Madrid",
-          "location": "Navalcarnero",
-          "neighborhood": "el olivar",
-          "area": 200,
-          "bathroom": 2,
-          "rooms": 1,
-          "type": "Chale",
-          "reviews": [
-            {
-            	"valoration": "4",
-                "comment":"Muy Bonita",
-                "date": "2017-03-21"
-            }
-          ]
-        },
-        {
-          "id": 31,
-          "title": "Nueva casa Móstoles",
-          "price": 222,
-          "description": "Vivienda de dos dormitorios, REFORMADA TOTAL (2.013) PARA ENTRAR VIVIR, cocina amueblada ampliada, suelos de gres, carpintería blanco con doble acristalamiento persianas isotérmicas, terraza.",
-          "province": "Madrid",
-          "location": "Navalcarnero",
-          "neighborhood": "el olivar",
-          "area": 200,
-          "bathroom": 2,
-          "rooms": 1,
-          "type": "Chale",
-          "reviews": []
-        }
-      ]
-    }
+	    "totalElements": 2,
+            "totalPages": 1,
+	    "number": 0,
+	    "size": 20,
+	    "first": true,
+	    "last": true,
+	    "content": [
+		{
+		    "id": 1,
+		    "name": "Unidad 1"
+		},
+		{
+		    "id": 2,
+		    "name": "Unidad 2"
+		}
+	    ]
+	}
 	
 * ##### Error response:
 
