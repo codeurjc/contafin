@@ -169,4 +169,6 @@ Document [Api documentation](API.md) with information about the REST API.
 ### Docker
 Docker lets you to use our app in a very easy way without having anything install, you just need Docker.
 Read the [Docker usage](DOCKER.md) to know more.
+### Class and templates diagram
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%204%20documentation/diagram.png)
 
