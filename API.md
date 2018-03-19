@@ -95,7 +95,8 @@ Resource to show all users with their data.
 	
 * ##### Example of query:
 
-	*URL:
+	* URL
+		
 		`/api/Admin/UserData/?page=1&size=10`
   
 * ##### Success Response:
@@ -492,22 +493,53 @@ The following queries will be preceded by /User.
 	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST
 	
 
-#### Resource to modify a user's goal
-The goal of a logged in user is modified
+#### Resource to update goal of user
 
 * ##### URL
 
 	< /Goal>
 
-* ##### Método:
+* ##### Method:
 
 	`PUT`
-  
-* ##### URL Params
+* ##### Data Params
 
- * Required:
+	```
+	{
+	    "goal": "1"
+	}
+	```
+* ##### Success response:
+	```
+	{
+	    "id": 1,
+	    "name": "Contafin",
+	    "email": "contafin@hotmail.es",
+	    "level": 2,
+	    "points": 12,
+	    "streak": 1,
+	    "fluency": 16,
+	    "dailyGoal": 3,
+	    "lastConnection": "2018-03-17/18:45:36",
+	    "lastUnit": 1,
+	    "lastLesson": 1,
+	    "progress": [
+		0,
+		1,
+		0,
+		0,
+		0,
+		0,
+		0
+	    ],
+	    "remainingGoals": 3,
+	    "exp": 0
+	}
+	```	
+* ##### Error response:
 
-	`Goal=[string]`
+	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST
+	
   
 #### Resource to upload user profile image
 
@@ -528,8 +560,8 @@ The goal of a logged in user is modified
 
 	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST or 500 INTERNAL SERVER ERROR
 	
+
 #### Resource to delete a user
-It allows to eliminate the profile of the logged in user
 
 * ##### URL
 
@@ -541,7 +573,7 @@ It allows to eliminate the profile of the logged in user
   
 * ##### Error Response:
 
-	* Code: HttpStatus.NOT_FOUND
+	* Code: 404 NOT FOUND or 401 UNAUTHORIZED
   
 ## Unit
 The following queries will be preceded by /Unit.
