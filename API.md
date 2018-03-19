@@ -859,4 +859,345 @@ The following queries will be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 
+## Exercise
 
+The following queries must be preceded by /Unit.
+
+### See all exercises
+
+* ##### URL:
+
+	< /Lesson/Exercises/ >
+
+* ##### Method:
+
+	`GET`
+
+* ##### Example of query:
+
+	* URL
+		
+		`api/Unit/Lesson/Exercises/`
+
+* ##### Success Response:
+
+	```
+	{
+	    "totalElements": 24,
+	    "totalPages": 2,
+	    "number": 0,
+	    "size": 20,
+	    "first": true,
+	    "last": false,
+	    "content": [
+		{
+		    "id": 1,
+		    "kind": 1,
+		    "statement": "1.1.1 Seleccione el asiento",
+		    "texts": [
+			"213.Maquinaria",
+			"210.Terrenos y bienes naturales",
+			"218. Elementos de transporte"
+		    ]
+		},
+		{
+		    "id": 2,
+		    "kind": 2,
+		    "statement": "1.1.2 Escribe la denominación de la cuenta que recoge: maquinarias para el proceso productivo de la empresa",
+		    "texts": []
+		},
+		{
+		    "id": 3,
+		    "kind": 5,
+		    "statement": "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
+		    "texts": [
+			"Activo",
+			"Pasivo",
+			"Patrimonio neto"
+		    ]
+		},
+		{
+		    "id": 4,
+		    "kind": 7,
+		    "statement": "1.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
+		    "texts": [
+			" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
+			"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
+			" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año."
+		    ]
+		},
+		{
+		    "id": 5,
+		    "kind": 1,
+		    "statement": "1.1.1 Seleccione el asiento",
+		    "texts": [
+			"213.Maquinaria",
+			"210.Terrenos y bienes naturales",
+			"218. Elementos de transporte"
+		    ]
+		},
+		{
+		    "id": 6,
+		    "kind": 2,
+		    "statement": "1.2.2 Escribe la denominación de la cuenta que recoge: maquinarias para el proceso productivo de la empresa",
+		    "texts": []
+		},
+		{
+		    "id": 7,
+		    "kind": 5,
+		    "statement": "1.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
+		    "texts": [
+			"Activo",
+			"Pasivo",
+			"Patrimonio neto"
+		    ]
+		},
+		{
+		    "id": 8,
+		    "kind": 7,
+		    "statement": "1.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
+		    "texts": [
+			" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
+			"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
+			" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año."
+		    ]
+		},
+		{
+		    "id": 9,
+		    "kind": 1,
+		    "statement": "1.3.1 Seleccione el asiento",
+		    "texts": [
+			"213.Maquinaria",
+			"210.Terrenos y bienes naturales",
+			"218. Elementos de transporte"
+		    ]
+		},
+		{
+		    "id": 10,
+		    "kind": 2,
+		    "statement": "1.3.2 Escribe la denominación de la cuenta que recoge: maquinarias para el proceso productivo de la empresa",
+		    "texts": []
+		}
+	    ]
+	}
+	```
+
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+
+### See one exercise
+
+* ##### URL:
+
+	< {idunit}/Lesson/{idlesson}/Exercise/{id} >
+
+* ##### Method:
+
+	`GET`
+
+* ##### URL Params:
+
+	* `idunit=[long]`
+	* `idlesson=[long]`
+	* `id=[long]`
+
+* ##### Example of query:
+
+	* URL
+		
+		`api/Unit/1/Lesson/1/Exercise/1`
+
+* ##### Success Response:
+
+	```
+	{
+	    "id": 1,
+	    "kind": 1,
+	    "statement": "1.1.1 Seleccione el asiento",
+	    "texts": [
+		"213.Maquinaria",
+		"210.Terrenos y bienes naturales",
+		"218. Elementos de transporte"
+	    ]
+	}
+	```
+
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+
+### Change exercise
+
+* ##### URL:
+
+	< {idunit}/Lesson/{idlesson}/Exercise/{id} >
+
+* ##### Method:
+
+	`PUT`
+
+* ##### URL Params:
+
+	* `idunit=[long]`
+	* `idlesson=[long]`
+	* `id=[long]`
+
+* ##### Example of query:
+
+	* URL
+		
+		`api/Unit/1/Lesson/1/Exercise/1`
+
+* ##### Data Params:
+
+	```
+	{
+	    "kind": 1,
+	    "statement": "1.1.1 Seleccione el asiento",
+	    "texts": [
+	        "213.Maquinaria",
+	        "210.Terrenos y bienes naturales",
+	        "218. Elementos de transporte"
+	    ]
+	}
+	```
+
+* ##### Success Response:
+
+	```
+	{
+	    "id": 2,
+	    "kind": 1,
+	    "statement": "1.1.1 Seleccione el asiento",
+	    "texts": [
+		"213.Maquinaria",
+		"210.Terrenos y bienes naturales",
+		"218. Elementos de transporte"
+	    ]
+	}
+	```
+
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+
+### See an answer
+
+* ##### URL:
+
+	< {idunit}/Lesson/{idlesson}/Exercise/{id}/Answer >
+
+* ##### Method:
+
+	`GET`
+
+* ##### URL Params:
+
+	* `idunit=[long]`
+	* `idlesson=[long]`
+	* `id=[long]`
+
+* ##### Example of query:
+
+	* URL
+		
+		`api/Unit/1/Lesson/1/Exercise/1/Answer`
+
+* ##### Success Response:
+
+	```
+	{
+	    "id": 1,
+	    "result": "uno"
+	}
+	
+	```
+
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+
+### Change an answer
+
+* ##### URL:
+
+	< {idunit}/Lesson/{idlesson}/Exercise/{id}/Answer >
+
+* ##### Method:
+
+	`PUT`
+
+* ##### URL Params:
+
+	* `idunit=[long]`
+	* `idlesson=[long]`
+	* `id=[long]`
+
+* ##### Example of query:
+
+	* URL
+		
+		`api/Unit/1/Lesson/1/Exercise/1/Answer`
+
+* ##### Data Params:
+
+	```
+	{
+	    "result": "dos"
+	}
+	```
+
+* ##### Success Response:
+
+	```
+	{
+	    "id": 1,
+	    "result": "dos"
+	}
+	
+	```
+
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
+
+### Check if an answer is correct or not
+
+* ##### URL:
+
+	< {idunit}/Lesson/{idlesson}/Exercise/{id}/Solution >
+
+* ##### Method:
+
+	`PUT`
+
+* ##### URL Params:
+
+	* `idunit=[long]`
+	* `idlesson=[long]`
+	* `id=[long]`
+
+* ##### Example of query:
+
+	* URL
+		
+		`api/Unit/1/Lesson/1/Exercise/1/Solution`
+
+* ##### Data Params:
+
+	```
+	{
+	    "result": "dos"
+	}
+	```
+
+* ##### Success Response:
+
+	```
+	true
+	```
+
+* ##### Error Response:
+
+	**Code:** 404 NOT FOUND
