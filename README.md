@@ -64,7 +64,6 @@ In this repository we will place our web application, which helps students to le
 	- Export to excel.
 	- Send e-mails.
 
-## Screenshots
 
 ## Phase 2
 ### Navigation Diagram: 
