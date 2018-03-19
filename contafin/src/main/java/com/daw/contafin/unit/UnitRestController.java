@@ -144,20 +144,21 @@ public class UnitRestController{
 	@RequestMapping(value = "/{id}/Images", method = RequestMethod.POST)
 	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
 		Unit unit = unitService.findById(id);
-		Lesson lesson1 = unit.getLessons().get(0);
-		Lesson lesson2 = unit.getLessons().get(1);
-		Lesson lesson3 = unit.getLessons().get(2);
-		Exercise exercise1 = exerciseService.findByLesson(lesson1).get(0);
-		Exercise exercise2 = exerciseService.findByLesson(lesson2).get(0);
-		Exercise exercise3 = exerciseService.findByLesson(lesson3).get(0);
+		Lesson lesson = unit.getLessons().get(0);
+		Exercise exercise =exerciseService.findByLesson(lesson).get(0);
 		// Upload images
 		try {
-			exerciseService.uploadExerciseImages(exercise1, images[0], images[1], images[2]);
-			exerciseService.uploadExerciseImages(exercise2, images[3], images[4], images[5]);
-			exerciseService.uploadExerciseImages(exercise3, images[6], images[7], images[8]);
-			exerciseService.save(exercise1);
-			exerciseService.save(exercise2);
-			exerciseService.save(exercise3);
+			int aux= 0;
+			for (int i=0; i< 3; i++) {
+				exerciseService.uploadExerciseImages(exercise, images[aux], images[aux+1], images[aux+2]);
+				exerciseService.save(exercise);
+				aux=3+(3*i);
+				if(i<2) {
+					lesson =unit.getLessons().get(i+1);
+					exercise =exerciseService.findByLesson(lesson).get(0);
+				}
+			}
+
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		} catch (IOException e) {
 			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
