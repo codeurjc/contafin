@@ -289,10 +289,12 @@ The following queries will be preceded by /Unit.
 		
 * ##### Success response:
 
-	```{
+	```
+	{
 	    "id": 1,
 	    "name": "Unidad 1"
-	}```
+	}
+	```
 	
 * ##### Error response:
 
