@@ -886,7 +886,7 @@ The following queries must be preceded by /Unit.
 	    "totalElements": 24,
 	    "totalPages": 2,
 	    "number": 0,
-	    "size": 20,
+	    "size": 10,
 	    "first": true,
 	    "last": false,
 	    "content": [
