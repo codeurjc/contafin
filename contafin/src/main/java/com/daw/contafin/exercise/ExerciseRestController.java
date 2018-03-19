@@ -133,17 +133,33 @@ public class ExerciseRestController{
 				if (counter >= 3) {
 					goodanswer=true;
 					completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+					if (userComponent.isLoggedUser()) {
+						user.updatePoints(user, 3);
+						userService.save(user);
+					}
 				} else {
 					goodanswer=false;
+					if (userComponent.isLoggedUser()) {
+						user.updatePoints(user, -3);
+						userService.save(user);
+					}
 				}
 			}
 			else {
 				if(answer.getResult().equals(answerAct.getResult())) {
 					goodanswer=true;
 					completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+					if (userComponent.isLoggedUser()) {
+						user.updatePoints(user, 3);
+						userService.save(user);
+					}
 				}
 				else {
 					goodanswer=false;
+					if (userComponent.isLoggedUser()) {
+						user.updatePoints(user, -3);
+						userService.save(user);
+					}
 				}
 			}
 			return new ResponseEntity<>(goodanswer, HttpStatus.OK);
