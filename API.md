@@ -244,7 +244,6 @@ The following queries will be preceded by /Unit.
 		`/api/Unit/`
 		
 * ##### Success response:
-
 	{
 	    "totalElements": 2,
 	    "totalPages": 1,
