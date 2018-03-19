@@ -858,6 +858,40 @@ The following queries will be preceded by /Unit.
 * ##### Error response:
 
 	**Code:** 404 NOT FOUND
+	
+### Check if a lesson is completed
+
+* ##### URL:
+
+	< /{idunit}/Lesson/{idlesson}/Completed >
+
+* ##### Method:
+	
+	`GET`
+	
+* ##### URL Params:
+
+	`
+	idunit=[long]
+	idlesson=[long]
+	`
+	
+* ##### Example of query:
+
+	* URL
+		
+		`/api/Unit/1/Lesson/1/Completed`
+		
+* ##### Success response:
+
+	```
+	false
+	```
+	
+* ##### Error response:
+
+	**Code:** 404 NOT FOUND
+
 
 ## Exercise
 
