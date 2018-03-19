@@ -244,6 +244,8 @@ The following queries will be preceded by /Unit.
 		`/api/Unit/`
 		
 * ##### Success response:
+
+	```
 	{
 	    "totalElements": 2,
             "totalPages": 1,
@@ -263,9 +265,7 @@ The following queries will be preceded by /Unit.
 	    ]
 	}
 	
-* ##### Error response:
-
-	**Code:** 404 NOT FOUND
+	```
 
 ### Resource to show one unit
 
@@ -301,238 +301,562 @@ The following queries will be preceded by /Unit.
 	**Code:** 404 NOT FOUND
 
 
-## Lesson
-These must be preceded by /Unit. All methods linked to User will return the same answers except those indicated.
+### Create Unit with is Lessons and Exercises
 
-* ##### Success Response:
+* ##### URL:
 
-	* HttpStatus.OK
+	< / >
 
-* ##### Error Response:
-
-	* Code: HttpStatus.NOT_FOUND
-
-#### Resource to show all the lessons
-It allows to show all the lessons.
-
-* ##### URL
-
-	< />
-
-* ##### Método:
-
-	`GET`
- 
-#### Resource to show the unit with this lesson
-Allows showing the lessons of a specific unit.
-
-* ##### URL
-
-	< /{idunit}/Lesson/>
-
-* ##### Método:
-
-	`GET`
-  
-* Required:
-
-  `idunit=[long]`
-  
-#### Resource to show a lesson
-Allows you to show a specific lesson.
-
-* ##### URL
-
-	< /{idunit}/Lesson/{id}>
-
-* ##### Método:
-
-	`GET`
-  
-* Required:
-
-  `idunit=[long]`
-  
-#### Resource to know if a lesson is completed
-Let us know if a lesson is complete or not.
-
-* ##### URL
-
-	< /{idunit}/Lesson/{idlesson}/Completed>
-
-* ##### Método:
-
-	`GET`
-  
-* Required:
-
-  `idunit=[long]`
-  `idlesson=[long]`
-  
-#### Resource to modify a lesson
-Allows you to modify a specific lesson
-* ##### URL
-
-	< /{idunit}/Lesson/{id}>
-
-* ##### Método:
-
-	`PUT`
-  
-* Required:
-
-  `idunit=[long]`
-  `id=[long]`
-
-#### Resource to obtain a unit
-It allows to obtain a unit
-
-* ##### URL
-
-	< /{id}>
-
-* ##### Método:
-
-	`GET`
- 
-* Required:
-
-  `id=[long]`
-  
-#### Resource to create a unit
-Create a unit
-
-* ##### URL
-
-	< /{id}>
-
-* ##### Método:
-
+* ##### Method:
+	
 	`POST`
-  
-* Required:
+	
+* ##### URL Params:
 
-  `id=[long]`
- 
-* ##### Success Response:
+	`Empty`
+	
+* ##### Example of query:
 
-	* HttpStatus.CREATED
+	* URL
+		
+		`/api/Unit/`
 
-#### Resource to modify a unit
-Allows you to modify a unit
+* ##### Data params:
 
-* ##### URL
+	```
+	{
+	    "name": "Unidad 3",
+	    "lessons": [
+		{
+		    "id": 7,
+		    "name": "Lección 1 Unidad 3",
+		    "exercises": [
+			{
+				"kind": 1,
+				"statement": "Enunciado 1",
+				"texts": [ "Opcion 1", "Opcion 2","Opcion 3" ],
+				"answer": {
+					"result": "dos"
+				}
+			},
+			{
+				"kind": 2,
+				"statement": "Enunciado 2",
+				"answer": {
+					"result": "Este texto es de prueba"
+				}
+			},
+			{
+				"kind": 5,
+				"statement": "Enunciado 3",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "uno"
+				}
+			},
+			{
+				"kind": 7,
+				"statement": "Enunciado 4",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "tres"
+				}
+			}
+		    ]
+		},
+		{
+		    "id": 8,
+		    "name": "Lección 2 Unidad 3",
+		    "exercises": [
+			{
+				"kind": 1,
+				"statement": "Enunciado 1",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "dos"
+				}
+			},
+			{
+				"kind": 2,
+				"statement": "Enunciado 2",
+				"answer": {
+					"result": "Este texto es de prueba"
+				}
+			},
+			{
+				"kind": 5,
+				"statement": "Enunciado 3",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "uno"
+				}
+			},
+			{
+				"kind": 7,
+				"statement": "Enunciado 4",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "tres"
+				}
+			}
+		    ]
+		},
+		{
+		    "id": 9,
+		    "name": "Lección 3 Unidad 3",
+		    "exercises": [
+			{
+				"kind": 1,
+				"statement": "Enunciado 1",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "dos"
+				}
+			},
+			{
+				"kind": 2,
+				"statement": "Enunciado 2",
+				"answer": {
+					"result": "Este texto es de prueba"
+				}
+			},
+			{
+				"kind": 5,
+				"statement": "Enunciado 3",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "uno"
+				}
+			},
+			{
+				"kind": 7,
+				"statement": "Enunciado 4",
+				"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
+				"answer": {
+					"result": "tres"
+				}
+			}
+		    ]
+		}
+	    ]
+	}
+	```
 
-	< /{id}>
+* ##### Success response:
 
-* ##### Método:
+	```
+	{
+	    "id": 3,
+	    "name": "Unidad 3",
+	    "lessons": [
+		{
+		    "id": 7,
+		    "name": "Lección 1 Unidad 3",
+		    "exercises": [
+			{
+			    "id": 25,
+			    "kind": 1,
+			    "statement": "Enunciado 1",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			},
+			{
+			    "id": 26,
+			    "kind": 2,
+			    "statement": "Enunciado 2",
+			    "texts": null
+			},
+			{
+			    "id": 27,
+			    "kind": 5,
+			    "statement": "Enunciado 3",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			},
+			{
+			    "id": 28,
+			    "kind": 7,
+			    "statement": "Enunciado 4",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			}
+		    ]
+		},
+		{
+		    "id": 8,
+		    "name": "Lección 2 Unidad 3",
+		    "exercises": [
+			{
+			    "id": 29,
+			    "kind": 1,
+			    "statement": "Enunciado 1",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			},
+			{
+			    "id": 30,
+			    "kind": 2,
+			    "statement": "Enunciado 2",
+			    "texts": null
+			},
+			{
+			    "id": 31,
+			    "kind": 5,
+			    "statement": "Enunciado 3",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			},
+			{
+			    "id": 32,
+			    "kind": 7,
+			    "statement": "Enunciado 4",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			}
+		    ]
+		},
+		{
+		    "id": 9,
+		    "name": "Lección 3 Unidad 3",
+		    "exercises": [
+			{
+			    "id": 33,
+			    "kind": 1,
+			    "statement": "Enunciado 1",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			},
+			{
+			    "id": 34,
+			    "kind": 2,
+			    "statement": "Enunciado 2",
+			    "texts": null
+			},
+			{
+			    "id": 35,
+			    "kind": 5,
+			    "statement": "Enunciado 3",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			},
+			{
+			    "id": 36,
+			    "kind": 7,
+			    "statement": "Enunciado 4",
+			    "texts": [
+				"Opcion 1",
+				"Opcion 2",
+				"Opcion 3"
+			    ]
+			}
+		    ]
+		}
+	    ]
+	}
+	```
+	
+* ##### Error response:
 
+	**Code:** 404 NOT FOUND
+
+### Change the name of the unit
+
+* ##### URL:
+
+	< /{id} >
+
+* ##### Method:
+	
 	`PUT`
+	
+* ##### URL Params:
 
-* Required:
+	`id=[long]`
+	
+* ##### Example of query:
 
-  `id=[long]`
-  
-#### Resource to remove a unit
-Allows you to delete a unit
+	* URL
+		
+		`/api/Unit/1`
+		
+* ##### Data Params:
+	
+	```
+	{
+		"name": "Unidad Prueba"
+	}
+	```
 
-* ##### URL
+* ##### Success response:
 
-	< /{id}>
+	```
+	{
+	    "id": 1,
+	    "name": "Unidad Prueba"
+	}
+	```
+	
+* ##### Error response:
 
-* ##### Método:
+	**Code:** 404 NOT FOUND
 
+### Delete unit
+
+* ##### URL:
+
+	< /{id} >
+
+* ##### Method:
+	
 	`DELETE`
+	
+* ##### URL Params:
 
-* Required:
+	`id=[long]`
+	
+* ##### Example of query:
 
-  `id=[long]`
-  
-#### Resource to show all the exercises
-Show all exercises
+	* URL
+		
+		`/api/Unit/1`
+		
+* ##### Data Params:
+	
+	```
+	{
+		"name": "Unidad Prueba"
+	}
+	```
 
-* ##### URL
+* ##### Success response:
 
-	< /Lesson/Exercises/>
+	```
+	{
+	    "id": 1,
+	    "name": "Unidad Prueba"
+	}
+	```
+	
+* ##### Error response:
 
-* ##### Método:
+	**Code:** 404 NOT FOUND
 
+
+## Lesson
+The following queries will be preceded by /Unit.
+
+### Resource to show all the lessons
+
+* ##### URL:
+
+	< /Lessons/ >
+
+* ##### Method:
+	
 	`GET`
+	
+* ##### URL Params:
 
-### Lesson
-These must be preceded by /Unit/{idunit}/Lesson/{idlesson}. All methods linked to User will return the same answers except those indicated.
+	`Empty`
+	
+* ##### Example of query:
 
-* ##### Required:
+	* URL
+		
+		`/api/Unit/Lessons/`
+		
+* ##### Success response:
 
-  `idunit=[long]`
-  `idlesson=[long]`
-  
-* ##### Success Response:
+	```
+	{
+	    "totalElements": 6,
+	    "totalPages": 1,
+	    "number": 0,
+	    "size": 20,
+	    "first": true,
+	    "last": true,
+	    "content": [
+		{
+		    "id": 4,
+		    "name": "Lección 1 Unidad 2"
+		},
+		{
+		    "id": 5,
+		    "name": "Lección 2 Unidad 2"
+		},
+		{
+		    "id": 6,
+		    "name": "Lección 3 Unidad 2"
+		},
+		{
+		    "id": 7,
+		    "name": "Lección 1 Unidad 3"
+		},
+		{
+		    "id": 8,
+		    "name": "Lección 2 Unidad 3"
+		},
+		{
+		    "id": 9,
+		    "name": "Lección 3 Unidad 3"
+		}
+	    ]
+	}
+	
+	```
 
-	* HttpStatus.OK
+### Resource to show an unit with his lessons
 
-* ##### Error Response:
+* ##### URL:
 
-	* Code: HttpStatus.NOT_FOUND
-  
-#### Resource to show an exercise
-It allows to show all the exercises of a lesson
+	< /{idunit}/Lesson/ >
 
-* ##### URL
-
-	< /Exercise/{id}>
-
-* ##### Método:
-
+* ##### Method:
+	
 	`GET`
-  
-* ##### Required:
+	
+* ##### URL Params:
 
-  `id=[long]`
-  
-#### Resource to modify an exercise
-Allows you to modify an exercise of a specific lesson
+	`idunit=[long]`
+	
+* ##### Example of query:
 
-* ##### URL
+	* URL
+		
+		`/api/Unit/1/Lesson/`
+		
+* ##### Success response:
 
-	< /Exercise/{id}>
+	```
+	{
+	    "id": 1,
+	    "name": "Unidad 1",
+	    "lessons": [
+		{
+		    "id": 1,
+		    "name": "Lección 1 Unidad 1",
+		    "exercises": null
+		},
+		{
+		    "id": 2,
+		    "name": "Lección 2 Unidad 1",
+		    "exercises": null
+		},
+		{
+		    "id": 3,
+		    "name": "Lección 3 Unidad 1",
+		    "exercises": null
+		}
+	    ]
+	}
+	```
+	
+* ##### Error response:
 
-* ##### Método:
+	**Code:** 404 NOT FOUND
 
+### Resource to show one lesson
+
+* ##### URL:
+
+	< /{idunit}/Lesson/{id} >
+
+* ##### Method:
+	
+	`GET`
+	
+* ##### URL Params:
+
+	`
+	idunit=[long]
+	id=[long]
+	`
+	
+* ##### Example of query:
+
+	* URL
+		
+		`/api/Unit/1/Lesson/1`
+		
+* ##### Success response:
+
+	```
+	{
+	    "id": 1,
+	    "name": "Lección 1 Unidad 1"
+	}
+	```
+	
+* ##### Error response:
+
+	**Code:** 404 NOT FOUND
+
+### Change the name of the lesson
+
+* ##### URL:
+
+	< /{idunit}/Lesson/{id} >
+
+* ##### Method:
+	
 	`PUT`
-  
-* ##### Required:
+	
+* ##### URL Params:
 
-  `id=[long]`
-  
-#### Resource to get the answer of the exercise
-It allows to obtain the answer of a specific exercise
+	`
+	idunit=[long]
+	id=[long]
+	`
+	
+* ##### Example of query:
 
-* ##### URL
+	* URL
+		
+		`/api/Unit/1/Lesson/1`
+		
+* ##### Data Params:
+	
+	```
+	{
+		"name": "Leccion Prueba"
+	}
+	```
 
-	< /Exercise/{id}/Answer>
+* ##### Success response:
 
-* ##### Método:
+	```
+	{
+	    "id": 1,
+	    "name": "Leccion Prueba"
+	}
+	```
+	
+* ##### Error response:
 
-	`GET`
-  
-* ##### Required:
+	**Code:** 404 NOT FOUND
 
-  `id=[long]`
-  
-#### Resource to modify a response for an exercise
-Allows you to modify the response of a specific exercise
-
-* ##### URL
-
-	< /Exercise/{id}/Answer>
-
-* ##### Método:
-
-	`PUT` 
-
-* ##### Required:
-
-  `id=[long]`
-  
 

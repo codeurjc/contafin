@@ -64,7 +64,6 @@ In this repository we will place our web application, which helps students to le
 	- Export to excel.
 	- Send e-mails.
 
-## Screenshots
 
 ## Phase 2
 ### Navigation Diagram: 
@@ -124,7 +123,7 @@ In this repository we will place our web application, which helps students to le
 ### adminHome.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminHome.png)
 ### usersData.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Admin:usersData.png)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminUsersData.png)
 ### unitCreation.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/unitCreation.png)
 
@@ -166,7 +165,7 @@ The application does not need more explanations since it is very intuitive becau
 
 ## Phase 4
 ### REST API documentation
-Document [Api.md](https://github.com/Caumel/DAW-G11-2018/blob/master/API.md) with information about the REST API
+Document [Api documentation](API.md) with information about the REST API.
 ### Docker
 Docker lets you to use our app in a very easy way without having anything install, you just need Docker.
 Read the [Docker usage](DOCKER.md) to know more.
