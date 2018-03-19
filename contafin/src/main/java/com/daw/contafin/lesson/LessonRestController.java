@@ -19,6 +19,7 @@ import com.daw.contafin.ImageService;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonService;
+import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.lesson.Lesson.LessonBasic;
@@ -53,6 +54,9 @@ public class LessonRestController{
 	
 	@Autowired
 	CompletedExerciseService completedExerciseService;
+	
+	@Autowired
+	ExerciseService exerciseService;
 
 	//See all the lessons
 	@JsonView(LessonBasic.class)
@@ -121,6 +125,7 @@ public class LessonRestController{
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
 			completedLessonService.save(completedLesson);
 			if (userComponent.isLoggedUser()) {
+				user.setFluency(exerciseService.getFluency(user));
 				user.setExp(user.getExp() + 10);
 				user.upLevel();
 				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
