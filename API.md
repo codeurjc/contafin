@@ -47,7 +47,6 @@ Allows a user to log in.
 	    "remainingGoals": 0,
 	    "exp": 0
 	}
-	
 	```
   
 * ##### Error response:
@@ -933,10 +932,48 @@ The following queries will be preceded by /Unit.
 	    ]
 	}
 	```
+* ##### Success response:
+
+	```
+	true
+	```
 	
 * ##### Error response:
 
 	**Code:** 404 NOT FOUND
+
+### Upload images of the unit created
+
+* ##### URL:
+
+	< / {id}/Images>
+
+* ##### Method:
+	
+	`POST`
+
+* ##### URL Params:
+
+	`id=[long]`
+	
+* ##### URL Params:
+
+	`Empty`
+	
+* ##### Example of query:
+
+	* URL
+		
+		`/api/Unit/1/Images`
+
+* ##### Data Params:
+
+	```
+	images[]: image file format (*.jpg, *.jpeg, *.png) (length = 9)
+	```
+* ##### Error response:
+
+	**Code:** 500 INTERNAL SERVER ERROR or 400 BAD REQUEST
 
 ### Change the name of the unit
 
@@ -1240,7 +1277,7 @@ The following queries will be preceded by /Unit.
 * ##### Success response:
 
 	```
-	false
+	true
 	```
 	
 * ##### Error response:
