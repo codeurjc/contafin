@@ -815,7 +815,7 @@ The following queries will be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 
-### Change the name of the unit
+### Change the name of the lesson
 
 * ##### URL:
 
