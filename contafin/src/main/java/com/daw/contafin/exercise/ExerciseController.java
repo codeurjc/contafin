@@ -856,9 +856,7 @@ public class ExerciseController {
 			if (userComponent.isLoggedUser()) {
 
 				user.setFluency(percentage);
-				if (user.getPoints() + points >= 0) {
-					user.setPoints(user.getPoints() + points);
-				}
+				user.updatePoints(user,points);
 				userService.updateUserData(user);
 				userComponent.setLoggedUser(user);
 			}

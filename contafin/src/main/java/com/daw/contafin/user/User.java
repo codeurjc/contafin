@@ -261,4 +261,12 @@ public class User {
 	public void setRemainingGoals(int remainingGoals) {
 		this.remainingGoals = remainingGoals;
 	}
+	public void updatePoints(User user, int points) {
+		if(user.getPoints()+points >=0) {
+			user.setPoints(user.getPoints()+points);
+		}
+		else {
+			user.setPoints(0);
+		}
+	}
 }

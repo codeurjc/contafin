@@ -13,7 +13,7 @@ The resource API has GET, POST, PUT and DELETE methods.
 http: // localhost: 8080 followed by the containt request URL.
 All API queries have been preceded by /api
 
-### Admin
+## Admin
 These must be preceded by /Admin. All methods linked to Admin will return the same answers except those indicated.
 
 * ##### Success Response:
@@ -58,7 +58,7 @@ Export all users to an excel to analyze their data
 * ##### Error Response:
 	* Code: HttpStatus.INTERNAL_SERVER_ERROR
 
-### Users
+## Users
 These must be preceded by /User. All methods linked to User will return the same answers except those indicated.
 
 * ##### Success Response:
@@ -187,7 +187,7 @@ It allows to eliminate the profile of the logged in user
 
 	* Code: HttpStatus.NOT_FOUND
   
-### Login
+## Login
 All methods linked to User will return the same answers except those indicated.
 
 * ##### Success Response:
@@ -219,8 +219,58 @@ Allows a user to log out.
 * ##### Método:
 
 	`GET`
-  
-### Lessons
+
+## Unit
+The following queries will be preceded by /Unit.
+
+### Resource to show all the units
+
+* ##### URL:
+
+	< / >
+
+* ##### Method:
+	
+	`GET`
+	
+* ##### URL Params:
+
+	`Empty`
+	
+* ##### Example of query:
+
+	* URL
+		
+		`/api/Unit/`
+		
+* ##### Success response:
+
+	{
+	    "totalElements": 2,
+	    "totalPages": 1,
+	    "number": 0,
+	    "size": 20,
+	    "first": true,
+	    "last": true,
+	    "content": [
+		{
+		    "id": 1,
+		    "name": "Unidad 1"
+		},
+		{
+		    "id": 2,
+		    "name": "Unidad 2"
+		}
+	    ]
+	}
+	
+* ##### Error response:
+
+	**Code:** 404 NOT FOUND
+
+
+
+## Lesson
 These must be preceded by /Unit. All methods linked to User will return the same answers except those indicated.
 
 * ##### Success Response:
