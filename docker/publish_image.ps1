@@ -1,5 +1,5 @@
 Write-Output "Building image of contafin"
-docker build --no-cache -t contafin/contafin:latest .
+docker build -t contafin/contafin .
 
 Write-Output "Pushing image to Dockerhub"
-docker push contafin/contafin:latest
+docker push contafin/contafin

@@ -16,4 +16,4 @@ mv ${pathJar}/contafin-0.0.1-SNAPSHOT.jar .
 
 Write-Output "Creating Docker image of contafin..."
 #Creating image 
-docker build --no-cache -t contafin/contafin:latest .
+docker build -t contafin/contafin .
