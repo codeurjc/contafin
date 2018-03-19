@@ -1,8 +1,6 @@
 package com.daw.contafin.exercise;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -19,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
-import com.daw.contafin.completedLesson.CompletedLesson;
-import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
@@ -45,9 +41,6 @@ public class ExerciseController {
 
 	@Autowired
 	UserService userService;
-
-	@Autowired
-	private CompletedLessonService completedLessonService;
 
 	List<String> texts;
 	User user;
@@ -813,24 +806,8 @@ public class ExerciseController {
 		user = userComponent.getLoggedUser();
 		//Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 		int numExercisesCompleted = completedExerciseService.numExercisesCompleted(idlesson, id, user);
-		Lesson lesson = lessonService.findById(idlesson + (3 * (id - 1)));
-		Calendar date = Calendar.getInstance();
-		Date sqlDate = new Date((date.getTime()).getTime());
-		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user, lesson);
-		//If lesson is not completed yet and you do all exercise set the Lesson to done
-		if ((completedLessonS == null) && (numExercisesCompleted == 4)) {
-			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
-			completedLessonService.save(completedLesson);
-			if (userComponent.isLoggedUser()) {
-				user.setExp(user.getExp() + 10);
-				user.upLevel();
-				user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
-				user.setLastLesson(userService.getLesson(user));
-				user.setLastUnit(userService.getUnit(user));
-				userService.updateUserData(user);
-				userComponent.setLoggedUser(user);
-			}
-		}
+		//Update user data
+		lessonService.completedLesson(user, idlesson, id, numExercisesCompleted);
 		if(numExercisesCompleted == 4) {
 			return "completedLesson";
 		
