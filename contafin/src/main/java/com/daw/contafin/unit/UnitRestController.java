@@ -1,5 +1,6 @@
 package com.daw.contafin.unit;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
 import com.daw.contafin.exercise.Exercise;
@@ -135,6 +138,28 @@ public class UnitRestController{
 		return unit;
 	}
 	
+	@RequestMapping(value = "{id}/Images", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
+		Unit unit = unitService.findById(id);
+		Lesson lesson1 = unit.getLessons().get(0);
+		Lesson lesson2 = unit.getLessons().get(1);
+		Lesson lesson3 = unit.getLessons().get(2);
+		Exercise exercise1 = exerciseService.findByLesson(lesson1).get(0);
+		Exercise exercise2 = exerciseService.findByLesson(lesson2).get(0);
+		Exercise exercise3 = exerciseService.findByLesson(lesson3).get(0);
+		// Upload images
+		try {
+			exerciseService.uploadExerciseImages(exercise1, images[0], images[1], images[2]);
+			exerciseService.uploadExerciseImages(exercise2, images[3], images[4], images[5]);
+			exerciseService.uploadExerciseImages(exercise3, images[6], images[7], images[8]);
+			exerciseService.save(exercise1);
+			exerciseService.save(exercise2);
+			exerciseService.save(exercise3);
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		} catch (IOException e) {
+			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	//Put unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
