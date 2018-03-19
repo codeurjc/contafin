@@ -8,23 +8,77 @@ All you can find in our API Rest is information about users, loans, fines (penal
 2. You only can send GET, POST, PUT and DELETE requests.
 
 ## API requests
+
 ### Resources
 The resource API has GET, POST, PUT and DELETE methods.
 http: // localhost: 8080 followed by the containt request URL.
-All API queries have been preceded by /api
 
-## Admin
-These must be preceded by /Admin. All methods linked to Admin will return the same answers except those indicated.
+**All API queries have been preceded by /api**
+
+## Login
+All methods linked to User will return the same answers except those indicated.
+
+#### Resource login
+Allows a user to log in.Allows a user to log in.
+
+* ##### URL:
+
+	< /login >
+
+* ##### Method:
+
+	`GET`
+	
+* ##### Success Response:
+  
+  	```
+	{
+	    "id": 2,
+	    "name": "User1",
+	    "email": "--------@hotmail.es",
+	    "level": 1,
+	    "points": 0,
+	    "streak": 0,
+	    "fluency": 0,
+	    "dailyGoal": 0,
+	    "lastConnection": "2018-03-19/11:44:21",
+	    "lastUnit": 0,
+	    "lastLesson": 0,
+	    "progress": null,
+	    "remainingGoals": 0,
+	    "exp": 0
+	}
+	
+	```
+  * ##### Error Response:
+
+	**Code**: 401 UNAUTHORIZED
+	
+#### resource loguot  
+Allows a user to log out.
+
+* ##### URL:
+
+	< /logout >
+
+* ##### Method:
+
+	`GET`
 
 * ##### Success Response:
 
-	* HttpStatus.OK
+	```
+	true
+	```
 
-* ##### Error Response:
+  * ##### Error Response:
 
-	* Code: 404 NOT FOUND
+	**Code**: 404 NOT FOUND
+
+## Admin
+These must be preceded by /Admin. All methods linked to Admin will return the same answers except those indicated.
   
-#### Obtain user data
+### Obtain user data
 Get a table with the different users and their data.
 
 * ##### URL
@@ -37,11 +91,181 @@ Get a table with the different users and their data.
   
 * ##### Success Response:
 
-  {
-  }
+  	```
+	{
+	    "totalElements": 44,
+	    "totalPages": 3,
+	    "number": 0,
+	    "size": 10,
+	    "first": true,
+	    "last": false,
+	    "content": [
+		{
+		    "id": 1,
+		    "name": "user",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "2018-03-19/11:44:10",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 2,
+		    "name": "admin",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "2018-03-19/11:47:13",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 3,
+		    "name": "Sergio",
+		    "email": "------@hotmail.es",
+		    "level": 2,
+		    "points": 50,
+		    "streak": 7,
+		    "fluency": 0,
+		    "dailyGoal": 3,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 3,
+		    "exp": 0
+		},
+		{
+		    "id": 4,
+		    "name": "user 0",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 5,
+		    "name": "user 1",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 6,
+		    "name": "user 2",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 7,
+		    "name": "user 3",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 8,
+		    "name": "user 4",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 9,
+		    "name": "user 5",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 10,
+		    "name": "user 6",
+		    "email": "------@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		}
+	    ]
+	}
   
 * ##### Error Response:
-	* Code: HttpStatus.UNAUTHORIZED
+
+	**Code**: 401 UNAUTHORIZED
   
 #### Export data from all users
 
@@ -51,12 +275,19 @@ Export all users to an excel to analyze their data
 
 	< /UserData/Export >
 
-* ##### Método:
+* ##### Method:
 
 	`GET`
 
+* ##### Success Response:
+	
+	```
+	FALTA ESTO
+	```
+	
 * ##### Error Response:
-	* Code: HttpStatus.INTERNAL_SERVER_ERROR
+
+	* Code: 403 FORBIDDEN
 
 ## Users
 These must be preceded by /User. All methods linked to User will return the same answers except those indicated.
