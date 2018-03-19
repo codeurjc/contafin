@@ -18,7 +18,7 @@ public class DatabaseUsersLoader {
 	private void initDatabase() {
 
 		userRepository.save(new User("user", "email@hotmail.es", "pass", "ROLE_USER"));
-		userRepository.save(new User("admin", "adminemail@hotmail.es", "adminpass", "ROLE_ADMIN"));
+		userRepository.save(new User("admin", "adminemail@hotmail.es", "adminpass", "ROLE_ADMIN","ROLE_USER"));
 		userRepository.save(new User("Sergio", "sergio@hotmail.es", "pass", 2, 50, 7, 3, "ROLE_USER"));
 
 		// Add test users.
