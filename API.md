@@ -15,11 +15,10 @@ http: // localhost: 8080 followed by the containt request URL.
 
 **All API queries have been preceded by /api**
 
-## Login
-All methods linked to User will return the same answers except those indicated.
+## Authentication
 
-#### Resource login
-Allows a user to log in.Allows a user to log in.
+#### login
+Allows a user to log in.
 
 * ##### URL:
 
@@ -33,15 +32,15 @@ Allows a user to log in.Allows a user to log in.
   
   	```
 	{
-	    "id": 2,
-	    "name": "User1",
-	    "email": "--------@hotmail.es",
+	    "id": 1,
+	    "name": "User",
+	    "email": "email@hotmail.es",
 	    "level": 1,
 	    "points": 0,
 	    "streak": 0,
 	    "fluency": 0,
 	    "dailyGoal": 0,
-	    "lastConnection": "2018-03-19/11:44:21",
+	    "lastConnection": "2018-03-17/11:44:21",
 	    "lastUnit": 0,
 	    "lastLesson": 0,
 	    "progress": null,
@@ -50,11 +49,12 @@ Allows a user to log in.Allows a user to log in.
 	}
 	
 	```
-  * ##### Error Response:
+  
+* ##### Error response:
 
 	**Code**: 401 UNAUTHORIZED
 	
-#### resource loguot  
+#### loguot  
 Allows a user to log out.
 
 * ##### URL:
@@ -76,82 +76,43 @@ Allows a user to log out.
 	**Code**: 404 NOT FOUND
 
 ## Admin
-These must be preceded by /Admin. All methods linked to Admin will return the same answers except those indicated.
+The following queries will be preceded by /Admin. 
   
 ### Obtain user data
-Get a table with the different users and their data.
+Resource to show all users with their data.
 
 * ##### URL
 
 	< /UserData >
 
-* ##### Método:
+* ##### Method:
 
 	`GET`
+	
+* ##### URL Params:
+	* page=[int]
+	* size=[int]
+	
+* ##### Example of query:
+
+	*URL:
+		`/api/Admin/UserData/?page=1&size=10`
   
 * ##### Success Response:
 
   	```
 	{
 	    "totalElements": 44,
-	    "totalPages": 3,
-	    "number": 0,
+	    "totalPages": 5,
+	    "number": 1,
 	    "size": 10,
-	    "first": true,
+	    "first": false,
 	    "last": false,
 	    "content": [
 		{
-		    "id": 1,
-		    "name": "user",
-		    "email": "------@hotmail.es",
-		    "level": 1,
-		    "points": 0,
-		    "streak": 0,
-		    "fluency": 0,
-		    "dailyGoal": 0,
-		    "lastConnection": "2018-03-19/11:44:10",
-		    "lastUnit": 0,
-		    "lastLesson": 0,
-		    "progress": null,
-		    "remainingGoals": 0,
-		    "exp": 0
-		},
-		{
-		    "id": 2,
-		    "name": "admin",
-		    "email": "------@hotmail.es",
-		    "level": 1,
-		    "points": 0,
-		    "streak": 0,
-		    "fluency": 0,
-		    "dailyGoal": 0,
-		    "lastConnection": "2018-03-19/11:47:13",
-		    "lastUnit": 0,
-		    "lastLesson": 0,
-		    "progress": null,
-		    "remainingGoals": 0,
-		    "exp": 0
-		},
-		{
-		    "id": 3,
-		    "name": "Sergio",
-		    "email": "------@hotmail.es",
-		    "level": 2,
-		    "points": 50,
-		    "streak": 7,
-		    "fluency": 0,
-		    "dailyGoal": 3,
-		    "lastConnection": "-",
-		    "lastUnit": 0,
-		    "lastLesson": 0,
-		    "progress": null,
-		    "remainingGoals": 3,
-		    "exp": 0
-		},
-		{
-		    "id": 4,
-		    "name": "user 0",
-		    "email": "------@hotmail.es",
+		    "id": 11,
+		    "name": "user 7",
+		    "email": "email7@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -165,9 +126,9 @@ Get a table with the different users and their data.
 		    "exp": 0
 		},
 		{
-		    "id": 5,
-		    "name": "user 1",
-		    "email": "------@hotmail.es",
+		    "id": 12,
+		    "name": "user 8",
+		    "email": "email8@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -181,9 +142,9 @@ Get a table with the different users and their data.
 		    "exp": 0
 		},
 		{
-		    "id": 6,
-		    "name": "user 2",
-		    "email": "------@hotmail.es",
+		    "id": 13,
+		    "name": "user 9",
+		    "email": "email9@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -197,9 +158,9 @@ Get a table with the different users and their data.
 		    "exp": 0
 		},
 		{
-		    "id": 7,
-		    "name": "user 3",
-		    "email": "------@hotmail.es",
+		    "id": 14,
+		    "name": "user 10",
+		    "email": "email10@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -213,9 +174,9 @@ Get a table with the different users and their data.
 		    "exp": 0
 		},
 		{
-		    "id": 8,
-		    "name": "user 4",
-		    "email": "------@hotmail.es",
+		    "id": 15,
+		    "name": "user 11",
+		    "email": "email11@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -229,9 +190,9 @@ Get a table with the different users and their data.
 		    "exp": 0
 		},
 		{
-		    "id": 9,
-		    "name": "user 5",
-		    "email": "------@hotmail.es",
+		    "id": 16,
+		    "name": "user 12",
+		    "email": "email12@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -245,9 +206,57 @@ Get a table with the different users and their data.
 		    "exp": 0
 		},
 		{
-		    "id": 10,
-		    "name": "user 6",
-		    "email": "------@hotmail.es",
+		    "id": 17,
+		    "name": "user 13",
+		    "email": "email13@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 18,
+		    "name": "user 14",
+		    "email": "email14@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 19,
+		    "name": "user 15",
+		    "email": "email15@hotmail.es",
+		    "level": 1,
+		    "points": 0,
+		    "streak": 0,
+		    "fluency": 0,
+		    "dailyGoal": 0,
+		    "lastConnection": "-",
+		    "lastUnit": 0,
+		    "lastLesson": 0,
+		    "progress": null,
+		    "remainingGoals": 0,
+		    "exp": 0
+		},
+		{
+		    "id": 20,
+		    "name": "user 16",
+		    "email": "email16@hotmail.es",
 		    "level": 1,
 		    "points": 0,
 		    "streak": 0,
@@ -262,6 +271,8 @@ Get a table with the different users and their data.
 		}
 	    ]
 	}
+	
+	```
   
 * ##### Error Response:
 
@@ -269,11 +280,11 @@ Get a table with the different users and their data.
   
 #### Export data from all users
 
-Export all users to an excel to analyze their data
+Resource to obtain an excel with the data of the users.
 
 * ##### URL
 
-	< /UserData/Export >
+	< /UserData/Excel >
 
 * ##### Method:
 
@@ -282,41 +293,60 @@ Export all users to an excel to analyze their data
 * ##### Success Response:
 	
 	```
-	FALTA ESTO
+	file: user_list.xls
 	```
 	
 * ##### Error Response:
 
-	* Code: 403 FORBIDDEN
+	**Code**: 403 FORBIDDEN
 
 ## Users
-These must be preceded by /User. All methods linked to User will return the same answers except those indicated.
-
-* ##### Success Response:
-
-	* HttpStatus.OK
-
-* ##### Error Response:
-
-	* Code: HttpStatus.UNAUTHORIZED Or HttpStatus.BAD_REQUEST
+The following queries will be preceded by /User.
  
-#### Resource to obtain a user
-The data of the logged in user is obtained
+#### Resource to show a user
 
 * ##### URL
 
 	< />
 
-* ##### Método:
+* ##### Method:
 
 	`GET`
-  
-* ##### Error Response:
+	
+* ##### Success respone:
 
-	* Code: Only HttpStatus.UNAUTHORIZED
+	```
+	{
+	    "id": 1,
+	    "name": "user",
+	    "email": "---@hotmail.es",
+	    "level": 2,
+	    "points": 12,
+	    "streak": 1,
+	    "fluency": 16,
+	    "dailyGoal": 1,
+	    "lastConnection": "2018-03-17/18:36:07",
+	    "lastUnit": 1,
+	    "lastLesson": 1,
+	    "progress": [
+		0,
+		1,
+		0,
+		0,
+		0,
+		0,
+		0
+	    ],
+	    "remainingGoals": 0,
+	    "exp": 0
+	}
+	```
   
-#### Resource to modify a user
-The name of the logged in user is modified
+* ##### Error response:
+
+	**Code**: 401 UNAUTHORIZED
+  
+#### Change the name of user
 
 * ##### URL
 
@@ -326,44 +356,141 @@ The name of the logged in user is modified
 
 	`PUT`
   
-* ##### URL Params
+* ##### Data Params
 
-	* Required:
+	```
+	{
+	    "newName": "Contafin"
+	}
+	```
+* ##### Success response:
+	```
+	{
+	    "id": 1,
+	    "name": "Contafin",
+	    "email": "email@hotmail.es",
+	    "level": 2,
+	    "points": 12,
+	    "streak": 1,
+	    "fluency": 16,
+	    "dailyGoal": 1,
+	    "lastConnection": "2018-03-17/18:36:07",
+	    "lastUnit": 1,
+	    "lastLesson": 1,
+	    "progress": [
+		0,
+		1,
+		0,
+		0,
+		0,
+		0,
+		0
+	    ],
+	    "remainingGoals": 0,
+	    "exp": 0
+	}
+	```	
+* ##### Error response:
 
-		`Name=[string]`
+	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST
+	
+#### Change the email of user
 
-#### Resource to modify a user's email
-The email of a logged in user is modified
 * ##### URL
 
 	< /Email>
 
-* ##### Método:
+* ##### Method:
 
 	`PUT`
   
-* ##### URL Params
+* ##### Data Params
 
- * Required:
+	```
+	{
+	    "newEmail": "contafin@hotmail.es"
+	}
+	```
+* ##### Success response:
+	```
+	{
+	    "id": 1,
+	    "name": "Contafin",
+	    "email": "contafin@hotmail.es",
+	    "level": 2,
+	    "points": 12,
+	    "streak": 1,
+	    "fluency": 16,
+	    "dailyGoal": 1,
+	    "lastConnection": "2018-03-17/18:39:23",
+	    "lastUnit": 1,
+	    "lastLesson": 1,
+	    "progress": [
+		0,
+		1,
+		0,
+		0,
+		0,
+		0,
+		0
+	    ],
+	    "remainingGoals": 0,
+	    "exp": 0
+	}
+	```	
+* ##### Error response:
 
-	`Email=[string]`
-  
-#### Resource to modify a user's password
-The password of a logged in user is modified
+	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST
+	
+#### Change the password of user
 
 * ##### URL
 
 	< /Password>
 
-* ##### Método:
+* ##### Method:
 
 	`PUT`
   
-* ##### URL Params
+* ##### Data Params
 
- * Required:
+	```
+	{
+	    "newPass": "******"
+	    "oldPass": "******"
+	}
+	```
+* ##### Success response:
+	```
+	{
+	    "id": 1,
+	    "name": "Contafin",
+	    "email": "contafin@hotmail.es",
+	    "level": 2,
+	    "points": 12,
+	    "streak": 1,
+	    "fluency": 16,
+	    "dailyGoal": 1,
+	    "lastConnection": "2018-03-17/18:40:02",
+	    "lastUnit": 1,
+	    "lastLesson": 1,
+	    "progress": [
+		0,
+		1,
+		0,
+		0,
+		0,
+		0,
+		0
+	    ],
+	    "remainingGoals": 0,
+	    "exp": 0
+	}
+	```	
+* ##### Error response:
 
-	`Password=[string]`
+	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST
+	
 
 #### Resource to modify a user's goal
 The goal of a logged in user is modified
@@ -382,27 +509,25 @@ The goal of a logged in user is modified
 
 	`Goal=[string]`
   
-#### Resource to upload a photo
-Allow upload a photo associated with that logged in user
+#### Resource to upload user profile image
 
 * ##### URL
 
 	< /Photo>
 
-* ##### Método:
+* ##### Method:
 
 	`POST`
   
-* ##### URL Params
+* ##### Data Params
 
- * Required:
+	```
+	file: image file format (*.jpg, *.jpeg, *.png)
+	```
+* ##### Error response:
 
-	`Photo=[root]`
-  
-* ##### Error Response:
-
-	* Code: Only HttpStatus.UNAUTHORIZED Or HttpStatus.INTERNAL_SERVER_ERROR
-  
+	**Code**: 401 UNAUTHORIZED or 400 BAD REQUEST or 500 INTERNAL SERVER ERROR
+	
 #### Resource to delete a user
 It allows to eliminate the profile of the logged in user
 
