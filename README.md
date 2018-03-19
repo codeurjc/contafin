@@ -123,7 +123,7 @@ In this repository we will place our web application, which helps students to le
 ### adminHome.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminHome.png)
 ### usersData.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Admin:usersData.png)
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminUsersData.png)
 ### unitCreation.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/unitCreation.png)
 
