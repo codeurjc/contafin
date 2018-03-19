@@ -223,7 +223,7 @@ Allows a user to log out.
 ## Unit
 The following queries will be preceded by /Unit.
 
-### Resource to show all the units
+### Resource to show all units
 
 * ##### URL:
 
@@ -301,7 +301,7 @@ The following queries will be preceded by /Unit.
 	**Code:** 404 NOT FOUND
 
 
-### Create Unit with is Lessons and Exercises
+### Create Unit with its lessons and exercises
 
 * ##### URL:
 
@@ -669,7 +669,7 @@ The following queries will be preceded by /Unit.
 ## Lesson
 The following queries will be preceded by /Unit.
 
-### Resource to show all the lessons
+### Resource to show all lessons
 
 * ##### URL:
 
@@ -729,7 +729,7 @@ The following queries will be preceded by /Unit.
 	
 	```
 
-### Resource to show an unit with his lessons
+### Resource to show an unit with its lessons
 
 * ##### URL:
 
@@ -897,7 +897,7 @@ The following queries will be preceded by /Unit.
 
 The following queries must be preceded by /Unit.
 
-### See all exercises
+### Resource to show all exercises
 
 * ##### URL:
 
@@ -906,6 +906,10 @@ The following queries must be preceded by /Unit.
 * ##### Method:
 
 	`GET`
+	
+* ##### URL Params:
+
+	`Empty`
 
 * ##### Example of query:
 
@@ -1020,7 +1024,7 @@ The following queries must be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 
-### See one exercise
+### Resource to show one exercise
 
 * ##### URL:
 
@@ -1061,7 +1065,7 @@ The following queries must be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 
-### Change exercise
+### Change an exercise
 
 * ##### URL:
 
@@ -1116,7 +1120,7 @@ The following queries must be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 
-### See an answer
+### Resource to show an answer
 
 * ##### URL:
 
