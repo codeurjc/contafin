@@ -166,7 +166,7 @@ The application does not need more explanations since it is very intuitive becau
 
 ## Phase 4
 ### REST API documentation
-Document [Api.md](https://github.com/Caumel/DAW-G11-2018/blob/master/API.md) with information about the REST API
+Document [Api documentation](API.md) with information about the REST API
 ### Docker
 Docker lets you to use our app in a very easy way without having anything install, you just need Docker.
 Read the [Docker usage](DOCKER.md) to know more.
