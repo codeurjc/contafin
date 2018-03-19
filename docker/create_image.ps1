@@ -8,8 +8,8 @@ docker run -it --rm --name contafin -v ${pathProject}:/usr/src/mymaven -w /usr/s
 
 #Move jar to actual directory
 $contafinJar = "contafin-0.0.1-SNAPSHOT.jar"
-$existeJar = Test-Path $contafinJar
-if($existeJar -eq $True){
+$existJar = Test-Path $contafinJar
+if($existJar -eq $True){
     Remove-Item $contafinJar
 }
 mv ${pathJar}/contafin-0.0.1-SNAPSHOT.jar .
