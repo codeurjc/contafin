@@ -245,7 +245,7 @@ The following queries will be preceded by /Unit.
 		
 * ##### Success response:
 
-	`{
+	{
 	    "totalElements": 2,
 	    "totalPages": 1,
 	    "number": 0,
@@ -262,7 +262,7 @@ The following queries will be preceded by /Unit.
 		    "name": "Unidad 2"
 		}
 	    ]
-	}`
+	}
 	
 * ##### Error response:
 
