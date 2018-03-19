@@ -78,64 +78,67 @@ public class UnitRestController{
 	//Post Unit
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Unit createUnit(@RequestBody Unit unit) {
+	public ResponseEntity<Unit> createUnit(@RequestBody Unit unit) {
 		
-		Exercise exercise;
-		
-		unitService.save(unit);
-		
-		Lesson lesson = unit.getLessons().get(0);
-		lesson.setUnit(unit);
-		lessonService.save(lesson);
-		exercise = lesson.getExercises().get(0);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(1);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(2);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(3);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		
-		
-		lesson = unit.getLessons().get(1);
-		lesson.setUnit(unit);
-		lessonService.save(lesson);
-		exercise = lesson.getExercises().get(0);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(1);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(2);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(3);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		
-		
-		
-		lesson = unit.getLessons().get(2);
-		lesson.setUnit(unit);
-		lessonService.save(lesson);
-		exercise = lesson.getExercises().get(0);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(1);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(2);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		exercise = lesson.getExercises().get(3);
-		exercise.setLesson(lesson);
-		exerciseService.save(exercise);
-		
-		return unit;
+		if (unit != null) {
+			Exercise exercise;
+			
+			unitService.save(unit);
+			
+			Lesson lesson = unit.getLessons().get(0);
+			lesson.setUnit(unit);
+			lessonService.save(lesson);
+			exercise = lesson.getExercises().get(0);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(1);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(2);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(3);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			
+			
+			lesson = unit.getLessons().get(1);
+			lesson.setUnit(unit);
+			lessonService.save(lesson);
+			exercise = lesson.getExercises().get(0);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(1);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(2);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(3);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			
+			
+			
+			lesson = unit.getLessons().get(2);
+			lesson.setUnit(unit);
+			lessonService.save(lesson);
+			exercise = lesson.getExercises().get(0);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(1);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(2);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			exercise = lesson.getExercises().get(3);
+			exercise.setLesson(lesson);
+			exerciseService.save(exercise);
+			return new ResponseEntity<>(unit, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@RequestMapping(value = "/{id}/Images", method = RequestMethod.POST)
