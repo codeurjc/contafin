@@ -418,39 +418,6 @@ It allows to eliminate the profile of the logged in user
 
 	* Code: HttpStatus.NOT_FOUND
   
-## Login
-All methods linked to User will return the same answers except those indicated.
-
-* ##### Success Response:
-
-	* HttpStatus.OK
-
-* ##### Error Response:
-
-	* Code: HttpStatus.UNAUTHORIZED
-
-#### Resource login
-Allows a user to log in.Allows a user to log in.
-
-* ##### URL
-
-	< /login>
-
-* ##### Método:
-
-	`GET`
-  
-#### resource loguot  
-Allows a user to log out.
-
-* ##### URL
-
-	< /logout>
-
-* ##### Método:
-
-	`GET`
-
 ## Unit
 The following queries will be preceded by /Unit.
 
