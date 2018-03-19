@@ -10,7 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
+import com.daw.contafin.completedLesson.CompletedLesson;
+import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.lesson.Lesson;
+import com.daw.contafin.lesson.LessonService;
+import com.daw.contafin.user.User;
 
 @Service
 public class ExerciseService {
@@ -22,6 +26,11 @@ public class ExerciseService {
 		@Autowired
 		ImageService imageService;
 		
+		@Autowired
+		LessonService lessonService;
+		
+		@Autowired
+		CompletedLessonService completedLessonService;
 		
 		public Exercise findById (long id) {
 			return exerciseRepository.findById(id);
@@ -60,6 +69,16 @@ public class ExerciseService {
 			exercise.setImage1(bytes1);
 			exercise.setImage2(bytes2);
 			exercise.setImage3(bytes3);
+		}
+		
+		public int getFluency(User user) {
+			List<Lesson> lessons = lessonService.findAll();
+			List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
+			int numLessons = lessons.size();
+			int numLessonsCompleted = lessonsCompleted.size();
+			double percentageD = (double) numLessonsCompleted / numLessons * 100;
+			int percentage = (int) percentageD;
+			return percentage;
 		}
 		
 }

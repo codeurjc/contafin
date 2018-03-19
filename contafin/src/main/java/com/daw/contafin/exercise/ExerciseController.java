@@ -846,13 +846,7 @@ public class ExerciseController {
 	public String continueLesson(Model model) {
 			User user = userComponent.getLoggedUser();
 
-			List<Lesson> lessons = lessonService.findAll();
-			List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
-
-			int numLessons = lessons.size();
-			int numLessonsCompleted = lessonsCompleted.size();
-			double percentageD = (double) numLessonsCompleted / numLessons * 100;
-			int percentage = (int) percentageD;
+			int percentage = exerciseService.getFluency(user);
 			if (userComponent.isLoggedUser()) {
 
 				user.setFluency(percentage);
