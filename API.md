@@ -267,6 +267,36 @@ The following queries will be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 
+### Resource to show one unit
+
+* ##### URL:
+
+	< /{id} >
+
+* ##### Method:
+	
+	`GET`
+	
+* ##### URL Params:
+
+	`id=[long]`
+	
+* ##### Example of query:
+
+	* URL
+		
+		`/api/Unit/1`
+		
+* ##### Success response:
+
+	```{
+	    "id": 1,
+	    "name": "Unidad 1"
+	}```
+	
+* ##### Error response:
+
+	**Code:** 404 NOT FOUND
 
 
 ## Lesson
