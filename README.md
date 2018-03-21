@@ -71,9 +71,9 @@ In this repository we will place our web application, which helps students to le
 ### index.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/index.PNG) 
 ### login.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/NPhase%202%20documentation/inicio.PNG) 
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/inicio.PNG) 
 ### home.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/home(1).PNG) 
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/home.PNG) 
 ### profile.html
 ![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/profile.PNG) 
 ### lessons.html
