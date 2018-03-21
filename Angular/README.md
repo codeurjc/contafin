@@ -1,6 +1,6 @@
 ## Angular CONTaFin
 
-The implementation of this project was created with [Angular CLI](https://cli.angular.io/)
+The implementation of this project was created with [Angular CLI](https://cli.angular.io/) and [Node.js & npm](https://nodejs.org/en/download/)
 
 ## Development server
 
