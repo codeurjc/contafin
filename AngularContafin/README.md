@@ -1,6 +1,6 @@
 # AngularContafin
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+The implementation of this project was created with [Angular CLI](https://cli.angular.io/) and [Node.js & npm](https://nodejs.org/en/download/)
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
