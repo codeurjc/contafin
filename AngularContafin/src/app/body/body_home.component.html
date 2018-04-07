@@ -1,0 +1,160 @@
+<div class="bghome">
+	<div class="container my-auto">
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="mt-5 mx-auto text-center card-body bg-white" id="round">
+							<h2 class="text-black text-left " id="Margin">Unidades de Contabilidad
+							</h2>
+							<h5 class="text-black text-center mt-5">Nivel 1</h5>
+							<div class="row justify-content-around">
+								<!--{{#unitsCompletes}} {{#done}}
+								<div class="col-lg-6 col-md-6 ">
+									<div class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
+										<a class="col-lg-5" href="/Unit/{{-index}}/lessons" id="selectLesson">
+											<h2 class="text-white ">{{name}}</h2>
+											<h2 class="text-muted mt-4">{{lessonsDone}}/3</h2>
+										</a>
+									</div>
+								</div>
+								{{/done}} {{^done}}
+								<div class="col-lg-6 col-md-6 ">
+									<div class="service-box mt-5 mx-auto text-center card-body" id="Unit">
+										<a class="col-lg-5" href="/Unit/{{-index}}/lessons" id="selectLesson">
+											<h2 class="text-white ">{{name}}</h2>
+											<h2 class="text-muted mt-4">{{lessonsDone}}/3</h2>
+										</a>
+									</div>
+								</div>
+								{{/done}} {{/unitsCompletes}}-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--{{#loggedUser}}
+			<div class="col-sm-4">
+				.
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+							<h5 class="text-black text-left">Conocimiento de contabilidad
+							</h5>
+							<div class="row">
+								<div class="col-lg-12 ">
+									<h1 class="card-title text-warning">{{fluency}}</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="mt-4 text-center card-body bg-white " id="round">
+							<div class="row">
+								<div class="col-lg-12 ">
+										<div class="row mt-3">
+										<div class="col-lg-12 ">
+											   <h5 class="text-black ">Experiencia</h5>
+											<h1 class="text-warning ">{{exp}}</h1>
+										</div>
+									</div>
+									<div class="row mt-3">
+										<div class="col-lg-12 ">
+											   <h5 class="text-black ">Racha diaria</h5>
+											<h1 class="text-warning ">{{dailyGoal}}</h1>
+										</div>
+									</div>
+									<div class="row mt-3">
+										<div class="col-lg-12 ">
+											   <h5 class="text-black ">Lecciones restantes</h5>
+											<h1 class="text-warning ">{{lessonsToDo}}</h1>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/loggedUser}} {{^loggedUser}}
+				<div class="col-sm-4">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+								<h5 class="text-black text-left">¡Crea un perfil para guardar tu progreso!</h5>
+								<div class="row">
+									<div class="col-lg-12 ">
+										<a class="btn btn-primary btn-xl js-scroll-trigger mt-3 text-white" data-toggle="modal" data-target="#signupModalLong">Crear
+											perfil</a> <a class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white" id="button-style" data-toggle="modal" data-target="#loginModalLong">Ingresar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/loggedUser}}-->
+			</div>
+		</div>
+	</div>
+
+<!--pop up sign in-->
+<div class="modal fade" id="loginModalLong" tabindex="-1" role="dialog" aria-labelledby="loginModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<form action="/" method="post">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="col-3">
+						<img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
+					</div>
+					<div class="col-6">
+						<h1 class="modal-title mt-3" id="exampleModalLongTitle">
+							<strong>INGRESAR</strong>
+						</h1>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-lg-8 mx-auto">
+						<input type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico"> <input type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="Iniciar sesión" class="btn btn-primary" id="button-style" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!--pop up login-->
+<div class="modal fade" id="signupModalLong" tabindex="-1" role="dialog" aria-labelledby="signupModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<form action="signup" method="post">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="col-3">
+						<img src="img/Logo.png" class="img-fluid " alt="Responsive image">
+					</div>
+					<div class="col-6">
+						<h1 class="modal-title" id="exampleModalLongTitle">
+							<strong>REGÍSTRATE</strong>
+						</h1>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-lg-8 mx-auto">
+						<input type="text" class="form-control mt-3" id="roundregister" name="name" placeholder=" Nombre" /> <input type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico"> <input type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="Crear cuenta" class="btn btn-primary" id="button-style" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

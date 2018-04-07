@@ -8,7 +8,7 @@ import { Unit } from '../Interfaces/Unit/unit.model';
 const BASE_URL = 'http://127.0.0.1:8080/api/Unit';
 
 @Injectable()
-export class BooksService {
+export class UnitsService {
 
 	constructor(private http: Http) { }
 
