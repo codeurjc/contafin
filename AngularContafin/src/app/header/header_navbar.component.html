@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+<!--<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container" id="rContent">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTaFIN</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -26,7 +26,6 @@
                                         <input type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Usuario o correo">
                                     </div>
                                     <div class="form-group">
-                                        <!--<label for="exampleInputPassword1">Password</label>-->
                                         <input type="password" class="form-control" id="roundregister" name="pass" placeholder="Contraseña">
                                     </div>
                                     <div class="form-check">
@@ -37,7 +36,7 @@
                                         <input type="submit" value="Ingresar" class="btn btn-primary js-scroll-trigger" />
                                         <br />
 
-                                        <!--<<a class="btn btn-primary js-scroll-trigger" type="submit">ingresar</a> -->
+
                                     </div>
                                     <a href="#" for="exampleInputEmail1">Restablecer contraseña
                                     </a>
@@ -84,6 +83,62 @@
                         <img src="../../assets/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top">
                         <span class="badge badge-light">{{streak}}</span>
                     </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTaFIN</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">Presentación</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Lecciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#portfolio">Informacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto pr-4">
+                <li ngbDropdown class="nav-item dropdown pr-5 d-inline-block">
+                    <a class="btn btn-primary nav-link dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownBasic1"
+                        ngbDropdownToggle>Ingresar</a>
+                    <div class="dropdown-menu round" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <div class="row">
+                            <div class="col-lg-12 "></div>
+                        </div>
+                        <div class="row">
+                            <div class=" ml-4 mr-4 col-sm-10 ">
+                                <form class="dropdown-item" action="/" method="post">
+                                    <div class="form-group">
+                                        <label class="ml-3" for="exampleInputEmail1">o ingrese sus datos</label>
+                                        <input type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Usuario o correo">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="roundregister" name="pass" placeholder="Contraseña">
+                                    </div>
+                                    <div class="mb-3 service-box  text-center rounded text-white">
+                                        <input type="submit" value="Ingresar" class="btn btn-primary js-scroll-trigger" />
+                                        <br />
+                                    </div>
+                                    <!--<input type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" placeholder="Usuario o correo" [(ngModel)]="usuario"/>
+                                    <input type="password" class="form-control" id="roundregister" placeholder="Contraseña" [(ngModel)]="password"/>
+                                    <input type="submit" value="Ingresar" class="btn btn-primary js-scroll-trigger"/>-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -7,8 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HeaderNavbarComponent } from './header/header_navbar.component';
-import { BodyIndexComponent } from './body/body_index.component';
-import { BodyHomeComponent } from './body/body_home.component';
+import { BodyIndexComponent } from './index/body_index.component';
+import { BodyHomeComponent } from './home/body_home.component';
 import { LoginService } from './login/login.service';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './navbar/navbar.component';

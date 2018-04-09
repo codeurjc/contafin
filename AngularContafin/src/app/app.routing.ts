@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 
 const appRoutes = [
+  { path: 'login', component: LoginComponent},
   { path: 'User/Profile', component: UserProfileComponent},
   { path: '', component: IndexComponent},
   { path: 'Home', component: HomeComponent}

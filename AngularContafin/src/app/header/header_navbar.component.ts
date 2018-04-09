@@ -6,10 +6,6 @@ import { Component, Input } from '@angular/core';
         './header_navbar.component.html'
 })
 export class HeaderNavbarComponent {
-    
-    @Input()
-    private user: boolean;
-
-    @Input()
-    private admin: boolean;
+    usuario:String;
+    password:String;
  }
