@@ -12,21 +12,27 @@ import { User } from '../Interfaces/User/user.model';
 
 export class LoginComponent{
 
-    constructor(private loginService: LoginService) { }
+    constructor(private router: Router, private loginService: LoginService) { }
 
     logIn(event: any, email: string, pass: string) {
 
         event.preventDefault();
     
         this.loginService.logIn(email, pass).subscribe(
-          u => console.log(u),
+          user => {
+            console.log(user);
+            this.router.navigate(['/Home']);
+          },
           error => alert('Invalid user or password')
         );
       }
     
       logOut() {
         this.loginService.logOut().subscribe(
-          response => { },
+          response => {
+            console.log('Logged out');
+            this.router.navigate(['/']);
+           },
           error => console.log('Error when trying to log out: ' + error)
         );
       }

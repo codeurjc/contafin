@@ -13,19 +13,20 @@ export class LoginService {
     isAdmin = false;
     user: User;
 
-    constructor(private http: Http) {
-        this.reqIsLogged();
-    }
+    constructor(private http: Http) { }
 
-    getLoggedUser(){
+    getLoggedUser() {
         return this.user;
     }
 
-    isLoggedUser(){
+    isLoggedUser() {
         return this.isLogged;
     }
 
-    isAdministrator(){
+    isAdministrator() {
+        if (this.isLoggedUser) {
+            this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
+        }
         return this.isAdmin;
     }
 
@@ -41,8 +42,7 @@ export class LoginService {
             response => this.processLogInResponse(response),
             error => {
                 if (error.status !== 401) {
-                    console.error('Error when asking if logged: ' +
-                        JSON.stringify(error));
+                    console.error('Error when asking if logged: ' + JSON.stringify(error));
                 }
             }
         );
@@ -51,7 +51,7 @@ export class LoginService {
     private processLogInResponse(response) {
         this.isLogged = true;
         this.user = response.json();
-        this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
+        //this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
     }
 
     logIn(user: string, pass: string) {
@@ -74,7 +74,6 @@ export class LoginService {
     }
 
     logOut() {
-
         return this.http.get(URL + '/logout', { withCredentials: true }).map(
             response => {
                 this.isLogged = false;
