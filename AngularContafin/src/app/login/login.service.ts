@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { User } from '../user/user.model';
+import { User } from '../Interfaces/User/user.model';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/Rx';
 

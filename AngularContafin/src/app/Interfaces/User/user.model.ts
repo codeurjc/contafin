@@ -1,15 +1,24 @@
-export interface User {
-    id?: number;
+import { CompletedExercise } from '../Exercise/completedExercise.model'; 
+
+export interface User{
+    id: number;
     name: string;
     email: string;
+    password: string;
     level: number;
     points: number;
     streak: number;
     fluency: number;
-    dailyGoal: number;
+    dailyGoal?: number;
     lastConnection: string;
-    lastUnit: number;
+    lastUnit: string;
     lastLesson: number;
-    progress: number[];
-    remainingGoals: number;
+	progress: number [];
+    remainingGoals?: number;
+    exp: number;
+	needexp: number;
+    image: Blob;
+    roles: string[];
+    completedExercises: CompletedExercise [];
+
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginService } from './login.service';
-import { User } from '../user/user.model';
+import { User } from '../Interfaces/User/user.model';
 
 @Component({
     selector: 'app-login',
