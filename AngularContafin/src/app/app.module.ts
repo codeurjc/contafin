@@ -28,7 +28,9 @@ import { routing } from './app.routing';
     BodyHomeComponent,
     LoginComponent,
     NavBarComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    IndexComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule, 
