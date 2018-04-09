@@ -15,27 +15,27 @@
             </ul>
             <ul *ngIf="isLoggedUser" class="navbar-nav ml-auto">
                 <li *ngIf="isAdmin" class="nav-item mr-4">
-                    <a class="btn btn-primary js-scroll-trigger BG-" href="">ADMINISTRACIÓN</a>
+                    <a class="btn btn-primary js-scroll-trigger">ADMINISTRACIÓN</a>
                 </li>
                 <li ngbDropdown class="nav-item">
-                    <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Name</a>
+                    <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" [routerLink]="['/User/Profile']">Tu perfil</a>
                         <a class="dropdown-item">Configuración</a>
                         <a class="dropdown-item">Fijar meta</a>
-                        <a class="dropdown-item">Cerrar Sesión</a>
+                        <a class="dropdown-item" (click)="logOut()">Cerrar Sesión</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger">
                         <img src="../../assets/fire.png" width="25" height="23" class="d-inline-block align-top">
-                        <span class="badge badge-light">points</span>
+                        <span class="badge badge-light">{{loggedUser.streak}}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger">
                         <img src="../../assets/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top">
-                        <span class="badge badge-light">streak</span>
+                        <span class="badge badge-light">{{loggedUser.points}}</span>
                     </a>
                 </li>
             </ul>
