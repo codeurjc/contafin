@@ -5,14 +5,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
-import { HeaderIndexComponent } from './header/header_index.component';
-import { HeaderNormalComponent } from './header/header_normal.component';
+import { HeaderNavbarComponent } from './header/header_navbar.component';
 import { BodyIndexComponent } from './body/body_index.component';
 import { BodyHomeComponent } from './body/body_home.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderIndexComponent, HeaderNormalComponent, BodyIndexComponent, BodyHomeComponent],
+  declarations: [AppComponent, HeaderNavbarComponent , BodyIndexComponent, BodyHomeComponent],
   imports: [
     BrowserModule, HttpClientModule, NgbModule.forRoot()
   ],
