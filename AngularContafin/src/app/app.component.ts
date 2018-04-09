@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  navbar_index = true;
+  useron = false;
+  adminon = false;
+
+
   body_index = true;
-  navbar_normal = false;
   body_home = false;
   title = 'app';
 }
