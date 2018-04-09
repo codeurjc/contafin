@@ -13,6 +13,9 @@ import { LoginService } from './login/login.service';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { HomeComponent } from './home/home.component';
+import { IndexComponent } from './index/index.component';
+
 
 import { routing } from './app.routing';
 
