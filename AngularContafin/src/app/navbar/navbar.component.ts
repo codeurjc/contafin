@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { LoginService } from '../login/login.service';
-import { UserService } from '../user/user.service';
 import { User } from '../Interfaces/User/user.model';
-import { LoginComponent } from '../login/login.component';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,9 +19,7 @@ export class NavBarComponent {
   constructor(private router: Router, public loginService: LoginService) {
     this.loggedUser = this.loginService.getLoggedUser();
     this.isLoggedUser = this.loginService.isLoggedUser();
-    /*if (this.loginService.isLoggedUser()){
-      this.isAdmin = this.loggedUser.roles.indexOf('ROLE_ADMIN') !== -1;
-    }*/
+    this.isAdmin = loginService.isAdministrator();
   }
 
   logOut() {

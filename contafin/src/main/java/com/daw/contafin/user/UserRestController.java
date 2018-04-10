@@ -4,6 +4,9 @@ package com.daw.contafin.user;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -159,6 +162,11 @@ public class UserRestController {
 				return new ResponseEntity<>(false,HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		}
+	}
+	
+	@RequestMapping(value = "/Photo", method = RequestMethod.GET)
+	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		imageService.showImage(request, response);
 	}
 
 	@RequestMapping(value = "/Goal", method = RequestMethod.PUT)

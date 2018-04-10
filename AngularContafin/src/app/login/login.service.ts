@@ -24,9 +24,6 @@ export class LoginService {
     }
 
     isAdministrator() {
-        if (this.isLoggedUser) {
-            this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
-        }
         return this.isAdmin;
     }
 
@@ -51,7 +48,7 @@ export class LoginService {
     private processLogInResponse(response) {
         this.isLogged = true;
         this.user = response.json();
-        //this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
+        this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
     }
 
     logIn(user: string, pass: string) {

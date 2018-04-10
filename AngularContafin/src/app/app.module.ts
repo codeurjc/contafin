@@ -15,6 +15,7 @@ import { NavBarComponent } from './navbar/navbar.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
+import { LessonComponent } from './lesson/lesson.component';
 
 
 import { routing } from './app.routing';
@@ -30,7 +31,8 @@ import { routing } from './app.routing';
     NavBarComponent,
     UserProfileComponent,
     IndexComponent,
-    HomeComponent
+    HomeComponent,
+    LessonComponent
   ],
   imports: [
     BrowserModule, 

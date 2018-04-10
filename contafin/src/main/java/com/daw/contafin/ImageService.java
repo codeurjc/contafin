@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseRepository;
+import com.daw.contafin.user.UserComponent;
 
 
 @Service
@@ -18,6 +24,9 @@ public class ImageService {
 	
 	@Autowired
 	ExerciseRepository exerciseRepository;
+	
+	@Autowired
+	UserComponent userComponent;
 	
 	public byte[] uploadImage(MultipartFile file) throws IOException {
 		
@@ -42,4 +51,20 @@ public class ImageService {
 		exerciseRepository.save(exercise);	
 	}
 	
+	//Show image
+	public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		byte [] image;
+		if (userComponent.getLoggedUser().getImage() != null) {
+			image = userComponent.getLoggedUser().getImage();
+		} else {
+			Path path = Paths.get("img/profile.png");
+			image = Files.readAllBytes(path);
+		}
+		response.setContentType("image/jpeg");
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(image);
+		outputStream.close();
+	}
+		
+		
 }

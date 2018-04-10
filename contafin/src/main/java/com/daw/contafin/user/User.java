@@ -57,7 +57,7 @@ public class User {
 	@Lob
 	private byte[] image;
 	
-	@JsonIgnore
+	
 	@ElementCollection(fetch = FetchType.EAGER) 
 	private List<String> roles;
 	

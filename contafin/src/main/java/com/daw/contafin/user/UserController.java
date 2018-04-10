@@ -1,11 +1,7 @@
 package com.daw.contafin.user;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -147,18 +143,7 @@ public class UserController extends ContentController{
 	// Show the image
 	@RequestMapping("ProfilePicture")
 	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		byte [] image;
-		if (userComponent.getLoggedUser().getImage() != null) {
-			image = userComponent.getLoggedUser().getImage();
-		} else {
-			Path path = Paths.get("img/profile.png");
-			image = Files.readAllBytes(path);
-
-		}
-		response.setContentType("image/jpeg");
-		ServletOutputStream outputStream = response.getOutputStream();
-		outputStream.write(image);
-		outputStream.close();
+		imageService.showImage(request, response);
 	}
 	
 	//Delete Account

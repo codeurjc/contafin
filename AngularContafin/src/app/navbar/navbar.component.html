@@ -15,8 +15,12 @@
             </ul>
             <ul *ngIf="isLoggedUser" class="navbar-nav ml-auto">
                 <li *ngIf="isAdmin" class="nav-item mr-4">
-                    <a class="btn btn-primary js-scroll-trigger">ADMINISTRACIÓN</a>
+                    <a class="btn btn-primary js-scroll-trigger text-light">ADMINISTRACIÓN</a>
                 </li>
+                
+                <li>
+                    <img src="https://localhost:8080/api/User/Photo" width="40" height="35" class="img-thumbnail">
+                </li> 
                 <li ngbDropdown class="nav-item">
                     <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
