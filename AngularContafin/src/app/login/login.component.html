@@ -10,11 +10,16 @@
         <div class="form-group">
             <input #pass type="password" class="form-control" id="roundregister" name="pass" placeholder="Contraseña">
         </div>
+        <div class="form-check">
+            <label class="mb-3 form-check-label">
+                <input type="checkbox" class="form-check-input">Recuerdame</label>
+        </div>
         <div class="mb-3 service-box  text-center rounded text-white">
             <input type="submit" value="Iniciar Sesión" class="btn btn-primary js-scroll-trigger" (click)="logIn($event, email.value, pass.value)"
             />
-            <br />
+            <br/>
         </div>
+        <a href="#" for="exampleInputEmail1">Restablecer contraseña</a> 
     </form>
 </div>
 <div *ngIf="formkind == 2">
