@@ -19,7 +19,6 @@
             />
             <br/>
         </div>
-        <a href="#" for="exampleInputEmail1">Restablecer contraseña</a> 
     </form>
 </div>
 <div *ngIf="formkind == 2">
@@ -30,32 +29,8 @@
             <input #pass type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
         </div>
     </div>
+    <div class="modal-footer mx-auto">
+		<input type="submit" value="Crear cuenta" class="btn btn-primary js-scroll-trigger" (click)="checkIn($event, name.value, email.value, pass.value)"
+		 id="button-style" />
+	</div>
 </div>
-<!--
-<form action="/login" method="post">
-    <div class="modal-content">
-        <div class="modal-header">
-            <div class="col-3">
-                <img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
-            </div>
-            <div class="col-6">
-                <h1 class="modal-title mt-3" id="exampleModalLongTitle">
-                    <strong>INGRESAR</strong>
-                </h1>
-            </div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="col-lg-8 mx-auto">
-                <input #email type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico"> 
-                <input #pass type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
-            </div>
-        </div>
-        <div class="modal-footer">
-            <input type="submit" value="Iniciar sesión" class="btn btn-primary" id="button-style" (click)="logIn($event, email.value, pass.value)"/>
-        </div>
-    </div>
-</form> 
--->

@@ -31,19 +31,4 @@ export class BodyIndexComponent {
       return  `with: ${reason}`;
     }
   }
-
-  checkIn(event: any,name: string, email: string, pass: string) {
-
-    //Aqui te registras teniendo los parametros name email y pass
-
-    event.preventDefault();
-
-    this.loginService.logIn(email, pass).subscribe(
-      user => {
-        console.log(user);
-        this.router.navigate(['/Home']);
-      },
-      error => alert('Invalid user or password')
-    );
-  }
  }

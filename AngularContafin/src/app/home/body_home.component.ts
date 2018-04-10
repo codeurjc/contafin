@@ -17,7 +17,7 @@ export class BodyHomeComponent {
     units: Unit[];
 
     constructor(private modalService: NgbModal,public loginService: LoginService/*, private service: UnitsService*/) {
-        this.loginService.isLoggedUser(); 
+        this.loginService.isLoggedUser();
      }
 
     

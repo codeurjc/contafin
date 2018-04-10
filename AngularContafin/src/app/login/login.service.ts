@@ -12,11 +12,24 @@ export class LoginService {
     isLogged = false;
     isAdmin = false;
     user: User;
-
     constructor(private http: Http) { }
 
     getLoggedUser() {
         return this.user;
+    }
+    getFluency(){
+        return this.user.fluency;
+    }
+    getExperience(){
+        return this.user.exp;
+    }
+
+    getDaily(){
+        return this.user.dailyGoal;
+    }
+
+    getGoal(){
+        return this.user.remainingGoals;
     }
 
     isLoggedUser() {
