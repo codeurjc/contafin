@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,6 +66,16 @@ public class UserRestController {
 			userComponent.setLoggedUser(user);
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		}
+	}
+	
+	@RequestMapping(value = "{id}/Progress", method = RequestMethod.GET)
+	public ResponseEntity<int[]> progress(@PathVariable long id) {
+		User user = userService.findById(id);
+		int[] progress = userService.progress(user);
+		// Update user data
+		user.setProgress(progress);
+		userService.updateUserData(user);
+		return new ResponseEntity<>(progress, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/Name", method = RequestMethod.PUT)
