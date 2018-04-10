@@ -1,63 +1,42 @@
-	<!--pop up sign in-->
-	<div class="modal fade" id="exampleModalLong" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalLongTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<form action="signup" method="post">
-				<div class="modal-content">
-					<div class="modal-header">
-						<div class="col-3">
-							<img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
-						</div>
-						<div class="col-6">
-							<h1 class="modal-title" id="exampleModalLongTitle">
-								<strong>REGÍSTRATE</strong>
-							</h1>
-						</div>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="col-lg-8 mx-auto">
-							<input type="text" class="form-control mt-3" id="roundregister"
-								name="name" placeholder=" Nombre" /> <input type="email"
-								class="form-control mt-3" id="roundregister"
-								aria-describedby="emailHelp" name="email"
-								placeholder="Correro electrónico"> <input
-								type="password" class="form-control mt-3" id="roundregister"
-								name="pass" placeholder="Contraseña">
-						</div>
-					</div>
-					<div class="modal-footer mx-auto">
-						<input type="submit" value="Crear cuenta" class="btn btn-primary"
-							id="button-style" />
-					</div>
-				</div>
-			</form>
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<div class="col-3">
+			<img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
 		</div>
+		<div class="col-6">
+			<h1 class="modal-title" id="exampleModalLongTitle">
+				<strong>REGÍSTRATE</strong>
+			</h1>
+		</div>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
 	</div>
+	<app-login [formkind]='kind'></app-login>
+	<div class="modal-footer mx-auto">
+		<input type="submit" value="Crear cuenta" class="btn btn-primary js-scroll-trigger" (click)="checkIn($event, name.value, email.value, pass.value)"
+		 id="button-style" />
+	</div>
+	<div class="modal-footer mx-auto">
+	</div>
+</ng-template>
 
-	<!-- For changing background modify img header.jpg -->
+<!-- For changing background modify img header.jpg -->
 
-	<header class="masthead text-center text-white d-flex">
-		<div class="container m-auto">
-			<div class="row">
-				<div class="col-sm-5 ">
-					<img src="../assets/Logo.png" class="img-fluid "
-						alt="Responsive image">
-				</div>
-				<div class="col-sm-7 align-self-center">
-					<h1 class="text-uppercase">
-						<h2>Diviértete aprendiendo contabilidad</h2>
-					</h1>
-					<hr>
-					<a id="button-style"
-						class="btn btn-primary btn-xl js-scroll-trigger" href="home">COMENZAR</a>
-					<a class="btn btn-primary btn-xl js-scroll-trigger"
-						data-toggle="modal" data-target="#exampleModalLong">REGÍSTRATE</a>
-				</div>
+<header class="masthead text-center text-white d-flex">
+	<div class="container m-auto">
+		<div class="row">
+			<div class="col-sm-5 ">
+				<img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
+			</div>
+			<div class="col-sm-7 align-self-center">
+				<h1 class="text-uppercase">
+					<h2>Diviértete aprendiendo contabilidad</h2>
+				</h1>
+				<hr>
+				<a id="button-style" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/home']">COMENZAR</a>
+				<a class="btn btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#exampleModalLong" (click)="open(content)">REGÍSTRATE</a>
 			</div>
 		</div>
-	</header>
+	</div>
+</header>

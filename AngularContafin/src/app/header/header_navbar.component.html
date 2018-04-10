@@ -1,115 +1,11 @@
-<!--<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-    <div class="container" id="rContent">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTaFIN</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div *ngIf='user==false' class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-            </ul>
-            <ul class="navbar-nav ml-auto pr-4">
-                <li class="nav-item dropdown pr-5">
-                    <a class="btn btn-primary nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">Ingresar</a>
-                    <div class="dropdown-menu round" aria-labelledby="navbarDropdownMenuLink">
-                        <div class="row">
-                            <div class="col-lg-12 "></div>
-                        </div>
-                        <div class="row">
-                            <div class=" ml-4 mr-4 col-sm-10 ">
-                                <form action="/" method="post">
-                                    <div class="form-group">
-                                        <label class="ml-3" for="exampleInputEmail1">o ingrese sus datos</label>
-                                        <input type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Usuario o correo">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="roundregister" name="pass" placeholder="Contraseña">
-                                    </div>
-                                    <div class="form-check">
-                                        <label class="mb-3 form-check-label">
-                                            <input type="checkbox" class="form-check-input">Recuerdame</label>
-                                    </div>
-                                    <div class="mb-3 service-box  text-center rounded text-white">
-                                        <input type="submit" value="Ingresar" class="btn btn-primary js-scroll-trigger" />
-                                        <br />
-
-
-                                    </div>
-                                    <a href="#" for="exampleInputEmail1">Restablecer contraseña
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div *ngIf='user' class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav navbar-left">
-                <li class="nav-item active">
-                    <a class="nav-link " href="home">Inicio
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li *ngIf='admin' class="nav-item mr-4">
-                    <a class="btn btn-primary js-scroll-trigger BG-" href="Admin/Home">ADMINISTRACIÓN</a>
-                </li>
-                <li>
-                    <img src="../../assets/profile.png" width="40" height="35" class="img-thumbnail">
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{name}}</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="User/Profile">Tu perfil</a>
-                        <a class="dropdown-item" href="User/Configuration">Configuración</a>
-                        <a class="dropdown-item" href="User/Goal">Fijar meta</a>
-                        <a class="dropdown-item" href="/logout">Cerrar Sesion</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger">
-                        <img src="../../assets/fire.png" width="25" height="23" class="d-inline-block align-top">
-                        <span class="badge badge-light">{{points}}</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger">
-                        <img src="../../assets/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top">
-                        <span class="badge badge-light">{{streak}}</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">CONTaFIN</a>
+        <a class="navbar-brand js-scroll-trigger" href="">CONTaFIN</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#about">Presentación</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#services">Lecciones</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#portfolio">Informacion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Contacto</a>
-                </li>
-            </ul>
             <ul class="navbar-nav ml-auto pr-4">
                 <li ngbDropdown autoClose="false" class="nav-item dropdown pr-5 d-inline-block">
                     <a class="btn btn-primary nav-link dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownBasic1"
@@ -120,7 +16,7 @@
                         </div>
                         <div class="row">
                             <div class=" ml-4 mr-4 col-sm-10 ">
-                                <app-login></app-login>
+                                <app-login [formkind]='kind'></app-login>
                             </div>
                         </div>
                     </div>
