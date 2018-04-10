@@ -15,17 +15,19 @@ export class BodyHomeComponent {
     kind1 = '1';
     kind2 = '2';
     units: Unit[];
+    a: object;
 
-    constructor(private modalService: NgbModal,public loginService: LoginService/*, private service: UnitsService*/) {
+    constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService) {
         this.loginService.isLoggedUser();
      }
 
     
     ngOnInit(){
-        /*this.service.getUnits().subscribe(
+        this.unitsService.getUnits().subscribe(
             units => this.units = units,
             error => console.log(error)
-        );*/
+        );
+        console.log(this.units);
     }
 
     open(content) {
