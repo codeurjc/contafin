@@ -51,7 +51,13 @@ public class WebController extends ContentController {
 
 		return "index";
 	}
-
+	
+	//Connect to Angular
+	@RequestMapping("/new")
+	public String connectToAngular() {
+		return "new/index.html";
+	}
+	
 	// Home page Controller
 
 	@RequestMapping("home")
