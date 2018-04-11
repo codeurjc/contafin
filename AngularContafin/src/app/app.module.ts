@@ -20,6 +20,8 @@ import { LessonComponent } from './lesson/lesson.component';
 
 import { routing } from './app.routing';
 import { UnitsService } from './unit/unit.service';
+import { UserService } from './user/user.service';
+
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { UnitsService } from './unit/unit.service';
   bootstrap: [AppComponent],
   providers: [
     LoginService,
+    UserService,
     UnitsService
+
   ]
 })
 export class AppModule { }

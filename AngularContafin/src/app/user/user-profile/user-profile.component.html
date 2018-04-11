@@ -5,13 +5,15 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
-                        <h1 class="card-header">Name</h1>
+                        <h1 class="card-header">
+                            <img src="https://localhost:8080/api/User/Photo" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
+                        </h1>
                         <div class="card-block mt-5">
                             <h3 class="card-title">
                                 <strong>Progreso semanal</strong>
                             </h3>
                             <div>
-                                <canvas id="myProgress"></canvas>
+                                <canvas id="myProgress">{{chart}}</canvas>
                             </div>
                         </div>
                     </div>
@@ -21,7 +23,7 @@
                         <h2 class="">NIVEL</h2>
 
                         <div class="card-block mt-3 mb-2">
-                            <h1 class="card-title text-warning">level</h1>
+                            <h1 class="card-title text-warning">{{loggedUser.level}}</h1>
                         </div>
                     </div>
                 </div>

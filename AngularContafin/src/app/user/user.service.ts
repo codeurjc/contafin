@@ -1,37 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Unit } from '../Interfaces/Unit/unit.model';
-import { Http } from '@angular/http';
-
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 const BASE_URL = 'https://localhost:8080/api/User';
 
+
 @Injectable()
-export class UserService{
+export class UserService {
 
-    constructor (private http: Http){
+    constructor(private http: Http) {
 
     }
 
-    getUser(){
-        let url = BASE_URL + "/Name";
-        this.http.get(url).subscribe(
-            response => {
-                let user = response.json();
-            },
-            error => console.log(error)
-        );
-        console.log(name);
+    getProgress(id: number): Observable<number[]> {
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true, headers });
+
+        return this.http.get(BASE_URL + '/' + id + '/Progress', options)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
     }
 
-    getUserName(){
-        let url = BASE_URL + "/Name";
-        this.http.get(url).subscribe(
-            response => {
-                let name = response.json();
-            },
-            error => console.log(error)
-        );
-        console.log(name);
+    private handleError(error: any) {
+        console.error(error);
+        return Observable.throw('Server error (' + error.status + '): ' + error.text());
     }
 
 }
