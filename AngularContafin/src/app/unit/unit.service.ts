@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
-
 import { Unit } from '../Interfaces/Unit/unit.model';
 
-const BASE_URL = 'http://127.0.0.1:8080/api/Unit/';
-const URL = 'https://localhost:8080/api/Unit/';
+const BASE_URL = environment.apiBase + '/Unit/';
 
 @Injectable()
 export class UnitsService {
@@ -14,7 +13,7 @@ export class UnitsService {
 	constructor(private http: Http) { }
 
 	getUnits() {
-		return this.http.get(URL)
+		return this.http.get(BASE_URL)
 			.map(response => response.json().content)
 			.catch(error => this.handleError(error));
 	}

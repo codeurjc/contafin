@@ -1,9 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { User } from '../Interfaces/User/user.model';
 import { Http, RequestOptions, Headers } from '@angular/http';
+import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 
-const URL = 'https://localhost:8080/api';
+const URL = environment.apiBase;
 
 
 @Injectable()
