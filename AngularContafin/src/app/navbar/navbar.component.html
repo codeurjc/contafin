@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger">CONTaFIN</a>
+        <a class="navbar-brand js-scroll-trigger" [routerLink]="['/home']">CONTaFIN</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-left">
                 <li class="nav-item active">
-                    <a class="nav-link ">Inicio
+                    <a class="nav-link" [routerLink]="['/home']">Inicio
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -17,10 +17,10 @@
                 <li *ngIf="isAdmin" class="nav-item mr-4">
                     <a class="btn btn-primary js-scroll-trigger text-light">ADMINISTRACIÓN</a>
                 </li>
-                
+
                 <li>
                     <img src="https://localhost:8080/api/User/Photo" width="40" height="35" class="img-thumbnail">
-                </li> 
+                </li>
                 <li ngbDropdown class="nav-item">
                     <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
