@@ -26,6 +26,7 @@ export class BodyHomeComponent {
             units => this.units = units,
             error => console.log(error)
         );
+        console.log(this.units);
     }
 
     open(content) {

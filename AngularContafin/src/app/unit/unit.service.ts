@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 import { Unit } from '../Interfaces/Unit/unit.model';
 
 const BASE_URL = 'http://127.0.0.1:8080/api/Unit/';
-const URL = 'http://localhost:8080/api/Unit/';
+const URL = 'https://localhost:8080/api/Unit/';
 
 @Injectable()
 export class UnitsService {
