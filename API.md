@@ -1251,7 +1251,7 @@ The following queries will be preceded by /Unit.
 
 	**Code:** 404 NOT FOUND
 	
-### Check if a lesson is completed
+### To complete the lesson when all exercises are done
 
 * ##### URL:
 
@@ -1283,6 +1283,9 @@ The following queries will be preceded by /Unit.
 * ##### Error response:
 
 	**Code:** 404 NOT FOUND
+
+### FALTA METER LA CONSULTA PARA SABER SI LA LECCIÓN ESTÁ YA COMPLETADA
+
 
 
 ## Exercise
