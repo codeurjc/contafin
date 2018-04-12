@@ -64,6 +64,19 @@ public class UserRestController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/{id}/Data", method = RequestMethod.PUT)
+	public ResponseEntity<User> updateUserData(@PathVariable long id, @RequestBody User updatedUser) {
+			User user = userService.findById(id);
+			user = userService.updateUser(user, updatedUser);
+			if (!user.equals(null)) {
+				userComponent.setLoggedUser(user);
+				return new ResponseEntity<>(user, HttpStatus.OK);
+				
+			} else {
+				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			}
+	}
+	
 	@RequestMapping(value = "/{id}/Progress", method = RequestMethod.GET)
 	public ResponseEntity<int[]> progress(@PathVariable long id) {
 		User user = userService.findById(id);

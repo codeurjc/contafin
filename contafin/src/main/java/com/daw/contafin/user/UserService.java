@@ -98,4 +98,20 @@ public class UserService {
 		}
 	}
 	
+	public User updateUser(User user, User updatedUser) {
+		if (updatedUser.getName().isEmpty() && updatedUser.getEmail().isEmpty() && updatedUser.getPasswordHash().isEmpty()) {
+			return null;
+		} else {
+			if (!updatedUser.getName().isEmpty()) {
+				user.setName(updatedUser.getName());
+			}
+			if (!updatedUser.getEmail().isEmpty()) {
+				user.setEmail(updatedUser.getEmail());
+			}
+			updateUserData(user);
+			userComponent.setLoggedUser(user);
+			return user;
+		}
+	}
+	
 }
