@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'lesson',
@@ -6,4 +7,11 @@ import { Component } from '@angular/core';
         './lesson.component.html'
 })
 export class LessonComponent {
- }
+
+    id: number;
+
+    constructor(activatedRoute: ActivatedRoute) {
+        let id = activatedRoute.snapshot.params['id'];
+        this.id =id;
+    }
+}

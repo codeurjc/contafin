@@ -20,11 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
+import com.daw.contafin.completedExercise.CompletedExerciseService;
+import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.unit.Unit.UnitBassic;
+import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -43,6 +46,12 @@ public class UnitRestController{
 
 	@Autowired
 	private ExerciseService exerciseService;
+	
+	@Autowired
+	CompletedLessonService completedLessonService;
+	
+	@Autowired
+	CompletedExerciseService completedExerciseService;
 	
 	
 	@Autowired
@@ -207,6 +216,28 @@ public class UnitRestController{
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 	}
+	/*@RequestMapping(value = "/{idunit}/Completed", method = RequestMethod.GET)
+	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {
+		User user = userComponent.getLoggedUser();
+		
+		Unit unit = unitService.findById(idunit);
+		List<Lesson> lessons = lessonService.findByUnit(unit);
+		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
+		int numExercisesCompleted1 = completedExerciseService.numExercisesCompleted(lessons.get(0).getId(), idunit, user);
+		int numExercisesCompleted2 = completedExerciseService.numExercisesCompleted(lessons.get(1).getId(), idunit, user);
+		int numExercisesCompleted3 = completedExerciseService.numExercisesCompleted(lessons.get(2).getId(), idunit, user);
+		
+		lessonService.completedLesson(user,(int)lessons.get(0).getId(), idunit, numExercisesCompleted1);
+		lessonService.completedLesson(user, (int)lessons.get(1).getId(), idunit, numExercisesCompleted2);
+		lessonService.completedLesson(user, (int)lessons.get(2).getId(), idunit, numExercisesCompleted3);
+		int numExercisesCompleted = numExercisesCompleted1+numExercisesCompleted2+numExercisesCompleted3;
+		//Update user data
+		if (numExercisesCompleted == 12) {
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(false, HttpStatus.OK);
+		}
+	}*/
 }
 
 /*

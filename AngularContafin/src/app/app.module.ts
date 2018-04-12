@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { HeaderNavbarComponent } from './header/header_navbar.component';
 import { BodyIndexComponent } from './index/body_index.component';
 import { BodyHomeComponent } from './home/body_home.component';
+import { BodyLessonComponent } from './lesson/body_lesson.component';
+
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
@@ -44,7 +46,9 @@ import { AdminService } from './admin/admin.service';
     UserConfigurationComponent,
     IndexComponent,
     HomeComponent,
-    LessonComponent
+    LessonComponent,
+    BodyLessonComponent
+
   ],
   imports: [
     BrowserModule, 
