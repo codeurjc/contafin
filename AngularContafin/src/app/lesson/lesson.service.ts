@@ -5,8 +5,7 @@ import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 import { Lesson } from '../Interfaces/Lesson/lesson.model';
 
-const BASE_URL = environment.apiBase + '/Lessons/';
-const BASE_URL2 = environment.apiBase + '/Unit/';
+const BASE_URL = environment.apiBase + '/Unit/';
 
 @Injectable()
 export class LessonsService {
@@ -14,29 +13,36 @@ export class LessonsService {
 	constructor(private http: Http) { }
 
 	getLessons() {
-		return this.http.get(BASE_URL)
+		return this.http.get(BASE_URL + 'Lessons/')
 			.map(response => response.json().content)
 			.catch(error => this.handleError(error));
 	}
 
     //Get Lessons of the unit with its id
-    getUnitAndLessons(id:number){
-		return this.http.get(BASE_URL2 + id + '/Lesson/')
+    getLessonsOfUnit(id:number) {
+		return this.http.get(BASE_URL + id + '/Lesson/')
 			.map(response => response.json().content)
 			.catch(error => this.handleError(error));
 	}
 
     //Need the unit id and lesson id
 	getLesson(idUnit: number, idLesson:number) {
-		return this.http.get(BASE_URL2 + idUnit +'/Lesson/'+idLesson )
+		return this.http.get(BASE_URL + idUnit +'/Lesson/'+idLesson )
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
 
 	changeNameLesson(idUnit: number, idLesson:number, name:string) {
-		return this.http.put(BASE_URL2 + idUnit +'/Lesson/'+idLesson, name)
+		return this.http.put(BASE_URL + idUnit +'/Lesson/'+idLesson, name)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
+	}
+
+	//To know if a lesson is completed
+	isCompleted(idUnit: number, idLesson:number) {
+		return this.http.get(BASE_URL + idUnit +'/Lesson/'+ idLesson + '/Completed')
+		.map(response => response.json())
+		.catch(error => this.handleError(error));
 	}
 
 	private handleError(error: any) {
