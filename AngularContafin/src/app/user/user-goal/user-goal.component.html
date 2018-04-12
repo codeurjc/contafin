@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="mt-4">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-8 ">
+            <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
+              <div *ngIf="noGoal" class="container">
+                <div class="alert alert-danger mt-2" role="alert">
+                  <strong>¡Error al fija una meta!</strong> No has seleccionado ninguna opción.
+                </div>
+              </div>
+              <div class="col-lg-10 mx-auto">
+                <h3 class="text-uppercase">
+                  <strong>¡Vamos a marcarnos una meta!</strong>
+                </h3>
+                <hr>
+              </div>
+              <form>
+                <div class="col-lg-8 mx-auto">
+                  <h5 class="text-faded mt-5 mb-5 text-dark">
+                    <input [(ngModel)]="updatedUser.dailyGoal" type="radio" name="goal" value="1" id="1" /> Relajado - Una lección al día
+                  </h5>
+                  <h5 class="text-faded mb-5 text-dark">
+                    <input [(ngModel)]="updatedUser.dailyGoal" type="radio" name="goal" value="3" id="3" /> Normal - Tres lecciones al día
+                  </h5>
+                  <h5 class="text-faded mb-5 text-dark">
+                    <input [(ngModel)]="updatedUser.dailyGoal" type="radio" name="goal" value="5" id="5" /> Serio - Cinco lecciones al día
+                  </h5>
+                  <h5 class="text-faded mb-5 text-dark">
+                    <input [(ngModel)]="updatedUser.dailyGoal" type="radio" name="goal" value="7" id="7" /> Intenso - Siete lecciones al día
+                  </h5>
+                  <input type="submit" value="Fijar Objetivo" class="btn btn-primary js-scroll-trigger" (click)="updateUser()"/>
+                  <br />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-sm-4 ">
+            <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
+              <h1 class="card-header bg-white">
+                <img src="https://localhost:8080/api/User/Photo" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
