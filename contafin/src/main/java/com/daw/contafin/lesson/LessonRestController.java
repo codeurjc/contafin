@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.daw.contafin.ImageService;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLessonService;
+import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
@@ -118,6 +119,19 @@ public class LessonRestController{
 		//Update user data
 		lessonService.completedLesson(user, idlesson, idunit, numExercisesCompleted);
 		if (numExercisesCompleted == 4) {
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(false, HttpStatus.OK);
+		}
+
+	}
+	
+	@RequestMapping(value = "/{idunit}/Lesson/{idlesson}/isCompleted", method = RequestMethod.GET)
+	public ResponseEntity<Boolean> isCompletedLesson(@PathVariable int idunit, @PathVariable int idlesson) {
+		User user = userComponent.getLoggedUser();
+		Lesson lesson = lessonService.findById(idlesson);
+		CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lesson);
+		if (completedLesson != null) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(false, HttpStatus.OK);

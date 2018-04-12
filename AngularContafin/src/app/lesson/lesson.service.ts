@@ -38,13 +38,20 @@ export class LessonsService {
 			.catch(error => this.handleError(error));
 	}
 
-	//To know if a lesson is completed
-	isCompleted(idUnit: number, idLesson:number) {
+	//To complete a lesson when the exercises are done.
+	completeLesson(idUnit: number, idLesson:number) {
 		return this.http.get(BASE_URL + idUnit +'/Lesson/'+ idLesson + '/Completed')
 		.map(response => response.json())
 		.catch(error => this.handleError(error));
 	}
 
+	//To know if a Lesson is completed.
+	isCompleted(idUnit: number, idLesson:number) {
+		return this.http.get(BASE_URL + idUnit +'/Lesson/'+ idLesson + '/isCompleted')
+		.map(response => response.json())
+		.catch(error => this.handleError(error));
+	}
+	
 	private handleError(error: any) {
 		console.error(error);
 		return Observable.throw("Server error (" + error.status + "): " + error.text())
