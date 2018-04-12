@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
+import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.exercise.Exercise;
@@ -216,28 +217,27 @@ public class UnitRestController{
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 	}
-	/*@RequestMapping(value = "/{idunit}/Completed", method = RequestMethod.GET)
+	@RequestMapping(value = "/{idunit}/isCompleted", method = RequestMethod.GET)
 	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {
 		User user = userComponent.getLoggedUser();
 		
 		Unit unit = unitService.findById(idunit);
 		List<Lesson> lessons = lessonService.findByUnit(unit);
 		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
-		int numExercisesCompleted1 = completedExerciseService.numExercisesCompleted(lessons.get(0).getId(), idunit, user);
-		int numExercisesCompleted2 = completedExerciseService.numExercisesCompleted(lessons.get(1).getId(), idunit, user);
-		int numExercisesCompleted3 = completedExerciseService.numExercisesCompleted(lessons.get(2).getId(), idunit, user);
-		
-		lessonService.completedLesson(user,(int)lessons.get(0).getId(), idunit, numExercisesCompleted1);
-		lessonService.completedLesson(user, (int)lessons.get(1).getId(), idunit, numExercisesCompleted2);
-		lessonService.completedLesson(user, (int)lessons.get(2).getId(), idunit, numExercisesCompleted3);
-		int numExercisesCompleted = numExercisesCompleted1+numExercisesCompleted2+numExercisesCompleted3;
-		//Update user data
-		if (numExercisesCompleted == 12) {
+		int count = 0;
+		for(int i=0; i<lessons.size(); i++) {
+			CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+			if(completedLesson != null) {
+				count++;
+			}
+		}
+				
+		if (count == 3) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(false, HttpStatus.OK);
 		}
-	}*/
+	}
 }
 
 /*
