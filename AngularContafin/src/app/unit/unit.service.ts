@@ -32,6 +32,13 @@ export class UnitsService {
 			.catch(error => this.handleError(error));
 	}
 
+	//Number of completed Lessons in a unit (int)
+	numberOfCompletedLessons(id: number) {
+		return this.http.get(BASE_URL + id + '/numberOfCompletedLessons')
+			.map(response => response.json())
+			.catch(error => this.handleError(error));
+	}
+
 	//Need the unit with its lessons and exercises
 	addUnit(unit: Unit) {
 		return this.http.post(BASE_URL, unit)
