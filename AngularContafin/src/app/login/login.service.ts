@@ -18,6 +18,9 @@ export class LoginService {
     getLoggedUser() {
         return this.user;
     }
+    setLoggedUser(user:User){
+        this.user = user;
+    }
     getFluency(){
         return this.user.fluency;
     }

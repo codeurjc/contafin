@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 import { User } from '../Interfaces/User/user.model';
 
-const BASE_URL = 'https://localhost:8080/api/User';
+const BASE_URL = environment.apiBase + '/User';
 
 
 @Injectable()
@@ -16,7 +17,6 @@ export class UserService {
     }
 
     getUser(id: number) {
-
         const headers = new Headers({
             'X-Requested-With': 'XMLHttpRequest'
         });
@@ -28,6 +28,32 @@ export class UserService {
                 return this.user;
             })
             .catch(error => this.handleError(error));
+    }
+
+    updateUser(id: number, updatedUser: User) {
+        const headers = new Headers({
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true, headers });
+
+        return this.http.put(BASE_URL + '/' + id + '/Data', updatedUser, options)
+            .map(user => user.json())
+            .catch(error => this.handleError(error));
+    }
+
+    setGoal(id: number, goal: number) {
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true, headers });
+
+
+        return this.http.put(BASE_URL + '/' + id + '/Goal', options)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+
 
     }
 

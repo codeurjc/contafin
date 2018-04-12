@@ -20,7 +20,22 @@ export class UserConfigurationComponent implements OnInit {
   public image: FormData;
   public noImage: boolean;
   public noData: boolean;
-
+  private updatedUser: User = {
+    id: 0,
+    name: "",
+    email: "",
+    passwordHash: "",
+    level: 1,
+    points: 0,
+    streak: 0,
+    fluency: 0,
+    lastConnection: "-",
+    lastUnit: 0,
+    lastLesson: 0,
+    exp: 0,
+    needexp: 10,
+    roles: [],
+  };
 
   constructor(private router: Router, private loginService: LoginService, private userService: UserService) {
     this.loggedUser = loginService.getLoggedUser();
@@ -31,6 +46,20 @@ export class UserConfigurationComponent implements OnInit {
   }
 
   //Other methods
+  updateUser() {
+    this.userService.updateUser(this.loggedUser.id, this.updatedUser)
+      .subscribe(
+        user => {
+          this.loginService.setLoggedUser(user);
+          this.router.navigate(['/User/Configuration']);
+          this.noData = false;
+          this.updateUser = null;
+        },
+        error => {
+          this.noData = true;
+        }
+      )
+  }
 
   selectFile(event) {
     const file = event.target.files;
@@ -43,7 +72,7 @@ export class UserConfigurationComponent implements OnInit {
       this.userService.uploadImage(this.loggedUser.id, this.image)
         .subscribe(
           response => {
-          this.router.navigate(['/User/Configuration']);
+            this.router.navigate(['/User/Configuration']);
           },
           error => console.error('Error al subir la imagen:' + error)
         );
