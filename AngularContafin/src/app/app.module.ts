@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserConfigurationComponent } from './user/user-configuration/user-configuration.component';
+import { UserGoalComponent } from './user/user-goal/user-goal.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
@@ -39,6 +40,7 @@ import { AdminService } from './admin/admin.service';
     LoginComponent,
     NavBarComponent,
     UserProfileComponent,
+    UserGoalComponent,
     UserConfigurationComponent,
     IndexComponent,
     HomeComponent,

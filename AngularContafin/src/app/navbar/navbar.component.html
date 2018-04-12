@@ -26,8 +26,8 @@
                     <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" [routerLink]="['/User/Profile']">Tu perfil</a>
                         <a class="dropdown-item" [routerLink]="['/User/Configuration']">Configuración</a>
-                        <a class="dropdown-item">Fijar meta</a>
-                        <a class="dropdown-item" (click)="logOut()">Cerrar Sesión</a>
+                        <a class="dropdown-item" [routerLink]="['/User/Goal']">Fijar meta</a>
+                        <a class="dropdown-item" [routerLink]="['/']" (click)="logOut()">Cerrar Sesión</a>
                     </div>
                 </li>
                 <li class="nav-item">
