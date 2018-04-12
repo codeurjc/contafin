@@ -28,6 +28,10 @@ import { ExerciseService } from './exercise/exercise.service';
 import { AdminService } from './admin/admin.service';
 
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent, 

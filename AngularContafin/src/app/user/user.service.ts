@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../../environments/environment';
 import { User } from '../Interfaces/User/user.model';
 
-const BASE_URL = environment.apiBase + '/User';
+const BASE_URL = 'https://localhost:8080/api/User';
 
 
 @Injectable()
