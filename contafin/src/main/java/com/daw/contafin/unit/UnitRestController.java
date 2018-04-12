@@ -238,6 +238,25 @@ public class UnitRestController{
 			return new ResponseEntity<>(false, HttpStatus.OK);
 		}
 	}
+	
+	@RequestMapping(value = "/{idunit}/numberOfCompletedLessons", method = RequestMethod.GET)
+	public ResponseEntity<Integer> numberOfCompletedLesson(@PathVariable int idunit) {
+		User user = userComponent.getLoggedUser();
+		
+		Unit unit = unitService.findById(idunit);
+		List<Lesson> lessons = lessonService.findByUnit(unit);
+		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
+		int count = 0;
+		for(int i=0; i<lessons.size(); i++) {
+			CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+			if(completedLesson != null) {
+				count++;
+			}
+		}
+				
+		return new ResponseEntity<>(count, HttpStatus.OK);
+	}
+		
 }
 
 /*
