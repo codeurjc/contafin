@@ -53,22 +53,18 @@ public class UserRestController {
 
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<User> profile() {
-		if (!userComponent.isLoggedUser()) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else {
-			User user = userComponent.getLoggedUser();
-			int [] progress = userService.progress(user);
-			//Update user data
-			user.setProgress(progress);
-			userService.updateUserData(user);
-			userComponent.setLoggedUser(user);
-			return new ResponseEntity<>(user, HttpStatus.OK);
-		}
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<User> profile(@PathVariable long id) {
+		User user = userService.findById(id);
+		int[] progress = userService.progress(user);
+		// Update user data
+		user.setProgress(progress);
+		userService.updateUserData(user);
+		userComponent.setLoggedUser(user);
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "{id}/Progress", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/Progress", method = RequestMethod.GET)
 	public ResponseEntity<int[]> progress(@PathVariable long id) {
 		User user = userService.findById(id);
 		int[] progress = userService.progress(user);
@@ -150,28 +146,25 @@ public class UserRestController {
 		}
 	}
 
-	@RequestMapping(value = "/Photo", method = RequestMethod.POST)
-	public ResponseEntity<Boolean> profilePhoto(@RequestParam("file") MultipartFile file) {
-		if (!userComponent.isLoggedUser()) {
-			return new ResponseEntity<>(false,HttpStatus.UNAUTHORIZED);
-		} else {
-			if (!file.isEmpty()) {
-				User user = userComponent.getLoggedUser();
-				// Upload image
-				byte[] bytes;
-				try {
-					bytes = imageService.uploadImage(file);
-					// Update the user's data
-					user.setImage(bytes);
-					userService.updateUserData(user);
-					userComponent.setLoggedUser(user);
-					return new ResponseEntity<>(true, HttpStatus.OK);
-				} catch (IOException e) {
-					return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-				}
-			} else {
-				return new ResponseEntity<>(false,HttpStatus.INTERNAL_SERVER_ERROR);
+	@RequestMapping(value = "/{id}/Photo", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> profilePhoto(@PathVariable long id, @RequestParam("file") MultipartFile file) {
+		if (!file.isEmpty()) {
+			User user = userService.findById(id);
+			// Upload image
+			byte[] bytes;
+			try {
+				bytes = imageService.uploadImage(file);
+				// Update the user's data
+				user.setImage(bytes);
+				userService.updateUserData(user);
+				userComponent.setLoggedUser(user);
+				return new ResponseEntity<>(true, HttpStatus.OK);
+			} catch (IOException e) {
+				return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
+		} 
+		else {
+			return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

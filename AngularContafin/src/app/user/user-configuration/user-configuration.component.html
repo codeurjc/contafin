@@ -1,0 +1,102 @@
+<app-navbar></app-navbar>
+<div class="mt-4">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-8 ">
+            <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
+              <div class="container">
+                <p *ngIf="false">
+                  <ngb-alert class="alert alert-danger mt-2" role="alert" type="danger">
+                    <strong>¡Error al guardar los cambios</strong> No has introducido ningún cambio.
+                  </ngb-alert>
+                </p>
+              </div>
+              <div class="container">
+                <p *ngIf="noImage">
+                  <ngb-alert [type]="danger" [dismissible]="false" class="mt-2">
+                    <strong>¡Error al guardar la imagen!</strong> No has seleccionado ninguna imagen.
+                  </ngb-alert>
+                </p>
+              </div>
+              <form>
+                <div class="row">
+                  <div class=" col-sm-8 mt-5">
+                    <h3>Configuración de la cuenta</h3>
+                  </div>
+                  <div class=" col-sm-3 mt-5">
+                    <input type="submit" value="Guardar cambios" class="btn btn-primary js-scroll-trigger" />
+                    <br />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class=" col-sm-3 mt-5">
+                    <h5>Usuario:</h5>
+                  </div>
+                  <div class=" col-sm-8 mt-5">
+                    <h5>
+                      <input type="text" class="form-control" id="roundregister" name="newName"[placeholder]="loggedUser.name">
+                    </h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class=" col-sm-3 mt-5">
+                    <h5>Correo:</h5>
+                  </div>
+                  <div class=" col-sm-8 mt-5">
+                    <h5>
+                      <input type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="newEmail" [placeholder]="loggedUser.email">
+                    </h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class=" col-sm-3 mt-5">
+                    <h5>Nueva contraseña:</h5>
+                  </div>
+                  <div class=" col-sm-8 mt-5">
+                    <h5>
+                      <input type="password" class="form-control" id="roundregister" name="newPass" placeholder="Nueva contraseña">
+                    </h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class=" col-sm-3 mt-5">
+                    <h5>Antigua contraseña:</h5>
+                  </div>
+                  <div class=" col-sm-8 mt-5">
+                    <h5>
+                      <input required type="password" class="form-control" id="roundregister" name="newPass" placeholder="Antigua contraseña">
+                    </h5>
+                  </div>
+                </div>
+              </form>
+              <form  enctype="multipart/form-data">
+                <div class="row">
+                  <div class=" col-sm-3 mt-5">
+                    <h5>Imagen:</h5>
+                  </div>
+                  <div class=" col-sm-8 mt-5">
+                    <h6>
+                      <input file-model="file" id="inputTipe" type="file" class="text-center text-secondary" name="file" (change)="selectFile($event)" multiple/>
+                    </h6>
+                    <h5>
+                      <input type="submit" id="button-style" class="btn btn-primary js-scroll-trigger mt-2" value="Enviar" (click)="uploadImage();"/>
+                    </h5>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-sm-4 ">
+            <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
+              <h1 class="card-header bg-white">
+                <img src="https://localhost:8080/api/User/Photo" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}} 
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

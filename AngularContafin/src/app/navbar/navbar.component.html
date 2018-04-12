@@ -25,7 +25,7 @@
                     <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
                     <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" [routerLink]="['/User/Profile']">Tu perfil</a>
-                        <a class="dropdown-item">Configuración</a>
+                        <a class="dropdown-item" [routerLink]="['/User/Configuration']">Configuración</a>
                         <a class="dropdown-item">Fijar meta</a>
                         <a class="dropdown-item" (click)="logOut()">Cerrar Sesión</a>
                     </div>

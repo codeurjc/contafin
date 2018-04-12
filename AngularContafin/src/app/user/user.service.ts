@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { User } from '../Interfaces/User/user.model';
 
 const BASE_URL = 'https://localhost:8080/api/User';
 
@@ -8,8 +9,38 @@ const BASE_URL = 'https://localhost:8080/api/User';
 @Injectable()
 export class UserService {
 
+    public user: User;
+
     constructor(private http: Http) {
 
+    }
+
+    getUser(id: number) {
+
+        const headers = new Headers({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true });
+
+        return this.http.get(BASE_URL + '/' + id, options)
+            .map(response => {
+                this.user = response.json();
+                return this.user;
+            })
+            .catch(error => this.handleError(error));
+
+    }
+
+    uploadImage(id: number, formData) {
+        const headers = new Headers({
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true, headers });
+
+        return this.http.post(BASE_URL + '/' + id + '/Photo', formData, options)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
     }
 
     getProgress(id: number): Observable<number[]> {
