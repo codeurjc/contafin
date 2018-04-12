@@ -34,7 +34,7 @@ export class UnitsService {
 
 	//No va
 	/*uploadImages(id: number, images: Array<Images>) {
-		return this.http.post(BASE_URL+ id +"/Images", images)
+		return this.http.post(BASE_URL+ id +'/Images', images)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}*/
