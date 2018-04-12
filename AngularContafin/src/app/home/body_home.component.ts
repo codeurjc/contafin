@@ -3,6 +3,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitsService } from '../unit/unit.service';
 import { Unit } from '../Interfaces/Unit/unit.model';
 import { LoginService } from '../login/login.service';
+import { useAnimation } from '@angular/core/src/animation/dsl';
 
 @Component({
     selector: 'body_home',
@@ -15,8 +16,10 @@ export class BodyHomeComponent {
     kind1 = '1';
     kind2 = '2';
     units: Unit[];
+    unitIsCompleted: Boolean[] = [];
+    bool:boolean;
 
-    constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService,) {
+    constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService) {
         this.loginService.isLoggedUser();
      }
 
@@ -26,6 +29,22 @@ export class BodyHomeComponent {
             units => this.units = units,
             error => console.log(error)
         );
+    }
+    /*pulsar(){
+        console.log(this.units);
+        for (let i = 0; i < this.units.length; i++) {
+            this.unitIsCompleted.push(this.isCompleted(i));
+            console.log(this.isCompleted(i));
+        }
+        console.log(this.unitIsCompleted);
+    }*/
+
+    isCompleted(id:number){
+        this.unitsService.isCompleted(id).subscribe(
+            bool => this.bool = bool,
+            error => console.log(error)
+        );
+        return this.bool;
     }
 
     open(content) {
