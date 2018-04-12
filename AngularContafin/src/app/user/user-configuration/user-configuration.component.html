@@ -7,18 +7,18 @@
           <div class="col-sm-8 ">
             <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
               <div class="container">
-                <p *ngIf="false">
-                  <ngb-alert class="alert alert-danger mt-2" role="alert" type="danger">
+                <div *ngIf="noData" class="container">
+                  <div class="alert alert-danger mt-2" role="alert">
                     <strong>¡Error al guardar los cambios</strong> No has introducido ningún cambio.
-                  </ngb-alert>
-                </p>
+                  </div>
+                </div>
               </div>
               <div class="container">
-                <p *ngIf="noImage">
-                  <ngb-alert [type]="danger" [dismissible]="false" class="mt-2">
+                <div *ngIf="noImage" class="container">
+                  <div class="alert alert-danger mt-2" role="alert">
                     <strong>¡Error al guardar la imagen!</strong> No has seleccionado ninguna imagen.
-                  </ngb-alert>
-                </p>
+                  </div>
+                </div>
               </div>
               <form>
                 <div class="row">
