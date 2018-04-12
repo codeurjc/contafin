@@ -16,7 +16,7 @@ export class BodyHomeComponent {
     kind2 = '2';
     units: Unit[];
 
-    constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService) {
+    constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService,) {
         this.loginService.isLoggedUser();
      }
 
@@ -26,7 +26,6 @@ export class BodyHomeComponent {
             units => this.units = units,
             error => console.log(error)
         );
-        console.log(this.units);
     }
 
     open(content) {
