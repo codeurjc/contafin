@@ -99,6 +99,15 @@ public class UserService {
 	}
 	
 	public User updateUser(User user, User updatedUser) {
+		//Change goal
+		if(updatedUser.getDailyGoal() !=0) {
+			user.setDailyGoal(updatedUser.getDailyGoal());
+			user.setRemainingGoals(updatedUser.getDailyGoal());
+			updateUserData(user);
+			userComponent.setLoggedUser(user);
+			return user;
+		}
+		//Change name, email or password
 		if (updatedUser.getName().isEmpty() && updatedUser.getEmail().isEmpty() && updatedUser.getPasswordHash().isEmpty()) {
 			return null;
 		} else {
