@@ -25,6 +25,13 @@ export class UnitsService {
 			.catch(error => this.handleError(error));
 	}
 
+	//To know if a unit is completed
+	isCompleted(id: number) {
+		return this.http.get(BASE_URL + id + '/isCompleted')
+			.map(response => response.json())
+			.catch(error => this.handleError(error));
+	}
+
 	//Need the unit with its lessons and exercises
 	addUnit(unit: Unit) {
 		return this.http.post(BASE_URL, unit)
