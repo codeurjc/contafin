@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { HeaderNavbarComponent } from './header/header_navbar.component';
 import { BodyIndexComponent } from './index/body_index.component';
 import { BodyHomeComponent } from './home/body_home.component';
-import { LoginService } from './login/login.service';
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
@@ -18,11 +17,18 @@ import { UserConfigurationComponent } from './user/user-configuration/user-confi
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
-
-
 import { routing } from './app.routing';
+
+//Services
 import { UnitsService } from './unit/unit.service';
+import { LoginService } from './login/login.service';
 import { UserService } from './user/user.service';
+import { LessonsService } from './lesson/lesson.service';
+import { ExerciseService } from './exercise/exercise.service';
+import { AdminService } from './admin/admin.service';
+
+
+
 
 
 
@@ -54,8 +60,10 @@ import { UserService } from './user/user.service';
   providers: [
     LoginService,
     UserService,
-    UnitsService
-
+    UnitsService,
+    LessonsService,
+    ExerciseService,
+    AdminService,
   ]
 })
 export class AppModule { }
