@@ -11,6 +11,7 @@ import { HeaderNavbarComponent } from './header/header_navbar.component';
 import { BodyIndexComponent } from './index/body_index.component';
 import { BodyHomeComponent } from './home/body_home.component';
 import { BodyLessonComponent } from './lesson/body_lesson.component';
+import { BodyExerciseComponent } from './exercise/body_exercise.component';
 
 import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './navbar/navbar.component';
@@ -18,6 +19,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { UserConfigurationComponent } from './user/user-configuration/user-configuration.component';
 import { UserGoalComponent } from './user/user-goal/user-goal.component';
 import { HomeComponent } from './home/home.component';
+import { ExerciseComponent } from './exercise/exercise.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { routing } from './app.routing';
@@ -29,6 +31,7 @@ import { UserService } from './user/user.service';
 import { LessonsService } from './lesson/lesson.service';
 import { ExerciseService } from './exercise/exercise.service';
 import { AdminService } from './admin/admin.service';
+
 
 
 @NgModule({
@@ -45,7 +48,9 @@ import { AdminService } from './admin/admin.service';
     IndexComponent,
     HomeComponent,
     LessonComponent,
-    BodyLessonComponent
+    BodyLessonComponent,
+    ExerciseComponent,
+    BodyExerciseComponent
 
   ],
   imports: [

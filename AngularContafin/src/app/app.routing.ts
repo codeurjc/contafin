@@ -6,6 +6,7 @@ import { UserGoalComponent } from './user/user-goal/user-goal.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
+import { ExerciseComponent } from './exercise/exercise.component';
 
 const appRoutes = [
   { path: 'login', component: LoginComponent},
@@ -14,7 +15,8 @@ const appRoutes = [
   { path: 'User/Goal', component: UserGoalComponent},
   { path: '', component: IndexComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'Unit/:id/Lessons', component: LessonComponent }
+  { path: 'Unit/:id/Lessons', component: LessonComponent },
+  { path: 'Unit/:id/Lessons/:idlesson/', component: ExerciseComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

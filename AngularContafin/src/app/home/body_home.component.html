@@ -10,13 +10,13 @@
 							<h5 class="text-black text-center mt-5">Nivel 1</h5>
 							<div class="row justify-content-around">
 								<div *ngFor="let unit of units" class="col-lg-6 col-md-6 ">
-									<div *ngIf="true" class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
+									<div *ngIf="false" class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
 										<a class="col-lg-5" [routerLink]="['/Unit',unit.id,'Lessons']" id="selectLesson">
 											<h2 class="text-white ">{{unit.name}}</h2>
 											<h2 class="text-muted mt-4">0/3</h2>
 										</a>
 									</div>
-									<div *ngIf="false" class="service-box mt-5 mx-auto text-center card-body" id="Unit">
+									<div *ngIf="true" class="service-box mt-5 mx-auto text-center card-body" id="Unit">
 										<a class="col-lg-5" [routerLink]="['/Unit',unit.id,'Lessons']" id="selectLesson">
 											<h2 class="text-white ">{{unit.name}}</h2>
 											<h2 class="text-muted mt-4">0/3</h2>
@@ -27,8 +27,6 @@
 						</div>
 					</div>
 				</div>
-				<!--<a class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white" id="button-style" data-toggle="modal" data-target="#loginModalLong"
-									 (click)="pulsar()">pulsame</a>-->
 			</div>
 			<div *ngIf="loginService.isLoggedUser()" class="col-sm-4">
 				<div class="row">

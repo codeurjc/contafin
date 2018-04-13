@@ -15,36 +15,27 @@ export class BodyHomeComponent {
     closeResult: string;
     kind1 = '1';
     kind2 = '2';
-    units: Unit[];
-    unitIsCompleted: Boolean[] = [];
-    bool:boolean;
+    units: Unit[] = [];
+    unitIsCompleted: boolean;
+    unitsCompleted: boolean[] = [];
 
     constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService) {
         this.loginService.isLoggedUser();
-     }
+        this.getUnits();
+    }
 
-    
-    ngOnInit(){
+    getUnits(){
         this.unitsService.getUnits().subscribe(
             units => this.units = units,
             error => console.log(error)
-        );
+        )
     }
-    /*pulsar(){
-        console.log(this.units);
-        for (let i = 0; i < this.units.length; i++) {
-            this.unitIsCompleted.push(this.isCompleted(i));
-            console.log(this.isCompleted(i));
-        }
-        console.log(this.unitIsCompleted);
-    }*/
 
     isCompleted(id:number){
         this.unitsService.isCompleted(id).subscribe(
-            bool => this.bool = bool,
+            unitIsCompleted => this.unitIsCompleted = unitIsCompleted,
             error => console.log(error)
         );
-        return this.bool;
     }
 
     open(content) {

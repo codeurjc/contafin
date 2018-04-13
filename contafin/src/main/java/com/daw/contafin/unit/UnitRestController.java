@@ -1,6 +1,7 @@
 package com.daw.contafin.unit;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -255,6 +256,31 @@ public class UnitRestController{
 		}
 				
 		return new ResponseEntity<>(count, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/NumberOfUnitsCompleted", method = RequestMethod.GET)
+	public ResponseEntity<List<Boolean>> Unitscompleted() {
+		User user = userComponent.getLoggedUser();
+		List<Boolean> booleanos = new ArrayList<Boolean>();
+		List<Unit> units = unitService.findAll();
+		for (int j = 0 ; j<units.size(); j++) {
+			List<Lesson> lessons = lessonService.findByUnit(units.get(j));
+			// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
+			int count = 0;
+			for(int i=0; i<lessons.size(); i++) {
+				CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+				if(completedLesson != null) {
+					count++;
+				}
+			}
+					
+			if (count == 3) {
+				booleanos.add(true);
+			} else {
+				booleanos.add(false);
+			}
+		}
+			return new ResponseEntity<>(booleanos, HttpStatus.OK);
 	}
 		
 }
