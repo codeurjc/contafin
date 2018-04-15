@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="bghome" id="page-top">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="mt-5 mx-auto text-center card-body bg-white" id="round">
+          <div id="accordion">
+            <div class="card">
+              <div class=" col-sm-2 card-block mb-2">
+                <a id="button-style" class="btn btn-primary js-scroll-trigger mt-5" href="https://localhost:8080/api/Admin/UserData/Excel">Exportar a Excel</a>
+              </div>
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">Datos de los alumnos</h5>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <table id="userTable" class="table table-hover side-middle a">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Puntos</th>
+                        <th scope="col">Meta</th>
+                        <th scope="col">Racha</th>
+                        <th scope="col">Fluidez</th>
+                        <th scope="col">Conexión</th>
+                        <th scope="col">Unidad</th>
+                        <th scope="col">Lección</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let user of users">
+                      <tr>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.level}}</td>
+                        <td>{{user.points}}</td>
+                        <td>{{user.dailyGoal}}</td>
+                        <td>{{user.streak}}</td>
+                        <td>{{user.fluency}}</td>
+                        <td>{{user.lastConnection}}</td>
+                        <td>{{user.lastUnit}}</td>
+                        <td>{{user.lastLesson}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div id="loading" class="side-middle minHeight">
+                    <img *ngIf="spinner" src="../../../assets/spinner.gif" width="80px" height="80px" />
+                  </div>
+                  <button *ngIf="!lastPage" id="addUsers" class="btn btn-primary mt-3" (click)="getUsers()">Más resultados</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

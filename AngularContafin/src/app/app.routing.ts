@@ -4,6 +4,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { UserConfigurationComponent } from './user/user-configuration/user-configuration.component';
 import { UserGoalComponent } from './user/user-goal/user-goal.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminUserDataComponent } from './admin/admin-user-data/admin-user-data.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
@@ -15,6 +16,7 @@ const appRoutes = [
   { path: 'User/Configuration', component: UserConfigurationComponent},
   { path: 'User/Goal', component: UserGoalComponent},
   { path: 'Admin/Home', component: AdminComponent},
+  { path: 'Admin/UserData', component: AdminUserDataComponent},
   { path: '', component: IndexComponent},
   { path: 'home', component: HomeComponent},
   { path: 'Unit/:id/Lessons', component: LessonComponent },
