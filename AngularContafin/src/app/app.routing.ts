@@ -6,6 +6,7 @@ import { UserGoalComponent } from './user/user-goal/user-goal.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminUserDataComponent } from './admin/admin-user-data/admin-user-data.component';
 import { HomeComponent } from './home/home.component';
+import { UnitCreationComponent } from './unit/unit-creation/unit-creation.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { ExerciseComponent } from './exercise/exercise.component';
@@ -17,6 +18,7 @@ const appRoutes = [
   { path: 'User/Goal', component: UserGoalComponent},
   { path: 'Admin/Home', component: AdminComponent},
   { path: 'Admin/UserData', component: AdminUserDataComponent},
+  { path: 'Admin/Content', component: UnitCreationComponent},
   { path: '', component: IndexComponent},
   { path: 'home', component: HomeComponent},
   { path: 'Unit/:id/Lessons', component: LessonComponent },

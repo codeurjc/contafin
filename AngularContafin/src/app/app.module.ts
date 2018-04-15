@@ -21,6 +21,7 @@ import { UserGoalComponent } from './user/user-goal/user-goal.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminUserDataComponent } from './admin/admin-user-data/admin-user-data.component';
 import { HomeComponent } from './home/home.component';
+import { UnitCreationComponent } from './unit/unit-creation/unit-creation.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
@@ -49,6 +50,7 @@ import { AdminService } from './admin/admin.service';
     UserConfigurationComponent,
     AdminComponent,
     AdminUserDataComponent,
+    UnitCreationComponent,
     IndexComponent,
     HomeComponent,
     LessonComponent,

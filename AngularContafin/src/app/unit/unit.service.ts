@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
@@ -41,7 +41,8 @@ export class UnitsService {
 
 	//Need the unit with its lessons and exercises
 	addUnit(unit: Unit) {
-		return this.http.post(BASE_URL, unit)
+		const options = new RequestOptions({ withCredentials: true });
+		return this.http.post(BASE_URL, unit, options)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}

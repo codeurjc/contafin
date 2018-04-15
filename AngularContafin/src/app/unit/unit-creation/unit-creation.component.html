@@ -1,0 +1,687 @@
+<app-navbar></app-navbar>
+<div class="bghome" id="page-top">
+  <form id="Form1" enctype="multipart/form-data">
+    <section class="text-center text-dark d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>Creación de unidad completa</strong>
+            </h1>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="form-group">
+              <label for="unitNameForm">Nombre de la unidad</label>
+              <input [(ngModel)]="unit.name" type="text" class="form-control form-control-lg" id="unitNameForm" name="unitName">
+            </div>
+            <hr class="invisible">
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="lessonNameForm0">Nombre de la lección 1</label>
+                  <input [(ngModel)]="unit.lessons[0].name" type="text" class="form-control" id="lessonNameForm0" name="lessonName[]">
+                </div>
+              </div>
+            </div>
+            <ngb-tabset>
+              <ngb-tab title="Ejercicio 1">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[0].statement" class="form-control form-control-sm" id="statementForm0" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile0" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 1</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile1" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 2</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile2" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 3</label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 1</label>
+                          <input [(ngModel)]="unit.lessons[0].exercises[0].texts[0]" type="text" class="form-control" id="textForm0" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 2</label>
+                          <input [(ngModel)]="unit.lessons[0].exercises[0].texts[1]" type="text" class="form-control" id="textForm1" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 3</label>
+                          <input [(ngModel)]="unit.lessons[0].exercises[0].texts[2]" type="text" class="form-control" id="textForm2" name="texts[]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[0].exercises[0].answer.result" class="form-control" id="answerForm0" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 2">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[1].statement" class="form-control form-control-sm" id="statementForm1" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[1].answer.result" class="form-control form-control-sm" id="answerForm1"
+                            rows="3" name="answers[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 3">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="answerForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[2].statement" class="form-control form-control-sm" id="statementForm4" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 1</label>
+                          <input [(ngModel)]="unit.lessons[0].exercises[2].texts[0]" type="text" class="form-control" id="textForm19" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 2</label>
+                          <input [(ngModel)]="unit.lessons[0].exercises[2].texts[1]" type="text" class="form-control" id="textForm20" name="texts[]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 3</label>
+                          <input [(ngModel)]="unit.lessons[0].exercises[2].texts[2]" type="text" class="form-control" id="textForm21" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[0].exercises[2].answer.result" class="form-control" id="answerForm2" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 4">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[3].statement" class="form-control form-control-sm" id="statementForm6" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 1</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[3].texts[0]" class="form-control form-control-sm" id="textForm26" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 2</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[3].texts[1]" class="form-control form-control-sm" id="textForm27" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 3</label>
+                          <textarea [(ngModel)]="unit.lessons[0].exercises[3].texts[2]" class="form-control form-control-sm" id="textForm28" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[0].exercises[3].answer.result" class="form-control" id="answerForm4" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+        <hr class="invisible">
+        <hr>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <hr class="invisible">
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="lessonNameForm0">Nombre de la lección 2</label>
+                  <input [(ngModel)]="unit.lessons[1].name" type="text" class="form-control" id="lessonNameForm1" name="lessonName[]">
+                </div>
+              </div>
+            </div>
+            <ngb-tabset>
+              <ngb-tab title="Ejercicio 1">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[0].statement" class="form-control form-control-sm" id="statementForm0" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile0" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 1</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile1" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 2</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile2" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 3</label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 1</label>
+                          <input [(ngModel)]="unit.lessons[1].exercises[0].texts[0]" type="text" class="form-control" id="textForm0" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 2</label>
+                          <input [(ngModel)]="unit.lessons[1].exercises[0].texts[1]" type="text" class="form-control" id="textForm1" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 3</label>
+                          <input [(ngModel)]="unit.lessons[1].exercises[0].texts[2]" type="text" class="form-control" id="textForm2" name="texts[]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[1].exercises[0].answer.result" class="form-control" id="answerForm0" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 2">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[1].statement" class="form-control form-control-sm" id="statementForm1" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[1].answer.result" class="form-control form-control-sm" id="answerForm1"
+                            rows="3" name="answers[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 3">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="answerForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[2].statement" class="form-control form-control-sm" id="statementForm4" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 1</label>
+                          <input [(ngModel)]="unit.lessons[1].exercises[2].texts[0]" type="text" class="form-control" id="textForm19" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 2</label>
+                          <input [(ngModel)]="unit.lessons[1].exercises[2].texts[1]" type="text" class="form-control" id="textForm20" name="texts[]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 3</label>
+                          <input [(ngModel)]="unit.lessons[1].exercises[2].texts[2]" type="text" class="form-control" id="textForm21" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[1].exercises[2].answer.result" class="form-control" id="answerForm2" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 4">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[3].statement" class="form-control form-control-sm" id="statementForm6" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 1</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[3].texts[0]" class="form-control form-control-sm" id="textForm26" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 2</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[3].texts[1]" class="form-control form-control-sm" id="textForm27" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 3</label>
+                          <textarea [(ngModel)]="unit.lessons[1].exercises[3].texts[2]" class="form-control form-control-sm" id="textForm28" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[1].exercises[3].answer.result" class="form-control" id="answerForm4" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+        <hr class="invisible">
+        <hr>
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <hr class="invisible">
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="lessonNameForm0">Nombre de la lección 3</label>
+                  <input [(ngModel)]="unit.lessons[2].name" type="text" class="form-control" id="lessonNameForm2" name="lessonName[]">
+                </div>
+              </div>
+            </div>
+            <ngb-tabset>
+              <ngb-tab title="Ejercicio 1">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[0].statement" class="form-control form-control-sm" id="statementForm0" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile0" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 1</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile1" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 2</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="imageFile2" accept="image/*" name="images[]">
+                          <label class="custom-file-label" for="imageFile0">Imagen 3</label>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 1</label>
+                          <input [(ngModel)]="unit.lessons[2].exercises[0].texts[0]" type="text" class="form-control" id="textForm0" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 2</label>
+                          <input [(ngModel)]="unit.lessons[2].exercises[0].texts[1]" type="text" class="form-control" id="textForm1" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Texto imagen 3</label>
+                          <input [(ngModel)]="unit.lessons[2].exercises[0].texts[2]" type="text" class="form-control" id="textForm2" name="texts[]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[2].exercises[0].answer.result" class="form-control" id="answerForm0" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 2">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[1].statement" class="form-control form-control-sm" id="statementForm1" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[1].answer.result" class="form-control form-control-sm" id="answerForm1"
+                            rows="3" name="answers[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 3">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="answerForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[2].statement" class="form-control form-control-sm" id="statementForm4" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 1</label>
+                          <input [(ngModel)]="unit.lessons[2].exercises[2].texts[0]" type="text" class="form-control" id="textForm19" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 2</label>
+                          <input [(ngModel)]="unit.lessons[2].exercises[2].texts[1]" type="text" class="form-control" id="textForm20" name="texts[]">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 3</label>
+                          <input [(ngModel)]="unit.lessons[2].exercises[2].texts[2]" type="text" class="form-control" id="textForm21" name="texts[]">
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[2].exercises[2].answer.result" class="form-control" id="answerForm2" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Ejercicio 4">
+                <ng-template ngbTabContent>
+                  <div class="container">
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="statementForm0">Enunciado</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[3].statement" class="form-control form-control-sm" id="statementForm6" rows="3"
+                            name="statements[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="invisible">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 1</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[3].texts[0]" class="form-control form-control-sm" id="textForm26" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 2</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[3].texts[1]" class="form-control form-control-sm" id="textForm27" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="textForm0">Respuesta 3</label>
+                          <textarea [(ngModel)]="unit.lessons[2].exercises[3].texts[2]" class="form-control form-control-sm" id="textForm28" rows="2"
+                            name="texts[]"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5"></div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label for="answerForm0">Respuesta correcta</label>
+                          <select [(ngModel)]="unit.lessons[2].exercises[3].answer.result" class="form-control" id="answerForm4" name="answers[]">
+                            <option>uno</option>
+                            <option>dos</option>
+                            <option>tres</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5"></div>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+        <hr class="invisible">
+        <input type="submit" class="btn btn-primary my-1" (click)="addUnit()">
+      </div>
+    </section>
+  </form>
+</div>
