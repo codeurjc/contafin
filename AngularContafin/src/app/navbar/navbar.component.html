@@ -15,7 +15,7 @@
             </ul>
             <ul *ngIf="isLoggedUser" class="navbar-nav ml-auto">
                 <li *ngIf="isAdmin" class="nav-item mr-4">
-                    <a class="btn btn-primary js-scroll-trigger text-light">ADMINISTRACIÓN</a>
+                    <a class="btn btn-primary js-scroll-trigger text-light" [routerLink]="['/Admin/Home']">ADMINISTRACIÓN</a>
                 </li>
 
                 <li>
