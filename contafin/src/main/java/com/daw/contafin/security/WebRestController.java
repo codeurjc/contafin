@@ -1,15 +1,13 @@
 package com.daw.contafin.security;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Map;
 
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,14 +37,16 @@ public class WebRestController {
 	EmailService emailService;
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ResponseEntity<User> signup(@RequestBody User user) {
-		if (user.getEmail().isEmpty() || user.getName().isEmpty() || user.getPasswordHash().isEmpty()) {
+	public ResponseEntity<User> signup(@RequestBody Map<String,String> userData) {
+		String name = userData.get("name");
+		String email = userData.get("email");
+		String pass = userData.get("pass");
+		if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		if (userService.findByEmail(user.getEmail())==null) {
-			user.setRoles(new ArrayList<>(Arrays.asList("ROLE_USER")));
-			user.setPasswordHash(new BCryptPasswordEncoder().encode(user.getPasswordHash()));
+		if (userService.findByEmail(email)==null) {
+			User user = new User(name, email, pass, "ROLE_USER");
 			user.setLastConnection(user.newConnection());
 			userService.save(user);
 			userComponent.setLoggedUser(user);
