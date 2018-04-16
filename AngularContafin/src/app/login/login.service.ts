@@ -21,20 +21,6 @@ export class LoginService {
     setLoggedUser(user:User){
         this.user = user;
     }
-    getFluency(){
-        return this.user.fluency;
-    }
-    getExperience(){
-        return this.user.exp;
-    }
-
-    getDaily(){
-        return this.user.dailyGoal;
-    }
-
-    getGoal(){
-        return this.user.remainingGoals;
-    }
 
     isLoggedUser() {
         return this.isLogged;
