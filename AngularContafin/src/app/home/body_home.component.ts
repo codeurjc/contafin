@@ -32,14 +32,13 @@ export class BodyHomeComponent {
         this.unitsService.getUnits()
             .then(units => {
                 this.units = units;
-                //Get the number of Lessons completed of all
+                //Get the number of Lessons completed of all the units
                 for(var i= 0; i<units.length;i++){
                     this.unitsService.numberOfCompletedLessons(units[i].id).subscribe(
                         number => {
                             this.lessonsCompleted.push(number);
                         },
-                        error=> console.log('Hay un error')
-                        
+                        error=> console.log(error)
                     )
                 }
             })
