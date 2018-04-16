@@ -41,9 +41,9 @@ import { AdminService } from './admin/admin.service';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    HeaderNavbarComponent , 
-    BodyIndexComponent, 
+    AppComponent,
+    HeaderNavbarComponent ,
+    BodyIndexComponent,
     BodyHomeComponent,
     LoginComponent,
     SignUpComponent,
@@ -63,11 +63,11 @@ import { AdminService } from './admin/admin.service';
 
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     FormsModule,
-    HttpClientModule, 
+    HttpClientModule,
     NgbModule.forRoot(),
-    HttpModule, 
+    HttpModule,
     JsonpModule,
     routing
 
