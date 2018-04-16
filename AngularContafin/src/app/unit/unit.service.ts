@@ -14,7 +14,8 @@ export class UnitsService {
 
 	getUnits() {
 		return this.http.get(BASE_URL)
-			.map(response => response.json().content)
+			.toPromise()
+			.then(response => response.json().content)
 			.catch(error => this.handleError(error));
 	}
 
@@ -33,11 +34,11 @@ export class UnitsService {
 	}
 
 	//Number of completed Lessons in a unit (int)
-	/*numberOfCompletedLessons(id: number) {
+	numberOfCompletedLessons(id: number) {
 		return this.http.get(BASE_URL + id + '/numberOfCompletedLessons')
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
-	}*/
+	}
 
 	//Need the unit with its lessons and exercises
 	addUnit(unit: Unit) {
