@@ -17,7 +17,7 @@ export class BodyHomeComponent {
     kind1 = '1';
     kind2 = '2';
     units: Unit[] = [];
-    lessonsCompleted: number[] = [];
+    lessonsCompleted: number[] = new Array();
     public loggedUser: User;
 
     constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService) {
@@ -36,8 +36,7 @@ export class BodyHomeComponent {
                 for(var i= 0; i<units.length;i++){
                     this.unitsService.numberOfCompletedLessons(units[i].id).subscribe(
                         number => {
-                            this.numberLessonsCompleted[i] = number;
-                            console.log('hola' + number);
+                            this.lessonsCompleted.push(number);
                         },
                         error=> console.log('Hay un error')
                         
