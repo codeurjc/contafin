@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginService } from './login.service';
 import { User } from '../Interfaces/User/user.model';
@@ -12,7 +12,9 @@ import { User } from '../Interfaces/User/user.model';
 
 export class LoginComponent {
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService, private modalService: NgbModal) { }
+
+  private closeResult: string; 
 
   @Input()
   private formkind: string;
@@ -40,18 +42,22 @@ export class LoginComponent {
     );
   }
 
-  checkIn(event: any,name: string, email: string, pass: string) {
-
-    //Aqui te registras teniendo los parametros name email y pass
-
-    event.preventDefault();
-
-    this.loginService.logIn(email, pass).subscribe(
-      user => {
-        console.log(user);
-        this.router.navigate(['/Home']);
-      },
-      error => alert('Invalid user or password')
-    );
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
 }

@@ -78,10 +78,8 @@
 							<h5 class="text-black text-left">¡Crea un perfil para guardar tu progreso!</h5>
 							<div class="row">
 								<div class="col-lg-12 ">
-									<a class="btn btn-primary btn-xl js-scroll-trigger mt-3 text-white" data-toggle="modal" data-target="#signupModalLong" (click)="open(content2)">Crear perfil
-									</a>
-									<a class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white" id="button-style" data-toggle="modal" data-target="#loginModalLong"
-									 (click)="open(content1)">Ingresar</a>
+									<app-sign-up></app-sign-up>
+									<app-login [formkind]='kind2'></app-login>
 								</div>
 							</div>
 						</div>
@@ -92,43 +90,3 @@
 	</div>
 </div>
 
-
-<ng-template #content1 let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<div class="col-3">
-			<img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
-		</div>
-		<div class="col-6">
-			<h1 class="modal-title" id="exampleModalLongTitle">
-				<strong>LOGUÉATE</strong>
-			</h1>
-		</div>
-		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	<div class="mx-auto">
-		<app-login [formkind]='kind1'></app-login>
-	</div>
-	<div class="modal-footer mx-auto">
-	</div>
-</ng-template>
-
-<ng-template #content2 let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<div class="col-3">
-			<img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
-		</div>
-		<div class="col-6">
-			<h1 class="modal-title" id="exampleModalLongTitle">
-				<strong>REGÍSTRATE</strong>
-			</h1>
-		</div>
-		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-	<app-login [formkind]='kind2'></app-login>
-	<div class="modal-footer mx-auto">
-	</div>
-</ng-template>
