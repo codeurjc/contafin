@@ -32,7 +32,7 @@ export class BodyHomeComponent {
         this.unitsService.getUnits()
             .then(units => {
                 this.units = units;
-                console.log(units.length)
+                //Get the number of Lessons completed of all
                 for(var i= 0; i<units.length;i++){
                     this.unitsService.numberOfCompletedLessons(units[i].id).subscribe(
                         number => {
@@ -61,22 +61,6 @@ export class BodyHomeComponent {
             error => console.log(error)
         );
     }
-
-    //Es lo mismo que está en la promesa
-    /*calculateLessonCompletedByUnit(){
-        this.getUnits();
-        console.log(this.units.length);
-        for(var i= 0; i<this.units.length;i++){
-            this.unitsService.numberOfCompletedLessons(this.units[i].id).subscribe(
-                number => {
-                    this.numberLessonsCompleted[i] = number;
-                    console.log(number);
-                },
-                error=> console.log('Hay un error')
-                
-            )
-        }
-    }*/
 
     open(content) {
         this.modalService.open(content).result.then((result) => {
