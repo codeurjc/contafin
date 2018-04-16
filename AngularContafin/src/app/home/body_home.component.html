@@ -7,7 +7,7 @@
 						<div class="mt-5 mx-auto text-center card-body bg-white" id="round">
 							<h2 class="text-black text-left " id="Margin">Unidades de Contabilidad
 							</h2>
-							<h5 class="text-black text-center mt-5">Nivel 1 {{lessonsCompleted[1]}}</h5>
+							<h5 class="text-black text-center mt-5">Nivel 1</h5>
 							<div class="row justify-content-around">
 								<div *ngFor="let unit of units; let i = index" [attr.data-index]="i" class="col-lg-6 col-md-6 ">
 									<div *ngIf="false" class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
@@ -19,7 +19,7 @@
 									<div *ngIf="true" class="service-box mt-5 mx-auto text-center card-body" id="Unit">
 										<a class="col-lg-5" [routerLink]="['/Unit',unit.id,'Lessons']" id="selectLesson">
 											<h2 class="text-white ">{{unit.name}}</h2>
-											<h2 class="text-muted mt-4">{{lessonsCompleted[i]}}/3/3</h2>
+											<h2 class="text-muted mt-4">{{lessonsCompleted[i]}}/3</h2>
 										</a>
 									</div>
 								</div>
