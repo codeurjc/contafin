@@ -1,0 +1,50 @@
+<!--Progress bar-->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-1">
+      <button type="button" class="close sticky-top" data-toggle="modal"
+              data-target="#exampleModalLong" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="col-sm-10">
+      <p><ngb-progressbar [value]="0"></ngb-progressbar></p>
+    </div>
+  </div>
+</div>
+
+<form>
+  <!--Question and answers-->
+  <section class="p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">{{statement}}</h2>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="row">
+        <div class="container">
+          <div class="row justify-content-around">
+            <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+              <label ngbButtonLabel class="btn-primary">
+                <img class="img-fluid " [src]="img1" alt="">
+                <input ngbButton type="radio" value="uno">
+              </label>
+            </div>
+              <label ngbButtonLabel class="btn-primary">
+                <img class="img-fluid " [src]="img2" alt="">
+                <input ngbButton type="radio" value="dos">
+              </label>
+              <label ngbButtonLabel class="btn-primary">
+                <img class="img-fluid " [src]="img3" alt="">
+                <input ngbButton type="radio" value="tres">
+              </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
