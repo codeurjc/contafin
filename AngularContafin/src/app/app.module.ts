@@ -12,6 +12,11 @@ import { BodyIndexComponent } from './index/body_index.component';
 import { BodyHomeComponent } from './home/body_home.component';
 import { BodyLessonComponent } from './lesson/body_lesson.component';
 import { BodyExerciseComponent } from './exercise/body_exercise.component';
+import { HeaderExerciseComponent } from "./exercise/header_exercise.component";
+import { FooterExerciseComponent } from "./exercise/footer_exercise.component";
+import { Exercise2Component } from "./exercise/exercise2/exercise2.component";
+import { Exercise5Component } from "./exercise/exercise5/exercise5.component";
+import { Exercise7Component } from "./exercise/exercise7/exercise7.component";
 
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -28,6 +33,7 @@ import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { ErrorComponent } from './error/error.component'
 import { routing } from './app.routing';
+import { BodyErrorComponent } from './error/body_error.component';
 
 //Services
 import { UnitsService } from './unit/unit.service';
@@ -38,7 +44,6 @@ import { LessonsService } from './lesson/lesson.service';
 import { ExerciseService } from './exercise/exercise.service';
 import { AdminService } from './admin/admin.service';
 import { ErrorService } from './error/error.service';
-import { BodyErrorComponent } from './error/body_error.component';
 
 
 
@@ -63,8 +68,14 @@ import { BodyErrorComponent } from './error/body_error.component';
     BodyLessonComponent,
     ExerciseComponent,
     BodyExerciseComponent,
+    HeaderExerciseComponent,
+    FooterExerciseComponent,
+    Exercise2Component,
+    Exercise5Component,
+    Exercise7Component,
     BodyErrorComponent,
     ErrorComponent
+
   ],
 
   imports: [
