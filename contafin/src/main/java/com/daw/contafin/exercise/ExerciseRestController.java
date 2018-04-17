@@ -170,7 +170,7 @@ public class ExerciseRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/DeleteAllExercises", method = RequestMethod.GET)
+	@RequestMapping(value = "/DeleteAllExercises", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteExerciseCompleted() {
 		User user = userComponent.getLoggedUser();
 		exerciseService.deleteAll(user);
