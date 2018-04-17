@@ -26,6 +26,7 @@ import { UnitCreationComponent } from './unit/unit-creation/unit-creation.compon
 import { ExerciseComponent } from './exercise/exercise.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
+import { ErrorComponent } from './error/error.component'
 import { routing } from './app.routing';
 
 //Services
@@ -36,13 +37,15 @@ import { UserService } from './user/user.service';
 import { LessonsService } from './lesson/lesson.service';
 import { ExerciseService } from './exercise/exercise.service';
 import { AdminService } from './admin/admin.service';
+import { ErrorService } from './error/error.service';
+import { BodyErrorComponent } from './error/body_error.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderNavbarComponent ,
+    HeaderNavbarComponent,
     BodyIndexComponent,
     BodyHomeComponent,
     LoginComponent,
@@ -59,9 +62,11 @@ import { AdminService } from './admin/admin.service';
     LessonComponent,
     BodyLessonComponent,
     ExerciseComponent,
-    BodyExerciseComponent
-
+    BodyExerciseComponent,
+    BodyErrorComponent,
+    ErrorComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -81,6 +86,7 @@ import { AdminService } from './admin/admin.service';
     LessonsService,
     ExerciseService,
     AdminService,
+    ErrorService
   ]
 })
 export class AppModule { }

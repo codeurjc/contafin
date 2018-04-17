@@ -10,19 +10,20 @@ import { UnitCreationComponent } from './unit/unit-creation/unit-creation.compon
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { ExerciseComponent } from './exercise/exercise.component';
+import { ErrorComponent } from './error/error.component';
 
 const appRoutes = [
-  { path: 'login', component: LoginComponent},
-  { path: 'User/Profile', component: UserProfileComponent},
-  { path: 'User/Configuration', component: UserConfigurationComponent},
-  { path: 'User/Goal', component: UserGoalComponent},
-  { path: 'Admin/Home', component: AdminComponent},
-  { path: 'Admin/UserData', component: AdminUserDataComponent},
-  { path: 'Admin/Content', component: UnitCreationComponent},
-  { path: '', component: IndexComponent},
-  { path: 'home', component: HomeComponent},
+  { path: 'User/Profile', component: UserProfileComponent },
+  { path: 'User/Configuration', component: UserConfigurationComponent },
+  { path: 'User/Goal', component: UserGoalComponent },
+  { path: 'Admin/Home', component: AdminComponent },
+  { path: 'Admin/UserData', component: AdminUserDataComponent },
+  { path: 'Admin/Content', component: UnitCreationComponent },
+  { path: '', component: IndexComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'Unit/:id/Lessons', component: LessonComponent },
-  { path: 'Unit/:id/Lessons/:idlesson/', component: ExerciseComponent }
+  { path: 'Unit/:id/Lessons/:idlesson/', component: ExerciseComponent },
+  { path: 'Error', component: ErrorComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
