@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
+import com.daw.contafin.completedExercise.CompletedExercise;
+import com.daw.contafin.completedExercise.CompletedExerciseService;
 import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.lesson.Lesson;
@@ -31,6 +33,9 @@ public class ExerciseService {
 		
 		@Autowired
 		CompletedLessonService completedLessonService;
+		
+		@Autowired
+		CompletedExerciseService completedExerciseService;
 		
 		public Exercise findById (long id) {
 			return exerciseRepository.findById(id);
@@ -59,6 +64,18 @@ public class ExerciseService {
 		}
 		public Page<Exercise> getExercises(Pageable page) {
 			return exerciseRepository.findAll(page);
+		}
+		
+		public void deleteAll(User user) {
+			List<CompletedExercise> completedExercises =  completedExerciseService.findByUser(user);
+			if (completedExercises != null) {
+				for (int i=0; i<completedExercises.size();i++) {
+					CompletedExercise completedExerciseS = completedExercises.get(i);
+					if (completedExerciseS != null) {
+						completedExerciseService.delete(completedExerciseS);
+					}
+				}
+			}
 		}
 		
 		//Upload exercise images

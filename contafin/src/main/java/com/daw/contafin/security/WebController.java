@@ -1,7 +1,6 @@
 package com.daw.contafin.security;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.mail.MessagingException;
 
@@ -14,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.daw.contafin.ContentController;
 import com.daw.contafin.EmailService;
 import com.daw.contafin.ErrorMessage;
-import com.daw.contafin.completedExercise.CompletedExercise;
 import com.daw.contafin.completedExercise.CompletedExerciseService;
+import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.completedLesson.CompletedLessonService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
@@ -43,6 +42,9 @@ public class WebController extends ContentController {
 	
 	@Autowired
 	CompletedExerciseService completedExerciseService;
+	
+	@Autowired
+	ExerciseService exerciseService;
 
 	// Login Controller
 
@@ -67,15 +69,7 @@ public class WebController extends ContentController {
 
 		User user = userComponent.getLoggedUser();
 		//Delete exercises completed if you exit in the middle of a lesson.
-		List<CompletedExercise> completedExercises =  completedExerciseService.findByUser(user);
-		if (completedExercises != null) {
-			for (int i=0; i<completedExercises.size();i++) {
-				CompletedExercise completedExerciseS = completedExercises.get(i);
-				if (completedExerciseS != null) {
-					completedExerciseService.delete(completedExerciseS);
-				}
-			}
-		}
+		exerciseService.deleteAll(user);
 		if (userComponent.isLoggedUser()) {
 			
 			if (user.getRoles().contains("ROLE_ADMIN")) {
