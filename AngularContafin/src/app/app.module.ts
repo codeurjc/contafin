@@ -34,6 +34,8 @@ import { LessonComponent } from './lesson/lesson.component';
 import { ErrorComponent } from './error/error.component'
 import { routing } from './app.routing';
 import { BodyErrorComponent } from './error/body_error.component';
+import { BodyCompleteLessonComponent } from './completeLesson/body_completeLesson.component';
+import { CompleteLessonComponent } from './completeLesson/completeLesson.component';
 
 //Services
 import { UnitsService } from './unit/unit.service';
@@ -44,6 +46,7 @@ import { LessonsService } from './lesson/lesson.service';
 import { ExerciseService } from './exercise/exercise.service';
 import { AdminService } from './admin/admin.service';
 import { ErrorService } from './error/error.service';
+
 
 
 
@@ -74,8 +77,9 @@ import { ErrorService } from './error/error.service';
     Exercise5Component,
     Exercise7Component,
     BodyErrorComponent,
-    ErrorComponent
-
+    ErrorComponent,
+    BodyCompleteLessonComponent,
+    CompleteLessonComponent,
   ],
 
   imports: [

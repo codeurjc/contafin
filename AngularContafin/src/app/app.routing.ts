@@ -11,6 +11,7 @@ import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { ErrorComponent } from './error/error.component';
+import { CompleteLessonComponent } from './completeLesson/completeLesson.component';
 
 const appRoutes = [
   { path: 'User/Profile', component: UserProfileComponent },
@@ -23,7 +24,8 @@ const appRoutes = [
   { path: 'home', component: HomeComponent },
   { path: 'Unit/:id/Lessons', component: LessonComponent },
   { path: 'Unit/:id/Lessons/:idlesson/', component: ExerciseComponent },
-  { path: 'Error', component: ErrorComponent }
+  { path: 'Error', component: ErrorComponent },
+  { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted/', component: CompleteLessonComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
