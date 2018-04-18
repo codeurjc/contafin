@@ -8,10 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LessonComponent {
 
-    id: number;
+    idhome: number;
 
     constructor(activatedRoute: ActivatedRoute) {
         let id = activatedRoute.snapshot.params['id'];
-        this.id =id;
+        this.idhome =id;
     }
 }

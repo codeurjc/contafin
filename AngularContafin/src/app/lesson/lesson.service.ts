@@ -20,7 +20,7 @@ export class LessonsService {
 
     //Get Lessons of the unit with its id
     getLessonsOfUnit(id:number) {
-		return this.http.get(BASE_URL + id + '/Lesson/')
+		return this.http.get(BASE_URL + '1' + '/Lesson/')
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
