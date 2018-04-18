@@ -14,14 +14,17 @@ export class BodyLessonComponent implements OnInit {
     @Input()
     private id: number;
 
-    unit: Unit;
     nlesson: number = 0;
+
+    public unit: Unit;
+    private lessons: Array<Lesson> = new Array();
 
     constructor(public lessonService: LessonsService, public unitService: UnitsService) {
 
     }
 
     ngOnInit() {
+        this.defineUnit();
         this.getUnits(this.id);
     }
 
@@ -47,5 +50,34 @@ export class BodyLessonComponent implements OnInit {
     pulsar() {
         console.log(this.id);
         console.log(this.unit);
+    }
+
+    //Only create an empty unit
+    defineUnit() {
+        //Add lesson 1
+        this.lessons.push(
+            {
+                name: "",
+                exercises: []
+            }
+        )
+        //Add lesson 2
+        this.lessons.push(
+            {
+                name: "",
+                exercises: []
+            }
+        )
+        //Add lesson 3
+        this.lessons.push(
+            {
+                name: "",
+                exercises: [],
+            }
+        )
+        this.unit = {
+            name: "",
+            lessons: this.lessons,
+        }
     }
 }
