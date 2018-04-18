@@ -30,6 +30,18 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
+    validation(id: number, pass: string) {
+        const headers = new Headers({
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true, headers });
+
+        return this.http.get(BASE_URL + '/' + id + '/Validation/' + pass, options)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+    }
+
     updateUser(id: number, updatedUser: User) {
         const headers = new Headers({
             'Accept': 'application/json',
@@ -37,7 +49,7 @@ export class UserService {
         });
         const options = new RequestOptions({ withCredentials: true, headers });
 
-        return this.http.put(BASE_URL + '/' + id + '/Data', updatedUser, options)
+        return this.http.put(BASE_URL + '/' + id, updatedUser, options)
             .map(user => user.json())
             .catch(error => this.handleError(error));
     }

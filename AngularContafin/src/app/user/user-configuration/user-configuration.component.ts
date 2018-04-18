@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from "@angular/router";
 
 import { UserService } from '../user.service';
@@ -15,27 +15,20 @@ import { User } from '../../Interfaces/User/user.model';
 
 export class UserConfigurationComponent implements OnInit {
 
+  @ViewChild('newPass') newPassInput: ElementRef;
+  @ViewChild('oldPass') oldPassInput: ElementRef;
 
   public loggedUser: User;
   public image: FormData;
-  public noImage: boolean;
-  public noData: boolean;
-  private updatedUser: User = {
-    id: 0,
+  public errorMessage: string = "";
+  public alertDanger: boolean = false;
+  public alertSuccess: boolean = false;
+  public rightPass: boolean;
+  private userData: any = {
     name: "",
     email: "",
-    passwordHash: "",
-    level: 1,
-    points: 0,
-    streak: 0,
-    fluency: 0,
-    lastConnection: "-",
-    lastUnit: 0,
-    lastLesson: 0,
-    exp: 0,
-    needexp: 10,
-    roles: [],
-  };
+    passwordHash: ""
+  }
 
   constructor(private router: Router, private loginService: LoginService, private userService: UserService) {
     this.loggedUser = loginService.getLoggedUser();
@@ -47,40 +40,86 @@ export class UserConfigurationComponent implements OnInit {
 
   //Other methods
   updateUser() {
-    this.userService.updateUser(this.loggedUser.id, this.updatedUser)
-      .subscribe(
-        user => {
-          this.loginService.setLoggedUser(user);
-          this.router.navigate(['/User/Configuration']);
-          this.noData = false;
-          this.updateUser = null;
-        },
-        error => {
-          this.noData = true;
-        }
-      )
+    this.alertDanger = false;
+    this.alertSuccess = false;
+    if (this.oldPassInput.nativeElement.value != null) {
+      this.userService.validation(this.loggedUser.id, this.oldPassInput.nativeElement.value)
+        .subscribe(
+          validation => {
+            this.rightPass = validation;
+            console.log(this.rightPass);
+            this.getPasswords();
+            this.loadChanges();
+          },
+          error => console.log(error),
+      );
+    }
   }
 
+  getPasswords() {
+    this.userData.passwordHash = this.newPassInput.nativeElement.value;
+    this.oldPassInput.nativeElement.value = '';
+    this.newPassInput.nativeElement.value = ''
+  }
+
+  //If the current password is right, save the changes
+  loadChanges() {
+    if (this.rightPass) {
+      this.userService.updateUser(this.loggedUser.id, this.userData)
+        .subscribe(
+          user => {
+            this.loggedUser.name = user.name;
+            this.loggedUser.email = user.email;
+            this.loggedUser.passwordHash = user.passwordHash;
+            this.loggedUser = this.loginService.getLoggedUser();
+            this.alertSuccess = true;
+            this.router.navigate(['/User/Configuration']);
+          },
+          error => {
+            this.errorMessage = "No has introducido ningún cambio.";
+            this.alertDanger = true;
+          }
+        )
+    }
+    else {
+      this.errorMessage = "Contraseña incorrecta.";
+      this.alertDanger = true;
+    }
+    this.userData = {
+      name: "",
+      email: "",
+      passwordHash: "",
+
+    }
+  }
+
+  //Load image
   selectFile(event) {
     const file = event.target.files;
     this.image = new FormData();
     this.image.append('file', file[0]);
   }
 
+  //Save image
   uploadImage() {
+    this.alertDanger = false;
+    this.alertSuccess = false;
     if (this.image) {
       this.userService.uploadImage(this.loggedUser.id, this.image)
         .subscribe(
           response => {
+            this.loggedUser = this.loginService.getLoggedUser();
+            this.loggedUser.imgURL = "https://localhost:8080/api/User/Photo?a" + (new Date()).getTime();
             this.router.navigate(['/User/Configuration']);
           },
           error => console.error('Error al subir la imagen:' + error)
         );
       this.image = null;
-      this.noImage = false;
+      this.alertDanger = false;
     }
     else {
-      this.noImage = true;
+      this.errorMessage = "No has seleccionado ninguna imagen.";
+      this.alertDanger = true;
     }
   }
 

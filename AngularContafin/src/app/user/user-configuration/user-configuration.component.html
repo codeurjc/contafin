@@ -7,20 +7,20 @@
           <div class="col-sm-8 ">
             <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
               <div class="container">
-                <div *ngIf="noData" class="container">
+                <div *ngIf="alertDanger" class="container">
                   <div class="alert alert-danger mt-2" role="alert">
-                    <strong>¡Error al guardar los cambios</strong> No has introducido ningún cambio.
+                    <strong>¡Error al guardar los cambios!</strong> {{errorMessage}}
                   </div>
                 </div>
               </div>
               <div class="container">
-                <div *ngIf="noImage" class="container">
-                  <div class="alert alert-danger mt-2" role="alert">
-                    <strong>¡Error al guardar la imagen!</strong> No has seleccionado ninguna imagen.
+                <div *ngIf="alertSuccess" class="container">
+                  <div class="alert alert-success mt-2" role="alert">
+                    <strong>¡Tus cambios se han guardado correctamente!</strong>
                   </div>
                 </div>
               </div>
-              <form>
+              <form ngNativeValidate>
                 <div class="row">
                   <div class=" col-sm-8 mt-5">
                     <h3>Configuración de la cuenta</h3>
@@ -36,7 +36,7 @@
                   </div>
                   <div class=" col-sm-8 mt-5">
                     <h5>
-                      <input [(ngModel)]="updatedUser.name" type="text" class="form-control" id="roundregister" name="newName" [placeholder]="loggedUser.name">
+                      <input [(ngModel)]="userData.name" type="text" class="form-control" id="roundregister" name="newName" [placeholder]="loggedUser.name">
                     </h5>
                   </div>
                 </div>
@@ -46,7 +46,8 @@
                   </div>
                   <div class=" col-sm-8 mt-5">
                     <h5>
-                      <input [(ngModel)]="updatedUser.email"  type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="newEmail" [placeholder]="loggedUser.email">
+                      <input [(ngModel)]="userData.email" type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="newEmail"
+                        [placeholder]="loggedUser.email">
                     </h5>
                   </div>
                 </div>
@@ -56,7 +57,7 @@
                   </div>
                   <div class=" col-sm-8 mt-5">
                     <h5>
-                      <input type="password" class="form-control" id="roundregister" name="newPass" placeholder="Nueva contraseña">
+                      <input #newPass type="password" class="form-control" id="roundregister" name="newPass" placeholder="Nueva contraseña">
                     </h5>
                   </div>
                 </div>
@@ -66,12 +67,12 @@
                   </div>
                   <div class=" col-sm-8 mt-5">
                     <h5>
-                      <input required type="password" class="form-control" id="roundregister" name="newPass" placeholder="Antigua contraseña">
+                      <input #oldPass required minlength="1" type="password" class="form-control" id="roundregister" name="newPass" placeholder="Antigua contraseña">
                     </h5>
                   </div>
                 </div>
               </form>
-              <form  enctype="multipart/form-data">
+              <form enctype="multipart/form-data">
                 <div class="row">
                   <div class=" col-sm-3 mt-5">
                     <h5>Imagen:</h5>
@@ -91,7 +92,7 @@
           <div class="col-sm-4 ">
             <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
               <h1 class="card-header bg-white">
-                <img src="https://localhost:8080/api/User/Photo" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}} 
+                <img [src]="loggedUser.imgURL" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
               </h1>
             </div>
           </div>
