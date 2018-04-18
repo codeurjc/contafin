@@ -22,14 +22,11 @@ export class BodyLessonComponent implements OnInit {
     lessonsCompleted: boolean[] = new Array();
 
     constructor(public lessonService: LessonsService, public unitService: UnitsService) {
-
     }
-
     ngOnInit() {
         this.defineUnit();
         this.getUnits(this.id);
     }
-
     getUnits(id: number) {
         this.lessonService.getLessonsOfUnit(this.id).subscribe(
             unit => {
@@ -38,13 +35,13 @@ export class BodyLessonComponent implements OnInit {
                     nlesson => this.nlesson = nlesson,
                     error => console.log(error)
                 )
-                for(var i= 0; i<unit.lessons.length;i++){
-                    this.lessonService.isCompleted(unit.id,unit.lessons[i].id).subscribe(
+                for (var i = 0; i < unit.lessons.length; i++) {
+                    this.lessonService.isCompleted(unit.id, unit.lessons[i].id).subscribe(
                         isCompleted => {
                             this.lessonsCompleted.push(isCompleted);
                             console.log(isCompleted);
                         },
-                        error=> console.log(error)
+                        error => console.log(error)
                     )
                 }
             },
