@@ -94,6 +94,11 @@
               <h1 class="card-header bg-white">
                 <img [src]="loggedUser.imgURL" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
               </h1>
+              <h1 *ngIf="noAdmin" class="card-header bg-white">
+                <button id="button-style" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="open(content)">
+                  Eliminar cuenta
+                </button>
+              </h1>
             </div>
           </div>
         </div>
@@ -101,3 +106,30 @@
     </div>
   </div>
 </div>
+
+<!--pop-up delete account-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <form>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="col-8">
+          <h3 class="modal-title" id="exampleModalLongTitle">
+            <strong>¿Estás seguro?</strong>
+          </h3>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="d('Cross click')">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-12">
+          <h6 class="modal-title" id="exampleModalLongTitle">Se borrara tu progreso.</h6>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary text-white" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">CANCELAR</a>
+        <input type="submit" value="Borrar cuenta" class="btn btn-primary" id="button-style" (click)= "deleteAccount()" (click)="d('Cross click')"/>
+      </div>
+    </div>
+  </form>
+</ng-template>

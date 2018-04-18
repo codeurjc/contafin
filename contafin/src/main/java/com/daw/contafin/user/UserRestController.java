@@ -41,9 +41,9 @@ public class UserRestController {
 	@Autowired
 	ImageService imageService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteAccount() {
-		User user = userComponent.getLoggedUser();
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteAccount(@PathVariable long id) {
+		User user = userService.findById(id);
 		try {
 			userService.deleteAccount(user);
 			userComponent.setLoggedUser(null);
