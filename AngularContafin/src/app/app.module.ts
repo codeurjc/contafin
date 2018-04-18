@@ -46,6 +46,8 @@ import { LessonsService } from './lesson/lesson.service';
 import { ExerciseService } from './exercise/exercise.service';
 import { AdminService } from './admin/admin.service';
 import { ErrorService } from './error/error.service';
+import { CanActivateUser } from './security/can-activate-user';
+import { CanActivateAdmin } from './security/can-activate-admin';
 
 
 
@@ -97,10 +99,12 @@ import { ErrorService } from './error/error.service';
     LoginService,
     SignUpService,
     UserService,
+    CanActivateUser,
     UnitsService,
     LessonsService,
     ExerciseService,
     AdminService,
+    CanActivateAdmin,
     ErrorService
   ]
 })
