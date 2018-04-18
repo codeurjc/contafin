@@ -12,14 +12,16 @@ import { LessonComponent } from './lesson/lesson.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { ErrorComponent } from './error/error.component';
 import { CompleteLessonComponent } from './completeLesson/completeLesson.component';
+import { CanActivateUser } from './security/can-activate-user';
+import { CanActivateAdmin } from './security/can-activate-admin';
 
 const appRoutes = [
-  { path: 'User/Profile', component: UserProfileComponent },
-  { path: 'User/Configuration', component: UserConfigurationComponent },
-  { path: 'User/Goal', component: UserGoalComponent },
-  { path: 'Admin/Home', component: AdminComponent },
-  { path: 'Admin/UserData', component: AdminUserDataComponent },
-  { path: 'Admin/Content', component: UnitCreationComponent },
+  { path: 'User/Profile', component: UserProfileComponent, canActivate: [CanActivateUser] },
+  { path: 'User/Configuration', component: UserConfigurationComponent, canActivate: [CanActivateUser] },
+  { path: 'User/Goal', component: UserGoalComponent, canActivate: [CanActivateUser] },
+  { path: 'Admin/Home', component: AdminComponent, canActivate: [CanActivateAdmin] },
+  { path: 'Admin/UserData', component: AdminUserDataComponent, canActivate: [CanActivateAdmin] },
+  { path: 'Admin/Content', component: UnitCreationComponent, canActivate: [CanActivateAdmin] },
   { path: '', component: IndexComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Unit/:id/Lessons', component: LessonComponent },

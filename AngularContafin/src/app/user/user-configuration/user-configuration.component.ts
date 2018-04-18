@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from "@angular/router";
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from '../user.service';
 import { LoginService } from '../../login/login.service';
@@ -15,6 +16,8 @@ import { User } from '../../Interfaces/User/user.model';
 
 export class UserConfigurationComponent implements OnInit {
 
+  private closeResult: string;
+
   @ViewChild('newPass') newPassInput: ElementRef;
   @ViewChild('oldPass') oldPassInput: ElementRef;
 
@@ -23,6 +26,7 @@ export class UserConfigurationComponent implements OnInit {
   public errorMessage: string = "";
   public alertDanger: boolean = false;
   public alertSuccess: boolean = false;
+  public noAdmin: boolean;
   public rightPass: boolean;
   private userData: any = {
     name: "",
@@ -30,11 +34,11 @@ export class UserConfigurationComponent implements OnInit {
     passwordHash: ""
   }
 
-  constructor(private router: Router, private loginService: LoginService, private userService: UserService) {
-    this.loggedUser = loginService.getLoggedUser();
-  }
+  constructor(private router: Router, private loginService: LoginService, private userService: UserService, private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.loggedUser = this.loginService.getLoggedUser();
+    this.noAdmin = !this.loginService.isAdministrator();
     this.userService.getUser(this.loggedUser.id);
   }
 
@@ -123,4 +127,34 @@ export class UserConfigurationComponent implements OnInit {
     }
   }
 
+  deleteAccount() {
+    this.userService.deleteAccount(this.loggedUser.id)
+      .subscribe(
+        response => {
+          this.loginService.isLogged = false;
+          this.loginService.isAdmin = false;
+          this.router.navigate(['/']);
+        },
+        error => console.log("Error al borrar el usuario")
+      )
+
+  }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 }

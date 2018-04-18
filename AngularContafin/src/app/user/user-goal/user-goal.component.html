@@ -11,6 +11,11 @@
                   <strong>¡Error al fija una meta!</strong> No has seleccionado ninguna opción.
                 </div>
               </div>
+              <div *ngIf="addGoal" class="container">
+                  <div class="alert alert-success mt-2" role="alert">
+                    <strong>¡Tus cambios se han guardado correctamente!</strong>
+                  </div>
+                </div>
               <div class="col-lg-10 mx-auto">
                 <h3 class="text-uppercase">
                   <strong>¡Vamos a marcarnos una meta!</strong>

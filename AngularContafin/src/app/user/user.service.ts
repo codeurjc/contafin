@@ -30,6 +30,17 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
+    deleteAccount(id: number) {
+        const headers = new Headers({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true});
+        return this.http.delete(BASE_URL + '/' + id, options)
+            .map(response => response.json())
+            .catch(error => this.handleError(error));
+
+    }
+
     validation(id: number, pass: string) {
         const headers = new Headers({
             'Accept': 'application/json',

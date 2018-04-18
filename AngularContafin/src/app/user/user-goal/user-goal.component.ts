@@ -15,6 +15,7 @@ export class UserGoalComponent implements OnInit {
   public loggedUser: User;
   public image: FormData;
   public noGoal: boolean;
+  public addGoal: boolean;
   private updatedUser: User = {
     id: 0,
     name: "",
@@ -49,9 +50,11 @@ export class UserGoalComponent implements OnInit {
           this.loginService.setLoggedUser(user);
           this.router.navigate(['/User/Goal']);
           this.noGoal = false;
+          this.addGoal = true;
           this.updateUser = null;
         },
         error => {
+          this.addGoal = false;
           this.noGoal = true;
         }
       )
