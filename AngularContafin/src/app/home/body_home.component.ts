@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitsService } from '../unit/unit.service';
 import { Unit } from '../Interfaces/Unit/unit.model';
@@ -11,7 +11,7 @@ import { useAnimation } from '@angular/core/src/animation/dsl';
     templateUrl:
         './body_home.component.html'
 })
-export class BodyHomeComponent {
+export class BodyHomeComponent implements OnInit {
     [x: string]: any;
     closeResult: string;
     kind1 = '1';
@@ -24,6 +24,7 @@ export class BodyHomeComponent {
         this.loginService.isLoggedUser(); 
         this.loggedUser = loginService.getLoggedUser();  
     }
+
     ngOnInit() {
         this.getUnits();
     }

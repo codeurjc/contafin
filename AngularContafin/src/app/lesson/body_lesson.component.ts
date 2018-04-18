@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LessonsService } from './lesson.service';
 import { Unit } from '../Interfaces/Unit/unit.model';
 import { Lesson } from '../Interfaces/Lesson/lesson.model';
@@ -9,7 +9,7 @@ import { UnitsService } from '../unit/unit.service';
     templateUrl:
         './body_lesson.component.html'
 })
-export class BodyLessonComponent {
+export class BodyLessonComponent implements OnInit {
 
     @Input()
     private id: number;
@@ -18,16 +18,17 @@ export class BodyLessonComponent {
     nlesson: number = 0;
 
     constructor(public lessonService: LessonsService, public unitService: UnitsService) {
+
+    }
+
+    ngOnInit() {
         this.getUnits(this.id);
     }
 
-    OnInit() {
-
-    }
-
     getUnits(id: number) {
-        this.lessonService.getLessonsOfUnit(id).subscribe(
-            unit => { this.unit = unit
+        this.lessonService.getLessonsOfUnit(this.id).subscribe(
+            unit => {
+                this.unit = unit
                 this.unitService.numberOfCompletedLessons(unit.id).subscribe(
                     nlesson => this.nlesson = nlesson,
                     error => console.log(error)
