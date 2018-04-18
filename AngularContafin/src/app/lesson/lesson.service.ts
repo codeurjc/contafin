@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
@@ -20,7 +20,7 @@ export class LessonsService {
 
     //Get Lessons of the unit with its id
     getLessonsOfUnit(id:number) {
-		return this.http.get(BASE_URL + '1' + '/Lesson/')
+		return this.http.get(BASE_URL + id + '/Lesson/')
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
@@ -47,7 +47,11 @@ export class LessonsService {
 
 	//To know if a Lesson is completed.
 	isCompleted(idUnit: number, idLesson:number) {
-		return this.http.get(BASE_URL + idUnit +'/Lesson/'+ idLesson + '/isCompleted')
+		const headers = new Headers({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true , headers});
+		return this.http.get(BASE_URL + idUnit +'/Lesson/'+ idLesson + '/isCompleted' , options)
 		.map(response => response.json())
 		.catch(error => this.handleError(error));
 	}

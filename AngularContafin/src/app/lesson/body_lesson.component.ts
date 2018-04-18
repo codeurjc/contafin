@@ -19,6 +19,8 @@ export class BodyLessonComponent implements OnInit {
     public unit: Unit;
     private lessons: Array<Lesson> = new Array();
 
+    lessonsCompleted: boolean[] = new Array();
+
     constructor(public lessonService: LessonsService, public unitService: UnitsService) {
 
     }
@@ -36,6 +38,15 @@ export class BodyLessonComponent implements OnInit {
                     nlesson => this.nlesson = nlesson,
                     error => console.log(error)
                 )
+                for(var i= 0; i<unit.lessons.length;i++){
+                    this.lessonService.isCompleted(unit.id,unit.lessons[i].id).subscribe(
+                        isCompleted => {
+                            this.lessonsCompleted.push(isCompleted);
+                            console.log(isCompleted);
+                        },
+                        error=> console.log(error)
+                    )
+                }
             },
             error => console.log(error)
         )
@@ -50,6 +61,8 @@ export class BodyLessonComponent implements OnInit {
     pulsar() {
         console.log(this.id);
         console.log(this.unit);
+        console.log(this.lessons);
+        console.log(this.lessonsCompleted);
     }
 
     //Only create an empty unit
