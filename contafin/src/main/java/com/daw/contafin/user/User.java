@@ -21,36 +21,62 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
 public class User {
 	
+	public interface UserBassic {
+	}
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
+	@JsonView(UserBassic.class)
 	private long id;
 	
+	@JsonView(UserBassic.class)
 	private String name;
+	
+	@JsonView(UserBassic.class)
 	private String email;
 	
-	@JsonIgnore
 	private String passwordHash;
 	
+	@JsonView(UserBassic.class)
 	private int level;
+	
+	@JsonView(UserBassic.class)
 	private int points;
+	
+	@JsonView(UserBassic.class)
 	private int streak;
+	
+	@JsonView(UserBassic.class)
 	private int fluency;
+	
+	@JsonView(UserBassic.class)
 	private int dailyGoal;
+	
+	@JsonView(UserBassic.class)
 	private String lastConnection;
+	
+	@JsonView(UserBassic.class)
 	private int lastUnit;
+	
+	@JsonView(UserBassic.class)
 	private int lastLesson;
+	
+	@JsonView(UserBassic.class)
 	private int [] progress;
+	
+	@JsonView(UserBassic.class)
 	private int remainingGoals;
 	
-
+	@JsonView(UserBassic.class)
 	private int exp = 0;
 	
-	@JsonIgnore
+	@JsonView(UserBassic.class)
 	private int needexp = 10;
 	
 	@JsonIgnore

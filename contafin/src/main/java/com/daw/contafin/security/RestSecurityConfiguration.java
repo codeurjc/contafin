@@ -24,11 +24,13 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/login").authenticated();
 		
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/signup").permitAll();
+		
 		// URLs that need authentication to access to it
-		http.authorizeRequests().antMatchers("/api/User/*").hasAnyRole("ADMIN","USER");
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/User/").hasAnyRole("ADMIN","USER");	
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/User/*").hasAnyRole("ADMIN","USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/User/Photo").hasAnyRole("ADMIN","USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/User/*/Photo").hasAnyRole("ADMIN","USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/User/").hasAnyRole("USER");
 
 		http.authorizeRequests().antMatchers("/api/Admin/*").hasAnyRole("ADMIN");
@@ -51,7 +53,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/Unit/*/Lesson/*/Exercise/*/Solution").permitAll();
 		http.authorizeRequests().anyRequest().permitAll();
-
+		
 		// Disable CSRF protection (it is difficult to implement with ng2)
 		http.csrf().disable();
 

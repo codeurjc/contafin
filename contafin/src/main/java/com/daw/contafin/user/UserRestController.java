@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
+import com.daw.contafin.user.User.UserBassic;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @RestController
@@ -53,6 +55,7 @@ public class UserRestController {
 
 	}
 	
+	@JsonView(UserBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> profile(@PathVariable long id) {
 		User user = userService.findById(id);
@@ -64,7 +67,8 @@ public class UserRestController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{id}/Data", method = RequestMethod.PUT)
+	@JsonView(UserBassic.class)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<User> updateUserData(@PathVariable long id, @RequestBody User updatedUser) {
 			User user = userService.findById(id);
 			user = userService.updateUser(user, updatedUser);
@@ -77,6 +81,16 @@ public class UserRestController {
 			}
 	}
 	
+	@RequestMapping(value = "/{id}/Validation/{pass}", method = RequestMethod.GET)
+	public ResponseEntity<Boolean> validaion(@PathVariable long id, @PathVariable String pass) {
+		User user = userService.findById(id);
+		if (new BCryptPasswordEncoder().matches(pass, user.getPasswordHash())) {
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(false, HttpStatus.OK);
+		}
+	}
+	
 	@RequestMapping(value = "/{id}/Progress", method = RequestMethod.GET)
 	public ResponseEntity<int[]> progress(@PathVariable long id) {
 		User user = userService.findById(id);
@@ -87,6 +101,7 @@ public class UserRestController {
 		return new ResponseEntity<>(progress, HttpStatus.OK);
 	}
 	
+	@JsonView(UserBassic.class)
 	@RequestMapping(value = "/Name", method = RequestMethod.PUT)
 	public ResponseEntity<User> updateName(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
@@ -110,6 +125,7 @@ public class UserRestController {
 		}
 	}
 	
+	@JsonView(UserBassic.class)
 	@RequestMapping(value = "/Email", method = RequestMethod.PUT)
 	public ResponseEntity<User> updateEmail(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
@@ -133,6 +149,7 @@ public class UserRestController {
 		}
 	}
 	
+	@JsonView(UserBassic.class)
 	@RequestMapping(value = "/Password", method = RequestMethod.PUT)
 	public ResponseEntity<User> updatePassword(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
@@ -158,7 +175,7 @@ public class UserRestController {
 			}
 		}
 	}
-
+	
 	@RequestMapping(value = "/{id}/Photo", method = RequestMethod.POST)
 	public ResponseEntity<Boolean> profilePhoto(@PathVariable long id, @RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
@@ -186,6 +203,7 @@ public class UserRestController {
 		imageService.showImage(request, response);
 	}
 
+	@JsonView(UserBassic.class)
 	@RequestMapping(value = "/Goal", method = RequestMethod.PUT)
 	public ResponseEntity<User> goals(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {

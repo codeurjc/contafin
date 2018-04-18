@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.daw.contafin.completedLesson.CompletedLesson;
@@ -116,6 +117,10 @@ public class UserService {
 			}
 			if (!updatedUser.getEmail().isEmpty()) {
 				user.setEmail(updatedUser.getEmail());
+			}
+			if(!updatedUser.getPasswordHash().isEmpty()) {
+				String passwordHash = new BCryptPasswordEncoder().encode(updatedUser.getPasswordHash());
+				user.setPasswordHash(passwordHash);
 			}
 			updateUserData(user);
 			userComponent.setLoggedUser(user);
