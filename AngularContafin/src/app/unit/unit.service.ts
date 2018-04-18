@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
@@ -35,7 +35,11 @@ export class UnitsService {
 
 	//Number of completed Lessons in a unit (int)
 	numberOfCompletedLessons(id: number) {
-		return this.http.get(BASE_URL + id + '/numberOfCompletedLessons')
+		const headers = new Headers({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const options = new RequestOptions({ withCredentials: true , headers});
+		return this.http.get(BASE_URL + id + '/numberOfCompletedLessons', options)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
