@@ -20,5 +20,6 @@ export interface User{
     image?: Blob;
     roles: string[];
     completedExercises?: CompletedExercise [];
-
+    imgURL?: string;
+    
 }

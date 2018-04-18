@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginService } from '../login/login.service';
@@ -10,16 +10,18 @@ import { Router } from '@angular/router';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html'
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
 
   public isAdmin: boolean = false;
   public isLoggedUser: boolean = false;
   public loggedUser: User;
 
-  constructor(private router: Router, public loginService: LoginService) {
-    this.loggedUser = this.loginService.getLoggedUser();
+  constructor(private router: Router, public loginService: LoginService) { }
+
+  ngOnInit() {
+    this.getUser();
     this.isLoggedUser = this.loginService.isLoggedUser();
-    this.isAdmin = loginService.isAdministrator();
+    this.isAdmin = this.loginService.isAdministrator();
   }
 
   logOut() {
@@ -30,6 +32,11 @@ export class NavBarComponent {
       },
       error => console.log('Error when trying to log out: ' + error)
     );
+  }
+
+  getUser() {
+    this.loggedUser = this.loginService.getLoggedUser();
+    this.loggedUser.imgURL = "https://localhost:8080/api/User/Photo?a" + (new Date()).getTime();
   }
 
 }

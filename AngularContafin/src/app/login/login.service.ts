@@ -13,6 +13,7 @@ export class LoginService {
     isLogged = false;
     isAdmin = false;
     user: User;
+
     constructor(private http: Http) { }
 
     getLoggedUser() {
@@ -20,6 +21,7 @@ export class LoginService {
     }
     setLoggedUser(user:User){
         this.user = user;
+        this.user.imgURL = "https://localhost:8080/api/User/Photo";
     }
 
     isLoggedUser() {
@@ -51,6 +53,7 @@ export class LoginService {
     private processLogInResponse(response) {
         this.isLogged = true;
         this.user = response.json();
+        this.user.imgURL = "https://localhost:8080/api/User/Photo";
         this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
     }
 
