@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../Interfaces/User/user.model';
 import { SignUpService } from './sign-up.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SignUpComponent implements OnInit {
 
+  private registered: boolean = false;
   private closeResult: string;
   private userData: any = {
     name: "",
@@ -29,11 +30,16 @@ export class SignUpComponent implements OnInit {
     this.signUpService.signup(this.userData)
       .subscribe(
         user => {
+          console.log(user);
           this.loginService.logIn(this.userData.email, this.userData.pass)
             .subscribe(
               user => {
-                console.log(user);
-                this.router.navigate(['/home']);
+                this.router.navigate(['/']).then(
+                  response => {
+                    this.registered = true;
+                    this.router.navigate(['/home'])
+                  }
+                );
               },
               error => alert('Algo ha salido mal')
             );

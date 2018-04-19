@@ -6,8 +6,11 @@
           <img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
         </div>
         <div class="col-6">
-          <h1 class="modal-title" id="exampleModalLongTitle">
+          <h1 *ngIf="!registered" class="modal-title" id="exampleModalLongTitle">
             <strong>REGÍSTRATE</strong>
+          </h1>
+          <h1 *ngIf="registered" class="modal-title" id="exampleModalLongTitle">
+            <strong>BIENVENIDO</strong>
           </h1>
         </div>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -15,17 +18,22 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="col-lg-8 mx-auto">
+        <div *ngIf="!registered" class="col-lg-8 mx-auto">
           <input [(ngModel)]="userData.name" type="text" class="form-control mt-3" id="roundregister" name="name" placeholder=" Nombre"
           />
           <input [(ngModel)]="userData.email" type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp"
             name="email" placeholder="Correro electrónico">
           <input [(ngModel)]="userData.pass" type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
         </div>
+        <div *ngIf="registered" class="col-lg-8 mx-auto">
+          <h6>¡Empieza a practicar contabilidad!</h6>
+        </div>
       </div>
       <div class="modal-footer mx-auto">
-        <input type="submit" value="Crear cuenta" class="btn btn-primary" id="button-style" (click)="signup()" (click)="d('Cross click')"
-        />
+        <input *ngIf="!registered" type="submit" value="Crear cuenta" class="btn btn-primary" id="button-style" data-dismiss="signup"
+          (click)="signup()" />
+        <input *ngIf="registered" type="submit" value="Comenzar" class="btn btn-primary" id="button-style" data-dismiss="signup"
+          (click)="d('Cross click')" />
       </div>
       <div class="modal-footer mx-auto">
       </div>

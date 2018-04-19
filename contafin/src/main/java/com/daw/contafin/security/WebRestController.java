@@ -18,6 +18,8 @@ import com.daw.contafin.EmailService;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
+import com.daw.contafin.user.User.UserBassic;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import freemarker.template.TemplateException;
 
@@ -36,6 +38,7 @@ public class WebRestController {
 	@Autowired
 	EmailService emailService;
 	
+	@JsonView(UserBassic.class)
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ResponseEntity<User> signup(@RequestBody Map<String,String> userData) {
 		String name = userData.get("name");
