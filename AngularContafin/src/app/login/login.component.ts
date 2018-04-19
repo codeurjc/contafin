@@ -14,7 +14,7 @@ export class LoginComponent {
 
   constructor(private router: Router, private loginService: LoginService, private modalService: NgbModal) { }
 
-  private closeResult: string; 
+  private closeResult: string;
 
   @Input()
   private formkind: string;
@@ -26,7 +26,16 @@ export class LoginComponent {
     this.loginService.logIn(email, pass).subscribe(
       user => {
         console.log(user);
-        this.router.navigate(['/home']);
+        if (this.formkind == " 1") {
+          this.router.navigate(['/home']);
+        }
+        else {
+          this.router.navigate(['/']).then(
+            response => {
+              this.router.navigate(['/home'])
+            }
+          );
+        }
       },
       error => alert('Invalid user or password')
     );
