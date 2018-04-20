@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'body_exercise',
@@ -7,10 +7,16 @@ import {Component} from '@angular/core';
 
 export class BodyExerciseComponent {
 
-  img1 = "../assets/machine.jpg";
-  img2 = "../assets/land.jpg";
-  img3 = "../assets/truck.jpg";
+  @Input()
+  idunit: number;
 
-  statement = "https://localhost:8080/api/Unit/1/Lesson/1/Exercise/1/statement";
+  @Input()
+  idlesson: number;
+
+  @Input()
+  idkind: number;
+
+  @Input()
+  idexercise: number;
 
 }

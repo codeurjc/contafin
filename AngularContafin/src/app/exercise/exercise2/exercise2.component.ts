@@ -1,4 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Http} from "@angular/http";
+import {Observable} from "rxjs/Observable";
+import {environment} from "../../../environments/environment";
+
+const BASE_URL = environment.apiBase + '/Unit';
 
 @Component({
   selector: 'exercise2',
@@ -7,6 +12,36 @@ import {Component} from '@angular/core';
 
 export class Exercise2Component {
 
-  statement = "https://localhost:8080/api/Unit/1/Lesson/1/Exercise/2/statement";
+  @Input()
+  idunit: number;
+
+  @Input()
+  idlesson: number;
+
+  @Input()
+  idkind: number;
+
+  @Input()
+  idexercise: number;
+
+  statement: String;
+
+  constructor(private http: Http) {
+
+  }
+
+  getStatement() {
+    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
+      .map(response => {
+        this.statement = response.json();
+        return this.statement;
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  private handleError(error: any) {
+    console.error(error);
+    return Observable.throw('Server error (' + error.status + '): ' + error.text());
+  }
 
 }

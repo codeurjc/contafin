@@ -1,16 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {Http} from "@angular/http";
-import {Observable} from "rxjs/Observable";
+import {Headers, Http, RequestOptions} from '@angular/http';
 import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs/Observable";
 
 const BASE_URL = environment.apiBase + '/Unit';
 
 @Component({
-  selector: 'exercise7',
-  templateUrl: './exercise7.component.html'
+  selector: 'exercise1',
+  templateUrl: './exercise1.component.html'
 })
 
-export class Exercise7Component {
+export class Exercise1Component {
 
   @Input()
   idunit: number;
@@ -23,6 +23,10 @@ export class Exercise7Component {
 
   @Input()
   idexercise: number;
+
+  img1 = "../assets/machine.jpg";
+  img2 = "../assets/land.jpg";
+  img3 = "../assets/truck.jpg";
 
   solution: String;
   statement: String;

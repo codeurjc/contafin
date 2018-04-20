@@ -1,29 +1,37 @@
 import {Component} from '@angular/core';
-import {NgbProgressbarConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'header_exercise',
   templateUrl: './header_exercise.component.html',
-  providers: [NgbProgressbarConfig]
+  styleUrls: ['../app.component.css']
 })
 
 export class HeaderExerciseComponent {
 
   public progress: number;
 
-  constructor() {
-    this.progress = 0;
+  closeResult: string;
+
+  constructor(private router: Router, activatedRoute: ActivatedRoute, private modalService: NgbModal) {
+    this.progress = 10;
   }
 
-}
-
-export class NgbdProgressbarConfig {
-  constructor(config: NgbProgressbarConfig) {
-    // customize default values of progress bars used by this component tree
-    config.max = 1000;
-    config.striped = true;
-    config.animated = true;
-    config.type = 'info';
-    config.height = '20px';
+  open(modal) {
+    this.modalService.open(modal).result.then((result) => {
+      this.closeResult = '${result}';
+      if (result=='Exit click') {
+        this.goHome();
+      }
+    }, (reason) => {
+      this.closeResult = '$[reason}';
+    });
   }
+
+  goHome(){
+    this.router.navigate(['/home']);
+  }
+
 }

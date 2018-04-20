@@ -7,11 +7,33 @@ import {Component} from '@angular/core';
 
 export class FooterExerciseComponent {
 
-  public end: boolean;
-  public tocorrectend: boolean;
-  public next: boolean;
-  public correct: boolean;
+  public exerciseList: number[] = [1,2,5,7,0];
+  public corrected: boolean;
 
-  public siguiente: "../exercise";
+  public i: number;
+
+  constructor(){
+    this.i = 0;
+  }
+
+
+  correct(){
+
+      this.corrected = true;
+
+  }
+
+  skipExercise(exerciseList: number[], i: number){
+
+    exerciseList.push(exerciseList[i]);
+    this.i=i+1;
+
+  }
+
+  nextExercise(i: number){
+
+    this.i=i+1;
+
+  }
 
 }

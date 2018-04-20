@@ -1,4 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {environment} from "../../../environments/environment";
+import {Http} from "@angular/http";
+import {Observable} from "rxjs/Observable";
+
+const BASE_URL = environment.apiBase + '/Unit';
 
 @Component({
   selector: 'exercise5',
@@ -7,14 +12,47 @@ import {Component} from '@angular/core';
 
 export class Exercise5Component {
 
-  statement = "https://localhost:8080/api/Unit/1/Lesson/1/Exercise/5/statement";
+  @Input()
+  idunit: number;
 
-  exercise1: String;
-  exercise2: String;
-  exercise3: String;
+  @Input()
+  idlesson: number;
 
-  text1: String;
-  text2: String;
-  text3: String;
+  @Input()
+  idkind: number;
+
+  @Input()
+  idexercise: number;
+
+  solution: String;
+  statement: String;
+  texts: String[];
+
+  constructor(private http: Http) {
+
+  }
+
+  getStatement() {
+    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
+      .map(response => {
+        this.statement = response.json();
+        return this.statement;
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  getTexts() {
+    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
+      .map(response => {
+        this.texts = response.json();
+        return this.texts;
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  private handleError(error: any) {
+    console.error(error);
+    return Observable.throw('Server error (' + error.status + '): ' + error.text());
+  }
 
 }

@@ -1,0 +1,43 @@
+<div class="bgexercises" id="page-top">
+
+  <!--Question and answers-->
+  <section class="p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">{{getStatement()}}</h2>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+    <div class="container ">
+      <div class="row">
+        <div class="container">
+          <div class="row justify-content-around">
+            <div class="btn-group btn-group-toggle" name="radioBasic">
+              <div class="col-lg-4 col-md-6">
+                <label class="service-box mt-5 mx-auto text-center card-body" id="exercise1">
+                  <img class="img-fluid " [src]="img1" alt="" id="selectLesson">
+                  <input type="radio" [(ngModel)]="solution" value="uno">{{getTexts()}}
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <label class="service-box mt-5 mx-auto text-center card-body" id="exercise1">
+                  <img class="img-fluid " [src]="img2" alt="" id="selectLesson">
+                  <input type="radio" [(ngModel)]="solution" value="dos">{{getTexts()}}
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <label class="service-box mt-5 mx-auto text-center card-body" id="exercise1">
+                  <img class="img-fluid " [src]="img3" alt="" id="selectLesson">
+                  <input type="radio" [(ngModel)]="solution" value="tres">{{getTexts()}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

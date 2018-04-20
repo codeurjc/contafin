@@ -14,6 +14,7 @@ import { BodyLessonComponent } from './lesson/body_lesson.component';
 import { BodyExerciseComponent } from './exercise/body_exercise.component';
 import { HeaderExerciseComponent } from "./exercise/header_exercise.component";
 import { FooterExerciseComponent } from "./exercise/footer_exercise.component";
+import { Exercise1Component} from "./exercise/exercise1/exercise1.component";
 import { Exercise2Component } from "./exercise/exercise2/exercise2.component";
 import { Exercise5Component } from "./exercise/exercise5/exercise5.component";
 import { Exercise7Component } from "./exercise/exercise7/exercise7.component";
@@ -75,6 +76,7 @@ import { CanActivateAdmin } from './security/can-activate-admin';
     BodyExerciseComponent,
     HeaderExerciseComponent,
     FooterExerciseComponent,
+    Exercise1Component,
     Exercise2Component,
     Exercise5Component,
     Exercise7Component,
