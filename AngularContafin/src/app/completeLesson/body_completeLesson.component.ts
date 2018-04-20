@@ -20,6 +20,7 @@ export class BodyCompleteLessonComponent {
         this.completeLesson();
     }
 
+    //deleteAllCompletedExercise() --> Home
     completeLesson() {
         this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
             response => this.response = response,

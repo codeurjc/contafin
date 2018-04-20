@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
@@ -45,14 +45,22 @@ export class ExerciseService {
 			.catch(error => this.handleError(error));
 	}
 
-	checkAnswer(idUnit: number, idLesson: number, idExercise: number, result: string) {
-		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', result)
+	checkExercise(idUnit: number, idLesson: number, idExercise: number, result: string) {
+		const headers = new Headers({
+			'X-Requested-With': 'XMLHttpRequest'
+		});
+		const options = new RequestOptions({ withCredentials: true, headers });
+		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', result, options)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
 
 	deleteAllCompleted() {
-		return this.http.delete(environment.apiBase + '/DeleteAllExercises')
+		const headers = new Headers({
+			'X-Requested-With': 'XMLHttpRequest'
+		});
+		const options = new RequestOptions({ withCredentials: true, headers });
+		return this.http.delete(environment.apiBase + '/DeleteAllExercises', options)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
