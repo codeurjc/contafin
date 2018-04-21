@@ -93,7 +93,7 @@ public class UnitRestController{
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Unit> createUnit(@RequestBody Unit unit) {
 		
-		if (unit != null) {
+		if (unitService.isValidUnit(unit)) {
 			Exercise exercise;
 			
 			unitService.save(unit);
@@ -151,6 +151,34 @@ public class UnitRestController{
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@RequestMapping(value = "/Exercise/{idExercise}/{nImage}", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> profilePhoto(@PathVariable long idExercise, @PathVariable long nImage, @RequestParam("file") MultipartFile file) {
+		if (!file.isEmpty()) {
+			// Upload image
+			byte[] bytes;
+			try {
+				bytes = imageService.uploadImage(file);
+				Exercise exercise = exerciseService.findById(idExercise);
+				if (nImage == 1) {
+					exercise.setImage1(bytes);
+				}
+				if (nImage == 2) {
+					exercise.setImage2(bytes);
+				}
+				if (nImage == 3) {
+					exercise.setImage3(bytes);
+				}
+				exerciseService.save(exercise);
+				return new ResponseEntity<>(true, HttpStatus.OK);
+			} catch (IOException e) {
+				return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} 
+		else {
+			return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
 		}
 	}
 	

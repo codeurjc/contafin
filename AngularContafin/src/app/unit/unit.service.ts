@@ -36,9 +36,9 @@ export class UnitsService {
 	//Number of completed Lessons in a unit (int)
 	numberOfCompletedLessons(id: number) {
 		const headers = new Headers({
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const options = new RequestOptions({ withCredentials: true , headers});
+			'X-Requested-With': 'XMLHttpRequest'
+		});
+		const options = new RequestOptions({ withCredentials: true, headers });
 		return this.http.get(BASE_URL + id + '/numberOfCompletedLessons', options)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
@@ -52,20 +52,26 @@ export class UnitsService {
 			.catch(error => this.handleError(error));
 	}
 
-	//No va
-	/*uploadImages(id: number, images: Array<Images>) {
-		return this.http.post(BASE_URL+ id +'/Images', images)
-			.map(response => response.json())
-			.catch(error => this.handleError(error));
-	}*/
+	uploadImages(id: number, nImage: number, formData) {
+		const headers = new Headers({
+			'Accept': 'application/json',
+			'X-Requested-With': 'XMLHttpRequest'
+		});
+		const options = new RequestOptions({ withCredentials: true, headers });
 
-	changeNameUnit(id: number, name:string) {
+		return this.http.post(BASE_URL + 'Exercise/' + id + '/' + nImage, formData, options)
+			.toPromise()
+			.then(response => response.json())
+			.catch(error => console.error(error));
+	}
+
+	changeNameUnit(id: number, name: string) {
 		return this.http.put(BASE_URL + id, name)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
 	}
 
-	deleteUnit(id:number) {
+	deleteUnit(id: number) {
 		return this.http.delete(BASE_URL + id)
 			.map(response => response.json())
 			.catch(error => this.handleError(error));
@@ -77,5 +83,5 @@ export class UnitsService {
 	}
 
 
-	
+
 }
