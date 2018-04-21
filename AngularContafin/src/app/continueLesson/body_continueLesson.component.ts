@@ -17,7 +17,7 @@ export class BodyContinueLessonComponent {
         this.loggedUser = loginService.getLoggedUser();
     }
 
-    //deleteAllCompletedExercise() --> Home
+    //deleteAllCompletedExercises() --> Home
 
     open(content) {
         this.modalService.open(content).result.then((result) => {
