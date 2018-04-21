@@ -27,6 +27,14 @@ export class ExerciseService {
 			.catch(error => this.handleError(error));
 	}
 
+	//Same as getExercise but with promise
+	getOneExercise(idUnit: number, idLesson: number, idExercise: number) {
+		return this.http.get(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise)
+			.toPromise()
+			.then(response => response.json())
+			.catch(error => console.error(error));
+	}
+
 	changeExercise(idUnit: number, idLesson: number, idExercise: number, exercise: Exercise) {
 		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise, exercise)
 			.map(response => response.json())

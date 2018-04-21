@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Exercise } from '../Interfaces/Exercise/exercise.model';
 import { ExerciseService } from './exercise.service';
@@ -8,7 +8,7 @@ import { ExerciseService } from './exercise.service';
   templateUrl:
     './exercise.component.html'
 })
-export class ExerciseComponent {
+export class ExerciseComponent implements OnInit {
 
   idUnit: number;
   idLesson: number;
@@ -25,21 +25,42 @@ export class ExerciseComponent {
     /*let idExercise = activatedRoute.snapshot.params['idexercise'];
     this.idExercise = parseInt(idExercise);*/
     this.idExercise = (((this.idUnit - 1) * 3 + this.idLesson) - 1) * 4 + 1/*this.idExercise*/;
-    this.getExercises(this.idUnit, this.idLesson, this.idExercise);
-    this.getExercises(this.idUnit, this.idLesson, this.idExercise + 1);
-    this.getExercises(this.idUnit, this.idLesson, this.idExercise + 2);
-    this.getExercises(this.idUnit, this.idLesson, this.idExercise + 3);
     this.idExercises.push(this.idExercise);
     this.idExercises.push(this.idExercise + 1);
     this.idExercises.push(this.idExercise + 2);
     this.idExercises.push(this.idExercise + 3);
   }
 
-  getExercises(idunit: number, idlesson: number, idexercise: number) {
-    this.exerciseService.getExercise(idunit, idlesson, idexercise).subscribe(
-      exercise => this.kindExercises.push(exercise.kind),
-      error => console.log(error)
-    )
+  ngOnInit() {
+    this.getExercises();
+  }
+
+  getExercises() {
+    this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise)
+      .then(
+        exercise => {
+          this.kindExercises.push(exercise.kind);
+          this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 1)
+            .then(
+              exercise => {
+                this.kindExercises.push(exercise.kind);
+                this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 2)
+                  .then(
+                    exercise => {
+                      this.kindExercises.push(exercise.kind);
+                      this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 3)
+                        .then(
+                          exercise => {
+                            this.kindExercises.push(exercise.kind);
+                          }
+                        )
+                    }
+                  )
+              }
+            )
+        }
+      )
+      .catch(error => console.log(error))
   }
 
   newExercisechange(newExercise: boolean) {
