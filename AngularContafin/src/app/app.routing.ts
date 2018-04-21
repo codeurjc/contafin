@@ -12,6 +12,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { ErrorComponent } from './error/error.component';
 import { CompleteLessonComponent } from './completeLesson/completeLesson.component';
+import { ContinueLessonComponent } from './continueLesson/continueLesson.component';
 import { CanActivateUser } from './security/can-activate-user';
 import { CanActivateAdmin } from './security/can-activate-admin';
 
@@ -27,7 +28,8 @@ const appRoutes = [
   { path: 'Unit/:id/Lessons', component: LessonComponent },
   { path: 'Unit/:id/Lessons/:idlesson/Exercise/:idkind/:idexercise', component: ExerciseComponent },
   { path: 'Error', component: ErrorComponent },
-  { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted/', component: CompleteLessonComponent }
+  { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted/', component: CompleteLessonComponent },
+  { path: 'ContinueLesson', component: ContinueLessonComponent }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

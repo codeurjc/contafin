@@ -14,7 +14,7 @@ import { BodyLessonComponent } from './lesson/body_lesson.component';
 import { BodyExerciseComponent } from './exercise/body_exercise.component';
 import { HeaderExerciseComponent } from "./exercise/header_exercise.component";
 import { FooterExerciseComponent } from "./exercise/footer_exercise.component";
-import { Exercise1Component} from "./exercise/exercise1/exercise1.component";
+import { Exercise1Component } from "./exercise/exercise1/exercise1.component";
 import { Exercise2Component } from "./exercise/exercise2/exercise2.component";
 import { Exercise5Component } from "./exercise/exercise5/exercise5.component";
 import { Exercise7Component } from "./exercise/exercise7/exercise7.component";
@@ -37,6 +37,8 @@ import { routing } from './app.routing';
 import { BodyErrorComponent } from './error/body_error.component';
 import { BodyCompleteLessonComponent } from './completeLesson/body_completeLesson.component';
 import { CompleteLessonComponent } from './completeLesson/completeLesson.component';
+import { ContinueLessonComponent } from './continueLesson/continueLesson.component';
+import { BodyContinueLessonComponent } from './continueLesson/body_continueLesson.component';
 
 //Services
 import { UnitsService } from './unit/unit.service';
@@ -84,6 +86,8 @@ import { CanActivateAdmin } from './security/can-activate-admin';
     ErrorComponent,
     BodyCompleteLessonComponent,
     CompleteLessonComponent,
+    BodyContinueLessonComponent,
+    ContinueLessonComponent
   ],
 
   imports: [
