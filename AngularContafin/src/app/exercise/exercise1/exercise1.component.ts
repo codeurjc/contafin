@@ -1,62 +1,55 @@
-import {Component, Input} from '@angular/core';
-import {Headers, Http, RequestOptions} from '@angular/http';
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs/Observable";
+import { Component, Input, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from "rxjs/Observable";
+import { ExerciseService } from '../exercise.service';
 
-const BASE_URL = environment.apiBase + '/Unit';
 
 @Component({
   selector: 'exercise1',
   templateUrl: './exercise1.component.html'
 })
 
-export class Exercise1Component {
+export class Exercise1Component implements OnInit {
 
   @Input()
-  idunit: number;
+  idUnit: number;
 
   @Input()
-  idlesson: number;
+  idLesson: number;
 
   @Input()
   idkind: number;
 
   @Input()
-  idexercise: number;
+  idExercise: number;
 
-  img1 = "../assets/machine.jpg";
-  img2 = "../assets/land.jpg";
-  img3 = "../assets/truck.jpg";
+  public img1: string;
+  public img2: string;
+  public img3: string;
 
-  solution: String;
-  statement: String;
-  texts: String[];
+  public answer: String;
+  public statement: String;
+  public texts: Array<String> = new Array();
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private exerciseService: ExerciseService) {
+    console.log(this.idExercise);
 
   }
-
-  getStatement() {
-    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-      .map(response => {
-        this.statement = response.json();
-        return this.statement;
-      })
-      .catch(error => this.handleError(error));
+  ngOnInit() {
+    this.img1 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/1";
+    this.img2 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/2";
+    this.img3 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/3";
+    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+      .subscribe(
+        exercise => {
+          this.statement = exercise.statement;
+          this.texts = exercise.texts;
+        }
+      )
   }
-
-  getTexts() {
-    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-      .map(response => {
-        this.texts = response.json();
-        return this.texts;
-      })
-      .catch(error => this.handleError(error));
-  }
-
-  private handleError(error: any) {
-    console.error(error);
-    return Observable.throw('Server error (' + error.status + '): ' + error.text());
+  //Get the user's solution
+  updateSolution(event) {
+    this.answer = event.target.value;
   }
 
 }
