@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'completeLesson',
@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
         './completeLesson.component.html'
 })
 export class CompleteLessonComponent {
+
+   @Input()
+  idUnit: number;
+
+  @Input()
+  idLesson: number;
 }
