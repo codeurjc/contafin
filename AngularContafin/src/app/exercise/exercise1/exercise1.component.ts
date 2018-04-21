@@ -27,9 +27,14 @@ export class Exercise1Component implements OnInit {
   public img2: string;
   public img3: string;
 
-  public answer: String;
+  public right: boolean;
+  public option1: string = "exercise1";
+  public option2: string = "exercise1";
+  public option3: string = "exercise1";
+  public answer: string;
   public statement: String;
   public texts: Array<String> = new Array();
+  public result: any;
 
   constructor(private http: Http, private exerciseService: ExerciseService) {
     console.log(this.idExercise);
@@ -45,6 +50,42 @@ export class Exercise1Component implements OnInit {
           this.statement = exercise.statement;
           this.texts = exercise.texts;
         }
+      )
+  }
+
+  check() {
+    this.result = {
+      "result": this.answer
+    }
+    this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+      .subscribe(
+        response => {
+          this.right = response;
+          if (response) {
+            if (this.answer == "uno") {
+              this.option1 = "exercise1Good";
+            }
+            if (this.answer == "dos") {
+              this.option2 = "exercise1Good";
+            }
+            if (this.answer == "tres") {
+              this.option3 = "exercise1Good";
+            }
+          }
+          else {
+            if (this.answer == "uno") {
+              this.option1 = "exercise1Bad";
+            }
+            if (this.answer == "dos") {
+              this.option2 = "exercise1Bad";
+            }
+            if (this.answer == "tres") {
+              this.option3 = "exercise1Bad";
+            }
+
+          }
+        },
+        error => console.error(error)
       )
   }
 
