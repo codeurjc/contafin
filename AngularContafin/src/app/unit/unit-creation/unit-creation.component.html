@@ -1,9 +1,14 @@
 <app-navbar></app-navbar>
 <div class="bghome" id="page-top">
-  <form id="Form1" enctype="multipart/form-data">
+  <form #unitForm="ngForm" enctype="multipart/form-data" ngNativeValidate>
     <section class="text-center text-dark d-flex">
       <div class="container my-auto">
         <div class="row">
+          <div *ngIf="alertDanger" class="container">
+            <div class="alert alert-danger mb-5" role="alert">
+              <strong>¡Error al guardar los cambios!</strong> ¡Todos los campos son obligatorios!
+            </div>
+          </div>
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
               <strong>Creación de unidad completa</strong>
@@ -14,7 +19,7 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <div class="form-group">
-              <label for="unitNameForm">Nombre de la unidad</label>
+              <label for="unitNameForm" required>Nombre de la unidad</label>
               <input [(ngModel)]="unit.name" type="text" class="form-control form-control-lg" id="unitNameForm" name="unitName">
             </div>
             <hr class="invisible">
@@ -44,20 +49,17 @@
                     <div class="row">
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile0" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 1</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 0)" required/>
                         </div>
                       </div>
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile1" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 2</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 1)" required/>
                         </div>
                       </div>
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile2" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 3</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 2)" required/>
                         </div>
                       </div>
                     </div>
@@ -266,20 +268,17 @@
                     <div class="row">
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile0" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 1</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 3)" required/>
                         </div>
                       </div>
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile1" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 2</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 4)" required/>
                         </div>
                       </div>
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile2" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 3</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 5)" required/>
                         </div>
                       </div>
                     </div>
@@ -488,20 +487,17 @@
                     <div class="row">
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile0" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 1</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 6)" required/>
                         </div>
                       </div>
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile1" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 2</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 7)" required/>
                         </div>
                       </div>
                       <div class="col">
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="imageFile2" accept="image/*" name="images[]">
-                          <label class="custom-file-label" for="imageFile0">Imagen 3</label>
+                          <input id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, 8)" required/>
                         </div>
                       </div>
                     </div>

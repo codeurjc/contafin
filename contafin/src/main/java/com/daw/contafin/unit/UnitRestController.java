@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -93,7 +95,7 @@ public class UnitRestController{
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Unit> createUnit(@RequestBody Unit unit) {
 		
-		if (unit != null) {
+		if (unitService.isValidUnit(unit)) {
 			Exercise exercise;
 			
 			unitService.save(unit);
@@ -154,6 +156,41 @@ public class UnitRestController{
 		}
 	}
 	
+	@RequestMapping(value = "/Exercise/{idExercise}/{nImage}", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> profilePhoto(@PathVariable long idExercise, @PathVariable long nImage, @RequestParam("file") MultipartFile file) {
+		if (!file.isEmpty()) {
+			// Upload image
+			byte[] bytes;
+			try {
+				bytes = imageService.uploadImage(file);
+				Exercise exercise = exerciseService.findById(idExercise);
+				if (nImage == 1) {
+					exercise.setImage1(bytes);
+				}
+				if (nImage == 2) {
+					exercise.setImage2(bytes);
+				}
+				if (nImage == 3) {
+					exercise.setImage3(bytes);
+				}
+				exerciseService.save(exercise);
+				return new ResponseEntity<>(true, HttpStatus.OK);
+			} catch (IOException e) {
+				return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} 
+		else {
+			return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	//Show images
+	@RequestMapping(value = "/Exercise/{idExercise}/{nImage}", method = RequestMethod.GET)
+	public void sowImage(@PathVariable long idExercise, @PathVariable long nImage, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Exercise exercise = exerciseService.findById(idExercise);
+		imageService.showImageExercise(exercise, nImage, request, response);
+	}
+	
 	@RequestMapping(value = "/{id}/Images", method = RequestMethod.POST)
 	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
 		Unit unit = unitService.findById(id);
@@ -177,6 +214,7 @@ public class UnitRestController{
 			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 	//Put unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
