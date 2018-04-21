@@ -13,46 +13,21 @@ const BASE_URL = environment.apiBase + '/Unit';
 export class Exercise5Component {
 
   @Input()
-  idunit: number;
+  idUnit: number;
 
   @Input()
-  idlesson: number;
+  idLesson: number;
 
   @Input()
   idkind: number;
 
   @Input()
-  idexercise: number;
+  idExercise: number;
 
-  solution: String;
   statement: String;
-  texts: String[];
 
   constructor(private http: Http) {
 
-  }
-
-  getStatement() {
-    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-      .map(response => {
-        this.statement = response.json();
-        return this.statement;
-      })
-      .catch(error => this.handleError(error));
-  }
-
-  getTexts() {
-    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-      .map(response => {
-        this.texts = response.json();
-        return this.texts;
-      })
-      .catch(error => this.handleError(error));
-  }
-
-  private handleError(error: any) {
-    console.error(error);
-    return Observable.throw('Server error (' + error.status + '): ' + error.text());
   }
 
 }

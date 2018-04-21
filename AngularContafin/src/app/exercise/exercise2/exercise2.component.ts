@@ -12,36 +12,22 @@ const BASE_URL = environment.apiBase + '/Unit';
 
 export class Exercise2Component {
 
-  @Input()
-  idunit: number;
 
   @Input()
-  idlesson: number;
+  idUnit: number;
+
+  @Input()
+  idLesson: number;
 
   @Input()
   idkind: number;
 
   @Input()
-  idexercise: number;
+  idExercise: number;
 
   statement: String;
 
   constructor(private http: Http) {
 
   }
-
-  getStatement() {
-    return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-      .map(response => {
-        this.statement = response.json();
-        return this.statement;
-      })
-      .catch(error => this.handleError(error));
-  }
-
-  private handleError(error: any) {
-    console.error(error);
-    return Observable.throw('Server error (' + error.status + '): ' + error.text());
-  }
-
 }
