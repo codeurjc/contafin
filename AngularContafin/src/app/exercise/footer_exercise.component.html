@@ -1,28 +1,18 @@
 <div class="mt-5 fixed-bottom" id="bg-foot">
-
-<div class="container-fluid py-3">
-
-  <div class="btn-toolbar justify-content-between" role="toolbar"
-       aria-label="Toolbar with button groups">
-
-    <a *ngIf="exerciseList[i+1]!=0" class="js-scroll-trigger"></a>
-    <button *ngIf="exerciseList[i+1]!=0" class="btn btn-primary btn-xl js-scroll-trigger"
-            (click)="skipExercise(exerciseList,i)">SALTAR
-    </button>
-    <a *ngIf="corrected==false" class="js-scroll-trigger"></a>
-    <button *ngIf="corrected==false" class="btn btn-primary btn-xl js-scroll-trigger"
-            (click)="correct()">CALIFICAR
-    </button>
-    <a *ngIf="exerciseList[i+1]!=0 && corrected" class="js-scroll-trigger"></a>
-    <button *ngIf="exerciseList[i+1]!=0 && corrected" class="btn btn-primary btn-xl js-scroll-trigger"
-            (click)="nextExercise(i)">SIGUIENTE
-    </button>
-    <a *ngIf="exerciseList[i+1]==0 && corrected" class="js-scroll-trigger"></a>
-    <button *ngIf="exerciseList[i+1]==0 && corrected" class="btn btn-primary btn-xl js-scroll-trigger"
-            routerLink="/home">TERMINAR
-    </button>
-
-  </div>
-</div>
-
+        <div class="container-fluid py-3">
+                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                        <a *ngIf="exerciseList[i+1]!=0" class="js-scroll-trigger"></a>
+                        <button *ngIf="exerciseList[i+1]!=0" class="btn btn-primary btn-xl js-scroll-trigger" (click)="skipExercise(exerciseList,i)">SALTAR
+                        </button>
+                        <a *ngIf="corrected==false" class="js-scroll-trigger"></a>
+                        <button *ngIf="corrected==false" class="btn btn-primary btn-xl js-scroll-trigger" (click)="correct()">CALIFICAR
+                        </button>
+                        <a *ngIf="exerciseList[i+1]!=0 && corrected" class="js-scroll-trigger"></a>
+                        <button *ngIf="exerciseList[i+1]!=0 && corrected" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise(i)">SIGUIENTE
+                        </button>
+                        <a *ngIf="exerciseList[i+1]==0 && corrected" class="js-scroll-trigger"></a>
+                        <button *ngIf="exerciseList[i+1]==0 && corrected" class="btn btn-primary btn-xl js-scroll-trigger" routerLink="/home">TERMINAR
+                        </button>
+                </div>
+        </div>
 </div>

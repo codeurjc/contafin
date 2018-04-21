@@ -10,10 +10,9 @@ export class FooterExerciseComponent {
   public exerciseList: number[] = [1,2,5,7,0];
   public corrected: boolean;
 
-  public i: number;
+  public i = 0;
 
   constructor(){
-    this.i = 0;
   }
 
 
