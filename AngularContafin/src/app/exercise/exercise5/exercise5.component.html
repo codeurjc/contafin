@@ -5,33 +5,30 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading">{{getStatement()}}</h2>
+          <h2 class="section-heading">{{statement}}</h2>
           <hr class="my-4">
         </div>
       </div>
     </div>
     <div class="container ">
       <div class="col-lg-8 mx-auto">
-        <label class="service-box mx-auto text-center card-body"
-               id="exercise1">
+        <label class="service-box mx-auto text-center card-body" id="exercise1">
           <h5 class="mt-2 mb-2 ml-2 mr-2">
-            <input type="radio" [(ngModel)]="solution" value="uno" />{{getTexts()}}
+            <input type="radio" [(ngModel)]="answer" value="uno" /> {{texts[0]}}
           </h5>
         </label>
       </div>
       <div class="col-lg-8 mx-auto">
-        <label class="service-box mx-auto text-center card-body"
-               id="exercise1">
+        <label class="service-box mx-auto text-center card-body" id="exercise1">
           <h5 class="mt-2 mb-2 ml-2 mr-2">
-            <input type="radio" [(ngModel)]="solution" value="dos" />{{getTexts()}}
+            <input type="radio" [(ngModel)]="answer" value="dos" /> {{texts[1]}}
           </h5>
         </label>
       </div>
       <div class="col-lg-8 mx-auto">
-        <label class="service-box mx-auto text-center card-body"
-               id="exercise1">
+        <label class="service-box mx-auto text-center card-body" id="exercise1">
           <h5 class="mt-2 mb-2 ml-2 mr-2">
-            <input type="radio" [(ngModel)]="solution" value="tres" />{{getTexts()}}
+            <input type="radio" [(ngModel)]="answer" value="tres" /> {{texts[2]}}
           </h5>
         </label>
       </div>

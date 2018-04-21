@@ -47,9 +47,5 @@ export class Exercise1Component implements OnInit {
         }
       )
   }
-  //Get the user's solution
-  updateSolution(event) {
-    this.answer = event.target.value;
-  }
 
 }
