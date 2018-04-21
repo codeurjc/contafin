@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { environment } from "../../../environments/environment";
@@ -15,6 +15,7 @@ const BASE_URL = environment.apiBase + '/Unit';
 export class Exercise2Component {
 
 
+  press: boolean = false;
   @Input()
   idUnit: number;
 
@@ -26,6 +27,13 @@ export class Exercise2Component {
 
   @Input()
   idExercise: number;
+
+  @Input()
+  nElement: number;
+
+  @Output()
+  newExercise = new EventEmitter<boolean>();
+
 
   public statement: String;
   public texts: Array<String> = new Array();
@@ -65,7 +73,13 @@ export class Exercise2Component {
 
       }
     )
+    this.press=true;
+    console.log(this.nElement);
+  }
 
+  nextExercise(){
+    this.newExercise.next(this.right);
+    this.press = false;
   }
   pulsar() {
     console.log(this.right);

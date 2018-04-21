@@ -15,12 +15,12 @@ export class BodyCompleteLessonComponent {
     response: boolean;
 
     constructor(private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService, idUnit: number, idLesson: number) {
-        this.loginService.isLoggedUser();
+        /*this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
-        this.completeLesson();
+        this.completeLesson();*/
     }
 
-    completeLesson() {
+    /*completeLesson() {
         this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
             response => this.response = response,
             error => console.log(error)
@@ -42,6 +42,6 @@ export class BodyCompleteLessonComponent {
         } else {
             return `with: ${reason}`;
         }
-    }
+    }*/
 
 }

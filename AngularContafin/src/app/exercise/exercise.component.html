@@ -1,6 +1,6 @@
 <header_exercise></header_exercise>
-<exercise1 *ngIf="kindExercises[0]==1" [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]'></exercise1>
+<exercise1 *ngIf="kindExercises[0]==1" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise1>
 <button class=" btn btn-primary btn-xl js-scroll-trigger" (click)="pulsar()">DAME </button>
-<exercise2 *ngIf="kindExercises[0]==2" [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]'></exercise2>
-<exercise5 *ngIf="kindExercises[0]==5" [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]'></exercise5>
-<exercise7 *ngIf="kindExercises[0]==7" [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]'></exercise7>
+<exercise2 *ngIf="kindExercises[0]==2" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise2>
+<exercise5 *ngIf="kindExercises[0]==5" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise5>
+<exercise7 *ngIf="kindExercises[0]==7" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise7>

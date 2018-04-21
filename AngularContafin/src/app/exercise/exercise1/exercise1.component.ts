@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import { ExerciseService } from '../exercise.service';
@@ -23,6 +23,12 @@ export class Exercise1Component implements OnInit {
   @Input()
   idExercise: number;
 
+  @Input()
+  nElement: number;
+
+  @Output()
+  newExercise = new EventEmitter<boolean>();
+
   public img1: string;
   public img2: string;
   public img3: string;
@@ -35,6 +41,7 @@ export class Exercise1Component implements OnInit {
   public statement: String;
   public texts: Array<String> = new Array();
   public result: any;
+  public press:boolean = false;
 
   constructor(private http: Http, private exerciseService: ExerciseService) {
     console.log(this.idExercise);
@@ -82,11 +89,16 @@ export class Exercise1Component implements OnInit {
             if (this.answer == "tres") {
               this.option3 = "exercise1Bad";
             }
-
           }
         },
         error => console.error(error)
       )
+      this.press=true;
+      console.log(this.nElement);
   }
 
+  nextExercise(){
+    this.newExercise.next(this.right);
+    this.press = false;
+  }
 }

@@ -28,7 +28,7 @@ const appRoutes = [
   { path: 'Unit/:id/Lessons', component: LessonComponent },
   { path: 'Unit/:id/Lessons/:idlesson/Exercise', component: ExerciseComponent },
   { path: 'Error', component: ErrorComponent },
-  { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted/', component: CompleteLessonComponent },
+  { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted', component: CompleteLessonComponent },
   { path: 'ContinueLesson', component: ContinueLessonComponent }
 ];
 

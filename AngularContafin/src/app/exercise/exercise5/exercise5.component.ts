@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { environment } from "../../../environments/environment";
 import { Http } from "@angular/http";
 import { Observable } from "rxjs/Observable";
@@ -13,6 +13,7 @@ const BASE_URL = environment.apiBase + '/Unit';
 
 export class Exercise5Component implements OnInit {
 
+  press: boolean = false;
   @Input()
   idUnit: number;
 
@@ -24,6 +25,12 @@ export class Exercise5Component implements OnInit {
 
   @Input()
   idExercise: number;
+
+  @Input()
+  nElement: number;
+
+  @Output()
+  newExercise = new EventEmitter<boolean>();
 
   public right: boolean;
   public option1: string = "exercise1";
@@ -83,5 +90,12 @@ export class Exercise5Component implements OnInit {
         },
         error => console.error(error)
       )
+      this.press=true;
+      console.log(this.nElement);
+  }
+
+  nextExercise(){
+    this.newExercise.next(this.right);
+    this.press = false;
   }
 }
