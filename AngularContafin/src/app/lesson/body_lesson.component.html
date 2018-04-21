@@ -21,15 +21,15 @@
                                 <div *ngFor="let lesson of unit.lessons" class="col-lg-4 col-md-6 ">
                                     <div *ngIf="lessonsCompleted[(lesson.id%4)-1]==true" class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded"
                                         id="UnitComplete">
-                                        <h4 class="mb-3">Lección {{(lesson.id)%4}} de 3</h4>
+                                        <h4 class="mb-3">Lección {{lesson.id}} de 3</h4>
                                         <h2 class="text-white ">{{lesson.name}}</h2>
-                                        <a class=" btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',unit.id,'Lessons', lesson.id%4  , 'Exercise' , 1 , 1]">REPASAR</a>
+                                        <a class=" btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',unit.id,'Lessons', lesson.id  , 'Exercise' , 1 , 1]">REPASAR</a>
                                     </div>
                                     <div *ngIf="lessonsCompleted[(lesson.id%4)-1]==false" class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded"
                                         id="Unit">
-                                        <h4 class="mb-3">Lección {{(lesson.id)%4}} de 3</h4>
+                                        <h4 class="mb-3">Lección {{lesson.id}} de 3</h4>
                                         <h2 class="text-white ">{{lesson.name}}</h2>
-                                        <a class=" btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',unit.id,'Lessons', lesson.id%4  , 'Exercise' , 1 , 1]">COMENZAR</a>
+                                        <a class=" btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',unit.id,'Lessons', lesson.id  , 'Exercise' , 1 , 1]">COMENZAR</a>
                                     </div>
                                 </div>
                             </div>

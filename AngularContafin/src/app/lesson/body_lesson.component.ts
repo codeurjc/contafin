@@ -44,6 +44,9 @@ export class BodyLessonComponent implements OnInit {
                         error => console.log(error)
                     )
                 }
+                this.unit.lessons[0].id = 1;
+                this.unit.lessons[1].id = 2;
+                this.unit.lessons[2].id = 3;
             },
             error => console.log(error)
         )
