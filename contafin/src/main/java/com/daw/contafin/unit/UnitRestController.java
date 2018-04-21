@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -182,6 +184,13 @@ public class UnitRestController{
 		}
 	}
 	
+	//Show images
+	@RequestMapping(value = "/Exercise/{idExercise}/{nImage}", method = RequestMethod.GET)
+	public void sowImage(@PathVariable long idExercise, @PathVariable long nImage, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Exercise exercise = exerciseService.findById(idExercise);
+		imageService.showImageExercise(exercise, nImage, request, response);
+	}
+	
 	@RequestMapping(value = "/{id}/Images", method = RequestMethod.POST)
 	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
 		Unit unit = unitService.findById(id);
@@ -205,6 +214,7 @@ public class UnitRestController{
 			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 	//Put unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)

@@ -51,7 +51,7 @@ public class ImageService {
 		exerciseRepository.save(exercise);	
 	}
 	
-	//Show image
+	//Show profile picture
 	public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		byte [] image;
 		if (userComponent.getLoggedUser().getImage() != null) {
@@ -65,6 +65,22 @@ public class ImageService {
 		outputStream.write(image);
 		outputStream.close();
 	}
-		
+	
+	// Show exercise picture
+	public void showImageExercise(Exercise exercise, long nImage, HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		byte[] image;
+		if (nImage == 1) {
+			image = exercise.getImage1();
+		} else if (nImage == 2) {
+			image = exercise.getImage2();
+		} else {
+			image = exercise.getImage3();
+		}
+		response.setContentType("image/jpeg");
+		ServletOutputStream outputStream = response.getOutputStream();
+		outputStream.write(image);
+		outputStream.close();
+	}	
 		
 }
