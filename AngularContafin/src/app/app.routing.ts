@@ -26,7 +26,7 @@ const appRoutes = [
   { path: '', component: IndexComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Unit/:id/Lessons', component: LessonComponent },
-  { path: 'Unit/:id/Lessons/:idlesson/Exercise/:idkind/:idexercise', component: ExerciseComponent },
+  { path: 'Unit/:id/Lessons/:idlesson/Exercise/:idexercise', component: ExerciseComponent },
   { path: 'Error', component: ErrorComponent },
   { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted/', component: CompleteLessonComponent },
   { path: 'ContinueLesson', component: ContinueLessonComponent }
