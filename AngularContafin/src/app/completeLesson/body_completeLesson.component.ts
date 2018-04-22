@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../login/login.service';
 import { useAnimation } from '@angular/core/src/animation/dsl';
@@ -10,6 +10,13 @@ import { LessonsService } from '../lesson/lesson.service';
         './body_completeLesson.component.html'
 })
 export class BodyCompleteLessonComponent {
+
+    @Input()
+    idUnit: number;
+
+    @Input()
+    idLesson: number;
+    
     [x: string]: any;
     closeResult: string;
     response: boolean;

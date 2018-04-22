@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ExerciseService } from '../exercise/exercise.service';
 
 @Component({
     selector: 'completeLesson',
@@ -7,9 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 export class CompleteLessonComponent {
 
-   @Input()
-  idUnit: number;
+    public idLesson: number;
+    public idUnit: number;
 
-  @Input()
-  idLesson: number;
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public exerciseService: ExerciseService) {
+        let idUnit = activatedRoute.snapshot.params['id'];
+        this.idUnit = parseInt(idUnit);
+        let idLesson = activatedRoute.snapshot.params['idlesson'];
+        this.idLesson = parseInt(idLesson);
+    }
 }
