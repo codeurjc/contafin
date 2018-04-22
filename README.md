@@ -176,3 +176,10 @@ Read the [Docker usage](DOCKER.md) to know more.
 ## Angular documentation
 Document [Angular documentation](Angular/README.md) with information about our work with Angular
 
+## Sonarqube documentation
+### Information
+Documentation of [Sonarqube](https://docs.sonarqube.org/display/SONAR/Documentation) on requirements, operations and guidelines on how to use it.
+### Guide
+[Sonarqube](Sonar.md) document that shows the steps to follow to develop the sonar analysis environment.
+## Selenium documentation
+
