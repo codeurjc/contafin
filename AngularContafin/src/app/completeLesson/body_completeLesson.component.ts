@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../login/login.service';
 import { useAnimation } from '@angular/core/src/animation/dsl';
@@ -9,7 +9,7 @@ import { LessonsService } from '../lesson/lesson.service';
     templateUrl:
         './body_completeLesson.component.html'
 })
-export class BodyCompleteLessonComponent {
+export class BodyCompleteLessonComponent implements OnInit{
 
     @Input()
     idUnit: number;
@@ -24,12 +24,20 @@ export class BodyCompleteLessonComponent {
     constructor(private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService) {
         this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
+        
+    }
+    ngOnInit(){
         this.completeLesson();
     }
 
     completeLesson() {
         this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
             response => this.response = response,
+            error => console.log(error)
+        );
+        this.lessonService.isCompleted(this.idUnit, this.idLesson)
+        .subscribe(
+            response => console.log(response),
             error => console.log(error)
         );
     }
