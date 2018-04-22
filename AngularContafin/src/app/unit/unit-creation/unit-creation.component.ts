@@ -41,7 +41,7 @@ export class UnitCreationComponent implements OnInit {
         },
         error => {
           console.log(error),
-          this.alertDanger = true;
+            this.alertDanger = true;
         }
       )
   }
@@ -49,6 +49,7 @@ export class UnitCreationComponent implements OnInit {
 
   //Only create an empty unit
   defineUnit() {
+    var aux = 0;
     for (var i = 0; i < 12; i++) {
       //Add all answers
       this.answers.push(
@@ -56,10 +57,19 @@ export class UnitCreationComponent implements OnInit {
           result: "",
         }
       )
+      if ((i % 4) + 1 == 3) {
+        aux = 5;
+      }
+      else if ((i % 4) + 1 == 4) {
+        aux = 7;
+      }
+      else {
+        aux = (i % 4) + 1;
+      }
       //Add all exercises 
       this.exercises.push(
         {
-          kind: (i % 4) + 1,
+          kind: aux,
           statement: "",
           texts: ["", "", ""],
           answer: this.answers[i]
@@ -122,8 +132,8 @@ export class UnitCreationComponent implements OnInit {
   //Upload the images of an exercise
   uploadImages(i: number) {
     let aux = 0;
-    if(i != 0){
-      aux = 3+(3*(i-1))
+    if (i != 0) {
+      aux = 3 + (3 * (i - 1))
     }
     this.unitService.uploadImages(this.unit.lessons[i].exercises[0].id, 1, this.images[aux])
     .then(
@@ -145,9 +155,9 @@ export class UnitCreationComponent implements OnInit {
   }
 
   //
-  check(event){
-    const a = event.target.value;
-    if (a == ""){
+  check(event) {
+    const alert = event.target.value;
+    if (alert == "") {
       console.log("no data");
     }
   }
