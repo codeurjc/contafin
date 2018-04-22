@@ -16,8 +16,8 @@ export class BodyHomeComponent implements OnInit {
     closeResult: string;
     kind1 = '1';
     kind2 = '2';
-    units: Unit[] = [];
-    lessonsCompleted: number[] = new Array();
+    units: Unit[];
+    lessonsCompleted: number[];
     public loggedUser: User;
 
     constructor(private modalService: NgbModal, public loginService: LoginService, private unitsService: UnitsService) {
@@ -26,12 +26,14 @@ export class BodyHomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.units = new Array();
+        this.lessonsCompleted = new Array();
         this.getUnits();
     }
 
     getUnits() {
         this.unitsService.getUnits()
-            .then(units  =>  {
+            .then(units => {
                 this.units = units;
                 //Get the number of Lessons completed of all the units
                 for (var i = 0; i < units.length; i++) {
@@ -43,7 +45,7 @@ export class BodyHomeComponent implements OnInit {
                     )
                 }
             })
-            .catch(error  =>  console.error(error));
+            .catch(error => console.error(error));
     }
 
     isCompleted(id: number) {

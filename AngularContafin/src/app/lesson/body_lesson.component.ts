@@ -24,6 +24,8 @@ export class BodyLessonComponent implements OnInit {
     constructor(public lessonService: LessonsService, public unitService: UnitsService) {
     }
     ngOnInit() {
+        this.lessons = new Array();
+        this.lessonsCompleted = new Array();
         this.defineUnit();
         this.getUnits(this.id);
     }
