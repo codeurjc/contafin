@@ -81,7 +81,5 @@ export class Exercise2Component {
     this.newExercise.next(this.right);
     this.press = false;
   }
-  pulsar() {
-    console.log(this.right);
-  }
+  
 }

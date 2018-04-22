@@ -4,6 +4,8 @@ import { LoginService } from '../login/login.service';
 import { useAnimation } from '@angular/core/src/animation/dsl';
 import { LessonsService } from '../lesson/lesson.service';
 import { User } from '../Interfaces/User/user.model';
+import { Router } from '@angular/router';
+import { UserService } from '../user/user.service';
 
 @Component({
     selector: 'body_completeLesson',
@@ -23,25 +25,30 @@ export class BodyCompleteLessonComponent implements OnInit {
     response: boolean;
     public loggedUser: User;
 
-    constructor(private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService) {
+    constructor(private router: Router, private userService: UserService, private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService) {
         this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
 
     }
     ngOnInit() {
-        this.completeLesson();
     }
 
     completeLesson() {
         this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
-            response => this.response = response,
+            response => {
+                this.response = response;
+                this.userService.getUser(this.loggedUser.id)
+                    .subscribe(
+                        user => {
+                            console.log(user);
+                            this.loginService.setLoggedUser(user);
+                            this.resetConfiguration();
+                            this.router.navigate(['/ContinueLesson']);
+                        }
+                    )
+            },
             error => console.log(error)
         );
-        this.lessonService.isCompleted(this.idUnit, this.idLesson)
-            .subscribe(
-                response => console.log(response),
-                error => console.log(error)
-            );
     }
     open(content) {
         this.modalService.open(content).result.then((result) => {
@@ -59,6 +66,13 @@ export class BodyCompleteLessonComponent implements OnInit {
         } else {
             return `with: ${reason}`;
         }
+    }
+
+    resetConfiguration() {
+        const config = this.router.config
+            .map((route) => Object.assign({}, route));
+        this.router.resetConfig(config);
+
     }
 
 }
