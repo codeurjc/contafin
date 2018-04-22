@@ -23,7 +23,7 @@ const appRoutes = [
   { path: 'Admin/Home', component: AdminComponent, canActivate: [CanActivateAdmin] },
   { path: 'Admin/UserData', component: AdminUserDataComponent, canActivate: [CanActivateAdmin] },
   { path: 'Admin/Content', component: UnitCreationComponent, canActivate: [CanActivateAdmin] },
-  { path: '', component: IndexComponent },
+  { path: '', component: IndexComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'Unit/:id/Lessons', component: LessonComponent },
   { path: 'Unit/:id/Lessons/:idlesson/Exercise', component: ExerciseComponent },
