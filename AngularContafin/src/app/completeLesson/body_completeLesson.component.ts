@@ -3,30 +3,32 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../login/login.service';
 import { useAnimation } from '@angular/core/src/animation/dsl';
 import { LessonsService } from '../lesson/lesson.service';
+import { User } from '../Interfaces/User/user.model';
 
 @Component({
     selector: 'body_completeLesson',
     templateUrl:
         './body_completeLesson.component.html'
 })
-export class BodyCompleteLessonComponent implements OnInit{
+export class BodyCompleteLessonComponent implements OnInit {
 
     @Input()
     idUnit: number;
 
     @Input()
     idLesson: number;
-    
+
     [x: string]: any;
     closeResult: string;
     response: boolean;
+    public loggedUser: User;
 
     constructor(private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService) {
         this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
-        
+
     }
-    ngOnInit(){
+    ngOnInit() {
         this.completeLesson();
     }
 
@@ -36,10 +38,10 @@ export class BodyCompleteLessonComponent implements OnInit{
             error => console.log(error)
         );
         this.lessonService.isCompleted(this.idUnit, this.idLesson)
-        .subscribe(
-            response => console.log(response),
-            error => console.log(error)
-        );
+            .subscribe(
+                response => console.log(response),
+                error => console.log(error)
+            );
     }
     open(content) {
         this.modalService.open(content).result.then((result) => {

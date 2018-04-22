@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../login/login.service';
 import { useAnimation } from '@angular/core/src/animation/dsl';
+import { User } from '../Interfaces/User/user.model';
 
 @Component({
     selector: 'body_continueLesson',
@@ -11,6 +12,7 @@ import { useAnimation } from '@angular/core/src/animation/dsl';
 export class BodyContinueLessonComponent {
     [x: string]: any;
     closeResult: string;
+    public loggedUser: User;
 
     constructor(private modalService: NgbModal, public loginService: LoginService) {
         this.loginService.isLoggedUser();

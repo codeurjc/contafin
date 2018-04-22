@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UnitsService } from '../unit/unit.service';
 import { Unit } from '../Interfaces/Unit/unit.model';
-import{ User } from '../Interfaces/User/user.model'
+import { User } from '../Interfaces/User/user.model';
 import { LoginService } from '../login/login.service';
 import { useAnimation } from '@angular/core/src/animation/dsl';
 
@@ -20,44 +20,45 @@ export class BodyHomeComponent implements OnInit {
     lessonsCompleted: number[] = new Array();
     public loggedUser: User;
 
-    constructor(private modalService: NgbModal,public loginService: LoginService, private unitsService: UnitsService) {
-        this.loginService.isLoggedUser(); 
-        this.loggedUser = loginService.getLoggedUser();  
+    constructor(private modalService: NgbModal, public loginService: LoginService, private unitsService: UnitsService) {
+        this.loginService.isLoggedUser();
+        this.loggedUser = loginService.getLoggedUser();
     }
 
     ngOnInit() {
         this.getUnits();
     }
 
-    getUnits(){
+    getUnits() {
         this.unitsService.getUnits()
-            .then(units => {
+            .then(units  =>  {
                 this.units = units;
                 //Get the number of Lessons completed of all the units
-                for(var i= 0; i<units.length;i++){
+                for (var i = 0; i < units.length; i++) {
                     this.unitsService.numberOfCompletedLessons(units[i].id).subscribe(
                         number => {
                             this.lessonsCompleted.push(number);
                         },
-                        error=> console.log(error)
+                        error => console.log(error)
                     )
                 }
             })
-            .catch(error => console.error(error));
+            .catch(error  =>  console.error(error));
     }
 
-    isCompleted(id:number){
+    isCompleted(id: number) {
         this.unitsService.isCompleted(id).subscribe(
             unitIsCompleted => this.unitIsCompleted = unitIsCompleted,
             error => console.log(error)
         );
     }
 
-    numberLessonsCompleted(id:number){
+    numberLessonsCompleted(id: number) {
         this.unitsService.numberOfCompletedLessons(id).subscribe(
             lessonsCompleted => {
-                this.lessonsCompleted = lessonsCompleted; 
-                console.log(lessonsCompleted)},
+                this.lessonsCompleted = lessonsCompleted;
+                console.log(lessonsCompleted)
+            },
             error => console.log(error)
         );
     }
