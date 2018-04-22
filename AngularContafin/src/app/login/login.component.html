@@ -1,54 +1,55 @@
 <div *ngIf="formkind == 1">
-    <form >
-        <div class="form-group">
-            <label class="mt-3" for="exampleInputEmail1">
-                <strong>Introduce tus datos:</strong>
-            </label>
-            <input #email type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correo electrónico">
-        </div>
-        <div class="form-group">
-            <input #pass type="password" class="form-control" id="roundregister" name="pass" placeholder="Contraseña">
-        </div>
-        <div class="form-check">
-            <label class="mb-3 form-check-label">
-                <input type="checkbox" class="form-check-input">Recuerdame</label>
-        </div>
-        <div class="mb-3 service-box  text-center rounded text-white">
-            <input type="submit" value="Iniciar Sesión" class="btn btn-primary js-scroll-trigger" (click)="logIn($event, email.value, pass.value)"
-            />
-            <br/>
-        </div>
-    </form>
+  <form>
+    <div class="form-group">
+      <label class="mt-3" for="exampleInputEmail1">
+        <strong>Introduce tus datos:</strong>
+      </label>
+      <input #email type="email" class="form-control" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correo electrónico">
+    </div>
+    <div class="form-group">
+      <input #pass type="password" class="form-control" id="roundregister" name="pass" placeholder="Contraseña">
+    </div>
+    <div class="form-check">
+      <label class="mb-3 form-check-label">
+        <input type="checkbox" class="form-check-input">Recuerdame</label>
+    </div>
+    <div class="mb-3 service-box  text-center rounded text-white">
+      <input type="submit" value="Iniciar Sesión" class="btn btn-primary js-scroll-trigger" (click)="logIn($event, email.value, pass.value)"
+      />
+      <br/>
+    </div>
+  </form>
 </div>
 <div *ngIf="formkind == 2">
-    <ng-template #content let-c="close" let-d="dismiss">
-        <form>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="col-3">
-                        <img src="../assets/Logo.png" class="img-fluid " alt="Responsive image">
-                    </div>
-                    <div class="col-6">
-                        <h1 class="modal-title mt-3" id="exampleModalLongTitle">
-                            <strong>INGRESAR</strong>
-                        </h1>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-lg-8 mx-auto">
-                        <input #email type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico">
-                        <input #pass type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" value="Iniciar sesión" class="btn btn-primary" id="button-style" (click)="logIn($event, email.value, pass.value)" (click)="d('Cross click')"/>
-                </div>
-            </div>
-        </form>
-    </ng-template>
-    <a class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white" id="button-style" data-toggle="modal" data-target="#loginModalLong"
-        (click)="open(content)">Ingresar</a>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="col-3">
+            <img src="assets/Logo.png" class="img-fluid " alt="Responsive image">
+          </div>
+          <div class="col-6">
+            <h1 class="modal-title mt-3" id="exampleModalLongTitle">
+              <strong>INGRESAR</strong>
+            </h1>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-lg-8 mx-auto">
+            <input #email type="email" class="form-control mt-3" id="roundregister" aria-describedby="emailHelp" name="email" placeholder="Correro electrónico">
+            <input #pass type="password" class="form-control mt-3" id="roundregister" name="pass" placeholder="Contraseña">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" value="Iniciar sesión" class="btn btn-primary" id="button-style" (click)="logIn($event, email.value, pass.value)"
+            (click)="d('Cross click')" />
+        </div>
+      </div>
+    </form>
+  </ng-template>
+  <a class="btn btn-primary btn-xl js-scroll-triggerr mt-3 text-white" id="button-style" data-toggle="modal" data-target="#loginModalLong"
+    (click)="open(content)">Ingresar</a>
 </div>
