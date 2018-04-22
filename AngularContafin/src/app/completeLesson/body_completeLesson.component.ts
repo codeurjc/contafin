@@ -37,15 +37,21 @@ export class BodyCompleteLessonComponent implements OnInit {
         this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
             response => {
                 this.response = response;
-                this.userService.getUser(this.loggedUser.id)
-                    .subscribe(
-                        user => {
-                            console.log(user);
-                            this.loginService.setLoggedUser(user);
-                            this.resetConfiguration();
-                            this.router.navigate(['/ContinueLesson']);
-                        }
-                    )
+                if (this.loginService.isLoggedUser()) {
+                    this.userService.getUser(this.loggedUser.id)
+                        .subscribe(
+                            user => {
+                                console.log(user);
+                                this.loginService.setLoggedUser(user);
+                                this.resetConfiguration();
+                                this.router.navigate(['/ContinueLesson']);
+                            }
+                        )
+
+                }
+                else{
+                    this.router.navigate(['/ContinueLesson']);
+                }
             },
             error => console.log(error)
         );
