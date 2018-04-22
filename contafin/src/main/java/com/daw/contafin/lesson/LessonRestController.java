@@ -1,5 +1,6 @@
 package com.daw.contafin.lesson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,6 +138,23 @@ public class LessonRestController{
 			return new ResponseEntity<>(false, HttpStatus.OK);
 		}
 
+	}
+	
+	@RequestMapping(value = "/{idunit}/Lessons/Completed", method = RequestMethod.GET)
+	public ResponseEntity<ArrayList<Boolean>> isCompletedLessonB(@PathVariable int idunit) {
+		User user = userComponent.getLoggedUser();
+		List<Lesson> lessons = unitService.findById(idunit).getLessons();
+		ArrayList<Boolean> booleans = new ArrayList<Boolean>(); 
+		for (int i=0; i< lessons.size(); i++) {
+			CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+			if(completedLesson != null) {
+				booleans.add(true);
+			}
+			else {
+				booleans.add(false);
+			}
+		}
+		return new ResponseEntity<>(booleans, HttpStatus.OK);
 	}
 }
 

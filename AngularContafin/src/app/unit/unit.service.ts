@@ -44,6 +44,16 @@ export class UnitsService {
 			.catch(error => this.handleError(error));
 	}
 
+	numberOfCompletedLessons2() {
+		const headers = new Headers({
+			'X-Requested-With': 'XMLHttpRequest'
+		});
+		const options = new RequestOptions({ withCredentials: true, headers });
+		return this.http.get(BASE_URL + 'numberOfCompletedLessons', options)
+			.map(response => response.json())
+			.catch(error => this.handleError(error));
+	}
+
 	//Need the unit with its lessons and exercises
 	addUnit(unit: Unit) {
 		const options = new RequestOptions({ withCredentials: true });

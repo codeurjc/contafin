@@ -60,6 +60,16 @@ export class LessonsService {
 			.catch(error => this.handleError(error));
 	}
 
+	isCompleted2(idUnit: number) {
+		const headers = new Headers({
+			'X-Requested-With': 'XMLHttpRequest'
+		});
+		const options = new RequestOptions({ withCredentials: true, headers });
+		return this.http.get(BASE_URL + idUnit + '/Lessons/Completed', options)
+			.map(response => response.json())
+			.catch(error => this.handleError(error));
+	}
+
 	private handleError(error: any) {
 		console.error(error);
 		return Observable.throw("Server error (" + error.status + "): " + error.text())

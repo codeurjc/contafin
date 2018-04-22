@@ -296,6 +296,29 @@ public class UnitRestController{
 		return new ResponseEntity<>(count, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/numberOfCompletedLessons", method = RequestMethod.GET)
+	public ResponseEntity<ArrayList<Integer> > numberOfCompletedLessons() {
+		User user = userComponent.getLoggedUser();
+		
+		List<Unit> units = unitService.findAll();
+		List<Lesson> lessons;
+		ArrayList<Integer> number = new ArrayList<Integer>(); 
+		for (int j=0 ; j< units.size() ; j++) {
+			lessons = lessonService.findByUnit(units.get(j));
+			// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
+			int count = 0;
+			for(int i=0; i<lessons.size(); i++) {
+				CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+				if(completedLesson != null) {
+					count++;
+				}
+			}
+			number.add(count);
+		}
+				
+		return new ResponseEntity<>(number, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/NumberOfUnitsCompleted", method = RequestMethod.GET)
 	public ResponseEntity<List<Boolean>> Unitscompleted() {
 		User user = userComponent.getLoggedUser();

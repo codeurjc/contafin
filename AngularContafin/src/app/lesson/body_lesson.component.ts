@@ -37,15 +37,12 @@ export class BodyLessonComponent implements OnInit {
                     nlesson => this.nlesson = nlesson,
                     error => console.log(error)
                 )
-                for (var i = 0; i < unit.lessons.length; i++) {
-                    this.lessonService.isCompleted(unit.id, unit.lessons[i].id).subscribe(
-                        isCompleted => {
-                            this.lessonsCompleted.push(isCompleted);
-                            console.log(isCompleted);
-                        },
-                        error => console.log(error)
+                this.lessonService.isCompleted2(this.unit.id)
+                    .subscribe(
+                        response => {
+                            this.lessonsCompleted = response;
+                        }
                     )
-                }
                 this.unit.lessons[0].id = 1;
                 this.unit.lessons[1].id = 2;
                 this.unit.lessons[2].id = 3;
@@ -59,12 +56,6 @@ export class BodyLessonComponent implements OnInit {
             nlesson => this.nlesson = nlesson,
             error => console.log(error)
         )
-    }
-    pulsar() {
-        console.log(this.id);
-        console.log(this.unit);
-        console.log(this.lessons);
-        console.log(this.lessonsCompleted);
     }
 
     //Only create an empty unit

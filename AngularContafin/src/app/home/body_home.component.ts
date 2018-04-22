@@ -36,14 +36,10 @@ export class BodyHomeComponent implements OnInit {
             .then(units => {
                 this.units = units;
                 //Get the number of Lessons completed of all the units
-                for (var i = 0; i < units.length; i++) {
-                    this.unitsService.numberOfCompletedLessons(units[i].id).subscribe(
-                        number => {
-                            this.lessonsCompleted.push(number);
-                        },
-                        error => console.log(error)
+                this.unitsService.numberOfCompletedLessons2()
+                    .subscribe(
+                        response => { this.lessonsCompleted = response; console.log(response) }
                     )
-                }
             })
             .catch(error => console.error(error));
     }
