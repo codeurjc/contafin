@@ -13,10 +13,16 @@ export class BodyContinueLessonComponent {
     [x: string]: any;
     closeResult: string;
     public loggedUser: User;
+    public fluency: number;
 
     constructor(private modalService: NgbModal, public loginService: LoginService) {
-        this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
+        if(this.loginService.isLoggedUser()){
+            this.fluency = this.loggedUser.fluency;
+        }
+        else{
+            this.fluency = 10;
+        }
     }
 
     //deleteAllCompletedExercises() --> Home
