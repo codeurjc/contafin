@@ -562,22 +562,26 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__error_body_error_component__ = __webpack_require__("./src/app/error/body_error.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__completeLesson_body_completeLesson_component__ = __webpack_require__("./src/app/completeLesson/body_completeLesson.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__completeLesson_completeLesson_component__ = __webpack_require__("./src/app/completeLesson/completeLesson.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__unit_unit_service__ = __webpack_require__("./src/app/unit/unit.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__sign_up_sign_up_service__ = __webpack_require__("./src/app/sign-up/sign-up.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__user_user_service__ = __webpack_require__("./src/app/user/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__lesson_lesson_service__ = __webpack_require__("./src/app/lesson/lesson.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__exercise_exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__admin_admin_service__ = __webpack_require__("./src/app/admin/admin.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__error_error_service__ = __webpack_require__("./src/app/error/error.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__security_can_activate_user__ = __webpack_require__("./src/app/security/can-activate-user.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__security_can_activate_admin__ = __webpack_require__("./src/app/security/can-activate-admin.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__continueLesson_continueLesson_component__ = __webpack_require__("./src/app/continueLesson/continueLesson.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__continueLesson_body_continueLesson_component__ = __webpack_require__("./src/app/continueLesson/body_continueLesson.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__unit_unit_service__ = __webpack_require__("./src/app/unit/unit.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__sign_up_sign_up_service__ = __webpack_require__("./src/app/sign-up/sign-up.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__user_user_service__ = __webpack_require__("./src/app/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__lesson_lesson_service__ = __webpack_require__("./src/app/lesson/lesson.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__exercise_exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__admin_admin_service__ = __webpack_require__("./src/app/admin/admin.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__error_error_service__ = __webpack_require__("./src/app/error/error.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__security_can_activate_user__ = __webpack_require__("./src/app/security/can-activate-user.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__security_can_activate_admin__ = __webpack_require__("./src/app/security/can-activate-admin.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -660,6 +664,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_31__error_error_component__["a" /* ErrorComponent */],
                 __WEBPACK_IMPORTED_MODULE_34__completeLesson_body_completeLesson_component__["a" /* BodyCompleteLessonComponent */],
                 __WEBPACK_IMPORTED_MODULE_35__completeLesson_completeLesson_component__["a" /* CompleteLessonComponent */],
+                __WEBPACK_IMPORTED_MODULE_37__continueLesson_body_continueLesson_component__["a" /* BodyContinueLessonComponent */],
+                __WEBPACK_IMPORTED_MODULE_36__continueLesson_continueLesson_component__["a" /* ContinueLessonComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -672,16 +678,16 @@ var AppModule = /** @class */ (function () {
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_37__login_login_service__["a" /* LoginService */],
-                __WEBPACK_IMPORTED_MODULE_38__sign_up_sign_up_service__["a" /* SignUpService */],
-                __WEBPACK_IMPORTED_MODULE_39__user_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_44__security_can_activate_user__["a" /* CanActivateUser */],
-                __WEBPACK_IMPORTED_MODULE_36__unit_unit_service__["a" /* UnitsService */],
-                __WEBPACK_IMPORTED_MODULE_40__lesson_lesson_service__["a" /* LessonsService */],
-                __WEBPACK_IMPORTED_MODULE_41__exercise_exercise_service__["a" /* ExerciseService */],
-                __WEBPACK_IMPORTED_MODULE_42__admin_admin_service__["a" /* AdminService */],
-                __WEBPACK_IMPORTED_MODULE_45__security_can_activate_admin__["a" /* CanActivateAdmin */],
-                __WEBPACK_IMPORTED_MODULE_43__error_error_service__["a" /* ErrorService */]
+                __WEBPACK_IMPORTED_MODULE_39__login_login_service__["a" /* LoginService */],
+                __WEBPACK_IMPORTED_MODULE_40__sign_up_sign_up_service__["a" /* SignUpService */],
+                __WEBPACK_IMPORTED_MODULE_41__user_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_46__security_can_activate_user__["a" /* CanActivateUser */],
+                __WEBPACK_IMPORTED_MODULE_38__unit_unit_service__["a" /* UnitsService */],
+                __WEBPACK_IMPORTED_MODULE_42__lesson_lesson_service__["a" /* LessonsService */],
+                __WEBPACK_IMPORTED_MODULE_43__exercise_exercise_service__["a" /* ExerciseService */],
+                __WEBPACK_IMPORTED_MODULE_44__admin_admin_service__["a" /* AdminService */],
+                __WEBPACK_IMPORTED_MODULE_47__security_can_activate_admin__["a" /* CanActivateAdmin */],
+                __WEBPACK_IMPORTED_MODULE_45__error_error_service__["a" /* ErrorService */]
             ]
         })
     ], AppModule);
@@ -710,8 +716,10 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__exercise_exercise_component__ = __webpack_require__("./src/app/exercise/exercise.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__error_error_component__ = __webpack_require__("./src/app/error/error.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__completeLesson_completeLesson_component__ = __webpack_require__("./src/app/completeLesson/completeLesson.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__security_can_activate_user__ = __webpack_require__("./src/app/security/can-activate-user.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__security_can_activate_admin__ = __webpack_require__("./src/app/security/can-activate-admin.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__continueLesson_continueLesson_component__ = __webpack_require__("./src/app/continueLesson/continueLesson.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__security_can_activate_user__ = __webpack_require__("./src/app/security/can-activate-user.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__security_can_activate_admin__ = __webpack_require__("./src/app/security/can-activate-admin.ts");
+
 
 
 
@@ -728,18 +736,19 @@ var AppModule = /** @class */ (function () {
 
 
 var appRoutes = [
-    { path: 'User/Profile', component: __WEBPACK_IMPORTED_MODULE_1__user_user_profile_user_profile_component__["a" /* UserProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_13__security_can_activate_user__["a" /* CanActivateUser */]] },
-    { path: 'User/Configuration', component: __WEBPACK_IMPORTED_MODULE_2__user_user_configuration_user_configuration_component__["a" /* UserConfigurationComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_13__security_can_activate_user__["a" /* CanActivateUser */]] },
-    { path: 'User/Goal', component: __WEBPACK_IMPORTED_MODULE_3__user_user_goal_user_goal_component__["a" /* UserGoalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_13__security_can_activate_user__["a" /* CanActivateUser */]] },
-    { path: 'Admin/Home', component: __WEBPACK_IMPORTED_MODULE_4__admin_admin_component__["a" /* AdminComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__security_can_activate_admin__["a" /* CanActivateAdmin */]] },
-    { path: 'Admin/UserData', component: __WEBPACK_IMPORTED_MODULE_5__admin_admin_user_data_admin_user_data_component__["a" /* AdminUserDataComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__security_can_activate_admin__["a" /* CanActivateAdmin */]] },
-    { path: 'Admin/Content', component: __WEBPACK_IMPORTED_MODULE_7__unit_unit_creation_unit_creation_component__["a" /* UnitCreationComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__security_can_activate_admin__["a" /* CanActivateAdmin */]] },
+    { path: 'User/Profile', component: __WEBPACK_IMPORTED_MODULE_1__user_user_profile_user_profile_component__["a" /* UserProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__security_can_activate_user__["a" /* CanActivateUser */]] },
+    { path: 'User/Configuration', component: __WEBPACK_IMPORTED_MODULE_2__user_user_configuration_user_configuration_component__["a" /* UserConfigurationComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__security_can_activate_user__["a" /* CanActivateUser */]] },
+    { path: 'User/Goal', component: __WEBPACK_IMPORTED_MODULE_3__user_user_goal_user_goal_component__["a" /* UserGoalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__security_can_activate_user__["a" /* CanActivateUser */]] },
+    { path: 'Admin/Home', component: __WEBPACK_IMPORTED_MODULE_4__admin_admin_component__["a" /* AdminComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_15__security_can_activate_admin__["a" /* CanActivateAdmin */]] },
+    { path: 'Admin/UserData', component: __WEBPACK_IMPORTED_MODULE_5__admin_admin_user_data_admin_user_data_component__["a" /* AdminUserDataComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_15__security_can_activate_admin__["a" /* CanActivateAdmin */]] },
+    { path: 'Admin/Content', component: __WEBPACK_IMPORTED_MODULE_7__unit_unit_creation_unit_creation_component__["a" /* UnitCreationComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_15__security_can_activate_admin__["a" /* CanActivateAdmin */]] },
     { path: '', component: __WEBPACK_IMPORTED_MODULE_8__index_index_component__["a" /* IndexComponent */] },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_6__home_home_component__["a" /* HomeComponent */] },
     { path: 'Unit/:id/Lessons', component: __WEBPACK_IMPORTED_MODULE_9__lesson_lesson_component__["a" /* LessonComponent */] },
-    { path: 'Unit/:id/Lessons/:idlesson/Exercise/:idkind/:idexercise', component: __WEBPACK_IMPORTED_MODULE_10__exercise_exercise_component__["a" /* ExerciseComponent */] },
+    { path: 'Unit/:id/Lessons/:idlesson/Exercise', component: __WEBPACK_IMPORTED_MODULE_10__exercise_exercise_component__["a" /* ExerciseComponent */] },
     { path: 'Error', component: __WEBPACK_IMPORTED_MODULE_11__error_error_component__["a" /* ErrorComponent */] },
-    { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted/', component: __WEBPACK_IMPORTED_MODULE_12__completeLesson_completeLesson_component__["a" /* CompleteLessonComponent */] }
+    { path: 'Unit/:id/Lesson/:idlesson/lessonCompleted', component: __WEBPACK_IMPORTED_MODULE_12__completeLesson_completeLesson_component__["a" /* CompleteLessonComponent */] },
+    { path: 'ContinueLesson', component: __WEBPACK_IMPORTED_MODULE_13__continueLesson_continueLesson_component__["a" /* ContinueLessonComponent */] }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule */].forRoot(appRoutes);
 
@@ -749,7 +758,7 @@ var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* RouterModule 
 /***/ "./src/app/completeLesson/body_completeLesson.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=bgexercises>\r\n  <div class=\"container-fluid text-center text-dark p-5\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <h2 class=\"pt-5\">¡Lección completada! +10 EXP</h2>\r\n        <img class=\"img-fluid p-2\" src=\"assets/completedLesson.png\" alt=\"\" id=\"completedLessonimgStyle\">\r\n        <hr class=\"invisible p-2\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <footer class=\"mt-3 fixed-bottom\" id=\"bg-foot\">\r\n    <div class=\"container-fluid py-3\">\r\n      <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n        <a class=\"btn btn-primary btn-xl js-scroll-trigger text-white invisible\" data-toggle=\"modal\" data-target=\"#exampleModalLong\">Repasar lección</a>\r\n        <a class=\"btn btn-primary btn-xl js-scroll-trigger\" href=\"/continueLesson\">Continuar</a>\r\n      </div>\r\n    </div>\r\n  </footer>\r\n</section>\r\n"
+module.exports = "<body class=bgexercises>\r\n  <div class=\"container-fluid text-center text-dark p-5\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <h2 class=\"pt-5\">¡Lección completada! +10 EXP</h2>\r\n        <img class=\"img-fluid p-2\" src=\"assets/completedLesson.png\" alt=\"\" id=\"completedLessonimgStyle\">\r\n        <hr class=\"invisible p-2\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <footer class=\"mt-3 fixed-bottom\" id=\"bg-foot\">\r\n    <div class=\"container-fluid py-3\">\r\n      <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n        <a class=\"btn btn-primary btn-xl js-scroll-trigger text-white invisible\" data-toggle=\"modal\" data-target=\"#exampleModalLong\">Repasar lección</a>\r\n        <a class=\"btn btn-primary btn-xl js-scroll-trigger text-white\" (click)=\"completeLesson()\">Continuar</a>\r\n      </div>\r\n    </div>\r\n  </footer>\r\n</body>\r\n<!--<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>\r\n\r\n<h1>|||||||||| HOLA PEPE ||||||||||</h1>-->\r\n\r\n"
 
 /***/ }),
 
@@ -762,6 +771,8 @@ module.exports = "<section class=bgexercises>\r\n  <div class=\"container-fluid 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lesson_lesson_service__ = __webpack_require__("./src/app/lesson/lesson.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__user_user_service__ = __webpack_require__("./src/app/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -775,18 +786,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var BodyCompleteLessonComponent = /** @class */ (function () {
-    function BodyCompleteLessonComponent(modalService, loginService, lessonService, idUnit, idLesson) {
+    function BodyCompleteLessonComponent(router, userService, modalService, loginService, lessonService) {
+        this.router = router;
+        this.userService = userService;
         this.modalService = modalService;
         this.loginService = loginService;
         this.lessonService = lessonService;
         this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
-        this.completeLesson();
     }
+    BodyCompleteLessonComponent.prototype.ngOnInit = function () {
+    };
     BodyCompleteLessonComponent.prototype.completeLesson = function () {
         var _this = this;
-        this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(function (response) { return _this.response = response; }, function (error) { return console.log(error); });
+        this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(function (response) {
+            _this.response = response;
+            _this.userService.getUser(_this.loggedUser.id)
+                .subscribe(function (user) {
+                console.log(user);
+                _this.loginService.setLoggedUser(user);
+                _this.resetConfiguration();
+                _this.router.navigate(['/ContinueLesson']);
+            });
+        }, function (error) { return console.log(error); });
     };
     BodyCompleteLessonComponent.prototype.open = function (content) {
         var _this = this;
@@ -807,12 +832,25 @@ var BodyCompleteLessonComponent = /** @class */ (function () {
             return "with: " + reason;
         }
     };
+    BodyCompleteLessonComponent.prototype.resetConfiguration = function () {
+        var config = this.router.config
+            .map(function (route) { return Object.assign({}, route); });
+        this.router.resetConfig(config);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], BodyCompleteLessonComponent.prototype, "idUnit", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], BodyCompleteLessonComponent.prototype, "idLesson", void 0);
     BodyCompleteLessonComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'body_completeLesson',
             template: __webpack_require__("./src/app/completeLesson/body_completeLesson.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */], __WEBPACK_IMPORTED_MODULE_2__login_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_3__lesson_lesson_service__["a" /* LessonsService */], Number, Number])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_5__user_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */], __WEBPACK_IMPORTED_MODULE_2__login_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_3__lesson_lesson_service__["a" /* LessonsService */]])
     ], BodyCompleteLessonComponent);
     return BodyCompleteLessonComponent;
 }());
@@ -824,7 +862,7 @@ var BodyCompleteLessonComponent = /** @class */ (function () {
 /***/ "./src/app/completeLesson/completeLesson.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\r\n<body_completeLesson></body_completeLesson>\r\n"
+module.exports = "<body_completeLesson [idUnit]='idUnit' [idLesson]='idLesson'></body_completeLesson>\r\n"
 
 /***/ }),
 
@@ -834,6 +872,124 @@ module.exports = "<app-navbar></app-navbar>\r\n<body_completeLesson></body_compl
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CompleteLessonComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__exercise_exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CompleteLessonComponent = /** @class */ (function () {
+    function CompleteLessonComponent(router, activatedRoute, exerciseService) {
+        this.router = router;
+        this.exerciseService = exerciseService;
+        var idUnit = activatedRoute.snapshot.params['id'];
+        this.idUnit = parseInt(idUnit);
+        var idLesson = activatedRoute.snapshot.params['idlesson'];
+        this.idLesson = parseInt(idLesson);
+    }
+    CompleteLessonComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'completeLesson',
+            template: __webpack_require__("./src/app/completeLesson/completeLesson.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__exercise_exercise_service__["a" /* ExerciseService */]])
+    ], CompleteLessonComponent);
+    return CompleteLessonComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/continueLesson/body_continueLesson.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<body class=bgexercises>\r\n  <!--ContinueLesson section-->\r\n  <div class=\"container-fluid text-center text-dark p-5\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <h2 class=\"pt-5\">¡Ya tienes un {{loggedUser.fluency}} % de soltura en contabilidad!</h2>\r\n        <img class=\"img-fluid p-2\" src=\"assets/Captura.PNG\" alt=\"\" id=\"completedLessonimgStyle\">\r\n        <hr class=\"invisible p-2\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <!--Footer section-->\r\n  <footer class=\"mt-3 fixed-bottom\" id=\"bg-foot\">\r\n    <div class=\"container-fluid py-3\">\r\n      <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n        <a class=\"btn btn-primary btn-xl js-scroll-trigger text-white invisible\" data-toggle=\"modal\" data-target=\"#exampleModalLong\">Repasar lección</a>\r\n        <a class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/home']\">Continuar</a>\r\n      </div>\r\n    </div>\r\n  </footer>\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/continueLesson/body_continueLesson.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BodyContinueLessonComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_service__ = __webpack_require__("./src/app/login/login.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var BodyContinueLessonComponent = /** @class */ (function () {
+    function BodyContinueLessonComponent(modalService, loginService) {
+        this.modalService = modalService;
+        this.loginService = loginService;
+        this.loginService.isLoggedUser();
+        this.loggedUser = loginService.getLoggedUser();
+    }
+    //deleteAllCompletedExercises() --> Home
+    BodyContinueLessonComponent.prototype.open = function (content) {
+        var _this = this;
+        this.modalService.open(content).result.then(function (result) {
+            _this.closeResult = "Closed with: " + result;
+        }, function (reason) {
+            _this.closeResult = "Dismissed " + _this.getDismissReason(reason);
+        });
+    };
+    BodyContinueLessonComponent.prototype.getDismissReason = function (reason) {
+        if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* ModalDismissReasons */].ESC) {
+            return 'by pressing ESC';
+        }
+        else if (reason === __WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["a" /* ModalDismissReasons */].BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        }
+        else {
+            return "with: " + reason;
+        }
+    };
+    BodyContinueLessonComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'body_continueLesson',
+            template: __webpack_require__("./src/app/continueLesson/body_continueLesson.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ng_bootstrap_ng_bootstrap__["b" /* NgbModal */], __WEBPACK_IMPORTED_MODULE_2__login_login_service__["a" /* LoginService */]])
+    ], BodyContinueLessonComponent);
+    return BodyContinueLessonComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/continueLesson/continueLesson.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<body_continueLesson></body_continueLesson>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/continueLesson/continueLesson.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContinueLessonComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -841,16 +997,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
-var CompleteLessonComponent = /** @class */ (function () {
-    function CompleteLessonComponent() {
+var ContinueLessonComponent = /** @class */ (function () {
+    function ContinueLessonComponent() {
     }
-    CompleteLessonComponent = __decorate([
+    ContinueLessonComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'completeLesson',
-            template: __webpack_require__("./src/app/completeLesson/completeLesson.component.html")
+            selector: 'continueLesson',
+            template: __webpack_require__("./src/app/continueLesson/continueLesson.component.html")
         })
-    ], CompleteLessonComponent);
-    return CompleteLessonComponent;
+    ], ContinueLessonComponent);
+    return ContinueLessonComponent;
 }());
 
 
@@ -1068,7 +1224,7 @@ var BodyExerciseComponent = /** @class */ (function () {
 /***/ "./src/app/exercise/exercise.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header_exercise></header_exercise>\r\n<exercise5></exercise5>\r\n<footer_exercise></footer_exercise>\r\n"
+module.exports = "<exercise1 *ngIf=\"kindExercises[0]==1\" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise1>\r\n<exercise2 *ngIf=\"kindExercises[0]==2\" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise2>\r\n<exercise5 *ngIf=\"kindExercises[0]==5\" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise5>\r\n<exercise7 *ngIf=\"kindExercises[0]==7\" [nElement]='nElement' [idUnit]='idUnit' [idLesson]='idLesson' [idExercise]='idExercises[0]' (newExercise)='newExercisechange($event)'></exercise7>\r\n"
 
 /***/ }),
 
@@ -1079,6 +1235,7 @@ module.exports = "<header_exercise></header_exercise>\r\n<exercise5></exercise5>
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExerciseComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1090,24 +1247,75 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var ExerciseComponent = /** @class */ (function () {
-    function ExerciseComponent(router, activatedRoute) {
+    function ExerciseComponent(router, activatedRoute, exerciseService) {
         this.router = router;
-        var idunit = activatedRoute.snapshot.params['id'];
-        this.idunit = idunit;
-        var idlesson = activatedRoute.snapshot.params['idlesson'];
-        this.idlesson = idlesson;
-        var idkind = activatedRoute.snapshot.params['idkind'];
-        this.idkind = idkind;
-        var idexercise = activatedRoute.snapshot.params['idexercise'];
-        this.idexercise = idexercise;
+        this.exerciseService = exerciseService;
+        this.idExercises = new Array();
+        this.kindExercises = new Array();
+        this.nElement = 4;
+        var idUnit = activatedRoute.snapshot.params['id'];
+        this.idUnit = parseInt(idUnit);
+        var idLesson = activatedRoute.snapshot.params['idlesson'];
+        this.idLesson = parseInt(idLesson);
+        /*let idExercise = activatedRoute.snapshot.params['idexercise'];
+        this.idExercise = parseInt(idExercise);*/
+        this.idExercise = (((this.idUnit - 1) * 3 + this.idLesson) - 1) * 4 + 1 /*this.idExercise*/;
+        this.idExercises.push(this.idExercise);
+        this.idExercises.push(this.idExercise + 1);
+        this.idExercises.push(this.idExercise + 2);
+        this.idExercises.push(this.idExercise + 3);
     }
+    ExerciseComponent.prototype.ngOnInit = function () {
+        this.getExercises();
+    };
+    ExerciseComponent.prototype.getExercises = function () {
+        var _this = this;
+        this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise)
+            .then(function (exercise) {
+            _this.kindExercises.push(exercise.kind);
+            _this.exerciseService.getOneExercise(_this.idUnit, _this.idLesson, _this.idExercise + 1)
+                .then(function (exercise) {
+                _this.kindExercises.push(exercise.kind);
+                _this.exerciseService.getOneExercise(_this.idUnit, _this.idLesson, _this.idExercise + 2)
+                    .then(function (exercise) {
+                    _this.kindExercises.push(exercise.kind);
+                    _this.exerciseService.getOneExercise(_this.idUnit, _this.idLesson, _this.idExercise + 3)
+                        .then(function (exercise) {
+                        _this.kindExercises.push(exercise.kind);
+                    });
+                });
+            });
+        })
+            .catch(function (error) { return console.log(error); });
+    };
+    ExerciseComponent.prototype.newExercisechange = function (newExercise) {
+        if (newExercise == true) {
+            this.idExercises.shift();
+            this.kindExercises.shift();
+        }
+        else {
+            this.idExercises.push(this.idExercises[0]);
+            this.kindExercises.push(this.kindExercises[0]);
+            this.idExercises.shift();
+            this.kindExercises.shift();
+        }
+        this.nElement = this.kindExercises.length;
+    };
+    ExerciseComponent.prototype.pulsar = function () {
+        console.log(this.idUnit);
+        console.log(this.idLesson);
+        console.log(this.idExercise);
+        console.log(this.idExercises);
+        console.log(this.kindExercises);
+    };
     ExerciseComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'exercise',
             template: __webpack_require__("./src/app/exercise/exercise.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__exercise_service__["a" /* ExerciseService */]])
     ], ExerciseComponent);
     return ExerciseComponent;
 }());
@@ -1159,6 +1367,13 @@ var ExerciseService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
+    //Same as getExercise but with promise
+    ExerciseService.prototype.getOneExercise = function (idUnit, idLesson, idExercise) {
+        return this.http.get(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(function (error) { return console.error(error); });
+    };
     ExerciseService.prototype.changeExercise = function (idUnit, idLesson, idExercise, exercise) {
         var _this = this;
         return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise, exercise)
@@ -1177,15 +1392,23 @@ var ExerciseService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
-    ExerciseService.prototype.checkAnswer = function (idUnit, idLesson, idExercise, result) {
+    ExerciseService.prototype.checkExercise = function (idUnit, idLesson, idExercise, result) {
         var _this = this;
-        return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', result)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
+        return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', result, options)
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
     ExerciseService.prototype.deleteAllCompleted = function () {
         var _this = this;
-        return this.http.delete(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiBase + '/DeleteAllExercises')
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
+        return this.http.delete(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiBase + '/DeleteAllExercises', options)
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
@@ -1207,7 +1430,7 @@ var ExerciseService = /** @class */ (function () {
 /***/ "./src/app/exercise/exercise1/exercise1.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n  <!--Question and answers-->\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{getStatement()}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container \">\r\n      <div class=\"row\">\r\n        <div class=\"container\">\r\n          <div class=\"row justify-content-around\">\r\n            <div class=\"btn-group btn-group-toggle\" name=\"radioBasic\">\r\n              <div class=\"col-lg-4 col-md-6\">\r\n                <label class=\"service-box mt-5 mx-auto text-center card-body\" id=\"exercise1\">\r\n                  <img class=\"img-fluid \" [src]=\"img1\" alt=\"\" id=\"selectLesson\">\r\n                  <input type=\"radio\" [(ngModel)]=\"solution\" value=\"uno\">{{getTexts()}}\r\n                </label>\r\n              </div>\r\n              <div class=\"col-lg-4 col-md-6\">\r\n                <label class=\"service-box mt-5 mx-auto text-center card-body\" id=\"exercise1\">\r\n                  <img class=\"img-fluid \" [src]=\"img2\" alt=\"\" id=\"selectLesson\">\r\n                  <input type=\"radio\" [(ngModel)]=\"solution\" value=\"dos\">{{getTexts()}}\r\n                </label>\r\n              </div>\r\n              <div class=\"col-lg-4 col-md-6\">\r\n                <label class=\"service-box mt-5 mx-auto text-center card-body\" id=\"exercise1\">\r\n                  <img class=\"img-fluid \" [src]=\"img3\" alt=\"\" id=\"selectLesson\">\r\n                  <input type=\"radio\" [(ngModel)]=\"solution\" value=\"tres\">{{getTexts()}}\r\n                </label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n  <header_exercise></header_exercise>\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{statement}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container \">\r\n      <div class=\"row\">\r\n        <div class=\"container\">\r\n          <div class=\"row justify-content-around\">\r\n            <div class=\"btn-group btn-group-toggle\" name=\"radioBasic\">\r\n              <div class=\"col-lg-4 col-md-6\">\r\n                <label [id]=\"option1\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"exercise1\">\r\n                  <img class=\"img-fluid \" [src]=\"img1\" alt=\"\" id=\"selectLesson\">\r\n                  <input type=\"radio\" [(ngModel)]=\"answer\" value=\"uno\"> {{texts[0]}}\r\n                </label>\r\n              </div>\r\n              <div class=\"col-lg-4 col-md-6\">\r\n                <label [id]=\"option2\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"exercise1\">\r\n                  <img class=\"img-fluid \" [src]=\"img2\" alt=\"\" id=\"selectLesson\">\r\n                  <input type=\"radio\" [(ngModel)]=\"answer\" value=\"dos\"> {{texts[1]}}\r\n                </label>\r\n              </div>\r\n              <div class=\"col-lg-4 col-md-6\">\r\n                <label [id]=\"option3\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"exercise1\">\r\n                  <img class=\"img-fluid \" [src]=\"img3\" alt=\"\" id=\"selectLesson\">\r\n                  <input type=\"radio\" [(ngModel)]=\"answer\" value=\"tres\"> {{texts[2]}}\r\n                </label>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</div>\r\n<footer>\r\n  <div class=\"mt-5 fixed-bottom\" id=\"bg-foot\">\r\n    <div class=\"container-fluid py-3\">\r\n      <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n        <button *ngIf=\"nElement!=0 && nElement!=1 \" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SALTAR</button>\r\n        <button *ngIf=\"nElement!=0 && !press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"check()\">CALIFICAR</button>\r\n        <button *ngIf=\"nElement!=1 && press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SIGUIENTE</button>\r\n        <button *ngIf=\"nElement==1 && press && !right\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SIGUIENTE \r\n        </button>\r\n        <button *ngIf=\"nElement==1 && press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted']\">TERMINAR</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>"
 
 /***/ }),
 
@@ -1218,8 +1441,134 @@ module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n  <!--Quest
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Exercise1Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var Exercise1Component = /** @class */ (function () {
+    function Exercise1Component(http, exerciseService) {
+        this.http = http;
+        this.exerciseService = exerciseService;
+        this.newExercise = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.option1 = "exercise1";
+        this.option2 = "exercise1";
+        this.option3 = "exercise1";
+        this.texts = new Array();
+        this.press = false;
+        console.log(this.idExercise);
+    }
+    Exercise1Component.prototype.ngOnInit = function () {
+        var _this = this;
+        this.img1 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/1";
+        this.img2 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/2";
+        this.img3 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/3";
+        this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+            .subscribe(function (exercise) {
+            _this.statement = exercise.statement;
+            _this.texts = exercise.texts;
+        });
+    };
+    Exercise1Component.prototype.check = function () {
+        var _this = this;
+        this.result = {
+            "result": this.answer
+        };
+        this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+            .subscribe(function (response) {
+            _this.right = response;
+            if (response) {
+                if (_this.answer == "uno") {
+                    _this.option1 = "exercise1Good";
+                }
+                if (_this.answer == "dos") {
+                    _this.option2 = "exercise1Good";
+                }
+                if (_this.answer == "tres") {
+                    _this.option3 = "exercise1Good";
+                }
+            }
+            else {
+                if (_this.answer == "uno") {
+                    _this.option1 = "exercise1Bad";
+                }
+                if (_this.answer == "dos") {
+                    _this.option2 = "exercise1Bad";
+                }
+                if (_this.answer == "tres") {
+                    _this.option3 = "exercise1Bad";
+                }
+            }
+        }, function (error) { return console.error(error); });
+        this.press = true;
+        console.log(this.nElement);
+    };
+    Exercise1Component.prototype.nextExercise = function () {
+        this.newExercise.next(this.right);
+        this.press = false;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise1Component.prototype, "idUnit", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise1Component.prototype, "idLesson", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise1Component.prototype, "idkind", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise1Component.prototype, "idExercise", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise1Component.prototype, "nElement", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+        __metadata("design:type", Object)
+    ], Exercise1Component.prototype, "newExercise", void 0);
+    Exercise1Component = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'exercise1',
+            template: __webpack_require__("./src/app/exercise/exercise1/exercise1.component.html")
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_2__exercise_service__["a" /* ExerciseService */]])
+    ], Exercise1Component);
+    return Exercise1Component;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/exercise/exercise2/exercise2.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n  <header_exercise></header_exercise>\r\n  <form>\r\n    <!--Question and answers-->\r\n    <section class=\"p-5\">\r\n      <div class=\"container\">\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-12 text-center\">\r\n            <h2 class=\"section-heading\">{{statement}}</h2>\r\n            <hr class=\"my-4\">\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div class=\"container mb-5\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-12\">\r\n            <div class=\"form-row align-items-center\">\r\n              <textarea class=\"form-control center\" rows=\"7\" cols=100 placeholder=\"Escribe aquí\" name=\"solution\" [(ngModel)]=\"answerText\"\r\n                [id]=\"color\"></textarea>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <hr class=\"invisible p-2\">\r\n    </section>\r\n  </form>\r\n</div>\r\n<footer>\r\n    <div class=\"mt-5 fixed-bottom\" id=\"bg-foot\">\r\n      <div class=\"container-fluid py-3\">\r\n        <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n          <button *ngIf=\"nElement!=0 && nElement!=1 \" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SALTAR\r\n          </button>\r\n          <button *ngIf=\"nElement!=0 && !press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"check()\">CALIFICAR\r\n          </button>\r\n          <button *ngIf=\"nElement!=1 && press\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SIGUIENTE\r\n          </button>\r\n          <button *ngIf=\"nElement==1 && press && !right\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SIGUIENTE \r\n          </button>\r\n          <button *ngIf=\"nElement==1 && press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted']\">TERMINAR\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </footer>"
+
+/***/ }),
+
+/***/ "./src/app/exercise/exercise2/exercise2.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Exercise2Component; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1234,120 +1583,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var BASE_URL = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiBase + '/Unit';
-var Exercise1Component = /** @class */ (function () {
-    function Exercise1Component(http) {
-        this.http = http;
-        this.img1 = "../assets/machine.jpg";
-        this.img2 = "../assets/land.jpg";
-        this.img3 = "../assets/truck.jpg";
-    }
-    Exercise1Component.prototype.getStatement = function () {
-        var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.statement = response.json();
-            return _this.statement;
-        })
-            .catch(function (error) { return _this.handleError(error); });
-    };
-    Exercise1Component.prototype.getTexts = function () {
-        var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.texts = response.json();
-            return _this.texts;
-        })
-            .catch(function (error) { return _this.handleError(error); });
-    };
-    Exercise1Component.prototype.handleError = function (error) {
-        console.error(error);
-        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["a" /* Observable */].throw('Server error (' + error.status + '): ' + error.text());
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-        __metadata("design:type", Number)
-    ], Exercise1Component.prototype, "idunit", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-        __metadata("design:type", Number)
-    ], Exercise1Component.prototype, "idlesson", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-        __metadata("design:type", Number)
-    ], Exercise1Component.prototype, "idkind", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
-        __metadata("design:type", Number)
-    ], Exercise1Component.prototype, "idexercise", void 0);
-    Exercise1Component = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'exercise1',
-            template: __webpack_require__("./src/app/exercise/exercise1/exercise1.component.html")
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
-    ], Exercise1Component);
-    return Exercise1Component;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/exercise/exercise2/exercise2.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n<form>\r\n  <!--Question and answers-->\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{getStatement()}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container mb-5\">\r\n      <div class=\"row\">\r\n        <div class=\"col-sm-12\">\r\n          <div class=\"form-row align-items-center\">\r\n\t\t\t\t\t\t<textarea class=\"form-control center\" rows=\"7\" cols=100\r\n                      placeholder=\"Escribe aquí\" name=\"solution\"></textarea>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <hr class=\"invisible p-2\">\r\n  </section>\r\n</form>\r\n\r\n</div>\r\n"
-
-/***/ }),
-
-/***/ "./src/app/exercise/exercise2/exercise2.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Exercise2Component; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var BASE_URL = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiBase + '/Unit';
 var Exercise2Component = /** @class */ (function () {
-    function Exercise2Component(http) {
+    function Exercise2Component(http, exerciseService) {
         this.http = http;
+        this.exerciseService = exerciseService;
+        this.press = false;
+        this.newExercise = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.texts = new Array();
+        this.answerText = "";
+        this.color = "exercise2";
+        console.log(this.idExercise);
     }
-    Exercise2Component.prototype.getStatement = function () {
+    Exercise2Component.prototype.ngOnInit = function () {
         var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.statement = response.json();
-            return _this.statement;
-        })
-            .catch(function (error) { return _this.handleError(error); });
+        this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+            .subscribe(function (exercise) {
+            _this.statement = exercise.statement;
+            _this.texts = exercise.texts;
+        });
     };
-    Exercise2Component.prototype.handleError = function (error) {
-        console.error(error);
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw('Server error (' + error.status + '): ' + error.text());
+    Exercise2Component.prototype.check = function () {
+        var _this = this;
+        this.result = {
+            "result": this.answerText
+        };
+        this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result).subscribe(function (right) {
+            _this.right = right;
+            if (_this.right == true) {
+                _this.color = "exercise1Good";
+            }
+            else {
+                _this.color = "exercise1Bad";
+            }
+        });
+        this.press = true;
+        console.log(this.nElement);
+    };
+    Exercise2Component.prototype.nextExercise = function () {
+        this.newExercise.next(this.right);
+        this.press = false;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise2Component.prototype, "idunit", void 0);
+    ], Exercise2Component.prototype, "idUnit", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise2Component.prototype, "idlesson", void 0);
+    ], Exercise2Component.prototype, "idLesson", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
@@ -1355,13 +1638,21 @@ var Exercise2Component = /** @class */ (function () {
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise2Component.prototype, "idexercise", void 0);
+    ], Exercise2Component.prototype, "idExercise", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise2Component.prototype, "nElement", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+        __metadata("design:type", Object)
+    ], Exercise2Component.prototype, "newExercise", void 0);
     Exercise2Component = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'exercise2',
             template: __webpack_require__("./src/app/exercise/exercise2/exercise2.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_3__exercise_service__["a" /* ExerciseService */]])
     ], Exercise2Component);
     return Exercise2Component;
 }());
@@ -1373,7 +1664,7 @@ var Exercise2Component = /** @class */ (function () {
 /***/ "./src/app/exercise/exercise5/exercise5.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n  <!--Question and answers-->\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{getStatement()}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container \">\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label class=\"service-box mx-auto text-center card-body\"\r\n               id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"solution\" value=\"uno\" />{{getTexts()}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label class=\"service-box mx-auto text-center card-body\"\r\n               id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"solution\" value=\"dos\" />{{getTexts()}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label class=\"service-box mx-auto text-center card-body\"\r\n               id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"solution\" value=\"tres\" />{{getTexts()}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n    </div>\r\n  </section>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n  <header_exercise></header_exercise>\r\n  <!--Question and answers-->\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{statement}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container \">\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label [id]=\"option1\" class=\"service-box mx-auto text-center card-body\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"answer\" value=\"uno\" /> {{texts[0]}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label [id]=\"option2\" class=\"service-box mx-auto text-center card-body\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"answer\" value=\"dos\" /> {{texts[1]}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label [id]=\"option3\" class=\"service-box mx-auto text-center card-body\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"answer\" value=\"tres\" /> {{texts[2]}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</div>\r\n<footer>\r\n    <div class=\"mt-5 fixed-bottom\" id=\"bg-foot\">\r\n      <div class=\"container-fluid py-3\">\r\n        <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n          <button *ngIf=\"nElement!=0 && nElement!=1 \" class=\"btn btn-primary btn-xl js-scroll-trigger\"(click)=\"nextExercise()\">SALTAR\r\n          </button>\r\n          <button *ngIf=\"nElement!=0 && !press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"\"(click)=\"check()\">CALIFICAR\r\n          </button>\r\n          <button *ngIf=\"nElement!=1 && press\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"\"(click)=\"nextExercise()\">SIGUIENTE\r\n          </button>\r\n          <button *ngIf=\"nElement==1 && press && !right\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"\"(click)=\"nextExercise()\">SIGUIENTE \r\n          </button>\r\n          <button *ngIf=\"nElement==1 && press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted']\">TERMINAR\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </footer>"
 
 /***/ }),
 
@@ -1385,7 +1676,7 @@ module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n  <!--Quest
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1401,39 +1692,71 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var BASE_URL = __WEBPACK_IMPORTED_MODULE_1__environments_environment__["a" /* environment */].apiBase + '/Unit';
 var Exercise5Component = /** @class */ (function () {
-    function Exercise5Component(http) {
+    function Exercise5Component(http, exerciseService) {
         this.http = http;
+        this.exerciseService = exerciseService;
+        this.press = false;
+        this.newExercise = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.option1 = "exercise1";
+        this.option2 = "exercise1";
+        this.option3 = "exercise1";
+        this.texts = new Array();
     }
-    Exercise5Component.prototype.getStatement = function () {
+    Exercise5Component.prototype.ngOnInit = function () {
         var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.statement = response.json();
-            return _this.statement;
-        })
-            .catch(function (error) { return _this.handleError(error); });
+        this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+            .subscribe(function (exercise) {
+            _this.statement = exercise.statement;
+            _this.texts = exercise.texts;
+        });
     };
-    Exercise5Component.prototype.getTexts = function () {
+    //Correct the exercise
+    Exercise5Component.prototype.check = function () {
         var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.texts = response.json();
-            return _this.texts;
-        })
-            .catch(function (error) { return _this.handleError(error); });
+        this.result = {
+            "result": this.answer
+        };
+        this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+            .subscribe(function (response) {
+            _this.right = response;
+            if (response) {
+                if (_this.answer == "uno") {
+                    _this.option1 = "exercise1Good";
+                }
+                if (_this.answer == "dos") {
+                    _this.option2 = "exercise1Good";
+                }
+                if (_this.answer == "tres") {
+                    _this.option3 = "exercise1Good";
+                }
+            }
+            else {
+                if (_this.answer == "uno") {
+                    _this.option1 = "exercise1Bad";
+                }
+                if (_this.answer == "dos") {
+                    _this.option2 = "exercise1Bad";
+                }
+                if (_this.answer == "tres") {
+                    _this.option3 = "exercise1Bad";
+                }
+            }
+        }, function (error) { return console.error(error); });
+        this.press = true;
+        console.log(this.nElement);
     };
-    Exercise5Component.prototype.handleError = function (error) {
-        console.error(error);
-        return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["a" /* Observable */].throw('Server error (' + error.status + '): ' + error.text());
+    Exercise5Component.prototype.nextExercise = function () {
+        this.newExercise.next(this.right);
+        this.press = false;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise5Component.prototype, "idunit", void 0);
+    ], Exercise5Component.prototype, "idUnit", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise5Component.prototype, "idlesson", void 0);
+    ], Exercise5Component.prototype, "idLesson", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
@@ -1441,13 +1764,21 @@ var Exercise5Component = /** @class */ (function () {
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise5Component.prototype, "idexercise", void 0);
+    ], Exercise5Component.prototype, "idExercise", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise5Component.prototype, "nElement", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+        __metadata("design:type", Object)
+    ], Exercise5Component.prototype, "newExercise", void 0);
     Exercise5Component = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'exercise5',
             template: __webpack_require__("./src/app/exercise/exercise5/exercise5.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_3__exercise_service__["a" /* ExerciseService */]])
     ], Exercise5Component);
     return Exercise5Component;
 }());
@@ -1459,7 +1790,7 @@ var Exercise5Component = /** @class */ (function () {
 /***/ "./src/app/exercise/exercise7/exercise7.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n  <!--Question and answers-->\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{getStatement()}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container \">\r\n\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label class=\"mx-auto text-center\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" name=\"solution\" value=\"uno\" />{{getTexts()}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label class=\"mx-auto text-center\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" name=\"solution\" value=\"dos\" />{{getTexts()}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label class=\"mx-auto text-center\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" name=\"solution\" value=\"tres\" />{{getTexts()}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n    </div>\r\n  </section>\r\n\r\n</div>\r\n"
+module.exports = "<body class=\"bgexercises\" id=\"page-top\">\r\n   <header_exercise></header_exercise>\r\n  <!--Question and answers-->\r\n  <section class=\"p-5\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-12 text-center\">\r\n          <h2 class=\"section-heading\">{{statement}}</h2>\r\n          <hr class=\"my-4\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"container \">\r\n\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label [id]=\"option1\" class=\"mx-auto text-center\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"answer\" value=\"uno\" /> {{texts[0]}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label [id]=\"option2\" class=\"mx-auto text-center\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"answer\" value=\"dos\" /> {{texts[1]}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n      <div class=\"col-lg-8 mx-auto\">\r\n        <label [id]=\"option3\" class=\"mx-auto text-center\" id=\"exercise1\">\r\n          <h5 class=\"mt-2 mb-2 ml-2 mr-2\">\r\n            <input type=\"radio\" [(ngModel)]=\"answer\" value=\"tres\" /> {{texts[2]}}\r\n          </h5>\r\n        </label>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</body>\r\n<footer>\r\n    <div class=\"mt-5 fixed-bottom\" id=\"bg-foot\">\r\n      <div class=\"container-fluid py-3\">\r\n        <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n          <button *ngIf=\"nElement!=0 && nElement!=1 \" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SALTAR\r\n          </button>\r\n          <button *ngIf=\"nElement!=0 && !press\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"check()\">CALIFICAR\r\n          </button>\r\n          <button *ngIf=\"nElement!=1 && press\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SIGUIENTE\r\n          </button>\r\n          <button *ngIf=\"nElement==1 && press && !right\"  class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise()\">SIGUIENTE \r\n          </button>\r\n          <button *ngIf=\"nElement==1 && press && right\" class=\"btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted']\">TERMINAR\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </footer>"
 
 /***/ }),
 
@@ -1470,8 +1801,8 @@ module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n  <!--Quest
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Exercise7Component; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exercise_service__ = __webpack_require__("./src/app/exercise/exercise.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1485,41 +1816,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASE_URL = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiBase + '/Unit';
+var BASE_URL = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiBase + '/Unit';
 var Exercise7Component = /** @class */ (function () {
-    function Exercise7Component(http) {
+    function Exercise7Component(http, exerciseService) {
         this.http = http;
+        this.exerciseService = exerciseService;
+        this.press = false;
+        this.newExercise = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+        this.option1 = "exercise1";
+        this.option2 = "exercise1";
+        this.option3 = "exercise1";
+        this.texts = new Array();
     }
-    Exercise7Component.prototype.getStatement = function () {
+    Exercise7Component.prototype.ngOnInit = function () {
         var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.statement = response.json();
-            return _this.statement;
-        })
-            .catch(function (error) { return _this.handleError(error); });
+        this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+            .subscribe(function (exercise) {
+            _this.statement = exercise.statement;
+            _this.texts = exercise.texts;
+        });
     };
-    Exercise7Component.prototype.getTexts = function () {
+    //Correct the exercise
+    Exercise7Component.prototype.check = function () {
         var _this = this;
-        return this.http.get(BASE_URL + '/' + this.idunit + '/Lessons/' + this.idlesson + '/Exercise/' + this.idkind + this.idexercise)
-            .map(function (response) {
-            _this.texts = response.json();
-            return _this.texts;
-        })
-            .catch(function (error) { return _this.handleError(error); });
+        this.result = {
+            "result": this.answer
+        };
+        this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+            .subscribe(function (response) {
+            _this.right = response;
+            if (response) {
+                if (_this.answer == "uno") {
+                    _this.option1 = "exercise1Good";
+                }
+                if (_this.answer == "dos") {
+                    _this.option2 = "exercise1Good";
+                }
+                if (_this.answer == "tres") {
+                    _this.option3 = "exercise1Good";
+                }
+            }
+            else {
+                if (_this.answer == "uno") {
+                    _this.option1 = "exercise1Bad";
+                }
+                if (_this.answer == "dos") {
+                    _this.option2 = "exercise1Bad";
+                }
+                if (_this.answer == "tres") {
+                    _this.option3 = "exercise1Bad";
+                }
+            }
+        }, function (error) { return console.error(error); });
+        this.press = true;
+        console.log(this.nElement);
     };
-    Exercise7Component.prototype.handleError = function (error) {
-        console.error(error);
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["a" /* Observable */].throw('Server error (' + error.status + '): ' + error.text());
+    Exercise7Component.prototype.nextExercise = function () {
+        this.newExercise.next(this.right);
+        this.press = false;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise7Component.prototype, "idunit", void 0);
+    ], Exercise7Component.prototype, "idUnit", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise7Component.prototype, "idlesson", void 0);
+    ], Exercise7Component.prototype, "idLesson", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
@@ -1527,13 +1890,21 @@ var Exercise7Component = /** @class */ (function () {
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
         __metadata("design:type", Number)
-    ], Exercise7Component.prototype, "idexercise", void 0);
+    ], Exercise7Component.prototype, "idExercise", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+        __metadata("design:type", Number)
+    ], Exercise7Component.prototype, "nElement", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Output */])(),
+        __metadata("design:type", Object)
+    ], Exercise7Component.prototype, "newExercise", void 0);
     Exercise7Component = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'exercise7',
             template: __webpack_require__("./src/app/exercise/exercise7/exercise7.component.html")
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_3__exercise_service__["a" /* ExerciseService */]])
     ], Exercise7Component);
     return Exercise7Component;
 }());
@@ -1545,7 +1916,7 @@ var Exercise7Component = /** @class */ (function () {
 /***/ "./src/app/exercise/footer_exercise.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"mt-5 fixed-bottom\" id=\"bg-foot\">\r\n\r\n<div class=\"container-fluid py-3\">\r\n\r\n  <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\"\r\n       aria-label=\"Toolbar with button groups\">\r\n\r\n    <a *ngIf=\"exerciseList[i+1]!=0\" class=\"js-scroll-trigger\"></a>\r\n    <button *ngIf=\"exerciseList[i+1]!=0\" class=\"btn btn-primary btn-xl js-scroll-trigger\"\r\n            (click)=\"skipExercise(exerciseList,i)\">SALTAR\r\n    </button>\r\n    <a *ngIf=\"corrected==false\" class=\"js-scroll-trigger\"></a>\r\n    <button *ngIf=\"corrected==false\" class=\"btn btn-primary btn-xl js-scroll-trigger\"\r\n            (click)=\"correct()\">CALIFICAR\r\n    </button>\r\n    <a *ngIf=\"exerciseList[i+1]!=0 && corrected\" class=\"js-scroll-trigger\"></a>\r\n    <button *ngIf=\"exerciseList[i+1]!=0 && corrected\" class=\"btn btn-primary btn-xl js-scroll-trigger\"\r\n            (click)=\"nextExercise(i)\">SIGUIENTE\r\n    </button>\r\n    <a *ngIf=\"exerciseList[i+1]==0 && corrected\" class=\"js-scroll-trigger\"></a>\r\n    <button *ngIf=\"exerciseList[i+1]==0 && corrected\" class=\"btn btn-primary btn-xl js-scroll-trigger\"\r\n            routerLink=\"/home\">TERMINAR\r\n    </button>\r\n\r\n  </div>\r\n</div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"mt-5 fixed-bottom\" id=\"bg-foot\">\r\n        <div class=\"container-fluid py-3\">\r\n                <div class=\"btn-toolbar justify-content-between\" role=\"toolbar\" aria-label=\"Toolbar with button groups\">\r\n                        <a *ngIf=\"exerciseList[i+1]!=0\" class=\"js-scroll-trigger\"></a>\r\n                        <button *ngIf=\"exerciseList[i+1]!=0\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"skipExercise(exerciseList,i)\">SALTAR\r\n                        </button>\r\n                        <a *ngIf=\"corrected==false\" class=\"js-scroll-trigger\"></a>\r\n                        <button *ngIf=\"corrected==false\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"correct()\">CALIFICAR\r\n                        </button>\r\n                        <a *ngIf=\"exerciseList[i+1]!=0 && corrected\" class=\"js-scroll-trigger\"></a>\r\n                        <button *ngIf=\"exerciseList[i+1]!=0 && corrected\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"nextExercise(i)\">SIGUIENTE\r\n                        </button>\r\n                        <a *ngIf=\"exerciseList[i+1]==0 && corrected\" class=\"js-scroll-trigger\"></a>\r\n                        <button *ngIf=\"exerciseList[i+1]==0 && corrected\" class=\"btn btn-primary btn-xl js-scroll-trigger\" routerLink=\"/home\">TERMINAR\r\n                        </button>\r\n                </div>\r\n        </div>\r\n</div>"
 
 /***/ }),
 
@@ -1597,7 +1968,7 @@ var FooterExerciseComponent = /** @class */ (function () {
 /***/ "./src/app/exercise/header_exercise.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bgexercises\" id=\"page-top\">\r\n\r\n<!--Progress bar-->\r\n<div class=\"container\">\r\n  <hr class=\"invisible\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-1\">\r\n      <button type=\"button\" class=\"close sticky-top\" (click)=\"open(modal)\" aria-label=\"Close\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"col-sm-10\">\r\n      <p>\r\n        <ngb-progressbar type=\"danger\" [value]=progress [striped]=\"true\" [animated]=\"true\"></ngb-progressbar>\r\n      </p>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!--pop up close-->\r\n<ng-template #modal let-c=\"close\" let-d=\"dismiss\">\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">¿Estás seguro de que quieres salir?</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <p>Perderás el progeso en esta lección&hellip;</p>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"c('Close click')\">Cancelar</button>\r\n    <button type=\"button\" class=\"btn btn-primary btn-xl js-scroll-trigger\" id=\"button-style\" (click)=\"c('Exit click')\">Salir</button>\r\n  </div>\r\n</ng-template>\r\n\r\n</div>\r\n"
+module.exports = "<!--Progress bar-->\r\n<div class=\"container\">\r\n  <hr class=\"invisible\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-1\">\r\n      <button type=\"button\" class=\"close sticky-top\" (click)=\"open(modal)\" aria-label=\"Close\">\r\n        <span aria-hidden=\"true\">&times;</span>\r\n      </button>\r\n    </div>\r\n    <div class=\"col-sm-10\">\r\n        <div class=\"progress\">\r\n            <div class=\"progress-bar progress-bar-striped progress-bar-animated\" style=\"width: 25%\" ng-style=\"progress\" id=\"bg-progressBar\"></div>\r\n          </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!--pop up close-->\r\n<ng-template #modal let-c=\"close\" let-d=\"dismiss\">\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">¿Estás seguro de que quieres salir?</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <p>Perderás el progeso en esta lección&hellip;</p>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-primary btn-xl js-scroll-trigger\" (click)=\"c('Close click')\">Cancelar</button>\r\n    <button type=\"button\" class=\"btn btn-primary btn-xl js-scroll-trigger\" id=\"button-style\" (click)=\"c('Exit click')\">Salir</button>\r\n  </div>\r\n</ng-template>\r\n"
 
 /***/ }),
 
@@ -1696,7 +2067,7 @@ var HeaderNavbarComponent = /** @class */ (function () {
 /***/ "./src/app/home/body_home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<body class=\"bghome mt-3\">\r\n\t<div class=\"container my-auto\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-sm-8\">\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"col-sm-12\">\r\n\t\t\t\t\t\t<div class=\"mt-5 mx-auto text-center card-body bg-white\" id=\"round\">\r\n\t\t\t\t\t\t\t<h2 class=\"text-black text-left \" id=\"Margin\">Unidades de Contabilidad\r\n\t\t\t\t\t\t\t</h2>\r\n\t\t\t\t\t\t\t<h5 class=\"text-black text-center mt-5\">Nivel 1</h5>\r\n\t\t\t\t\t\t\t<div class=\"row justify-content-around\">\r\n\t\t\t\t\t\t\t\t<div *ngFor=\"let unit of units; let i = index\" [attr.data-index]=\"i\" class=\"col-lg-6 col-md-6 \">\r\n\t\t\t\t\t\t\t\t\t<div *ngIf=\"lessonsCompleted[i]==3\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"UnitComplete\">\r\n\t\t\t\t\t\t\t\t\t\t<a class=\"col-lg-5\" [routerLink]=\"['/Unit',unit.id,'Lessons']\" id=\"selectLesson\">\r\n\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"text-white \">{{unit.name}}</h2>\r\n\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"text-muted mt-4\">{{lessonsCompleted[i]}}/3</h2>\r\n\t\t\t\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div *ngIf=\"lessonsCompleted[i]!=3\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"Unit\">\r\n\t\t\t\t\t\t\t\t\t\t<a class=\"col-lg-5\" [routerLink]=\"['/Unit',unit.id,'Lessons']\" id=\"selectLesson\">\r\n\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"text-white \">{{unit.name}}</h2>\r\n\t\t\t\t\t\t\t\t\t\t\t<h2 class=\"text-muted mt-4\">{{lessonsCompleted[i]}}/3</h2>\r\n\t\t\t\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"loginService.isLoggedUser()\" class=\"col-sm-4\">\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"col-lg-12\">\r\n\t\t\t\t\t\t<div class=\"mt-5 text-center card-body bg-white margin-bootom-sm\" id=\"round\">\r\n\t\t\t\t\t\t\t<h5 class=\"text-black text-left\">Conocimiento de contabilidad\r\n\t\t\t\t\t\t\t</h5>\r\n\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t<div class=\"col-lg-12 \">\r\n\t\t\t\t\t\t\t\t\t<h1 class=\"card-title text-warning\">{{loggedUser.fluency}} %</h1>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"col-lg-12\">\r\n\t\t\t\t\t\t<div class=\"mt-4 text-center card-body bg-white \" id=\"round\">\r\n\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t<div class=\"col-lg-12 \">\r\n\t\t\t\t\t\t\t\t\t<div class=\"row mt-3\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"col-lg-12 \">\r\n\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"text-black \">Experiencia</h5>\r\n\t\t\t\t\t\t\t\t\t\t\t<h1 class=\"text-warning \">{{loggedUser.exp}}</h1>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"row mt-3\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"col-lg-12 \">\r\n\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"text-black \">Racha diaria</h5>\r\n\t\t\t\t\t\t\t\t\t\t\t<h1 class=\"text-warning \">{{loggedUser.dailyGoal}}</h1>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"row mt-3\">\r\n\t\t\t\t\t\t\t\t\t\t<div class=\"col-lg-12 \">\r\n\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"text-black \">Lecciones restantes</h5>\r\n\t\t\t\t\t\t\t\t\t\t\t<h1 class=\"text-warning \">{{loggedUser.remainingGoals}}</h1>\r\n\t\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"loginService.isLoggedUser()==false\" class=\"col-sm-4\">\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"col-lg-12\">\r\n\t\t\t\t\t\t<div class=\"mt-5 text-center card-body bg-white margin-bootom-sm\" id=\"round\">\r\n\t\t\t\t\t\t\t<h5 class=\"text-black text-left\">¡Crea un perfil para guardar tu progreso!</h5>\r\n\t\t\t\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t\t\t\t<div class=\"col-lg-12 \">\r\n\t\t\t\t\t\t\t\t\t<app-sign-up></app-sign-up>\r\n\t\t\t\t\t\t\t\t\t<app-login [formkind]='kind2'></app-login>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</body>\r\n\r\n"
+module.exports = "<body class=\"bghome mt-3\">\r\n  <div class=\"container my-auto\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-8\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-12\">\r\n            <div class=\"mt-5 mx-auto text-center card-body bg-white\" id=\"round\">\r\n              <h2 class=\"text-black text-left \" id=\"Margin\">Unidades de Contabilidad\r\n              </h2>\r\n              <h5 class=\"text-black text-center mt-5\">Nivel 1</h5>\r\n              <div class=\"row justify-content-around\">\r\n                <div *ngFor=\"let unit of units; let i = index\" [attr.data-index]=\"i\" class=\"col-lg-6 col-md-6 \">\r\n                  <div *ngIf=\"lessonsCompleted[i]==3\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"UnitComplete\">\r\n                    <a class=\"col-lg-5\" [routerLink]=\"['/Unit',unit.id,'Lessons']\" id=\"selectLesson\">\r\n                      <h2 class=\"text-white \">{{unit.name}}</h2>\r\n                      <h2 class=\"text-muted mt-4\">{{lessonsCompleted[i]}}/3</h2>\r\n                    </a>\r\n                  </div>\r\n                  <div *ngIf=\"lessonsCompleted[i]!=3\" class=\"service-box mt-5 mx-auto text-center card-body\" id=\"Unit\">\r\n                    <a class=\"col-lg-5\" [routerLink]=\"['/Unit',unit.id,'Lessons']\" id=\"selectLesson\">\r\n                      <h2 class=\"text-white \">{{unit.name}}</h2>\r\n                      <h2 class=\"text-muted mt-4\">{{lessonsCompleted[i]}}/3</h2>\r\n                    </a>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"loginService.isLoggedUser()\" class=\"col-sm-4\">\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-12\">\r\n            <div class=\"mt-5 text-center card-body bg-white margin-bootom-sm\" id=\"round\">\r\n              <h5 class=\"text-black text-left\">Conocimiento de contabilidad\r\n              </h5>\r\n              <div class=\"row\">\r\n                <div class=\"col-lg-12 \">\r\n                  <h1 class=\"card-title text-warning\">{{loggedUser.fluency}} %</h1>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-12\">\r\n            <div class=\"mt-4 text-center card-body bg-white \" id=\"round\">\r\n              <div class=\"row\">\r\n                <div class=\"col-lg-12 \">\r\n                  <div class=\"row mt-3\">\r\n                    <div class=\"col-lg-12 \">\r\n                      <h5 class=\"text-black \">Experiencia</h5>\r\n                      <h1 class=\"text-warning \">{{loggedUser.exp}}</h1>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row mt-3\">\r\n                    <div class=\"col-lg-12 \">\r\n                      <h5 class=\"text-black \">Racha diaria</h5>\r\n                      <h1 class=\"text-warning \">{{loggedUser.dailyGoal}}</h1>\r\n                    </div>\r\n                  </div>\r\n                  <div class=\"row mt-3\">\r\n                    <div class=\"col-lg-12 \">\r\n                      <h5 class=\"text-black \">Lecciones restantes</h5>\r\n                      <h1 class=\"text-warning \">{{loggedUser.remainingGoals}}</h1>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"loginService.isLoggedUser()==false\" class=\"col-sm-4\">\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-12\">\r\n            <div class=\"mt-5 text-center card-body bg-white margin-bootom-sm\" id=\"round\">\r\n              <h5 class=\"text-black text-left\">¡Crea un perfil para guardar tu progreso!</h5>\r\n              <div class=\"row\">\r\n                <div class=\"col-lg-12 \">\r\n                  <app-sign-up></app-sign-up>\r\n                  <app-login [formkind]='kind2'></app-login>\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</body>\r\n"
 
 /***/ }),
 
@@ -1729,12 +2100,12 @@ var BodyHomeComponent = /** @class */ (function () {
         this.unitsService = unitsService;
         this.kind1 = '1';
         this.kind2 = '2';
-        this.units = [];
-        this.lessonsCompleted = new Array();
         this.loginService.isLoggedUser();
         this.loggedUser = loginService.getLoggedUser();
     }
     BodyHomeComponent.prototype.ngOnInit = function () {
+        this.units = new Array();
+        this.lessonsCompleted = new Array();
         this.getUnits();
     };
     BodyHomeComponent.prototype.getUnits = function () {
@@ -1743,11 +2114,8 @@ var BodyHomeComponent = /** @class */ (function () {
             .then(function (units) {
             _this.units = units;
             //Get the number of Lessons completed of all the units
-            for (var i = 0; i < units.length; i++) {
-                _this.unitsService.numberOfCompletedLessons(units[i].id).subscribe(function (number) {
-                    _this.lessonsCompleted.push(number);
-                }, function (error) { return console.log(error); });
-            }
+            _this.unitsService.numberOfCompletedLessons2()
+                .subscribe(function (response) { _this.lessonsCompleted = response; console.log(response); });
         })
             .catch(function (error) { return console.error(error); });
     };
@@ -1933,7 +2301,7 @@ var IndexComponent = /** @class */ (function () {
 /***/ "./src/app/lesson/body_lesson.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Lessons -->\r\n<body class=\"bghome\" >\r\n<div class=\"container my-auto\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-14\">.\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"mt-5 mx-auto text-center card-body bg-white\" id=\"round\">\r\n                        <div class=\"container\">\r\n                            <div class=\"row \">\r\n                                <div class=\"col-lg-12 text-center\">\r\n                                    <h2 class=\"section-heading\">Unidad {{id}}</h2>\r\n                                    <h5 class=\"section-heading\"> {{nlesson}} / 3 Lecciones completadas</h5>\r\n                                    <hr class=\"my-4\">\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <button class=\" btn btn-primary btn-xl js-scroll-trigger\" (click)=\"pulsar()\">COMENZAR</button>\r\n                        <div class=\"container\">\r\n                            <div class=\"row justify-content-around\">\r\n                                <div *ngFor=\"let lesson of unit.lessons\" class=\"col-lg-4 col-md-6 \">\r\n                                    <div *ngIf=\"lessonsCompleted[(lesson.id%4)-1]==true\" class=\"service-box mt-5 mx-auto text-center border border-secondary card-body rounded\"\r\n                                        id=\"UnitComplete\">\r\n                                        <h4 class=\"mb-3\">Lección {{(lesson.id)%4}} de 3</h4>\r\n                                        <h2 class=\"text-white \">{{lesson.name}}</h2>\r\n                                        <a class=\" btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',unit.id,'Lessons', lesson.id%4  , 'Exercise' , 1 , 1]\">REPASAR</a>\r\n                                    </div>\r\n                                    <div *ngIf=\"lessonsCompleted[(lesson.id%4)-1]==false\" class=\"service-box mt-5 mx-auto text-center border border-secondary card-body rounded\"\r\n                                        id=\"Unit\">\r\n                                        <h4 class=\"mb-3\">Lección {{(lesson.id)%4}} de 3</h4>\r\n                                        <h2 class=\"text-white \">{{lesson.name}}</h2>\r\n                                        <a class=\" btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',unit.id,'Lessons', lesson.id%4  , 'Exercise' , 1 , 1]\">COMENZAR</a>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n</body>"
+module.exports = "<!-- Lessons -->\r\n<body class=\"bghome\" >\r\n<div class=\"container my-auto\">\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-14\">.\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12\">\r\n                    <div class=\"mt-5 mx-auto text-center card-body bg-white\" id=\"round\">\r\n                        <div class=\"container\">\r\n                            <div class=\"row \">\r\n                                <div class=\"col-lg-12 text-center\">\r\n                                    <h2 class=\"section-heading\">Unidad {{id}}</h2>\r\n                                    <h5 class=\"section-heading\"> {{nlesson}} / 3 Lecciones completadas</h5>\r\n                                    <hr class=\"my-4\">\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                        <div class=\"container\">\r\n                            <div class=\"row justify-content-around\">\r\n                                <div *ngFor=\"let lesson of unit.lessons\" class=\"col-lg-4 col-md-6 \">\r\n                                    <div *ngIf=\"lessonsCompleted[(lesson.id%4)-1]==true\" class=\"service-box mt-5 mx-auto text-center border border-secondary card-body rounded\"\r\n                                        id=\"UnitComplete\">\r\n                                        <h4 class=\"mb-3\">Lección {{lesson.id}} de 3</h4>\r\n                                        <h2 class=\"text-white \">{{lesson.name}}</h2>\r\n                                        <a class=\" btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',unit.id,'Lessons', lesson.id  , 'Exercise']\">REPASAR</a>\r\n                                    </div>\r\n                                    <div *ngIf=\"lessonsCompleted[(lesson.id%4)-1]==false\" class=\"service-box mt-5 mx-auto text-center border border-secondary card-body rounded\"\r\n                                        id=\"Unit\">\r\n                                        <h4 class=\"mb-3\">Lección {{lesson.id}} de 3</h4>\r\n                                        <h2 class=\"text-white \">{{lesson.name}}</h2>\r\n                                        <a class=\" btn btn-primary btn-xl js-scroll-trigger\" [routerLink]=\"['/Unit',unit.id,'Lessons', lesson.id  , 'Exercise']\">COMENZAR</a>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n</body>"
 
 /***/ }),
 
@@ -1966,6 +2334,8 @@ var BodyLessonComponent = /** @class */ (function () {
         this.lessonsCompleted = new Array();
     }
     BodyLessonComponent.prototype.ngOnInit = function () {
+        this.lessons = new Array();
+        this.lessonsCompleted = new Array();
         this.defineUnit();
         this.getUnits(this.id);
     };
@@ -1974,23 +2344,18 @@ var BodyLessonComponent = /** @class */ (function () {
         this.lessonService.getLessonsOfUnit(this.id).subscribe(function (unit) {
             _this.unit = unit;
             _this.unitService.numberOfCompletedLessons(unit.id).subscribe(function (nlesson) { return _this.nlesson = nlesson; }, function (error) { return console.log(error); });
-            for (var i = 0; i < unit.lessons.length; i++) {
-                _this.lessonService.isCompleted(unit.id, unit.lessons[i].id).subscribe(function (isCompleted) {
-                    _this.lessonsCompleted.push(isCompleted);
-                    console.log(isCompleted);
-                }, function (error) { return console.log(error); });
-            }
+            _this.lessonService.isCompleted2(_this.unit.id)
+                .subscribe(function (response) {
+                _this.lessonsCompleted = response;
+            });
+            _this.unit.lessons[0].id = 1;
+            _this.unit.lessons[1].id = 2;
+            _this.unit.lessons[2].id = 3;
         }, function (error) { return console.log(error); });
     };
     BodyLessonComponent.prototype.numberoflessons = function (id) {
         var _this = this;
         this.unitService.numberOfCompletedLessons(id).subscribe(function (nlesson) { return _this.nlesson = nlesson; }, function (error) { return console.log(error); });
-    };
-    BodyLessonComponent.prototype.pulsar = function () {
-        console.log(this.id);
-        console.log(this.unit);
-        console.log(this.lessons);
-        console.log(this.lessonsCompleted);
     };
     //Only create an empty unit
     BodyLessonComponent.prototype.defineUnit = function () {
@@ -2134,7 +2499,11 @@ var LessonsService = /** @class */ (function () {
     //To complete a lesson when the exercises are done.
     LessonsService.prototype.completeLesson = function (idUnit, idLesson) {
         var _this = this;
-        return this.http.get(BASE_URL + idUnit + '/Lesson/' + idLesson + '/Completed')
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
+        return this.http.get(BASE_URL + idUnit + '/Lesson/' + idLesson + '/Completed', options)
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
@@ -2146,6 +2515,16 @@ var LessonsService = /** @class */ (function () {
         });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
         return this.http.get(BASE_URL + idUnit + '/Lesson/' + idLesson + '/isCompleted', options)
+            .map(function (response) { return response.json(); })
+            .catch(function (error) { return _this.handleError(error); });
+    };
+    LessonsService.prototype.isCompleted2 = function (idUnit) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
+        return this.http.get(BASE_URL + idUnit + '/Lessons/Completed', options)
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
@@ -2358,7 +2737,7 @@ function utf8_to_b64(str) {
 /***/ "./src/app/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light fixed-top\" id=\"mainNav\">\r\n    <div class=\"container\">\r\n        <a class=\"navbar-brand js-scroll-trigger\" [routerLink]=\"['/home']\">CONTaFIN</a>\r\n        <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\"\r\n            aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n            <ul class=\"navbar-nav navbar-left\">\r\n                <li class=\"nav-item active\">\r\n                    <a class=\"nav-link\" [routerLink]=\"['/home']\">Inicio\r\n                        <span class=\"sr-only\">(current)</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n            <ul *ngIf=\"isLoggedUser\" class=\"navbar-nav ml-auto\">\r\n                <li *ngIf=\"isAdmin\" class=\"nav-item mr-4\">\r\n                    <a class=\"btn btn-primary js-scroll-trigger text-light\" [routerLink]=\"['/Admin/Home']\">ADMINISTRACIÓN</a>\r\n                </li>\r\n\r\n                <li>\r\n                    <img [src]=\"loggedUser.imgURL\" width=\"40\" height=\"35\" class=\"img-thumbnail\">\r\n                </li>\r\n                <li ngbDropdown class=\"nav-item\">\r\n                    <a ngbDropdownToggle class=\"nav-link\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">{{loggedUser.name}}</a>\r\n                    <div ngbDropdownMenu aria-labelledby=\"navbarDropdownMenuLink\">\r\n                        <a class=\"dropdown-item\" [routerLink]=\"['/User/Profile']\">Tu perfil</a>\r\n                        <a class=\"dropdown-item\" [routerLink]=\"['/User/Configuration']\">Configuración</a>\r\n                        <a class=\"dropdown-item\" [routerLink]=\"['/User/Goal']\">Fijar meta</a>\r\n                        <a class=\"dropdown-item\" [routerLink]=\"['/']\" (click)=\"logOut()\">Cerrar Sesión</a>\r\n                    </div>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link js-scroll-trigger\">\r\n                        <img src=\"../../assets/fire.png\" width=\"25\" height=\"23\" class=\"d-inline-block align-top\">\r\n                        <span class=\"badge badge-light\">{{loggedUser.streak}}</span>\r\n                    </a>\r\n                </li>\r\n                <li class=\"nav-item\">\r\n                    <a class=\"nav-link js-scroll-trigger\">\r\n                        <img src=\"../../assets/gemstone-160838_960_720.png\" width=\"25\" height=\"23\" class=\"d-inline-block align-top\">\r\n                        <span class=\"badge badge-light\">{{loggedUser.points}}</span>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n\r\n        </div>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light fixed-top\" id=\"mainNav\">\r\n  <div class=\"container\">\r\n    <a class=\"navbar-brand js-scroll-trigger\" [routerLink]=\"['/home']\">CONTaFIN</a>\r\n    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarResponsive\"\r\n      aria-controls=\"navbarResponsive\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarResponsive\">\r\n      <ul class=\"navbar-nav navbar-left\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" [routerLink]=\"['/home']\">Inicio\r\n            <span class=\"sr-only\">(current)</span>\r\n          </a>\r\n        </li>\r\n      </ul>\r\n      <ul *ngIf=\"isLoggedUser\" class=\"navbar-nav ml-auto\">\r\n        <li *ngIf=\"isAdmin\" class=\"nav-item mr-4\">\r\n          <a class=\"btn btn-primary js-scroll-trigger text-light\" [routerLink]=\"['/Admin/Home']\">ADMINISTRACIÓN</a>\r\n        </li>\r\n\r\n        <li>\r\n          <img [src]=\"loggedUser.imgURL\" width=\"40\" height=\"35\" class=\"img-thumbnail\">\r\n        </li>\r\n        <li ngbDropdown class=\"nav-item\">\r\n          <a ngbDropdownToggle class=\"nav-link\" id=\"navbarDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">{{loggedUser.name}}</a>\r\n          <div ngbDropdownMenu aria-labelledby=\"navbarDropdownMenuLink\">\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/User/Profile']\">Tu perfil</a>\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/User/Configuration']\">Configuración</a>\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/User/Goal']\">Fijar meta</a>\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/']\" (click)=\"logOut()\">Cerrar Sesión</a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link js-scroll-trigger\">\r\n            <img src=\"assets/fire.png\" width=\"25\" height=\"23\" class=\"d-inline-block align-top\">\r\n            <span class=\"badge badge-light\">{{loggedUser.streak}}</span>\r\n          </a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link js-scroll-trigger\">\r\n            <img src=\"assets/gemstone-160838_960_720.png\" width=\"25\" height=\"23\" class=\"d-inline-block align-top\">\r\n            <span class=\"badge badge-light\">{{loggedUser.points}}</span>\r\n          </a>\r\n        </li>\r\n      </ul>\r\n\r\n    </div>\r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -2688,7 +3067,7 @@ module.exports = ""
 /***/ "./src/app/unit/unit-creation/unit-creation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\r\n<div class=\"bghome\" id=\"page-top\">\r\n  <form id=\"Form1\" enctype=\"multipart/form-data\">\r\n    <section class=\"text-center text-dark d-flex\">\r\n      <div class=\"container my-auto\">\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <h1 class=\"text-uppercase\">\r\n              <strong>Creación de unidad completa</strong>\r\n            </h1>\r\n            <hr>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <div class=\"form-group\">\r\n              <label for=\"unitNameForm\">Nombre de la unidad</label>\r\n              <input [(ngModel)]=\"unit.name\" type=\"text\" class=\"form-control form-control-lg\" id=\"unitNameForm\" name=\"unitName\">\r\n            </div>\r\n            <hr class=\"invisible\">\r\n            <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"lessonNameForm0\">Nombre de la lección 1</label>\r\n                  <input [(ngModel)]=\"unit.lessons[0].name\" type=\"text\" class=\"form-control\" id=\"lessonNameForm0\" name=\"lessonName[]\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <ngb-tabset>\r\n              <ngb-tab title=\"Ejercicio 1\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[0].statement\" class=\"form-control form-control-sm\" id=\"statementForm0\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile0\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 1</label>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile1\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 2</label>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile2\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 3</label>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[0].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm0\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[0].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm1\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[0].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm2\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[0].exercises[0].answer.result\" class=\"form-control\" id=\"answerForm0\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 2\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[1].statement\" class=\"form-control form-control-sm\" id=\"statementForm1\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[1].answer.result\" class=\"form-control form-control-sm\" id=\"answerForm1\"\r\n                            rows=\"3\" name=\"answers[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 3\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[2].statement\" class=\"form-control form-control-sm\" id=\"statementForm4\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[2].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm19\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[2].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm20\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-6\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[2].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm21\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-3\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[0].exercises[2].answer.result\" class=\"form-control\" id=\"answerForm2\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 4\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].statement\" class=\"form-control form-control-sm\" id=\"statementForm6\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].texts[0]\" class=\"form-control form-control-sm\" id=\"textForm26\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].texts[1]\" class=\"form-control form-control-sm\" id=\"textForm27\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].texts[2]\" class=\"form-control form-control-sm\" id=\"textForm28\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[0].exercises[3].answer.result\" class=\"form-control\" id=\"answerForm4\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n            </ngb-tabset>\r\n          </div>\r\n        </div>\r\n        <hr class=\"invisible\">\r\n        <hr>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <hr class=\"invisible\">\r\n            <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"lessonNameForm0\">Nombre de la lección 2</label>\r\n                  <input [(ngModel)]=\"unit.lessons[1].name\" type=\"text\" class=\"form-control\" id=\"lessonNameForm1\" name=\"lessonName[]\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <ngb-tabset>\r\n              <ngb-tab title=\"Ejercicio 1\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[0].statement\" class=\"form-control form-control-sm\" id=\"statementForm0\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile0\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 1</label>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile1\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 2</label>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile2\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 3</label>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[0].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm0\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[0].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm1\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[0].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm2\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[1].exercises[0].answer.result\" class=\"form-control\" id=\"answerForm0\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 2\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[1].statement\" class=\"form-control form-control-sm\" id=\"statementForm1\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[1].answer.result\" class=\"form-control form-control-sm\" id=\"answerForm1\"\r\n                            rows=\"3\" name=\"answers[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 3\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[2].statement\" class=\"form-control form-control-sm\" id=\"statementForm4\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[2].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm19\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[2].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm20\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-6\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[2].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm21\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-3\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[1].exercises[2].answer.result\" class=\"form-control\" id=\"answerForm2\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 4\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].statement\" class=\"form-control form-control-sm\" id=\"statementForm6\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].texts[0]\" class=\"form-control form-control-sm\" id=\"textForm26\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].texts[1]\" class=\"form-control form-control-sm\" id=\"textForm27\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].texts[2]\" class=\"form-control form-control-sm\" id=\"textForm28\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[1].exercises[3].answer.result\" class=\"form-control\" id=\"answerForm4\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n            </ngb-tabset>\r\n          </div>\r\n        </div>\r\n        <hr class=\"invisible\">\r\n        <hr>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <hr class=\"invisible\">\r\n            <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"lessonNameForm0\">Nombre de la lección 3</label>\r\n                  <input [(ngModel)]=\"unit.lessons[2].name\" type=\"text\" class=\"form-control\" id=\"lessonNameForm2\" name=\"lessonName[]\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <ngb-tabset>\r\n              <ngb-tab title=\"Ejercicio 1\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[0].statement\" class=\"form-control form-control-sm\" id=\"statementForm0\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile0\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 1</label>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile1\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 2</label>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input type=\"file\" class=\"custom-file-input\" id=\"imageFile2\" accept=\"image/*\" name=\"images[]\">\r\n                          <label class=\"custom-file-label\" for=\"imageFile0\">Imagen 3</label>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[0].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm0\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[0].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm1\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[0].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm2\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[2].exercises[0].answer.result\" class=\"form-control\" id=\"answerForm0\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 2\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[1].statement\" class=\"form-control form-control-sm\" id=\"statementForm1\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[1].answer.result\" class=\"form-control form-control-sm\" id=\"answerForm1\"\r\n                            rows=\"3\" name=\"answers[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 3\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[2].statement\" class=\"form-control form-control-sm\" id=\"statementForm4\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[2].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm19\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[2].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm20\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-6\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[2].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm21\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-3\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[2].exercises[2].answer.result\" class=\"form-control\" id=\"answerForm2\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 4\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].statement\" class=\"form-control form-control-sm\" id=\"statementForm6\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].texts[0]\" class=\"form-control form-control-sm\" id=\"textForm26\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].texts[1]\" class=\"form-control form-control-sm\" id=\"textForm27\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].texts[2]\" class=\"form-control form-control-sm\" id=\"textForm28\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[2].exercises[3].answer.result\" class=\"form-control\" id=\"answerForm4\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n            </ngb-tabset>\r\n          </div>\r\n        </div>\r\n        <hr class=\"invisible\">\r\n        <input type=\"submit\" class=\"btn btn-primary my-1\" (click)=\"addUnit()\">\r\n      </div>\r\n    </section>\r\n  </form>\r\n</div>"
+module.exports = "<app-navbar></app-navbar>\r\n<div class=\"bghome\" id=\"page-top\">\r\n  <form #unitForm=\"ngForm\" enctype=\"multipart/form-data\" ngNativeValidate>\r\n    <section class=\"text-center text-dark d-flex\">\r\n      <div class=\"container my-auto\">\r\n        <div class=\"row\">\r\n          <div *ngIf=\"alertDanger\" class=\"container\">\r\n            <div class=\"alert alert-danger mb-5\" role=\"alert\">\r\n              <strong>¡Error al guardar los cambios!</strong> ¡Todos los campos son obligatorios!\r\n            </div>\r\n          </div>\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <h1 class=\"text-uppercase\">\r\n              <strong>Creación de unidad completa</strong>\r\n            </h1>\r\n            <hr>\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <div class=\"form-group\">\r\n              <label for=\"unitNameForm\" required>Nombre de la unidad</label>\r\n              <input [(ngModel)]=\"unit.name\" type=\"text\" class=\"form-control form-control-lg\" id=\"unitNameForm\" name=\"unitName\">\r\n            </div>\r\n            <hr class=\"invisible\">\r\n            <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"lessonNameForm0\">Nombre de la lección 1</label>\r\n                  <input [(ngModel)]=\"unit.lessons[0].name\" type=\"text\" class=\"form-control\" id=\"lessonNameForm0\" name=\"lessonName[]\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <ngb-tabset>\r\n              <ngb-tab title=\"Ejercicio 1\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[0].statement\" class=\"form-control form-control-sm\" id=\"statementForm0\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 0)\" required/>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 1)\" required/>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 2)\" required/>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[0].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm0\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[0].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm1\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[0].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm2\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[0].exercises[0].answer.result\" class=\"form-control\" id=\"answerForm0\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 2\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[1].statement\" class=\"form-control form-control-sm\" id=\"statementForm1\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[1].answer.result\" class=\"form-control form-control-sm\" id=\"answerForm1\"\r\n                            rows=\"3\" name=\"answers[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 3\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[2].statement\" class=\"form-control form-control-sm\" id=\"statementForm4\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[2].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm19\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[2].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm20\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-6\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[0].exercises[2].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm21\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-3\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[0].exercises[2].answer.result\" class=\"form-control\" id=\"answerForm2\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 4\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].statement\" class=\"form-control form-control-sm\" id=\"statementForm6\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].texts[0]\" class=\"form-control form-control-sm\" id=\"textForm26\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].texts[1]\" class=\"form-control form-control-sm\" id=\"textForm27\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[0].exercises[3].texts[2]\" class=\"form-control form-control-sm\" id=\"textForm28\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[0].exercises[3].answer.result\" class=\"form-control\" id=\"answerForm4\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n            </ngb-tabset>\r\n          </div>\r\n        </div>\r\n        <hr class=\"invisible\">\r\n        <hr>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <hr class=\"invisible\">\r\n            <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"lessonNameForm0\">Nombre de la lección 2</label>\r\n                  <input [(ngModel)]=\"unit.lessons[1].name\" type=\"text\" class=\"form-control\" id=\"lessonNameForm1\" name=\"lessonName[]\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <ngb-tabset>\r\n              <ngb-tab title=\"Ejercicio 1\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[0].statement\" class=\"form-control form-control-sm\" id=\"statementForm0\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 3)\" required/>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 4)\" required/>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 5)\" required/>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[0].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm0\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[0].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm1\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[0].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm2\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[1].exercises[0].answer.result\" class=\"form-control\" id=\"answerForm0\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 2\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[1].statement\" class=\"form-control form-control-sm\" id=\"statementForm1\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[1].answer.result\" class=\"form-control form-control-sm\" id=\"answerForm1\"\r\n                            rows=\"3\" name=\"answers[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 3\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[2].statement\" class=\"form-control form-control-sm\" id=\"statementForm4\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[2].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm19\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[2].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm20\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-6\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[1].exercises[2].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm21\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-3\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[1].exercises[2].answer.result\" class=\"form-control\" id=\"answerForm2\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 4\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].statement\" class=\"form-control form-control-sm\" id=\"statementForm6\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].texts[0]\" class=\"form-control form-control-sm\" id=\"textForm26\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].texts[1]\" class=\"form-control form-control-sm\" id=\"textForm27\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[1].exercises[3].texts[2]\" class=\"form-control form-control-sm\" id=\"textForm28\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[1].exercises[3].answer.result\" class=\"form-control\" id=\"answerForm4\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n            </ngb-tabset>\r\n          </div>\r\n        </div>\r\n        <hr class=\"invisible\">\r\n        <hr>\r\n        <div class=\"row\">\r\n          <div class=\"col-lg-10 mx-auto\">\r\n            <hr class=\"invisible\">\r\n            <div class=\"row\">\r\n              <div class=\"col-4\">\r\n                <div class=\"form-group\">\r\n                  <label for=\"lessonNameForm0\">Nombre de la lección 3</label>\r\n                  <input [(ngModel)]=\"unit.lessons[2].name\" type=\"text\" class=\"form-control\" id=\"lessonNameForm2\" name=\"lessonName[]\">\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <ngb-tabset>\r\n              <ngb-tab title=\"Ejercicio 1\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[0].statement\" class=\"form-control form-control-sm\" id=\"statementForm0\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 6)\" required/>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 7)\" required/>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"custom-file\">\r\n                          <input id=\"inputTipe\" name=\"file\" type=\"file\" class=\"form-control\" (change)=\"selectFile($event, 8)\" required/>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[0].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm0\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[0].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm1\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Texto imagen 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[0].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm2\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[2].exercises[0].answer.result\" class=\"form-control\" id=\"answerForm0\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 2\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[1].statement\" class=\"form-control form-control-sm\" id=\"statementForm1\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[1].answer.result\" class=\"form-control form-control-sm\" id=\"answerForm1\"\r\n                            rows=\"3\" name=\"answers[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 3\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[2].statement\" class=\"form-control form-control-sm\" id=\"statementForm4\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[2].texts[0]\" type=\"text\" class=\"form-control\" id=\"textForm19\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[2].texts[1]\" type=\"text\" class=\"form-control\" id=\"textForm20\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-6\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <input [(ngModel)]=\"unit.lessons[2].exercises[2].texts[2]\" type=\"text\" class=\"form-control\" id=\"textForm21\" name=\"texts[]\">\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-3\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[2].exercises[2].answer.result\" class=\"form-control\" id=\"answerForm2\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n              <ngb-tab title=\"Ejercicio 4\">\r\n                <ng-template ngbTabContent>\r\n                  <div class=\"container\">\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col-12\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"statementForm0\">Enunciado</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].statement\" class=\"form-control form-control-sm\" id=\"statementForm6\" rows=\"3\"\r\n                            name=\"statements[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <hr class=\"invisible\">\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 1</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].texts[0]\" class=\"form-control form-control-sm\" id=\"textForm26\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 2</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].texts[1]\" class=\"form-control form-control-sm\" id=\"textForm27\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"textForm0\">Respuesta 3</label>\r\n                          <textarea [(ngModel)]=\"unit.lessons[2].exercises[3].texts[2]\" class=\"form-control form-control-sm\" id=\"textForm28\" rows=\"2\"\r\n                            name=\"texts[]\"></textarea>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                      <div class=\"col-5\"></div>\r\n                      <div class=\"col\">\r\n                        <div class=\"form-group\">\r\n                          <label for=\"answerForm0\">Respuesta correcta</label>\r\n                          <select [(ngModel)]=\"unit.lessons[2].exercises[3].answer.result\" class=\"form-control\" id=\"answerForm4\" name=\"answers[]\">\r\n                            <option>uno</option>\r\n                            <option>dos</option>\r\n                            <option>tres</option>\r\n                          </select>\r\n                        </div>\r\n                      </div>\r\n                      <div class=\"col-5\"></div>\r\n                    </div>\r\n                  </div>\r\n                </ng-template>\r\n              </ngb-tab>\r\n            </ngb-tabset>\r\n          </div>\r\n        </div>\r\n        <hr class=\"invisible\">\r\n        <input type=\"submit\" class=\"btn btn-primary my-1\" (click)=\"addUnit()\">\r\n      </div>\r\n    </section>\r\n  </form>\r\n</div>"
 
 /***/ }),
 
@@ -2716,6 +3095,7 @@ var UnitCreationComponent = /** @class */ (function () {
     function UnitCreationComponent(router, unitService) {
         this.router = router;
         this.unitService = unitService;
+        this.images = new Array();
         this.answers = new Array();
         this.exercises = new Array();
         this.lessons = new Array();
@@ -2729,19 +3109,35 @@ var UnitCreationComponent = /** @class */ (function () {
         this.unitService.addUnit(this.unit)
             .subscribe(function (unit) {
             console.log(unit);
+            _this.unit = unit;
+            _this.alertDanger = false;
+            _this.saveImages();
             _this.router.navigate(['/Admin/Home']);
-        }, function (error) { return console.log(error); });
+        }, function (error) {
+            console.log(error),
+                _this.alertDanger = true;
+        });
     };
     //Only create an empty unit
     UnitCreationComponent.prototype.defineUnit = function () {
+        var aux = 0;
         for (var i = 0; i < 12; i++) {
             //Add all answers
             this.answers.push({
                 result: "",
             });
+            if ((i % 4) + 1 == 3) {
+                aux = 5;
+            }
+            else if ((i % 4) + 1 == 4) {
+                aux = 7;
+            }
+            else {
+                aux = (i % 4) + 1;
+            }
             //Add all exercises 
             this.exercises.push({
-                kind: (i % 4) + 1,
+                kind: aux,
                 statement: "",
                 texts: ["", "", ""],
                 answer: this.answers[i]
@@ -2766,6 +3162,51 @@ var UnitCreationComponent = /** @class */ (function () {
             name: "",
             lessons: this.lessons,
         };
+    };
+    //Load images
+    UnitCreationComponent.prototype.selectFile = function (event, i) {
+        var file = event.target.files;
+        this.images[i] = new FormData();
+        this.images[i].append('file', file[0]);
+        console.log("holaaaa " + i);
+        console.log(file);
+    };
+    //Save images
+    UnitCreationComponent.prototype.saveImages = function () {
+        if (this.images) {
+            this.uploadImages(0);
+            this.uploadImages(1);
+            this.uploadImages(2);
+        }
+        else {
+            console.log('Array img vacio');
+        }
+    };
+    //Upload the images of an exercise
+    UnitCreationComponent.prototype.uploadImages = function (i) {
+        var _this = this;
+        var aux = 0;
+        if (i != 0) {
+            aux = 3 + (3 * (i - 1));
+        }
+        this.unitService.uploadImages(this.unit.lessons[i].exercises[0].id, 1, this.images[aux])
+            .then(function (response) {
+            _this.unitService.uploadImages(_this.unit.lessons[i].exercises[0].id, 2, _this.images[aux + 1])
+                .then(function (response) {
+                _this.unitService.uploadImages(_this.unit.lessons[i].exercises[0].id, 3, _this.images[aux + 2])
+                    .then(function (response) {
+                    console.log('Imagenens cargadas correctamente');
+                });
+            });
+        })
+            .catch(function (error) { return console.error('Error al subir las imagenes:' + error); });
+    };
+    //
+    UnitCreationComponent.prototype.check = function (event) {
+        var alert = event.target.value;
+        if (alert == "") {
+            console.log("no data");
+        }
     };
     UnitCreationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -2842,6 +3283,16 @@ var UnitsService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
+    UnitsService.prototype.numberOfCompletedLessons2 = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
+        return this.http.get(BASE_URL + 'numberOfCompletedLessons', options)
+            .map(function (response) { return response.json(); })
+            .catch(function (error) { return _this.handleError(error); });
+    };
     //Need the unit with its lessons and exercises
     UnitsService.prototype.addUnit = function (unit) {
         var _this = this;
@@ -2850,12 +3301,17 @@ var UnitsService = /** @class */ (function () {
             .map(function (response) { return response.json(); })
             .catch(function (error) { return _this.handleError(error); });
     };
-    //No va
-    /*uploadImages(id: number, images: Array<Images>) {
-        return this.http.post(BASE_URL+ id +'/Images', images)
-            .map(response => response.json())
-            .catch(error => this.handleError(error));
-    }*/
+    UnitsService.prototype.uploadImages = function (id, nImage, formData) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* RequestOptions */]({ withCredentials: true, headers: headers });
+        return this.http.post(BASE_URL + 'Exercise/' + id + '/' + nImage, formData, options)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(function (error) { return console.error(error); });
+    };
     UnitsService.prototype.changeNameUnit = function (id, name) {
         var _this = this;
         return this.http.put(BASE_URL + id, name)
