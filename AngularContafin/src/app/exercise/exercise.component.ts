@@ -70,7 +70,7 @@ export class ExerciseComponent implements OnInit {
     }
     else {
       this.idExercises.push(this.idExercises[0]);
-      this.kindExercises.push(this.idExercises[0]);
+      this.kindExercises.push(this.kindExercises[0]);
       this.idExercises.shift();
       this.kindExercises.shift();
     }

@@ -50,7 +50,10 @@
           <button *ngIf="nElement!=1 && press"  class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SIGUIENTE
           </button>
           <a class="js-scroll-trigger"></a>
-          <button *ngIf="nElement==1 && press" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted']">TERMINAR
+          <button *ngIf="nElement==1 && press && !right"  class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SIGUIENTE 
+          </button>
+          <a class="js-scroll-trigger"></a>
+          <button *ngIf="nElement==1 && press && right" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted']">TERMINAR
           </button>
         </div>
       </div>
