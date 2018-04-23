@@ -178,6 +178,8 @@ Read the [Docker usage](DOCKER.md) to know more.
 ## Angular documentation
 Document [Angular documentation](AngularContafin/README.md) with information about our work with Angular
 
+![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%205%20documentation/diagram.png)
+
 ## Sonarqube documentation
 ### Information
 Documentation of [Sonarqube](https://docs.sonarqube.org/display/SONAR/Documentation) on requirements, operations and guidelines on how to use it.
