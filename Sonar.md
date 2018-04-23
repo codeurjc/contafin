@@ -19,13 +19,16 @@ Using MYSQL Workbench we create an schema which we will call sonarqube, we can c
 Now we go to the conf file that is where we installed our sonarqube and we decompose and modify the following sections.
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall2.PNG)
+
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall3.PNG)
+
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall4.PNG)
 
 ### Step 4
 Now we will start our sonarqube server, first we open a cmd where we will put the route to our sonarqube, then we will enter the bin folder, we will choose our operating system and once this is done we will copy this route in the cmd and execute StartSonar.bat
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall5.PNG)
+
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall6.PNG)
 
 Now we can enter our LocalHost: 9000 where the server will be deployed
@@ -63,8 +66,24 @@ For this we will open a cmd and we will place ourselves in the directory of the 
 When the analysis finishes, the following will appear and we will go to the sonarquide server page
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall13.PNG)
-![](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/unitCreation.png)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction1.PNG)
 
 ### Step 8
-Seeing our mistakes we can solve them
+Seeing our mistakes we can solve them.
 
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction2.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction3.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction4.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction5.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction6.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction7.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction8.PNG)
+
+![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction9.PNG)
