@@ -182,4 +182,7 @@ Documentation of [Sonarqube](https://docs.sonarqube.org/display/SONAR/Documentat
 ### Guide
 [Sonarqube](Sonar.md) document that shows the steps to follow to develop the sonar analysis environment.
 ## Selenium documentation
-
+### Information
+Documentation of [Selenium](https://www.seleniumhq.org/) on requirements, operations and guidelines on how to use it.
+### Guide
+[Selenium](Selenium.md) Selenium start guide.
