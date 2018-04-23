@@ -176,7 +176,7 @@ Read the [Docker usage](DOCKER.md) to know more.
 
 ## Phase 5
 ## Angular documentation
-Document [Angular documentation](Angular/README.md) with information about our work with Angular
+Document [Angular documentation](AngularContafin/README.md) with information about our work with Angular
 
 ## Sonarqube documentation
 ### Information
