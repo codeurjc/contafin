@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Production 
 
-Run contafin.jar or use docker. Navigate to `http://localhost:8080/new`. Enjoy our app.
+Use contafin docker image with our docker-compose [Docker usage](DOCKER.md). Navigate to `https://localhost:8080/new`. Enjoy our app.
 
 ## Code scaffolding
 
