@@ -2,7 +2,7 @@
 # CONTaFin
 In this repository we will place our web application, which helps students to learn contability and lets teachers to control them.
 
-[![]()https://www.youtube.com/watch?v=dd_GVtREpyg&feature=youtu.be]
+[![IMAGE ALT TEXT]()https://www.youtube.com/watch?v=dd_GVtREpyg&feature=youtu.be]
 
 ## Team : 
 
