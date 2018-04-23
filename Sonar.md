@@ -67,8 +67,6 @@ When the analysis finishes, the following will appear and we will go to the sona
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQInstall13.PNG)
 
-![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction1.PNG)
-
 ### Step 8
 Seeing our mistakes we can solve them.
 
@@ -80,10 +78,19 @@ Seeing our mistakes we can solve them.
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction5.PNG)
 
+Once we have seen our errors, we go to the files with this error and correct them one by one.
+When we correct them and we pass our sonarqube again we see how they have been solved.
+
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction6.PNG)
+
+With the last type of error we do the same as indicated and we would go through the scanner
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction7.PNG)
 
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction8.PNG)
 
+Once corrected, we see the result of having 0 bugs
+
 ![](https://github.com/Caumel/DAW-G11-2018/blob/master/Screenshots%20Phase%205/SQFunction9.PNG)
+
+And with this we would finish our analysis
