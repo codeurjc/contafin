@@ -2,6 +2,8 @@
 # CONTaFin
 In this repository we will place our web application, which helps students to learn contability and lets teachers to control them.
 
+[![DAW-CONTaFIN](http://img.youtube.com/vi/dd_GVtREpyg/0.jpg)](https://www.youtube.com/watch?v=dd_GVtREpyg&feature=youtu.be)
+
 ## Team : 
 
 - Luis Caumel Morales:
@@ -174,5 +176,15 @@ Read the [Docker usage](DOCKER.md) to know more.
 
 ## Phase 5
 ## Angular documentation
-Document [Angular documentation](Angular/README.md) with information about our work with Angular
+Document [Angular documentation](AngularContafin/README.md) with information about our work with Angular
 
+## Sonarqube documentation
+### Information
+Documentation of [Sonarqube](https://docs.sonarqube.org/display/SONAR/Documentation) on requirements, operations and guidelines on how to use it.
+### Guide
+[Sonarqube](Sonar.md) document that shows the steps to follow to develop the sonar analysis environment.
+## Selenium documentation
+### Information
+Documentation of [Selenium](https://www.seleniumhq.org/) on requirements, operations and guidelines on how to use it.
+### Guide
+[Selenium](Selenium.md) Selenium start guide.
