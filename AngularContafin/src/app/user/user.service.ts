@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from '../../environments/environment';
 import { User } from '../Interfaces/User/user.model';
 
@@ -12,101 +12,88 @@ export class UserService {
 
     public user: User;
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
 
     }
 
     getUser(id: number) {
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true });
 
-        return this.http.get(BASE_URL + '/' + id, options)
-            .map(response => {
-                this.user = response.json();
+        return this.http.get(BASE_URL + '/' + id, {withCredentials: true})
+            .mapTo(response => {
+                this.user = response;
                 return this.user;
             })
             .catch(error => this.handleError(error));
     }
 
     deleteAccount(id: number) {
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true});
-        return this.http.delete(BASE_URL + '/' + id, options)
-            .map(response => response.json())
+        return this.http.delete(BASE_URL + '/' + id, { withCredentials: true})
             .catch(error => this.handleError(error));
 
     }
 
     validation(id: number, pass: string) {
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true, headers });
 
-        return this.http.get(BASE_URL + '/' + id + '/Validation/' + pass, options)
-            .map(response => response.json())
+        return this.http.get(BASE_URL + '/' + id + '/Validation/' + pass, { withCredentials: true, headers })
             .catch(error => this.handleError(error));
     }
 
     updateUser(id: number, updatedUser: User) {
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true, headers });
 
-        return this.http.put(BASE_URL + '/' + id, updatedUser, options)
-            .map(user => user.json())
+        return this.http.put(BASE_URL + '/' + id, updatedUser, { withCredentials: true, headers })
             .catch(error => this.handleError(error));
     }
 
     setGoal(id: number, goal: number) {
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true, headers });
 
 
-        return this.http.put(BASE_URL + '/' + id + '/Goal', options)
-            .map(response => response.json())
+        return this.http.put(BASE_URL + '/' + id + '/Goal', { withCredentials: true, headers })
             .catch(error => this.handleError(error));
 
 
     }
 
     uploadImage(id: number, formData) {
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true, headers });
 
-        return this.http.post(BASE_URL + '/' + id + '/Photo', formData, options)
-            .map(response => response.json())
+        return this.http.post(BASE_URL + '/' + id + '/Photo', formData, { withCredentials: true, headers })
             .catch(error => this.handleError(error));
     }
 
-    getProgress(id: number): Observable<number[]> {
-        const headers = new Headers({
+    getProgress(id: number): ErrorObservable<number[]> {//No se si el tipo<> es el correcto
+        const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
         });
-        const options = new RequestOptions({ withCredentials: true, headers });
 
-        return this.http.get(BASE_URL + '/' + id + '/Progress', options)
-            .map(response => response.json())
+        return this.http.get<number[]>(BASE_URL + '/' + id + '/Progress', { withCredentials: true, headers })
             .catch(error => this.handleError(error));
     }
 
     private handleError(error: any) {
         console.error(error);
-        return Observable.throw('Server error (' + error.status + '): ' + error.text());
+        return ErrorObservable.create('Server error (' + error.status + '): ' + error.text());
     }
 
 }

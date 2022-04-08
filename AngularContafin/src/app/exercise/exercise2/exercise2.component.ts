@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Http } from "@angular/http";
-import { Observable } from "rxjs/Observable";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from "../../../environments/environment";
 import { ExerciseService } from '../exercise.service';
 import { Exercise } from '../../Interfaces/Exercise/exercise.model';
@@ -43,7 +43,7 @@ export class Exercise2Component {
   public color = "exercise2";
 
 
-  constructor(private http: Http, private exerciseService: ExerciseService) {
+  constructor(private http: HttpClient, private exerciseService: ExerciseService) {
     console.log(this.idExercise);
   }
 
@@ -51,8 +51,8 @@ export class Exercise2Component {
     this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
       .subscribe(
         exercise => {
-          this.statement = exercise.statement;
-          this.texts = exercise.texts;
+          this.statement = exercise.hasOwnProperty.arguments.statement;//Esto puede estar mal
+          this.texts = exercise.hasOwnProperty.arguments.texts;
         }
       )
   }
@@ -63,7 +63,7 @@ export class Exercise2Component {
     }
     this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result).subscribe(
       right => {
-      this.right = right;
+      this.right = right.hasOwnProperty.arguments;
         if (this.right == true) {
           this.color = "exercise1Good";
         }

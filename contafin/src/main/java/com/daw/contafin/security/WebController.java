@@ -51,7 +51,7 @@ public class WebController extends ContentController {
 	@RequestMapping("/")
 	public String index() {
 
-		return "index";
+		return "/new";//index
 	}
 	
 	//Connect to Angular
@@ -73,7 +73,7 @@ public class WebController extends ContentController {
 
 		User user = userComponent.getLoggedUser();
 		//Delete exercises completed if you exit in the middle of a lesson.
-		exerciseService.deleteAll(user);
+		completedExerciseService.deleteAll(user);
 		if (userComponent.isLoggedUser()) {
 			
 			if (user.getRoles().contains("ROLE_ADMIN")) {

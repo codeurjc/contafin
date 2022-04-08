@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { ExerciseService } from '../exercise.service';
 
@@ -43,7 +43,7 @@ export class Exercise1Component implements OnInit {
   public result: any;
   public press:boolean = false;
 
-  constructor(private http: Http, private exerciseService: ExerciseService) {
+  constructor(private http: HttpClient, private exerciseService: ExerciseService) {
     console.log(this.idExercise);
 
   }

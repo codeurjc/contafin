@@ -1,7 +1,7 @@
 package com.daw.contafin;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class CustomErrorController implements ErrorController {
 		return "error2";
 	}
 
-	@Override
+
 	public String getErrorPath() {
 		return PATH;
 	}

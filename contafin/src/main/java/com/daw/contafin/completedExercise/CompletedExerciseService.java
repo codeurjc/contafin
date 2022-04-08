@@ -40,7 +40,7 @@ public class CompletedExerciseService {
 		completedExerciseRepository.delete(completedExercise);
 	}
 	public void delete(long Id) {
-		completedExerciseRepository.delete(Id);
+		completedExerciseRepository.deleteById(Id);
 	}
 	//Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 	public int numExercisesCompleted(long idlesson, int idunit, User user) {
@@ -55,6 +55,18 @@ public class CompletedExerciseService {
 			}
 		}
 		return  numExercisesCompleted;
+	}
+
+	public void deleteAll(User user) {
+		List<CompletedExercise> completedExercises =  findByUser(user);
+		if (completedExercises != null) {
+			for (int i=0; i<completedExercises.size();i++) {
+				CompletedExercise completedExerciseS = completedExercises.get(i);
+				if (completedExerciseS != null) {
+					delete(completedExerciseS);
+				}
+			}
+		}
 	}
 	
 }

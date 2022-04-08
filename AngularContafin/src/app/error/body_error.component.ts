@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../login/login.service';
-import { useAnimation } from '@angular/core/src/animation/dsl';
 import { ErrorService } from '../error/error.service';
 
 @Component({

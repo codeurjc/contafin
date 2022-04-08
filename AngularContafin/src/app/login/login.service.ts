@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { User } from '../Interfaces/User/user.model';
-import { Http, RequestOptions, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 
@@ -14,7 +14,7 @@ export class LoginService {
     isAdmin = false;
     user: User;
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getLoggedUser() {
         return this.user;
@@ -34,13 +34,11 @@ export class LoginService {
 
     reqIsLogged() {
 
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'X-Requested-With': 'XMLHttpRequest'
         });
 
-        const options = new RequestOptions({ withCredentials: true, headers });
-
-        this.http.get(URL + '/login', options).subscribe(
+        this.http.get(URL + '/login', { withCredentials: true, headers }).subscribe(
             response => this.processLogInResponse(response),
             error => {
                 if (error.status !== 401) {
@@ -61,14 +59,13 @@ export class LoginService {
 
         const userPass = user + ':' + pass;
 
-        const headers = new Headers({
+        const headers = new HttpHeaders({
             'Authorization': 'Basic ' + utf8_to_b64(userPass),
             'X-Requested-With': 'XMLHttpRequest'
         });
 
-        const options = new RequestOptions({ withCredentials: true, headers });
 
-        return this.http.get(URL + '/login', options).map(
+        return this.http.get(URL + '/login', { withCredentials: true, headers }).map(
             response => {
                 this.processLogInResponse(response);
                 return this.user;
@@ -88,7 +85,7 @@ export class LoginService {
 }
 
 function utf8_to_b64(str) {
-    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {//Mirar si esta bien
         return String.fromCharCode(<any>'0x' + p1);
     }));
 }

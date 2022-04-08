@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -31,13 +32,7 @@ public class LessonService {
 	CompletedLessonService completedLessonService;
 	
 	@Autowired
-	CompletedExerciseService completedExerciseService;
-	
-	@Autowired
 	UserService userService;
-	
-	@Autowired
-	LessonService lessonService;
 	
 	@Autowired
 	UserComponent userComponent;
@@ -58,13 +53,13 @@ public class LessonService {
 	}
 	
 	public void delete(long Id) {
-		lessonRepository.delete(Id);
+		lessonRepository.deleteById(Id);
 	}
 	public Page<Lesson> getLessons(Pageable page) {
 		return lessonRepository.findAll(page);
 	}
 	public void updateUserData(User user, Date sqlDate) {
-		user.setFluency(exerciseService.getFluency(user));
+		user.setFluency(getFluency(user));
 		user.setExp(user.getExp() + 10);
 		user.upLevel();
 		user.updateStreak(user, completedLessonService.getCompletedLessons(user, sqlDate));
@@ -75,7 +70,7 @@ public class LessonService {
 	}
 
 	public void completedLesson(User user, int idlesson, int idunit, int numExercisesCompleted) {
-		Lesson lesson = lessonService.findById(idlesson + (3 * (idunit - 1)));
+		Lesson lesson = findById(idlesson + (3 * (idunit - 1)));
 		Calendar date = Calendar.getInstance();
 		Date sqlDate = new Date((date.getTime()).getTime());
 		CompletedLesson completedLessonS = completedLessonService.findByUserAndLesson(user, lesson);
@@ -84,11 +79,21 @@ public class LessonService {
 			CompletedLesson completedLesson = new CompletedLesson(user, lesson, sqlDate);
 			completedLessonService.save(completedLesson);
 			if (userComponent.isLoggedUser()) {
-				user.setFluency(exerciseService.getFluency(user));
-				lessonService.updateUserData(user, sqlDate);
+				user.setFluency(getFluency(user));
+				updateUserData(user, sqlDate);
 				userComponent.setLoggedUser(user);
 			}
 		}
+	}
+
+	public int getFluency(User user) {
+		List<Lesson> lessons = findAll();
+		List<CompletedLesson> lessonsCompleted = completedLessonService.findByUser(user);
+		int numLessons = lessons.size();
+		int numLessonsCompleted = lessonsCompleted.size();
+		double percentageD = (double) numLessonsCompleted / numLessons * 100;
+		int percentage = (int) percentageD;
+		return percentage;
 	}
 }
 

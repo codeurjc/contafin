@@ -823,7 +823,7 @@ public class ExerciseController {
 	public String continueLesson(Model model) {
 			User user = userComponent.getLoggedUser();
 
-			int percentage = exerciseService.getFluency(user);
+			int percentage = lessonService.getFluency(user);
 			if (userComponent.isLoggedUser()) {
 
 				user.setFluency(percentage);

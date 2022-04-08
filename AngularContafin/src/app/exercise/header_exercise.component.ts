@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class HeaderExerciseComponent {
 
   closeResult: string;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, private modalService: NgbModal) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, private modalService: NgbModal) {
     this.progress = 10;
   }
 

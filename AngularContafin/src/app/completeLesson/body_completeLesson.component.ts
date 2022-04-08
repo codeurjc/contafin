@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../login/login.service';
-import { useAnimation } from '@angular/core/src/animation/dsl';
 import { LessonsService } from '../lesson/lesson.service';
 import { User } from '../Interfaces/User/user.model';
 import { Router } from '@angular/router';

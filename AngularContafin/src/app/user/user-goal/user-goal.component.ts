@@ -47,7 +47,7 @@ export class UserGoalComponent implements OnInit {
     this.userService.updateUser(this.loggedUser.id, this.updatedUser)
       .subscribe(
         user => {
-          this.loginService.setLoggedUser(user);
+          this.loginService.setLoggedUser(user[0]);
           this.router.navigate(['/User/Goal']);
           this.noGoal = false;
           this.addGoal = true;

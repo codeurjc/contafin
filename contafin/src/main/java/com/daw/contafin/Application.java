@@ -50,7 +50,7 @@ public class Application {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
+				registry.addMapping("/**").allowedOriginPatterns("*").allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
 						.allowedHeaders("Authorization", "Content-Type", "X-Requested-With", "accept", "Origin",
 								"Access-Control-Request-Method", "Access-Control-Request-Headers")
 						.exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")

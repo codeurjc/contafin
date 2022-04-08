@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { User } from '../../Interfaces/User/user.model';
+import { last } from 'rxjs-compat/operator/last';
 
 @Component({
   selector: 'app-admin-user-data',
@@ -26,17 +27,17 @@ export class AdminUserDataComponent implements OnInit {
     if (this.lastPage === false) {
       this.adminService.getUserData(this.page, this.size)
         .subscribe(
-          users => {
+          users=> {
             if (this.page == 0) {
-              this.users = users.content;
+              this.users = users[0];//users.content
             }
             else {
-              for (let i in users.content) {
-                this.users.push(users.content[i]);
+              for (let i in users) {
+                this.users.push(users[i]);
               }
             }
             this.page += 1;
-            this.lastPage = users.last;
+            this.lastPage = users[users.hasOwnProperty.length-1];//users.last
           }
         )
     }

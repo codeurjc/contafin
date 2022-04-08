@@ -30,7 +30,7 @@ public class UnitService {
 	}
 	
 	public void delete(long Id) {
-		unitRepository.delete(Id);
+		unitRepository.deleteById(Id);
 	}
 	
 	public Page<Unit> getUnits(Pageable page){
