@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<base href="/">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>CONTaFIN</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+	rel='stylesheet' type='text/css'>
+
+<!-- Plugin CSS -->
+<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/creative.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bgexercises" id="page-top">
+
+	<!--Progress bar-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-1">
+				<button type="button" class="close sticky-top" data-toggle="modal"
+					data-target="#exampleModalLong" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="col-sm-10">
+				<div class="progress">
+					<div
+						class="progress-bar progress-bar-striped progress-bar-animated"
+						style="width: 30%" id="bg-progressBar"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--pop up close-->
+	<div class="modal fade" id="exampleModalLong" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLongTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">¿Estás
+						seguro de que quieres salir?</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h6>Perderás el progreso en esta lección</h6>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary btn-xl js-scroll-trigger" href="">Cancelar</a>
+
+					<a class="btn btn-primary btn-xl js-scroll-trigger"
+						href="home.html" id="button-style">Salir</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Question and answers-->
+	<section class="p-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">{{Statement}}</h2>
+					<hr class="my-4">
+				</div>
+			</div>
+		</div>
+		<div class="container mx-auto mb-5">
+			<div class="row">
+				<!--SECTION OF ANSWERS-->
+				<div class="col-lg-8  mx-auto text-center">
+					{{#texts}}
+					<div class="btn my-auto text-center" data-toggle="buttons">
+						<label class="btn" id="selectAnswer"> {{.}} </label>
+					</div>
+					{{/texts}}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Evaluation section-->
+	<footer class="mt-3 fixed-bottom" id="bg-foot">
+		<div class="container-fluid py-3">
+			<div class="btn-toolbar justify-content-between" role="toolbar"
+				aria-label="Toolbar with button groups">
+				{{#end}}<a class="btn btn-primary btn-xl js-scroll-trigger"
+					href="/Unit/{{id}}/lesson/{{idlesson}}/lessonCompleted/">CALIFICAR</a> {{/end}}
+				{{#next}} <a class="btn btn-primary btn-xl js-scroll-trigger"
+					href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">SALTAR</a>
+
+				<a class="btn btn-primary btn-xl js-scroll-trigger"
+					href="/Unit/{{idunit}}/lessons/{{idlesson}}/Exercise/{{nextType}}/{{nextNumExercise}}">CALIFICAR</a>
+				{{/next}}
+			</div>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/creative.min.js"></script>
+	<script src="js/changeFixed.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CONTaFIN</title>
+<style type="text/css">
+#button {
+	background-color: #FF9F40;
+	text-decoration: none;
+	padding: 10px;
+	font-weight: 600;
+	font-size: 20px;
+	color: #ffffff;
+	border: 9px solid;
+	border-radius: 20px;
+}
+</style>
+</head>
+<body>
+	<div clas="mt-5 mtb-5">
+		<form action="Export">
+			<input id="button" name="xls" type="submit" value="EXPORTAR">
+		</form>
+	</div>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>NAME</td>
+				<td>EMAIL</td>
+				<td>LEVEL</td>
+				<td>POINTS</td>
+				<td>DAILY GOAL</td>
+				<td>STREAK</td>
+				<td>FLUENCY</td>
+				<td>EXPERIENCE</td>
+				<td>LAST CONNECTION</td>
+				<td>LAST UNIT</td>
+				<td>LAST LESSON</td>
+			</tr>
+		</thead>
+		<tbody>
+		<tbody>
+			{{#userList}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{email}}</td>
+				<td>{{level}}</td>
+				<td>{{points}}</td>
+				<td>{{dailyGoal}}</td>
+				<td>{{Streak}}</td>
+				<td>{{fluency}}</td>
+				<td>{{exp}}</td>
+				<td>{{lastConnection}}</td>
+				<td>{{lastUnit}}</td>
+				<td>{{lastLesson}}</td>
+			</tr>
+			{{/userList}}
+		</tbody>
+		</tbody>
+	</table>
+</body>
+</html>

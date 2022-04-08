@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_server
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3306:3306
+    entrypoint: sh -c './wait-for mysql:3306'

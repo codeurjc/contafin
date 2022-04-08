@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_server
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3306:3306
+
+  web:
+    image: contafin/contafin:latest
+    container_name: web_server
+    entrypoint: sh -c './wait-for mysql:3306 && java -jar contafin-0.0.1-SNAPSHOT.jar'
+    depends_on:
+      - mysql
+    environment:
+      - DATABASE_HOST=mysql
+    ports:
+      - 8080:8080
