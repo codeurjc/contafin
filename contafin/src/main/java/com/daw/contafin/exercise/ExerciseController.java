@@ -15,14 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.daw.contafin.completedExercise.CompletedExercise;
-import com.daw.contafin.completedExercise.CompletedExerciseService;
-import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.lesson.Lesson;
-import com.daw.contafin.lesson.LessonService;
-import com.daw.contafin.user.User;
-import com.daw.contafin.user.UserComponent;
-import com.daw.contafin.user.UserService;
+
+import com.daw.contafin.completedExercise.*;
+import com.daw.contafin.lesson.*;
+import com.daw.contafin.user.*;
+
 
 @Controller
 public class ExerciseController {
@@ -37,7 +34,7 @@ public class ExerciseController {
 	private CompletedExerciseService completedExerciseService;
 
 	@Autowired
-	UserComponent userComponent;
+	private UserComponent userComponent;
 
 	@Autowired
 	UserService userService;
