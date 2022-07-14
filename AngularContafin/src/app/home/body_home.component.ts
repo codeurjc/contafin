@@ -33,12 +33,12 @@ export class BodyHomeComponent implements OnInit {
 
     getUnits() {
         this.unitsService.getUnits()
-            .then(units => {
+            .then((units : any) => {
                 this.units = units;
                 //Get the number of Lessons completed of all the units
                 this.unitsService.numberOfCompletedLessons2()
                     .subscribe(
-                        response => { this.lessonsCompleted = response; console.log(response) }
+                        (response : any) => { this.lessonsCompleted = response; console.log(response) }
                     )
             })
             .catch(error => console.error(error));
@@ -53,7 +53,7 @@ export class BodyHomeComponent implements OnInit {
 
     numberLessonsCompleted(id: number) {
         this.unitsService.numberOfCompletedLessons(id).subscribe(
-            lessonsCompleted => {
+            (lessonsCompleted : any) => {
                 this.lessonsCompleted = lessonsCompleted;
                 console.log(lessonsCompleted)
             },

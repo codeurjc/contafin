@@ -21,7 +21,7 @@ export class BodyCompleteLessonComponent implements OnInit {
 
     [x: string]: any;
     closeResult: string;
-    response: boolean;
+    response = null;
     public loggedUser: User;
 
     constructor(private router: Router, private userService: UserService, private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService) {
@@ -34,7 +34,7 @@ export class BodyCompleteLessonComponent implements OnInit {
 
     completeLesson() {
         this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
-            response => {
+            response=> {
                 this.response = response;
                 if (this.loginService.isLoggedUser()) {
                     this.userService.getUser(this.loggedUser.id)

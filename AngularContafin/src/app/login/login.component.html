@@ -1,4 +1,4 @@
-<div *ngIf="formkind == 1">
+<div *ngIf="formkind == '1'">
   <form>
     <div class="form-group">
       <label class="mt-3" for="exampleInputEmail1">
@@ -20,7 +20,7 @@
     </div>
   </form>
 </div>
-<div *ngIf="formkind == 2">
+<div *ngIf="formkind == '2'">
   <ng-template #content let-c="close" let-d="dismiss">
     <form>
       <div class="modal-content">

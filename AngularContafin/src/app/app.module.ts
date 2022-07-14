@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 
@@ -93,7 +93,7 @@ import { CanActivateAdmin } from './security/can-activate-admin';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule,
+    NgbNavModule,
     routing
 
   ],

@@ -12,7 +12,7 @@ import { UnitsService } from '../unit/unit.service';
 export class BodyLessonComponent implements OnInit {
 
     @Input()
-    private id: number;
+    id: number;
 
     nlesson: number = 0;
 
@@ -31,15 +31,15 @@ export class BodyLessonComponent implements OnInit {
     }
     getUnits(id: number) {
         this.lessonService.getLessonsOfUnit(this.id).subscribe(
-            unit => {
+            (unit : any) => {
                 this.unit = unit
                 this.unitService.numberOfCompletedLessons(unit.id).subscribe(
-                    nlesson => this.nlesson = nlesson,
+                    (nlesson : any) => this.nlesson = nlesson,
                     error => console.log(error)
                 )
                 this.lessonService.isCompleted2(this.unit.id)
                     .subscribe(
-                        response => {
+                        (response : any) => {
                             this.lessonsCompleted = response;
                         }
                     )
@@ -53,7 +53,7 @@ export class BodyLessonComponent implements OnInit {
 
     numberoflessons(id: number) {
         this.unitService.numberOfCompletedLessons(id).subscribe(
-            nlesson => this.nlesson = nlesson,
+            (nlesson : any) => this.nlesson = nlesson,
             error => console.log(error)
         )
     }

@@ -10,11 +10,13 @@ import { last } from 'rxjs-compat/operator/last';
 })
 export class AdminUserDataComponent implements OnInit {
 
-  private lastPage: boolean = false;
+  lastPage: boolean = false;
   private size: number = 10;
   private page: number = 0;
-  private spinner: boolean = false;
+  spinner: boolean = false;
   users: User[];
+
+  
 
   constructor(private adminService: AdminService) { }
 

@@ -53,7 +53,7 @@ export class Exercise1Component implements OnInit {
     this.img3 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/3";
     this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
       .subscribe(
-        exercise => {
+        (exercise :any) => {
           this.statement = exercise.statement;
           this.texts = exercise.texts;
         }
@@ -66,7 +66,7 @@ export class Exercise1Component implements OnInit {
     }
     this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
       .subscribe(
-        response => {
+        (response :any) => {
           this.right = response;
           if (response) {
             if (this.answer == "uno") {

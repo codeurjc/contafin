@@ -5,6 +5,7 @@ import { Unit } from '../../Interfaces/Unit/unit.model';
 import { Lesson } from '../../Interfaces/Lesson/lesson.model';
 import { Exercise } from '../../Interfaces/Exercise/exercise.model';
 import { Answer } from '../../Interfaces/Answer/answer.model';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class UnitCreationComponent implements OnInit {
   private answers: Array<Answer> = new Array();
   private exercises: Array<Exercise> = new Array();
   private lessons: Array<Lesson> = new Array();
-  private unit: Unit;
+  unit: Unit;
+  active = 1;
 
   constructor(private router: Router, private unitService: UnitsService) {
   }
@@ -32,7 +34,7 @@ export class UnitCreationComponent implements OnInit {
   addUnit() {
     this.unitService.addUnit(this.unit)
       .subscribe(
-        unit => {
+        (unit : any) => {
           console.log(unit);
           this.unit = unit;
           this.alertDanger = false;

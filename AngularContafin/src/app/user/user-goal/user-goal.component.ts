@@ -16,7 +16,7 @@ export class UserGoalComponent implements OnInit {
   public image: FormData;
   public noGoal: boolean;
   public addGoal: boolean;
-  private updatedUser: User = {
+  updatedUser: User = {
     id: 0,
     name: "",
     email: "",

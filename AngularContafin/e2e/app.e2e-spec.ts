@@ -1,4 +1,6 @@
 import { AppPage } from './app.po';
+import 'jasmine'
+import 'jasminewd2'
 
 describe('angular-contafin App', () => {
   let page: AppPage;

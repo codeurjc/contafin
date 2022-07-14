@@ -17,7 +17,7 @@ export class LoginComponent {
   private closeResult: string;
 
   @Input()
-  private formkind: string;
+  formkind: string;
 
   logIn(event: any, email: string, pass: string) {
 

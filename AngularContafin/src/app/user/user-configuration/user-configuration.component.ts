@@ -28,7 +28,7 @@ export class UserConfigurationComponent implements OnInit {
   public alertSuccess: boolean = false;
   public noAdmin: boolean;
   public rightPass: boolean;
-  private userData: any = {
+  userData: any = {
     name: "",
     email: "",
     passwordHash: ""
@@ -49,7 +49,7 @@ export class UserConfigurationComponent implements OnInit {
     if (this.oldPassInput.nativeElement.value != null) {
       this.userService.validation(this.loggedUser.id, this.oldPassInput.nativeElement.value)
         .subscribe(
-          validation => {
+          (validation : any) => {
             this.rightPass = validation;
             console.log(this.rightPass);
             this.getPasswords();
@@ -71,7 +71,7 @@ export class UserConfigurationComponent implements OnInit {
     if (this.rightPass) {
       this.userService.updateUser(this.loggedUser.id, this.userData)
         .subscribe(
-          user => {
+          (user: any) => {
             this.loggedUser.name = user.name;
             this.loggedUser.email = user.email;
             this.loggedUser.passwordHash = user.passwordHash;

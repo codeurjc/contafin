@@ -19,7 +19,7 @@ export class LoginService {
     getLoggedUser() {
         return this.user;
     }
-    setLoggedUser(user:User){
+    setLoggedUser(user){
         this.user = user;
         this.user.imgURL = "https://localhost:8080/api/User/Photo";
     }

@@ -4,6 +4,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 import { Unit } from '../Interfaces/Unit/unit.model';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const BASE_URL = environment.apiBase + '/Unit/';
 

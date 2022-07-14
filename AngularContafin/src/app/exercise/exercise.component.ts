@@ -35,22 +35,22 @@ export class ExerciseComponent implements OnInit {
     this.getExercises();
   }
 
-  getExercises() {
+  getExercises(){
     this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise)
       .then(
-        exercise => {
+        (exercise : any) =>{
           this.kindExercises.push(exercise.kind);
           this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 1)
             .then(
-              exercise => {
+              (exercise : any) => {
                 this.kindExercises.push(exercise.kind);
                 this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 2)
                   .then(
-                    exercise => {
+                    (exercise : any) => {
                       this.kindExercises.push(exercise.kind);
                       this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 3)
                         .then(
-                          exercise => {
+                          (exercise : any) => {
                             this.kindExercises.push(exercise.kind);
                           }
                         )

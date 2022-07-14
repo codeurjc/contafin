@@ -48,7 +48,7 @@ export class Exercise7Component implements OnInit {
   ngOnInit() {
     this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
       .subscribe(
-        exercise => {
+        (exercise : any) => {
           this.statement = exercise.statement;
           this.texts = exercise.texts;
         }
@@ -62,7 +62,7 @@ export class Exercise7Component implements OnInit {
     }
     this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
       .subscribe(
-        response => {
+        (response : any) => {
           this.right = response;
           if (response) {
             if (this.answer == "uno") {
