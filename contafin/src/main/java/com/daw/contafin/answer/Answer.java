@@ -8,8 +8,10 @@ import javax.persistence.OneToOne;
 
 import com.daw.contafin.exercise.Exercise;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 @Entity
+@Data
 public class Answer {
 
     @Id
@@ -20,31 +22,11 @@ public class Answer {
     @JsonIgnore
     @OneToOne(mappedBy="answer")
     private Exercise exercise;
-    
+
     public Answer() {}
     public Answer(String result) {
-        
+
         this.result=result;
-        
+
     }
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-    public String getResult() {
-        return result;
-    }
-    public void setResult(String result) {
-        this.result = result;
-    }
-    public Exercise getExercise() {
-        return exercise;
-    }
-    public void setExercise(Exercise exercise) {
-        this.exercise = exercise;
-    }
-    
-    
 }

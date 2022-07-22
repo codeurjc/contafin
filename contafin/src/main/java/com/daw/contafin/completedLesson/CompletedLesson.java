@@ -11,9 +11,11 @@ import javax.persistence.ManyToOne;
 
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.user.User;
+import lombok.Data;
 
 
 @Entity
+@Data
 public class CompletedLesson {
 
 	@Id
@@ -34,39 +36,6 @@ public class CompletedLesson {
 	public CompletedLesson(User user, Lesson lesson, Date date) {
 		this.user = user;
 		this.lesson = lesson;
-		this.date = date;
-	}
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Lesson getLesson() {
-		return lesson;
-	}
-
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
-	}
-
-
-	public Date getDate() {
-		return date;
-	}
-
-
-	public void setDate(Date date) {
 		this.date = date;
 	}
 

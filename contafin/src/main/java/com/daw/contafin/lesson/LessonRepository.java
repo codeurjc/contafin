@@ -7,8 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.daw.contafin.unit.Unit;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public interface LessonRepository extends JpaRepository <Lesson, Long>{
 	Lesson findById(long Id);
 	List<Lesson> findByUnit(Unit Id);

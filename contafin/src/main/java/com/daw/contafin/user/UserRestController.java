@@ -6,19 +6,15 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
@@ -29,6 +25,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 @RequestMapping ("/api/User")
 @CrossOrigin(maxAge =3600)
+@Slf4j
+@Transactional
 public class UserRestController {
 	
 	
@@ -56,7 +54,8 @@ public class UserRestController {
 	}
 	
 	@JsonView(UserBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
+	@ResponseBody
 	public ResponseEntity<User> profile(@PathVariable long id) {
 		User user = userService.findById(id);
 		int[] progress = userService.progress(user);
@@ -68,7 +67,8 @@ public class UserRestController {
 	}
 	
 	@JsonView(UserBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PutMapping(value = "/{id}")
+	@ResponseBody
 	public ResponseEntity<User> updateUserData(@PathVariable long id, @RequestBody User updatedUser) {
 			User user = userService.findById(id);
 			user = userService.updateUser(user, updatedUser);
@@ -81,7 +81,8 @@ public class UserRestController {
 			}
 	}
 	
-	@RequestMapping(value = "/{id}/Validation/{pass}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}/Validation/{pass}")
+	@ResponseBody
 	public ResponseEntity<Boolean> validaion(@PathVariable long id, @PathVariable String pass) {
 		User user = userService.findById(id);
 		if (new BCryptPasswordEncoder().matches(pass, user.getPasswordHash())) {
@@ -91,7 +92,8 @@ public class UserRestController {
 		}
 	}
 	
-	@RequestMapping(value = "/{id}/Progress", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}/Progress")
+	@ResponseBody
 	public ResponseEntity<int[]> progress(@PathVariable long id) {
 		User user = userService.findById(id);
 		int[] progress = userService.progress(user);
@@ -102,7 +104,8 @@ public class UserRestController {
 	}
 	
 	@JsonView(UserBassic.class)
-	@RequestMapping(value = "/Name", method = RequestMethod.PUT)
+	@PutMapping(value = "/Name")
+	@ResponseBody
 	public ResponseEntity<User> updateName(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -126,7 +129,8 @@ public class UserRestController {
 	}
 	
 	@JsonView(UserBassic.class)
-	@RequestMapping(value = "/Email", method = RequestMethod.PUT)
+	@PutMapping(value = "/Email")
+	@ResponseBody
 	public ResponseEntity<User> updateEmail(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -150,7 +154,8 @@ public class UserRestController {
 	}
 	
 	@JsonView(UserBassic.class)
-	@RequestMapping(value = "/Password", method = RequestMethod.PUT)
+	@PutMapping(value = "/Password")
+	@ResponseBody
 	public ResponseEntity<User> updatePassword(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -176,7 +181,8 @@ public class UserRestController {
 		}
 	}
 	
-	@RequestMapping(value = "/{id}/Photo", method = RequestMethod.POST)
+	@PostMapping(value = "/{id}/Photo")
+	@ResponseBody
 	public ResponseEntity<Boolean> profilePhoto(@PathVariable long id, @RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
 			User user = userService.findById(id);
@@ -198,13 +204,15 @@ public class UserRestController {
 		}
 	}
 	
-	@RequestMapping(value = "/Photo", method = RequestMethod.GET)
+	@GetMapping(value = "/Photo")
+	@ResponseBody
 	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		imageService.showImage(request, response);
 	}
 
 	@JsonView(UserBassic.class)
-	@RequestMapping(value = "/Goal", method = RequestMethod.PUT)
+	@PutMapping(value = "/Goal")
+	@ResponseBody
 	public ResponseEntity<User> goals(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

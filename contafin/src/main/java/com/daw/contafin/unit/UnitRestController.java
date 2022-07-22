@@ -6,20 +6,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daw.contafin.ImageService;
@@ -39,17 +35,19 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 @RequestMapping("/api/Unit")
 @CrossOrigin(maxAge =3600)
+@Slf4j
+@Transactional
 public class UnitRestController{
 	
 	
 	@Autowired
-	private UnitService unitService;
+	UnitService unitService;
 	
 	@Autowired
-	private LessonService lessonService;
+	LessonService lessonService;
 
 	@Autowired
-	private ExerciseService exerciseService;
+	ExerciseService exerciseService;
 	
 	@Autowired
 	CompletedLessonService completedLessonService;
@@ -72,15 +70,16 @@ public class UnitRestController{
 	byte[] bytes3;
 
 	//Get all unit
-	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<Page<Unit>> getUnit(Pageable page) {
-		return new ResponseEntity<>(unitService.getUnits(page), HttpStatus.OK);
+	@GetMapping(path = "/")
+	@ResponseBody
+	public ResponseEntity<List<Unit>> getUnit() {
+		return new ResponseEntity<>(unitService.findAll(), HttpStatus.OK);
 	}
 	
 	//Get 1 unit
 	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@GetMapping(value = "/{id}")
+	@ResponseBody
 	public ResponseEntity<Unit> getOneUnit(@PathVariable long id) {
 		Unit unit = unitService.findById(id);
 		if (unit != null) {
@@ -91,7 +90,8 @@ public class UnitRestController{
 	}
 		
 	//Post Unit
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@PostMapping(value = "/")
+	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Unit> createUnit(@RequestBody Unit unit) {
 		
@@ -156,7 +156,8 @@ public class UnitRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/Exercise/{idExercise}/{nImage}", method = RequestMethod.POST)
+	@PostMapping(value = "/Exercise/{idExercise}/{nImage}")
+	@ResponseBody
 	public ResponseEntity<Boolean> profilePhoto(@PathVariable long idExercise, @PathVariable long nImage, @RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
 			// Upload image
@@ -185,13 +186,15 @@ public class UnitRestController{
 	}
 	
 	//Show images
-	@RequestMapping(value = "/Exercise/{idExercise}/{nImage}", method = RequestMethod.GET)
+	@GetMapping(value = "/Exercise/{idExercise}/{nImage}")
+	@ResponseBody
 	public void sowImage(@PathVariable long idExercise, @PathVariable long nImage, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Exercise exercise = exerciseService.findById(idExercise);
 		imageService.showImageExercise(exercise, nImage, request, response);
 	}
 	
-	@RequestMapping(value = "/{id}/Images", method = RequestMethod.POST)
+	@PostMapping(value = "/{id}/Images")
+	@ResponseBody
 	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
 		Unit unit = unitService.findById(id);
 		Lesson lesson = unit.getLessons().get(0);
@@ -217,7 +220,8 @@ public class UnitRestController{
 	
 	//Put unit
 	@JsonView(UnitBassic.class)
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@PutMapping(value = "/{id}")
+	@ResponseBody
 	public ResponseEntity<Unit> updateUnit(@PathVariable long id, @RequestBody Unit unitAct) {
 
 		Unit unit = unitService.findById(id);
@@ -256,7 +260,8 @@ public class UnitRestController{
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
 	}
-	@RequestMapping(value = "/{idunit}/isCompleted", method = RequestMethod.GET)
+	@GetMapping(value = "/{idunit}/isCompleted")
+	@ResponseBody
 	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {
 		User user = userComponent.getLoggedUser();
 		
@@ -278,7 +283,8 @@ public class UnitRestController{
 		}
 	}
 	
-	@RequestMapping(value = "/{idunit}/numberOfCompletedLessons", method = RequestMethod.GET)
+	@GetMapping(value = "/{idunit}/numberOfCompletedLessons")
+	@ResponseBody
 	public ResponseEntity<Integer> numberOfCompletedLesson(@PathVariable int idunit) {
 		User user = userComponent.getLoggedUser();
 		
@@ -296,7 +302,8 @@ public class UnitRestController{
 		return new ResponseEntity<>(count, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/numberOfCompletedLessons", method = RequestMethod.GET)
+	@GetMapping(value = "/numberOfCompletedLessons")
+	@ResponseBody
 	public ResponseEntity<ArrayList<Integer> > numberOfCompletedLessons() {
 		User user = userComponent.getLoggedUser();
 		
@@ -319,7 +326,8 @@ public class UnitRestController{
 		return new ResponseEntity<>(number, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/NumberOfUnitsCompleted", method = RequestMethod.GET)
+	@GetMapping(value = "/NumberOfUnitsCompleted")
+	@ResponseBody
 	public ResponseEntity<List<Boolean>> Unitscompleted() {
 		User user = userComponent.getLoggedUser();
 		List<Boolean> booleanos = new ArrayList<Boolean>();

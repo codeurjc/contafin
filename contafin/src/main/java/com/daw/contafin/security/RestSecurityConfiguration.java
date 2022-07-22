@@ -1,5 +1,6 @@
 package com.daw.contafin.security;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -9,9 +10,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.transaction.Transactional;
+
 @Configuration
 @Order(1)
 @CrossOrigin(maxAge =3600)
+@Slf4j
+@Transactional
 public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired

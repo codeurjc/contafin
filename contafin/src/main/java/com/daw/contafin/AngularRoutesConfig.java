@@ -2,14 +2,15 @@ package com.daw.contafin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class AngularRoutesConfig {
+public class AngularRoutesConfig implements WebMvcConfigurer {
 
     @Bean
-    public WebMvcConfigurerAdapter forwardToIndex() {
-        return new WebMvcConfigurerAdapter() {
+    public WebMvcConfigurer forwardToIndex() {
+        return new WebMvcConfigurer() {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/new").setViewName("forward:/new/index.html");

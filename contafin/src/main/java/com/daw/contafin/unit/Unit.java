@@ -1,5 +1,6 @@
 package com.daw.contafin.unit;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,9 +11,11 @@ import javax.persistence.OneToMany;
 
 import com.daw.contafin.lesson.Lesson;
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.Data;
 
 @Entity
-public class Unit {
+@Data
+public class Unit implements Serializable{
 
 	interface UnitBassic {
 	}
@@ -34,30 +37,6 @@ public class Unit {
 
 	public Unit(String name) {
 		this.name = name;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public List<Lesson> getLessons() {
-		return this.lessons;
-	}
-
-	public void setLesson(List<Lesson> lessons) {
-		this.lessons = lessons;
 	}
 
 	@Override

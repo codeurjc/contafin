@@ -15,8 +15,7 @@ export class SignUpService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post(BASE_URL, userData, { headers })//Puede que falte algo
-      .catch(error => this.handleError(error));
+    return this.http.post(BASE_URL, userData, { headers })
   }
 
   private handleError(error: any) {

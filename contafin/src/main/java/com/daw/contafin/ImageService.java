@@ -9,7 +9,9 @@ import java.nio.file.Paths;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +22,8 @@ import com.daw.contafin.user.UserComponent;
 
 
 @Service
+@Slf4j
+@Transactional
 public class ImageService {
 	
 	@Autowired

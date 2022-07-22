@@ -1,7 +1,9 @@
 package com.daw.contafin.security;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,9 @@ import com.daw.contafin.user.UserService;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(maxAge =3600)
+@Transactional
+@Slf4j
 public class LoginRestController {
-
-	private static final Logger log = LoggerFactory.getLogger(LoginRestController.class);
 
 	@Autowired
 	private UserComponent userComponent;

@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
+import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
+@Data
 public class User {
 	
 	public interface UserBassic {
@@ -67,7 +69,7 @@ public class User {
 	@JsonView(UserBassic.class)
 	private int lastLesson;
 	
-	@JsonView(UserBassic.class)
+	@JsonView(UserBassic.class)//Revisar este atributo
 	private int [] progress;
 	
 	@JsonView(UserBassic.class)
@@ -131,117 +133,7 @@ public class User {
 			this.needexp = needexp +20;
 		}
 	}
-	public long getId() {
-		return id;
-	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPasswordHash() {
-		return passwordHash;
-	}
-
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
-	public int getPoints() {
-		return points;
-	}
-
-	public void setPoints(int points) {
-		this.points = points;
-	}
-
-	public int getStreak() {
-		return streak;
-	}
-
-	public void setStreak(int streak) {
-		this.streak = streak;
-	}
-
-	public int getFluency() {
-		return fluency;
-	}
-
-	public void setFluency(int fluency) {
-		this.fluency = fluency;
-	}
-
-	public List<String> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-
-	public int getDailyGoal() {
-		return dailyGoal;
-	}
-
-	public void setDailyGoal(int dailyGoal) {
-		this.dailyGoal = dailyGoal;
-	}
-
-	public int getNeedexp() {
-		return needexp;
-	}
-
-	public void setNeedexp(int needexp) {
-		this.needexp = needexp;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-
-	public String getLastConnection() {
-		return lastConnection;
-	}
-
-	public void setLastConnection(String lastConnection) {
-		this.lastConnection = lastConnection;
-	}
 	
 	public String newConnection() {
 		Date today = Calendar.getInstance().getTime();
@@ -256,37 +148,6 @@ public class User {
 		}
 	}
 
-	public int getLastUnit() {
-		return lastUnit;
-	}
-
-	public void setLastUnit(int lastUnit) {
-		this.lastUnit = lastUnit;
-	}
-
-	public int getLastLesson() {
-		return lastLesson;
-	}
-
-	public void setLastLesson(int lastLesson) {
-		this.lastLesson = lastLesson;
-	}
-
-	public int[] getProgress() {
-		return progress;
-	}
-
-	public void setProgress(int[] progress) {
-		this.progress = progress;
-	}
-
-	public int getRemainingGoals() {
-		return remainingGoals;
-	}
-
-	public void setRemainingGoals(int remainingGoals) {
-		this.remainingGoals = remainingGoals;
-	}
 	public void updatePoints(User user, int points) {
 		if(user.getPoints()+points >=0) {
 			user.setPoints(user.getPoints()+points);

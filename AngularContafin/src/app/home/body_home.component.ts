@@ -16,7 +16,7 @@ export class BodyHomeComponent implements OnInit {
     closeResult: string;
     kind1 = '1';
     kind2 = '2';
-    units: Unit[];
+    units = [];
     lessonsCompleted: number[];
     public loggedUser: User;
 

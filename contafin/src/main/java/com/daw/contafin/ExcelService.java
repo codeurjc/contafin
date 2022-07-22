@@ -3,6 +3,7 @@ package com.daw.contafin;
 import java.util.List;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -13,7 +14,11 @@ import org.springframework.stereotype.Service;
 import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserService;
 
+import javax.transaction.Transactional;
+
 @Service
+@Slf4j
+@Transactional
 public class ExcelService {
 
 	@Autowired

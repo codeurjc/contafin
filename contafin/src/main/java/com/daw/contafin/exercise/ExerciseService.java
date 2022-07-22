@@ -3,6 +3,7 @@ package com.daw.contafin.exercise;
 import java.io.IOException;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
@@ -19,7 +20,11 @@ import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.user.User;
 
+import javax.transaction.Transactional;
+
 @Service
+@Slf4j
+@Transactional
 public class ExerciseService {
 
 	

@@ -8,8 +8,10 @@ import javax.persistence.ManyToOne;
 
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.user.User;
+import lombok.Data;
 
 @Entity
+@Data
 public class CompletedExercise {
 
 	@Id
@@ -31,37 +33,6 @@ public class CompletedExercise {
 		this.user=user;
 		this.error=error;
 		this.exercise=exercise;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	/*public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}*/
-
-	public Exercise getExercise() {
-		return exercise;
-	}
-
-	public void setExercise(Exercise exercise) {
-		this.exercise = exercise;
-	}
-	public long getError() {
-		return error;
-	}
-
-	public void setErrores(long error) {
-		this.error = error;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
@@ -19,7 +20,11 @@ import com.daw.contafin.user.User;
 import com.daw.contafin.user.UserComponent;
 import com.daw.contafin.user.UserService;
 
+import javax.transaction.Transactional;
+
 @Service
+@Slf4j
+@Transactional
 public class LessonService {
 	
 	@Autowired
