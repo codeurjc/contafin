@@ -41,9 +41,9 @@ public class UserRestController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteAccount(@PathVariable long id) {
-		User user = userService.findById(id);
+		UserDto userDto = userService.findById(id);
 		try {
-			userService.deleteAccount(user);
+			userService.deleteAccount(userDto);
 			userComponent.setLoggedUser(null);
 			return new ResponseEntity<>(true, HttpStatus.OK);
 
@@ -56,25 +56,25 @@ public class UserRestController {
 	@JsonView(UserBassic.class)
 	@GetMapping(value = "/{id}")
 	@ResponseBody
-	public ResponseEntity<User> profile(@PathVariable long id) {
-		User user = userService.findById(id);
-		int[] progress = userService.progress(user);
+	public ResponseEntity<UserDto> profile(@PathVariable long id) {
+		UserDto userDto = userService.findById(id);
+		int[] progress = userService.progress(userDto);
 		// Update user data
-		user.setProgress(progress);
-		userService.updateUserData(user);
-		userComponent.setLoggedUser(user);
-		return new ResponseEntity<>(user, HttpStatus.OK);
+		userDto.setProgress(progress);
+		userService.updateUserData(userDto);
+		userComponent.setLoggedUser(userDto);
+		return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
 	
 	@JsonView(UserBassic.class)
 	@PutMapping(value = "/{id}")
 	@ResponseBody
-	public ResponseEntity<User> updateUserData(@PathVariable long id, @RequestBody User updatedUser) {
-			User user = userService.findById(id);
-			user = userService.updateUser(user, updatedUser);
-			if (!user.equals(null)) {
-				userComponent.setLoggedUser(user);
-				return new ResponseEntity<>(user, HttpStatus.OK);
+	public ResponseEntity<UserDto> updateUserData(@PathVariable long id, @RequestBody UserDto updatedUser) {
+			UserDto userDto = userService.findById(id);
+			userDto = userService.updateUser(userDto, updatedUser);
+			if (!userDto.equals(null)) {
+				userComponent.setLoggedUser(userDto);
+				return new ResponseEntity<>(userDto, HttpStatus.OK);
 				
 			} else {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -84,8 +84,8 @@ public class UserRestController {
 	@GetMapping(value = "/{id}/Validation/{pass}")
 	@ResponseBody
 	public ResponseEntity<Boolean> validaion(@PathVariable long id, @PathVariable String pass) {
-		User user = userService.findById(id);
-		if (new BCryptPasswordEncoder().matches(pass, user.getPasswordHash())) {
+		UserDto userDto = userService.findById(id);
+		if (new BCryptPasswordEncoder().matches(pass, userDto.getPasswordHash())) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(false, HttpStatus.OK);
@@ -95,35 +95,35 @@ public class UserRestController {
 	@GetMapping(value = "/{id}/Progress")
 	@ResponseBody
 	public ResponseEntity<int[]> progress(@PathVariable long id) {
-		User user = userService.findById(id);
-		int[] progress = userService.progress(user);
+		UserDto userDto = userService.findById(id);
+		int[] progress = userService.progress(userDto);
 		// Update user data
-		user.setProgress(progress);
-		userService.updateUserData(user);
+		userDto.setProgress(progress);
+		userService.updateUserData(userDto);
 		return new ResponseEntity<>(progress, HttpStatus.OK);
 	}
 	
 	@JsonView(UserBassic.class)
 	@PutMapping(value = "/Name")
 	@ResponseBody
-	public ResponseEntity<User> updateName(@RequestBody Map<String,String> userData) {
+	public ResponseEntity<UserDto> updateName(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
-			User user = userComponent.getLoggedUser();
+			UserDto userDto = userComponent.getLoggedUser();
 			boolean noData =false; 
 			String name = userData.get("newName");
 			if (!name.isEmpty()) {
-				user.setName(name);
-				userService.updateUserData(user);
-				userComponent.setLoggedUser(user);
+				userDto.setName(name);
+				userService.updateUserData(userDto);
+				userComponent.setLoggedUser(userDto);
 				noData =true;
 			}
 			if(!noData) {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}
 			else {
-				return new ResponseEntity<>(user, HttpStatus.OK);
+				return new ResponseEntity<>(userDto, HttpStatus.OK);
 			}
 		}
 	}
@@ -131,24 +131,24 @@ public class UserRestController {
 	@JsonView(UserBassic.class)
 	@PutMapping(value = "/Email")
 	@ResponseBody
-	public ResponseEntity<User> updateEmail(@RequestBody Map<String,String> userData) {
+	public ResponseEntity<UserDto> updateEmail(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
-			User user = userComponent.getLoggedUser();
+			UserDto userDto = userComponent.getLoggedUser();
 			boolean noData =false; 
 			String email = userData.get("newEmail");
 			if (!email.isEmpty()) {
-				user.setEmail(email);
-				userService.updateUserData(user);
-				userComponent.setLoggedUser(user);
+				userDto.setEmail(email);
+				userService.updateUserData(userDto);
+				userComponent.setLoggedUser(userDto);
 				noData =true;
 			}
 			if(!noData) {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}
 			else {
-				return new ResponseEntity<>(user, HttpStatus.OK);
+				return new ResponseEntity<>(userDto, HttpStatus.OK);
 			}
 		}
 	}
@@ -156,19 +156,19 @@ public class UserRestController {
 	@JsonView(UserBassic.class)
 	@PutMapping(value = "/Password")
 	@ResponseBody
-	public ResponseEntity<User> updatePassword(@RequestBody Map<String,String> userData) {
+	public ResponseEntity<UserDto> updatePassword(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
-			User user = userComponent.getLoggedUser();
+			UserDto userDto = userComponent.getLoggedUser();
 			boolean noData =false;
 			String oldPass = userData.get("oldPass");
 			String newPass = userData.get("newPass");
 			if (!newPass.isEmpty()) {
-				if (new BCryptPasswordEncoder().matches(oldPass,user.getPasswordHash())) {
-					user.setPasswordHash(new BCryptPasswordEncoder().encode(newPass));
-					userService.updateUserData(user);
-					userComponent.setLoggedUser(user);
+				if (new BCryptPasswordEncoder().matches(oldPass,userDto.getPasswordHash())) {
+					userDto.setPasswordHash(new BCryptPasswordEncoder().encode(newPass));
+					userService.updateUserData(userDto);
+					userComponent.setLoggedUser(userDto);
 					noData =true;
 				}
 			}
@@ -176,7 +176,7 @@ public class UserRestController {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}
 			else {
-				return new ResponseEntity<>(user, HttpStatus.OK);
+				return new ResponseEntity<>(userDto, HttpStatus.OK);
 			}
 		}
 	}
@@ -185,15 +185,15 @@ public class UserRestController {
 	@ResponseBody
 	public ResponseEntity<Boolean> profilePhoto(@PathVariable long id, @RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
-			User user = userService.findById(id);
+			UserDto userDto = userService.findById(id);
 			// Upload image
 			byte[] bytes;
 			try {
 				bytes = imageService.uploadImage(file);
 				// Update the user's data
-				user.setImage(bytes);
-				userService.updateUserData(user);
-				userComponent.setLoggedUser(user);
+				userDto.setImage(bytes);
+				userService.updateUserData(userDto);
+				userComponent.setLoggedUser(userDto);
 				return new ResponseEntity<>(true, HttpStatus.OK);
 			} catch (IOException e) {
 				return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -213,18 +213,18 @@ public class UserRestController {
 	@JsonView(UserBassic.class)
 	@PutMapping(value = "/Goal")
 	@ResponseBody
-	public ResponseEntity<User> goals(@RequestBody Map<String,String> userData) {
+	public ResponseEntity<UserDto> goals(@RequestBody Map<String,String> userData) {
 		if (!userComponent.isLoggedUser()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
-			User user = userComponent.getLoggedUser();
+			UserDto userDto = userComponent.getLoggedUser();
 			int goal = Integer.parseInt(userData.get("goal"));
 			if (goal == 1 || goal == 3 || goal == 5 || goal== 7 ) {
-				user.setDailyGoal(goal);
-				user.setRemainingGoals(goal);
-				userService.updateUserData(user);
-				userComponent.setLoggedUser(user);
-				return new ResponseEntity<>(user, HttpStatus.OK);
+				userDto.setDailyGoal(goal);
+				userDto.setRemainingGoals(goal);
+				userService.updateUserData(userDto);
+				userComponent.setLoggedUser(userDto);
+				return new ResponseEntity<>(userDto, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 			}

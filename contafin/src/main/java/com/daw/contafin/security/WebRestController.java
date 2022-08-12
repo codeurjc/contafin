@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.mail.MessagingException;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class WebRestController {
 	@JsonView(UserBassic.class)
 	@PostMapping(value = "/signup")
 	@ResponseBody
-	public ResponseEntity<User> signup(@RequestBody Map<String,String> userData) {
+	public ResponseEntity<UserDto> signup(@RequestBody Map<String,String> userData) {
 		String name = userData.get("name");
 		String email = userData.get("email");
 		String pass = userData.get("pass");
@@ -50,7 +51,7 @@ public class WebRestController {
 		}
 		
 		if (userService.findByEmail(email)==null) {
-			User user = new User(name, email, pass, "ROLE_USER");
+			UserDto user = new UserDto(name, email, pass, "ROLE_USER");
 			user.setLastConnection(user.newConnection());
 			userService.save(user);
 			userComponent.setLoggedUser(user);

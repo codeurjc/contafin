@@ -22,18 +22,18 @@ import org.springframework.web.context.WebApplicationContext;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserComponent {
 
-	private User user;
+	private UserDto userDto;
 
-	public User getLoggedUser() {
-		return user;
+	public UserDto getLoggedUser() {
+		return userDto;
 	}
 
-	public void setLoggedUser(User user) {
-		this.user = user;
+	public void setLoggedUser(UserDto userDto) {
+		this.userDto = userDto;
 	}
 
 	public boolean isLoggedUser() {
-		return this.user != null;
+		return this.userDto != null;
 	}
 
 }

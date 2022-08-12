@@ -3,6 +3,9 @@ package com.daw.contafin.lesson;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.daw.contafin.completedLesson.CompletedLessonDto;
+import com.daw.contafin.unit.UnitDto;
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -70,14 +73,14 @@ public class LessonRestController{
 	//See an unit with its lessons
 	@GetMapping(value = "/{idunit}/Lesson/")
 	@ResponseBody
-	public ResponseEntity<Unit> getunitwithlesson(@PathVariable long idunit) {
-		Unit unit = unitService.findById(idunit);
+	public ResponseEntity<UnitDto> getunitwithlesson(@PathVariable long idunit) {
+		UnitDto unit = unitService.findById(idunit);
 		if (unit != null) {
-			List<Lesson> lessons = unit.getLessons();
+			List<LessonDto> lessons = unit.getLessons();
 			for (int i=0; i<lessons.size();i++) {
 				lessons.get(i).setExercises(null);
 			}
-			Unit unittry = new Unit(unit.getName());
+			UnitDto unittry = new UnitDto(unit.getName());
 			unittry.setId(unit.getId());
 			unittry.setLessons(lessons);
 			return new ResponseEntity<>(unittry, HttpStatus.OK);
@@ -90,8 +93,8 @@ public class LessonRestController{
 	@JsonView(LessonBasic.class)
 	@GetMapping(value = "/{idunit}/Lesson/{id}")
 	@ResponseBody
-	public ResponseEntity<Lesson> getLesson(@PathVariable long idunit,@PathVariable long id) {
-		Lesson lesson = lessonService.findById((idunit-1)*3+id);
+	public ResponseEntity<LessonDto> getLesson(@PathVariable long idunit,@PathVariable long id) {
+		LessonDto lesson = lessonService.findById((idunit-1)*3+id);
 
 		if (lesson != null) {
 			return new ResponseEntity<>(lesson, HttpStatus.OK);
@@ -104,8 +107,8 @@ public class LessonRestController{
 	@JsonView(LessonBasic.class)
 	@PutMapping(value = "/{idunit}/Lesson/{id}")
 	@ResponseBody
-	public ResponseEntity<Lesson> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody Lesson lessonAct) {
-		Lesson lesson = lessonService.findById((idunit-1)*3+id);
+	public ResponseEntity<LessonDto> updateLesson(@PathVariable long idunit,@PathVariable long id, @RequestBody LessonDto lessonAct) {
+		LessonDto lesson = lessonService.findById((idunit-1)*3+id);
 		if (lesson != null) {
 			lesson.setName(lessonAct.getName());
 			lessonAct.setId(id);
@@ -119,7 +122,7 @@ public class LessonRestController{
 	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Completed")
 	@ResponseBody
 	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit, @PathVariable int idlesson) {
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 		int numExercisesCompleted = completedExerciseService.numExercisesCompleted(idlesson, idunit, user);
 		//Update user data
@@ -135,9 +138,9 @@ public class LessonRestController{
 	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/isCompleted")
 	@ResponseBody
 	public ResponseEntity<Boolean> isCompletedLesson(@PathVariable int idunit, @PathVariable int idlesson) {
-		User user = userComponent.getLoggedUser();
-		Lesson lesson = lessonService.findById(idlesson);
-		CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lesson);
+		UserDto user = userComponent.getLoggedUser();
+		LessonDto lesson = lessonService.findById(idlesson);
+		CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lesson);
 		if (completedLesson != null) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		} else {
@@ -149,11 +152,11 @@ public class LessonRestController{
 	@GetMapping(value = "/{idunit}/Lessons/Completed")
 	@ResponseBody
 	public ResponseEntity<ArrayList<Boolean>> isCompletedLessonB(@PathVariable int idunit) {
-		User user = userComponent.getLoggedUser();
-		List<Lesson> lessons = unitService.findById(idunit).getLessons();
+		UserDto user = userComponent.getLoggedUser();
+		List<LessonDto> lessons = unitService.findById(idunit).getLessons();
 		ArrayList<Boolean> booleans = new ArrayList<Boolean>(); 
 		for (int i=0; i< lessons.size(); i++) {
-			CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+			CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
 			if(completedLesson != null) {
 				booleans.add(true);
 			}

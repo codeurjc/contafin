@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.completedLesson.CompletedLessonDto;
+import com.daw.contafin.exercise.ExerciseDto;
+import com.daw.contafin.lesson.LessonDto;
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -72,7 +76,7 @@ public class UnitRestController{
 	//Get all unit
 	@GetMapping(path = "/")
 	@ResponseBody
-	public ResponseEntity<List<Unit>> getUnit() {
+	public ResponseEntity<List<UnitDto>> getUnit() {
 		return new ResponseEntity<>(unitService.findAll(), HttpStatus.OK);
 	}
 	
@@ -80,8 +84,8 @@ public class UnitRestController{
 	@JsonView(UnitBassic.class)
 	@GetMapping(value = "/{id}")
 	@ResponseBody
-	public ResponseEntity<Unit> getOneUnit(@PathVariable long id) {
-		Unit unit = unitService.findById(id);
+	public ResponseEntity<UnitDto> getOneUnit(@PathVariable long id) {
+		UnitDto unit = unitService.findById(id);
 		if (unit != null) {
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {
@@ -93,14 +97,14 @@ public class UnitRestController{
 	@PostMapping(value = "/")
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Unit> createUnit(@RequestBody Unit unit) {
+	public ResponseEntity<UnitDto> createUnit(@RequestBody UnitDto unit) {
 		
 		if (unitService.isValidUnit(unit)) {
-			Exercise exercise;
+			ExerciseDto exercise;
 			
 			unitService.save(unit);
 			
-			Lesson lesson = unit.getLessons().get(0);
+			LessonDto lesson = unit.getLessons().get(0);
 			lesson.setUnit(unit);
 			lessonService.save(lesson);
 			exercise = lesson.getExercises().get(0);
@@ -164,7 +168,7 @@ public class UnitRestController{
 			byte[] bytes;
 			try {
 				bytes = imageService.uploadImage(file);
-				Exercise exercise = exerciseService.findById(idExercise);
+				ExerciseDto exercise = exerciseService.findById(idExercise);
 				if (nImage == 1) {
 					exercise.setImage1(bytes);
 				}
@@ -189,16 +193,16 @@ public class UnitRestController{
 	@GetMapping(value = "/Exercise/{idExercise}/{nImage}")
 	@ResponseBody
 	public void sowImage(@PathVariable long idExercise, @PathVariable long nImage, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		Exercise exercise = exerciseService.findById(idExercise);
+		ExerciseDto exercise = exerciseService.findById(idExercise);
 		imageService.showImageExercise(exercise, nImage, request, response);
 	}
 	
 	@PostMapping(value = "/{id}/Images")
 	@ResponseBody
 	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
-		Unit unit = unitService.findById(id);
-		Lesson lesson = unit.getLessons().get(0);
-		Exercise exercise =exerciseService.findByLesson(lesson).get(0);
+		UnitDto unit = unitService.findById(id);
+		LessonDto lesson = unit.getLessons().get(0);
+		ExerciseDto exercise =exerciseService.findByLesson(lesson).get(0);
 		// Upload images
 		try {
 			int aux= 0;
@@ -222,9 +226,9 @@ public class UnitRestController{
 	@JsonView(UnitBassic.class)
 	@PutMapping(value = "/{id}")
 	@ResponseBody
-	public ResponseEntity<Unit> updateUnit(@PathVariable long id, @RequestBody Unit unitAct) {
+	public ResponseEntity<UnitDto> updateUnit(@PathVariable long id, @RequestBody Unit unitAct) {
 
-		Unit unit = unitService.findById(id);
+		UnitDto unit = unitService.findById(id);
 
 		if (unit != null) {
 			unit.setName(unitAct.getName());
@@ -239,13 +243,13 @@ public class UnitRestController{
 	//Delete Unit
 	@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Unit> deleteUnit(@PathVariable long id) {
-			Unit unit = unitService.findById(id);
+	public ResponseEntity<UnitDto> deleteUnit(@PathVariable long id) {
+			UnitDto unit = unitService.findById(id);
 			if (unit != null) {
-				List<Lesson> lessons = lessonService.findByUnit(unit);
-				List<Exercise> exercises1 = exerciseService.findByLesson(lessons.get(0));
-				List<Exercise> exercises2 = exerciseService.findByLesson(lessons.get(1));
-				List<Exercise> exercises3 = exerciseService.findByLesson(lessons.get(2));
+				List<LessonDto> lessons = lessonService.findByUnit(unit);
+				List<ExerciseDto> exercises1 = exerciseService.findByLesson(lessons.get(0));
+				List<ExerciseDto> exercises2 = exerciseService.findByLesson(lessons.get(1));
+				List<ExerciseDto> exercises3 = exerciseService.findByLesson(lessons.get(2));
 				for(int i=0;i<exercises1.size();i++) {
 					exerciseService.delete(exercises1.get(i).getId());
 					exerciseService.delete(exercises2.get(i).getId());
@@ -263,14 +267,14 @@ public class UnitRestController{
 	@GetMapping(value = "/{idunit}/isCompleted")
 	@ResponseBody
 	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		
-		Unit unit = unitService.findById(idunit);
-		List<Lesson> lessons = lessonService.findByUnit(unit);
+		UnitDto unit = unitService.findById(idunit);
+		List<LessonDto> lessons = lessonService.findByUnit(unit);
 		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 		int count = 0;
 		for(int i=0; i<lessons.size(); i++) {
-			CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+			CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
 			if(completedLesson != null) {
 				count++;
 			}
@@ -286,14 +290,14 @@ public class UnitRestController{
 	@GetMapping(value = "/{idunit}/numberOfCompletedLessons")
 	@ResponseBody
 	public ResponseEntity<Integer> numberOfCompletedLesson(@PathVariable int idunit) {
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		
-		Unit unit = unitService.findById(idunit);
-		List<Lesson> lessons = lessonService.findByUnit(unit);
+		UnitDto unit = unitService.findById(idunit);
+		List<LessonDto> lessons = lessonService.findByUnit(unit);
 		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 		int count = 0;
 		for(int i=0; i<lessons.size(); i++) {
-			CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+			CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
 			if(completedLesson != null) {
 				count++;
 			}
@@ -305,17 +309,17 @@ public class UnitRestController{
 	@GetMapping(value = "/numberOfCompletedLessons")
 	@ResponseBody
 	public ResponseEntity<ArrayList<Integer> > numberOfCompletedLessons() {
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		
-		List<Unit> units = unitService.findAll();
-		List<Lesson> lessons;
+		List<UnitDto> units = unitService.findAll();
+		List<LessonDto> lessons;
 		ArrayList<Integer> number = new ArrayList<Integer>(); 
 		for (int j=0 ; j< units.size() ; j++) {
 			lessons = lessonService.findByUnit(units.get(j));
 			// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 			int count = 0;
 			for(int i=0; i<lessons.size(); i++) {
-				CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+				CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
 				if(completedLesson != null) {
 					count++;
 				}
@@ -329,15 +333,15 @@ public class UnitRestController{
 	@GetMapping(value = "/NumberOfUnitsCompleted")
 	@ResponseBody
 	public ResponseEntity<List<Boolean>> Unitscompleted() {
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		List<Boolean> booleanos = new ArrayList<Boolean>();
-		List<Unit> units = unitService.findAll();
+		List<UnitDto> units = unitService.findAll();
 		for (int j = 0 ; j<units.size(); j++) {
-			List<Lesson> lessons = lessonService.findByUnit(units.get(j));
+			List<LessonDto> lessons = lessonService.findByUnit(units.get(j));
 			// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
 			int count = 0;
 			for(int i=0; i<lessons.size(); i++) {
-				CompletedLesson completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
+				CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
 				if(completedLesson != null) {
 					count++;
 				}

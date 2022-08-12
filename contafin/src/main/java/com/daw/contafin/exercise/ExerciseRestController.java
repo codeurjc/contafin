@@ -1,5 +1,9 @@
 package com.daw.contafin.exercise;
 
+import com.daw.contafin.answer.AnswerDto;
+import com.daw.contafin.completedExercise.CompletedExerciseDto;
+import com.daw.contafin.lesson.LessonDto;
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,9 +63,9 @@ public class ExerciseRestController{
 	@JsonView(ExerciseBassic.class)
 	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}")
 	@ResponseBody
-	public ResponseEntity<Exercise> getOneExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {
-		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
-		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
+	public ResponseEntity<ExerciseDto> getOneExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {
+		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		if (exercise != null) {
 			return new ResponseEntity<>(exercise, HttpStatus.OK);
 		} else {
@@ -72,9 +76,9 @@ public class ExerciseRestController{
 	//change exercise
 	@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}")
 	@ResponseBody
-	public ResponseEntity<Exercise> updateExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Exercise exerciseAct) {
-		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
-		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
+	public ResponseEntity<ExerciseDto> updateExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody ExerciseDto exerciseAct) {
+		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		if (exercise != null) {
 			exercise.setKind(exerciseAct.getKind());
 			exercise.setStatement(exerciseAct.getStatement());
@@ -90,9 +94,9 @@ public class ExerciseRestController{
 	//Ask for a answer
 	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer")
 	@ResponseBody
-	public ResponseEntity<Answer> getOneAnswer(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {
-		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
-		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
+	public ResponseEntity<AnswerDto> getOneAnswer(@PathVariable long idunit, @PathVariable long idlesson, @PathVariable long id) {
+		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		if (exercise != null) {
 			return new ResponseEntity<>(exercise.getAnswer(), HttpStatus.OK);
 		} else {
@@ -102,11 +106,11 @@ public class ExerciseRestController{
 	
 	@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer")
 	@ResponseBody
-	public ResponseEntity<Exercise> changeAnswer(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Answer answerAct) {
-		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
-		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
+	public ResponseEntity<ExerciseDto> changeAnswer(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody AnswerDto answerAct) {
+		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		if (exercise != null) {
-			Answer answer = exercise.getAnswer();
+			AnswerDto answer = exercise.getAnswer();
 			answer.setResult(answerAct.getResult());
 			answerAct.setId(id);
 			exercise.setAnswer(answer);
@@ -119,13 +123,13 @@ public class ExerciseRestController{
 	
 	@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Solution")
 	@ResponseBody
-	public ResponseEntity<Boolean> checkExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody Answer answerAct) {
-		User user = userComponent.getLoggedUser();
-		Lesson lesson = lessonService.findById((idunit-1)*3+idlesson);
-		Exercise exercise = exerciseService.findByLessonAndId(lesson, id);
+	public ResponseEntity<Boolean> checkExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody AnswerDto answerAct) {
+		UserDto user = userComponent.getLoggedUser();
+		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		boolean goodanswer;
 		if (exercise != null) {
-			Answer answer = exercise.getAnswer();
+			AnswerDto answer = exercise.getAnswer();
 			if(exercise.getKind()==2) {
 				String[] answergood = answer.getResult().split(" ");
 				String[] myanswer = answerAct.getResult().split(" ");
@@ -140,7 +144,7 @@ public class ExerciseRestController{
 				}
 				if (counter >= 3) {
 					goodanswer=true;
-					completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+					completedExerciseService.save(new CompletedExerciseDto(user, exercise, 0));
 					if (userComponent.isLoggedUser()) {
 						user.updatePoints(user, 3);
 						userService.save(user);
@@ -156,7 +160,7 @@ public class ExerciseRestController{
 			else {
 				if(answer.getResult().equals(answerAct.getResult())) {
 					goodanswer=true;
-					completedExerciseService.save(new CompletedExercise(user, exercise, 0));
+					completedExerciseService.save(new CompletedExerciseDto(user, exercise, 0));
 					if (userComponent.isLoggedUser()) {
 						user.updatePoints(user, 3);
 						userService.save(user);
@@ -178,7 +182,7 @@ public class ExerciseRestController{
 	
 	@RequestMapping(value = "/DeleteAllExercises", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteExerciseCompleted() {
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		completedExerciseService.deleteAll(user);
 		return new ResponseEntity<>(true, HttpStatus.OK);
 	}

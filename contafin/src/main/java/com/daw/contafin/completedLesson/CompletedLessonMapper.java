@@ -10,9 +10,9 @@ import java.util.List;
 @Mapper( componentModel = "spring")
 public interface CompletedLessonMapper {
 
-    CompletedLessonDto CompletedLessonDtoToCompletedLesson(CompletedLesson completedLesson);
-    CompletedLesson CompletedLessonToCompletedLessonDto(CompletedLessonDto completedLessonDto);
+    CompletedLessonDto CompletedLessonToCompletedLessonDto(CompletedLesson completedLesson);
+    CompletedLesson CompletedLessonDtoToCompletedLesson(CompletedLessonDto completedLessonDto);
 
-    List<CompletedLessonDto> CompletedLessonsDtoToCompletedLessons(Collection<CompletedLesson> completedLessons);
-    List<CompletedLesson> CompletedLessonsToCompletedLessonsDto(Collection<CompletedLessonDto> completedLessonsDto);
+    List<CompletedLessonDto> CompletedLessonsToCompletedLessonsDto(Collection<CompletedLesson> completedLessons);
+    List<CompletedLesson> CompletedLessonsDtoToCompletedLessons(Collection<CompletedLessonDto> completedLessonsDto);
 }

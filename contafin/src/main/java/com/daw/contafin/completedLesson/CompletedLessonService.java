@@ -1,8 +1,13 @@
 package com.daw.contafin.completedLesson;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.daw.contafin.lesson.LessonDto;
+import com.daw.contafin.lesson.LessonMapper;
+import com.daw.contafin.user.UserDto;
+import com.daw.contafin.user.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,27 +24,79 @@ public class CompletedLessonService {
 	
 	@Autowired
 	CompletedLessonRepository completedLessonRepository;
-	
-	public int getCompletedLessons(User user, Date date) {
-		return completedLessonRepository.findByUserAndDate(user, date).size();
+
+	@Autowired
+	UserMapper userMapper;
+
+	@Autowired
+	CompletedLessonMapper completedLessonMapper;
+
+	@Autowired
+	LessonMapper lessonMapper;
+
+
+	public int getCompletedLessons(UserDto userDto, Date date) {
+		int toReturn = 0;
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			toReturn = completedLessonRepository.findByUserAndDate(user, date).size();
+		}catch (Exception e){
+			toReturn = 0;
+		}
+		return toReturn;
 	}
 
-	public List<CompletedLesson> findByUserAndDate(User user, Date date){
-		return completedLessonRepository.findByUserAndDate(user, date);
+	public List<CompletedLessonDto> findByUserAndDate(UserDto userDto, Date date){
+		List<CompletedLessonDto> completedLessonDtos = new ArrayList<>();
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			List<CompletedLesson> completedLesson = completedLessonRepository.findByUserAndDate(user, date);
+			completedLessonDtos = completedLessonMapper.CompletedLessonsToCompletedLessonsDto(completedLesson);
+		}catch (Exception e){
+			completedLessonDtos = null;
+		}
+		return completedLessonDtos;
 	}
 	
-	public CompletedLesson findByUserAndLesson(User user, Lesson lesson) {
-		return completedLessonRepository.findByUserAndLesson(user, lesson);
+	public CompletedLessonDto findByUserAndLesson(UserDto userDto, LessonDto lessonDto) {
+		CompletedLessonDto completedLessonDto = new CompletedLessonDto();
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
+			CompletedLesson completedLesson = completedLessonRepository.findByUserAndLesson(user, lesson);
+			completedLessonDto = completedLessonMapper.CompletedLessonToCompletedLessonDto(completedLesson);
+		}catch (Exception e){
+			completedLessonDto = null;
+		}
+		return completedLessonDto;
 	}
 	
-	public List<CompletedLesson> findByUser(User user){
-		return completedLessonRepository.findByUser(user);
+	public List<CompletedLessonDto> findByUser(UserDto userDto){
+		List<CompletedLessonDto> completedLessonDtos = new ArrayList<>();
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			List<CompletedLesson> completedLessons = completedLessonRepository.findByUser(user);
+			completedLessonDtos = completedLessonMapper.CompletedLessonsToCompletedLessonsDto(completedLessons);
+		}catch (Exception e){
+			completedLessonDtos = null;
+		}
+		return completedLessonDtos;
 	}
-	
-	public void save(CompletedLesson completedLesson) {
-		completedLessonRepository.save(completedLesson);
+
+	public void save(CompletedLessonDto completedLessonDto) {
+		try{
+			CompletedLesson completedLesson = completedLessonMapper.CompletedLessonDtoToCompletedLesson(completedLessonDto);
+			completedLessonRepository.save(completedLesson);
+		}catch (Exception e){
+
+		}
 	}
+
 	public void delete(long Id) {
-		completedLessonRepository.deleteById(Id);
+		try{
+			completedLessonRepository.deleteById(Id);
+		}catch (Exception e){
+
+		}
 	}
 }

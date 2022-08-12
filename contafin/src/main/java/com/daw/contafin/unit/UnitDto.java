@@ -1,6 +1,7 @@
 package com.daw.contafin.unit;
 
 import com.daw.contafin.lesson.Lesson;
+import com.daw.contafin.lesson.LessonDto;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ public class UnitDto implements Serializable {
 
     private long id;
     private String name;
-    private List<Lesson> lessons;
+    private List<LessonDto> lessons;
 
     public UnitDto() {
     }

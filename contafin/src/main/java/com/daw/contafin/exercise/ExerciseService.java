@@ -1,8 +1,11 @@
 package com.daw.contafin.exercise;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.daw.contafin.lesson.LessonDto;
+import com.daw.contafin.lesson.LessonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -37,44 +40,102 @@ public class ExerciseService {
 		@Autowired
 		CompletedLessonService completedLessonService;
 
-		
-		public Exercise findById (long id) {
-			return exerciseRepository.findById(id);
+		@Autowired
+		ExerciseMapper exerciseMapper;
+
+		@Autowired
+		LessonMapper lessonMapper;
+
+		public ExerciseDto findById (long id) {
+			ExerciseDto exerciseDto = new ExerciseDto();
+			try{
+				Exercise exercise = exerciseRepository.findById(id);
+				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
+			}catch (Exception e){
+				exerciseDto = null;
+			}
+			return exerciseDto;
 		}
 		
-		public List<Exercise> findAll(){
-			return exerciseRepository.findAll();
+		public List<ExerciseDto> findAll(){
+			List<ExerciseDto> exercisesDto = new ArrayList<>();
+			try{
+				List<Exercise> exercises = exerciseRepository.findAll();
+				exercisesDto = exerciseMapper.ExercisesToExercisesDto(exercises);
+			}catch (Exception e){
+				exercisesDto = null;
+			}
+			return exercisesDto;
 		}
 		
-		public Exercise findByLessonAndId (Lesson lesson, long id) {
-			return exerciseRepository.findByLessonAndId(lesson,id);
+		public ExerciseDto findByLessonAndId (LessonDto lessonDto, long id) {
+			ExerciseDto exerciseDto = new ExerciseDto();
+			try{
+				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
+				Exercise exercise = exerciseRepository.findByLessonAndId(lesson,id);
+				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
+			}catch (Exception e){
+				exerciseDto = null;
+			}
+			return exerciseDto;
 		}
 		
-		public Exercise findByLessonAndKind(Lesson lesson, int kind) {
-			return exerciseRepository.findByLessonAndKind(lesson,kind);
+		public ExerciseDto findByLessonAndKind(LessonDto lessonDto, int kind) {
+			ExerciseDto exerciseDto = new ExerciseDto();
+			try{
+				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
+				Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,kind);
+				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
+			}catch (Exception e){
+				exerciseDto = null;
+			}
+			return exerciseDto;
 		}
 		
-		public List <Exercise> findByLesson(Lesson lesson) {
-			 return exerciseRepository.findByLesson(lesson);
+		public List<ExerciseDto> findByLesson(LessonDto lessonDto) {
+			List<ExerciseDto> exercisesDto = new ArrayList<>();
+			try{
+				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
+				List<Exercise> exercises = exerciseRepository.findByLesson(lesson);
+				exercisesDto = exerciseMapper.ExercisesToExercisesDto(exercises);
+			}catch (Exception e){
+				exercisesDto = null;
+			}
+			return exercisesDto;
 		}
-		public void save(Exercise exercise) {
-			exerciseRepository.save(exercise);
+		public void save(ExerciseDto exerciseDto) {
+			try{
+				Exercise exercise = exerciseMapper.ExerciseDtoToExercise(exerciseDto);
+				exerciseRepository.save(exercise);
+			}catch (Exception e){
+
+			}
+
 		}
 		public void delete(long id) {
-			exerciseRepository.deleteById(id);
+			try{
+				exerciseRepository.deleteById(id);
+			}catch (Exception e){
+
+			}
+
 		}
-		public Page<Exercise> getExercises(Pageable page) {
-			return exerciseRepository.findAll(page);
+		public Page<Exercise> getExercises(Pageable page) {///////////////////////////////Revisar
+			try{
+				return exerciseRepository.findAll(page);
+			}catch (Exception e){
+				return null;
+			}
 		}
 		
 		//Upload exercise images
-		public void uploadExerciseImages( Exercise exercise, MultipartFile image1, MultipartFile image2,MultipartFile image3) throws IOException{
+		public void uploadExerciseImages( ExerciseDto exerciseDto, MultipartFile image1, MultipartFile image2,MultipartFile image3) throws IOException{
 			byte[] bytes1 = imageService.uploadImage(image1);
-			byte[]bytes2 = imageService.uploadImage(image2);
+			byte[] bytes2 = imageService.uploadImage(image2);
 			byte[] bytes3 = imageService.uploadImage(image3);
-			exercise.setImage1(bytes1);
-			exercise.setImage2(bytes2);
-			exercise.setImage3(bytes3);
+			exerciseDto.setImage1(bytes1);
+			exerciseDto.setImage2(bytes2);
+			exerciseDto.setImage3(bytes3);
 		}
 		
 

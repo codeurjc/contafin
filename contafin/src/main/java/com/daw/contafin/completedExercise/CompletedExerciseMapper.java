@@ -10,9 +10,9 @@ import java.util.List;
 @Mapper( componentModel = "spring")
 public interface CompletedExerciseMapper {
 
-    CompletedExerciseDto CompletedExerciseDtoToCompletedExercise(CompletedExercise completedExercise);
-    CompletedExercise CompletedExerciseToCompletedExerciseDto(CompletedExerciseDto completedExerciseDto);
+    CompletedExerciseDto CompletedExerciseToCompletedExerciseDto(CompletedExercise completedExercise);
+    CompletedExercise CompletedExerciseDtoToCompletedExercise(CompletedExerciseDto completedExerciseDto);
 
-    List<CompletedExerciseDto> CompletedExercisesDtoToCompletedExercises(Collection<CompletedExercise> completedExercises);
-    List<CompletedExercise> CompletedExercisesToCompletedExercisesDto(Collection<CompletedExerciseDto> completedExercisesDto);
+    List<CompletedExerciseDto> CompletedExercisesToCompletedExercisesDto(Collection<CompletedExercise> completedExercises);
+    List<CompletedExercise> CompletedExercisesDtoToCompletedExercises(Collection<CompletedExerciseDto> completedExercisesDto);
 }

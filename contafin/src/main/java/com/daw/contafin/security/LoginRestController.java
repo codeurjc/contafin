@@ -3,6 +3,7 @@ package com.daw.contafin.security;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,13 +33,13 @@ public class LoginRestController {
 	private UserService userService;
 
 	@RequestMapping("/login")
-	public ResponseEntity<User> logIn() {
+	public ResponseEntity<UserDto> logIn() {
 
 		if (!userComponent.isLoggedUser()) {
 			log.info("Not user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
-			User loggedUser = userComponent.getLoggedUser();
+			UserDto loggedUser = userComponent.getLoggedUser();
 			log.info("Logged as " + loggedUser.getName());
 			//Updated user last login date
 			loggedUser.setLastConnection(loggedUser.newConnection());

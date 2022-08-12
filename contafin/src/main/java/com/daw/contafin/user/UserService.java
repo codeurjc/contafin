@@ -1,10 +1,12 @@
 package com.daw.contafin.user;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.daw.contafin.completedLesson.CompletedLessonDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,106 +32,164 @@ public class UserService {
 	
 	@Autowired
 	CompletedLessonService completedLessonService;
+
+	@Autowired
+	UserMapper userMapper;
 	
-	public User findByEmail (String email) {
-		return userRepository.findByEmail(email);
+	public UserDto findByEmail (String email) {
+		UserDto userDto = new UserDto();
+		try{
+			User user = userRepository.findByEmail(email);
+			userDto = userMapper.UserToUserDto(user);
+		}catch (Exception e){
+			userDto = null;
+		}
+		return userDto;
 	}
 	
-	public List<User> getUsers () {
-		return userRepository.findAll();
+	public List<UserDto> getUsers () {
+		List<UserDto> userDtos = new ArrayList<>();
+		try{
+			List<User> user = userRepository.findAll();
+			userDtos = userMapper.UsersToUsersDto(user);
+		}catch (Exception e){
+			userDtos = null;
+		}
+		return userDtos;
 	}
 	
-	public void save(User user) {
-		userRepository.save(user);
+	public void save(UserDto userDto) {
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			userRepository.save(user);
+		}catch (Exception e){
+
+		}
 	}
 	
-	public User findById(long id) {
-		return userRepository.findById(id);
+	public UserDto findById(long id) {
+		UserDto userDto = new UserDto();
+		try{
+			User user = userRepository.findById(id);
+			userDto = userMapper.UserToUserDto(user);
+		}catch (Exception e){
+			userDto = null;
+		}
+		return userDto;
 	}
 	
-	public void updateUserData(User user) {
-		userRepository.save(user);
+	public void updateUserData(UserDto userDto) {
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			userRepository.save(user);
+		}catch (Exception e){
+
+		}
 	}
 	
-	public void deleteAccount(User user) {
-		userRepository.delete(user);
+	public void deleteAccount(UserDto userDto) {
+		try{
+			User user = userMapper.UserDtoToUser(userDto);
+			userRepository.delete(user);
+		}catch (Exception e){
+
+		}
 	}
 	
-	public int  getLesson(User user) {
-		List <CompletedLesson> completedLesson = completedLessonService.findByUser(user);
-		int lesson = completedLesson.size() % 3;
-		return lesson;
+	public int  getLesson(UserDto userDto) {
+		try{
+			List<CompletedLessonDto> completedLessonDtos = completedLessonService.findByUser(userDto);
+			return completedLessonDtos.size() % 3;
+		}catch (Exception e){
+			return -1;
+		}
 	}
 	
-	public int  getUnit(User user) {
-		List <CompletedLesson> completedLesson = completedLessonService.findByUser(user);
-		int unit = (int) (completedLesson.size()/3) + 1;
-		return unit;
+	public int  getUnit(UserDto userDto) {
+		try{
+			List <CompletedLessonDto> completedLessonDtos = completedLessonService.findByUser(userDto);
+			return (completedLessonDtos.size()/3) + 1;
+		}catch (Exception e){
+			return -1;
+		}
+
 	}
 	
-	public int [] progress(User user) {
+	public int [] progress(UserDto userDto) {
 		//Create an array for weekly progress
 		int [] progress = new int[7];
-		//User user = userComponent.getLoggedUser();
-		//Get the current date and set first day of week Monday
-		Calendar calendar = Calendar.getInstance();
-		calendar.setFirstDayOfWeek(Calendar.MONDAY);
-		//Convert java.util.Date to java.sql.Date
-		Date date= calendar.getTime();
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-		//Get the current day
-		int day =calendar.get(Calendar.DAY_OF_WEEK);
-		//Store weekly progress
-		progress[day-1]=completedLessonService.getCompletedLessons(user, sqlDate);
-		for (int i= day-1; i< 0; i-- ) { 
-			calendar.add(Calendar.DATE, -1);
-			date= calendar.getTime();
-			sqlDate= new java.sql.Date(date.getTime());
-			progress[i-1]=completedLessonService.getCompletedLessons(user, sqlDate);
+		try{
+			//User user = userComponent.getLoggedUser();
+			//Get the current date and set first day of week Monday
+			Calendar calendar = Calendar.getInstance();
+			calendar.setFirstDayOfWeek(Calendar.MONDAY);
+			//Convert java.util.Date to java.sql.Date
+			Date date = calendar.getTime();
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			//Get the current day
+			int day = calendar.get(Calendar.DAY_OF_WEEK);
+			//Store weekly progress
+			progress[day-1] = completedLessonService.getCompletedLessons(userDto, sqlDate);
+			for (int i = day-1; i< 0; i-- ) {
+				calendar.add(Calendar.DATE, -1);
+				date = calendar.getTime();
+				sqlDate = new java.sql.Date(date.getTime());
+				progress[i-1]=completedLessonService.getCompletedLessons(userDto, sqlDate);
+			}
+		}catch (Exception e){
+			progress = null;
 		}
 		return progress;
 	}
 	
 	public Page<User> getUsers(Pageable page) {
-		return userRepository.findAll(page);
-	}
-	
-	public int getRemainingGoals(User user) {
-		Calendar date = Calendar.getInstance();
-		java.sql.Date sqlDate =  new java.sql.Date((date.getTime()).getTime());
-		if (completedLessonService.getCompletedLessons(user, sqlDate) >= user.getDailyGoal()) {
-			return 0;
-		} else {
-			return (user.getDailyGoal() - completedLessonService.getCompletedLessons(user, sqlDate));
-		}
-	}
-	
-	public User updateUser(User user, User updatedUser) {
-		//Change goal
-		if(updatedUser.getDailyGoal() !=0) {
-			user.setDailyGoal(updatedUser.getDailyGoal());
-			user.setRemainingGoals(updatedUser.getDailyGoal());
-			updateUserData(user);
-			userComponent.setLoggedUser(user);
-			return user;
-		}
-		//Change name, email or password
-		if (updatedUser.getName().isEmpty() && updatedUser.getEmail().isEmpty() && updatedUser.getPasswordHash().isEmpty()) {
+		try{
+			return userRepository.findAll(page);
+		}catch (Exception e){
 			return null;
-		} else {
-			if (!updatedUser.getName().isEmpty()) {
-				user.setName(updatedUser.getName());
+		}
+	}
+	
+	public int getRemainingGoals(UserDto userDto) {
+			Calendar date = Calendar.getInstance();
+			java.sql.Date sqlDate =  new java.sql.Date((date.getTime()).getTime());
+			if (completedLessonService.getCompletedLessons(userDto, sqlDate) >= userDto.getDailyGoal()) {
+				return 0;
+			} else {
+				return (userDto.getDailyGoal() - completedLessonService.getCompletedLessons(userDto, sqlDate));
 			}
-			if (!updatedUser.getEmail().isEmpty()) {
-				user.setEmail(updatedUser.getEmail());
+	}
+	
+	public UserDto updateUser(UserDto userDto, UserDto updatedUserDto) {
+		try{
+			//Change goal
+			if(updatedUserDto.getDailyGoal() !=0) {
+				userDto.setDailyGoal(updatedUserDto.getDailyGoal());
+				userDto.setRemainingGoals(updatedUserDto.getDailyGoal());
+				updateUserData(userDto);
+				userComponent.setLoggedUser(userDto);
+				return userDto;
 			}
-			if(!updatedUser.getPasswordHash().isEmpty()) {
-				String passwordHash = new BCryptPasswordEncoder().encode(updatedUser.getPasswordHash());
-				user.setPasswordHash(passwordHash);
+			//Change name, email or password
+			if (updatedUserDto.getName().isEmpty() && updatedUserDto.getEmail().isEmpty() && updatedUserDto.getPasswordHash().isEmpty()) {
+				return null;
+			} else {
+				if (!updatedUserDto.getName().isEmpty()) {
+					userDto.setName(updatedUserDto.getName());
+				}
+				if (!updatedUserDto.getEmail().isEmpty()) {
+					userDto.setEmail(updatedUserDto.getEmail());
+				}
+				if(!updatedUserDto.getPasswordHash().isEmpty()) {
+					String passwordHash = new BCryptPasswordEncoder().encode(updatedUserDto.getPasswordHash());
+					userDto.setPasswordHash(passwordHash);
+				}
+				updateUserData(userDto);
+				userComponent.setLoggedUser(userDto);
+				return userDto;
 			}
-			updateUserData(user);
-			userComponent.setLoggedUser(user);
-			return user;
+		}catch (Exception e){
+			return userDto;
 		}
 	}
 	

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.exercise.ExerciseDto;
+import com.daw.contafin.exercise.ExerciseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,9 @@ public class ImageService {
 	
 	@Autowired
 	UserComponent userComponent;
+
+	@Autowired
+	ExerciseMapper exerciseMapper;
 	
 	public byte[] uploadImage(MultipartFile file) throws IOException {
 		
@@ -45,14 +50,16 @@ public class ImageService {
 	}
 	
 	//Store exercises images located in the "static/img" folder in the database
-	public void saveImages(Exercise exercise, Path route1, Path route2, Path route3) throws IOException {
+	public void saveImages(ExerciseDto exerciseDto, Path route1, Path route2, Path route3) throws IOException {
 		byte []image = Files.readAllBytes(route1);
-		exercise.setImage1(image);
+		exerciseDto.setImage1(image);
 		image = Files.readAllBytes(route2);
-		exercise.setImage2(image);
+		exerciseDto.setImage2(image);
 		image = Files.readAllBytes(route3);
-		exercise.setImage3(image);
-		exerciseRepository.save(exercise);	
+		exerciseDto.setImage3(image);
+
+		Exercise exercise = exerciseMapper.ExerciseDtoToExercise(exerciseDto);
+		exerciseRepository.save(exercise);
 	}
 	
 	//Show profile picture
@@ -71,15 +78,15 @@ public class ImageService {
 	}
 	
 	// Show exercise picture
-	public void showImageExercise(Exercise exercise, long nImage, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	public void showImageExercise(ExerciseDto exerciseDto, long nImage, HttpServletRequest request,
+								  HttpServletResponse response) throws IOException {
 		byte[] image;
 		if (nImage == 1) {
-			image = exercise.getImage1();
+			image = exerciseDto.getImage1();
 		} else if (nImage == 2) {
-			image = exercise.getImage2();
+			image = exerciseDto.getImage2();
 		} else {
-			image = exercise.getImage3();
+			image = exerciseDto.getImage3();
 		}
 		response.setContentType("image/jpeg");
 		ServletOutputStream outputStream = response.getOutputStream();

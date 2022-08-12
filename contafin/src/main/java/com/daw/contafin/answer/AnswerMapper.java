@@ -8,9 +8,9 @@ import java.util.List;
 @Mapper( componentModel = "spring")
 public interface AnswerMapper {
 
-    AnswerDto AnswerDtoToAnswer(Answer answer);
-    Answer AnswerToAnswerDto(AnswerDto answerDto);
+    AnswerDto AnswerToAnswerDto(Answer answer);
+    Answer AnswerDtoToAnswer(AnswerDto answerDto);
 
-    List<AnswerDto> AnswersDtoToAnswers(Collection<Answer> answers);
-    List<Answer> AnswersToAnswersDto(Collection<AnswerDto> answersDto);
+    List<AnswerDto> AnswersToAnswersDto(Collection<Answer> answers);
+    List<Answer> AnswersDtoToAnswers(Collection<AnswerDto> answersDto);
 }

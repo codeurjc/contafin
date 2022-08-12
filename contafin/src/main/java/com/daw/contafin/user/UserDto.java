@@ -1,6 +1,7 @@
 package com.daw.contafin.user;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
+import com.daw.contafin.completedExercise.CompletedExerciseDto;
 import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -32,7 +33,7 @@ public class UserDto implements Serializable {
     private int needexp = 10;
     private byte[] image;
     private List<String> roles;
-    private List<CompletedExercise> exercises;
+    private List<CompletedExerciseDto> exercises;
 
 
     public UserDto() {
@@ -84,18 +85,18 @@ public class UserDto implements Serializable {
         return newConecction;
     }
 
-    public void updateStreak(User user, int completedLessons) {
-        if(completedLessons == user.getDailyGoal()) {
-            user.setStreak(user.getStreak()+1);
+    public void updateStreak(UserDto userdto, int completedLessons) {
+        if(completedLessons == userdto.getDailyGoal()) {
+            userdto.setStreak(userdto.getStreak()+1);
         }
     }
 
-    public void updatePoints(User user, int points) {
-        if(user.getPoints()+points >=0) {
-            user.setPoints(user.getPoints()+points);
+    public void updatePoints(UserDto userDto, int points) {
+        if(userDto.getPoints()+points >=0) {
+            userDto.setPoints(userDto.getPoints()+points);
         }
         else {
-            user.setPoints(0);
+            userDto.setPoints(0);
         }
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.mail.MessagingException;
 
+import com.daw.contafin.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,7 +72,7 @@ public class WebController extends ContentController {
 
 		model.addAttribute("loggedUser", userComponent.isLoggedUser());
 
-		User user = userComponent.getLoggedUser();
+		UserDto user = userComponent.getLoggedUser();
 		//Delete exercises completed if you exit in the middle of a lesson.
 		completedExerciseService.deleteAll(user);
 		if (userComponent.isLoggedUser()) {
@@ -111,7 +112,7 @@ public class WebController extends ContentController {
 		    return "error2";
 		}
 		if (userService.findByEmail(email) == null) {
-			User user = new User(name, email, pass, "ROLE_USER");
+			UserDto user = new UserDto(name, email, pass, "ROLE_USER");
 			userService.save(user);
 			user.setLastConnection(user.newConnection());
 			userService.updateUserData(user);

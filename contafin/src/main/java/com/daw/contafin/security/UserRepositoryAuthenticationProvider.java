@@ -3,6 +3,7 @@ package com.daw.contafin.security;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.daw.contafin.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,20 +15,18 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.daw.contafin.user.User;
-import com.daw.contafin.user.UserComponent;
-import com.daw.contafin.user.UserRepository;
-
-
 
 @Component
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
-	private UserRepository userRepository;
+	UserRepository userRepository;
 
 	@Autowired
-	private UserComponent userComponent;
+	UserComponent userComponent;
+
+	@Autowired
+	UserMapper userMapper;
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
@@ -36,17 +35,18 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 		String password = (String) auth.getCredentials();
 
 		User user = userRepository.findByEmail(email);
+		UserDto userDto = userMapper.UserToUserDto(user);
 
-		if (user == null) {
+		if (userDto == null) {
 			throw new BadCredentialsException("User not found");
 		}
 
-		if (!new BCryptPasswordEncoder().matches(password, user.getPasswordHash())) {
+		if (!new BCryptPasswordEncoder().matches(password, userDto.getPasswordHash())) {
 
 			throw new BadCredentialsException("Wrong password");
 		} else {
 
-			userComponent.setLoggedUser(user);
+			userComponent.setLoggedUser(userDto);
 
 			List<GrantedAuthority> roles = new ArrayList<>();
 			for (String role : user.getRoles()) {
