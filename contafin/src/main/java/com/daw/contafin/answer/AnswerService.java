@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.daw.contafin.exercise.Exercise;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 @Service
@@ -18,18 +19,20 @@ public class AnswerService {
 	@Autowired
 	AnswerRepository answerRepository;
 
-	@Autowired
+	@Resource
 	AnswerMapper answerMapper;
 
-	@Autowired
+	@Resource
 	ExerciseMapper exerciseMapper;
 	
 	public AnswerDto findById (long id) {
-		AnswerDto answerDto = new AnswerDto();
+		log.info("Busqueda de una respuesta por el id: {} ", id);
+		AnswerDto answerDto;
 		try{
 			Answer answer = answerRepository.findById(id);
 			answerDto = answerMapper.AnswerToAnswerDto(answer);
 		}catch (Exception e){
+			log.info("Error al buscar la respuesta por  id");
 			answerDto = null;
 		}
 		return answerDto;
@@ -37,30 +40,36 @@ public class AnswerService {
 
 
 	public AnswerDto findByExercise (ExerciseDto exerciseDto) {
-		AnswerDto answerDto = new AnswerDto();
+		log.info("Busqueda de una respuesta por el ejercicio: {} ", exerciseDto);
+		AnswerDto answerDto ;
 		try{
 			Exercise exercise = exerciseMapper.ExerciseDtoToExercise(exerciseDto);
 			Answer answer = answerRepository.findByExercise(exercise);
 			answerDto = answerMapper.AnswerToAnswerDto(answer);
 		}catch (Exception e){
+			log.info("Error al buscar la respuesta por  ejercicio");
 			answerDto = null;
 		}
 		return answerDto;
 	}
 	public AnswerDto save(AnswerDto answerDto) {
+		log.info("Guardado de la repuesta: {}", answerDto);
 		try{
 			Answer answer = answerMapper.AnswerDtoToAnswer(answerDto);
 			answerRepository.save(answer);
 		}catch (Exception e){
+			log.info("Error al guardar la repuesta");
 			answerDto = null;
 		}
 		return answerDto;
 	}
 	public void delete(AnswerDto answerDto) {
+		log.info("Borrado de la repuesta: {}", answerDto);
 		try{
 			Answer answer = answerMapper.AnswerDtoToAnswer(answerDto);
 			answerRepository.delete(answer);
 		}catch (Exception e){
+			log.info("Error al borrar la repuesta");
 		}
 	}
 }

@@ -3,6 +3,10 @@ package com.daw.contafin;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.daw.contafin.lesson.LessonDto;
+import com.daw.contafin.lesson.LessonMapper;
+import com.daw.contafin.unit.UnitDto;
+import com.daw.contafin.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +18,8 @@ import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.unit.Unit;
 import com.daw.contafin.unit.UnitService;
 import com.daw.contafin.unit.UnitsComplete;
-import com.daw.contafin.user.User;
-import com.daw.contafin.user.UserComponent;
-import com.daw.contafin.user.UserService;
+
+import javax.annotation.Resource;
 
 @Controller
 public class ContentController {
@@ -35,6 +38,12 @@ public class ContentController {
 	
 	@Autowired
 	ExerciseService exerciseService;
+
+	@Resource
+	UserMapper userMapper;
+
+	@Resource
+	LessonMapper lessonMapper;
 	
 	public void loadNavbar(Model model) {
 	
@@ -48,16 +57,20 @@ public class ContentController {
 	
 	public void loadUnits(Model model) {
 
-		User user = userComponent.getLoggedUser();
+		UserDto userDto = userComponent.getLoggedUser();
+
+		User user = userMapper.UserDtoToUser(userDto);
 		
-		List<Unit> unit = unitService.findAll();
+		List<UnitDto> unit = unitService.findAll();
 		
 		List<UnitsComplete> unitsCompletes = new ArrayList<>();
 		
 		for (int i = 0; i < unit.size(); i++) {
 			unitsCompletes.add(new UnitsComplete(unit.get(i).getName()));
 			
-			List<Lesson> lessons = unit.get(i).getLessons();
+			List<LessonDto> lessonDtos = unit.get(i).getLessons();
+
+			List<Lesson> lessons = lessonMapper.LessonsDtoToLessons(lessonDtos);
 			
 			for(int j = 0; j < lessons.size(); j++) {
 				

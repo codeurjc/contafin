@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +35,7 @@ public class ImageService {
 	@Autowired
 	UserComponent userComponent;
 
-	@Autowired
+	@Resource
 	ExerciseMapper exerciseMapper;
 	
 	public byte[] uploadImage(MultipartFile file) throws IOException {

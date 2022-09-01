@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonService;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 @Service
@@ -33,66 +34,75 @@ public class UserService {
 	@Autowired
 	CompletedLessonService completedLessonService;
 
-	@Autowired
+	@Resource
 	UserMapper userMapper;
 	
 	public UserDto findByEmail (String email) {
-		UserDto userDto = new UserDto();
+		log.info("Busqueda de usuario por email: {}", email);
+		UserDto userDto;
 		try{
 			User user = userRepository.findByEmail(email);
 			userDto = userMapper.UserToUserDto(user);
 		}catch (Exception e){
+			log.info("Error al buscar el usuario");
 			userDto = null;
 		}
 		return userDto;
 	}
 	
 	public List<UserDto> getUsers () {
-		List<UserDto> userDtos = new ArrayList<>();
+		log.info("Busqueda del listado de usuarios");
+		List<UserDto> userDtos;
 		try{
 			List<User> user = userRepository.findAll();
 			userDtos = userMapper.UsersToUsersDto(user);
 		}catch (Exception e){
+			log.info("Error al buscar los usuarios");
 			userDtos = null;
 		}
 		return userDtos;
 	}
 	
 	public void save(UserDto userDto) {
+		log.info("Guardado del usuario: {}", userDto);
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			userRepository.save(user);
 		}catch (Exception e){
-
+			log.info("Error al guardar del usuario");
 		}
 	}
 	
 	public UserDto findById(long id) {
-		UserDto userDto = new UserDto();
+		log.info("Busqueda de usuario por id: {}", id);
+		UserDto userDto;
 		try{
 			User user = userRepository.findById(id);
 			userDto = userMapper.UserToUserDto(user);
 		}catch (Exception e){
+			log.info("Error al buscar el usuario");
 			userDto = null;
 		}
 		return userDto;
 	}
 	
 	public void updateUserData(UserDto userDto) {
+		log.info("Actualizacion del usuario: {}", userDto);
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			userRepository.save(user);
 		}catch (Exception e){
-
+			log.info("Error al actualizar el usuario");
 		}
 	}
 	
 	public void deleteAccount(UserDto userDto) {
+		log.info("Borrado del usuario: {}", userDto);
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			userRepository.delete(user);
 		}catch (Exception e){
-
+			log.info("Error al borrar el usuario");
 		}
 	}
 	
@@ -101,6 +111,7 @@ public class UserService {
 			List<CompletedLessonDto> completedLessonDtos = completedLessonService.findByUser(userDto);
 			return completedLessonDtos.size() % 3;
 		}catch (Exception e){
+
 			return -1;
 		}
 	}
@@ -116,7 +127,7 @@ public class UserService {
 	}
 	
 	public int [] progress(UserDto userDto) {
-		//Create an array for weekly progress
+		log.info("Devuelve el progreso semanal del usuario: {}", userDto);
 		int [] progress = new int[7];
 		try{
 			//User user = userComponent.getLoggedUser();
@@ -137,6 +148,7 @@ public class UserService {
 				progress[i-1]=completedLessonService.getCompletedLessons(userDto, sqlDate);
 			}
 		}catch (Exception e){
+			log.info("Error al calcular el progreso");
 			progress = null;
 		}
 		return progress;
@@ -151,6 +163,7 @@ public class UserService {
 	}
 	
 	public int getRemainingGoals(UserDto userDto) {
+		log.info("Calculo de las metas que le quedan al usuario:{}", userDto);
 			Calendar date = Calendar.getInstance();
 			java.sql.Date sqlDate =  new java.sql.Date((date.getTime()).getTime());
 			if (completedLessonService.getCompletedLessons(userDto, sqlDate) >= userDto.getDailyGoal()) {
@@ -161,6 +174,7 @@ public class UserService {
 	}
 	
 	public UserDto updateUser(UserDto userDto, UserDto updatedUserDto) {
+		log.info("Modificacion del usuario: {}", updatedUserDto);
 		try{
 			//Change goal
 			if(updatedUserDto.getDailyGoal() !=0) {
@@ -189,6 +203,7 @@ public class UserService {
 				return userDto;
 			}
 		}catch (Exception e){
+			log.info("Error al modificar el usuario");
 			return userDto;
 		}
 	}

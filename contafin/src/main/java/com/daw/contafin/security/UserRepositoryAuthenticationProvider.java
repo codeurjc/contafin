@@ -15,6 +15,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 
 @Component
 public class UserRepositoryAuthenticationProvider implements AuthenticationProvider {
@@ -25,7 +27,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	@Autowired
 	UserComponent userComponent;
 
-	@Autowired
+	@Resource
 	UserMapper userMapper;
 
 	@Override

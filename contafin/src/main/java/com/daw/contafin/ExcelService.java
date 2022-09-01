@@ -3,6 +3,7 @@ package com.daw.contafin;
 import java.util.List;
 
 
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -28,7 +29,7 @@ public class ExcelService {
 	public Workbook generateExcel(){
 
 		Workbook workbook = new HSSFWorkbook();
-		List<User> list = userService.getUsers();
+		List<UserDto> list = userService.getUsers();
 		Sheet sheet = workbook.createSheet("User List");
 
 		Row header = sheet.createRow(0);
@@ -47,7 +48,7 @@ public class ExcelService {
 
 		int rowNum = 1;
 
-		for(User user : list){
+		for(UserDto user : list){
 			Row row = sheet.createRow(rowNum++);
 			row.createCell(0).setCellValue(user.getName());
 			row.createCell(1).setCellValue(user.getEmail());

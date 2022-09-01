@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.user.User;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 @Service
@@ -25,78 +26,88 @@ public class CompletedLessonService {
 	@Autowired
 	CompletedLessonRepository completedLessonRepository;
 
-	@Autowired
+	@Resource
 	UserMapper userMapper;
 
-	@Autowired
+	@Resource
 	CompletedLessonMapper completedLessonMapper;
 
-	@Autowired
+	@Resource
 	LessonMapper lessonMapper;
 
 
 	public int getCompletedLessons(UserDto userDto, Date date) {
-		int toReturn = 0;
+		log.info("Calculo de lecciones completas por usuario en una fecha");
+		int toReturn;
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			toReturn = completedLessonRepository.findByUserAndDate(user, date).size();
 		}catch (Exception e){
+			log.info("Error al calcular las lecciones completas");
 			toReturn = 0;
 		}
 		return toReturn;
 	}
 
 	public List<CompletedLessonDto> findByUserAndDate(UserDto userDto, Date date){
-		List<CompletedLessonDto> completedLessonDtos = new ArrayList<>();
+		log.info("Busqueda de lecciones completas por usuario y fecha");
+		List<CompletedLessonDto> completedLessonDtos;
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			List<CompletedLesson> completedLesson = completedLessonRepository.findByUserAndDate(user, date);
 			completedLessonDtos = completedLessonMapper.CompletedLessonsToCompletedLessonsDto(completedLesson);
 		}catch (Exception e){
+			log.info("Error al buscar las lecciones completas");
 			completedLessonDtos = null;
 		}
 		return completedLessonDtos;
 	}
 	
 	public CompletedLessonDto findByUserAndLesson(UserDto userDto, LessonDto lessonDto) {
-		CompletedLessonDto completedLessonDto = new CompletedLessonDto();
+		log.info("Busqueda de leccion completa por usuario y leccion");
+		CompletedLessonDto completedLessonDto;
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
 			CompletedLesson completedLesson = completedLessonRepository.findByUserAndLesson(user, lesson);
 			completedLessonDto = completedLessonMapper.CompletedLessonToCompletedLessonDto(completedLesson);
 		}catch (Exception e){
+			log.info("Error al buscar la leccion completa");
 			completedLessonDto = null;
 		}
 		return completedLessonDto;
 	}
 	
 	public List<CompletedLessonDto> findByUser(UserDto userDto){
-		List<CompletedLessonDto> completedLessonDtos = new ArrayList<>();
+		log.info("Busqueda de lecciones completas por usuario: {}", userDto);
+		List<CompletedLessonDto> completedLessonDtos;
 		try{
 			User user = userMapper.UserDtoToUser(userDto);
 			List<CompletedLesson> completedLessons = completedLessonRepository.findByUser(user);
 			completedLessonDtos = completedLessonMapper.CompletedLessonsToCompletedLessonsDto(completedLessons);
 		}catch (Exception e){
+			log.info("Error al buscar las lecciones completas");
 			completedLessonDtos = null;
 		}
 		return completedLessonDtos;
 	}
 
 	public void save(CompletedLessonDto completedLessonDto) {
+		log.info("Guardado de la leccion completa: {}", completedLessonDto);
 		try{
 			CompletedLesson completedLesson = completedLessonMapper.CompletedLessonDtoToCompletedLesson(completedLessonDto);
 			completedLessonRepository.save(completedLesson);
 		}catch (Exception e){
-
+			log.info("Error al guardar la leccion completa");
 		}
 	}
 
 	public void delete(long Id) {
+		log.info("Borrado de la leccion completa por el id: {}", Id);
 		try{
 			completedLessonRepository.deleteById(Id);
 		}catch (Exception e){
-
+			log.info("Error al borrar la leccion completa");
 		}
 	}
 }

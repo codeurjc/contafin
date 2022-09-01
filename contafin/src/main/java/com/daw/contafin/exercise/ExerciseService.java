@@ -23,6 +23,7 @@ import com.daw.contafin.lesson.Lesson;
 import com.daw.contafin.lesson.LessonService;
 import com.daw.contafin.user.User;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 @Service
@@ -40,96 +41,111 @@ public class ExerciseService {
 		@Autowired
 		CompletedLessonService completedLessonService;
 
-		@Autowired
+		@Resource
 		ExerciseMapper exerciseMapper;
 
-		@Autowired
+		@Resource
 		LessonMapper lessonMapper;
 
 		public ExerciseDto findById (long id) {
-			ExerciseDto exerciseDto = new ExerciseDto();
+			log.info("Busqueda de un ejercicio por el id: {} ", id);
+			ExerciseDto exerciseDto;
 			try{
 				Exercise exercise = exerciseRepository.findById(id);
 				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
 			}catch (Exception e){
+				log.info("Error al buscar ejercicio por  id");
 				exerciseDto = null;
 			}
 			return exerciseDto;
 		}
 		
 		public List<ExerciseDto> findAll(){
-			List<ExerciseDto> exercisesDto = new ArrayList<>();
+			log.info("Busqueda de todos los ejercicios");
+			List<ExerciseDto> exercisesDto;
 			try{
 				List<Exercise> exercises = exerciseRepository.findAll();
 				exercisesDto = exerciseMapper.ExercisesToExercisesDto(exercises);
 			}catch (Exception e){
+				log.info("Error al buscar los ejercicios");
 				exercisesDto = null;
 			}
 			return exercisesDto;
 		}
 		
 		public ExerciseDto findByLessonAndId (LessonDto lessonDto, long id) {
-			ExerciseDto exerciseDto = new ExerciseDto();
+			log.info("Busqueda de un ejercicio por el id y la leccion");
+			ExerciseDto exerciseDto;
 			try{
 				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
 				Exercise exercise = exerciseRepository.findByLessonAndId(lesson,id);
 				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
 			}catch (Exception e){
+				log.info("Error al buscar el ejercicio");
 				exerciseDto = null;
 			}
 			return exerciseDto;
 		}
 		
 		public ExerciseDto findByLessonAndKind(LessonDto lessonDto, int kind) {
-			ExerciseDto exerciseDto = new ExerciseDto();
+			log.info("Busqueda de un ejercicio por la leccion y el tipo");
+			ExerciseDto exerciseDto;
 			try{
 				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
 				Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,kind);
 				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
 			}catch (Exception e){
+				log.info("Error al buscar el ejercicio");
 				exerciseDto = null;
 			}
 			return exerciseDto;
 		}
 		
 		public List<ExerciseDto> findByLesson(LessonDto lessonDto) {
-			List<ExerciseDto> exercisesDto = new ArrayList<>();
+			log.info("Busqueda de un ejercicio por la leccion: {}", lessonDto);
+			List<ExerciseDto> exercisesDto;
 			try{
 				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
 				List<Exercise> exercises = exerciseRepository.findByLesson(lesson);
 				exercisesDto = exerciseMapper.ExercisesToExercisesDto(exercises);
 			}catch (Exception e){
+				log.info("Error al buscar el ejercicio");
 				exercisesDto = null;
 			}
 			return exercisesDto;
 		}
 		public void save(ExerciseDto exerciseDto) {
+			log.info("Guardado del ejercicio: {}", exerciseDto);
 			try{
 				Exercise exercise = exerciseMapper.ExerciseDtoToExercise(exerciseDto);
 				exerciseRepository.save(exercise);
 			}catch (Exception e){
-
+				log.info("Error al guardar el ejercicio");
 			}
 
 		}
 		public void delete(long id) {
+			log.info("Borrado del ejercicio por el id: {}", id);
 			try{
 				exerciseRepository.deleteById(id);
 			}catch (Exception e){
-
+				log.info("Error al borrar el ejercicio");
 			}
 
 		}
 		public Page<Exercise> getExercises(Pageable page) {///////////////////////////////Revisar
+			log.info("Busqueda de un Page<ejercicio> por la leccion:");
 			try{
 				return exerciseRepository.findAll(page);
 			}catch (Exception e){
+				log.info("Error al buscar el Page<ejercicio>");
 				return null;
 			}
 		}
 		
 		//Upload exercise images
 		public void uploadExerciseImages( ExerciseDto exerciseDto, MultipartFile image1, MultipartFile image2,MultipartFile image3) throws IOException{
+			log.info("Subida de imagenes");
 			byte[] bytes1 = imageService.uploadImage(image1);
 			byte[] bytes2 = imageService.uploadImage(image2);
 			byte[] bytes3 = imageService.uploadImage(image3);

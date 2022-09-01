@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.daw.contafin.exercise.Exercise;
 import com.daw.contafin.lesson.Lesson;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 
@@ -25,58 +26,67 @@ public class UnitService {
 	@Autowired
 	UnitRepository unitRepository;
 
-	@Autowired
+	@Resource
 	UnitMapper unitMapper;
 
 	
 	public List<UnitDto> findAll(){
-		List<UnitDto> unitDtos = new ArrayList<>();
+		log.info("Busqueda de la lista unidades");
+		List<UnitDto> unitDtos;
 		try{
 			List<Unit> units = unitRepository.findAll();
 			unitDtos = unitMapper.UnitsToUnitsDto(units);
 		}catch (Exception e){
+			log.info("Error al buscar las unidades");
 			unitDtos = null;
 		}
 		return unitDtos;
 	}
 	
 	public void save(UnitDto unitDto){
+		log.info("Guardado de la unidad: {}", unitDto);
 		try{
 			Unit unit = unitMapper.UnitDtoToUnit(unitDto);
 			unitRepository.save(unit);
 		}catch (Exception e){
-
+			log.info("Error al guardar la unidad");
 		}
 	}
 	
 	public UnitDto findById(long Id) {
-		UnitDto unitDto = new UnitDto();
+		log.info("Busqueda de unidad por id: {}", Id);
+		UnitDto unitDto;
 		try{
 			Unit unit = unitRepository.findById(Id);
 			unitDto = unitMapper.UnitToUnitDto(unit);
 		}catch (Exception e){
+			log.info("Error al buscar la unidad");
 			unitDto = null;
 		}
 		return unitDto;
 	}
 	
 	public void delete(long Id) {
+		log.info("Borrado de unidad por id: {}", Id);
 		try{
 			unitRepository.deleteById(Id);
 		}catch (Exception e){
-
+			log.info("Error al borrar la unidad");
 		}
 	}
 	
 	public Page<Unit> getUnits(Pageable page){
+		log.info("Borrado de las paginas de unidades");
 		try{
 			return unitRepository.findAll(page);
 		}catch (Exception e){
+			log.info("Error al buscar las paginas de unidades");
 			return null;
 		}
 	}
 	
 	public boolean isValidUnit(UnitDto unitDto) {
+		log.info("Comprobar que la unidad es valida");
 		try{
 			List<LessonDto> lessonDtos = unitDto.getLessons();
 
@@ -109,6 +119,7 @@ public class UnitService {
 			return true;
 
 		}catch (Exception e){
+			log.info("Error al comprobar la unidad");
 			return false;
 		}
 
