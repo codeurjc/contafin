@@ -26,32 +26,31 @@ export class BodyLessonComponent implements OnInit {
     ngOnInit() {
         this.lessons = new Array();
         this.lessonsCompleted = new Array();
-        this.defineUnit();
+        //this.defineUnit();
         this.getUnits(this.id);
     }
-    getUnits(id: number) {
-        this.lessonService.getLessonsOfUnit(this.id).subscribe(
-            (unit : any) => {
-                this.unit = unit
-                this.unitService.numberOfCompletedLessons(unit.id).subscribe(
-                    (nlesson : any) => this.nlesson = nlesson,
-                    error => console.log(error)
-                )
-                this.lessonService.isCompleted2(this.unit.id)
-                    .subscribe(
-                        (response : any) => {
-                            this.lessonsCompleted = response;
-                        }
-                    )
-                this.unit.lessons[0].id = 1;
-                this.unit.lessons[1].id = 2;
-                this.unit.lessons[2].id = 3;
-            },
-            error => console.log(error)
-        )
+    async getUnits(id: number) {
+        await this.lessonService.getLessonsOfUnit(this.id)
+                .then((unit : any) => {
+                    this.unit = unit;
+                    this.unitService.numberOfCompletedLessons2(unit.id).then((nlesson : any) =>{
+                        this.nlesson = nlesson
+                    });
+
+                    this.lessonService.isCompleted2(this.unit.id)
+                        .then((response : any) => {
+                                this.lessonsCompleted = response;
+                            });
+                            
+                    this.unit.lessons[0].id = 1;
+                    this.unit.lessons[1].id = 2;
+                    this.unit.lessons[2].id = 3;
+                })
+                .catch(error => console.error(error));
     }
 
     numberoflessons(id: number) {
+        console.log("Es aqui");
         this.unitService.numberOfCompletedLessons(id).subscribe(
             (nlesson : any) => this.nlesson = nlesson,
             error => console.log(error)

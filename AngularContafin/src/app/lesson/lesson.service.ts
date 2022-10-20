@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from '../../environments/environment';
+import { UtilsService } from '../../../src/app/services/utils.service';
 import 'rxjs/Rx';
 import { Lesson } from '../Interfaces/Lesson/lesson.model';
 
@@ -10,7 +11,10 @@ const BASE_URL = environment.apiBase + '/Unit/';
 @Injectable()
 export class LessonsService {
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		public utils: UtilsService
+		) { }
 
 	getLessons() {
 		return this.http.get(BASE_URL + 'Lessons/')
@@ -18,9 +22,20 @@ export class LessonsService {
 	}
 
 	//Get Lessons of the unit with its id
-	getLessonsOfUnit(id: number) {
-		return this.http.get(BASE_URL + id + '/Lesson/')
-			.catch(error => this.handleError(error));
+	async getLessonsOfUnit(id: number) {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: id + '/Lesson/',
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	//Need the unit id and lesson id
@@ -52,12 +67,20 @@ export class LessonsService {
 			.catch(error => this.handleError(error));
 	}
 
-	isCompleted2(idUnit: number) {
-		const headers = new HttpHeaders({
-			'X-Requested-With': 'XMLHttpRequest'
-		});
-		return this.http.get(BASE_URL + idUnit + '/Lessons/Completed', { withCredentials: true, headers })
-			.catch(error => this.handleError(error));
+	async isCompleted2(id: number) {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: id + '/Lessons/Completed',
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	private handleError(error: any) {
