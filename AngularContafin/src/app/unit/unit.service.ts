@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from '../../environments/environment';
+import { UtilsService } from '../../../src/app/services/utils.service';
 import 'rxjs/Rx';
 import { Unit } from '../Interfaces/Unit/unit.model';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,13 +12,24 @@ const BASE_URL = environment.apiBase + '/Unit/';
 @Injectable()
 export class UnitsService {
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		public utils: UtilsService
+		) { }
 
-	getUnits() {
-		return this.http.get(BASE_URL)
-			.toPromise()
-			.then(response => response)
-			.catch(error => this.handleError(error));
+	async getUnits() {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 
@@ -41,12 +53,20 @@ export class UnitsService {
 			.catch(error => this.handleError(error));
 	}
 
-	numberOfCompletedLessons2() {
-		const headers = new HttpHeaders({
-			'X-Requested-With': 'XMLHttpRequest'
-		});
-		return this.http.get(BASE_URL + 'numberOfCompletedLessons', { withCredentials: true, headers })
-			.catch(error => this.handleError(error));
+	async numberOfCompletedLessons2(id: Number) {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: id + '/numberOfCompletedLessons',
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	//Need the unit with its lessons and exercises

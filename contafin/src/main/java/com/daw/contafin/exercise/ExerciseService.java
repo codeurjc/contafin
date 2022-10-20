@@ -75,11 +75,13 @@ public class ExerciseService {
 		
 		public ExerciseDto findByLessonAndId (LessonDto lessonDto, long id) {
 			log.info("Busqueda de un ejercicio por el id y la leccion");
-			ExerciseDto exerciseDto;
+			ExerciseDto exerciseDto = new ExerciseDto();
 			try{
-				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
-				Exercise exercise = exerciseRepository.findByLessonAndId(lesson,id);
-				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
+				for (ExerciseDto exercise : lessonDto.getExercises()) {
+					if(exercise.getId() == id){
+						exerciseDto = exercise;
+					}
+				}
 			}catch (Exception e){
 				log.info("Error al buscar el ejercicio");
 				exerciseDto = null;
@@ -89,11 +91,13 @@ public class ExerciseService {
 		
 		public ExerciseDto findByLessonAndKind(LessonDto lessonDto, int kind) {
 			log.info("Busqueda de un ejercicio por la leccion y el tipo");
-			ExerciseDto exerciseDto;
+			ExerciseDto exerciseDto = new ExerciseDto();
 			try{
-				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
-				Exercise exercise = exerciseRepository.findByLessonAndKind(lesson,kind);
-				exerciseDto = exerciseMapper.ExerciseToExerciseDto(exercise);
+				for (ExerciseDto exercise : lessonDto.getExercises()) {
+					if(exercise.getKind() == kind){
+						exerciseDto = exercise;
+					}
+				}
 			}catch (Exception e){
 				log.info("Error al buscar el ejercicio");
 				exerciseDto = null;
@@ -105,9 +109,7 @@ public class ExerciseService {
 			log.info("Busqueda de un ejercicio por la leccion: {}", lessonDto);
 			List<ExerciseDto> exercisesDto;
 			try{
-				Lesson lesson = lessonMapper.LessonDtoToLesson(lessonDto);
-				List<Exercise> exercises = exerciseRepository.findByLesson(lesson);
-				exercisesDto = exerciseMapper.ExercisesToExercisesDto(exercises);
+				exercisesDto = lessonDto.getExercises();
 			}catch (Exception e){
 				log.info("Error al buscar el ejercicio");
 				exercisesDto = null;

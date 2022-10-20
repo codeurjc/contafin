@@ -80,7 +80,8 @@ public class LessonRestController{
 			for (int i=0; i<lessons.size();i++) {
 				lessons.get(i).setExercises(null);
 			}
-			UnitDto unittry = new UnitDto(unit.getName());
+			UnitDto unittry = new UnitDto();
+			unittry.setName(unit.getName());
 			unittry.setId(unit.getId());
 			unittry.setLessons(lessons);
 			return new ResponseEntity<>(unittry, HttpStatus.OK);

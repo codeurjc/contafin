@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LessonRepository extends JpaRepository <Lesson, Long>{
 	Lesson findById(long Id);
-	List<Lesson> findByUnit(Unit Id);
 	List<Lesson> findAll();
 	Page<Lesson> findAll(Pageable page);
 }

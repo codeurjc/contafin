@@ -3,16 +3,7 @@ package com.daw.contafin.exercise;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.daw.contafin.answer.Answer;
 import com.daw.contafin.completedExercise.CompletedExercise;
@@ -20,6 +11,8 @@ import com.daw.contafin.lesson.Lesson;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Data
@@ -33,10 +26,6 @@ public class Exercise {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonView(ExerciseBassic.class)
 	private long id;
-
-	@JsonIgnore
-	@ManyToOne
-	private Lesson lesson;
 
 	@JsonView(ExerciseBassic.class)
 	private int kind;
@@ -58,14 +47,18 @@ public class Exercise {
 	
 	@JsonView(ExerciseBassic.class)
 	@ElementCollection
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<String> texts;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "exercise")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<CompletedExercise> completedExercises;
 
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
+	@JoinColumn(name = "answer_id")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Answer answer;
 
 	public Exercise() {
@@ -76,13 +69,12 @@ public class Exercise {
 		this.kind = kind;
 		this.statement = statement;
 		this.texts = texts;
-		this.setLesson(lesson);
 		this.answer = answer;
 	}
 
 	@Override
 	public String toString() {
-		return "Exercise [id=" + id + ", lesson=" + lesson + ", kind=" + kind + ", statement=" + statement + ", image1="
+		return "Exercise [id=" + id +  ", kind=" + kind + ", statement=" + statement + ", image1="
 				+ Arrays.toString(image1) + ", image2=" + Arrays.toString(image2) + ", image3="
 				+ Arrays.toString(image3) + ", texts=" + texts + ", completedExercises="
 				+ completedExercises + ", answer=" + answer + "]";

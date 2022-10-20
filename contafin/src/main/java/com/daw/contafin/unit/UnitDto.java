@@ -14,12 +14,6 @@ public class UnitDto implements Serializable {
     private String name;
     private List<LessonDto> lessons;
 
-    public UnitDto() {
-    }
-
-    public UnitDto(String name) {
-        this.name = name;
-    }
 
     @Override
     public String toString() {

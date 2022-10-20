@@ -8,6 +8,7 @@ import java.util.List;
 import com.daw.contafin.completedLesson.CompletedLessonDto;
 import com.daw.contafin.unit.UnitDto;
 import com.daw.contafin.unit.UnitMapper;
+import com.daw.contafin.unit.UnitRepository;
 import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class LessonService {
 	
 	@Autowired
 	LessonRepository lessonRepository;
+
+	@Autowired
+	UnitRepository unitRepository;
 	
 	@Autowired
 	ExerciseService exerciseService;
@@ -71,7 +75,7 @@ public class LessonService {
 		List<LessonDto> lessonDtos;
 		try{
 			Unit unit = unitMapper.UnitDtoToUnit(unitDto);
-			List<Lesson> lessons = lessonRepository.findByUnit(unit);
+			List<Lesson> lessons = unitRepository.findById(unit.getId()).getLessons();
 			lessonDtos = lessonMapper.LessonsToLessonsDto(lessons);
 		}catch (Exception e){
 			log.info("Error al buscar la leccion");

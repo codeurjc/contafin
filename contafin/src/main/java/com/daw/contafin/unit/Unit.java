@@ -3,15 +3,14 @@ package com.daw.contafin.unit;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import com.daw.contafin.lesson.Lesson;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Data
@@ -29,7 +28,9 @@ public class Unit implements Serializable{
 	@JsonView(UnitBassic.class)
 	private String name;
 
-	@OneToMany(mappedBy = "unit")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "unit_id")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Lesson> lessons;
 
 	public Unit() {

@@ -2,6 +2,7 @@ package com.daw.contafin.answer;
 
 import com.daw.contafin.exercise.ExerciseDto;
 import com.daw.contafin.exercise.ExerciseMapper;
+import com.daw.contafin.exercise.ExerciseRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class AnswerService {
 	
 	@Autowired
 	AnswerRepository answerRepository;
+
+	@Autowired
+	ExerciseRepository exerciseRepository;
 
 	@Resource
 	AnswerMapper answerMapper;
@@ -39,19 +43,6 @@ public class AnswerService {
 	}
 
 
-	public AnswerDto findByExercise (ExerciseDto exerciseDto) {
-		log.info("Busqueda de una respuesta por el ejercicio: {} ", exerciseDto);
-		AnswerDto answerDto ;
-		try{
-			Exercise exercise = exerciseMapper.ExerciseDtoToExercise(exerciseDto);
-			Answer answer = answerRepository.findByExercise(exercise);
-			answerDto = answerMapper.AnswerToAnswerDto(answer);
-		}catch (Exception e){
-			log.info("Error al buscar la respuesta por  ejercicio");
-			answerDto = null;
-		}
-		return answerDto;
-	}
 	public AnswerDto save(AnswerDto answerDto) {
 		log.info("Guardado de la repuesta: {}", answerDto);
 		try{

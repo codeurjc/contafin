@@ -18,10 +18,7 @@ public class Answer {
     @GeneratedValue (strategy = GenerationType.AUTO)
     private long id;
     private String result;
-    
-    @JsonIgnore
-    @OneToOne(mappedBy="answer")
-    private Exercise exercise;
+
 
     public Answer() {}
     public Answer(String result) {

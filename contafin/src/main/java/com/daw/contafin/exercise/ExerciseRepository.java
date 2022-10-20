@@ -12,9 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ExerciseRepository extends JpaRepository <Exercise, Long>{
 	Exercise findById(long id);
-	Exercise findByLessonAndId(Lesson lesson, long id);
-	Exercise findByLessonAndKind(Lesson lesson, int kind);
-	List <Exercise> findByLesson(Lesson lesson);
 	List<Exercise> findAll();
 	Page <Exercise> findAll(Pageable page);
 }

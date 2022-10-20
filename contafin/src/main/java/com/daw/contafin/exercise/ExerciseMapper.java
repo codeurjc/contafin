@@ -2,12 +2,13 @@ package com.daw.contafin.exercise;
 
 import com.daw.contafin.completedLesson.CompletedLesson;
 import com.daw.contafin.completedLesson.CompletedLessonDto;
+import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
 
 import java.util.Collection;
 import java.util.List;
 
-@Mapper( componentModel = "spring")
+@Mapper( componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface ExerciseMapper {
 
     ExerciseDto ExerciseToExerciseDto(Exercise exercise);

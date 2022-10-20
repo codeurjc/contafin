@@ -4,6 +4,7 @@ import { UnitsService } from '../unit/unit.service';
 import { Unit } from '../Interfaces/Unit/unit.model';
 import { User } from '../Interfaces/User/user.model';
 import { LoginService } from '../login/login.service';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
@@ -31,17 +32,20 @@ export class BodyHomeComponent implements OnInit {
         this.getUnits();
     }
 
-    getUnits() {
-        this.unitsService.getUnits()
+    async getUnits() {
+        await this.unitsService.getUnits()
             .then((units : any) => {
                 this.units = units;
                 //Get the number of Lessons completed of all the units
-                this.unitsService.numberOfCompletedLessons2()
-                    .subscribe(
-                        (response : any) => { this.lessonsCompleted = response; console.log(response) }
-                    )
+                 this.units.forEach((element) =>{
+                        this.unitsService.numberOfCompletedLessons2(element.id).then((n : any) => {
+                        console.log(n);
+                        this.lessonsCompleted.push(n);
+                    });
+                });
             })
             .catch(error => console.error(error));
+            console.log(this.lessonsCompleted);
     }
 
     isCompleted(id: number) {
