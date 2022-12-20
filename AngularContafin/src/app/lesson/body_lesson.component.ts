@@ -16,7 +16,7 @@ export class BodyLessonComponent implements OnInit {
 
     nlesson: number = 0;
 
-    public unit: Unit;
+    public unit: Unit = null;
     private lessons: Array<Lesson> = new Array();
 
     lessonsCompleted: boolean[] = new Array();

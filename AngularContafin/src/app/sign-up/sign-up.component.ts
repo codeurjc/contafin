@@ -26,16 +26,16 @@ export class SignUpComponent implements OnInit {
     this.userData;
   }
 
-  signup() {
-    this.signUpService.signup(this.userData)
+  async signup() {
+    await this.signUpService.signup(this.userData)
       .subscribe(
         user => {
           console.log(user);
           this.loginService.logIn(this.userData.email, this.userData.pass)
-            .subscribe(
-              user => {
+            .then(
+              (user:any) => {
                 this.router.navigate(['/']).then(
-                  response => {
+                  (response : any) => {
                     this.registered = true;
                     this.router.navigate(['/home'])
                   }

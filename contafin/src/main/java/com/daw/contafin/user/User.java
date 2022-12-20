@@ -18,6 +18,8 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.daw.contafin.completedExercise.CompletedExercise;
@@ -70,7 +72,7 @@ public class User {
 	private int lastLesson;
 	
 	@JsonView(UserBassic.class)//Revisar este atributo
-	private int [] progress;
+	private int[] progress;
 	
 	@JsonView(UserBassic.class)
 	private int remainingGoals;
@@ -84,12 +86,13 @@ public class User {
 	@JsonIgnore
 	@Lob
 	private byte[] image;
-	
-	
-	@ElementCollection(fetch = FetchType.EAGER) 
+
+
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 	
 	@OneToMany (mappedBy="user")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<CompletedExercise> exercises;
 	
 	

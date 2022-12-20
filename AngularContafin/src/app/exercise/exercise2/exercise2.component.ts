@@ -49,20 +49,20 @@ export class Exercise2Component {
 
   ngOnInit() {
     this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
-      .subscribe(
-        exercise => {
-          this.statement = exercise.hasOwnProperty.arguments.statement;//Esto puede estar mal
-          this.texts = exercise.hasOwnProperty.arguments.texts;
+      .then(
+        (exercise : any) => {
+          this.statement = exercise.statement;//Esto puede estar mal
+          this.texts = exercise.texts;
         }
       )
   }
 
-  check() {
+  async check() {
     this.result = {
       "result": this.answerText
     }
-    this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result).subscribe(
-      right => {
+    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result).then(
+      (right : any) => {
       this.right = right.hasOwnProperty.arguments;
         if (this.right == true) {
           this.color = "exercise1Good";

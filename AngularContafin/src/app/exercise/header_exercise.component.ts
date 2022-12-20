@@ -19,6 +19,7 @@ export class HeaderExerciseComponent {
     this.progress = 10;
   }
 
+
   open(modal) {
     this.modalService.open(modal).result.then((result) => {
       this.closeResult = '${result}';

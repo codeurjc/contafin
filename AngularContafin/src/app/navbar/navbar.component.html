@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" [routerLink]="['/home']">CONTaFIN</a>
+    <a class="navbar-brand js-scroll-trigger" [routerLink]="['/']">CONTaFIN</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
       aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-left">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/home']">Inicio
-            <span class="sr-only">(current)</span>
+          <a class="nav-link">
+            <span class="sr-only">Menu</span>
           </a>
         </li>
       </ul>
@@ -19,14 +19,28 @@
         </li>
 
         <li>
-          <img [src]="loggedUser.imgURL" width="40" height="35" class="img-thumbnail">
+          <img [src]="loggedUser.image" width="40" height="35" class="img-thumbnail">
         </li>
         <li ngbDropdown class="nav-item">
           <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
+        </li>
+        <li ngbDropdown class="nav-item">
           <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" [routerLink]="['/User/Profile']">Tu perfil</a>
+          </div>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" [routerLink]="['/User/Configuration']">Configuración</a>
+          </div>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" [routerLink]="['/User/Goal']">Fijar meta</a>
+          </div>
+        </li>
+        <li ngbDropdown class="nav-item">
+          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" [routerLink]="['/']" (click)="logOut()">Cerrar Sesión</a>
           </div>
         </li>

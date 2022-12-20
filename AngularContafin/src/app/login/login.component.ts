@@ -19,19 +19,23 @@ export class LoginComponent {
   @Input()
   formkind: string;
 
-  logIn(event: any, email: string, pass: string) {
+  ngOnInit() {
+    console.log(this.formkind);
+  }
+
+  async logIn(event: any, email: string, pass: string) {
 
     event.preventDefault();
 
-    this.loginService.logIn(email, pass).subscribe(
-      user => {
+    await this.loginService.logIn(email, pass).then(
+      (user : any) => {
         console.log(user);
-        if (this.formkind == " 1") {
+        if (this.formkind == "1") {
           this.router.navigate(['/home']);
         }
         else {
           this.router.navigate(['/']).then(
-            response => {
+            (response: any) => {
               this.router.navigate(['/home'])
             }
           );
@@ -41,9 +45,9 @@ export class LoginComponent {
     );
   }
 
-  logOut() {
-    this.loginService.logOut().subscribe(
-      response => {
+  async logOut() {
+    await this.loginService.logOut().then(
+      (response: any) => {
         console.log('Logged out');
         this.router.navigate(['/']);
       },

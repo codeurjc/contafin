@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { UtilsService } from '../../../src/app/services/utils.service';
 import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 import { Exercise } from '../Interfaces/Exercise/exercise.model';
@@ -12,7 +13,10 @@ const BASE_URL2 = environment.apiBase + '/Unit/';
 @Injectable()
 export class ExerciseService {
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		public utils: UtilsService
+		) { }
 
 	getExercises() {
 		return this.http.get(BASE_URL)
@@ -20,16 +24,37 @@ export class ExerciseService {
 	}
 
 	//Need the unit id, lesson id and exercise id
-	getExercise(idUnit: number, idLesson: number, idExercise: number) {
-		return this.http.get(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise)
-			.catch(error => this.handleError(error));
+	async getExercise(idUnit: number, idLesson: number, idExercise: number) {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise,
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	//Same as getExercise but with promise
-	getOneExercise(idUnit: number, idLesson: number, idExercise: number) {
-		return this.http.get(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise)
-			.toPromise()
-			.catch(error => console.error(error));
+	async getOneExercise(idUnit: number, idLesson: number, idExercise: number) {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise,
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+					console.log("Dato ejercicio:" + data);
+				  if (typeof data !== 'undefined' && data !== null) {
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	changeExercise(idUnit: number, idLesson: number, idExercise: number, exercise: Exercise) {
@@ -47,12 +72,23 @@ export class ExerciseService {
 			.catch(error => this.handleError(error));
 	}
 
-	checkExercise(idUnit: number, idLesson: number, idExercise: number, result: string) {
-		const headers = new HttpHeaders({
-			'X-Requested-With': 'XMLHttpRequest'
-		});
-		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', result, { withCredentials: true, headers })
-			.catch(error => this.handleError(error));
+	async checkExercise(idUnit: number, idLesson: number, idExercise: number, result) {
+		
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', 
+				params : result,
+				method: 'put'
+			  }).toPromise().then(
+				(data) => {
+					console.log("Solucion:" + data);
+				  if (typeof data !== 'undefined' && data !== null) {
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
+		
 	}
 
 	deleteAllCompleted() {

@@ -25,20 +25,25 @@ export class ExerciseComponent implements OnInit {
     /*let idExercise = activatedRoute.snapshot.params['idexercise'];
     this.idExercise = parseInt(idExercise);*/
     this.idExercise = (((this.idUnit - 1) * 3 + this.idLesson) - 1) * 4 + 1/*this.idExercise*/;
+    console.log("Id Exercise :"+ this.idExercise);
     this.idExercises.push(this.idExercise);
     this.idExercises.push(this.idExercise + 1);
     this.idExercises.push(this.idExercise + 2);
     this.idExercises.push(this.idExercise + 3);
+
+    console.log("Id exercises :" + this.idExercises);
   }
 
   ngOnInit() {
     this.getExercises();
   }
 
-  getExercises(){
-    this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise)
+  async getExercises(){
+    console.log("Los ids")
+    await  this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise)
       .then(
         (exercise : any) =>{
+          console.log("Primer ejercicio:" + exercise.kind);
           this.kindExercises.push(exercise.kind);
           this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 1)
             .then(
@@ -61,9 +66,12 @@ export class ExerciseComponent implements OnInit {
         }
       )
       .catch(error => console.log(error))
+
+    console.log("Los tipos: " + this.kindExercises);
   }
 
   newExercisechange(newExercise: boolean) {
+    
     if (newExercise == true) {
       this.idExercises.shift();
       this.kindExercises.shift();
@@ -78,6 +86,7 @@ export class ExerciseComponent implements OnInit {
   }
 
   pulsar() {
+    
     console.log(this.idUnit);
     console.log(this.idLesson);
     console.log(this.idExercise);

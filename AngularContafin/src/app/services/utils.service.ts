@@ -160,6 +160,50 @@ export class UtilsService {
     }
   }
 
+  public restServiceHeaders(name: string, config: any): Observable<any> {
+    let url = BASE_URL+name;
+    if (typeof config !== 'undefined') {
+      const headers = config.headers || {};
+      let method = config.method;
+
+      if (typeof config.queryString !== 'undefined') {
+        url = url + config.queryString;
+      }
+
+      /** TEMP */
+
+      this.restError = false;
+      return this.http[method]<any>(url, {headers: headers}).pipe(
+        map((data: any) => {
+          if (typeof data !== 'undefined' && data !== null && !this.restError) {
+            if (data.header && data.header.code && (data.header.code !== 0 && data.header.code !== '0') ) {
+              if (config.error && ( data.header.code === -1 || data.header.code === '-1' ) ) {
+                console.log('--------------');
+                console.log('ERROR ON ', name, 'SERVICE: ', data.header.description);
+                console.log('--------------');
+                config.error(data);
+                return of(data);
+              }
+            } else {
+              return data;
+            }
+          }
+        }),
+        catchError((err) => {
+          this.restError = true;
+          if (config.error) {
+            console.log('--------------');
+            console.log('ERROR ON', name, 'SERVICE: ', err);
+            console.log('--------------');
+
+            config.error(err);
+          }
+          return of(err);
+        })
+      );
+    }
+  }
+
   public getPageWith() {
     const MENU_WITH = 80;
     const PAGE_WITH = window.innerWidth - MENU_WITH;

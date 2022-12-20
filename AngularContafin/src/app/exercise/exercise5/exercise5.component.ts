@@ -47,7 +47,7 @@ export class Exercise5Component implements OnInit {
 
   ngOnInit() {
     this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
-      .subscribe(
+      .then(
         (exercise : any) => {
           this.statement = exercise.statement;
           this.texts = exercise.texts;
@@ -56,12 +56,12 @@ export class Exercise5Component implements OnInit {
   }
 
   //Correct the exercise
-  check() {
+  async check() {
     this.result = {
       "result": this.answer
     }
-    this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
-      .subscribe(
+    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+      .then(
         (response : any) => {
           this.right = response;
           if (response) {

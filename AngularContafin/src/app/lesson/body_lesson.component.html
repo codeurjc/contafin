@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="container">
-                            <div class="row justify-content-around">
+                            <div *ngIf="unit != null" class="row justify-content-around">
                                 <div *ngFor="let lesson of unit.lessons" class="col-lg-4 col-md-6 ">
                                     <div *ngIf="lessonsCompleted[(lesson.id%4)-1]==true" class="service-box mt-5 mx-auto text-center border border-secondary card-body rounded"
                                         id="UnitComplete">

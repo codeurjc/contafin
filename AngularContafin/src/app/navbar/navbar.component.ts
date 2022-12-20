@@ -26,9 +26,10 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  logOut() {
-    this.loginService.logOut().subscribe(
-      response => {
+  async logOut() {
+    console.log("Logout");
+    await this.loginService.logOut().then(
+      (response:any) => {
         console.log('Logged out');
         this.router.navigate(['/']);
       },
@@ -38,7 +39,6 @@ export class NavBarComponent implements OnInit {
 
   getUser() {
     this.loggedUser = this.loginService.getLoggedUser();
-    this.loggedUser.imgURL = "https://localhost:8080/api/User/Photo?a" + (new Date()).getTime();
   }
 
 }

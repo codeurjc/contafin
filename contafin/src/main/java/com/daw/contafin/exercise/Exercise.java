@@ -50,10 +50,6 @@ public class Exercise {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<String> texts;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "exercise")
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<CompletedExercise> completedExercises;
 
 	@JsonIgnore
 	@OneToOne()
@@ -76,8 +72,7 @@ public class Exercise {
 	public String toString() {
 		return "Exercise [id=" + id +  ", kind=" + kind + ", statement=" + statement + ", image1="
 				+ Arrays.toString(image1) + ", image2=" + Arrays.toString(image2) + ", image3="
-				+ Arrays.toString(image3) + ", texts=" + texts + ", completedExercises="
-				+ completedExercises + ", answer=" + answer + "]";
+				+ Arrays.toString(image3) + ", texts=" + texts + ", answer=" + answer + "]";
 	}
 
 }

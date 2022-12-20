@@ -10,9 +10,9 @@ import { last } from 'rxjs-compat/operator/last';
 })
 export class AdminUserDataComponent implements OnInit {
 
-  lastPage: boolean = false;
-  private size: number = 10;
-  private page: number = 0;
+  lastPage: number = -1;
+  size: number = 10;
+  page: number = 0;
   spinner: boolean = false;
   users: User[];
 
@@ -24,22 +24,25 @@ export class AdminUserDataComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers() {
+  async getUsers() {
+    console.log("pasa por getUsers");
     this.spinner = true;
-    if (this.lastPage === false) {
-      this.adminService.getUserData(this.page, this.size)
-        .subscribe(
-          users=> {
+    if (this.lastPage !== this.page) {
+      await this.adminService.getUserData(this.page, this.size)
+        .then(
+          (users : any)=> {
             if (this.page == 0) {
-              this.users = users[0];//users.content
+              this.users = users.content;
             }
             else {
-              for (let i in users) {
-                this.users.push(users[i]);
+              for (let i in users.content) {
+                this.users.push(users.content[i]);
               }
             }
             this.page += 1;
-            this.lastPage = users[users.hasOwnProperty.length-1];//users.last
+            this.lastPage = users.totalPages;
+            console.log("Pagina: "+ this.page);
+            console.log("Ultima agina: "+ this.lastPage);
           }
         )
     }

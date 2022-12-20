@@ -34,7 +34,7 @@ public class ContentController {
 	UnitService unitService;
 	
 	@Autowired
-	private CompletedLessonRepository completedLessonRepository;
+	CompletedLessonRepository completedLessonRepository;
 	
 	@Autowired
 	ExerciseService exerciseService;

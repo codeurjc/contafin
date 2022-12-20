@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from '../../environments/environment';
 import { User } from '../Interfaces/User/user.model';
+import { UtilsService } from '../../../src/app/services/utils.service';
 import 'rxjs/Rx';
 
 const BASE_URL = environment.apiBase + '/Admin/UserData/';
@@ -10,18 +11,41 @@ const BASE_URL = environment.apiBase + '/Admin/UserData/';
 @Injectable()
 export class AdminService {
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private http: HttpClient,
+		public utils: UtilsService) { }
 
-	getUserData(page: number, size: number) {
-		//const options = new RequestOptions({ withCredentials: true });
-		return this.http.get(BASE_URL + '?page=' + page + '&size=' + size, { withCredentials: true })//return this.http.get(BASE_URL + '?page=' + page + '&size=' + size, options)
-			.catch(error => this.handleError(error));
+	async getUserData(page: number, size: number) {
+		let useData = null;
+			 await this.utils.restService('/Admin/UserData/', {
+				queryString: '?page=' + page + '&size=' + size,
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	//Export data to Excel
-	exporData() {
-		return this.http.get(BASE_URL + 'Excel', { responseType: "blob" }) //.map(response => response.blob())
-			.catch(error => this.handleError(error));
+	async exporData() {
+		let useData = null;
+			 await this.utils.restService('/Admin/UserData/', {
+				queryString: 'Excel',
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	private handleError(error: any) {

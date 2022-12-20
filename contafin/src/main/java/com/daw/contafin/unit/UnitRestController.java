@@ -108,16 +108,12 @@ public class UnitRestController{
 			lesson.setUnit(unit);
 			lessonService.save(lesson);
 			exercise = lesson.getExercises().get(0);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(1);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(2);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(3);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			
 			
@@ -125,16 +121,12 @@ public class UnitRestController{
 			lesson.setUnit(unit);
 			lessonService.save(lesson);
 			exercise = lesson.getExercises().get(0);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(1);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(2);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(3);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			
 			
@@ -143,16 +135,12 @@ public class UnitRestController{
 			lesson.setUnit(unit);
 			lessonService.save(lesson);
 			exercise = lesson.getExercises().get(0);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(1);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(2);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			exercise = lesson.getExercises().get(3);
-			exercise.setLesson(lesson);
 			exerciseService.save(exercise);
 			return new ResponseEntity<>(unit, HttpStatus.OK);
 		} else {

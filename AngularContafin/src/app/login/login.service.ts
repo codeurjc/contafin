@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { User } from '../Interfaces/User/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { UtilsService } from '../../../src/app/services/utils.service';
 import 'rxjs/Rx';
 
 const URL = environment.apiBase;
@@ -12,16 +13,16 @@ export class LoginService {
 
     isLogged = false;
     isAdmin = false;
-    user: User;
+    user;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,public utils: UtilsService) { }
 
     getLoggedUser() {
         return this.user;
     }
     setLoggedUser(user){
+        console.log("Logged:" + this.isLogged);
         this.user = user;
-        this.user.imgURL = "https://localhost:8080/api/User/Photo";
     }
 
     isLoggedUser() {
@@ -50,14 +51,34 @@ export class LoginService {
 
     private processLogInResponse(response) {
         this.isLogged = true;
-        this.user = response.json();
-        this.user.imgURL = "https://localhost:8080/api/User/Photo";
+        this.user = response;
         this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
     }
 
-    logIn(user: string, pass: string) {
-
+    async logIn(user: string, pass: string) {
+        
         const userPass = user + ':' + pass;
+
+        const headers = new HttpHeaders({
+            'Authorization': 'Basic ' + utf8_to_b64(userPass),
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+
+        let useData = null;
+			 await this.utils.restServiceHeaders('/login', {
+				method: 'get',
+                headers: headers 
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					this.processLogInResponse(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
+
+        /*const userPass = user + ':' + pass;
 
         const headers = new HttpHeaders({
             'Authorization': 'Basic ' + utf8_to_b64(userPass),
@@ -70,17 +91,23 @@ export class LoginService {
                 this.processLogInResponse(response);
                 return this.user;
             }
-        );
+        );*/
     }
 
-    logOut() {
-        return this.http.get(URL + '/logout', { withCredentials: true }).map(
-            response => {
-                this.isLogged = false;
-                this.isAdmin = false;
-                return response;
-            }
-        );
+    async logOut() {
+        let useData = null;
+			 await this.utils.restService('/login', {
+				method: 'get',
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					this.isLogged = false;
+                    this.isAdmin = false;
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
     }
 }
 

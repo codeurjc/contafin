@@ -47,7 +47,7 @@
                   <div id="loading" class="side-middle minHeight">
                     <img *ngIf="spinner" src="../../../assets/spinner.gif" width="80px" height="80px" />
                   </div>
-                  <button *ngIf="!lastPage" id="addUsers" class="btn btn-primary mt-3" (click)="getUsers()">Más resultados</button>
+                  <button *ngIf="lastPage !== page" id="addUsers" class="btn btn-primary mt-3" (click)="getUsers()">Más resultados</button>
                 </div>
               </div>
             </div>

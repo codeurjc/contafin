@@ -59,8 +59,8 @@ public class ExerciseRestController{
 	public ResponseEntity<Page<Exercise>> getExercises(Pageable page) {
 		return new ResponseEntity<>(exerciseService.getExercises(page), HttpStatus.OK);
 	}
-		
-	@JsonView(ExerciseBassic.class)
+
+
 	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}")
 	@ResponseBody
 	public ResponseEntity<ExerciseDto> getOneExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {

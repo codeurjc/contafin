@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from '../../environments/environment';
 import { User } from '../Interfaces/User/user.model';
+import { UtilsService } from '../../../src/app/services/utils.service';
 
 const BASE_URL = environment.apiBase + '/User';
 
@@ -12,21 +13,24 @@ export class UserService {
 
     public user: User;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,public utils: UtilsService) {
 
     }
 
-    getUser(id: number) {
-        const headers = new HttpHeaders({
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-
-        return this.http.get(BASE_URL + '/' + id, {withCredentials: true})
-            .mapTo(response => {
-                this.user = response;
-                return this.user;
-            })
-            .catch(error => this.handleError(error));
+   async getUser(id: number) {
+        let useData = null;
+			 await this.utils.restService('/User/', {
+				queryString: id,
+				method: 'get',
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
     }
 
     deleteAccount(id: number) {
@@ -48,14 +52,22 @@ export class UserService {
             .catch(error => this.handleError(error));
     }
 
-    updateUser(id: number, updatedUser: User) {
-        const headers = new HttpHeaders({
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
+    async updateUser(id: number, updatedUser: User) {
 
-        return this.http.put(BASE_URL + '/' + id, updatedUser, { withCredentials: true, headers })
-            .catch(error => this.handleError(error));
+        let useData = null;
+			 await this.utils.restService('/User/', {
+				queryString: id,
+				method: 'put',
+                params: updatedUser
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
     }
 
     setGoal(id: number, goal: number) {
@@ -71,24 +83,39 @@ export class UserService {
 
     }
 
-    uploadImage(id: number, formData) {
-        const headers = new HttpHeaders({
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
+    async uploadImage(id: number, file) {
 
-        return this.http.post(BASE_URL + '/' + id + '/Photo', formData, { withCredentials: true, headers })
-            .catch(error => this.handleError(error));
+        let useData = null;
+			 await this.utils.restService('/User/', {
+				queryString: id + '/Photo',
+				method: 'post',
+                params: file
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
     }
 
-    getProgress(id: number): ErrorObservable<number[]> {//No se si el tipo<> es el correcto
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
+    async getProgress(id: number) {//No se si el tipo<> es el correcto
 
-        return this.http.get<number[]>(BASE_URL + '/' + id + '/Progress', { withCredentials: true, headers })
-            .catch(error => this.handleError(error));
+        let useData = null;
+			 await this.utils.restService('/User/', {
+				queryString: id + '/Progress',
+				method: 'get',
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
     }
 
     private handleError(error: any) {

@@ -65,8 +65,8 @@ public class UserRestController {
 		userComponent.setLoggedUser(userDto);
 		return new ResponseEntity<>(userDto, HttpStatus.OK);
 	}
-	
-	@JsonView(UserBassic.class)
+
+
 	@PutMapping(value = "/{id}")
 	@ResponseBody
 	public ResponseEntity<UserDto> updateUserData(@PathVariable long id, @RequestBody UserDto updatedUser) {

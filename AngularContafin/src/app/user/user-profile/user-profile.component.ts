@@ -25,7 +25,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getProgress(this.loggedUser.id)
-      .subscribe(progress => this.lineChart(progress));
+      .then((progress:any) => this.lineChart(progress));
 
   }
 

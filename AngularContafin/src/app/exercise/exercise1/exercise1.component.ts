@@ -48,11 +48,12 @@ export class Exercise1Component implements OnInit {
 
   }
   ngOnInit() {
+    console.log("Exercise 1")
     this.img1 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/1";
     this.img2 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/2";
     this.img3 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/3";
     this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
-      .subscribe(
+      .then(
         (exercise :any) => {
           this.statement = exercise.statement;
           this.texts = exercise.texts;
@@ -60,12 +61,12 @@ export class Exercise1Component implements OnInit {
       )
   }
 
-  check() {
+  async check() {
     this.result = {
-      "result": this.answer
+      result: this.answer
     }
-    this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
-      .subscribe(
+    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+      .then(
         (response :any) => {
           this.right = response;
           if (response) {

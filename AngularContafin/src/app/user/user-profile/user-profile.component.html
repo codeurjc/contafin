@@ -6,7 +6,7 @@
                 <div class="col-sm-8">
                     <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
                         <h1 class="card-header">
-                            <img src="https://localhost:8080/api/User/Photo" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
+                            <img [src]="loggedUser.image" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
                         </h1>
                         <div class="card-block mt-5">
                             <h3 class="card-title">

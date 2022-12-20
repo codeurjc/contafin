@@ -32,14 +32,14 @@ export class BodyCompleteLessonComponent implements OnInit {
     ngOnInit() {
     }
 
-    completeLesson() {
-        this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
+    async completeLesson() {
+       await this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
             response=> {
                 this.response = response;
                 if (this.loginService.isLoggedUser()) {
                     this.userService.getUser(this.loggedUser.id)
-                        .subscribe(
-                            user => {
+                        .then(
+                            (user:any) => {
                                 console.log(user);
                                 this.loginService.setLoggedUser(user);
                                 this.resetConfiguration();

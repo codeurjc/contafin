@@ -67,10 +67,10 @@ export class UserConfigurationComponent implements OnInit {
   }
 
   //If the current password is right, save the changes
-  loadChanges() {
+  async loadChanges() {
     if (this.rightPass) {
-      this.userService.updateUser(this.loggedUser.id, this.userData)
-        .subscribe(
+      await this.userService.updateUser(this.loggedUser.id, this.userData)
+        .then(
           (user: any) => {
             this.loggedUser.name = user.name;
             this.loggedUser.email = user.email;
@@ -105,15 +105,14 @@ export class UserConfigurationComponent implements OnInit {
   }
 
   //Save image
-  uploadImage() {
+  async uploadImage() {
     this.alertDanger = false;
     this.alertSuccess = false;
     if (this.image) {
-      this.userService.uploadImage(this.loggedUser.id, this.image)
-        .subscribe(
-          response => {
+      await this.userService.uploadImage(this.loggedUser.id, this.image)
+        .then(
+          (response : any) => {
             this.loggedUser = this.loginService.getLoggedUser();
-            this.loggedUser.imgURL = "https://localhost:8080/api/User/Photo?a" + (new Date()).getTime();
             this.router.navigate(['/User/Configuration']);
           },
           error => console.error('Error al subir la imagen:' + error)
