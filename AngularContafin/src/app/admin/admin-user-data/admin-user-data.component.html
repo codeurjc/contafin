@@ -7,10 +7,10 @@
           <div id="accordion">
             <div class="card">
               <div class=" col-sm-2 card-block mb-2">
-                <a id="button-style" class="btn btn-primary js-scroll-trigger mt-5" href="https://localhost:8080/api/Admin/UserData/Excel">Exportar a Excel</a>
+                <a id="button-style" class="btn btn-primary js-scroll-trigger mt-5" (click)="getUsersExcel()">Exportar a Excel</a>
               </div>
               <div class="card-header" id="headingOne">
-                <h5 class="mb-0">Datos de los alumnos</h5>
+                <h5 class="mb-0">Datos de los alumnos</h5> 
               </div>
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
@@ -47,7 +47,7 @@
                   <div id="loading" class="side-middle minHeight">
                     <img *ngIf="spinner" src="../../../assets/spinner.gif" width="80px" height="80px" />
                   </div>
-                  <button *ngIf="lastPage !== page" id="addUsers" class="btn btn-primary mt-3" (click)="getUsers()">Más resultados</button>
+                  <!--<button *ngIf="lastPage !== page" id="addUsers" class="btn btn-primary mt-3" (click)="getUsers()">Más resultados</button>!-->
                 </div>
               </div>
             </div>

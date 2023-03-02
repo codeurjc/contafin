@@ -12,7 +12,6 @@ public class AnswerDto implements Serializable {
 
     private long id;
     private String result;
-    private ExerciseDto exercise;
 
     public AnswerDto() {}
     public AnswerDto(String result) {

@@ -25,22 +25,20 @@ export class BodyCompleteLessonComponent implements OnInit {
     public loggedUser: User;
 
     constructor(private router: Router, private userService: UserService, private modalService: NgbModal, public loginService: LoginService, private lessonService: LessonsService) {
-        this.loginService.isLoggedUser();
-        this.loggedUser = loginService.getLoggedUser();
-
     }
     ngOnInit() {
+        this.loggedUser = this.loginService.getLoggedUser();
     }
 
     async completeLesson() {
-       await this.lessonService.completeLesson(this.idUnit, this.idLesson).subscribe(
-            response=> {
+       await this.lessonService.completeLesson(this.idUnit, this.idLesson).then(
+            (response : any)=> {
                 this.response = response;
                 if (this.loginService.isLoggedUser()) {
                     this.userService.getUser(this.loggedUser.id)
                         .then(
                             (user:any) => {
-                                console.log(user);
+                                console.log("Usuario Complete: " + JSON.stringify(user));
                                 this.loginService.setLoggedUser(user);
                                 this.resetConfiguration();
                                 this.router.navigate(['/ContinueLesson']);

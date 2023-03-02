@@ -11,11 +11,15 @@ import { User } from '../Interfaces/User/user.model';
 export class BodyContinueLessonComponent {
     [x: string]: any;
     closeResult: string;
-    public loggedUser: User;
-    public fluency: number;
+    public loggedUser;
+    public fluency;
 
     constructor(private modalService: NgbModal, public loginService: LoginService) {
-        this.loggedUser = loginService.getLoggedUser();
+    }
+
+    ngOnInit() {
+        this.loggedUser = this.loginService.getLoggedUser();
+        console.log("Usuario Continue: " + JSON.stringify(this.loggedUser));
         if(this.loginService.isLoggedUser()){
             this.fluency = this.loggedUser.fluency;
         }

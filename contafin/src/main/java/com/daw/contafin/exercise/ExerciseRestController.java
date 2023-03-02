@@ -34,47 +34,48 @@ import javax.transaction.Transactional;
 public class ExerciseRestController{
 	
 	@Autowired
-	private LessonService lessonService;
-	
-	@Autowired
 	private ExerciseService exerciseService;
 	
 	@Autowired
-	UserService userService;
-
-	@Autowired
-	UserComponent userComponent;
-
-	@Autowired
-	ImageService imageService;
-	
-	@Autowired
 	CompletedExerciseService completedExerciseService;
-	
 
-	//See all the exercise
-	@JsonView(ExerciseBassic.class)
-	@GetMapping(value = "/Lesson/Exercises/")
+
+	//YASSSS
+	@GetMapping(value = "/Exercise/{id}")
 	@ResponseBody
-	public ResponseEntity<Page<Exercise>> getExercises(Pageable page) {
-		return new ResponseEntity<>(exerciseService.getExercises(page), HttpStatus.OK);
-	}
-
-
-	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}")
-	@ResponseBody
-	public ResponseEntity<ExerciseDto> getOneExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id) {
-		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
-		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
-		if (exercise != null) {
-			return new ResponseEntity<>(exercise, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	public ResponseEntity<ExerciseDto> getOneExercise(@PathVariable long id) {
+		log.info("Se ha recibido una solicitud para buscar un ejercicio");
+		ResponseEntity<ExerciseDto> response;
+		try{
+			ExerciseDto exercise = exerciseService.findById(id);
+			response = new ResponseEntity<>(exercise, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido encontrado el ejercicio";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		return response;
+
 	}
-	
-	//change exercise
-	@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}")
+
+	//YASSSSS
+	@PutMapping(value = "/Exercise/{id}/Solution")
+	@ResponseBody
+	public ResponseEntity<Boolean> checkExercise(@PathVariable long id, @RequestBody AnswerDto answerAct) {
+		log.info("Se ha recibido una solicitud para comprobar la solucion de un ejercicio");
+		ResponseEntity<Boolean> response;
+		try{
+			Boolean b = completedExerciseService.checkAnswer(id,answerAct);
+			response = new ResponseEntity<>(b, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido comprobar la solucion";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
+	}
+	// SEGUNDA VERSION
+	/*@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}")
 	@ResponseBody
 	public ResponseEntity<ExerciseDto> updateExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody ExerciseDto exerciseAct) {
 		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
@@ -89,13 +90,13 @@ public class ExerciseRestController{
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
-	
+	}*/
+
 	//Ask for a answer
-	@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer")
+	/*@GetMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer")
 	@ResponseBody
 	public ResponseEntity<AnswerDto> getOneAnswer(@PathVariable long idunit, @PathVariable long idlesson, @PathVariable long id) {
-		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		LessonDto lesson = lessonService.findById(idlesson);
 		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		if (exercise != null) {
 			return new ResponseEntity<>(exercise.getAnswer(), HttpStatus.OK);
@@ -103,11 +104,11 @@ public class ExerciseRestController{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Answer")
 	@ResponseBody
 	public ResponseEntity<ExerciseDto> changeAnswer(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody AnswerDto answerAct) {
-		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
+		LessonDto lesson = lessonService.findById(idlesson);
 		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
 		if (exercise != null) {
 			AnswerDto answer = exercise.getAnswer();
@@ -119,91 +120,8 @@ public class ExerciseRestController{
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
-	
-	@PutMapping(value = "/{idunit}/Lesson/{idlesson}/Exercise/{id}/Solution")
-	@ResponseBody
-	public ResponseEntity<Boolean> checkExercise(@PathVariable long idunit,@PathVariable long idlesson,@PathVariable long id, @RequestBody AnswerDto answerAct) {
-		UserDto user = userComponent.getLoggedUser();
-		LessonDto lesson = lessonService.findById((idunit-1)*3+idlesson);
-		ExerciseDto exercise = exerciseService.findByLessonAndId(lesson, id);
-		boolean goodanswer;
-		if (exercise != null) {
-			AnswerDto answer = exercise.getAnswer();
-			if(exercise.getKind()==2) {
-				String[] answergood = answer.getResult().split(" ");
-				String[] myanswer = answerAct.getResult().split(" ");
-				int counter = 0;
-	
-				for (int i = 0; i < answergood.length; i++) {
-					for (int j = 0; j < myanswer.length; j++) {
-						if (answergood[i].equals(myanswer[j])) {
-							counter++;
-						}
-					}
-				}
-				if (counter >= 3) {
-					goodanswer=true;
-					completedExerciseService.save(new CompletedExerciseDto(user, exercise, 0));
-					if (userComponent.isLoggedUser()) {
-						user.updatePoints(user, 3);
-						userService.save(user);
-					}
-				} else {
-					goodanswer=false;
-					if (userComponent.isLoggedUser()) {
-						user.updatePoints(user, -3);
-						userService.save(user);
-					}
-				}
-			}
-			else {
-				if(answer.getResult().equals(answerAct.getResult())) {
-					goodanswer=true;
-					completedExerciseService.save(new CompletedExerciseDto(user, exercise, 0));
-					if (userComponent.isLoggedUser()) {
-						user.updatePoints(user, 3);
-						userService.save(user);
-					}
-				}
-				else {
-					goodanswer=false;
-					if (userComponent.isLoggedUser()) {
-						user.updatePoints(user, -3);
-						userService.save(user);
-					}
-				}
-			}
-			return new ResponseEntity<>(goodanswer, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-	
-	@RequestMapping(value = "/DeleteAllExercises", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteExerciseCompleted() {
-		UserDto user = userComponent.getLoggedUser();
-		completedExerciseService.deleteAll(user);
-		return new ResponseEntity<>(true, HttpStatus.OK);
-	}
-	
-	/*
-	{
-	    "kind": 1,
-	    "statement": "1.1.1 Seleccione el asiento",
-	    "texts": [
-	        "213.Maquinaria",
-	        "210.Terrenos y bienes naturales",
-	        "218. Elementos de transporte"
-	    ]
-	}
-	*/
-	
-	/* to ask for the result and change the exercise
-	{
-		"result": "dos"
-	}
-	*/
+	}*/
+
 }
 
 

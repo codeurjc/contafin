@@ -43,7 +43,7 @@ public class LoginRestController {
 			log.info("Logged as " + loggedUser.getName());
 			//Updated user last login date
 			loggedUser.setLastConnection(loggedUser.newConnection());
-			userService.updateUserData(loggedUser);
+			userService.updateUser(loggedUser);
 			userComponent.setLoggedUser(loggedUser);
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
 		}

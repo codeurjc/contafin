@@ -1,17 +1,26 @@
 package com.daw.contafin.admin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.exercise.ExerciseDto;
+import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,25 +47,44 @@ public class AdminRestController {
 
 	@GetMapping(path = "/UserData")
 	@ResponseBody
-	public ResponseEntity<Page<User>> userData(Pageable page) {
-		if (!userComponent.isLoggedUser()) {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		} else {
-			return new ResponseEntity<>(userService.getUsers(page), HttpStatus.OK);
+	public ResponseEntity<List<UserDto>> userData() {
+		log.info("Se ha recibido una solicitud para listar los usuarios");
+		ResponseEntity<List<UserDto>> response;
+		try{
+			if (!userComponent.isLoggedUser()) {
+				response = new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			} else {
+				response = new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+			}
+		}catch (Exception e){
+			String error = "No se han podido listar los usuarios";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		return response;
+
 	}
 	@GetMapping(path = "/UserData/Excel")
 	@ResponseBody
-	public ResponseEntity<ServletOutputStream> userListReport(HttpServletResponse response) { //Revisar si esto necesita un @RequestParam
-		response.setContentType("application/vnd.ms-excel");
-		response.setHeader("Content-disposition", "attachment; filename=\"user_list.xls\"");
-		Workbook workbook = excelService.generateExcel();
+	public ResponseEntity<ByteArrayResource> userListReport() {
+		log.info("Se va a crear un excel con los usuarios");
+		ResponseEntity<ByteArrayResource> response;
+		HttpHeaders header= new HttpHeaders();
+		header.setContentType(new MediaType("application", "vnd.ms-excel"));
+		header.add("Content-disposition", "attachment; filename=user_list.xls");
 		try {
-			workbook.write(response.getOutputStream());
-			return new ResponseEntity<>(response.getOutputStream(), HttpStatus.OK);
-		} catch (IOException e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+			XSSFWorkbook workbook = excelService.generateExcel();
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			workbook.write(stream);
+			workbook.close();
+			response = new ResponseEntity<>(new ByteArrayResource(stream.toByteArray()),header,HttpStatus.OK);
+		} catch (Exception e) {
+			String error = "No se han podido crear el excel";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+
+		return response;
 	}
 
 }

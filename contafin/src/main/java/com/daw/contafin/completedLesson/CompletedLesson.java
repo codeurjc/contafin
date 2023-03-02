@@ -33,10 +33,5 @@ public class CompletedLesson {
 	public CompletedLesson() {
 		
 	}
-	public CompletedLesson(User user, Lesson lesson, Date date) {
-		this.user = user;
-		this.lesson = lesson;
-		this.date = date;
-	}
 
 }

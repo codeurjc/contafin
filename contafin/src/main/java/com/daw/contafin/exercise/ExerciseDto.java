@@ -25,7 +25,7 @@ public class ExerciseDto implements Serializable {
 
     }
 
-    public ExerciseDto(int kind, String statement, List<String> texts, AnswerDto answer, LessonDto lesson) {
+    public ExerciseDto(int kind, String statement, List<String> texts, AnswerDto answer) {
         this.kind = kind;
         this.statement = statement;
         this.texts = texts;
@@ -34,8 +34,6 @@ public class ExerciseDto implements Serializable {
 
     @Override
     public String toString() {
-        return "Exercise [id=" + id + ", kind=" + kind + ", statement=" + statement + ", image1="
-                + Arrays.toString(image1) + ", image2=" + Arrays.toString(image2) + ", image3="
-                + Arrays.toString(image3) + ", texts=" + texts + ", answer=" + answer + "]";
+        return "ExerciseDto [id=" + id + ", kind=" + kind + ", statement=" + statement + ", texts=" + texts + ", answer=" + answer + "]";
     }
 }

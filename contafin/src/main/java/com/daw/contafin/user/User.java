@@ -159,4 +159,9 @@ public class User {
 			user.setPoints(0);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", lastConnection=" + lastConnection + ", roles=" + roles + "]";
+	}
 }

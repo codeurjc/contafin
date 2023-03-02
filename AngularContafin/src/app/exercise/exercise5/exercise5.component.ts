@@ -24,7 +24,7 @@ export class Exercise5Component implements OnInit {
   idkind: number;
 
   @Input()
-  idExercise: number;
+  exercise: any;
 
   @Input()
   nElement: number;
@@ -46,7 +46,7 @@ export class Exercise5Component implements OnInit {
   }
 
   ngOnInit() {
-    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.exercise.id)
       .then(
         (exercise : any) => {
           this.statement = exercise.statement;
@@ -60,7 +60,7 @@ export class Exercise5Component implements OnInit {
     this.result = {
       "result": this.answer
     }
-    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.exercise.id, this.result)
       .then(
         (response : any) => {
           this.right = response;

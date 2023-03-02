@@ -20,16 +20,24 @@ export class BodyHomeComponent implements OnInit {
     units = [];
     lessonsCompleted: number[];
     public loggedUser: User;
+    public isLoggedUser: boolean = false;
 
     constructor(private modalService: NgbModal, public loginService: LoginService, private unitsService: UnitsService) {
-        this.loginService.isLoggedUser();
-        this.loggedUser = loginService.getLoggedUser();
     }
 
     ngOnInit() {
+        this.isLoggedUser = this.loginService.isLoggedUser();
+        if (this.isLoggedUser){
+            this.getUser();
+        }
         this.units = new Array();
         this.lessonsCompleted = new Array();
         this.getUnits();
+    }
+
+    getUser() {
+        this.loggedUser = this.loginService.getLoggedUser();
+        console.log("Usuario : " + JSON.stringify(this.loggedUser));
     }
 
     async getUnits() {
@@ -46,23 +54,6 @@ export class BodyHomeComponent implements OnInit {
             })
             .catch(error => console.error(error));
             console.log(this.lessonsCompleted);
-    }
-
-    isCompleted(id: number) {
-        this.unitsService.isCompleted(id).subscribe(
-            unitIsCompleted => this.unitIsCompleted = unitIsCompleted,
-            error => console.log(error)
-        );
-    }
-
-    numberLessonsCompleted(id: number) {
-        this.unitsService.numberOfCompletedLessons(id).subscribe(
-            (lessonsCompleted : any) => {
-                this.lessonsCompleted = lessonsCompleted;
-                console.log(lessonsCompleted)
-            },
-            error => console.log(error)
-        );
     }
 
     open(content) {

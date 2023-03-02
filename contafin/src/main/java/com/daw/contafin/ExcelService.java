@@ -5,10 +5,15 @@ import java.util.List;
 
 import com.daw.contafin.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,13 +31,13 @@ public class ExcelService {
 	UserService userService;
 	
 	
-	public Workbook generateExcel(){
+	public XSSFWorkbook generateExcel(){
 
-		Workbook workbook = new HSSFWorkbook();
+		XSSFWorkbook  workbook = new XSSFWorkbook ();
 		List<UserDto> list = userService.getUsers();
-		Sheet sheet = workbook.createSheet("User List");
+		XSSFSheet sheet = workbook.createSheet("User List");
 
-		Row header = sheet.createRow(0);
+		XSSFRow header = sheet.createRow(0);
 		header.createCell(0).setCellValue("NAME");
 		header.createCell(1).setCellValue("EMAIL");
 		header.createCell(2).setCellValue("LEVEL");
@@ -49,7 +54,7 @@ public class ExcelService {
 		int rowNum = 1;
 
 		for(UserDto user : list){
-			Row row = sheet.createRow(rowNum++);
+			XSSFRow row = sheet.createRow(rowNum++);
 			row.createCell(0).setCellValue(user.getName());
 			row.createCell(1).setCellValue(user.getEmail());
 			row.createCell(2).setCellValue(user.getLevel());

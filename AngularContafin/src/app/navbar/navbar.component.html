@@ -1,63 +1,43 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" [routerLink]="['/']">CONTaFIN</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-left">
+  <div class="container-fluid" style="justify-content:space-between;margin-right: 5%;">
+    <div ngbDropdown  id="navbarResponsive">
+      <ul class="nav" style="justify-content:space-evenly;margin-right: -5%;">
         <li class="nav-item active">
-          <a class="nav-link">
-            <span class="sr-only">Menu</span>
-          </a>
+          <a class="navbar-brand js-scroll-trigger" [routerLink]="['/']">CONTaFIN</a>
+        </li>
+        <li *ngIf="isAdmin" class="nav-item">
+          <a class="navbar-brand js-scroll-trigger" [routerLink]="['/Admin/Home']">Administración</a>
+        </li>
+        <li class="nav-item active">
+          <a class="navbar-brand js-scroll-trigger" [routerLink]="['/home']">Inicio</a>
         </li>
       </ul>
-      <ul *ngIf="isLoggedUser" class="navbar-nav ml-auto">
-        <li *ngIf="isAdmin" class="nav-item mr-4">
-          <a class="btn btn-primary js-scroll-trigger text-light" [routerLink]="['/Admin/Home']">ADMINISTRACIÓN</a>
-        </li>
-
-        <li>
-          <img [src]="loggedUser.image" width="40" height="35" class="img-thumbnail">
-        </li>
-        <li ngbDropdown class="nav-item">
-          <a ngbDropdownToggle class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
-        </li>
-        <li ngbDropdown class="nav-item">
-          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" [routerLink]="['/User/Profile']">Tu perfil</a>
-          </div>
-        </li>
-        <li ngbDropdown class="nav-item">
-          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" [routerLink]="['/User/Configuration']">Configuración</a>
-          </div>
-        </li>
-        <li ngbDropdown class="nav-item">
-          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" [routerLink]="['/User/Goal']">Fijar meta</a>
-          </div>
-        </li>
-        <li ngbDropdown class="nav-item">
-          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" [routerLink]="['/']" (click)="logOut()">Cerrar Sesión</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger">
-            <img src="assets/fire.png" width="25" height="23" class="d-inline-block align-top">
-            <span class="badge badge-light">{{loggedUser.streak}}</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger">
-            <img src="assets/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top">
-            <span class="badge badge-light">{{loggedUser.points}}</span>
-          </a>
-        </li>
-      </ul>
-
     </div>
+    <div *ngIf="isLoggedUser" >
+      <div ngbDropdown class="navbar-collapse" id="navbarResponsive">
+        <ul class="nav" style="justify-content:space-evenly;" >
+          <li class="nav-item" >
+            <img [src]="loggedUser.image" width="40" height="35" class="img-thumbnail">
+          </li>
+          <li ngbDropdown autoClose="false" class="nav-item dropdown pr-5 d-inline-block">
+            <a ngbDropdownToggle class="navbar-brand js-scroll-trigger dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{loggedUser.name}}</a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu round">
+              <a ngbDropdownItem class="dropdown-item" [routerLink]="['/User/Profile']">Tu perfil</a>
+              <a ngbDropdownItem class="dropdown-item" [routerLink]="['/User/Configuration']">Configuración</a>
+              <a ngbDropdownItem class="dropdown-item" [routerLink]="['/User/Goal']">Fijar meta</a>
+              <a ngbDropdownItem class="dropdown-item" [routerLink]="['/']" (click)="logOut()">Cerrar Sesión</a>
+              <a ngbDropdownItem class="nav-link js-scroll-trigger">
+                <img src="assets/fire.png" width="25" height="23" class="d-inline-block align-top">
+                <span class="badge bg-light text-dark" >{{loggedUser.streak}}</span>
+              </a>
+              <a ngbDropdownItem class="nav-link js-scroll-trigger">
+                <img src="assets/gemstone-160838_960_720.png" width="25" height="23" class="d-inline-block align-top">
+                <span class="badge bg-light text-dark" >{{loggedUser.points}}</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div> 
   </div>
 </nav>

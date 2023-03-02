@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserComponent {
 
-	private UserDto userDto;
+	private static UserDto userDto;
 
 	public UserDto getLoggedUser() {
 		return userDto;

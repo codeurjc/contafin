@@ -2,12 +2,14 @@ package com.daw.contafin.user;
 
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.unit.UnitDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -33,77 +35,105 @@ public class UserRestController {
 	@Autowired
 	UserService userService;
 	
-	@Autowired
-	UserComponent userComponent;
-	
-	@Autowired
-	ImageService imageService;
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteAccount(@PathVariable long id) {
-		UserDto userDto = userService.findById(id);
-		try {
-			userService.deleteAccount(userDto);
-			userComponent.setLoggedUser(null);
-			return new ResponseEntity<>(true, HttpStatus.OK);
-
-		} catch (EmptyResultDataAccessException e) {
-			return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+	@DeleteMapping(value = "/{id}")
+	@ResponseBody
+	public ResponseEntity<Boolean> deleteAccount(@PathVariable Long id) {
+		log.info("Se ha recibido una peticion para borrar al usuario con id: {}",id);
+		ResponseEntity<Boolean> response;
+		try{
+			userService.deleteAccount(id);
+			response = new ResponseEntity<>(HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido borrar el usuario";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-
+		return response;
 	}
-	
-	@JsonView(UserBassic.class)
+
+
 	@GetMapping(value = "/{id}")
 	@ResponseBody
-	public ResponseEntity<UserDto> profile(@PathVariable long id) {
-		UserDto userDto = userService.findById(id);
-		int[] progress = userService.progress(userDto);
-		// Update user data
-		userDto.setProgress(progress);
-		userService.updateUserData(userDto);
-		userComponent.setLoggedUser(userDto);
-		return new ResponseEntity<>(userDto, HttpStatus.OK);
+	public ResponseEntity<UserDto> profile(@PathVariable Long id) {
+		log.info("Se ha recibido una peticion para cargar el usuario con id: {}",id);
+		ResponseEntity<UserDto> response;
+		try{
+			UserDto userDto = userService.getProfile(id);
+			response = new ResponseEntity<>(userDto,HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha cargar el usuario";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
 	}
 
 
-	@PutMapping(value = "/{id}")
+	@PutMapping(value = "/")
 	@ResponseBody
-	public ResponseEntity<UserDto> updateUserData(@PathVariable long id, @RequestBody UserDto updatedUser) {
-			UserDto userDto = userService.findById(id);
-			userDto = userService.updateUser(userDto, updatedUser);
-			if (!userDto.equals(null)) {
-				userComponent.setLoggedUser(userDto);
-				return new ResponseEntity<>(userDto, HttpStatus.OK);
-				
-			} else {
-				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-			}
+	public ResponseEntity<UserDto> updateUserData(@RequestBody UserDto updatedUser) {
+		log.info("Se ha recibido una peticion para actualizar el usuario con id: {}");
+		ResponseEntity<UserDto> response;
+		try{
+			UserDto userDto = userService.updateUser(updatedUser);
+			response = new ResponseEntity<>(userDto,HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido actualizar el usuario";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
 	}
 	
 	@GetMapping(value = "/{id}/Validation/{pass}")
 	@ResponseBody
-	public ResponseEntity<Boolean> validaion(@PathVariable long id, @PathVariable String pass) {
-		UserDto userDto = userService.findById(id);
-		if (new BCryptPasswordEncoder().matches(pass, userDto.getPasswordHash())) {
-			return new ResponseEntity<>(true, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(false, HttpStatus.OK);
+	public ResponseEntity<Boolean> validation(@PathVariable Long id, @PathVariable String pass) {
+		log.info("Se ha recibido una peticion para comprobar el usuario con id: {}",id);
+		ResponseEntity<Boolean> response;
+		try{
+			Boolean b = userService.checkPass(id,pass);
+			response = new ResponseEntity<>(b,HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha comprobar el usuario";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		return response;
 	}
 	
 	@GetMapping(value = "/{id}/Progress")
 	@ResponseBody
-	public ResponseEntity<int[]> progress(@PathVariable long id) {
-		UserDto userDto = userService.findById(id);
-		int[] progress = userService.progress(userDto);
-		// Update user data
-		userDto.setProgress(progress);
-		userService.updateUserData(userDto);
-		return new ResponseEntity<>(progress, HttpStatus.OK);
+	public ResponseEntity<int[]> progress(@PathVariable Long id) {
+		log.info("Se ha recibido una peticion para actualizar el progreso del usuario con id: {}",id);
+		ResponseEntity<int[]> response;
+		try{
+			int[] i = userService.progress(id);
+			response = new ResponseEntity<>(i,HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha actualizar el progreso del usuario";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
+	}
+
+	@PostMapping(value = "/{id}/Photo")
+	@ResponseBody
+	public ResponseEntity<Boolean> profilePhoto(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+		log.info("Se ha recibido una peticion para actualizar la foto del usuario con id: {}",id);
+		ResponseEntity<Boolean> response;
+		try{
+			Boolean b = userService.updatePhoto(id, file);
+			response = new ResponseEntity<>(b,HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha actualizar la foto del usuario";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
 	}
 	
-	@JsonView(UserBassic.class)
+/*
 	@PutMapping(value = "/Name")
 	@ResponseBody
 	public ResponseEntity<UserDto> updateName(@RequestBody Map<String,String> userData) {
@@ -128,7 +158,7 @@ public class UserRestController {
 		}
 	}
 	
-	@JsonView(UserBassic.class)
+
 	@PutMapping(value = "/Email")
 	@ResponseBody
 	public ResponseEntity<UserDto> updateEmail(@RequestBody Map<String,String> userData) {
@@ -153,7 +183,7 @@ public class UserRestController {
 		}
 	}
 	
-	@JsonView(UserBassic.class)
+
 	@PutMapping(value = "/Password")
 	@ResponseBody
 	public ResponseEntity<UserDto> updatePassword(@RequestBody Map<String,String> userData) {
@@ -180,37 +210,13 @@ public class UserRestController {
 			}
 		}
 	}
-	
-	@PostMapping(value = "/{id}/Photo")
-	@ResponseBody
-	public ResponseEntity<Boolean> profilePhoto(@PathVariable long id, @RequestParam("file") MultipartFile file) {
-		if (!file.isEmpty()) {
-			UserDto userDto = userService.findById(id);
-			// Upload image
-			byte[] bytes;
-			try {
-				bytes = imageService.uploadImage(file);
-				// Update the user's data
-				userDto.setImage(bytes);
-				userService.updateUserData(userDto);
-				userComponent.setLoggedUser(userDto);
-				return new ResponseEntity<>(true, HttpStatus.OK);
-			} catch (IOException e) {
-				return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-		} 
-		else {
-			return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
-		}
-	}
-	
+
 	@GetMapping(value = "/Photo")
 	@ResponseBody
 	public void sowImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		imageService.showImage(request, response);
 	}
 
-	@JsonView(UserBassic.class)
 	@PutMapping(value = "/Goal")
 	@ResponseBody
 	public ResponseEntity<UserDto> goals(@RequestBody Map<String,String> userData) {
@@ -231,5 +237,7 @@ public class UserRestController {
 
 		}
 	}
+
+	*/
 	
 }

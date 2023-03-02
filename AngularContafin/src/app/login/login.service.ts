@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { UtilsService } from '../../../src/app/services/utils.service';
 import 'rxjs/Rx';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 const URL = environment.apiBase;
 
@@ -14,13 +15,17 @@ export class LoginService {
     isLogged = false;
     isAdmin = false;
     user;
+    pass;
 
-    constructor(private http: HttpClient,public utils: UtilsService) { }
+    constructor(private http: HttpClient,public utils: UtilsService, private sanitizer: DomSanitizer) { }
 
     getLoggedUser() {
         return this.user;
+        
     }
     setLoggedUser(user){
+        let objectURL = 'data:image/jpeg;base64,' + user.image;       
+        user.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
         console.log("Logged:" + this.isLogged);
         this.user = user;
     }
@@ -50,6 +55,8 @@ export class LoginService {
     }
 
     private processLogInResponse(response) {
+        let objectURL = 'data:image/jpeg;base64,' + response.image;       
+        response.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
         this.isLogged = true;
         this.user = response;
         this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;
@@ -58,11 +65,14 @@ export class LoginService {
     async logIn(user: string, pass: string) {
         
         const userPass = user + ':' + pass;
+        this.pass = pass;
 
-        const headers = new HttpHeaders({
-            'Authorization': 'Basic ' + utf8_to_b64(userPass),
-            'X-Requested-With': 'XMLHttpRequest'
-        });
+        const headers ={
+			headers: new HttpHeaders({
+				'Authorization': 'Basic ' + utf8_to_b64(userPass),
+				'X-Requested-With': 'XMLHttpRequest'
+			})
+		};
 
         let useData = null;
 			 await this.utils.restServiceHeaders('/login', {
@@ -95,9 +105,21 @@ export class LoginService {
     }
 
     async logOut() {
+
+        const userPass = this.user.email + ':' + this.pass;
+
+        const headers ={
+			headers: new HttpHeaders({
+				'Authorization': 'Basic ' + utf8_to_b64(userPass),
+				'X-Requested-With': 'XMLHttpRequest'
+			})
+		};
+
+
         let useData = null;
-			 await this.utils.restService('/login', {
+			 await this.utils.restService('/logout', {
 				method: 'get',
+                headers: headers
 			  }).toPromise().then(
 				(data) => {
 				  if (typeof data !== 'undefined' && data !== null) {

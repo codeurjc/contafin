@@ -13,22 +13,21 @@ import { stringToFileBuffer } from '@angular-devkit/core/src/virtual-fs/host';
 })
 export class UserGoalComponent implements OnInit {
 
-  public loggedUser: User;
+  public loggedUser;
   public image: FormData;
   public noGoal: boolean;
   public addGoal: boolean;
 
 
   constructor(private router: Router, private loginService: LoginService, private userService: UserService) {
-    this.loggedUser = loginService.getLoggedUser();
   }
 
   ngOnInit() {
-    this.userService.getUser(this.loggedUser.id);
+    this.loggedUser = this.loginService.getLoggedUser();
   }
 
   //Other methods
-  async updateUser() {
+  async updateUser() {//Cambiar servicio al que se llama
     this.loggedUser.dailyGoal = (+this.loggedUser.dailyGoal);
     await this.userService.updateUser(this.loggedUser.id, this.loggedUser)
       .then(

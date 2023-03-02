@@ -18,10 +18,10 @@ export class ExerciseService {
 		public utils: UtilsService
 		) { }
 
-	getExercises() {
+	/*getExercises() {
 		return this.http.get(BASE_URL)
 			.catch(error => this.handleError(error));
-	}
+	}*/
 
 	//Need the unit id, lesson id and exercise id
 	async getExercise(idUnit: number, idLesson: number, idExercise: number) {
@@ -44,7 +44,7 @@ export class ExerciseService {
 	async getOneExercise(idUnit: number, idLesson: number, idExercise: number) {
 		let useData = null;
 			 await this.utils.restService('/Unit/', {
-				queryString: idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise,
+				queryString: 'Lesson/' + idLesson + '/Exercise/' + idExercise,
 				method: 'get'
 			  }).toPromise().then(
 				(data) => {
@@ -57,12 +57,15 @@ export class ExerciseService {
 		return useData;
 	}
 
+	/*Esto queda para la segunda version
 	changeExercise(idUnit: number, idLesson: number, idExercise: number, exercise: Exercise) {
 		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise, exercise)
 			.catch(error => this.handleError(error));
-	}
+	}*/
 
-	getAnswer(idUnit: number, idLesson: number, idExercise: number) {
+
+
+	/*getAnswer(idUnit: number, idLesson: number, idExercise: number) {
 		return this.http.get(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Answer')
 			.catch(error => this.handleError(error));
 	}
@@ -70,7 +73,7 @@ export class ExerciseService {
 	changeAnswer(idUnit: number, idLesson: number, idExercise: number, result: string) {
 		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Answer', result)
 			.catch(error => this.handleError(error));
-	}
+	}*/
 
 	async checkExercise(idUnit: number, idLesson: number, idExercise: number, result) {
 		
@@ -91,13 +94,13 @@ export class ExerciseService {
 		
 	}
 
-	deleteAllCompleted() {
+	/*deleteAllCompleted() {
 		const headers = new HttpHeaders({
 			'X-Requested-With': 'XMLHttpRequest'
 		});
 		return this.http.delete(environment.apiBase + '/DeleteAllExercises', { withCredentials: true, headers })
 			.catch(error => this.handleError(error));
-	}
+	}*/
 
 	private handleError(error: any) {
 		console.error(error);

@@ -5,7 +5,7 @@ import com.daw.contafin.lesson.LessonDto;
 import com.daw.contafin.user.UserDto;
 import lombok.Data;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 public class CompletedLessonDto implements Serializable {

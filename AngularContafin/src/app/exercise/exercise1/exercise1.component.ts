@@ -2,6 +2,7 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { ExerciseService } from '../exercise.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class Exercise1Component implements OnInit {
   idkind: number;
 
   @Input()
-  idExercise: number;
+  exercise: any;
 
   @Input()
   nElement: number;
@@ -29,11 +30,11 @@ export class Exercise1Component implements OnInit {
   @Output()
   newExercise = new EventEmitter<boolean>();
 
-  public img1: string;
-  public img2: string;
-  public img3: string;
+  public img1: any;
+  public img2: any;
+  public img3: any;
 
-  public right: boolean;
+  public right: boolean = false;
   public option1: string = "exercise1";
   public option2: string = "exercise1";
   public option3: string = "exercise1";
@@ -43,16 +44,20 @@ export class Exercise1Component implements OnInit {
   public result: any;
   public press:boolean = false;
 
-  constructor(private http: HttpClient, private exerciseService: ExerciseService) {
-    console.log(this.idExercise);
+  constructor(private http: HttpClient, private exerciseService: ExerciseService, private sanitizer: DomSanitizer) {
+    console.log(this.exercise);
 
   }
   ngOnInit() {
     console.log("Exercise 1")
-    this.img1 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/1";
-    this.img2 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/2";
-    this.img3 = "https://localhost:8080/api/Unit/Exercise/" + this.idExercise + "/3";
-    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+    let objectURL = 'data:image/jpeg;base64,' + this.exercise.image1;       
+    this.img1 = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    objectURL = 'data:image/jpeg;base64,' + this.exercise.image2;       
+    this.img2 = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    objectURL = 'data:image/jpeg;base64,' + this.exercise.image3;       
+    this.img3 = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+
+    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.exercise.id)
       .then(
         (exercise :any) => {
           this.statement = exercise.statement;
@@ -65,7 +70,7 @@ export class Exercise1Component implements OnInit {
     this.result = {
       result: this.answer
     }
-    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result)
+    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.exercise.id, this.result)
       .then(
         (response :any) => {
           this.right = response;

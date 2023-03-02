@@ -9,6 +9,7 @@ import java.util.List;
 import com.daw.contafin.ImageService;
 import com.daw.contafin.answer.Answer;
 import com.daw.contafin.answer.AnswerDto;
+import com.daw.contafin.answer.AnswerService;
 import com.daw.contafin.exercise.ExerciseDto;
 import com.daw.contafin.exercise.ExerciseService;
 import com.daw.contafin.lesson.LessonDto;
@@ -36,13 +37,10 @@ public class UnitService {
 	UnitRepository unitRepository;
 
 	@Autowired
-	LessonService lessonService;
+	AnswerService answerService;
 
 	@Autowired
 	ImageService imageService;
-
-	@Autowired
-	ExerciseService exerciseService;
 
 	@Resource
 	UnitMapper unitMapper;
@@ -55,7 +53,7 @@ public class UnitService {
 			List<Unit> units = unitRepository.findAll();
 			unitDtos = unitMapper.UnitsToUnitsDto(units);
 		}catch (Exception e){
-			log.info("Error al buscar las unidades");
+			log.warn("Error al buscar las unidades");
 			unitDtos = null;
 		}
 		return unitDtos;
@@ -67,7 +65,7 @@ public class UnitService {
 			Unit unit = unitMapper.UnitDtoToUnit(unitDto);
 			unitRepository.save(unit);
 		}catch (Exception e){
-			log.info("Error al guardar la unidad");
+			log.warn("Error al guardar la unidad");
 		}
 	}
 	
@@ -78,32 +76,49 @@ public class UnitService {
 			Unit unit = unitRepository.findById(Id);
 			unitDto = unitMapper.UnitToUnitDto(unit);
 		}catch (Exception e){
-			log.info("Error al buscar la unidad");
+			log.warn("Error al buscar la unidad");
 			unitDto = null;
 		}
 		return unitDto;
 	}
-	
-	public void delete(long Id) {
+
+	public UnitDto findByLessonsId(long Id) {
+		log.info("Busqueda de unidad por id de leccion: {}", Id);
+		UnitDto unitDto;
+		try{
+			Unit unit = unitRepository.findByLessonsId(Id);
+			unitDto = unitMapper.UnitToUnitDto(unit);
+		}catch (Exception e){
+			log.warn("Error al buscar la unidad");
+			unitDto = null;
+		}
+		return unitDto;
+	}
+
+	public UnitDto saveUnitComplete(UnitDto unit) {
+		try {
+			for (LessonDto lesson : unit.getLessons()) {
+				for (ExerciseDto exercise : lesson.getExercises()) {
+					exercise.setAnswer(answerService.save(exercise.getAnswer()));
+				}
+			}
+			save(unit);
+		} catch (Exception e) {
+			unit = null;
+		}
+		return unit;
+	}
+
+	/*public void delete(long Id) {
 		log.info("Borrado de unidad por id: {}", Id);
 		try{
 			unitRepository.deleteById(Id);
 		}catch (Exception e){
 			log.info("Error al borrar la unidad");
 		}
-	}
+	}*/
 	
-	public Page<Unit> getUnits(Pageable page){
-		log.info("Borrado de las paginas de unidades");
-		try{
-			return unitRepository.findAll(page);
-		}catch (Exception e){
-			log.info("Error al buscar las paginas de unidades");
-			return null;
-		}
-	}
-	
-	public boolean isValidUnit(UnitDto unitDto) {
+	/*public boolean isValidUnit(UnitDto unitDto) {
 		log.info("Comprobar que la unidad es valida");
 		try{
 			List<LessonDto> lessonDtos = unitDto.getLessons();
@@ -141,248 +156,64 @@ public class UnitService {
 			return false;
 		}
 
-	}
+	}*/
 
 	@PostConstruct
 	public void init() throws IOException {
 
 		List<UnitDto> unidades = findAll();
 		if(unidades == null || unidades.isEmpty() ) {
-			UnitDto unit;
-			unit = new UnitDto();
-			unit.setName("Unidad 1");
-			save(unit);
-			unit = new UnitDto();
-			unit.setName("Unidad 2");
-			save(unit);
-
-			unit = findById(1);
-			LessonDto lesson1 = new LessonDto("Lección 1 Unidad 1", unit);
-			lessonService.save(lesson1);
-			LessonDto lesson2 = new LessonDto("Lección 2 Unidad 1", unit);
-			lessonService.save(lesson2);
-			LessonDto lesson3 = new LessonDto("Lección 3 Unidad 1", unit);
-			lessonService.save(lesson3);
-
-			unit = findById(2);
-			LessonDto lesson4 = new LessonDto("Lección 1 Unidad 2", unit);
-			lessonService.save(lesson4);
-			LessonDto lesson5 = new LessonDto("Lección 2 Unidad 2", unit);
-			lessonService.save(lesson5);
-			LessonDto lesson6 = new LessonDto("Lección 3 Unidad 2", unit);
-			lessonService.save(lesson6);
-
 			//Unit 1 Lesson 1
-			LessonDto lesson = lessonService.findById(1);
-
 			//Exercise 1
-			AnswerDto answer = new AnswerDto("uno");
+			AnswerDto answer1 = new AnswerDto("uno");
+			answer1 = answerService.save(answer1);
 			List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			ExerciseDto exercise = new ExerciseDto(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
+			ExerciseDto exercise1 = new ExerciseDto(1, "1.1.1 Seleccione el asiento", texts, answer1);
 			// Save the images in the database
-			imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
+			imageService.saveImages(exercise1, Paths.get("img/machine.jpg"),
 					Paths.get("img/land.jpg"),
 					Paths.get("img/truck.jpg"));
 
 			//Exercise 2
-			answer = new AnswerDto("Este es un texto de prueba en el que comprobarlo");
-			exerciseService.save(new ExerciseDto(2, "1.1.2 Escribe la denominación de la cuenta que recoge: "
-					+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
-
-
-			//Exercise 5
-			answer = new AnswerDto("tres");
-			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
-			exerciseService.save(
-					new ExerciseDto(5, "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-							texts, answer, lesson));
-
-			////Exercise 7
-			answer = new AnswerDto("dos");
-			texts = Arrays.asList(
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
-					"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
-			exerciseService.save(new ExerciseDto(7,
-					"1.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-					texts, answer, lesson));
-
-			//Unit 1 Lesson 2
-			lesson = lessonService.findById(2);
-
-			//Exercise 1
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			exercise = new ExerciseDto(1, "1.1.1 Seleccione el asiento", texts, answer, lesson);
-			//Save the images in the database
-			imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
-					Paths.get("img/land.jpg"),
-					Paths.get("img/truck.jpg"));
-
-			//Exercixe 2
-			answer = new AnswerDto("Este es un texto de prueba en el que comprobarlo");
-			exerciseService.save(new ExerciseDto(2, "1.2.2 Escribe la denominación de la cuenta que recoge: "
-					+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
-
+			AnswerDto answer2 = new AnswerDto("222.Respuesta");
+			answer2 = answerService.save(answer2);
+			ExerciseDto exercise2 = new ExerciseDto(2, "1.1.2 Escribe la denominación de la cuenta que recoge: " + "maquinarias para el proceso productivo de la empresa", null, answer2);
 
 			//Exercise 5
-			answer = new AnswerDto("uno");
+			AnswerDto answer3 = new AnswerDto("tres");
+			answer3 = answerService.save(answer3);
 			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
-			exerciseService.save(
-					new ExerciseDto(5, "1.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-							texts, answer, lesson));
-
-
-			////Exercise 7
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList(
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
-					"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
-			exerciseService.save(new ExerciseDto(7,
-					"1.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-					texts, answer, lesson));
-
-			//Unit 1 Lesson 3
-			lesson = lessonService.findById(3);
-
-			//Exercise 1
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			exercise = new ExerciseDto(1, "1.3.1 Seleccione el asiento",  texts, answer, lesson);
-			//Save the images in the database
-			imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
-					Paths.get("img/land.jpg"),
-					Paths.get("img/truck.jpg"));
-
-			//Exercise 2
-			answer = new AnswerDto("Este es un texto de prueba en el que comprobarlo");
-			exerciseService.save(new ExerciseDto(2, "1.3.2 Escribe la denominación de la cuenta que recoge: "
-					+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
-
-			//Exercise 5
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
-			exerciseService.save(
-					new ExerciseDto(5, "1.3.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-							texts, answer, lesson));
+			ExerciseDto exercise3 = new ExerciseDto(5, "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
+					texts, answer3);
 
 			//Exercise 7
-			answer = new AnswerDto("uno");
+			AnswerDto answer4 = new AnswerDto("dos");
+			answer4 = answerService.save(answer4);
 			texts = Arrays.asList(
 					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
 					"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
 					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
-			exerciseService.save(new ExerciseDto(7,
-					"1.3.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-					texts, answer, lesson));
-
-			//Unit 2 Lesson 1
-			lesson = lessonService.findById(4);
-
-			//Exercise 1
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			exercise =new ExerciseDto(1, "2.1.1 Seleccione el asiento", texts, answer, lesson);
-			//Save the images in the database
-			imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
-					Paths.get("img/land.jpg"),
-					Paths.get("img/truck.jpg"));
-
-			//Exercise 2
-			answer = new AnswerDto("Este es un texto de prueba en el que comprobarlo");
-			exerciseService.save(new ExerciseDto(2, "2.1.2 Escribe la denominación de la cuenta que recoge: "
-					+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
-
-			//Exercise 5
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
-			exerciseService.save(
-					new ExerciseDto(5, "2.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-							texts, answer, lesson));
-
-			//Exercise 7
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList(
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
-					"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
-			exerciseService.save(new ExerciseDto(7,
-					"2.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-					texts, answer, lesson));
-
-			//Unit 2 Lesson 2
-			lesson = lessonService.findById(5);
-
-			//Exercise 1
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			exercise =new ExerciseDto(1, "2.2.1 Seleccione el asiento", texts, answer, lesson);
-			//Save the images in the database
-			imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
-					Paths.get("img/land.jpg"),
-					Paths.get("img/truck.jpg"));
-
-			//Exercise 2
-			answer = new AnswerDto("Este es un texto de prueba en el que comprobarlo");
-			exerciseService.save(new ExerciseDto(2, "2.2.2 Escribe la denominación de la cuenta que recoge: "
-					+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
+			ExerciseDto exercise4 = new ExerciseDto(7, "1.1.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
+					texts, answer4);
 
 
-			//Exercise 5
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
-			exerciseService.save(
-					new ExerciseDto(5, "2.2.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-							texts, answer, lesson));
+			List<ExerciseDto> exercises1 = new ArrayList<>();
+			exercises1.add(exercise1);
+			exercises1.add(exercise2);
+			exercises1.add(exercise3);
+			exercises1.add(exercise4);
 
-			//Exercise 7
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList(
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
-					"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
-			exerciseService.save(new ExerciseDto(7,
-					"2.2.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-					texts, answer, lesson));
+			LessonDto lesson1 = new LessonDto("Lección 1 Unidad 1", exercises1);
 
-			//Unit 2 Lesson 3
-			lesson = lessonService.findById(6);
+			List<LessonDto> lessons1 = new ArrayList<>();
+			lessons1.add(lesson1);
 
-			//Exercise 1
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			exercise = new ExerciseDto(1, "2.3.1 Seleccione el asiento", texts, answer, lesson);
-			// Save the images in the database
-			imageService.saveImages(exercise, Paths.get("img/machine.jpg"),
-					Paths.get("img/land.jpg"),
-					Paths.get("img/truck.jpg"));
+			UnitDto unit1 = new UnitDto();
+			unit1.setName("Unidad 1");
+			unit1.setLessons(lessons1);
+			save(unit1);
 
-			//Exercise 2
-			answer = new AnswerDto("Este es un texto de prueba en el que comprobarlo");
-			exerciseService.save(new ExerciseDto(2, "2.3.2 Escribe la denominación de la cuenta que recoge: "
-					+ "maquinarias para el proceso productivo de la empresa", null, answer, lesson));
-
-
-			//Exercise 5
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
-			exerciseService.save(
-					new ExerciseDto(5, "2.3.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
-							texts, answer, lesson));
-
-			//Exercise 7
-			answer = new AnswerDto("uno");
-			texts = Arrays.asList(
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años a través de la letra de cambio.",
-					"La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará integramente dentro de 10 años.",
-					" La empresa compra un local por 10, dejándolo a deber a su provedor, al que pagará en un plazo no superior a un año.");
-			exerciseService.save(new ExerciseDto(7,
-					"2.3.7 Escoge el enunciado correcto para el asiento: \"10 211. Construcciones a 174. Provedores de inmovilizado a l/p 10\"",
-					texts, answer, lesson));
 
 		}
-
-
 	}
 }

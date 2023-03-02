@@ -6,6 +6,7 @@ import { UtilsService } from '../../../src/app/services/utils.service';
 import 'rxjs/Rx';
 import { Unit } from '../Interfaces/Unit/unit.model';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from '../login/login.service';
 
 const BASE_URL = environment.apiBase + '/Unit/';
 
@@ -14,7 +15,8 @@ export class UnitsService {
 
 	constructor(
 		private http: HttpClient,
-		public utils: UtilsService
+		public utils: UtilsService,
+		public user : LoginService
 		) { }
 
 	async getUnits() {
@@ -33,25 +35,29 @@ export class UnitsService {
 	}
 
 
-	getUnit(id: number) {
-		return this.http.get(BASE_URL + id)
-			.catch(error => this.handleError(error));
+	async getUnit(id: number) {
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: id ,
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	//To know if a unit is completed
-	isCompleted(id: number) {
+	/*isCompleted(id: number) {
 		return this.http.get(BASE_URL + id + '/isCompleted')
 			.catch(error => this.handleError(error));
-	}
+	}*/
 
-	//Number of completed Lessons in a unit (int)
-	numberOfCompletedLessons(id: number) {
-		const headers = new HttpHeaders({
-			'X-Requested-With': 'XMLHttpRequest'
-		});
-		return this.http.get(BASE_URL + id + '/numberOfCompletedLessons', { withCredentials: true, headers })
-			.catch(error => this.handleError(error));
-	}
+
 
 	async numberOfCompletedLessons2(id: Number) {
 		let useData = null;
@@ -70,9 +76,29 @@ export class UnitsService {
 	}
 
 	//Need the unit with its lessons and exercises
-	addUnit(unit: Unit) {
-		return this.http.post(BASE_URL, unit, { withCredentials: true })
-			.catch(error => this.handleError(error));
+	async addUnit(unit) {
+
+		const userPass = this.user.user.email + ':' + this.user.pass;
+
+        const headers = new HttpHeaders({
+            'Authorization': 'Basic ' + utf8_to_b64(userPass),
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+
+		let useData = null;
+			 await this.utils.restServiceHeaders('/Unit', {
+				queryString: '/',
+				method: 'post',
+				headers: headers ,
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	uploadImages(id: number, nImage: number, formData) {
@@ -104,4 +130,10 @@ export class UnitsService {
 
 
 
+}
+
+function utf8_to_b64(str) {
+	return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {//Mirar si esta bien
+		return String.fromCharCode(<any>'0x' + p1);
+	}));
 }

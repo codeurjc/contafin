@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { NgbNavModule, NgbModule  } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -92,8 +92,10 @@ import { CanActivateAdmin } from './security/can-activate-admin';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbNavModule,
+    NgbModule,
     routing
 
   ],

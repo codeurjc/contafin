@@ -27,34 +27,24 @@ export class BodyLessonComponent implements OnInit {
         this.lessons = new Array();
         this.lessonsCompleted = new Array();
         //this.defineUnit();
-        this.getUnits(this.id);
+        this.getLessons();
     }
-    async getUnits(id: number) {
-        await this.lessonService.getLessonsOfUnit(this.id)
+    async getLessons() {
+        await this.unitService.getUnit(this.id)
                 .then((unit : any) => {
                     this.unit = unit;
                     this.unitService.numberOfCompletedLessons2(unit.id).then((nlesson : any) =>{
                         this.nlesson = nlesson
                     });
 
-                    this.lessonService.isCompleted2(this.unit.id)
+                    if(this.nlesson>0){
+                        this.lessonService.isCompleted2(this.unit.id)
                         .then((response : any) => {
                                 this.lessonsCompleted = response;
                             });
-                            
-                    this.unit.lessons[0].id = 1;
-                    this.unit.lessons[1].id = 2;
-                    this.unit.lessons[2].id = 3;
+                    }
                 })
                 .catch(error => console.error(error));
-    }
-
-    numberoflessons(id: number) {
-        console.log("Es aqui");
-        this.unitService.numberOfCompletedLessons(id).subscribe(
-            (nlesson : any) => this.nlesson = nlesson,
-            error => console.log(error)
-        )
     }
 
     //Only create an empty unit

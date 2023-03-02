@@ -20,14 +20,8 @@ public class AnswerService {
 	@Autowired
 	AnswerRepository answerRepository;
 
-	@Autowired
-	ExerciseRepository exerciseRepository;
-
 	@Resource
 	AnswerMapper answerMapper;
-
-	@Resource
-	ExerciseMapper exerciseMapper;
 	
 	public AnswerDto findById (long id) {
 		log.info("Busqueda de una respuesta por el id: {} ", id);
@@ -36,7 +30,7 @@ public class AnswerService {
 			Answer answer = answerRepository.findById(id);
 			answerDto = answerMapper.AnswerToAnswerDto(answer);
 		}catch (Exception e){
-			log.info("Error al buscar la respuesta por  id");
+			log.warn("Error al buscar la respuesta por  id");
 			answerDto = null;
 		}
 		return answerDto;
@@ -47,20 +41,22 @@ public class AnswerService {
 		log.info("Guardado de la repuesta: {}", answerDto);
 		try{
 			Answer answer = answerMapper.AnswerDtoToAnswer(answerDto);
-			answerRepository.save(answer);
+			answer = answerRepository.save(answer);
+			answerDto = answerMapper.AnswerToAnswerDto(answer);
 		}catch (Exception e){
-			log.info("Error al guardar la repuesta");
+			log.warn("Error al guardar la repuesta");
 			answerDto = null;
 		}
 		return answerDto;
 	}
-	public void delete(AnswerDto answerDto) {
+
+	/*public void delete(AnswerDto answerDto) {
 		log.info("Borrado de la repuesta: {}", answerDto);
 		try{
 			Answer answer = answerMapper.AnswerDtoToAnswer(answerDto);
 			answerRepository.delete(answer);
 		}catch (Exception e){
-			log.info("Error al borrar la repuesta");
+			log.warn("Error al borrar la repuesta");
 		}
-	}
+	}*/
 }

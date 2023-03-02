@@ -15,11 +15,10 @@ public class LessonDto implements Serializable {
     private long id;
     private String name;
     private List<ExerciseDto> exercises;
-    private UnitDto unit;
 
     public LessonDto() {}
-    public LessonDto(String name, UnitDto unit) {
+    public LessonDto(String name, List<ExerciseDto> exercises) {
         this.name=name;
-        this.setUnit(unit);
+        this.exercises = exercises;
     }
 }

@@ -21,11 +21,11 @@ export class LessonsService {
 			.catch(error => this.handleError(error));
 	}
 
-	//Get Lessons of the unit with its id
-	async getLessonsOfUnit(id: number) {
+	//Need the unit id and lesson id
+	async getLesson(idLesson: number) {
 		let useData = null;
 			 await this.utils.restService('/Unit/', {
-				queryString: id + '/Lesson/',
+				queryString: 'Lesson/' + idLesson,
 				method: 'get'
 			  }).toPromise().then(
 				(data) => {
@@ -38,24 +38,27 @@ export class LessonsService {
 		return useData;
 	}
 
-	//Need the unit id and lesson id
-	getLesson(idUnit: number, idLesson: number) {
-		return this.http.get(BASE_URL + idUnit + '/Lesson/' + idLesson)
-			.catch(error => this.handleError(error));
-	}
-
 	changeNameLesson(idUnit: number, idLesson: number, name: string) {
 		return this.http.put(BASE_URL + idUnit + '/Lesson/' + idLesson, name)
 			.catch(error => this.handleError(error));
 	}
 
 	//To complete a lesson when the exercises are done.
-	completeLesson(idUnit: number, idLesson: number) {
-		const headers = new HttpHeaders({
-			'X-Requested-With': 'XMLHttpRequest'
-		});
-		return this.http.get(BASE_URL + idUnit + '/Lesson/' + idLesson + '/Completed', { withCredentials: true, headers })
-			.catch(error => this.handleError(error));
+	async completeLesson(idUnit: number, idLesson: number) {
+
+		let useData = null;
+			 await this.utils.restService('/Unit/', {
+				queryString: idUnit + '/Lesson/' + idLesson + '/Completed',
+				method: 'get'
+			  }).toPromise().then(
+				(data) => {
+				  if (typeof data !== 'undefined' && data !== null) {
+					console.log(data);
+					useData = data;
+				  }
+				}
+			  );
+		return useData;
 	}
 
 	//To know if a Lesson is completed.

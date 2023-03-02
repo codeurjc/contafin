@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
+import com.daw.contafin.answer.AnswerDto;
 import com.daw.contafin.completedLesson.CompletedLessonDto;
 import com.daw.contafin.exercise.ExerciseDto;
 import com.daw.contafin.lesson.LessonDto;
@@ -46,109 +47,100 @@ public class UnitRestController{
 	
 	@Autowired
 	UnitService unitService;
-	
-	@Autowired
-	LessonService lessonService;
 
-	@Autowired
-	ExerciseService exerciseService;
-	
 	@Autowired
 	CompletedLessonService completedLessonService;
-	
-	@Autowired
-	CompletedExerciseService completedExerciseService;
-	
-	
-	@Autowired
-	UserService userService;
-
-	@Autowired
-	UserComponent userComponent;
-
-	@Autowired
-	ImageService imageService;
-
-	byte[] bytes1;
-	byte[] bytes2;
-	byte[] bytes3;
 
 	//Get all unit
 	@GetMapping(path = "/")
 	@ResponseBody
-	public ResponseEntity<List<UnitDto>> getUnit() {
-		return new ResponseEntity<>(unitService.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<UnitDto>> getUnits() {
+		log.info("Se ha recibido una solicitud para listar las unidades");
+		ResponseEntity<List<UnitDto>> response;
+		try{
+			List<UnitDto> unitDtoList = unitService.findAll();
+			response = new ResponseEntity<>(unitDtoList, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido listar las unidades";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
 	}
 	
 	//Get 1 unit
-	@JsonView(UnitBassic.class)
 	@GetMapping(value = "/{id}")
 	@ResponseBody
 	public ResponseEntity<UnitDto> getOneUnit(@PathVariable long id) {
-		UnitDto unit = unitService.findById(id);
-		if (unit != null) {
-			return new ResponseEntity<>(unit, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		log.info("Se ha recibido una peticion para buscar la unidad con el id: {}",id);
+		ResponseEntity<UnitDto> response;
+		try{
+			UnitDto unitDto = unitService.findById(id);
+			response = new ResponseEntity<>(unitDto, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido encontrar la unidad";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		return response;
 	}
 		
 	//Post Unit
 	@PostMapping(value = "/")
 	@ResponseBody
-	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<UnitDto> createUnit(@RequestBody UnitDto unit) {
-		
-		if (unitService.isValidUnit(unit)) {
-			ExerciseDto exercise;
-			
-			unitService.save(unit);
-			
-			LessonDto lesson = unit.getLessons().get(0);
-			lesson.setUnit(unit);
-			lessonService.save(lesson);
-			exercise = lesson.getExercises().get(0);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(1);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(2);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(3);
-			exerciseService.save(exercise);
-			
-			
-			lesson = unit.getLessons().get(1);
-			lesson.setUnit(unit);
-			lessonService.save(lesson);
-			exercise = lesson.getExercises().get(0);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(1);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(2);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(3);
-			exerciseService.save(exercise);
-			
-			
-			
-			lesson = unit.getLessons().get(2);
-			lesson.setUnit(unit);
-			lessonService.save(lesson);
-			exercise = lesson.getExercises().get(0);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(1);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(2);
-			exerciseService.save(exercise);
-			exercise = lesson.getExercises().get(3);
-			exerciseService.save(exercise);
-			return new ResponseEntity<>(unit, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		log.info("Se ha recibido una peticion para crear una nueva unidad");
+		ResponseEntity<UnitDto> response;
+		try{
+			UnitDto unitDto = unitService.saveUnitComplete(unit);
+			response = new ResponseEntity<>(unitDto, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido crear la unidad";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		return response;
 	}
+
+	@GetMapping(value = "/{idunit}/numberOfCompletedLessons")
+	@ResponseBody
+	public ResponseEntity<Integer> numberOfCompletedLesson(@PathVariable Long id) {
+		log.info("Se ha recibido una peticion calcular el numero de lecciones completas de la unidad con id: {}", id);
+		ResponseEntity<Integer> response;
+		try{
+			int n = completedLessonService.numberOfCompletedLesson(id);
+			response = new ResponseEntity<>(n, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha calcular";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
+	}
+
+	/*@GetMapping(value = "/{idunit}/isCompleted")
+	@ResponseBody
+	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {
+		UserDto user = userComponent.getLoggedUser();
+
+		UnitDto unit = unitService.findById(idunit);
+		List<LessonDto> lessons = unit.getLessons();
+		int count = 0;
+		for(int i=0; i<lessons.size(); i++) {
+			Boolean b = completedLessonService.existCompletedLesson(user, lessons.get(i));
+			if(b) {
+				count++;
+			}
+		}
+
+		if (count == 3) {
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(false, HttpStatus.OK);
+		}
+	}*/
 	
-	@PostMapping(value = "/Exercise/{idExercise}/{nImage}")
+	/*@PostMapping(value = "/Exercise/{idExercise}/{nImage}")
 	@ResponseBody
 	public ResponseEntity<Boolean> profilePhoto(@PathVariable long idExercise, @PathVariable long nImage, @RequestParam("file") MultipartFile file) {
 		if (!file.isEmpty()) {
@@ -175,22 +167,22 @@ public class UnitRestController{
 		else {
 			return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
 		}
-	}
+	}*/
 	
 	//Show images
-	@GetMapping(value = "/Exercise/{idExercise}/{nImage}")
+	/*@GetMapping(value = "/Exercise/{idExercise}/{nImage}")
 	@ResponseBody
 	public void sowImage(@PathVariable long idExercise, @PathVariable long nImage, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		ExerciseDto exercise = exerciseService.findById(idExercise);
 		imageService.showImageExercise(exercise, nImage, request, response);
-	}
+	}*/
 	
-	@PostMapping(value = "/{id}/Images")
+	/*@PostMapping(value = "/{id}/Images")
 	@ResponseBody
 	public ResponseEntity<Boolean> addImages(@PathVariable long id, @RequestParam("images") MultipartFile [] images ) {
 		UnitDto unit = unitService.findById(id);
 		LessonDto lesson = unit.getLessons().get(0);
-		ExerciseDto exercise =exerciseService.findByLesson(lesson).get(0);
+		ExerciseDto exercise = lesson.getExercises().get(0);
 		// Upload images
 		try {
 			int aux= 0;
@@ -200,7 +192,7 @@ public class UnitRestController{
 				aux=3+(3*i);
 				if(i<2) {
 					lesson =unit.getLessons().get(i+1);
-					exercise =exerciseService.findByLesson(lesson).get(0);
+					exercise = lesson.getExercises().get(0);
 				}
 			}
 
@@ -208,13 +200,13 @@ public class UnitRestController{
 		} catch (IOException e) {
 			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-	}
+	}*/
 	
 	//Put unit
-	@JsonView(UnitBassic.class)
+	/*@JsonView(UnitBassic.class)
 	@PutMapping(value = "/{id}")
 	@ResponseBody
-	public ResponseEntity<UnitDto> updateUnit(@PathVariable long id, @RequestBody Unit unitAct) {
+	public ResponseEntity<UnitDto> updateUnit(@PathVariable long id, @RequestBody UnitDto unitAct) {
 
 		UnitDto unit = unitService.findById(id);
 
@@ -226,18 +218,18 @@ public class UnitRestController{
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
+	}*/
 
 	//Delete Unit
-	@JsonView(UnitBassic.class)
+	/*@JsonView(UnitBassic.class)
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<UnitDto> deleteUnit(@PathVariable long id) {
 			UnitDto unit = unitService.findById(id);
 			if (unit != null) {
 				List<LessonDto> lessons = lessonService.findByUnit(unit);
-				List<ExerciseDto> exercises1 = exerciseService.findByLesson(lessons.get(0));
-				List<ExerciseDto> exercises2 = exerciseService.findByLesson(lessons.get(1));
-				List<ExerciseDto> exercises3 = exerciseService.findByLesson(lessons.get(2));
+				List<ExerciseDto> exercises1 = lessons.get(0).getExercises();
+				List<ExerciseDto> exercises2 = lessons.get(1).getExercises();
+				List<ExerciseDto> exercises3 = lessons.get(2).getExercises();
 				for(int i=0;i<exercises1.size();i++) {
 					exerciseService.delete(exercises1.get(i).getId());
 					exerciseService.delete(exercises2.get(i).getId());
@@ -251,228 +243,6 @@ public class UnitRestController{
 			} else {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}
-	}
-	@GetMapping(value = "/{idunit}/isCompleted")
-	@ResponseBody
-	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {
-		UserDto user = userComponent.getLoggedUser();
-		
-		UnitDto unit = unitService.findById(idunit);
-		List<LessonDto> lessons = lessonService.findByUnit(unit);
-		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
-		int count = 0;
-		for(int i=0; i<lessons.size(); i++) {
-			CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
-			if(completedLesson != null) {
-				count++;
-			}
-		}
-				
-		if (count == 3) {
-			return new ResponseEntity<>(true, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(false, HttpStatus.OK);
-		}
-	}
-	
-	@GetMapping(value = "/{idunit}/numberOfCompletedLessons")
-	@ResponseBody
-	public ResponseEntity<Integer> numberOfCompletedLesson(@PathVariable int idunit) {
-		UserDto user = userComponent.getLoggedUser();
-		
-		UnitDto unit = unitService.findById(idunit);
-		List<LessonDto> lessons = lessonService.findByUnit(unit);
-		// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
-		int count = 0;
-		for(int i=0; i<lessons.size(); i++) {
-			CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
-			if(completedLesson != null) {
-				count++;
-			}
-		}
-				
-		return new ResponseEntity<>(count, HttpStatus.OK);
-	}
-	
-	@GetMapping(value = "/numberOfCompletedLessons")
-	@ResponseBody
-	public ResponseEntity<ArrayList<Integer> > numberOfCompletedLessons() {
-		UserDto user = userComponent.getLoggedUser();
-		
-		List<UnitDto> units = unitService.findAll();
-		List<LessonDto> lessons;
-		ArrayList<Integer> number = new ArrayList<Integer>(); 
-		for (int j=0 ; j< units.size() ; j++) {
-			lessons = lessonService.findByUnit(units.get(j));
-			// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
-			int count = 0;
-			for(int i=0; i<lessons.size(); i++) {
-				CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
-				if(completedLesson != null) {
-					count++;
-				}
-			}
-			number.add(count);
-		}
-				
-		return new ResponseEntity<>(number, HttpStatus.OK);
-	}
-	
-	@GetMapping(value = "/NumberOfUnitsCompleted")
-	@ResponseBody
-	public ResponseEntity<List<Boolean>> Unitscompleted() {
-		UserDto user = userComponent.getLoggedUser();
-		List<Boolean> booleanos = new ArrayList<Boolean>();
-		List<UnitDto> units = unitService.findAll();
-		for (int j = 0 ; j<units.size(); j++) {
-			List<LessonDto> lessons = lessonService.findByUnit(units.get(j));
-			// Get all ExerciseCompleted in the lesson and delete them (need to put wrong exercise last)
-			int count = 0;
-			for(int i=0; i<lessons.size(); i++) {
-				CompletedLessonDto completedLesson = completedLessonService.findByUserAndLesson(user, lessons.get(i));
-				if(completedLesson != null) {
-					count++;
-				}
-			}
-					
-			if (count == 3) {
-				booleanos.add(true);
-			} else {
-				booleanos.add(false);
-			}
-		}
-			return new ResponseEntity<>(booleanos, HttpStatus.OK);
-	}
+	}*/
 		
 }
-
-/*
-{
-	"name": "Unidad Prueba"
-}
-
-*/
- 
- 
- 
- /*
-{
-    "name": "Unidad 3",
-    "lessons": [
-        {
-            "id": 7,
-            "name": "Lección 1 Unidad 3",
-            "exercises": [
-            	{
-            		"kind": 1,
-            		"statement": "Enunciado 1",
-            		"texts": [ "Opcion 1", "Opcion 2","Opcion 3" ],
-            		"answer": {
-            			"result": "dos"
-            		}
-            	},
-            	{
-            		"kind": 2,
-            		"statement": "Enunciado 2",
-            		"answer": {
-            			"result": "Este texto es de prueba"
-            		}
-            	},
-            	{
-            		"kind": 5,
-            		"statement": "Enunciado 3",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "uno"
-            		}
-            	},
-            	{
-            		"kind": 7,
-            		"statement": "Enunciado 4",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "tres"
-            		}
-            	}
-            ]
-        },
-        {
-            "id": 8,
-            "name": "Lección 2 Unidad 3",
-            "exercises": [
-            	{
-            		"kind": 1,
-            		"statement": "Enunciado 1",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "dos"
-            		}
-            	},
-            	{
-            		"kind": 2,
-            		"statement": "Enunciado 2",
-            		"answer": {
-            			"result": "Este texto es de prueba"
-            		}
-            	},
-            	{
-            		"kind": 5,
-            		"statement": "Enunciado 3",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "uno"
-            		}
-            	},
-            	{
-            		"kind": 7,
-            		"statement": "Enunciado 4",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "tres"
-            		}
-            	}
-            ]
-        },
-        {
-            "id": 9,
-            "name": "Lección 3 Unidad 3",
-            "exercises": [
-            	{
-            		"kind": 1,
-            		"statement": "Enunciado 1",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "dos"
-            		}
-            	},
-            	{
-            		"kind": 2,
-            		"statement": "Enunciado 2",
-            		"answer": {
-            			"result": "Este texto es de prueba"
-            		}
-            	},
-            	{
-            		"kind": 5,
-            		"statement": "Enunciado 3",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "uno"
-            		}
-            	},
-            	{
-            		"kind": 7,
-            		"statement": "Enunciado 4",
-            		"texts": [ "Opcion 1", "Opcion 2", "Opcion 3" ],
-            		"answer": {
-            			"result": "tres"
-            		}
-            	}
-            ]
-        }
-    ]
-}
-
-
-*/
-

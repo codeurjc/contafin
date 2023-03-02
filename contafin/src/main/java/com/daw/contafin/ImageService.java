@@ -35,8 +35,6 @@ public class ImageService {
 	@Autowired
 	UserComponent userComponent;
 
-	@Resource
-	ExerciseMapper exerciseMapper;
 	
 	public byte[] uploadImage(MultipartFile file) throws IOException {
 		
@@ -58,9 +56,6 @@ public class ImageService {
 		exerciseDto.setImage2(image);
 		image = Files.readAllBytes(route3);
 		exerciseDto.setImage3(image);
-
-		Exercise exercise = exerciseMapper.ExerciseDtoToExercise(exerciseDto);
-		exerciseRepository.save(exercise);
 	}
 	
 	//Show profile picture
@@ -79,7 +74,7 @@ public class ImageService {
 	}
 	
 	// Show exercise picture
-	public void showImageExercise(ExerciseDto exerciseDto, long nImage, HttpServletRequest request,
+	/*public void showImageExercise(ExerciseDto exerciseDto, long nImage, HttpServletRequest request,
 								  HttpServletResponse response) throws IOException {
 		byte[] image;
 		if (nImage == 1) {
@@ -93,6 +88,6 @@ public class ImageService {
 		ServletOutputStream outputStream = response.getOutputStream();
 		outputStream.write(image);
 		outputStream.close();
-	}	
+	}*/
 		
 }

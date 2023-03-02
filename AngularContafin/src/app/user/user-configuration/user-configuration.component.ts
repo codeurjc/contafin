@@ -21,7 +21,7 @@ export class UserConfigurationComponent implements OnInit {
   @ViewChild('newPass') newPassInput: ElementRef;
   @ViewChild('oldPass') oldPassInput: ElementRef;
 
-  public loggedUser: User;
+  public loggedUser;
   public image: FormData;
   public errorMessage: string = "";
   public alertDanger: boolean = false;
@@ -43,12 +43,12 @@ export class UserConfigurationComponent implements OnInit {
   }
 
   //Other methods
-  updateUser() {
+  async updateUser() {
     this.alertDanger = false;
     this.alertSuccess = false;
     if (this.oldPassInput.nativeElement.value != null) {
-      this.userService.validation(this.loggedUser.id, this.oldPassInput.nativeElement.value)
-        .subscribe(
+      await this.userService.validation(this.loggedUser.id, this.oldPassInput.nativeElement.value)
+        .then(
           (validation : any) => {
             this.rightPass = validation;
             console.log(this.rightPass);
@@ -69,7 +69,8 @@ export class UserConfigurationComponent implements OnInit {
   //If the current password is right, save the changes
   async loadChanges() {
     if (this.rightPass) {
-      await this.userService.updateUser(this.loggedUser.id, this.userData)
+      this.loggedUser.name = this.userData.name;
+      await this.userService.updateUser(this.loggedUser.id, this.loggedUser)
         .then(
           (user: any) => {
             this.loggedUser.name = user.name;

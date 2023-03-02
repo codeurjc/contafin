@@ -99,4 +99,10 @@ public class UserDto implements Serializable {
             userDto.setPoints(0);
         }
     }
+
+
+    @Override
+    public String toString() {
+        return "UserDto [id=" + id + ", name=" + name + ", lastConnection=" + lastConnection + ", roles=" + roles + "]";
+    }
 }

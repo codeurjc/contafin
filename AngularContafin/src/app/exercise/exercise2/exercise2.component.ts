@@ -26,7 +26,7 @@ export class Exercise2Component {
   idkind: number;
 
   @Input()
-  idExercise: number;
+  exercise: any;
 
   @Input()
   nElement: number;
@@ -44,11 +44,11 @@ export class Exercise2Component {
 
 
   constructor(private http: HttpClient, private exerciseService: ExerciseService) {
-    console.log(this.idExercise);
+    console.log(this.exercise);
   }
 
   ngOnInit() {
-    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.idExercise)
+    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.exercise.id)
       .then(
         (exercise : any) => {
           this.statement = exercise.statement;//Esto puede estar mal
@@ -61,10 +61,10 @@ export class Exercise2Component {
     this.result = {
       "result": this.answerText
     }
-    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.idExercise, this.result).then(
+    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.exercise.id, this.result).then(
       (right : any) => {
-      this.right = right.hasOwnProperty.arguments;
-        if (this.right == true) {
+      this.right = right;
+        if (this.right) {
           this.color = "exercise1Good";
         }
         else {

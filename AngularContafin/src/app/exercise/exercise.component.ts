@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Exercise } from '../Interfaces/Exercise/exercise.model';
 import { ExerciseService } from './exercise.service';
+import { LessonsService } from '../lesson/lesson.service';
 
 @Component({
   selector: 'exercise',
@@ -13,24 +14,17 @@ export class ExerciseComponent implements OnInit {
   idUnit: number;
   idLesson: number;
   idExercise: number;
-  idExercises: number[] = new Array();
+  idExercises = [];
   kindExercises: number[] = new Array();
   nElement = 4;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, public exerciseService: ExerciseService) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public exerciseService: ExerciseService, public lessonsService: LessonsService) {
     let idUnit = activatedRoute.snapshot.params['id'];
     this.idUnit = parseInt(idUnit);
     let idLesson = activatedRoute.snapshot.params['idlesson'];
     this.idLesson = parseInt(idLesson);
     /*let idExercise = activatedRoute.snapshot.params['idexercise'];
     this.idExercise = parseInt(idExercise);*/
-    this.idExercise = (((this.idUnit - 1) * 3 + this.idLesson) - 1) * 4 + 1/*this.idExercise*/;
-    console.log("Id Exercise :"+ this.idExercise);
-    this.idExercises.push(this.idExercise);
-    this.idExercises.push(this.idExercise + 1);
-    this.idExercises.push(this.idExercise + 2);
-    this.idExercises.push(this.idExercise + 3);
-
     console.log("Id exercises :" + this.idExercises);
   }
 
@@ -39,35 +33,14 @@ export class ExerciseComponent implements OnInit {
   }
 
   async getExercises(){
-    console.log("Los ids")
-    await  this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise)
-      .then(
-        (exercise : any) =>{
-          console.log("Primer ejercicio:" + exercise.kind);
-          this.kindExercises.push(exercise.kind);
-          this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 1)
-            .then(
-              (exercise : any) => {
-                this.kindExercises.push(exercise.kind);
-                this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 2)
-                  .then(
-                    (exercise : any) => {
-                      this.kindExercises.push(exercise.kind);
-                      this.exerciseService.getOneExercise(this.idUnit, this.idLesson, this.idExercise + 3)
-                        .then(
-                          (exercise : any) => {
-                            this.kindExercises.push(exercise.kind);
-                          }
-                        )
-                    }
-                  )
-              }
-            )
-        }
-      )
-      .catch(error => console.log(error))
-
-    console.log("Los tipos: " + this.kindExercises);
+    await this.lessonsService.getLesson(this.idLesson).then(
+      (lesson : any)=>{
+        lesson.exercises.forEach(element => {
+          this.idExercises.push(element);
+          this.kindExercises.push(element.kind);
+        });
+      }
+    );
   }
 
   newExercisechange(newExercise: boolean) {
