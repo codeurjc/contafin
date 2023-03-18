@@ -14,6 +14,6 @@ jobs:
           distribution: temurin
 
       - name: Execute container SQL
-        run: docker-compose --file "./contafin/contafin/docker-compose-MySQL.yml" up --detach
+        run: docker-compose --file "./docker/docker-compose-MySQL.yml" up --detach
       - name: Build native with Maven
         run: mvn -B package
