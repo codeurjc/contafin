@@ -24,8 +24,8 @@ export class LessonsService {
 	//Need the unit id and lesson id
 	async getLesson(idLesson: number) {
 		let useData = null;
-			 await this.utils.restService('/Unit/', {
-				queryString: 'Lesson/' + idLesson,
+			 await this.utils.restService('/Lesson/', {
+				queryString: idLesson,
 				method: 'get'
 			  }).toPromise().then(
 				(data) => {
@@ -44,11 +44,11 @@ export class LessonsService {
 	}
 
 	//To complete a lesson when the exercises are done.
-	async completeLesson(idUnit: number, idLesson: number) {
+	async completeLesson(idLesson: number) {
 
 		let useData = null;
-			 await this.utils.restService('/Unit/', {
-				queryString: idUnit + '/Lesson/' + idLesson + '/Completed',
+			 await this.utils.restService('/Lesson/', {
+				queryString: idLesson + '/Completed',
 				method: 'get'
 			  }).toPromise().then(
 				(data) => {
@@ -72,8 +72,8 @@ export class LessonsService {
 
 	async isCompleted2(id: number) {
 		let useData = null;
-			 await this.utils.restService('/Unit/', {
-				queryString: id + '/Lessons/Completed',
+			 await this.utils.restService('/Lesson/', {
+				queryString: id + '/AllCompleted',
 				method: 'get'
 			  }).toPromise().then(
 				(data) => {

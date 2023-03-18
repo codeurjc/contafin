@@ -15,6 +15,7 @@ export class LoginService {
     isLogged = false;
     isAdmin = false;
     user;
+    imageView;
     pass;
 
     constructor(private http: HttpClient,public utils: UtilsService, private sanitizer: DomSanitizer) { }
@@ -25,8 +26,7 @@ export class LoginService {
     }
     setLoggedUser(user){
         let objectURL = 'data:image/jpeg;base64,' + user.image;       
-        user.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-        console.log("Logged:" + this.isLogged);
+        this.imageView = this.sanitizer.bypassSecurityTrustUrl(objectURL);
         this.user = user;
     }
 
@@ -56,7 +56,7 @@ export class LoginService {
 
     private processLogInResponse(response) {
         let objectURL = 'data:image/jpeg;base64,' + response.image;       
-        response.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        this.imageView = this.sanitizer.bypassSecurityTrustUrl(objectURL);
         this.isLogged = true;
         this.user = response;
         this.isAdmin = this.user.roles.indexOf('ROLE_ADMIN') !== -1;

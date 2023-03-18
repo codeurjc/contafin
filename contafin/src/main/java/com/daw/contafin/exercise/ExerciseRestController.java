@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import javax.transaction.Transactional;
 
 @RestController
-@RequestMapping("/api/Unit")
+@RequestMapping("/api/Exercise")
 @CrossOrigin(maxAge =3600)
 @Slf4j
 @Transactional
@@ -41,7 +41,7 @@ public class ExerciseRestController{
 
 
 	//YASSSS
-	@GetMapping(value = "/Exercise/{id}")
+	@GetMapping(value = "/{id}")
 	@ResponseBody
 	public ResponseEntity<ExerciseDto> getOneExercise(@PathVariable long id) {
 		log.info("Se ha recibido una solicitud para buscar un ejercicio");
@@ -59,7 +59,7 @@ public class ExerciseRestController{
 	}
 
 	//YASSSSS
-	@PutMapping(value = "/Exercise/{id}/Solution")
+	@PutMapping(value = "/{id}/Solution")
 	@ResponseBody
 	public ResponseEntity<Boolean> checkExercise(@PathVariable long id, @RequestBody AnswerDto answerAct) {
 		log.info("Se ha recibido una solicitud para comprobar la solucion de un ejercicio");

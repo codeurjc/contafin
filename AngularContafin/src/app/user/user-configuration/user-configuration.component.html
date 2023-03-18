@@ -92,7 +92,7 @@
           <div class="col-sm-4 ">
             <div class="mt-5 mx-auto text-center card-body bg-white card" id="round">
               <h1 class="card-header bg-white">
-                <img [src]="loggedUser.image" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
+                <img [src]="imageView" width="90" height="35" class="img-thumbnail" id="round"> {{loggedUser.name}}
               </h1>
               <h1 *ngIf="noAdmin" class="card-header bg-white">
                 <button id="button-style" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="open(content)">

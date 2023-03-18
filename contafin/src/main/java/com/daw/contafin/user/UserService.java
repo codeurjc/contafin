@@ -107,6 +107,8 @@ public class UserService {
 		try{
 			User user = userRepository.findById(userDtoUpdate.getId());
 			if(user != null){
+				userDtoUpdate.setRemainingGoals(getRemainingGoals(userDtoUpdate));
+				user = userMapper.UserDtoToUser(userDtoUpdate);
 				userRepository.save(user);
 				userComponent.setLoggedUser(userDtoUpdate);
 			}

@@ -59,7 +59,7 @@ export class UnitsService {
 
 
 
-	async numberOfCompletedLessons2(id: Number) {
+	async numberOfCompletedLessons2(id) {
 		let useData = null;
 			 await this.utils.restService('/Unit/', {
 				queryString: id + '/numberOfCompletedLessons',
@@ -80,15 +80,17 @@ export class UnitsService {
 
 		const userPass = this.user.user.email + ':' + this.user.pass;
 
-        const headers = new HttpHeaders({
-            'Authorization': 'Basic ' + utf8_to_b64(userPass),
-            'X-Requested-With': 'XMLHttpRequest'
-        });
+		const headers ={
+			headers: new HttpHeaders({
+				'Authorization': 'Basic ' + utf8_to_b64(userPass),
+				'X-Requested-With': 'XMLHttpRequest'
+			})
+		};
 
 		let useData = null;
-			 await this.utils.restServiceHeaders('/Unit', {
-				queryString: '/',
+			 await this.utils.restServiceHeadersPost('/Unit/', {
 				method: 'post',
+				params: unit,
 				headers: headers ,
 			  }).toPromise().then(
 				(data) => {

@@ -57,7 +57,7 @@ export class Exercise1Component implements OnInit {
     objectURL = 'data:image/jpeg;base64,' + this.exercise.image3;       
     this.img3 = this.sanitizer.bypassSecurityTrustUrl(objectURL);
 
-    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.exercise.id)
+    this.exerciseService.getExercise(this.exercise.id)
       .then(
         (exercise :any) => {
           this.statement = exercise.statement;
@@ -70,7 +70,7 @@ export class Exercise1Component implements OnInit {
     this.result = {
       result: this.answer
     }
-    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.exercise.id, this.result)
+    await this.exerciseService.checkExercise(this.exercise.id, this.result)
       .then(
         (response :any) => {
           this.right = response;

@@ -29,8 +29,8 @@ public class UserDto implements Serializable {
     private int lastLesson;
     private int [] progress;
     private int remainingGoals;
-    private int exp = 0;
-    private int needexp = 10;
+    private int exp;
+    private int needexp;
     private byte[] image;
     private List<String> roles;
     private List<CompletedExerciseDto> exercises;
@@ -48,10 +48,13 @@ public class UserDto implements Serializable {
         this.level=1;
         this.points=0;
         this.streak=0;
+        this.dailyGoal= 1;
         this.fluency=0;
         this.lastConnection= "-";
         this.lastUnit=0;
         this.lastLesson=0;
+        this.exp = 0;
+        this.needexp = 10;
     }
 
     public UserDto(String name, String email, String password,int level, int points, int streak, int dailyGoal, String... roles) {
@@ -67,6 +70,8 @@ public class UserDto implements Serializable {
         this.lastConnection= "-";
         this.lastUnit=0;
         this.lastLesson=0;
+        this.exp = 0;
+        this.needexp = 10;
     }
 
     public void upLevel() {

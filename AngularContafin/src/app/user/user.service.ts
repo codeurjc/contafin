@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { User } from '../Interfaces/User/user.model';
 import { UtilsService } from '../../../src/app/services/utils.service';
 import { LoginService } from '../login/login.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 const BASE_URL = environment.apiBase + '/User';
 
@@ -12,7 +13,7 @@ const BASE_URL = environment.apiBase + '/User';
 @Injectable()
 export class UserService {
 
-    constructor(private http: HttpClient,public utils: UtilsService, public user : LoginService) {
+    constructor(private http: HttpClient,public utils: UtilsService, public user : LoginService, private sanitizer: DomSanitizer) {
 
     }
 
@@ -88,7 +89,6 @@ export class UserService {
 
         let useData = null;
 			 await this.utils.restServiceHeadersPost('/User/', {
-				queryString: id,
 				method: 'put',
                 params: updatedUser,
 				headers: headers ,
@@ -138,6 +138,8 @@ export class UserService {
 				  if (typeof data !== 'undefined' && data !== null) {
 					console.log(data);
 					useData = data;
+					let objectURL = 'data:image/jpeg;base64,' + file;       
+        			this.user.imageView = this.sanitizer.bypassSecurityTrustUrl(objectURL);
 				  }
 				}
 			  );

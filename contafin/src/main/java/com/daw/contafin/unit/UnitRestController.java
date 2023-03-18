@@ -1,41 +1,20 @@
 package com.daw.contafin.unit;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.transaction.Transactional;
 
-import com.daw.contafin.answer.AnswerDto;
-import com.daw.contafin.completedLesson.CompletedLessonDto;
-import com.daw.contafin.exercise.ExerciseDto;
-import com.daw.contafin.lesson.LessonDto;
-import com.daw.contafin.user.UserDto;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.daw.contafin.ImageService;
-import com.daw.contafin.completedLesson.CompletedLesson;
-import com.daw.contafin.completedExercise.CompletedExerciseService;
+
+
 import com.daw.contafin.completedLesson.CompletedLessonService;
-import com.daw.contafin.exercise.Exercise;
-import com.daw.contafin.exercise.ExerciseService;
-import com.daw.contafin.lesson.Lesson;
-import com.daw.contafin.lesson.LessonService;
-import com.daw.contafin.unit.Unit.UnitBassic;
-import com.daw.contafin.user.User;
-import com.daw.contafin.user.UserComponent;
-import com.daw.contafin.user.UserService;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
 @RequestMapping("/api/Unit")
@@ -102,7 +81,7 @@ public class UnitRestController{
 		return response;
 	}
 
-	@GetMapping(value = "/{idunit}/numberOfCompletedLessons")
+	@GetMapping(value = "/{id}/numberOfCompletedLessons")
 	@ResponseBody
 	public ResponseEntity<Integer> numberOfCompletedLesson(@PathVariable Long id) {
 		log.info("Se ha recibido una peticion calcular el numero de lecciones completas de la unidad con id: {}", id);

@@ -48,7 +48,7 @@ export class Exercise2Component {
   }
 
   ngOnInit() {
-    this.exerciseService.getExercise(this.idUnit, this.idLesson, this.exercise.id)
+    this.exerciseService.getExercise(this.exercise.id)
       .then(
         (exercise : any) => {
           this.statement = exercise.statement;//Esto puede estar mal
@@ -61,7 +61,7 @@ export class Exercise2Component {
     this.result = {
       "result": this.answerText
     }
-    await this.exerciseService.checkExercise(this.idUnit, this.idLesson, this.exercise.id, this.result).then(
+    await this.exerciseService.checkExercise(this.exercise.id, this.result).then(
       (right : any) => {
       this.right = right;
         if (this.right) {

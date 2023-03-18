@@ -31,7 +31,7 @@ export class BodyCompleteLessonComponent implements OnInit {
     }
 
     async completeLesson() {
-       await this.lessonService.completeLesson(this.idUnit, this.idLesson).then(
+       await this.lessonService.completeLesson(this.idLesson).then(
             (response : any)=> {
                 this.response = response;
                 if (this.loginService.isLoggedUser()) {

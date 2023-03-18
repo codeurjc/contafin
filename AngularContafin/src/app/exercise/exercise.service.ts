@@ -24,10 +24,10 @@ export class ExerciseService {
 	}*/
 
 	//Need the unit id, lesson id and exercise id
-	async getExercise(idUnit: number, idLesson: number, idExercise: number) {
+	async getExercise(idExercise: number) {
 		let useData = null;
-			 await this.utils.restService('/Unit/', {
-				queryString: idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise,
+			 await this.utils.restService('/Exercise/', {
+				queryString: idExercise,
 				method: 'get'
 			  }).toPromise().then(
 				(data) => {
@@ -40,21 +40,23 @@ export class ExerciseService {
 		return useData;
 	}
 
-	//Same as getExercise but with promise
-	async getOneExercise(idUnit: number, idLesson: number, idExercise: number) {
+	async checkExercise(idExercise: number, result) {
+		
 		let useData = null;
-			 await this.utils.restService('/Unit/', {
-				queryString: 'Lesson/' + idLesson + '/Exercise/' + idExercise,
-				method: 'get'
+			 await this.utils.restService('/Exercise/', {
+				queryString: idExercise + '/Solution', 
+				params : result,
+				method: 'put'
 			  }).toPromise().then(
 				(data) => {
-					console.log("Dato ejercicio:" + data);
+					console.log("Solucion:" + data);
 				  if (typeof data !== 'undefined' && data !== null) {
 					useData = data;
 				  }
 				}
 			  );
 		return useData;
+		
 	}
 
 	/*Esto queda para la segunda version
@@ -74,25 +76,6 @@ export class ExerciseService {
 		return this.http.put(BASE_URL2 + idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Answer', result)
 			.catch(error => this.handleError(error));
 	}*/
-
-	async checkExercise(idUnit: number, idLesson: number, idExercise: number, result) {
-		
-		let useData = null;
-			 await this.utils.restService('/Unit/', {
-				queryString: idUnit + '/Lesson/' + idLesson + '/Exercise/' + idExercise + '/Solution', 
-				params : result,
-				method: 'put'
-			  }).toPromise().then(
-				(data) => {
-					console.log("Solucion:" + data);
-				  if (typeof data !== 'undefined' && data !== null) {
-					useData = data;
-				  }
-				}
-			  );
-		return useData;
-		
-	}
 
 	/*deleteAllCompleted() {
 		const headers = new HttpHeaders({

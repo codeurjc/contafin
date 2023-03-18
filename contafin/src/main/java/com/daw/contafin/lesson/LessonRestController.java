@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import javax.transaction.Transactional;
 
 @RestController
-@RequestMapping("/api/Unit")
+@RequestMapping("/api/Lesson")
 @CrossOrigin(maxAge =3600)
 @Slf4j
 @Transactional
@@ -57,7 +57,7 @@ public class LessonRestController{
 	}*/
 	
 	//See one lesson
-	@GetMapping(value = "/Lesson/{id}")
+	@GetMapping(value = "/{id}")
 	@ResponseBody
 	public ResponseEntity<LessonDto> getLesson(@PathVariable long id) {
 		log.info("Se ha recibido una solicitud para buscar una leccion");
@@ -67,6 +67,39 @@ public class LessonRestController{
 			response = new ResponseEntity<>(lesson, HttpStatus.OK);
 		}catch (Exception e){
 			String error = "No se ha podido encontrado la leccion";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
+	}
+
+	@GetMapping(value = "/{idlesson}/Completed")
+	@ResponseBody
+	public ResponseEntity<Boolean> completedLesson(@PathVariable Long idlesson) {
+		log.info("Se ha recibido una solicitud para comprobar si una leccion esta completa");
+		ResponseEntity<Boolean> response;
+		try{
+			Boolean b = completedExerciseService.checkLessonComplete(idlesson);
+			response = new ResponseEntity<>(b, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido comprobar la leccion";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
+
+	}
+
+	@GetMapping(value = "/{idunit}/AllCompleted")
+	@ResponseBody
+	public ResponseEntity<List<Boolean>> isCompletedLessonB(@PathVariable Long idunit) {
+		log.info("Se ha recibido una solicitud para saber que lecciones estan completas de la unidaad con id : {}", idunit);
+		ResponseEntity<List<Boolean>> response;
+		try{
+			List<Boolean> lessonComplete = completedLessonService.checkList(idunit);
+			response = new ResponseEntity<>(lessonComplete, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se han podido comprobar las lecciones";
 			log.warn(error,e);
 			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -88,24 +121,7 @@ public class LessonRestController{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}*/
-	
-	@GetMapping(value = "/Lesson/{idlesson}/Completed")
-	@ResponseBody
-	public ResponseEntity<Boolean> completedLesson(@PathVariable Long idlesson) {
-		log.info("Se ha recibido una solicitud para comprobar si una leccion esta completa");
-		ResponseEntity<Boolean> response;
-		try{
-			Boolean b = completedExerciseService.checkLessonComplete(idlesson);
-			response = new ResponseEntity<>(b, HttpStatus.OK);
-		}catch (Exception e){
-			String error = "No se ha podido comprobar la leccion";
-			log.warn(error,e);
-			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		return response;
 
-	}
-	
 	/*@GetMapping(value = "/Lesson/{idlesson}/isCompleted")
 	@ResponseBody
 	public ResponseEntity<Boolean> isCompletedLesson(@PathVariable int idlesson) {
@@ -119,21 +135,6 @@ public class LessonRestController{
 		}
 
 	}*/
-	
-	@GetMapping(value = "/{idunit}/Lessons/Completed")
-	@ResponseBody
-	public ResponseEntity<List<Boolean>> isCompletedLessonB(@PathVariable Long idunit) {
-		log.info("Se ha recibido una solicitud para saber que lecciones estan completas de la unidaad con id : {}", idunit);
-		ResponseEntity<List<Boolean>> response;
-		try{
-			List<Boolean> lessonComplete = completedLessonService.checkList(idunit);
-			response = new ResponseEntity<>(lessonComplete, HttpStatus.OK);
-		}catch (Exception e){
-			String error = "No se han podido comprobar las lecciones";
-			log.warn(error,e);
-			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		return response;
-	}
+
 }
 

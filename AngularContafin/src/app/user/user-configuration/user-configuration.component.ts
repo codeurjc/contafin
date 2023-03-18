@@ -5,6 +5,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../user.service';
 import { LoginService } from '../../login/login.service';
 import { User } from '../../Interfaces/User/user.model';
+import { NavBarComponent } from '../../navbar/navbar.component';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class UserConfigurationComponent implements OnInit {
   @ViewChild('oldPass') oldPassInput: ElementRef;
 
   public loggedUser;
+  public imageView;
   public image: FormData;
   public errorMessage: string = "";
   public alertDanger: boolean = false;
@@ -38,6 +40,7 @@ export class UserConfigurationComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUser = this.loginService.getLoggedUser();
+    this.imageView = this.loginService.imageView;
     this.noAdmin = !this.loginService.isAdministrator();
     this.userService.getUser(this.loggedUser.id);
   }
@@ -106,7 +109,7 @@ export class UserConfigurationComponent implements OnInit {
   }
 
   //Save image
-  async uploadImage() {
+  async uploadImage(){
     this.alertDanger = false;
     this.alertSuccess = false;
     if (this.image) {

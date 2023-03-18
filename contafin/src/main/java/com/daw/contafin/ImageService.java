@@ -37,41 +37,55 @@ public class ImageService {
 
 	
 	public byte[] uploadImage(MultipartFile file) throws IOException {
-		
 		//file to bytes
 		byte[] bytes = file.getBytes();
 		//Return an InputStream to read the contents of the file from.
-		InputStream inputStream= file.getInputStream();
+		InputStream inputStream = file.getInputStream();
 		//Read stream data into "bytes"
-		inputStream.read(bytes);
+		int count;
+		count = inputStream.read(bytes);
+		inputStream.close();
+
+		if(count<0){
+			bytes = null;
+		}
 		
 		return bytes;
 	}
 	
 	//Store exercises images located in the "static/img" folder in the database
 	public void saveImages(ExerciseDto exerciseDto, Path route1, Path route2, Path route3) throws IOException {
+
 		byte []image = Files.readAllBytes(route1);
-		exerciseDto.setImage1(image);
-		image = Files.readAllBytes(route2);
-		exerciseDto.setImage2(image);
-		image = Files.readAllBytes(route3);
-		exerciseDto.setImage3(image);
+
+			exerciseDto.setImage1(image);
+			image = Files.readAllBytes(route2);
+			exerciseDto.setImage2(image);
+			image = Files.readAllBytes(route3);
+			exerciseDto.setImage3(image);
+
+
 	}
 	
 	//Show profile picture
-	public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	/*public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		byte [] image;
-		if (userComponent.getLoggedUser().getImage() != null) {
-			image = userComponent.getLoggedUser().getImage();
-		} else {
-			Path path = Paths.get("img/profile.png");
-			image = Files.readAllBytes(path);
+		try{
+			if (userComponent.getLoggedUser().getImage() != null) {
+				image = userComponent.getLoggedUser().getImage();
+			} else {
+				Path path = Paths.get("img/profile.png");
+				image = Files.readAllBytes(path);
+			}
+			response.setContentType("image/jpeg");
+			ServletOutputStream outputStream = response.getOutputStream();
+			outputStream.write(image);
+			outputStream.close();
+		}catch(Exception e){
+			log.warn("Error al crear workbook");
 		}
-		response.setContentType("image/jpeg");
-		ServletOutputStream outputStream = response.getOutputStream();
-		outputStream.write(image);
-		outputStream.close();
-	}
+
+	}*/
 	
 	// Show exercise picture
 	/*public void showImageExercise(ExerciseDto exerciseDto, long nImage, HttpServletRequest request,

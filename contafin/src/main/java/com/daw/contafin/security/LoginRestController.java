@@ -43,8 +43,8 @@ public class LoginRestController {
 			log.info("Logged as " + loggedUser.getName());
 			//Updated user last login date
 			loggedUser.setLastConnection(loggedUser.newConnection());
+			loggedUser.setRemainingGoals(userService.getRemainingGoals(loggedUser));
 			userService.updateUser(loggedUser);
-			userComponent.setLoggedUser(loggedUser);
 			return new ResponseEntity<>(loggedUser, HttpStatus.OK);
 		}
 	}
@@ -57,6 +57,7 @@ public class LoginRestController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
 			session.invalidate();
+			userComponent.setLoggedUser(null);
 			log.info("Logged out");
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}

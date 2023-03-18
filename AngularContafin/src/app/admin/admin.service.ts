@@ -27,14 +27,17 @@ export class AdminService {
 
 		const userPass = this.user.user.email + ':' + this.user.pass;
 
-        const headers = new HttpHeaders({
-            'Authorization': 'Basic ' + utf8_to_b64(userPass)
-        });
+		const opt = {
+			headers : new HttpHeaders({
+            'Authorization': 'Basic ' + utf8_to_b64(userPass),
+			'X-Requested-With': 'XMLHttpRequest'
+        	})
+		};
 
 		let useData = null;
 			 await this.utils.restServiceHeaders('/Admin/UserData', {
 				method: 'get',
-				headers: headers,
+				headers: opt,
 			  }).toPromise().then(
 				(data) => {
 				  if (typeof data !== 'undefined' && data !== null) {

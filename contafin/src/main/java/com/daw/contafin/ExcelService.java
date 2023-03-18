@@ -31,9 +31,9 @@ public class ExcelService {
 	UserService userService;
 	
 	
-	public XSSFWorkbook generateExcel(){
+	public XSSFWorkbook generateExcel() {
+		XSSFWorkbook workbook = new XSSFWorkbook();
 
-		XSSFWorkbook  workbook = new XSSFWorkbook ();
 		List<UserDto> list = userService.getUsers();
 		XSSFSheet sheet = workbook.createSheet("User List");
 
@@ -49,11 +49,11 @@ public class ExcelService {
 		header.createCell(8).setCellValue("LAST CONNECTION");
 		header.createCell(9).setCellValue("LAST UNIT");
 		header.createCell(10).setCellValue("LAST LESSON");
-		
+
 
 		int rowNum = 1;
 
-		for(UserDto user : list){
+		for (UserDto user : list) {
 			XSSFRow row = sheet.createRow(rowNum++);
 			row.createCell(0).setCellValue(user.getName());
 			row.createCell(1).setCellValue(user.getEmail());
@@ -68,6 +68,7 @@ public class ExcelService {
 			row.createCell(10).setCellValue(user.getLastLesson());
 
 		}
+
 		return workbook;
 	}
 

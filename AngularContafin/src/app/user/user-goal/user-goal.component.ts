@@ -14,6 +14,7 @@ import { stringToFileBuffer } from '@angular-devkit/core/src/virtual-fs/host';
 export class UserGoalComponent implements OnInit {
 
   public loggedUser;
+  public imageView;
   public image: FormData;
   public noGoal: boolean;
   public addGoal: boolean;
@@ -24,6 +25,7 @@ export class UserGoalComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUser = this.loginService.getLoggedUser();
+    this.imageView = this.loginService.imageView;
   }
 
   //Other methods
@@ -32,8 +34,8 @@ export class UserGoalComponent implements OnInit {
     await this.userService.updateUser(this.loggedUser.id, this.loggedUser)
       .then(
         (user:any) => {
-          console.log("User Servicio:" , user.json());
-          this.loginService.setLoggedUser(user[0]);
+          console.log("Usuario Actualizado: " + JSON.stringify(user));
+          this.loginService.setLoggedUser(user);
           this.noGoal = false;
           this.addGoal = true;
         },

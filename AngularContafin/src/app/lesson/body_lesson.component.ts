@@ -16,19 +16,17 @@ export class BodyLessonComponent implements OnInit {
 
     nlesson: number = 0;
 
-    public unit: Unit = null;
-    private lessons: Array<Lesson> = new Array();
+    public unit = null;
 
     lessonsCompleted: boolean[] = new Array();
 
     constructor(public lessonService: LessonsService, public unitService: UnitsService) {
     }
+
     ngOnInit() {
-        this.lessons = new Array();
-        this.lessonsCompleted = new Array();
-        //this.defineUnit();
         this.getLessons();
     }
+
     async getLessons() {
         await this.unitService.getUnit(this.id)
                 .then((unit : any) => {
@@ -37,42 +35,13 @@ export class BodyLessonComponent implements OnInit {
                         this.nlesson = nlesson
                     });
 
-                    if(this.nlesson>0){
+                    
                         this.lessonService.isCompleted2(this.unit.id)
                         .then((response : any) => {
                                 this.lessonsCompleted = response;
                             });
-                    }
+                    
                 })
                 .catch(error => console.error(error));
-    }
-
-    //Only create an empty unit
-    defineUnit() {
-        //Add lesson 1
-        this.lessons.push(
-            {
-                name: "",
-                exercises: []
-            }
-        )
-        //Add lesson 2
-        this.lessons.push(
-            {
-                name: "",
-                exercises: []
-            }
-        )
-        //Add lesson 3
-        this.lessons.push(
-            {
-                name: "",
-                exercises: [],
-            }
-        )
-        this.unit = {
-            name: "",
-            lessons: this.lessons,
-        }
     }
 }

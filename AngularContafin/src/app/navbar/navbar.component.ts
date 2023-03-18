@@ -15,14 +15,16 @@ export class NavBarComponent implements OnInit {
   public isAdmin: boolean = false;
   public isLoggedUser: boolean = false;
   public loggedUser: User;
+  public imageView;
 
-  constructor(private router: Router, public loginService: LoginService) { }
+  constructor(private router: Router, public loginService: LoginService) { 
+  }
 
   ngOnInit() {
     this.isLoggedUser = this.loginService.isLoggedUser();
     this.isAdmin = this.loginService.isAdministrator();
     if (this.isLoggedUser){
-      this.getUser();
+      this.getImage();
     }
   }
 
@@ -37,8 +39,9 @@ export class NavBarComponent implements OnInit {
     );
   }
 
-  getUser() {
+  getImage() {
     this.loggedUser = this.loginService.getLoggedUser();
+    this.imageView = this.loginService.imageView;
   }
 
 }

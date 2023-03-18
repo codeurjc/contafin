@@ -17,9 +17,11 @@ export class UserProfileComponent implements OnInit {
 
   public loggedUser: User;
   public chart: any;
+  public imageView;
 
   constructor(private loginService: LoginService, private userService: UserService) {
     this.loggedUser = this.loginService.getLoggedUser();
+    this.imageView = this.loginService.imageView;
 
   }
 
