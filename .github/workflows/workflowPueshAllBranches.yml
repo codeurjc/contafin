@@ -17,5 +17,5 @@ jobs:
         run: docker-compose -f "./docker/docker-compose-MySQL.yml" up -d
       - name: Build native with Maven
         run: mvn -f "./contafin/pom.xml" test
-      - name: Stop containers
+      - name: Stop container
         run: docker-compose -f "./docker/docker-compose-MySQL.yml" down
