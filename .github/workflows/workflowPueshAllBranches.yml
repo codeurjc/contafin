@@ -15,6 +15,8 @@ jobs:
 
       - name: Execute container SQL
         run: docker-compose -f "./docker/docker-compose-MySQL.yml" up -d
+      - name: "Wait for docker to finish building"
+        run: sleep 30
       - name: Build native with Maven
         run: mvn -f "./contafin/pom.xml" test
       - name: Stop container
