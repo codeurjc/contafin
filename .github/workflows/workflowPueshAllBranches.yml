@@ -14,8 +14,8 @@ jobs:
           distribution: temurin
 
       - name: Execute container SQL
-        run: docker-compose -f "./docker/docker-compose-MySQL.yml" up -d
+        run: docker-compose -f "./docker/docker-compose.yml" up -d
       - name: Build native with Maven
         run: mvn -f "./contafin/pom.xml" test
       - name: Stop container
-        run: docker-compose -f "./docker/docker-compose-MySQL.yml" down
+        run: docker-compose -f "./docker/docker-compose.yml" down
