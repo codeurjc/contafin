@@ -52,7 +52,7 @@ public class Exercise {
 
 
 	@JsonIgnore
-	@OneToOne()
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "answer_id")
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Answer answer;

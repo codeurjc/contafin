@@ -103,6 +103,35 @@ export class UnitsService {
 		return useData;
 	}
 
+	async deleteUnit(id) {
+		
+		const userPass = this.user.user.email + ':' + this.user.pass;
+
+		const headers ={
+			headers: new HttpHeaders({
+				'Authorization': 'Basic ' + utf8_to_b64(userPass),
+				'X-Requested-With': 'XMLHttpRequest'
+			})
+		};
+
+		let useData = null;
+
+		await this.utils.restServiceHeaders('/Unit/', {
+			queryString:'delete/' + id,
+			method: 'get',
+			params: id,
+			headers: headers ,
+			}).toPromise().then(
+			(data) => {
+				if (typeof data !== 'undefined' && data !== null) {
+				console.log(data);
+				useData = data;
+				}
+			}
+		);
+		return useData;
+	}
+
 	uploadImages(id: number, nImage: number, formData) {
 		const headers = new HttpHeaders({
 			'Accept': 'application/json',
@@ -120,10 +149,7 @@ export class UnitsService {
 			.catch(error => this.handleError(error));
 	}
 
-	deleteUnit(id: number) {
-		return this.http.delete(BASE_URL + id)
-			.catch(error => this.handleError(error));
-	}
+	
 
 	private handleError(error: any) {
 		console.error(error);

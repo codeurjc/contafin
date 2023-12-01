@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UnitsService } from '../unit.service';
 import { NgbNavModule, NgbAccordionModule  } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder,FormControl, Validators, FormGroup } from '@angular/forms';
+import { DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
@@ -14,50 +15,121 @@ export class UnitCreationComponent implements OnInit {
 
   alertDanger: boolean;
   images = [];
+  imagesPreview1 = {};
+  imagesPreview2 = {};
+  imagesPreview3 = {};
   exercises = {};
   lessons= [];
   unit;
-  active = 1;
-  kindList = [2];
+  active = 0;
+  kindList = [1,2,5,7];
+  mode=false;
+  unitId=null;
 
   createUnitForm : FormGroup;
 
-  constructor(private router: Router, private unitService: UnitsService, public formBuilder: FormBuilder) {
+  constructor(private router: Router, private unitService: UnitsService, public formBuilder: FormBuilder, private actRoute: ActivatedRoute, private sanitizer: DomSanitizer) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.createUnitForm = this.formBuilder.group({
       name: []
     });
 
-    for (var i = 0; i < 1; i++){
-      this.addLesson();
+    
+    this.unitId = Number(this.actRoute.snapshot.params.id);
+    if(Number(this.actRoute.snapshot.params.resume) === 0){
+      this.mode = false;
+    }else{
+      this.mode = true;
     }
 
-    console.log("Lecciones a revisar:" + JSON.stringify(this.lessons));
-    console.log("Exercises a revisar:" + JSON.stringify(this.exercises));
+    console.log("Id de la unidad: " + this.unitId);
+    console.log("Valor del mode: " + this.mode);
 
-    
+    if(this.unitId !== -1){
+      await this.getUnit();
+      this.kindList = [];
+      
+      this.unit.lessons.forEach((lesson)=>{
+        this.addLesson(lesson);
+      });
 
-    //this.defineUnit();
+      this.createUnitForm.controls.name.setValue(this.unit.name);
+
+
+
+    }else{
+      for (var i = 0; i < 1; i++){
+        this.addLesson(null);
+      }
+    }
+
+  }
+
+  async getUnit() { 
+    await this.unitService.getUnit(this.unitId)
+      .then(
+        (unit : any)=> {
+          this.unit = unit;
+        }
+      )
   }
 
 
-public addLesson(): void{
+public addLesson(lesson): void{
   let id = this.getId();
   let exerciseList = [];
-  for (var i = 0; i < 1; i++){
-    exerciseList.push(this.addExercise(this.kindList[i]));
-  }
-  this.lessons.push({ id, exerciseList });
 
-  this.createUnitForm.addControl('name_'+id, new FormControl(""));
+  if(lesson !== null){
+
+    id = lesson.id;
+
+    console.log("Id de la leccion: " + lesson.id);
+    lesson.exercises.forEach((exercise)=>{
+      exerciseList.push(this.addExercise(null,exercise,null));
+    });
+
+    this.lessons.push({ id, exerciseList });
+
+    this.createUnitForm.addControl('name_'+id, new FormControl(lesson.name));
+
+  }else{
+
+    this.lessons.push({ id, exerciseList });
+  
+    this.createUnitForm.addControl('name_'+id, new FormControl(""));
+
+  }
 
 }
 
-public addExercise(kind): number{
+public addExercise(kind,exercise, lessonId): number{
   let id = this.getId();
 
+  if(exercise !== null){
+
+    id = exercise.id;
+
+    this.exercises[id] = exercise.kind;
+
+  this.createUnitForm.addControl('statement_'+id, new FormControl(exercise.statement));
+  this.createUnitForm.addControl('texts_1_'+id, new FormControl(exercise.texts[0]));
+  this.createUnitForm.addControl('texts_2_'+id, new FormControl(exercise.texts[1]));
+  this.createUnitForm.addControl('texts_3_'+id, new FormControl(exercise.texts[2]));
+  if(exercise.kind === 1){
+    this.createUnitForm.addControl('images_1_'+id, new FormControl(exercise.image1.toString()));
+    this.createUnitForm.addControl('images_2_'+id, new FormControl(exercise.image2.toString()));
+    this.createUnitForm.addControl('images_3_'+id, new FormControl(exercise.image3.toString()));
+  }
+  this.imagesPreview1[id] = this.imageShow(exercise.image1);
+  this.imagesPreview2[id] = this.imageShow(exercise.image2);
+  this.imagesPreview3[id] = this.imageShow(exercise.image3);
+  this.createUnitForm.addControl('result_'+id, new FormControl(exercise.answer.result));
+
+
+  }else{
+    
   this.exercises[id] = kind;
 
   this.createUnitForm.addControl('statement_'+id, new FormControl(""));
@@ -67,10 +139,30 @@ public addExercise(kind): number{
   this.createUnitForm.addControl('images_1_'+id, new FormControl(null));
   this.createUnitForm.addControl('images_2_'+id, new FormControl(null));
   this.createUnitForm.addControl('images_3_'+id, new FormControl(null));
+  this.imagesPreview1[id] = null;
+  this.imagesPreview2[id] = null;
+  this.imagesPreview3[id] = null;
   this.createUnitForm.addControl('result_'+id, new FormControl(""));
+
+  }
+
+  if(lessonId !== null){
+    this.lessons.forEach((element)=>{
+      if(element.id === lessonId){
+        element.exerciseList.push(id);
+      }
+    })
+  }
 
   return id;
 
+}
+
+public imageShow(image){
+  let imageView;
+  let objectURL = 'data:image/jpeg;base64,' + image;       
+  imageView = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+  return imageView;
 }
 
 public getId(){
@@ -196,6 +288,7 @@ public preSave(){
 
       if(!this.alertDanger){
         let data = {
+          id : null,
           kind : this.exercises[exercise],
           statement,
           texts : [texts1,texts2,texts3],
@@ -206,6 +299,10 @@ public preSave(){
             result
           } 
         }
+
+        if(this.unitId !== -1){
+          data.id = exercise;
+        }
   
         console.log("Ejercicio" + JSON.stringify(data));
         exercises.push(data);
@@ -215,9 +312,15 @@ public preSave(){
 
     if(!this.alertDanger){
       let data = {
+        id : null,
         name : nameLesson,
         exercises : exercises
       }
+
+      if(this.unitId !== -1){
+        data.id = lesson.id;
+      }
+
       console.log("Leccion" + JSON.stringify(data));
       lessons.push(data);
     }
@@ -225,14 +328,20 @@ public preSave(){
 
   if(!this.alertDanger){
     unit = {
+      id : null,
       name,
       lessons
     }
 
-    this.addUnit(unit);
+    if(this.unitId !== -1){
+      unit.id = this.unit.id;
+      this.addUnit(unit); // CAMBIAR POR MODIFICAR, modificar los ejercicios comprobando si su id existe o no
+    }
+    else{
+      this.addUnit(unit);
+    }
   }
   
-
   console.log("Unidad actual a revisar:" + name);
   }
 
@@ -249,12 +358,24 @@ public preSave(){
   }
 
   //Load images
-  selectFile(event, i: number) {
-    const file = event.target.files;
-    this.images[i] = new FormData();
-    this.images[i].append('file', file[0]);
-    console.log("holaaaa " + i)
-    console.log(file)
+  selectFile(event, id, order) {
+    const FORM_CONTROL = this.createUnitForm.controls;
+    const file = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsBinaryString(file)
+    reader.onload = () => {
+      if(order === 1){
+        this.imagesPreview1[id]= this.imageShow(btoa(reader.result.toString()));
+      }
+      else if(order === 2){
+        this.imagesPreview2[id]= this.imageShow(btoa(reader.result.toString()));
+      }else{
+        this.imagesPreview3[id]= this.imageShow(btoa(reader.result.toString()));
+      }
+      FORM_CONTROL['images_'+order+'_'+id].setValue(btoa(reader.result.toString()));
+      console.log(reader.result);
+    };
+    console.log(file[0]);
   }
 
   //Save images
@@ -300,6 +421,23 @@ public preSave(){
     if (alert == "") {
       console.log("no data");
     }
+  }
+
+  public modifyMode(){
+    this.mode = false;
+  }
+
+  public deleteExercise(idExercise,idLesson){
+
+    this.lessons.forEach((element,index)=>{
+      if(element.id === idLesson){
+        element.exerciseList.splice(this.lessons[index].exerciseList.indexOf(idExercise),1);
+      }
+    });
+  }
+
+  public deleteLesson(lesson){
+    this.lessons.splice(this.lessons.indexOf(lesson),1);
   }
 
 

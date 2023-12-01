@@ -77,6 +77,15 @@ public class LessonService {
 		}
 		return lessonDtos;
 	}
+
+	public void delete(long id){
+		log.info("Eliminar de la leccion con id: {}", id);
+		try{
+			lessonRepository.deleteById(id);
+		}catch (Exception e){
+			log.warn("Error al eliminar la leccion");
+		}
+	}
 	
 	/*public void delete(long Id) {
 		log.info("Borrado de la leccion por id: {}", Id);

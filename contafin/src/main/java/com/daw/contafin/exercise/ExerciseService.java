@@ -83,6 +83,15 @@ public class ExerciseService {
 			log.warn("Error al guardar el ejercicio");
 		}
 	}
+
+	public void delete(long id){
+		log.info("Eliminar el ejercicio con id: {}", id);
+		try{
+			exerciseRepository.deleteById(id);
+		}catch (Exception e){
+			log.warn("Error al eliminar la ejercicio");
+		}
+	}
 	/*public void delete(long id) {
 		log.info("Borrado del ejercicio por el id: {}", id);
 		try{

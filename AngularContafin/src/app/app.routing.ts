@@ -7,6 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminUserDataComponent } from './admin/admin-user-data/admin-user-data.component';
 import { HomeComponent } from './home/home.component';
 import { UnitCreationComponent } from './unit/unit-creation/unit-creation.component';
+import { UnitListComponent } from './unit/unit-list/unit-list.component';
 import { IndexComponent } from './index/index.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { ExerciseComponent } from './exercise/exercise.component';
@@ -22,7 +23,8 @@ const appRoutes = [
   { path: 'User/Goal', component: UserGoalComponent, canActivate: [CanActivateUser] },
   { path: 'Admin/Home', component: AdminComponent, canActivate: [CanActivateAdmin] },
   { path: 'Admin/UserData', component: AdminUserDataComponent, canActivate: [CanActivateAdmin] },
-  { path: 'Admin/Content', component: UnitCreationComponent, canActivate: [CanActivateAdmin] },
+  { path: 'Admin/Content/:id/:resume', component: UnitCreationComponent, canActivate: [CanActivateAdmin] },
+  { path: 'Admin/UnitList', component: UnitListComponent, canActivate: [CanActivateAdmin] },
   { path: '', component: IndexComponent, pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'Unit/:id/Lessons', component: LessonComponent },

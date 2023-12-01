@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from "../../../environments/environment";
@@ -12,7 +12,7 @@ const BASE_URL = environment.apiBase + '/Unit';
   templateUrl: './exercise2.component.html'
 })
 
-export class Exercise2Component {
+export class Exercise2Component implements OnInit {
 
 
   press: boolean = false;
@@ -30,6 +30,11 @@ export class Exercise2Component {
 
   @Input()
   nElement: number;
+
+  @Input()
+  nTotal: number;
+
+  a = 0;
 
   @Output()
   newExercise = new EventEmitter<boolean>();
@@ -55,6 +60,12 @@ export class Exercise2Component {
           this.texts = exercise.texts;
         }
       )
+
+      if(this.nTotal-this.nElement === 0){
+        this.a = 0;
+      }else{
+        this.a = (this.nTotal-this.nElement)/this.nTotal*100;
+      }
   }
 
   async check() {

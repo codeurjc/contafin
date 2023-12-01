@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input} from '@angular/core';
+import {NgbModal, ModalDismissReasons, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import {Router, ActivatedRoute} from '@angular/router';
 
 
@@ -11,12 +11,17 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 export class HeaderExerciseComponent {
 
-  public progress: number;
+  @Input()
+  a;
+
+  progress2 = 100;
 
   closeResult: string;
 
+
   constructor(private router: Router, activatedRoute: ActivatedRoute, private modalService: NgbModal) {
-    this.progress = 10;
+    console.log("Progreso:" + this.a);
+    
   }
 
 

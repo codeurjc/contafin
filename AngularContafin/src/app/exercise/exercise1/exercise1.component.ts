@@ -27,6 +27,11 @@ export class Exercise1Component implements OnInit {
   @Input()
   nElement: number;
 
+  @Input()
+  nTotal: number;
+
+  a;
+
   @Output()
   newExercise = new EventEmitter<boolean>();
 
@@ -46,8 +51,8 @@ export class Exercise1Component implements OnInit {
 
   constructor(private http: HttpClient, private exerciseService: ExerciseService, private sanitizer: DomSanitizer) {
     console.log(this.exercise);
-
   }
+
   ngOnInit() {
     console.log("Exercise 1")
     let objectURL = 'data:image/jpeg;base64,' + this.exercise.image1;       
@@ -64,7 +69,19 @@ export class Exercise1Component implements OnInit {
           this.texts = exercise.texts;
         }
       )
+
+      if(this.nElement-this.nTotal === 0){
+        this.a = 0;
+      }else{
+        this.a = (this.nTotal-this.nElement)/this.nTotal*100;
+      }
   }
+
+  /*ngOnChanges(changes: SimpleChanges): void {
+    if (changes.name) {
+      this.setup();
+    }
+  }*/
 
   async check() {
     this.result = {
@@ -100,7 +117,7 @@ export class Exercise1Component implements OnInit {
         error => console.error(error)
       )
       this.press=true;
-      console.log(this.nElement);
+      console.log("N element" + this.nElement);
   }
 
   nextExercise(){

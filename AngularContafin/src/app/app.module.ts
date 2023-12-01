@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbNavModule, NgbModule  } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavModule, NgbModule, NgbProgressbarModule  } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 
@@ -38,6 +38,7 @@ import { BodyCompleteLessonComponent } from './completeLesson/body_completeLesso
 import { CompleteLessonComponent } from './completeLesson/completeLesson.component';
 import { ContinueLessonComponent } from './continueLesson/continueLesson.component';
 import { BodyContinueLessonComponent } from './continueLesson/body_continueLesson.component';
+import { UnitListComponent } from './unit/unit-list/unit-list.component';
 
 //Services
 import { UnitsService } from './unit/unit.service';
@@ -86,7 +87,8 @@ import { CanActivateAdmin } from './security/can-activate-admin';
     BodyCompleteLessonComponent,
     CompleteLessonComponent,
     BodyContinueLessonComponent,
-    ContinueLessonComponent
+    ContinueLessonComponent,
+    UnitListComponent
   ],
 
   imports: [
@@ -96,6 +98,7 @@ import { CanActivateAdmin } from './security/can-activate-admin';
     HttpClientModule,
     NgbNavModule,
     NgbModule,
+    NgbProgressbarModule,
     routing
 
   ],

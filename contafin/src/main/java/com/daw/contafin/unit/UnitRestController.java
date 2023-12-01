@@ -97,6 +97,22 @@ public class UnitRestController{
 		return response;
 	}
 
+	@GetMapping(value = "/delete/{id}")
+	@ResponseBody
+	public ResponseEntity<Integer> deleteUnit(@PathVariable Long id) {
+		log.info("Se ha recibido una peticion para eliminar la unidad con id: {}", id);
+		ResponseEntity<Integer> response;
+		try{
+			unitService.delete(id);
+			response = new ResponseEntity<>(null, HttpStatus.OK);
+		}catch (Exception e){
+			String error = "No se ha podido eliminar la unidad";
+			log.warn(error,e);
+			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return response;
+	}
+
 	/*@GetMapping(value = "/{idunit}/isCompleted")
 	@ResponseBody
 	public ResponseEntity<Boolean> completedLesson(@PathVariable int idunit) {

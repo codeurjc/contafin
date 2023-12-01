@@ -17,6 +17,7 @@ export class ExerciseComponent implements OnInit {
   idExercises = [];
   kindExercises: number[] = new Array();
   nElement = 4;
+  nTotal = 4;
 
   constructor(private router: Router, activatedRoute: ActivatedRoute, public exerciseService: ExerciseService, public lessonsService: LessonsService) {
     let idUnit = activatedRoute.snapshot.params['id'];
@@ -39,6 +40,10 @@ export class ExerciseComponent implements OnInit {
           this.idExercises.push(element);
           this.kindExercises.push(element.kind);
         });
+        this.nElement = lesson.exercises.length;
+        this.nTotal = lesson.exercises.length;
+        console.log("Element: " + this.nElement);
+        console.log("Total: " + this.nTotal);
       }
     );
   }
@@ -56,6 +61,7 @@ export class ExerciseComponent implements OnInit {
       this.kindExercises.shift();
     }
     this.nElement = this.kindExercises.length;
+    console.log("Cambio nElement" + this.nElement);
   }
 
   pulsar() {
