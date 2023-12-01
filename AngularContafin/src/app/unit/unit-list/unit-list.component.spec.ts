@@ -1,0 +1,25 @@
+/*import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AdminUserDataComponent } from './unit-list.component';
+
+describe('AdminUserDataComponent', () => {
+  let component: AdminUserDataComponent;
+  let fixture: ComponentFixture<AdminUserDataComponent>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ AdminUserDataComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AdminUserDataComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});*/

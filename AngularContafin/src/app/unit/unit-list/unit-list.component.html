@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="bghome" id="page-top">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="mt-5 mx-auto text-center card-body bg-white" id="round">
+          <div id="accordion">
+            <div class="card">
+              <div class=" col-sm-2 card-block mb-2">
+                <a id="button-style" class="btn btn-primary js-scroll-trigger mt-5" [routerLink]="['/Admin/Content/-1/0']" >Crear unidad</a>
+              </div>
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">Listado de unidades</h5> 
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <table id="unitTable" class="table table-hover side-middle a">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre Unidad</th>
+                        <th scope="col">Lecciones</th>
+                        <th scope="col">Ver</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Borrar</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let unit of units">
+                      <tr>
+                        <td>{{unit.name}}</td>
+                        <td><div *ngFor="let lesson of unit.lessons">
+                          {{lesson.name}}
+                        </div></td>
+                        <td><a id="button-style" style="background-color: #0d6efd;" class="btn btn-primary js-scroll-trigger" [routerLink]="['/Admin/Content/'+unit.id+'/1']" >Ver</a></td>
+                        <td><a id="button-style" class="btn btn-primary js-scroll-trigger" [routerLink]="['/Admin/Content/'+unit.id+'/0']">Editar</a></td>
+                        <td><a id="button-style" style="background-color: #E74C3C ;" class="btn btn-primary js-scroll-trigger" (click)="deleteUnit(unit.id)" >Borrar</a></td>
+                    </tbody>
+                  </table>
+                  <div id="loading" class="side-middle minHeight">
+                    <img *ngIf="spinner" src="../../../assets/spinner.gif" width="80px" height="80px" />
+                  </div>
+                  <!--<button *ngIf="lastPage !== page" id="addUsers" class="btn btn-primary mt-3" (click)="getUsers()">Más resultados</button>!-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
