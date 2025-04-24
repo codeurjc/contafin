@@ -1,4 +1,4 @@
-import { CompletedExercise } from '../Exercise/completedExercise.model'; 
+import { SafeUrl } from '@angular/platform-browser';
 
 export interface User{
     id: number;
@@ -17,8 +17,7 @@ export interface User{
     remainingGoals?: number;
     exp: number;
 	needexp: number;
-    image?: Blob;
+    image?: SafeUrl;
     roles: string[];
-    completedExercises?: CompletedExercise [];
     
 }

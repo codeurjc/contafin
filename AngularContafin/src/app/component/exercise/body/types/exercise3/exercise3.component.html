@@ -1,0 +1,66 @@
+<body class="bgexercises" id="page-top">
+  <header_exercise [complete_bar]='complete_bar'></header_exercise>
+  <section class="p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">{{statement}}</h2>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <div class="row">
+            <form [formGroup] ="exerciseForm">
+              <div class="row">
+                <div class="col-lg-12 mt-3 mx-auto text-center">
+                  <div class="form-group">
+                    <div *ngFor="let pair of leftoptions;let j = index">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                          <label [id]="option[leftoptions[j]]" class="service-box mt-4 mx-auto text-center card-body" id="exercise1">
+                            <input [id]="leftoptions[j] +'l'" type="radio" formControlName="answerLeft" [value]="leftoptions[j]" (change)="check()"> {{leftoptions[j]}}
+                          </label>               
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                          <label [id]="option[rightoptions[j]]" class="service-box mt-4 mx-auto text-center card-body" id="exercise1">
+                            <input [id]="rightoptions[j] +'r'" type="radio" formControlName="answerRight" [value]="rightoptions[j]" (change)="check()"> {{rightoptions[j]}}
+                          </label>            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row justify-content-around">
+            <div *ngFor="let sol of solution;let j = index">
+                <div class="col-lg-4 col-md-6">
+                  <label class="service-box mt-4 mx-auto text-center card-body" id="exercise1">{{sol}}
+                  </label>               
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<footer>
+  <div class="mt-5 fixed-bottom" id="bg-foot">
+    <div class="container-fluid py-3">
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <button *ngIf="nElement!=0 && nElement!=1 && !press" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SALTAR</button>
+        <button *ngIf="nElement!=1 && press" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SIGUIENTE</button>
+        <button *ngIf="nElement==1 && press && !right" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SIGUIENTE</button>
+        <button *ngIf="nElement==1 && press && isLogged" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted', points]">TERMINAR</button>
+        <button *ngIf="nElement==1 && press && !isLogged" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted', null]">TERMINAR</button>
+      </div>
+    </div>
+  </div>
+</footer>

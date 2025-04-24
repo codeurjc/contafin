@@ -1,0 +1,24 @@
+package com.daw.contafin.dto;
+
+
+import lombok.Data;
+import java.io.Serializable;
+import java.util.Date;
+
+@Data
+public class CompletedLessonDto implements Serializable {
+
+    private long id;
+    private UserDto user;
+    private LessonDto lesson;
+    private Date date;
+
+    public CompletedLessonDto() {
+
+    }
+    public CompletedLessonDto(UserDto user, LessonDto lesson, Date date) {
+        this.user = user;
+        this.lesson = lesson;
+        this.date = date;
+    }
+}

@@ -1,0 +1,55 @@
+<body class="bgexercises" id="page-top">
+  <header_exercise [complete_bar]='complete_bar'></header_exercise>
+  <section class="p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">{{statement}}</h2>
+          <hr class="my-4">
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <div class="row justify-content-around">
+            <div class="btn-group btn-group-toggle" name="radioBasic">
+              <div class="col-lg-4 col-md-6">
+                <label [id]="option1" class="service-box mt-5 mx-auto text-center card-body" id="exercise1">
+                  <img class="img-fluid " [src]="img1" alt="" id="selectLesson">
+                  <input type="radio" [(ngModel)]="answer" value="uno"> {{texts[0]}}
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <label [id]="option2" class="service-box mt-5 mx-auto text-center card-body" id="exercise1">
+                  <img class="img-fluid " [src]="img2" alt="" id="selectLesson">
+                  <input type="radio" [(ngModel)]="answer" value="dos"> {{texts[1]}}
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <label [id]="option3" class="service-box mt-5 mx-auto text-center card-body" id="exercise1">
+                  <img class="img-fluid " [src]="img3" alt="" id="selectLesson">
+                  <input type="radio" [(ngModel)]="answer" value="tres"> {{texts[2]}}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<footer>
+  <div class="mt-5 fixed-bottom" id="bg-foot">
+    <div class="container-fluid py-3">
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <button *ngIf="nElement!=0 && nElement!=1 && !press" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SALTAR</button>
+        <button *ngIf="nElement!=0 && !press" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" (click)="check()">CALIFICAR</button>
+        <button *ngIf="nElement!=1 && press" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SIGUIENTE</button>
+        <button *ngIf="nElement==1 && press && !right" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" (click)="nextExercise()">SIGUIENTE</button>
+        <button *ngIf="nElement==1 && press && isLogged" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted', points]">TERMINAR</button>
+        <button *ngIf="nElement==1 && press && !isLogged" style="margin-left: auto;margin-right: 0;" class="btn btn-primary btn-xl js-scroll-trigger" [routerLink]="['/Unit',idUnit,'Lesson', idLesson , 'lessonCompleted', null]">TERMINAR</button>
+      </div>
+    </div>
+  </div>
+</footer>

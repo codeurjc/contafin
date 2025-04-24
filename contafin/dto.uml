@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.daw.contafin.dto</OriginalElement>
+  <nodes>
+    <node x="-262.8052749719418" y="689.3417508417508">com.daw.contafin.dto.LessonDto</node>
+    <node x="-266.69921436588106" y="530.5">com.daw.contafin.dto.UnitDto</node>
+    <node x="-460.33501683501686" y="530.5">com.daw.contafin.dto.JwtResponse</node>
+    <node x="-680.8647586980919" y="530.5">com.daw.contafin.dto.UserDto</node>
+    <node x="-14.56004489337829" y="530.5">com.daw.contafin.dto.ExerciseDto</node>
+    <node x="0.43995510662171" y="870.266554433221">com.daw.contafin.dto.AnswerDto</node>
+    <node x="-259.3052749719418" y="854.5">com.daw.contafin.dto.CompletedLessonDto</node>
+    <node x="-468.33501683501686" y="842.5">com.daw.contafin.dto.UserConfigDto</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="0.6274647887323944" showDependencies="false" x="40.999999999999886" y="912.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

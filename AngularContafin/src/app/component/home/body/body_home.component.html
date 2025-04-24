@@ -1,0 +1,107 @@
+<body class="bghome mt-3">
+  <div class="container my-auto">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="mt-5 mx-auto text-center card-body bg-white" id="round">
+              <h2 class="text-black text-left " id="Margin">Unidades de Contabilidad 
+              </h2>
+              <h5 class="text-black text-center mt-5">Nivel 1</h5>
+              <div class="row justify-content-around">
+                <div *ngFor="let unit of units;" class="col-lg-6 col-md-6 ">
+                  <div *ngIf="idUnitlast > unit.id" class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
+                    <a class="col-lg-5" [routerLink]="['/Unit',unit.id,'Lessons']" id="selectLesson">
+                      <h2 class="text-white ">{{unit.name}}</h2>
+                      <h2 class="text-muted mt-4">{{unit.lessons.length}}/{{unit.lessons.length}}</h2>
+                    </a>
+                  </div>
+                  <div *ngIf="unit.id==idUnitlast && n != unit.lessons.length" class="service-box mt-5 mx-auto text-center card-body" id="Unit">
+                    <a class="col-lg-5" [routerLink]="['/Unit',unit.id,'Lessons']" id="selectLesson">
+                      <h2 class="text-white ">{{unit.name}}</h2>
+                      <h2 class="text-muted mt-4">{{n}}/{{unit.lessons.length}}</h2>
+                    </a>
+                  </div>
+                  <div *ngIf="unit.id==idUnitlast && n == unit.lessons.length" class="service-box mt-5 mx-auto text-center card-body" id="UnitComplete">
+                    <a class="col-lg-5" [routerLink]="['/Unit',unit.id,'Lessons']" id="selectLesson">
+                      <h2 class="text-white ">{{unit.name}}</h2>
+                      <h2 class="text-muted mt-4">{{n}}/{{unit.lessons.length}}</h2>
+                    </a>
+                  </div>
+                  <div *ngIf="unit.id>idUnitlast" class="service-box mt-5 mx-auto text-center card-body" id="Unit">
+                      <h2 class="text-white ">{{unit.name}}</h2>
+                      <h2 class="text-muted mt-4">0/{{unit.lessons.length}}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isLoggedUser" class="col-sm-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+              <h5 class="text-black text-left">Conocimiento de contabilidad
+              </h5>
+              <div class="row">
+                <div class="col-lg-12 ">
+                  <h1 class="card-title text-warning">{{loggedUser.fluency}} %</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mt-4 text-center card-body bg-white " id="round">
+              <div class="row">
+                <div class="col-lg-12 ">
+                  <div class="row mt-3">
+                    <div class="col-lg-12 ">
+                      <h5 class="text-black ">Nivel</h5>
+                      <h1 class="text-warning ">{{loggedUser.level}}</h1>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-12 ">
+                      <h5 class="text-black ">Experiencia</h5>
+                      <h1 class="text-warning ">{{loggedUser.exp}}</h1>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-12 ">
+                      <h5 class="text-black ">Meta diaria</h5>
+                      <h1 class="text-warning ">{{loggedUser.dailyGoal}}</h1>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-12 ">
+                      <h5 class="text-black ">Metas diarias por cumplir</h5>
+                      <h1 class="text-warning ">{{loggedUser.remainingGoals}}</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isLoggedUser" class="col-sm-4">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mt-5 text-center card-body bg-white margin-bootom-sm" id="round">
+              <h5 class="text-black text-left">¡Crea un perfil para guardar tu progreso!</h5>
+              <div class="row">
+                <div class="col-lg-12 ">
+                  <app-sign-up></app-sign-up>
+                  <app-login [formkind]='2'></app-login>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

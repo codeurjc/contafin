@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/User/IdeaProjects/contafin/contafin/src/main/java/com/daw/contafin/service</OriginalElement>
+  <nodes>
+    <node x="325.4408917762819" y="888.8650420339395">com.daw.contafin.service.AnswerService</node>
+    <node x="-14.883765819272455" y="720.8650420339395">com.daw.contafin.service.UnitService</node>
+    <node x="821.7655493718363" y="784.8650420339395">com.daw.contafin.service.EmailService</node>
+    <node x="828.7655493718362" y="408.8650420339395">com.daw.contafin.service.LessonService</node>
+    <node x="-14.883765819272469" y="408.8650420339395">com.daw.contafin.service.ExerciseService</node>
+    <node x="-486.20842341482677" y="408.8650420339395">com.daw.contafin.service.UserService</node>
+    <node x="828.7655493718362" y="636.8160072214758">com.daw.contafin.service.ExcelService</node>
+    <node x="325.4408917762819" y="408.8650420339395">com.daw.contafin.service.CompletedLessonService</node>
+    <node x="628.3025083063533" y="936.8650420339395">com.daw.contafin.service.UserDetailsServiceImpl</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="0.7429089709762533" showDependencies="false" x="315.74128745837885" y="698.2339622641507" />
+  <SelectedNodes>
+    <node>com.daw.contafin.service.AnswerService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

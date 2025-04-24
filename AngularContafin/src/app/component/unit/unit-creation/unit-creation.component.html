@@ -1,0 +1,293 @@
+<app-navbar></app-navbar>
+<div class="bghome" id="page-top">
+  <form #unitForm="ngForm" enctype="multipart/form-data" ngNativeValidate>
+    <section class="text-center text-dark d-flex" >
+      <div class="container my-auto">
+        <div class="row">
+          <div *ngIf="alertDanger" class="container">
+            <div class="alert alert-danger mb-5" role="alert">
+              <strong>¡Error al guardar los cambios!</strong> ¡Todos los campos son obligatorios!
+            </div>
+          </div>
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>Creación de unidad completa</strong>
+            </h1>
+            <hr>
+          </div>
+        </div>
+        <form [formGroup] ="createUnitForm">
+          <div class="row">
+            <div class="col-lg-10 mx-auto">
+              <div class="form-group">
+                <label for="unitNameForm" required>Nombre de la unidad</label>
+                <input [readonly]="mode" formControlName="name" type="text" class="form-control form-control-lg" id="unitNameForm" name="unitName">
+              </div>
+              <ngb-accordion #acc="ngbAccordion" activeIds="panel-1" *ngFor="let lesson of lessons;let i = index">
+                <ngb-panel id="panel-1">
+                  <ng-template ngbPanelHeader let-opened="opened">
+                    <button ngbPanelToggle class="accordion-button">Lección {{i+1}}</button>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <hr class="invisible">
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="form-group">
+                            <label for="lessonNameForm0">Nombre de la lección {{i+1}}</label>
+                            <input [readonly]="mode" [formControlName]="'name_' + (lesson.id)" type="text" class="form-control" id="lessonNameForm0" name="lessonName">
+                          </div>
+                        </div>
+                        <div style="margin-left:44%; width:auto; margin-top:2%;">
+                          <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" (click)="deleteLesson(lesson)">Borrar Leccion</button>
+                        </div>
+                      </div>
+                      <hr class="invisible">
+                      <ul ngbNav #nav="ngbNav" class="nav-tabs" >
+                          <li ngbNavItem *ngFor="let exercise of lesson.exerciseList;let j = index">
+                            <a ngbNavLink>Ejercicio {{j+1}}</a>
+                            <ng-template ngbNavContent *ngIf="exercises[exercise] === 1">
+                              <div class="container">
+                                <hr class="invisible">
+                                <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" style="margin-right: -80%;" (click)="deleteExercise(exercise,lesson.id)">Borrar Ejercicio</button>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <label for="statementForm0">Enunciado</label>
+                                      <textarea [readonly]="mode" [formControlName]="'statement_' + (exercise)" class="form-control form-control-sm" id="statementForm0" rows="3"
+                                        name="statements[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr class="invisible">
+                                <div *ngIf="mode === false" class="row">
+                                  <div class="col">
+                                    <div class="custom-file">
+                                      <input  id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, exercise, 1)" required/>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="custom-file">
+                                      <input  id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, exercise, 2)" required/>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="custom-file">
+                                      <input  id="inputTipe" name="file" type="file" class="form-control" (change)="selectFile($event, exercise, 3)" required/>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr class="invisible">
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <img [readonly]="mode" *ngIf="imagesPreview1[exercise] !== null" class="img-fluid" [src]="imagesPreview1[exercise]" alt="" id="selectLesson">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <img [readonly]="mode" *ngIf="imagesPreview2[exercise] !== null" class="img-fluid" [src]="imagesPreview2[exercise]" alt="" id="selectLesson">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <img [readonly]="mode" *ngIf="imagesPreview3[exercise] !== null" class="img-fluid" [src]="imagesPreview3[exercise]" alt="" id="selectLesson">
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr class="invisible">
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="textForm0">Texto imagen 1</label>
+                                      <input [readonly]="mode" [formControlName]="'texts_1_' + (exercise)" type="text" class="form-control" id="textForm0" name="texts[]">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="textForm1">Texto imagen 2</label>
+                                      <input [readonly]="mode" [formControlName]="'texts_2_' + (exercise)" type="text" class="form-control" id="textForm1" name="texts[]">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="textForm2">Texto imagen 3</label>
+                                      <input [readonly]="mode" [formControlName]="'texts_3_' + (exercise)" type="text" class="form-control" id="textForm2" name="texts[]">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-5"></div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="answerForm0">Respuesta correcta</label>
+                                      <select *ngIf="mode === false" [formControlName]="'result_' + (exercise)" class="form-control" id="answerForm" >
+                                        <option>uno</option>
+                                        <option>dos</option>
+                                        <option>tres</option>
+                                      </select>
+                                      <input *ngIf="mode === true" [readonly]="mode" [formControlName]="'result_' + (exercise)" type="text" class="form-control">
+                                    </div>
+                                  </div>
+                                  <div class="col-5"></div>
+                                </div>
+                              </div>
+                            </ng-template>
+                             <ng-template ngbNavContent *ngIf="exercises[exercise] === 2">
+                              <div class="container">
+                                <hr class="invisible">
+                                <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" style="margin-right: -80%;" (click)="deleteExercise(exercise,lesson.id)">Borrar Ejercicio</button>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <label for="statementForm0">Enunciado</label>
+                                      <textarea [readonly]="mode" [formControlName]="'statement_' + (exercise)" class="form-control form-control-sm" id="statementForm1" rows="3"
+                                        name="statements[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr class="invisible">
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <label for="answerForm0">Respuesta correcta</label>
+                                      <textarea [readonly]="mode" [formControlName]="'result_' + (exercise)" class="form-control form-control-sm" id="answerForm1"
+                                        rows="3" name="answers[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-template>
+                            <ng-template ngbNavContent *ngIf="exercises[exercise] === 5 || exercises[exercise] === 7">
+                              <div class="container">
+                                <hr class="invisible">
+                                <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" style="margin-right: -80%;" (click)="deleteExercise(exercise,lesson.id)">Borrar Ejercicio</button>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <label for="statementForm0">Enunciado</label>
+                                      <textarea [readonly]="mode" [formControlName]="'statement_' + (exercise)" class="form-control form-control-sm" id="statementForm6" rows="3"
+                                        name="statements[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr class="invisible">
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="textForm0">Respuesta 1</label>
+                                      <textarea [readonly]="mode" [formControlName]="'texts_1_' + (exercise)" class="form-control form-control-sm" id="textForm26" rows="2"
+                                        name="texts[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="textForm0">Respuesta 2</label>
+                                      <textarea [readonly]="mode" [formControlName]="'texts_2_' + (exercise)" class="form-control form-control-sm" id="textForm27" rows="2"
+                                        name="texts[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="textForm0">Respuesta 3</label>
+                                      <textarea [readonly]="mode" [formControlName]="'texts_3_' + (exercise)" class="form-control form-control-sm" id="textForm28" rows="2"
+                                        name="texts[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-5"></div>
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label for="answerForm0">Respuesta correcta</label>
+                                      <select *ngIf="mode === false" [formControlName]="'result_' + (exercise)" class="form-control" id="answerForm4" name="answers[]">
+                                        <option>uno</option>
+                                        <option>dos</option>
+                                        <option>tres</option>
+                                      </select>
+                                      <input *ngIf="mode === true" [readonly]="mode" [formControlName]="'result_' + (exercise)" type="text" class="form-control">
+                                    </div>
+                                  </div>
+                                  <div class="col-5"></div>
+                                </div>
+                              </div>
+                            </ng-template>
+                            <ng-template ngbNavContent *ngIf="exercises[exercise] === 3">
+                              <div class="container">
+                                <hr class="invisible">
+                                <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" style="margin-right: -80%;" (click)="deleteExercise(exercise,lesson.id)">Borrar Ejercicio</button>
+                                <div class="row">
+                                  <div class="col-12">
+                                    <div class="form-group">
+                                      <label for="statementForm0">Enunciado</label>
+                                      <textarea [readonly]="mode" [formControlName]="'statement_' + (exercise)" class="form-control form-control-sm" id="statementForm7" rows="3"
+                                        name="statements[]"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                                <hr class="invisible">
+                                <div class="row">
+                                  <div class="col">
+                                    <div >
+                                      <label>Respuestas Izquierda</label>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div >
+                                      <label >Respuestas Derecha</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div *ngFor="let pair of pair[exercise];let j = index">
+                                  <hr class="invisible">
+                                  <div class="row">
+                                    <div class="col">
+                                      <div >
+                                        <input [readonly]="mode" [formControlName]="'pair_'+(j)+'_left_' + (exercise)" type="text" class="form-control" id="textForm1" name="texts[]">
+                                      </div>
+                                    </div>
+                                    <div class="col">
+                                      <div >
+                                        <input [readonly]="mode" [formControlName]="'pair_'+(j)+'_right_' + (exercise)" type="text" class="form-control" id="textForm1" name="texts[]">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-template>
+                          </li>
+                          <li *ngIf="mode === false" ngbDropdown class="nav-item" role="presentation">
+                            <button type="button" class="nav-link" ngbDropdownToggle>Añadir</button>
+                            <div ngbDropdownMenu>
+                              <button (click)="addExercise(1,null,lesson.id)" ngbDropdownItem>Tipo 1</button>
+                              <button (click)="addExercise(2,null,lesson.id)" ngbDropdownItem>Tipo 2</button>
+                              <button (click)="addExercise(3,null,lesson.id)" ngbDropdownItem>Tipo 3</button>
+                              <button (click)="addExercise(5,null,lesson.id)" ngbDropdownItem>Tipo 5</button>
+                              <button (click)="addExercise(7,null,lesson.id)" ngbDropdownItem>Tipo 7</button>
+                            </div>
+                          </li>
+                      </ul>
+                      <div [ngbNavOutlet]="nav"></div>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </div>
+          </div>
+        </form>
+        <hr class="invisible">
+        <div class="row">
+          <div class="col-6">
+            <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" (click)="addLesson(null)">AÑADIR LECCION</button>
+          </div>
+          <div class="col-6">
+            <button *ngIf="mode === false" type="button" class="btn btn-primary my-1" (click)="preSave()">GUARDAR</button>
+          </div>
+        </div>
+        <button *ngIf="mode === true" type="button" class="btn btn-primary my-1" (click)="modifyMode()">EDITAR</button>
+      </div>
+    </section>
+  </form>
+</div>

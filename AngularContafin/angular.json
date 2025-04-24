@@ -40,7 +40,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -64,7 +63,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -112,10 +110,12 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "inlineStyleLanguage": "css",
             "codeCoverageExclude": ["src/app/core/mocks/**", "src/app/app-routing.module.ts"],
             "styles": [
-              "src/scss/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/app/component/app.component.css"
             ],
             "scripts": []
           }

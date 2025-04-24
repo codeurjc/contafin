@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.daw.contafin.entity</OriginalElement>
+  <nodes>
+    <node x="1.8279689234184389" y="440.7169811320755">com.daw.contafin.entity.Answer</node>
+    <node x="-484.18534961154273" y="80.71698113207547">com.daw.contafin.entity.User</node>
+    <node x="-261.17869034406215" y="80.71698113207549">com.daw.contafin.entity.Lesson</node>
+    <node x="-261.17869034406215" y="248.7169811320755">com.daw.contafin.entity.Unit</node>
+    <node x="-264.67869034406215" y="416.71698113207543">com.daw.contafin.entity.CompletedLesson</node>
+    <node x="-16.17203107658156" y="80.71698113207549">com.daw.contafin.entity.Exercise</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="0.897410358565737" showDependencies="false" x="106.50000000000011" y="488.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

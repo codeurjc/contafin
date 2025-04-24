@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.daw.contafin.service.EmailService</OriginalElement>
+  <nodes>
+    <node x="-954.8711475409837" y="542.7710382513665">com.daw.contafin.service.UserService</node>
+    <node x="-585.858214936248" y="379.16185792349717">com.daw.contafin.service.ExerciseService</node>
+    <node x="-1124.5159927140257" y="817.1567577413475">com.daw.contafin.service.LessonService</node>
+    <node x="-748.8016757741336" y="1007.6389435336979">com.daw.contafin.service.EmailService</node>
+    <node x="-314.85821493624803" y="505.13315118397054">com.daw.contafin.service.CompletedLessonService</node>
+    <node x="-1096.5159927140257" y="1019.6389435336978">com.daw.contafin.service.UserDetailsServiceImpl</node>
+    <node x="-564.858214936248" y="703.104444444444">com.daw.contafin.service.UnitService</node>
+    <node x="-871.8711475409837" y="355.4057923497267">com.daw.contafin.service.ExcelService</node>
+    <node x="-398.0873588342415" y="1007.6389435336979">com.daw.contafin.service.AnswerService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.daw.contafin.service.UnitService" target="com.daw.contafin.service.ExerciseService" relationship="TO_ONE">
+      <point x="0.0" y="-79.5" />
+      <point x="0.0" y="55.5" />
+    </edge>
+    <edge source="com.daw.contafin.service.UserService" target="com.daw.contafin.service.LessonService" relationship="TO_ONE">
+      <point x="0.0" y="-115.5" />
+      <point x="-770.8711475409837" y="600.5210382513665" />
+      <point x="-931.571147540984" y="600.5210382513665" />
+      <point x="-931.571147540984" y="658.2710382513665" />
+      <point x="-988.5159927140257" y="658.2710382513665" />
+      <point x="0.0" y="55.5" />
+    </edge>
+    <edge source="com.daw.contafin.service.UserService" target="com.daw.contafin.service.CompletedLessonService" relationship="TO_ONE">
+      <point x="0.0" y="-115.5" />
+      <point x="-770.8711475409837" y="705.7076867030958" />
+      <point x="-835.7617850637524" y="705.7076867030958" />
+      <point x="-835.7617850637524" y="602.0" />
+      <point x="-109.85821493624803" y="602.0" />
+      <point x="0.0" y="-91.5" />
+    </edge>
+    <edge source="com.daw.contafin.service.UserService" target="com.daw.contafin.service.UnitService" relationship="TO_ONE">
+      <point x="0.0" y="-115.5" />
+      <point x="-770.8711475409837" y="698.0000000000002" />
+      <point x="-664.4927140255011" y="698.0000000000002" />
+      <point x="-664.4927140255011" y="834.4923315118396" />
+      <point x="-439.85821493624803" y="834.4923315118396" />
+      <point x="0.0" y="-79.5" />
+    </edge>
+    <edge source="com.daw.contafin.service.UnitService" target="com.daw.contafin.service.LessonService" relationship="TO_ONE">
+      <point x="0.0" y="-79.5" />
+      <point x="-439.85821493624803" y="983.8978506375224" />
+      <point x="-988.5159927140257" y="983.8978506375224" />
+      <point x="0.0" y="55.5" />
+    </edge>
+    <edge source="com.daw.contafin.service.ExcelService" target="com.daw.contafin.service.UserService" relationship="TO_ONE">
+      <point x="0.0" y="-43.5" />
+      <point x="0.0" y="-115.5" />
+    </edge>
+    <edge source="com.daw.contafin.service.CompletedLessonService" target="com.daw.contafin.service.UnitService" relationship="TO_ONE">
+      <point x="0.0" y="-91.5" />
+      <point x="-109.85821493624803" y="759.2896174863389" />
+      <point x="-439.85821493624803" y="759.2896174863389" />
+      <point x="0.0" y="-79.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.604093309859155" showDependencies="true" x="-427.01322404371683" y="620.8491803278688" />
+  <SelectedNodes>
+    <node>com.daw.contafin.service.AnswerService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.daw.contafin.controller.ExerciseRestController</OriginalElement>
+  <nodes>
+    <node x="399.5646606280093" y="183.4534046717216">com.daw.contafin.controller.UnitRestController</node>
+    <node x="398.5646606280093" y="-4.145322415974704">com.daw.contafin.controller.LoginRestController</node>
+    <node x="-79.49616281011606" y="272.7890723282516">com.daw.contafin.controller.ExerciseRestController</node>
+    <node x="885.6254840661347" y="255.45340467172161">com.daw.contafin.controller.AdminRestController</node>
+    <node x="-79.49616281011603" y="-4.145322415974704">com.daw.contafin.controller.UserRestController</node>
+    <node x="885.6254840661347" y="-4.145322415974704">com.daw.contafin.controller.LessonRestController</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="0.7897106109324759" showDependencies="false" x="671.5114006514655" y="287.94625407166086" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+

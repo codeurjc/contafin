@@ -2,14 +2,14 @@ package com.daw.contafin;
 
 import java.io.IOException;
 
+
+import com.daw.contafin.config.SwaggerConfig;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.Page;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -19,7 +19,8 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 
 @SpringBootApplication
-
+@EnableWebMvc
+@Import(SwaggerConfig.class)
 public class Application {
 
 	public static void main(String[] args) {
@@ -44,18 +45,5 @@ public class Application {
 	        }
 	    });
 	}
-	
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOriginPatterns("*").allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
-						.allowedHeaders("Authorization", "Content-Type", "X-Requested-With", "accept", "Origin",
-								"Access-Control-Request-Method", "Access-Control-Request-Headers")
-						.exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials")
-						.allowCredentials(true).maxAge(3600);
-			}
-		};
-	}
+
 }

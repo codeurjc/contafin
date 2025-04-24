@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.daw.contafin.config.jwt.AuthTokenFilter</OriginalElement>
+  <nodes>
+    <node x="-42.0" y="106.5">com.daw.contafin.config.jwt.AuthTokenFilter</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="false" x="192.5" y="196.5" />
+  <SelectedNodes>
+    <node>com.daw.contafin.config.jwt.AuthTokenFilter</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBase: "/api"
+  apiBase: "https://java_app:8080/api"
 };
