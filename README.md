@@ -4,7 +4,9 @@
 Requisitos del sistema para la correcta instalación de ContaFin:
 
 -Tener instalado en el entorno Docker. Se puede descargar desde [aquí](https://docs.docker.com/install/#supported-platforms). 
+
 -Clonar el repositorio de Github.
+
 
 Para hacer que se ejecute la aplicación solo hay que ir a la carpeta raíz del proyecto y ejecutar el siguiente comando:
 
