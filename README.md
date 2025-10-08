@@ -1,192 +1,26 @@
-***by CONTaFinTEAM***
-# CONTaFin
-In this repository we will place our web application, which helps students to learn contability and lets teachers to control them.
+# ContaFin
 
-[![DAW-CONTaFIN](http://img.youtube.com/vi/dd_GVtREpyg/0.jpg)](https://www.youtube.com/watch?v=dd_GVtREpyg&feature=youtu.be)
+## Manual de instalación 
+Requisitos del sistema para la correcta instalación de ContaFin:
+•	Tener instalado en el entorno Docker. Se puede descargar desde [aquí](https://docs.docker.com/install/#supported-platforms). 
+•	Clonar el repositorio de Github.
 
-## Team : 
+Para hacer que se ejecute la aplicación solo hay que ir a la carpeta raíz del proyecto y ejecutar el siguiente comando:
 
-- Luis Caumel Morales:
-
-	- E-mail: l.caumel@alumnos.urjc.es.
-	- Github: [Caumel](https://github.com/Caumel).
+	“docker-compose up”.
 	
-- Lizeth Marcela de la Torre:
+Para acabar la ejecución se debe introducir y ejecutar el comando:
 
-	- E-mail: lm.delatorre@alumnos.urjc.es.
-	- Github: [marceladb](https://github.com/marceladb).
+	"docker-compose down".
 	
-- Raul Velasco Rubio:
+Esto hará que la aplicación se inicie de forma escalonada empezando por la base de datos en el puerto 3306, el servidor en el puerto 8080 y el cliente en el puerto 4200.
+Para acceder a la aplicación se hará uso de un navegador web en el que se debe introducir la siguiente dirección:
 
-	- E-mail: r.velascor@alumnos.urjc.es.
-	- Github: [raulvr2](https://github.com/raulvr2).
+http://localhost:4200/
 	
-- Jaime Morillo Leal:
+## Manual de uso
 
-	- E-mail: j.morillol@alumnos.urjc.es.
-	- Github: [Jaimemorillo](https://github.com/Jaimemorillo).
-	
-- Alejendro Pinto Fernandez
-
-	- E-mail: a.pinto@alumnos.urjc.es.
-	- Github: [AlejandroPinto](https://github.com/AMBushido).
-	
-## Tools :
-
-- [Trello](https://trello.com/b/4dZpQcvA/desarrollo-de-aplicaciones-web).
-- [Project](https://github.com/Caumel/DAW-G11-2018).
-
-## About the project:
-
-### Topic
-	Website Contability-learning platform.
-### Database entities
-
-	- User:
-	
-		- Anonymous.
-		- Student.
-		- Teacher (administrator).
-		
-	- Unit.
-	- Lesson.
-	- Exercise.
-	- Answer.
-	
-### Advanced functionality
-
-	- Progress Statistics.
-	- Basic User Information.
-	
-### Graphic information
-	We are going to use line graphics showing students information (days/hours).	
-### Other functionality
-
-	- Logging alternatives.
-	- Export to excel.
-	- Send e-mails.
-
-
-## Phase 2
-### Navigation Diagram: 
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/Navigation%20diagram.png) 
-### index.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/index.PNG) 
-### login.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/inicio.PNG) 
-### home.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/home.PNG) 
-### profile.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/profile.PNG) 
-### lessons.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/lessons.PNG) 
-### excerciseType1.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType1.PNG) 
-### excerciseType2.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType2.PNG) 
-### excerciseType3.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType3.PNG) 
-### excerciseType4.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType4.PNG) 
-### excerciseType5.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType5.PNG) 
-### excerciseType6.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType6.PNG) 
-### excerciseType7.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/exerciseType7.PNG) 
-### completedLesson.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/completedLesson.PNG) 
-### continueLesson.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%202%20documentation/continueLessons.PNG) 
-
-## Phase 3
-### Navigation Diagram: 
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/NavigationDiagram.png)
-### index.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/index.png)
-### index.html(2)
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/index2.png)
-### home.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/home.png)
-### profile.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/profile.png)
-### configuration.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Configuration.png)
-### addGoal.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/addGoal.png)
-### lessons.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/lessons.png)
-### exercise.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/Exercise.png)
-### lessonCompleted.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/lessonCompleted.png)
-### continueLesson.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/continueLesson.png)
-### adminHome.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminHome.png)
-### usersData.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/AdminUsersData.png)
-### unitCreation.html
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/Screenshots/unitCreation.png)
-
-## Database diagram
-### Diagram with the entities of the database, its fields and the relationships between them.
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram.png)
-
-## Class and templates diagram
-### Classes 
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram1.PNG)
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram2.PNG)
-### Templates
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%203%20documentation/diagram3.PNG)
-
-## How to use 
-### STS and MySL Workbench Configuration
-Open the framework STS
-File -> Open Projects From Files System -> Directory... -> And we select the route where we keep the project
-Open MySQL Workbench
-Select a MySQL connection user curro be "root" and the password "pass"
-Once inside we will click on Create a new Schema in the connected server whose name will be "test"
-Start our application
-Once we have the connection of MySQL connected and the loaded project we will press in the Aplication.java of our application loaded in STS and we will Run as: Spring Boot App.
-#### Configure IDE
-- Download STS (http://spring.io/tools/sts/all).
-- Import as a Maven project.
-- Update Maven project.
-- Run as a Spring Boot application.
-- Go to https://localhost:8080
-- Enjoy our application.
-### Anonymous users
-As an anonymous user we can enter the application and perform the available lessons in addition to creating or entering our profile.
-### Registered users
-As registered users we can make the different lessons and progress in them, we can also see data about our profile as the level and our progress, we can also configure our account and set a goal to get an objective
-### Admin
-As administrators of our application you will get the same options with the application as other registered users but you can also view and export the users´ data and create new lessons.
-
-The application does not need more explanations since it is very intuitive because it is intended for teaching.
-
-## Phase 4
-### REST API documentation
-Document [Api documentation](API.md) with information about the REST API.
-### Docker
-Docker lets you to use our app in a very easy way without having anything install, you just need Docker.
-Read the [Docker usage](DOCKER.md) to know more.
-### Class and templates diagram
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%204%20documentation/diagram.png)
-
-## Phase 5
-## Angular documentation
-Document [Angular documentation](AngularContafin/README.md) with information about our work with Angular
-
-![Navigation Diagram](https://github.com/Caumel/DAW-G11-2018/blob/master/Phase%205%20documentation/diagram.png)
-
-## Sonarqube documentation
-### Information
-Documentation of [Sonarqube](https://docs.sonarqube.org/display/SONAR/Documentation) on requirements, operations and guidelines on how to use it.
-### Guide
-[Sonarqube](Sonar.md) document that shows the steps to follow to develop the sonar analysis environment.
-## Selenium documentation
-### Information
-Documentation of [Selenium](https://www.seleniumhq.org/) on requirements, operations and guidelines on how to use it.
-### Guide
-[Selenium](Selenium.md) Selenium start guide.
+### Versión video
+[Video manual] (https://youtu.be/0_A530kgeZE)
+### Versión pdf
+[Manual PDF](https://github.com/Daniparri/DAW-G11-2018/Manual_de_uso.pdf)

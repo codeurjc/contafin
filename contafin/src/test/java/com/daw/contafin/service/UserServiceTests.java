@@ -269,6 +269,7 @@ public class UserServiceTests {
         User user = new User();
         //THEN
         when(userService.findById(id)).thenReturn(userDto);
+        Mockito.doNothing().when(userService).updateUserData(userDto,false,0);
 
         assertEquals(userService.getProfile(id), userDto);
 

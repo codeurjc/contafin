@@ -267,9 +267,12 @@ public class UserService {
 			//General
 			userDto.setProgress(progress(userDto.getId()));
 			userDto.setFluency(getFluency());
-			CompletedLessonDto completedLessonDto = completedLessonService.findByUserOrderByDateDesc(userDto).get(0);
-			userDto.setLastLesson(Long.bitCount(completedLessonDto.getLesson().getId()));
-			userDto.setLastUnit((int) unitService.findByLessonsId(completedLessonDto.getLesson().getId()).getId());
+			List<CompletedLessonDto> completedLessonDtos = completedLessonService.findByUserOrderByDateDesc(userDto);
+			if(completedLessonDtos != null && !completedLessonDtos.isEmpty()){
+				CompletedLessonDto completedLessonDto = completedLessonService.findByUserOrderByDateDesc(userDto).get(0);
+				userDto.setLastLesson(Long.bitCount(completedLessonDto.getLesson().getId()));
+				userDto.setLastUnit((int) unitService.findByLessonsId(completedLessonDto.getLesson().getId()).getId());
+			}
 			userDto.setRemainingGoals(getRemainingGoals(userDto));
 			updateStreak(userDto, completedLessonService.getCompletedLessons(userDto, date));
 

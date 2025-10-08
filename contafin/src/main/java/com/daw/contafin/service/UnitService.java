@@ -163,7 +163,7 @@ public class UnitService {
 			//Exercise 1
 			AnswerDto answer1 = new AnswerDto("uno");
 			List<String> texts = Arrays.asList("213.Maquinaria", "210.Terrenos y bienes naturales", "218. Elementos de transporte");
-			ExerciseDto exercise1 = new ExerciseDto(1, "1.1.1 Seleccione el asiento", texts, answer1);
+			ExerciseDto exercise1 = new ExerciseDto(1, "1.1.1 Seleccione el elemento para maquinaria industrial", texts, answer1);
 			// Save the images in the database
 			byte []image = Files.readAllBytes(Paths.get("img/machine.jpg"));
 
@@ -195,10 +195,16 @@ public class UnitService {
 			texts = Arrays.asList(
 					"400.Proveedores:206.Aplicaciones informáticas:213.Maquinaria:300.Mercaderías A:100.Cápital social",
 			"Pasivo exigible:Inmovilizado intangible:Inmovilizado material:Existencias:Patrimonio neto");
-			AnswerDto answer5 = new AnswerDto("400.Proveedores:Pasivo exigible/206.Aplicaciones informáticas:Inmovilizado intangible/213.Maquinaria:Inmovilizado material/300.Mercaderías A:Existencias/100.Cápital social:Patrimonio neto");
+			AnswerDto answer5 = new AnswerDto("400.Proveedores:Pasivo exigible/" +
+					"206.Aplicaciones informáticas:Inmovilizado intangible/" +
+					"213.Maquinaria:Inmovilizado material/300.Mercaderías A:" +
+					"Existencias/100.Cápital social:Patrimonio neto");
 			ExerciseDto exercise5 = new ExerciseDto(3, "Toca los pares: ", texts, answer5);
 
-
+			AnswerDto answer32 = new AnswerDto("tres");
+			texts = Arrays.asList("Activo", "Pasivo", "Patrimonio neto");
+			ExerciseDto exercise32 = new ExerciseDto(5, "1.1.5 Escoge la respuesta correcta para la cuenta: 210. Terrenos y bienes naturales",
+					texts, answer32);
 
 			List<ExerciseDto> exercises1 = new ArrayList<>();
 			exercises1.add(exercise1);
@@ -206,17 +212,24 @@ public class UnitService {
 			exercises1.add(exercise3);
 			exercises1.add(exercise4);
 
+			List<ExerciseDto> exercises12 = new ArrayList<>();
+			exercises12.add(exercise32);
+
 			List<ExerciseDto> exercises2 = new ArrayList<>();
 			exercises2.add(exercise5);
 
 
 			LessonDto lesson1 = new LessonDto("Lección 1 Unidad 1", exercises1);
 			LessonDto lesson2 = new LessonDto("Lección 1 Unidad 2", exercises2);
+			LessonDto lesson12 = new LessonDto("Lección 2 Unidad 1", exercises12);
+
+			List<LessonDto> lessons2 = new ArrayList<>();
+			lessons2.add(lesson12);
 
 			List<LessonDto> lessons1 = new ArrayList<>();
 			lessons1.add(lesson1);
-			List<LessonDto> lessons2 = new ArrayList<>();
-			lessons2.add(lesson2);
+			lessons1.add(lesson2);
+
 
 			UnitDto unit1 = new UnitDto();
 			unit1.setName("Unidad 1");

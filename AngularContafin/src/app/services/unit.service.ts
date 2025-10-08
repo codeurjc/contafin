@@ -93,7 +93,7 @@ export class UnitsService {
 		let useData = null;
 		await this.utils.restService('/Unit/', {
 			queryString:'delete/' + id,
-			method: 'get',
+			method: 'delete',
 			params: id
 			}).toPromise().then(
 			(data) => {
