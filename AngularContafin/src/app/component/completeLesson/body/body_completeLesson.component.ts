@@ -45,7 +45,7 @@ export class BodyCompleteLessonComponent implements OnInit {
     }
 
     async completeLesson() {
-        if (this.loggedUser !== null){
+        if (this.loggedUser !== null && this.loggedUser !== undefined) {
             await this.userService.completeLesson(this.idLesson, this.points).then(
                 (user : User)=> {
                     console.log("User Completed return: " + JSON.stringify(user));

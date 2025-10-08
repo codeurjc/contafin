@@ -2,8 +2,9 @@
 
 ## Manual de instalación 
 Requisitos del sistema para la correcta instalación de ContaFin:
-•	Tener instalado en el entorno Docker. Se puede descargar desde [aquí](https://docs.docker.com/install/#supported-platforms). 
-•	Clonar el repositorio de Github.
+
+-Tener instalado en el entorno Docker. Se puede descargar desde [aquí](https://docs.docker.com/install/#supported-platforms). 
+-Clonar el repositorio de Github.
 
 Para hacer que se ejecute la aplicación solo hay que ir a la carpeta raíz del proyecto y ejecutar el siguiente comando:
 
@@ -21,6 +22,6 @@ http://localhost:4200/
 ## Manual de uso
 
 ### Versión video
-[Video manual] (https://youtu.be/0_A530kgeZE)
+[Video manual](https://youtu.be/0_A530kgeZE)
 ### Versión pdf
 [Manual PDF](https://github.com/Daniparri/DAW-G11-2018/Manual_de_uso.pdf)
